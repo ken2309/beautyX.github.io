@@ -1,0 +1,31 @@
+:root{
+  --bg-gray: #F5F5F7;
+  --purple: #7161BA;
+  --red-cl: #EE6955;
+  --text-black: #3B3A40;
+  --text-hover: #A2A1AB;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+@font-face {
+  font-family: "Quicksand";
+  src: url('./assets/font/Quicksand/Quicksand-SemiBold.ttf');
+}
+*{
+  font-family: "Quicksand";
+}
+.MuiContainer-root{
+  height: 100% !important;
+  padding: 0px 0px !important;
+}
