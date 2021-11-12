@@ -4,6 +4,7 @@
   --red-cl: #EE6955;
   --text-black: #3B3A40;
   --text-hover: #A2A1AB;
+  --bg-color: #EEEDF2;
 }
 body {
   margin: 0;
@@ -23,7 +24,13 @@ code {
   src: url('./assets/font/Quicksand/Quicksand-SemiBold.ttf');
 }
 *{
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
   font-family: "Quicksand";
+}
+html{
+  box-sizing: border-box;
 }
 .MuiContainer-root{
   height: 100% !important;

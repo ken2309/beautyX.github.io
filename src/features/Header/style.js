@@ -5,6 +5,7 @@ export const headerStyle = makeStyles({
             width:"100%",
             height:"98px",
             backgroundColor:"var(--bg-gray)",
+            borderBottom:'solid 1px #EEEDF2'
       },
       container:{
             height:'100%'
@@ -65,6 +66,7 @@ export const headerStyle = makeStyles({
       },
       // notification
       noBox:{
+            zIndex:'2',
             display:'block',
             marginTop:'17px',
             marginLeft:'-28%',
@@ -134,7 +136,61 @@ export const headerStyle = makeStyles({
             position:'relative'
       },
       menuBox:{
+            zIndex:'2',
+            marginLeft:'-310px',
             padding:'36px',
-            position:'absolute'
+            position:'absolute',
+            width:'380px',
+            backgroundColor:'var(--bg-gray)',
+            boxShadow:'0px 10px 31px rgba(76, 62, 142, 0.3)',
+            borderRadius:'24px',
+            marginTop:'22px'
+      },
+      menuBoxTitle:{
+            fontSize:'20px',
+            lineHeight:'24px',
+            color:'var(--purple)',
+            fontWeight:'700',
+            paddingBottom:'8px',
+            borderBottom:'solid 1px var(--purple)'
+      },
+      menuBoxItem:{
+            listStyle:'none',
+      },
+      menuItemContent:{
+            padding:'9px 0px',
+            display:'flex',
+            alignItems:'center'
+      },
+      menuItemText:{
+            marginLeft:'6px',
+            fontSize:'14px',
+            lineHeight:'20px',
+            color:'var(--text-black)',
+            fontWeight:'700'
+      },
+      menuBottom:{
+            display:'flex',
+            justifyContent:'flex-end',
+            alignItems:'center'
+      },
+      menuItemDrop:{
+            display:'flex',
+            alignItems:'center',
+            justifyContent:'space-between'
+      },
+      menuSetting:{
+            padding:'8px 0px 8px 44px',
+            backgroundColor:'var(--bg-color)',
+            borderRadius:'8px'
+      },
+      menuSettingItem:{
+            listStyle:'none',
+            display:'flex',
+            alignItems:'center',
+            justifyContent:'space-between',
+            fontSize:'14px',
+            lineHeight:'20px',
+            fontWeight:'500'
       }
 })

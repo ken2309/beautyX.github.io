@@ -19,10 +19,23 @@ function Header(props: any) {
             console.log('Res')
       }
       const [openNo, setOpenNo] = useState(false);
+      const [openMenu, setOpenMenu] = useState(false);
       const openNoClick = () => {
-            if (openNo === false) {
+            if (openNo === true) {
+                  setOpenNo(false)
+            } else {
                   setOpenNo(true)
-            } else { setOpenNo(false) }
+                  setOpenMenu(false)
+            }
+      }
+      const openMenuClick = () => {
+            if (openMenu === true) {
+                  setOpenMenu(false)
+                  setOpenNo(false)
+            } else {
+                  setOpenMenu(true)
+                  setOpenNo(false)
+            }
       }
       return (
             <div className={useStyle.header}>
@@ -86,8 +99,13 @@ function Header(props: any) {
                                                 <img src={icon.ShoppingCartSimple} alt="" />
                                           </li>
                                           <li className={useStyle.headerRightItem}>
-                                                <img className={useStyle.menu} src={icon.Menu} alt="" />
-                                                <Menu/>
+                                                <img 
+                                                      onClick={openMenuClick}
+                                                      className={useStyle.menu} src={icon.Menu} alt="" 
+                                                      />
+                                                <Menu
+                                                      openMenu={openMenu}
+                                                />
                                           </li>
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
