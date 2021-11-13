@@ -10,7 +10,9 @@ import homeSt4 from '../assets/image/homeSt4.png';
 import homeCalendar from '../assets/image/Lịch hẹn.png';
 import flatform1 from '../assets/image/flatform1.png'
 import flatform2 from '../assets/image/flatform2.png'
-import flatform3 from '../assets/image/flatform3.png'
+import flatform3 from '../assets/image/flatform3.png';
+import slider from '../assets/image/Jyg7xHRmXiU.png';
+import slider4 from '../assets/image/Jyg7xHRmXiU (4).png'
 
 const img={
       Logo2,
@@ -25,6 +27,8 @@ const img={
       homeCalendar,
       flatform1,
       flatform2,
-      flatform3
+      flatform3,
+      slider,
+      slider4,
 }
 export default img

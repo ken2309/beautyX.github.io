@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import icon from '../../../constants/icon';
-import ButtonCus from '../../../components/ButtonCus/index'
+import ButtonCus from '../../../components/ButtonCus/index';
+import {useHistory} from 'react-router-dom'
 
 const categories=[
       {id: 1, name:'Danh mục 1'},
@@ -22,6 +23,7 @@ interface ChooseLocal {
       name:string
 }
 function HomeFilterForm(props:any) {
+      const history = useHistory();
       const [chooseCate, setChooseCate] = useState<ChooseCate>({ id: 0, name: '' });
       const [chooseLocal, setChooseLocal] = useState<ChooseLocal>({ id: 0, province_code: 0, name: '' })
       const [openCate, setOpenCate] = useState(false)
@@ -55,6 +57,10 @@ function HomeFilterForm(props:any) {
                   province_code: chooseLocal.province_code
             }
             console.log(filterValues);
+            history.push({
+                  pathname:'/Search-result/',
+                  state:filterValues
+            })
       }
       return (
             <div className='filter-form'>

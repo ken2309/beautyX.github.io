@@ -1,0 +1,118 @@
+/* head */
+.mer-detail{
+      padding: 64px 0px 24px 0px;
+      width: 100%;
+      background-color: var(--purple);
+}
+.mer-detail__content{
+      display: flex;
+      width: 100%;
+      height: 385px;
+      justify-content: space-between;
+}
+.mer-detail__content-left{
+      width: 48.5%;
+      background-color: var(--bg-gray);
+      border-radius: 24px;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+}
+.content-left__header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: solid 1px var(--bg-color);
+}
+.content-left__header-name{
+      width: calc(100% - 96px);
+      padding-left: 16px;
+}
+.content-left__header-name span{
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 36px;
+      color: var(--purple);
+}
+.mer-detail__rate{
+      display: flex;
+      align-items: center;
+}
+.mer-detail__rate span{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+}
+.mer-detail__rate img{
+      margin-right: 8px;
+}
+.content-left__info-detail{
+      display: flex;
+      align-items: center;
+}
+.content-left__info-detail span,
+.content-left__info-detail span h5{
+      padding-left: 4px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--text-black);
+}
+.content-left__info-detail span h5{
+      color: var(--purple);
+      margin-right: 4px;
+}
+.content-left__work{
+      display: flex;
+      justify-content: space-between;
+}
+.content-left__work-item{
+      background-color: var(--bg-color);
+      width: 48%;
+      text-align: center;
+      padding: 4px;
+      border-radius: 8px;
+}
+.content-left__work-item span{
+      color: #A2A1AB;
+      font-size: 11px;
+      line-height: 12px;
+      font-weight: 700;
+}
+.content-left__work-item p{
+      color: var(--text-black);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+}
+.content-left__follow button{
+      border: solid 1px var(--purple);
+      cursor: pointer;
+      outline: none;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--purple);
+      background-color: transparent;
+      padding: 8px 16px;
+      border-radius: 18px;
+      transition: 0.4s;
+}
+.content-left__follow button:first-child{
+      margin-right: 16px;
+}
+/* mer-detail__content-right */
+.mer-detail__content-right{
+      width: 48.5%;
+      height: 100%;
+      border-radius: 24px;
+}
+.mer-detail__content-right div{
+      border-radius: 24px;
+}

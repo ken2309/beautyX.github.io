@@ -19,6 +19,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* scroll bar */
+::-webkit-scrollbar{
+  display: none;
+}
+::-webkit-scrollbar-track{
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 3px;
+  background-color: var(--purple);
+}
 @font-face {
   font-family: "Quicksand";
   src: url('./assets/font/Quicksand/Quicksand-SemiBold.ttf');

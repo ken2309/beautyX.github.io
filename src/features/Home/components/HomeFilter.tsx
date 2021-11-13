@@ -5,6 +5,7 @@ import HomeFilterForm from './HomeFilterForm';
 import {useHistory} from 'react-router-dom'
 
 function HomeFilter(props:any) {
+      const {styleFilter} = props;
       const history = useHistory();
       const [searchText, setSearchText] = useState("");
       const handleOnSearchChange=(e:any)=>{
@@ -18,7 +19,15 @@ function HomeFilter(props:any) {
             })
       }
       return (
-            <div className="home-banner__filter">
+            <div 
+                  style={{
+                        position: styleFilter?.position,
+                        width: styleFilter?.width,
+                        boxShadow: styleFilter?.boxShadow,
+                        padding: styleFilter?.padding
+                  }}
+                  className="home-banner__filter"
+            >
                   <div className="home__filter-search-box">
                         <input 
                               onChange={handleOnSearchChange}

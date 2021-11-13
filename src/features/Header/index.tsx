@@ -5,15 +5,17 @@ import img from '../../constants/img';
 import icon from '../../constants/icon';
 import ButtonCus from '../../components/ButtonCus/index';
 import Notification from './components/Notification';
-import Menu from './components/Menu'
+import Menu from './components/Menu';
+import {useHistory} from 'react-router-dom'
 
-const logged = true;
+const logged:boolean = true;
 const notification = true;
 const userInfo={
       userName:'Nguyen Thuy Binh',
       userAvatar: img.Avatar
 }
 function Header(props: any) {
+      const history = useHistory();
       const useStyle = headerStyle();
       const res=()=>{
             console.log('Res')
@@ -49,7 +51,11 @@ function Header(props: any) {
                                     border='solid 1px var(--purple)'
                                     // onClick={}
                               />
-                              <img src={img.Logo2} alt="" />
+                              <img
+                                    style={{cursor:'pointer'}}
+                                    onClick={()=>history.push('/')}
+                                    src={img.Logo2} alt=""
+                              />
                               <div className={useStyle.headerRight}>
                                     <ul className={useStyle.headerRightList}>
                                           <li className={useStyle.headerRightItem}>
