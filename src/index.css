@@ -1,9 +1,11 @@
 :root{
+  --bg-gray-dark:#E5E5E5;
   --bg-gray: #F5F5F7;
   --purple: #7161BA;
   --red-cl: #EE6955;
   --text-black: #3B3A40;
   --text-hover: #A2A1AB;
+  --text-op:#CAC4E5;
   --bg-color: #EEEDF2;
 }
 body {

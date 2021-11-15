@@ -1,25 +1,31 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Container} from '@mui/material';
 import icon from '../../../constants/icon';
 import {useElementSize} from 'usehooks-ts'
 import SimpleImageSlider from 'react-simple-image-slider';
 import img from '../../../constants/img';
+import DetailTab from './DetailTab';
 
 const images=[
       {url:img.slider},
       {url:img.slider4},
 ]
 function DetailHead(props:any) {
-      const { merDetail } = props;
+      const { merDetail, activeTab, setActiveTab } = props;
+      const [heightSlider, setHeightSlider]= useState(0);
       const slider = useRef(null);
-      const {width, height} = useElementSize(slider);
+      const infoBox = useRef(null);
+      const {width} = useElementSize(slider);
+      const {height} = useElementSize(infoBox)
       const [follow, setFollow] = useState(false);
-
+      useEffect(()=>{
+            setHeightSlider(height)
+      },[height])
       return (
             <div className="mer-detail">
                   <Container>
                         <div className="mer-detail__content">
-                              <div className="mer-detail__content-left">
+                              <div ref={infoBox} className="mer-detail__content-left">
                                     <div className="content-left__header">
                                           <img src={icon.logoBusiness} alt="" />
                                           <div className="content-left__header-name">
@@ -82,7 +88,7 @@ function DetailHead(props:any) {
                               <div ref={slider} className="mer-detail__content-right">
                                     <SimpleImageSlider
                                           width={width}
-                                          height={height}
+                                          height={heightSlider}
                                           images={images}
                                           showBullets={false}
                                           showNavs={false}
@@ -91,6 +97,10 @@ function DetailHead(props:any) {
                                     />
                               </div>
                         </div>
+                        <DetailTab
+                              setActiveTab={setActiveTab}
+                              activeTab={activeTab}
+                        />
                   </Container>
             </div>
       );

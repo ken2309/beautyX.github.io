@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from './Title';
+import SectionTitle from '../../SectionTitle';
 import img from '../../../constants/img';
 import icon from '../../../constants/icon';
 
@@ -13,8 +13,9 @@ const miniCards=[
 function HomeMiniMap(props: any) {
       return (
             <div className="home-mini-map">
-                  <Title
+                  <SectionTitle
                         title={title}
+                        textAlign='center'
                   />
                   <div className="home-mini-map__content">
                         <img className="home-mini-map__img" src={img.miniMap} alt="" />

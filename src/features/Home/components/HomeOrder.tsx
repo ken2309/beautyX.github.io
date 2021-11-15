@@ -1,6 +1,6 @@
 import React from 'react';
-import Title from './Title';
 import img from '../../../constants/img';
+import SectionTitle from '../../SectionTitle';
 
 const title = 'Đặt mua sản phẩm, đặt hẹn dịch vụ \n và thanh toán online ngay trên nền tảng'
 const steps = [
@@ -12,8 +12,9 @@ const steps = [
 function HomeOrder(props:any) {
       return (
             <div className="home-order">
-                  <Title
+                  <SectionTitle
                         title = {title}
+                        textAlign='center'
                   />
                   <div className="home-step__line"></div>
                   <div className="home-order__step">

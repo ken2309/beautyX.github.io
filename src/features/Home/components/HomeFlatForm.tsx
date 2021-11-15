@@ -1,13 +1,14 @@
 import React from 'react';
-import Title from './Title';
 import img from '../../../constants/img';
+import SectionTitle from '../../SectionTitle';
 
 const title = 'Ngoài ra, khi sử dụng Booking Flatform Myspa bạn còn có thể'
 function HomeFlatForm(props:any) {
       return (
             <div className="home-flatform">
-                  <Title
+                  <SectionTitle
                         title={title}
+                        textAlign="center"
                   />
                   <div className="home-flatform__content">
                         <div className="flatform-card">

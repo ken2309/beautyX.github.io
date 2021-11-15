@@ -1,6 +1,6 @@
 import React from 'react';
-import Title from './Title';
 import ButtonCus from '../../../components/ButtonCus';
+import SectionTitle from '../../SectionTitle';
 
 const title = 'Đăng ký tài khoản tại Myspa Booking Flatform \n để có trải nghiệm tốt nhất'
 function HomeSignIn(props:any) {
@@ -12,8 +12,9 @@ function HomeSignIn(props:any) {
       }
       return (
             <div className="home-sign">
-                  <Title
+                  <SectionTitle
                         title={title}
+                        textAlign='center'
                   />
                   <div className="home-sign-button">
                         <ButtonCus

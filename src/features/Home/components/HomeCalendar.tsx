@@ -1,7 +1,7 @@
 import React from 'react';
-import Title from './Title';
 import img from '../../../constants/img';
 import icon from '../../../constants/icon';
+import SectionTitle from '../../SectionTitle';
 
 const title = 'Sắp xếp, theo dõi và nhắc nhở lịch hẹn';
 const array = [
@@ -24,8 +24,9 @@ const array = [
 function HomeCalendar(props:any) {
       return (
             <div className="home-calendar">
-                 <Title
+                 <SectionTitle
                         title = {title}
+                        textAlign='center'
                  />
                   <div className="home-calendar-content">
                         <ul>

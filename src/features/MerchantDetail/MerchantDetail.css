@@ -7,17 +7,17 @@
 .mer-detail__content{
       display: flex;
       width: 100%;
-      height: 385px;
+      height: max-content;
       justify-content: space-between;
 }
 .mer-detail__content-left{
       width: 48.5%;
+      height: fit-content;
       background-color: var(--bg-gray);
       border-radius: 24px;
       padding: 36px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
 }
 .content-left__header{
       display: flex;
@@ -91,6 +91,9 @@
       font-weight: 700;
       color: var(--text-black);
 }
+.content-left__follow{
+      margin-top: 24px;
+}
 .content-left__follow button{
       border: solid 1px var(--purple);
       cursor: pointer;
@@ -110,9 +113,68 @@
 /* mer-detail__content-right */
 .mer-detail__content-right{
       width: 48.5%;
-      height: 100%;
+      height: fit-content;
       border-radius: 24px;
 }
 .mer-detail__content-right div{
       border-radius: 24px;
+}
+/* Detail tab */
+.mer-detail__tab{
+      padding-top: 64px;
+      display: flex;
+}
+.mer-detail__tab li{
+      list-style: none;
+      margin-right: 24px;
+}
+.mer-detail__tab-item{
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--text-op);
+      padding-bottom: 6px;
+}
+/* Mer detail info */
+.mer-detail__content-desc{
+      width: 100%;
+      height: fit-content;
+      padding: 64px 0px;
+      background-color: var(--bg-gray-dark);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+}
+.mer-detail__content-info,
+.mer-detail__content-cmt{
+      width: 50%;
+}
+.mer__content-info__introduction .text{
+      height: 74px;
+      overflow: hidden;
+      margin: 16px 0px 30px 0px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--text-black);
+      box-shadow:inset 0px -22px 13px -5px rgba(59,58,64,0.16);
+      transition: 0.2s;
+}
+.mer__content-info__introduction span{
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--purple);
+}
+/* unties */
+.mer__content-info__util-list{
+      display: flex;
+      justify-content: space-between;
+}
+.mer__content-info__util-list li{
+      list-style: none;
 }
