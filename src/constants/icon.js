@@ -20,7 +20,9 @@ import bed from '../assets/icon/Bed.svg';
 import door from '../assets/icon/Door.svg';
 import pPrev from '../assets/icon/pPrev.svg';
 import pNext from '../assets/icon/pNext.svg';
-import logoBusiness from '../assets/icon/Logo công ty.svg'
+import logoBusiness from '../assets/icon/Logo công ty.svg';
+import phone from '../assets/icon/Phone.png';
+import gps from '../assets/icon/Gps_fixed.png'
 
 const icon={
       Avatar,
@@ -45,6 +47,8 @@ const icon={
       door,
       pPrev,
       pNext,
-      logoBusiness
+      logoBusiness,
+      phone,
+      gps
 }
 export default icon;

@@ -5,7 +5,12 @@ import './MerchantDetail.css';
 import {Container} from '@mui/material'
 import DetailHead from './components/DetailHead';
 import DetailMer from './components/DetailMer';
+import DetailBranchList from './components/DetailBranchList';
+import DetailSaleList from './components/DetailSaleList';
+import ServiceByMerchant from '../ServiceByMerchant/index'
+import Footer from '../Footer';
 
+const id_tab = 1;
 function MerchantDetail(props:any) {
       const location = useLocation();
       //const mer_id = location.search.slice(4, location.search.length);
@@ -14,6 +19,7 @@ function MerchantDetail(props:any) {
       //console.log(merDetail)
       //---
       const [activeTab, setActiveTab] = useState(1);
+      console.log(activeTab)
       return (
             <div>
                   <Header />
@@ -22,13 +28,23 @@ function MerchantDetail(props:any) {
                         setActiveTab={setActiveTab}
                         activeTab={activeTab}
                   />
-                  <div style={{ backgroundColor: 'var(--bg-gray-dark)' }}>
+                  <div style={{ backgroundColor: 'var(--bg-gray)', paddingBottom: '92px' }}>
                         <Container>
-                              <DetailMer
-                                    merDetail={merDetail}
+                              <div style={id_tab === activeTab ? { display: 'block' } : { display: 'none' }} >
+                                    <DetailMer
+                                          merDetail={merDetail}
+                                    />
+                                    <DetailBranchList />
+                                    <DetailSaleList
+                                          merDetail={merDetail}
+                                    />
+                              </div>
+                              <ServiceByMerchant
+                                    activeTab={activeTab}
                               />
                         </Container>
                   </div>
+                  <Footer />
             </div>
       );
 }

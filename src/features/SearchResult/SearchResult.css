@@ -4,6 +4,7 @@
       flex-direction: row;
       justify-content: space-between;
       background-color: var(--bg-gray);
+      height: 1018px;
 }
 /* result detail */
 .result-detail{
@@ -137,7 +138,7 @@
 }
 /* map */
 .result-map{
-      width: 50%;
+      height: 100%;
 }
 /* pagination */
 .result-pagination{

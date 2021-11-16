@@ -12,7 +12,10 @@ import flatform1 from '../assets/image/flatform1.png'
 import flatform2 from '../assets/image/flatform2.png'
 import flatform3 from '../assets/image/flatform3.png';
 import slider from '../assets/image/Jyg7xHRmXiU.png';
-import slider4 from '../assets/image/Jyg7xHRmXiU (4).png'
+import slider4 from '../assets/image/Jyg7xHRmXiU (4).png';
+import nv from '../assets/image/Nhan vien.png';
+import rectangle from '../assets/image/Rectangle 148.png';
+import service from '../assets/image/Service.png'
 
 const img={
       Logo2,
@@ -30,5 +33,8 @@ const img={
       flatform3,
       slider,
       slider4,
+      nv,
+      rectangle,
+      service
 }
 export default img

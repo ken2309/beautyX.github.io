@@ -116,6 +116,7 @@ function SearchResult(props:any) {
                               />
                               <MapWrapper
                                     chooseItem={chooseItem}
+                                    width='50%'
                               />
                         </div>
                   </Container>

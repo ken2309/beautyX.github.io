@@ -5,9 +5,9 @@ const key = 'AIzaSyCf1Cp3oMKfEGuRu71h3YJnaesYjxsb4Rw';
 const lat = 10.7994639;
 const long = 106.6855589;
 function MapWrapper(props:any) {
-      const {chooseItem} = props;
+      const {chooseItem, width} = props;
       return (
-            <div className="result-map">
+            <div className="result-map" style={{width:width}}>
                   <ResultMap
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${key}`}
                         loadingElement={<div style={{ height: `100%` }} />}
