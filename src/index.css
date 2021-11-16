@@ -11,15 +11,15 @@
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 /* scroll bar */
@@ -35,20 +35,22 @@ code {
 }
 @font-face {
   font-family: "Quicksand";
-  src: url('./assets/font/Quicksand/Quicksand-SemiBold.ttf');
+  src: url("./assets/font/Quicksand/Quicksand-SemiBold.ttf");
 }
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: inherit;
+* {
   font-family: "Quicksand";
 }
-html{
-  box-sizing: border-box;
-}
-.MuiContainer-root{
+.MuiContainer-root {
   height: 100% !important;
   padding: 0px 0px !important;
+}
+
+html {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 .flex-row{
   display: flex;
@@ -71,4 +73,49 @@ html{
   flex-direction: column;
   align-items: center;
 }
-
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+input {
+  line-height: normal;
+}
+label,
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}

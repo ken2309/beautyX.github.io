@@ -3,11 +3,12 @@ import Home from '../features/Home/index';
 import SearchResult from '../features/SearchResult/index'
 import {BrowserRouter, Switch, Redirect} from 'react-router-dom';
 import {RouteComponentProps} from '@reach/router';
-import MerchantDetail from '../features/MerchantDetail/index'
+import MerchantDetail from '../features/MerchantDetail/index';
+import Partner from "../features/Partner";
 
 const RouterPage = (
-      props: { pageComponent: JSX.Element } & RouteComponentProps
-    ) => props.pageComponent;
+  props: { pageComponent: JSX.Element } & RouteComponentProps
+) => props.pageComponent;
 function RouterConfig(props: any) {
       const routes = [
             {
@@ -21,7 +22,11 @@ function RouterConfig(props: any) {
             {
                   path:'/Merchant-detail/',
                   component: <MerchantDetail/>
-            }
+            },
+            {
+              path: "/Partner",
+              component: <Partner />,
+            },
       ]
       return (
             <BrowserRouter>

@@ -15,7 +15,8 @@ import slider from '../assets/image/Jyg7xHRmXiU.png';
 import slider4 from '../assets/image/Jyg7xHRmXiU (4).png';
 import nv from '../assets/image/Nhan vien.png';
 import rectangle from '../assets/image/Rectangle 148.png';
-import service from '../assets/image/Service.png'
+import service from '../assets/image/Service.png';
+import Partner from "../assets/image/partner.png";
 
 const img={
       Logo2,
@@ -35,6 +36,7 @@ const img={
       slider4,
       nv,
       rectangle,
-      service
+      service,
+      Partner
 }
 export default img

@@ -23,34 +23,47 @@ import pNext from '../assets/icon/pNext.svg';
 import logoBusiness from '../assets/icon/Logo công ty.svg';
 import phone from '../assets/icon/Phone.png';
 import gps from '../assets/icon/Gps_fixed.png';
-import dashboard from '../assets/icon/darhboard.svg'
+import dashboard from '../assets/icon/darhboard.svg';
+import Buildings from "../assets/icon/Buildings.svg";
+import Message from "../assets/icon/Message.svg";
+import Phone from "../assets/icon/Phone.svg";
+import Storefront from "../assets/icon/Storefront.svg";
+import User from "../assets/icon/User.svg";
+import Location from "../assets/icon/Location.svg";
 
-const icon={
-      Avatar,
-      Menu,
-      ShoppingCartSimple,
-      Check,
-      Check2,
-      dotPurple,
-      next,
-      Expand_right_2,
-      down,
-      search,
-      down_2,
-      miniMapIcon,
-      pinMap,
-      star,
-      chatAll,
-      location,
-      car,
-      bed, 
-      time,
-      door,
-      pPrev,
-      pNext,
-      logoBusiness,
-      phone,
-      gps,
-      dashboard
+
+const icon = {
+  Avatar,
+  Menu,
+  ShoppingCartSimple,
+  Check,
+  Check2,
+  dotPurple,
+  next,
+  Expand_right_2,
+  down,
+  search,
+  down_2,
+  miniMapIcon,
+  pinMap,
+  star,
+  chatAll,
+  location,
+  car,
+  bed,
+  time,
+  door,
+  pPrev,
+  pNext,
+  logoBusiness,
+  phone,
+  gps,
+  dashboard,
+  Buildings,
+  Message,
+  Phone,
+  Storefront,
+  User,
+  Location,
 }
 export default icon;
