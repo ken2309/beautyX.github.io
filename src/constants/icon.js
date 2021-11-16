@@ -22,7 +22,8 @@ import pPrev from '../assets/icon/pPrev.svg';
 import pNext from '../assets/icon/pNext.svg';
 import logoBusiness from '../assets/icon/Logo công ty.svg';
 import phone from '../assets/icon/Phone.png';
-import gps from '../assets/icon/Gps_fixed.png'
+import gps from '../assets/icon/Gps_fixed.png';
+import dashboard from '../assets/icon/darhboard.svg'
 
 const icon={
       Avatar,
@@ -49,6 +50,7 @@ const icon={
       pNext,
       logoBusiness,
       phone,
-      gps
+      gps,
+      dashboard
 }
 export default icon;

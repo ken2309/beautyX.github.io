@@ -5,10 +5,12 @@ import formatPrice from '../../utils/formatPrice'
 
 function CardItem(props:any) {
       const { detail, style } = props;
-      const discount = 100 - (detail.salePrice / detail.oldPrice * 100)
+      const discount = 100 - (detail.salePrice / detail?.oldPrice * 100)
       return (
             <div style={{ width: style?.width }} className="card">
-                  <div className="card-discount">
+                  <div
+                        style={discount === 0 ? { display: 'none' } : {}}
+                        className="card-discount">
                         Giảm {discount.toFixed()}%
                   </div>
                   <img src={"https://picsum.photos/650/976?random=" + detail.id} alt="" className="card-img" />
@@ -21,8 +23,24 @@ function CardItem(props:any) {
                         </span>
                         <div className="flex-row-sp card-price">
                               <span className="flex-row card-price__detail">
-                                    <h4>{formatPrice(detail.oldPrice)} đ</h4>
-                                    <h3>{formatPrice(detail.salePrice)} đ</h3>
+                                    <h4
+                                          style={discount === 0 ?
+                                                {
+                                                      textDecoration: 'none',
+                                                      fontSize: '20px',
+                                                      lineHeight: '24px',
+                                                      fontWeight: "bold",
+                                                      color: 'var(--purple)'
+                                                }
+                                                :
+                                                {}
+                                          }
+                                    >{formatPrice(detail.oldPrice)} đ</h4>
+                                    <h3
+                                          style={discount === 0 ? { display: 'none' } : {}}
+                                    >
+                                          {formatPrice(detail.salePrice)} đ
+                                    </h3>
                               </span>
                               <span className="flex-row card-price__star">
                                     4.5
