@@ -39,6 +39,9 @@ function Header(props: any) {
                   setOpenNo(false)
             }
       }
+      const gotoPartner=()=>{
+            history.push('/Partner')
+      }
       return (
             <div className={useStyle.header}>
                   <Container maxWidth="lg">
@@ -49,7 +52,7 @@ function Header(props: any) {
                                     lineHeight='20px'
                                     color='var(--purple)'
                                     border='solid 1px var(--purple)'
-                                    // onClick={}
+                                    onClick={gotoPartner}
                               />
                               <img
                                     style={{cursor:'pointer'}}

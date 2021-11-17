@@ -30,6 +30,10 @@ import Phone from "../assets/icon/Phone.svg";
 import Storefront from "../assets/icon/Storefront.svg";
 import User from "../assets/icon/User.svg";
 import Location from "../assets/icon/Location.svg";
+import Lock from "../assets/icon/Lock.svg";
+import eye from "../assets/icon/Eye.svg";
+import facebook from "../assets/icon/Facebook.svg";
+import google from "../assets/icon/Google.svg"
 
 
 const icon = {
@@ -65,5 +69,9 @@ const icon = {
   Storefront,
   User,
   Location,
+  Lock,
+  eye,
+  facebook,
+  google
 }
 export default icon;

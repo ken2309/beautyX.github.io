@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import img from "../../constants/img";
 import icon from "../../constants/icon";
 import { partnerStyle } from "./style";

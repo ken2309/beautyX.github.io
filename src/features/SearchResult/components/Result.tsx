@@ -3,7 +3,8 @@ import HomeFilter from '../../Home/components/HomeFilter';
 import icon from '../../../constants/icon';
 import '../../Home/Home.css';
 import Pagination from './Pagination';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
+import scrollTop from '../../../utils/scrollTop'
 
 const serviceOfCardOrg=[
       {title:'Bãi đỗ xe', text:'100m2', icon: icon.car},
@@ -32,6 +33,7 @@ function Result(props:any) {
                   search: `id=${item.id}`,
                   state: item
             })
+            scrollTop();
       }
       return (
             <div className='result-detail'>

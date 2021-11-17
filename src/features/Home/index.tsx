@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/index';
 import './Home.css';
+import '../poupSignInUp/popupSignInUp.css'
 import {Container} from '@mui/material';
 import HomeBanner from './components/HomeBanner';
 import HomeMap from './components/HomeMap';

@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ButtonCus from '../../../components/ButtonCus';
 import SectionTitle from '../../SectionTitle';
+import SignInUp from '../../poupSignInUp/index'
 
 const title = 'Đăng ký tài khoản tại Myspa Booking Flatform \n để có trải nghiệm tốt nhất'
 function HomeSignIn(props:any) {
+      const [openSignIn, setOpenSignIn] = useState(false);
+      const [activeTabSign, setActiveTabSign] = useState(1);
       const popupSignInClick=()=>{
-            console.log('sign in')
+            setOpenSignIn(true)
+            setActiveTabSign(1)
       }
       const popupSignUpClick=()=>{
-            console.log('sign up')
+            setOpenSignIn(true);
+            setActiveTabSign(2)
       }
       return (
             <div className="home-sign">
@@ -36,6 +41,14 @@ function HomeSignIn(props:any) {
                               border='solid 1px var(--purple)'
                               margin='36px 12px'
                               borderRadius='20px'
+                        />
+                  </div>
+                  <div className="home-sign">
+                        <SignInUp
+                              openSignIn={openSignIn}
+                              setOpenSignIn={setOpenSignIn}
+                              activeTabSign={activeTabSign}
+                              setActiveTabSign={setActiveTabSign}
                         />
                   </div>
             </div>
