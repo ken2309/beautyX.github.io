@@ -23,7 +23,7 @@ const cardStyle={
 const buttons = [{ id: 1, text: 'Sắp hết hạn' }, { id: 2, text: 'Giảm nhiều' }]
 function DetailSaleList(props:any) {
       const { merDetail } = props;
-      const title = `Ưu đãi của "${merDetail.name}"`;
+      const title = `Ưu đãi của "${merDetail?.name}"`;
       const [activeBtn, setActiveBtn] = useState();
       const [productSort, setProductSort] = useState<SaleList[]>([]);
       const [sort, setSort] = useState({

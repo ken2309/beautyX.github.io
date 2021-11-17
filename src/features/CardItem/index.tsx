@@ -4,7 +4,12 @@ import icon from '../../constants/icon';
 import formatPrice from '../../utils/formatPrice'
 
 function CardItem(props:any) {
-      const { detail, style } = props;
+      const { 
+                  detail, 
+                  style,
+                  name,
+                  retail_price
+            } = props;
       const discount = 100 - (detail.salePrice / detail?.oldPrice * 100)
       return (
             <div style={{ width: style?.width }} className="card">
@@ -16,7 +21,7 @@ function CardItem(props:any) {
                   <img src={"https://picsum.photos/650/976?random=" + detail.id} alt="" className="card-img" />
                   <div className="card-info">
                         <div className="card-name">
-                              {detail.name}
+                             {detail.id} - {name}
                         </div>
                         <span className="card-spa-name">
                               Kanessa Beauty  Spa
@@ -39,7 +44,7 @@ function CardItem(props:any) {
                                     <h3
                                           style={discount === 0 ? { display: 'none' } : {}}
                                     >
-                                          {formatPrice(detail.salePrice)} đ
+                                          {formatPrice(retail_price)} đ
                                     </h3>
                               </span>
                               <span className="flex-row card-price__star">

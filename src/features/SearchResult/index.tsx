@@ -75,7 +75,6 @@ interface ResultList {
 }
 function SearchResult(props:any) {
       const location = useLocation();
-      console.log(location);
       const [chooseItem, setChooseItem] = useState();
       const params = location.search.slice(8, location.search.length)
       const keySearch = decodeURI(params)

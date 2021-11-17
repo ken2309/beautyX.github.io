@@ -6,7 +6,8 @@ import icon from '../../constants/icon';
 import ButtonCus from '../../components/ButtonCus/index';
 import Notification from './components/Notification';
 import Menu from './components/Menu';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
+import SectionTitle from '../SectionTitle';
 
 const logged:boolean = true;
 const notification = true;
@@ -15,6 +16,7 @@ const userInfo={
       userAvatar: img.Avatar
 }
 function Header(props: any) {
+      const {isCart} = props;
       const history = useHistory();
       const useStyle = headerStyle();
       const res=()=>{
@@ -40,25 +42,36 @@ function Header(props: any) {
             }
       }
       const gotoPartner=()=>{
-            history.push('/Partner')
+            if(isCart){
+                  history.goBack();
+            }else{
+                  history.push('/Partner');
+            }
       }
       return (
             <div className={useStyle.header}>
                   <Container maxWidth="lg">
                         <div className={useStyle.headerContainer}>
                               <ButtonCus
-                                    text='Trở thành đối tác'
+                                    text={isCart ? 'Trở lại' : 'Trở thành đối tác'}
                                     borderRadius='18px'
                                     lineHeight='20px'
                                     color='var(--purple)'
                                     border='solid 1px var(--purple)'
                                     onClick={gotoPartner}
                               />
-                              <img
-                                    style={{cursor:'pointer'}}
-                                    onClick={()=>history.push('/')}
-                                    src={img.Logo2} alt=""
-                              />
+                              {
+                                    isCart ?
+                                          <SectionTitle
+                                                title="Giỏ hàng"
+                                          />
+                                          :
+                                          <img
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => history.push('/')}
+                                                src={img.Logo2} alt=""
+                                          />
+                              }
                               <div className={useStyle.headerRight}>
                                     <ul className={useStyle.headerRightList}>
                                           <li className={useStyle.headerRightItem}>
@@ -104,7 +117,10 @@ function Header(props: any) {
                                                       openNo={openNo}
                                                 />
                                           </li>
-                                          <li className={useStyle.headerRightItem}>
+                                          <li 
+                                                onClick={()=> history.push("/Cart")}
+                                                className={useStyle.headerRightItem}
+                                          >
                                                 <img src={icon.ShoppingCartSimple} alt="" />
                                           </li>
                                           <li className={useStyle.headerRightItem}>

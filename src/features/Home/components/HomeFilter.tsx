@@ -37,6 +37,7 @@ function HomeFilter(props:any) {
                               placeholder='Tên doanh nghiệp/Sản phẩm/Dịch vụ'
                         />
                         <ButtonCus
+                              disabled={searchText.length === 0 ? true : false}
                               onClick={handleSearchClick}
                               imgIcon={icon.search}
                               backColor='var(--purple)'

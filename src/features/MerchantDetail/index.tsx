@@ -7,19 +7,19 @@ import DetailHead from './components/DetailHead';
 import DetailMer from './components/DetailMer';
 import DetailBranchList from './components/DetailBranchList';
 import DetailSaleList from './components/DetailSaleList';
-import ServiceByMerchant from '../ServiceByMerchant/index'
+import ServiceByMerchant from '../ServiceByMerchant/index';
+import ProductByMerchant from '../ProductByMerchant/index'
 import Footer from '../Footer';
 
 const id_tab = 1;
 function MerchantDetail(props:any) {
       const location = useLocation();
-      //const mer_id = location.search.slice(4, location.search.length);
+      const mer_id = location.search.slice(4, location.search.length);
       //console.log(location)
       const merDetail = location.state
-      //console.log(merDetail)
+      console.log(mer_id)
       //---
       const [activeTab, setActiveTab] = useState(1);
-      console.log(activeTab)
       return (
             <div>
                   <Header />
@@ -40,6 +40,10 @@ function MerchantDetail(props:any) {
                                     />
                               </div>
                               <ServiceByMerchant
+                                    activeTab={activeTab}
+                              />
+                              <ProductByMerchant
+                                    mer_id={mer_id}
                                     activeTab={activeTab}
                               />
                         </Container>

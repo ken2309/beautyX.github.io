@@ -33,8 +33,12 @@ import Location from "../assets/icon/Location.svg";
 import Lock from "../assets/icon/Lock.svg";
 import eye from "../assets/icon/Eye.svg";
 import facebook from "../assets/icon/Facebook.svg";
-import google from "../assets/icon/Google.svg"
-
+import google from "../assets/icon/Google.svg";
+import warning from "../assets/icon/Warning.svg";
+import arrowDown from "../assets/icon/Arrow_drop_down.svg";
+import box from "../assets/icon/Box.svg";
+import bag from "../assets/icon/Bag_alt.svg";
+import trash from "../assets/icon/Trash.svg"
 
 const icon = {
   Avatar,
@@ -72,6 +76,11 @@ const icon = {
   Lock,
   eye,
   facebook,
-  google
+  google,
+  warning,
+  arrowDown,
+  box,
+  bag,
+  trash
 }
 export default icon;

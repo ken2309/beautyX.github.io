@@ -5,6 +5,7 @@ import {BrowserRouter, Switch, Redirect} from 'react-router-dom';
 import {RouteComponentProps} from '@reach/router';
 import MerchantDetail from '../features/MerchantDetail/index';
 import Partner from "../features/Partner";
+import Cart from "../features/Cart/index"
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -27,6 +28,10 @@ function RouterConfig(props: any) {
               path: "/Partner",
               component: <Partner />,
             },
+            {
+                  path:"/Cart",
+                  component: <Cart/>
+            }
       ]
       return (
             <BrowserRouter>

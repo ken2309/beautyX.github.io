@@ -17,7 +17,7 @@ function DetailComment(props:any) {
                               <SectionTitle
                                     title="Đánh giá"
                               />
-                              <h1 className="mer-detail-cmt__head-star">
+                              <h1 className="flex-row mer-detail-cmt__head-star">
                                     4.5/5
                                     <img src={icon.star} alt="" />
                               </h1>
