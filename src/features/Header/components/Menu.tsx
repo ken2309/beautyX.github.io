@@ -15,7 +15,7 @@ function Menu(props:any) {
       }
       return (
             <div
-                  style={openMenu === false ? { display: 'none' } : { display: 'block' }}
+                  style={openMenu === true ? { top: '3rem', opacity: '1', visibility: 'visible' } : {top: '5rem', opacity:'0', visibility: 'hidden' }}
                   className={menu.menuBox}
             >
                   <div className={menu.menuBoxTitle}>Menu</div>

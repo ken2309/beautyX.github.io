@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container} from '@mui/material';
 import {headerStyle} from './style';
 import img from '../../constants/img';
@@ -6,7 +6,8 @@ import icon from '../../constants/icon';
 import ButtonCus from '../../components/ButtonCus/index';
 import Notification from './components/Notification';
 import Menu from './components/Menu';
-import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom';
+import Language from './components/Language';
 
 const logged:boolean = true;
 const notification = true;
@@ -22,12 +23,14 @@ function Header(props: any) {
       }
       const [openNo, setOpenNo] = useState(false);
       const [openMenu, setOpenMenu] = useState(false);
+      const [openLang, setOpentLang] = useState(false);
       const openNoClick = () => {
             if (openNo === true) {
                   setOpenNo(false)
             } else {
                   setOpenNo(true)
                   setOpenMenu(false)
+                  setOpentLang(false)
             }
       }
       const openMenuClick = () => {
@@ -37,8 +40,30 @@ function Header(props: any) {
             } else {
                   setOpenMenu(true)
                   setOpenNo(false)
+                  setOpentLang(false)
             }
       }
+      const openLangClick = () => {
+            if (openLang === true) {
+                  setOpentLang(false)
+                  setOpenMenu(false)
+                  setOpenNo(false)
+            } else {
+                  setOpenMenu(false)
+                  setOpenNo(false)
+                  setOpentLang(true)
+            }
+      }
+      // if (openLang === true) {
+      //       setOpenMenu(false)
+      //       setOpenNo(false)
+      //       setOpentLang(false)
+      // } else {
+      //       setOpentLang(true)
+      //       setOpenMenu(false)
+      //       setOpenNo(false)
+      // }
+      
       return (
             <div className={useStyle.header}>
                   <Container maxWidth="lg">
@@ -54,7 +79,7 @@ function Header(props: any) {
                               <img
                                     style={{cursor:'pointer'}}
                                     onClick={()=>history.push('/')}
-                                    src={img.Logo2} alt=""
+                                    src={icon.Logo} alt=""
                               />
                               <div className={useStyle.headerRight}>
                                     <ul className={useStyle.headerRightList}>
@@ -116,6 +141,10 @@ function Header(props: any) {
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
                               </div>
+                              <Language
+                                    openLang={openLang}
+                                    openLangClick = {openLangClick}
+                              />
                         </div>
                   </Container>
             </div>

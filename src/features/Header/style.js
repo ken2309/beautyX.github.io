@@ -76,7 +76,8 @@ export const headerStyle = makeStyles({
             padding:'36px',
             boxShadow:'0px 10px 31px rgba(76, 62, 142, 0.3)',
             borderRadius:'24px',
-            flexDirection:'column'
+            flexDirection:'column',
+            transition:'top .3s,opacity .3s'
       },
       noBoxTitle:{
             display:'flex',
@@ -144,7 +145,8 @@ export const headerStyle = makeStyles({
             backgroundColor:'var(--bg-gray)',
             boxShadow:'0px 10px 31px rgba(76, 62, 142, 0.3)',
             borderRadius:'24px',
-            marginTop:'22px'
+            marginTop:'22px',
+            transition:'top .3s,opacity .3s'
       },
       menuBoxTitle:{
             fontSize:'20px',
@@ -192,5 +194,78 @@ export const headerStyle = makeStyles({
             fontSize:'14px',
             lineHeight:'20px',
             fontWeight:'500'
+      },
+      menuLangItem:{
+            fontSize: '.875rem',
+            letterSpacing: '.2px',
+            position: 'relative',
+            borderRadius:'18px',
+            backgroundColor:'var(--grey)',
+            display: 'flex',
+            alignItems:'baseline',
+            padding: '13px 17px'
+      },
+      menuLangBtnDropdown:{
+            '& span': {
+                  marginLeft: '5px',
+                  display: 'flex',
+                  alignItems:'center'
+                },
+            position: 'relative',
+            boxSizing: 'border-box',
+            display: 'flex',
+      },
+      national:{
+            flexBasis: '50%',
+            maxWidth: '50%',
+            '& a':{
+                  display: 'flex',
+            },
+      },
+      curency:{
+            flexBasis: '50%',
+            maxWidth: '50%',
+            '& a':{
+                  display: 'flex',
+            },
+            
+      },
+      popover:{
+            border: '1px solid #d6d6d6',
+            boxShadow: '0 4px 8px 0 rgb(0 0 0 / 10%)',
+            borderRadius: '0.1875rem',
+            padding: '0 1rem',
+            top: '5rem',
+            right: 0,
+            textAlign: 'left',
+            opacity: 0,
+            visibility: 'hidden',
+            transition: 'top .3s,opacity .3s',
+            zIndex: 2,
+            minWidth: '100%',
+            position:'absolute',
+            display: 'flex',
+            flexDirection: 'row',
+            minWidth: '470px',
+            background: '#fff',
+            "&::before": {
+                  content: '""',
+                  top: '-0.5rem',
+                  right: '2rem',
+                  transform: 'rotate(45deg)',
+                  height: 0,
+                  width:  0,
+                  border:'10px solid transparent',
+                  borderTopColor: '#fff',
+                  borderTopLeftRadius: '3px',
+                  boxShadow: '0 0 0 1px rgb(6 44 82 / 10%), 0 2px 16px rgb(33 43 54 / 8%)',
+                  position: 'absolute',
+                  
+            },
+      },
+      popoverOpened:{
+            top: '3.7rem',
+            opacity: '1',
+            visibility: 'visible'
       }
 })
