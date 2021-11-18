@@ -1,8 +1,6 @@
-import React, { useState,Dispatch,SetStateAction } from 'react';
+import React, { useRef, useState } from 'react';
 import {headerStyle} from '../style';
 import icon from '../../../constants/icon';
-import ButtonCus from '../../../components/ButtonCus';
-import CheckNotification from './CheckNotification'
 import '../header.css';
 
 interface Toggle {
@@ -11,10 +9,16 @@ interface Toggle {
 }
 function Language({openLang,openLangClick}: Toggle) {
       const lang = headerStyle();
-      
+      const ref:any = useRef();
+        const handleLang:any = (props:any) =>{
+            console.log('props',props.target.classList);
+        }
+        const active:any =()=>{
+            return("active")
+        }
       return (
         <div
-            className={lang.menuLangItem}
+            className={lang.menuLangItem+ ' '}
             onClick={()=>openLangClick()}
         >
             <span 
@@ -25,23 +29,23 @@ function Language({openLang,openLangClick}: Toggle) {
                     VND
                 </span>
             </span>
-            <div className={(openLang)?`${lang.popover} ${lang.popoverOpened}`:`${lang.popover}`}>
-                <div className={lang.national}>
-                        <a href="#">
+            <div className={((openLang)?`${lang.popover} ${lang.popoverOpened}`:`${lang.popover}`)+' quicksand-md'}>
+                <div className={lang.national} >
+                        <a href="#" onClick={(e)=>handleLang(e)} className={active}>
                             <img src={icon.VietnamFlat} alt="" width="16px"/>
                             <span>Tiếng Việt</span>
                         </a>
-                        <a href="#">
+                        <a href="#" onClick={(e)=>handleLang(e)}>
                             <img src={icon.EngFlat} alt="" width="16px"/>
                             <span>English</span>
                         </a>
                 </div>
                 <div className={lang.curency}>
-                        <a href="#">
+                        <a href="#" onClick={(e)=>handleLang(e)}>
                             <b> VND </b> 
                             <span> Việt Nam Đồng</span>
                         </a>
-                        <a href="#">
+                        <a href="#" onClick={(e)=>handleLang(e)}>
                             <b> USD </b> 
                             <span> United States Dollar</span>
                         </a>

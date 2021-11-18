@@ -9,6 +9,9 @@
   --text-op:#CAC4E5;
   --bg-color: #EEEDF2;
 }
+a{
+  color: unset;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -33,10 +36,6 @@ code {
   border-radius: 3px;
   background-color: var(--purple);
 }
-@font-face {
-  font-family: "Quicksand";
-  src: url("./assets/font/Quicksand/Quicksand-SemiBold.ttf");
-}
 * {
   font-family: "Quicksand";
 }
@@ -48,6 +47,7 @@ code {
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  background: #F5F5F7;
 }
 * {
   margin: 0;
