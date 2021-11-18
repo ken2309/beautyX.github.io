@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container} from '@mui/material';
 import {headerStyle} from './style';
 import img from '../../constants/img';
@@ -8,6 +8,7 @@ import Notification from './components/Notification';
 import Menu from './components/Menu';
 import {useHistory} from 'react-router-dom';
 import SectionTitle from '../SectionTitle';
+import Language from './components/Language';
 
 const logged:boolean = true;
 const notification = true;
@@ -24,12 +25,14 @@ function Header(props: any) {
       }
       const [openNo, setOpenNo] = useState(false);
       const [openMenu, setOpenMenu] = useState(false);
+      const [openLang, setOpentLang] = useState(false);
       const openNoClick = () => {
             if (openNo === true) {
                   setOpenNo(false)
             } else {
                   setOpenNo(true)
                   setOpenMenu(false)
+                  setOpentLang(false)
             }
       }
       const openMenuClick = () => {
@@ -39,6 +42,7 @@ function Header(props: any) {
             } else {
                   setOpenMenu(true)
                   setOpenNo(false)
+                  setOpentLang(false)
             }
       }
       const gotoPartner=()=>{
@@ -48,6 +52,27 @@ function Header(props: any) {
                   history.push('/Partner');
             }
       }
+      const openLangClick = () => {
+            if (openLang === true) {
+                  setOpentLang(false)
+                  setOpenMenu(false)
+                  setOpenNo(false)
+            } else {
+                  setOpenMenu(false)
+                  setOpenNo(false)
+                  setOpentLang(true)
+            }
+      }
+      // if (openLang === true) {
+      //       setOpenMenu(false)
+      //       setOpenNo(false)
+      //       setOpentLang(false)
+      // } else {
+      //       setOpentLang(true)
+      //       setOpenMenu(false)
+      //       setOpenNo(false)
+      // }
+      
       return (
             <div className={useStyle.header}>
                   <Container maxWidth="lg">
@@ -59,6 +84,12 @@ function Header(props: any) {
                                     color='var(--purple)'
                                     border='solid 1px var(--purple)'
                                     onClick={gotoPartner}
+                                    // onClick={}
+                              />
+                              <img
+                                    style={{cursor:'pointer'}}
+                                    onClick={()=>history.push('/')}
+                                    src={icon.Logo} alt=""
                               />
                               {
                                     isCart ?
@@ -69,7 +100,7 @@ function Header(props: any) {
                                           <img
                                                 style={{ cursor: 'pointer' }}
                                                 onClick={() => history.push('/')}
-                                                src={img.Logo2} alt=""
+                                                src={icon.Logo} alt=""
                                           />
                               }
                               <div className={useStyle.headerRight}>
@@ -135,6 +166,10 @@ function Header(props: any) {
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
                               </div>
+                              <Language
+                                    openLang={openLang}
+                                    openLangClick = {openLangClick}
+                              />
                         </div>
                   </Container>
             </div>

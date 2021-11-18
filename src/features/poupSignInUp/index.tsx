@@ -1,6 +1,7 @@
 import React from 'react';
 import './popupSignInUp.css';
 import img from '../../constants/img';
+import icon from '../../constants/icon';
 import { Slide, Dialog } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import SignIn from './components/SignIn';
@@ -39,7 +40,7 @@ function SignInUp(props: any) {
                               className="flex-column sign-content__left"
                               style={{ justifyContent: 'center' }}
                         >
-                              <img className="sign-content__left-logo" src={img.Logo2} alt="" />
+                              <img className="sign-content__left-logo" src={icon.Logo} alt="" />
                               <img className="sign-content__left-partner" src={img.Partner} alt="" />
                         </div>
                         <div className="sign-content__right">
