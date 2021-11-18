@@ -1,0 +1,294 @@
+/* title */
+.title-home{
+      font-size: 32px;
+      line-height: 36px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--purple);
+      white-space: pre-line;
+}
+/* home */
+.home{
+      background-color: var(--bg-gray);
+}
+.home-banner{
+      padding-top: 63px;
+      background-image: url('../../assets/image/Banner.png');
+      width: 100%;
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+}
+.home-banner__slogan{
+      font-weight: 700px;
+      font-size: 32px;
+      line-height: 36px;
+      color: var(--purple);
+}
+.home-banner__slogan p{
+      text-align: center;
+}
+.home-banner__filter{
+      /* width: 600px; */
+      height: max-content;
+      background-color:var(--bg-gray);
+      /* position: absolute; */
+      bottom: -70px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 24px;
+      /* box-shadow: 0px 6px 37px rgba(113, 97, 186, 0.1); */
+}
+/* home filter */
+.home-banner__filter{
+      display: flex;
+      flex-direction: column;
+}
+.home__filter-search-box{
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: row;
+}
+.input-search{
+      width: calc(100% - 56px);
+}
+.input-search{
+      background-color: var(--bg-color);
+      border: none;
+      outline: none;
+      border-radius: 20px 0px 0px 20px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--purple);
+      padding: 0px 16px;
+}
+/* filter form */
+.filter-form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.filter-form__box{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 24px 0px;
+}
+.filter-form__li{
+      position: relative;
+      list-style: none;
+      width: calc(100% / 3);
+      padding: 0px 8px;
+      cursor: pointer;
+}
+.filter-form__item{
+      border-radius: 20px;
+      height: 40px;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 16px;
+}
+.filter-form__item-left{
+      display: flex;
+      align-items: center;
+}
+.filter-form__item-left span{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      padding-left: 8px;
+      color: var(--purple);
+}
+.drop-category{
+      border-radius: 14px;
+      margin-top: 10px;
+      width: calc(100% - 16px);
+      position: absolute;
+      background-color: var(--bg-color);
+      padding: 10px 16px;
+      box-shadow: 0px 10px 31px rgb(76 62 142 / 30%);
+}
+.drop-category ul li{
+      list-style: none;
+      padding: 8px 4px;
+      border: solid 1px var(--purple);
+      margin: 4px 0px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      border-radius: 18px;
+      color: var(--purple);
+}
+/* home map */
+.home-map{
+      margin-top: 170px;
+      padding-top: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.home-map img{
+      margin: 24px 0px;
+}
+/* home minimap */
+.home-mini-map{
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.home-mini-map__content{
+      margin-top: 36px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+}
+.home-mini-map__card{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+}
+.mini-map__content-item{
+      padding: 0px 22px;
+      display: flex;
+      flex-direction: column;
+}
+.mini-map__content-item img{
+      width: 44px;
+      height: 44px;
+      margin-bottom: 18px;
+}
+.mini-map__content-item span{
+      font-family: 500;
+      font-size: 14px;
+      line-height: 20px;
+}
+/* home step */
+.home-order{
+      margin-top: 60px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.home-step__line{
+      position: absolute;
+      width: 70%;
+      margin-top: 129px;
+      z-index: 1;
+      border-bottom: dashed 1px var(--purple);
+}
+.home-order__step{
+      z-index: 2;
+      margin-top: 36px;
+      display: flex;
+      flex-direction: row;
+}
+.home-order__card{
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.home-order__card-step{
+      background-color: var(--purple);
+      color: var(--bg-gray);
+      font-size: 20px;
+      line-height: 24px;
+      padding: 8px 16px;
+      border-radius: 20px;
+}
+.home-order__card-title{
+      margin-top: 24px;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--purple);
+}
+.home-order__card img{
+      width: 100%;
+}
+/* home calendar */
+.home-calendar{
+      margin-top: 110px;
+}
+.home-calendar-content{
+      margin-top: 36px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+}
+.calendar-img{
+     width: 50%; 
+}
+.home-calendar-content ul li{
+      list-style: none;
+      padding: 12px 50px 12px 0px;
+}
+.calendar-item__header{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 8px;
+}
+.calendar-item__header img{
+      width: 44px;
+      height: 44px;
+}
+.calendar-item__header span{
+      font-size: 20px;
+      line-height: 24px;
+      font-family: 700;
+      padding-left: 16px;
+      color: var(--purple);
+}
+.calendar-item__text{
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--text-black);
+}
+/* home-flatform */
+.home-flatform{
+      margin-top: 120px;
+}
+.home-flatform__content{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+}
+.flatform-card{
+      width: calc(100% / 3);
+}
+.flatform-card img{
+      width: 100%;
+}
+.flatform-card div{
+      margin-top: -28px;
+      width: 100%;
+      text-align: center;
+      padding: 0px 38px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+}
+/* home sign */
+.home-sign{
+      margin-top: 124px;
+}
+.home-sign-button{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+}

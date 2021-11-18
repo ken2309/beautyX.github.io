@@ -1,31 +1,125 @@
+
 :root{
+  --bg-gray-dark:#E5E5E5;
   --bg-gray: #F5F5F7;
   --purple: #7161BA;
   --red-cl: #EE6955;
   --text-black: #3B3A40;
   --text-hover: #A2A1AB;
+  --text-op:#CAC4E5;
+  --bg-color: #EEEDF2;
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+/* scroll bar */
+::-webkit-scrollbar{
+  display: none;
+}
+::-webkit-scrollbar-track{
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 3px;
+  background-color: var(--purple);
 }
 @font-face {
   font-family: "Quicksand";
-  src: url('./assets/font/Quicksand/Quicksand-SemiBold.ttf');
+  src: url("./assets/font/Quicksand/Quicksand-SemiBold.ttf");
 }
-*{
+* {
   font-family: "Quicksand";
 }
-.MuiContainer-root{
+.MuiContainer-root {
   height: 100% !important;
   padding: 0px 0px !important;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.flex-row{
+  display: flex;
+  align-items: center;
+}
+.flex-row-sp{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-column-sp{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+input {
+  line-height: normal;
+}
+label,
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+.MuiModal-root{
+  backdrop-filter: blur(10px) !important;
 }
