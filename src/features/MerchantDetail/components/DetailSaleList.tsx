@@ -4,18 +4,18 @@ import CardItem from '../../CardItem/index';
 import Carousel from 'react-elastic-carousel';
 
 const saleList = [
-      { id: 1, name: 'Liệu trình ngăn ngừa lão hóa da, dưỡng da', oldPrice: 880000, salePrice: 780000 },
-      { id: 2, name: 'Massage Thái Lan, giảm đau xương khớp', oldPrice: 360000, salePrice: 300000 },
-      { id: 3, name: 'Chăm sóc da mặt bằng đất sét tự nhiên', oldPrice: 3900000, salePrice: 290000 },
-      { id: 4, name: 'Liệu pháp lưng vai', oldPrice: 253000, salePrice: 230000 },
-      { id: 5, name: 'Liệu trình ngăn ngừa lão hóa da, dưỡng da', oldPrice: 980000, salePrice: 780000 },
-      { id: 6, name: 'Liệu trình ngăn ngừa lão hóa da, dưỡng da', oldPrice: 1080000, salePrice: 780000 },
+      { id: 1, name: 'Liệu trình ngăn ngừa lão hóa da, dưỡng da', retail_price: 880000, special_price: 780000 },
+      { id: 2, name: 'Massage Thái Lan, giảm đau xương khớp', retail_price: 360000, special_price: 300000 },
+      { id: 3, name: 'Chăm sóc da mặt bằng đất sét tự nhiên', retail_price: 3900000, special_price: 290000 },
+      { id: 4, name: 'Liệu pháp lưng vai', retail_price: 253000, special_price: 230000 },
+      { id: 5, name: 'Liệu trình ngăn ngừa lão hóa da, dưỡng da', retail_price: 980000, special_price: 780000 },
+      { id: 6, name: 'Liệu trình ngăn ngừa lão hóa da, dưỡng da', retail_price: 1080000, special_price: 780000 },
 ]
 interface SaleList {
       id: number,
       name: string,
-      oldPrice: number,
-      salePrice: number
+      retail_price: number,
+      special_price: number
 }
 const cardStyle={
       width:'272px'
@@ -36,7 +36,7 @@ function DetailSaleList(props:any) {
             handleSort();
       },[sort, productSort])
       const sortPrice=()=>{
-            const sortAsc = saleList.sort((a,b)=> (b.oldPrice / b.salePrice) - (a.oldPrice / a.salePrice))
+            const sortAsc = saleList.sort((a,b)=> (b.retail_price / b.special_price) - (a.retail_price / a.special_price))
             setSort({
                   ...sort,
                   _sortPrice: sortAsc
@@ -74,12 +74,21 @@ function DetailSaleList(props:any) {
                   </div>
                   <div className="mer-sale-list">
                         <Carousel
-                              children={productSort.map(item => <CardItem key={item.id} style={cardStyle} detail={item} />)}
+                              children={productSort.map(item =>
+                                    <
+                                          CardItem key={item.id}
+                                          style={cardStyle}
+                                          detail={item}
+                                          name={item.name}
+                                          retail_price={item.retail_price}
+                                          special_price={item.special_price}
+                                    />)
+                              }
                               isRTL={false}
                               itemsToShow={4}
                               showArrows={false}
                         />
-                         
+
                   </div>
             </>
       );

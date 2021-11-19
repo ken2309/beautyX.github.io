@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import icon from '../../../constants/icon';
 import CardItem from '../../CardItem';
-import ButtonCus from '../../../components/ButtonCus';
 import useFilterPro from '../../../utils/useFilterPro';
-import {Product} from '../../../interface/product'
+import {Product} from '../../../interface/product';
+import Loading from '../../Loading/index';
+import { Pagination } from '@mui/material';
+import scrollTop from '../../../utils/scrollTop';
 
 const buttons = [
       { id: 1, title: 'Phổ biến' },
@@ -15,7 +17,7 @@ const cardStyle = {
       width: '100%'
 }
 function ProductList(props: any) {
-      const {products, setPage, page} = props;
+      const {products, setPage,loading, pageLength} = props;
       const [activeFilter, setActiveFilter] = useState();
       const [serviceSort, setServiceSort] = useState<Product[]>([]);
       const [sort, setSort] = useState({
@@ -59,8 +61,9 @@ function ProductList(props: any) {
                   descPrice()
             }
       }
-      const handleViewMore=()=>{
-            setPage(page + 1)
+      const pageChange=(event:any, value:any)=>{
+            setPage(value)
+            scrollTop();
       }
       return (
             <div className='ser-list'>
@@ -96,30 +99,30 @@ function ProductList(props: any) {
                   <div className="flex-column ser-list__content">
                         <ul className="ser-list__content-list">
                               {
-                                    productFilter?.map((item:any, index) => (
-                                          <li
-                                                key={index}
-                                                className="ser-list__content-list-item"
-                                          >
-                                                <CardItem
-                                                      retail_price={item.retail_price}
-                                                      name={item.product_name}
-                                                      detail={item}
-                                                      style={cardStyle}
-                                                />
-                                          </li>
-                                    ))
+                                    loading === true ?
+                                          <Loading />
+                                          :
+                                          productFilter?.map((item: any, index) => (
+                                                <li
+                                                      key={index}
+                                                      className="ser-list__content-list-item"
+                                                >
+                                                      <CardItem
+                                                            name={item.product_name}
+                                                            detail={item}
+                                                            retail_price={item.retail_price}
+                                                            special_price={item.special_price}
+                                                            style={cardStyle}
+                                                      />
+                                                </li>
+                                          ))
                               }
                         </ul>
-                        <ButtonCus
-                              text="Xem thêm"
-                              imgIcon={icon.down}
-                              fontSize="14px"
-                              lineHeight="20px"
-                              color="var(--purple)"
-                              border="solid 1px var(--purple)"
-                              borderRadius="20px"
-                              onClick={handleViewMore}
+                        <Pagination
+                              color='secondary'
+                              shape="rounded"
+                              count={pageLength}
+                              onChange={pageChange}
                         />
                   </div>
             </div>

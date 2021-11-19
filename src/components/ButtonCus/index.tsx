@@ -5,7 +5,6 @@ function ButtonCus(props:any) {
       const btnStyle = commonStyle();
       const {
             padding,
-            paddingLeft,
             backColor, 
             color, 
             fontSize, 
@@ -28,7 +27,6 @@ function ButtonCus(props:any) {
                   disabled={disabled}
                   style={{
                         padding: padding,
-                        paddingLeft: paddingLeft,
                         fontSize: fontSize,
                         lineHeight: lineHeight,
                         color: color,

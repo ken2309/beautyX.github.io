@@ -363,6 +363,7 @@
       box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
 }
 .mer-branch-box__branch-search button{
+      padding-left: 6px;
       height: 44px;
       width: 44px;
       border: none;

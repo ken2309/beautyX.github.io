@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 interface Services {
-      id: number, name: string, oldPrice: number, salePrice: number
+      id: number, name: string, retail_price: number, special_price: number
 }
 function useSearchTerm(searchTerm: any, list: any) {
       const [listBySearchTerm, setListBySearchTerm] = useState<Services[]>([])

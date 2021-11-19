@@ -1,15 +1,14 @@
 import React from 'react';
-import { listCart } from '../../../data/listCart';
 import CartItem from './CartItem';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 
 function CartList(props:any) {
-      const {listOrg, chooseOrg} = props;
+      const {listOrg, chooseOrg, carts} = props;
       const cartJoin = [];
       for(var org of listOrg){
             const orgId = org.id;
-            const arr = listCart.filter(item => item.org_id === orgId);
+            const arr = carts.cartList.filter((item:any) => item.org_id === orgId);
             const arrJoin={
                   orgId: org.id,
                   name: org.name,
@@ -50,7 +49,7 @@ function CartList(props:any) {
                                     </div>
                                     <ul className="flex-column">
                                           {
-                                                item.cart.filter(item => item.isPr === false).map(child => (
+                                                item.cart.filter((item:any) => item.isPr === false).map((child:any) => (
                                                       <CartItem
                                                             key={child.cart_id}
                                                             cartItem={child}
@@ -67,7 +66,7 @@ function CartList(props:any) {
                                     </span>
                                     <ul className="flex-column">
                                           {
-                                                item.cart.filter(item => item.isPr === true).map(child => (
+                                                item.cart.filter((item:any) => item.isPr === true).map((child:any) => (
                                                       <CartItem
                                                             key={child.cart_id}
                                                             cartItem={child}

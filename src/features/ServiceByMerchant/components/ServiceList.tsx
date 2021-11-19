@@ -15,7 +15,7 @@ const cardStyle = {
       width: '100%'
 }
 interface Services {
-      id: number, name: string, oldPrice: number, salePrice: number
+      id: number, name: string, retail_price: number, special_price: number
 }
 function ServiceList(props: any) {
       const [activeFilter, setActiveFilter] = useState();
@@ -36,14 +36,14 @@ function ServiceList(props: any) {
             handleSort()
       }, [sort, serviceByFilter, serviceSort])
       const ascPrice = () => {
-            const asc = serviceByFilter.sort((a, b) => a.salePrice - b.salePrice)
+            const asc = serviceByFilter.sort((a, b) => a.special_price - b.special_price)
             setSort({
                   ...sort,
                   _sortPrice: asc
             })
       }
       const descPrice = () => {
-            const desc = serviceByFilter.sort((a, b) => b.salePrice - a.salePrice)
+            const desc = serviceByFilter.sort((a, b) => b.special_price - a.special_price)
             setSort({
                   ...sort,
                   _sortPrice: desc
@@ -101,6 +101,9 @@ function ServiceList(props: any) {
                                                 className="ser-list__content-list-item"
                                           >
                                                 <CardItem
+                                                      name={item.name}
+                                                      retail_price={item.retail_price}
+                                                      special_price={item.special_price}
                                                       detail={item}
                                                       style={cardStyle}
                                                 />

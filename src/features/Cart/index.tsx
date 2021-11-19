@@ -4,19 +4,25 @@ import Footer from '../Footer/index';
 import {Container} from '@mui/material';
 import icon from '../../constants/icon';
 import {listOrg} from '../../data/listOrg';
-import CartList from './components/CartList'
+import CartList from './components/CartList';
+import {useSelector, useDispatch} from 'react-redux';
+import {chooseAll} from '../../redux/cartSlice'
 import './Cart.css'
 
 interface Org{
       id:number, name:string
 }
-const isCart:boolean = true
-function Cart(props:any) {
+const isCart: boolean = true
+function Cart(props: any) {
+      const dispatch = useDispatch();
+      const carts = useSelector((state:any) => state.carts);
       const [showOrg, setShowOrg] = useState(false);
       const [chooseOrg, setChooseOrg] = useState<Org>();
-      const chooseOrgClick=(org:any)=>{
+      const chooseOrgClick = (org: any) => {
             setChooseOrg(org)
             setShowOrg(false)
+            const action = chooseAll(org.id);
+            dispatch(action);
       }
       return (
             <div className="cart" >
@@ -76,6 +82,7 @@ function Cart(props:any) {
                                     </div>
                               </div>
                               <CartList
+                                    carts={carts}
                                     listOrg={listOrg}
                                     chooseOrg={chooseOrg}
                               />
