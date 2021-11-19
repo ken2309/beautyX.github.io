@@ -30,6 +30,7 @@ import Message from "../assets/icon/Message.svg";
 import Phone from "../assets/icon/Phone.svg";
 import Storefront from "../assets/icon/Storefront.svg";
 import User from "../assets/icon/User.svg";
+import User_purple from "../assets/icon/User_box.svg";
 import Location from "../assets/icon/Location.svg";
 import Lock from "../assets/icon/Lock.svg";
 import eye from "../assets/icon/Eye.svg";
@@ -47,6 +48,12 @@ import Camera from "../assets/icon/camera.svg";
 import Ticket from "../assets/icon/Ticket.svg";
 import Wallet from "../assets/icon/Wallet_alt.svg";
 import Crown from "../assets/icon/crown.svg";
+import Camera_purple from "../assets/icon/Camera_purple.svg";
+import Credit_card from "../assets/icon/Credit_card.svg";
+import Clock_purple from "../assets/icon/ClockCounterClockwise.svg";
+import Bell from "../assets/icon/Bell.svg";
+import Union from "../assets/icon/Union.svg";
+import Headphones_purple from "../assets/icon/Headphones_fill.svg";
 const icon = {
   Avatar,
   Logo,
@@ -80,6 +87,7 @@ const icon = {
   Phone,
   Storefront,
   User,
+  User_purple,
   Location,
   Lock,
   eye,
@@ -96,6 +104,12 @@ const icon = {
   Camera,
   Ticket,
   Wallet,
-  Crown
+  Crown,
+  Camera_purple,
+  Credit_card,
+  Clock_purple,
+  Bell,
+  Union,
+  Headphones_purple
 }
 export default icon;

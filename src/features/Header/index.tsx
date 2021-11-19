@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {Container} from '@mui/material';
 import {headerStyle} from './style';
 import img from '../../constants/img';
@@ -20,6 +20,7 @@ function Header(props: any) {
       const {isCart} = props;
       const history = useHistory();
       const useStyle = headerStyle();
+      const ref:any = useRef()
       const res=()=>{
             console.log('Res')
       }
@@ -29,6 +30,8 @@ function Header(props: any) {
       const openNoClick = () => {
             if (openNo === true) {
                   setOpenNo(false)
+                  setOpenMenu(false)
+                  setOpentLang(false)
             } else {
                   setOpenNo(true)
                   setOpenMenu(false)
@@ -39,6 +42,7 @@ function Header(props: any) {
             if (openMenu === true) {
                   setOpenMenu(false)
                   setOpenNo(false)
+                  setOpentLang(false)
             } else {
                   setOpenMenu(true)
                   setOpenNo(false)
@@ -53,6 +57,7 @@ function Header(props: any) {
             }
       }
       const openLangClick = () => {
+            console.log('object');
             if (openLang === true) {
                   setOpentLang(false)
                   setOpenMenu(false)
@@ -66,8 +71,30 @@ function Header(props: any) {
       const gotoCart = () =>{
             history.push('/Cart');
       }
+      
+      useEffect(() => {
+      const checkIfClickedOutside = (e:any) => {
+            if (
+                  openNo
+                  || openMenu
+                  || openLang
+                  && ref.current 
+                  && !ref.current.contains(e.target)) {
+                  setOpentLang(false);
+                  setOpenMenu(false);
+                  setOpenNo(false);
+                  console.log('ref',ref.current.contains(e.target));
+            }
+      }
+
+      document.addEventListener("mousedown", checkIfClickedOutside)
+
+      return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+      }
+      }, [openLang])
       return (
-            <div className={useStyle.header}>
+            <div className={useStyle.header} ref={ref} >
                   <Container maxWidth="lg">
                         <div className={useStyle.headerContainer}>
                               <ButtonCus
@@ -78,11 +105,6 @@ function Header(props: any) {
                                     border='solid 1px var(--purple)'
                                     onClick={gotoPartner}
                                     // onClick={}
-                              />
-                              <img
-                                    style={{cursor:'pointer'}}
-                                    onClick={()=>history.push('/')}
-                                    src={icon.Logo} alt=""
                               />
                               {
                                     isCart ?
@@ -158,15 +180,16 @@ function Header(props: any) {
                                           </li>
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
-                              </div>
-                              <Language
+                                    <Language
                                     openLang={openLang}
                                     openLangClick = {openLangClick}
-                              />
+                                    
+                                    />
+                              </div>
                         </div>
                   </Container>
             </div>
       );
 }
-
+    
 export default Header;

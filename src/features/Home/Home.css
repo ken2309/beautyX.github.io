@@ -22,7 +22,7 @@
       position: relative;
 }
 .home-banner__slogan{
-      font-weight: 700px;
+      font-weight: bold;
       font-size: 32px;
       line-height: 36px;
       color: var(--purple);
