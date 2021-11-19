@@ -44,7 +44,23 @@ code {
   height: 100% !important;
   padding: 0px 0px !important;
 }
-
+.css-18lrjg1-MuiCircularProgress-root{
+  color:var(--purple) !important;
+}
+/* Pagination */
+.css-12j7rf6-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+  background-color: var(--purple) !important;
+}
+.css-wjh20t-MuiPagination-ul li{
+  font-weight: 700 !important;
+}
+.css-wjh20t-MuiPagination-ul li:last-child{
+  color: var(--purple) !important;
+}
+.css-12j7rf6-MuiButtonBase-root-MuiPaginationItem-root{
+  font-weight: 700 !important;
+}
+/* ------ */
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;

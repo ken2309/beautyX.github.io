@@ -7,8 +7,8 @@ export const commonStyle = makeStyles({
             outline:'none',
             border:'none',
             cursor:'pointer',
-            backgroundColor:'transparent',
             padding:'8px 16px',
+            backgroundColor:'transparent',
             transition:'0.4s',
             fontWeight:'700',
             '&:hover':{
