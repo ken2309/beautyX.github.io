@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Checkbox } from '@mui/material';
 import ButtonCus from '../../../components/ButtonCus';
+import { checkConfirm,addCart, descItem, removeItem } from '../../../redux/cartSlice'
+import { useDispatch } from 'react-redux'
 import icon from '../../../constants/icon';
+import formatPrice from '../../../utils/formatPrice'
 
-
-function CartItem(props:any) {
-      const {cartItem, chooseOrg} = props;
+function CartItem(props: any) {
+      const { cartItem } = props;
+      const dispatch = useDispatch();
       const [isCheck, setIsCheck] = useState(cartItem.isConfirm)
-      useEffect(()=>{
-            if(cartItem.org_id === chooseOrg?.id){
-                  setIsCheck(true)
-                  cartItem.isConfirm = true
-            }else{
-                  setIsCheck(false)
-                  cartItem.isConfirm = false
-            }
-      },[cartItem, chooseOrg?.id])
-      const handleConfirm=(e:any)=>{
-            if(e.target.checked === true){
-                  cartItem.isConfirm = true
-            }else{
-                  cartItem.isConfirm = false
-            }
+      const isConfirm = isCheck
+
+      const handleConfirm = (e: any) => {
             setIsCheck(e.target.checked)
+            const action = checkConfirm({ ...cartItem, isConfirm });
+            dispatch(action)
       }
-      console.log(cartItem);
+      const handleAscCart = () => {
+            const action = addCart(cartItem);
+            dispatch(action)
+      }
+      const handleDesc=()=>{
+            const action = descItem(cartItem);
+            dispatch(action)
+      }
+      const handleRemoveItem=()=>{
+            const action = removeItem(cartItem);
+            dispatch(action);
+      }
       return (
             <div className="flex-row cart-item">
                   <div className="flex-row cart-item__name">
@@ -35,7 +39,7 @@ function CartItem(props:any) {
                                           color: "#7161BA",
                                     },
                               }}
-                              checked={isCheck}
+                              checked={cartItem.isConfirm}
                               onChange={handleConfirm}
                         />
                         <img
@@ -43,25 +47,26 @@ function CartItem(props:any) {
                               src={"https://picsum.photos/650/976?random=" + cartItem.cart_id}
                               alt=""
                         />
-                        {cartItem.name}
+                        {cartItem.name} {cartItem.org_id}
                   </div>
                   <div className="flex-row cart-item__quantity">
-                        <button style={{ backgroundColor: 'var(--bg-gray)', color: 'var(--purple)' }}>-</button>
+                        <button  onClick={handleDesc} style={{ backgroundColor: 'var(--bg-gray)', color: 'var(--purple)' }}>-</button>
                         <span>{cartItem.quantity}</span>
-                        <button>+</button>
+                        <button onClick={handleAscCart}>+</button>
                   </div>
                   <div className="flex-row cart-item__price">
-                        {cartItem.price}
+                        {formatPrice(cartItem.price)} đ
                   </div>
                   <div className="flex-row cart-item__total">
-                        10.000.000
+                        {formatPrice(cartItem.price * cartItem.quantity)} đ
                   </div>
                   <div className="flex-row cart-item__control">
                         <ButtonCus
                               imgIcon={icon.trash}
-                              padding="4px"
+                              padding="4px 4px 4px 4px"
                               backColor="var(--red-cl)"
                               borderRadius="8px"
+                              onClick={handleRemoveItem}
                         />
                   </div>
             </div>

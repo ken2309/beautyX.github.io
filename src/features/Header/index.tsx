@@ -63,16 +63,9 @@ function Header(props: any) {
                   setOpentLang(true)
             }
       }
-      // if (openLang === true) {
-      //       setOpenMenu(false)
-      //       setOpenNo(false)
-      //       setOpentLang(false)
-      // } else {
-      //       setOpentLang(true)
-      //       setOpenMenu(false)
-      //       setOpenNo(false)
-      // }
-      
+      const gotoCart = () =>{
+            history.push('/Cart');
+      }
       return (
             <div className={useStyle.header}>
                   <Container maxWidth="lg">
@@ -149,7 +142,7 @@ function Header(props: any) {
                                                 />
                                           </li>
                                           <li 
-                                                onClick={()=> history.push("/Cart")}
+                                                onClick={gotoCart}
                                                 className={useStyle.headerRightItem}
                                           >
                                                 <img src={icon.ShoppingCartSimple} alt="" />
