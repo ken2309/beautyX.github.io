@@ -14,7 +14,6 @@ function ProductByMerchant(props:any) {
             org_id: mer_id,
             page: page
       }), [mer_id, page])
-      console.log(page);
       useEffect(() => {
             async function handleGetPrByOrgId() {
                   setLoading(true)
@@ -29,6 +28,12 @@ function ProductByMerchant(props:any) {
             }
             handleGetPrByOrgId();
       }, [param])
+      // add new values product
+      const productsIs = [];
+      for(var item of products){
+            const product = {...item, is_product: true};
+            productsIs.push(product);
+      }
       return (
             <div
                   style={activeTab === 3 ? { display: 'block' } : { display: 'none' }}
@@ -43,7 +48,7 @@ function ProductByMerchant(props:any) {
                         <ProductList
                               pageLength={pageLength}
                               loading={loading}
-                              products={products}
+                              products={productsIs}
                               page={page}
                               setPage={setPage}
                         />

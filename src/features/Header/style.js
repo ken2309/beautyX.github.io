@@ -62,21 +62,23 @@ export const headerStyle = makeStyles({
       headerRightItem:{
             cursor:'pointer',
             padding:'0px 16px',
-            listStyle:'none'
+            listStyle:'none',
+            position: 'relative'
       },
       // notification
       noBox:{
             zIndex:'2',
             display:'block',
-            marginTop:'17px',
-            marginLeft:'-28%',
+            right: '0',
+            // marginTop:'17px',
             width:'440px',
             position:'absolute',
             backgroundColor:'var(--bg-gray)',
             padding:'36px',
             boxShadow:'0px 10px 31px rgba(76, 62, 142, 0.3)',
             borderRadius:'24px',
-            flexDirection:'column'
+            flexDirection:'column',
+            transition:'all .3s'
       },
       noBoxTitle:{
             display:'flex',
@@ -137,14 +139,14 @@ export const headerStyle = makeStyles({
       },
       menuBox:{
             zIndex:'2',
-            marginLeft:'-310px',
+            right: '0',
             padding:'36px',
             position:'absolute',
             width:'380px',
             backgroundColor:'var(--bg-gray)',
             boxShadow:'0px 10px 31px rgba(76, 62, 142, 0.3)',
             borderRadius:'24px',
-            marginTop:'22px'
+            transition:'all .3s'
       },
       menuBoxTitle:{
             fontSize:'20px',
@@ -192,5 +194,132 @@ export const headerStyle = makeStyles({
             fontSize:'14px',
             lineHeight:'20px',
             fontWeight:'500'
+      },
+      menuLangItem:{
+            fontSize: '.875rem',
+            letterSpacing: '.2px',
+            position: 'relative',
+            borderRadius:'18px',
+            backgroundColor:'var(--grey)',
+            display: 'flex',
+            alignItems:'baseline',
+            padding: '13px 17px'
+      },
+      menuLangBtnDropdown:{
+            '& span': {
+                  marginLeft: '5px',
+                  display: 'flex',
+                  alignItems:'center'
+                },
+            position: 'relative',
+            boxSizing: 'border-box',
+            display: 'flex',
+      },
+      national:{
+            flexBasis: '50%',
+            maxWidth: '50%',
+            borderRight:'1px solid #d6d6d6',
+            padding: '0 0.5rem',
+            '& a':{
+                  display: 'flex',
+                  marginBottom: '0.5rem',
+                  fontSize: '1rem',
+                  padding: '0.5rem 0',
+                  '& span':{
+                        paddingLeft: '12px',
+                        fontWeight: '500',
+                  },
+                  '&:nth-child(1)':{
+                        marginTop: '0.5rem',
+                  }
+            },
+      },
+      curency:{
+            flexBasis: '50%',
+            maxWidth: '50%',
+            padding: '0 0.5rem',
+            '& a':{
+                  display: 'flex',
+                  marginBottom: '0.5rem',
+                  fontSize: '1rem',
+                  padding: '0.5rem 0',
+                  paddingRight: '0.5rem',
+                  '& span':{
+                        paddingLeft: '12px',
+                        fontWeight: '500',
+                  },
+                  '&:nth-child(1)':{
+                        marginTop: '0.5rem',
+                  },
+                  "&:after":{
+                        right:'-0.5rem !important',
+                  }
+            },
+            
+      },
+      popover:{
+            border: '1px solid #d6d6d6',
+            boxShadow: '0px 10px 31px rgb(76 62 142 / 30%)',
+            borderRadius: '1rem',
+            padding: '0.5rem 1rem',
+            top: '5rem',
+            right: 0,
+            textAlign: 'left',
+            opacity: 0,
+            visibility: 'hidden',
+            transition: 'all .3s',
+            zIndex: 2,
+            position:'absolute',
+            display: 'flex',
+            flexDirection: 'row',
+            width: '485px',
+            background: 'var(--bg-gray)',
+            "&::before": {
+                  content: '""',
+                  top: '-20px',
+                  right: '2rem',
+                  height: 0,
+                  width:  0,
+                  border:'10px solid transparent',
+                  borderBottomColor: 'var(--bg-gray)',
+                  borderTopLeftRadius: '3px',
+                  position: 'absolute',
+                  
+            },
+            "& div":{
+                  "& a":{
+                        transition: 'all .3s',
+                        position: 'relative',
+                        alignItems: 'center',
+                        "&:hover":{
+                              color:"var(--purple)"
+                        },
+                        "&:after":{
+                              content: '""',
+                              position: 'absolute',
+                              display: 'block',
+                              opacity: '0',
+                              visibility: 'hidden',
+                              right: '0',
+                              width: '5px',
+                              height:"8px",
+                              border:'solid #222',
+                              borderWidth:"0 2px 2px 0",
+                              transform:'rotate(45deg)',
+                              transition: 'all .3s'
+                        }
+                  },
+                  active:{
+                        "&:after":{
+                              opacity: '1',
+                              visibility: 'visible'
+                        }
+                  }
+            }
+      },
+      popoverOpened:{
+            top: '3.7rem',
+            opacity: '1',
+            visibility: 'visible'
       }
 })

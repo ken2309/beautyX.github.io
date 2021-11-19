@@ -3,4 +3,5 @@
       line-height: 36px;
       color: var(--purple);
       white-space: pre-line;
+      font-weight: bold;
 }
