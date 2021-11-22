@@ -1,42 +1,125 @@
-import React, {useState} from 'react';
+/* eslint-disable no-mixed-operators */
+import React, {useState, useRef, useEffect} from 'react';
 import {Container} from '@mui/material';
 import {headerStyle} from './style';
 import img from '../../constants/img';
 import icon from '../../constants/icon';
 import ButtonCus from '../../components/ButtonCus/index';
 import Notification from './components/Notification';
-import Menu from './components/Menu'
+import Menu from './components/Menu';
+import {useHistory} from 'react-router-dom';
+import SectionTitle from '../SectionTitle';
+import Language from './components/Language';
 
-const logged = true;
+const logged:boolean = true;
 const notification = true;
 const userInfo={
       userName:'Nguyen Thuy Binh',
       userAvatar: img.Avatar
 }
 function Header(props: any) {
+      const {isCart, title} = props;
+      const history = useHistory();
       const useStyle = headerStyle();
+      const ref:any = useRef()
       const res=()=>{
             console.log('Res')
       }
       const [openNo, setOpenNo] = useState(false);
+      const [openMenu, setOpenMenu] = useState(false);
+      const [openLang, setOpentLang] = useState(false);
       const openNoClick = () => {
-            if (openNo === false) {
+            if (openNo === true) {
+                  setOpenNo(false)
+                  setOpenMenu(false)
+                  setOpentLang(false)
+            } else {
                   setOpenNo(true)
-            } else { setOpenNo(false) }
+                  setOpenMenu(false)
+                  setOpentLang(false)
+            }
       }
+      const openMenuClick = () => {
+            if (openMenu === true) {
+                  setOpenMenu(false)
+                  setOpenNo(false)
+                  setOpentLang(false)
+            } else {
+                  setOpenMenu(true)
+                  setOpenNo(false)
+                  setOpentLang(false)
+            }
+      }
+      const gotoPartner=()=>{
+            if(isCart){
+                  history.goBack();
+            }else{
+                  history.push('/Partner');
+            }
+      }
+      const gotoCart = () =>{
+            history.push('/Cart');
+      }
+      const openLangClick = () => {
+            console.log('object');
+            if (openLang === true) {
+                  setOpentLang(false)
+                  setOpenMenu(false)
+                  setOpenNo(false)
+            } else {
+                  setOpenMenu(false)
+                  setOpenNo(false)
+                  setOpentLang(true)
+            }
+      }
+      
+      useEffect(() => {
+      const checkIfClickedOutside = (e:any) => {
+            if (
+                  openNo
+                  || openMenu
+                  || openLang
+                  && ref.current 
+                  && !ref.current.contains(e.target)) {
+                  setOpentLang(false);
+                  setOpenMenu(false);
+                  setOpenNo(false);
+                  console.log('ref',ref.current.contains(e.target));
+            }
+      }
+
+      document.addEventListener("mousedown", checkIfClickedOutside)
+
+      return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [openLang])
       return (
-            <div className={useStyle.header}>
+            <div className={useStyle.header} ref={ref} >
                   <Container maxWidth="lg">
                         <div className={useStyle.headerContainer}>
                               <ButtonCus
-                                    text='Trở thành đối tác'
+                                    text={isCart ? 'Trở lại' : 'Trở thành đối tác'}
                                     borderRadius='18px'
                                     lineHeight='20px'
                                     color='var(--purple)'
                                     border='solid 1px var(--purple)'
+                                    onClick={gotoPartner}
                                     // onClick={}
                               />
-                              <img src={img.Logo2} alt="" />
+                              {
+                                    isCart ?
+                                          <SectionTitle
+                                                title={title}
+                                          />
+                                          :
+                                          <img
+                                                style={{ cursor: 'pointer' }}
+                                                onClick={() => history.push('/')}
+                                                src={icon.Logo} alt=""
+                                          />
+                              }
                               <div className={useStyle.headerRight}>
                                     <ul className={useStyle.headerRightList}>
                                           <li className={useStyle.headerRightItem}>
@@ -82,20 +165,33 @@ function Header(props: any) {
                                                       openNo={openNo}
                                                 />
                                           </li>
-                                          <li className={useStyle.headerRightItem}>
+                                          <li 
+                                                onClick={gotoCart}
+                                                className={useStyle.headerRightItem}
+                                          >
                                                 <img src={icon.ShoppingCartSimple} alt="" />
                                           </li>
                                           <li className={useStyle.headerRightItem}>
-                                                <img className={useStyle.menu} src={icon.Menu} alt="" />
-                                                <Menu/>
+                                                <img 
+                                                      onClick={openMenuClick}
+                                                      className={useStyle.menu} src={icon.Menu} alt="" 
+                                                      />
+                                                <Menu
+                                                      openMenu={openMenu}
+                                                />
                                           </li>
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
+                                    <Language
+                                    openLang={openLang}
+                                    openLangClick = {openLangClick}
+                                    
+                                    />
                               </div>
                         </div>
                   </Container>
             </div>
       );
 }
-
+    
 export default Header;

@@ -1,7 +1,7 @@
-import React from "react";
-import "./App.css";
-import RouterConfig from "./route/index";
-import Test from "./features/translation";
+import React from 'react';
+import './App.css';
+import RouterConfig from './route/index';
+// import Test from './features/translation'
 
 function App() {
   return (

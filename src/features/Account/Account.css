@@ -1,0 +1,152 @@
+.quicksand-xl{
+    font-family: Quicksand;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 36px;
+}
+.quicksand-md{
+    font-family: Quicksand;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;  
+}
+.quicksand-sm{
+    font-family: Quicksand;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 12px;
+}
+.text-bold{
+    font-weight: bold;
+}
+.text-color-grey{
+    color: #A2A1AB;
+}
+.wrapper{
+    max-width: 1200px;
+    margin: auto;
+    padding: 64px 0;
+}
+.infor_section{
+    background: #F5F5F7;
+    box-shadow: 0px 6px 15px #dcd8ee;
+    border-radius: 24px;
+    width: 380px;
+    padding: 36px;
+}
+.avatar{
+    max-width: 160px;
+    margin: auto;
+    margin-bottom: 24px;
+    position: relative;
+}
+.img_mask{
+    overflow: hidden;
+    background-blend-mode: multiply, normal;
+    border-radius: 80px;
+    position: relative;
+    padding-bottom: calc(100% * 3/3);
+}
+.img_mask>img{
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+}
+.camera_icon{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #EEEDF2;
+    border-radius: 22px;
+    padding: 14px;
+}
+.other_stuff{
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+.other_stuff>div{
+    display: flex;
+    align-items: center;
+    background: #EEEDF2;
+    border-radius: 8px;
+    padding: 4px 0;
+    width: calc(100% /3);
+    justify-content: center;
+}
+.point{
+    max-width: 86px;
+}
+.amount{
+    max-width: 105px;
+}
+.rank{
+    max-width: 86px;
+}
+.other_stuff{
+    margin-bottom: 36px;
+}
+.other_stuff>div>img{
+    margin-right: 4px;
+}
+.other_stuff .content{
+    display: flex;
+    flex-direction: column;
+}
+.infor_section .tab{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0 10px 18px ;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .3s;
+}
+.infor_section .tab .icon{
+    margin-right: 6px;
+}
+.infor_section .tab:hover{
+    background-color: #EEEDF2;
+}
+.infor_section .dropdown {
+    overflow: hidden;
+    border-radius: 8px;
+}
+.infor_section .dropdown .tab{
+    position: relative;
+}
+.infor_section .dropdown .tab::after{
+    width: 8px;
+    border: solid #7161BA;
+    height: 8px;
+    content: "";
+    display: block;
+    opacity: 1;
+    position: absolute;
+    transform: rotate(45deg);
+    transition: all .4s ease-out;
+    visibility: visible;
+    border-width: 0 2px 2px 0;
+    right: 17px;
+}
+.infor_section .dropdown ul{
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px 0px 44px;
+    max-height: 0;
+    transition: all .4s ease-out;
+
+}
+.infor_section .dropdown .tab.active{
+    background-color: #EEEDF2;
+}
+.infor_section .dropdown .tab.active ~ ul{
+    height: max-content;
+    max-height: 200px;
+    padding: 0 16px 8px 44px;
+    background-color: #EEEDF2;
+}
+.infor_section .dropdown .tab.active::after{
+    transform: rotate(225deg);
+    
+}

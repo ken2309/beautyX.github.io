@@ -32,7 +32,7 @@ function Notification(props:any) {
       }
       return (
             <div
-                  style={openNo === true ? { display: 'block' } : { display: 'none' }}
+                  style={openNo === true ? { top: '3rem', opacity: '1', visibility: 'visible' } : {top: '5rem', opacity:'0', visibility: 'hidden' }}
                   className={NoStyle.noBox} id="notification"
             >
                   <div className={NoStyle.noBoxTitle}>

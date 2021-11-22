@@ -1,9 +1,16 @@
 import React from "react";
-import Header from "../features/Header/index";
+import Home from "../features/Home/index";
+import SearchResult from "../features/SearchResult/index";
 import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { RouteComponentProps } from "@reach/router";
+import MerchantDetail from "../features/MerchantDetail/index";
 import Partner from "../features/Partner";
 import PopupAppointInfor from "../components/PopupAppointInfor";
+import Cart from "../features/Cart/index";
+import CartPayment from "../features/CartPayment/index";
+import Account from "../features/Account";
+import ProductDetail from "../features/ProductDetail";
+import ServiceDetail from "../features/ServiceDetail";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -12,14 +19,42 @@ function RouterConfig(props: any) {
   const routes = [
     {
       path: "/Home",
-      component: <Header />,
+      component: <Home />,
+    },
+    {
+      path: "/Search-result/",
+      component: <SearchResult />,
+    },
+    {
+      path: "/Merchant-detail/",
+      component: <MerchantDetail />,
     },
     {
       path: "/Partner",
       component: <Partner />,
     },
     {
-      path: "/popup",
+      path: "/Account",
+      component: <Account />,
+    },
+    {
+      path: "/Cart",
+      component: <Cart />,
+    },
+    {
+      path: "/Payment",
+      component: <CartPayment />,
+    },
+    {
+      path: "/Product-detail/:name",
+      component: <ProductDetail />,
+    },
+    {
+      path: "/Service-detail/",
+      component: <ServiceDetail />,
+    },
+    {
+      path: "/Popup/",
       component: <PopupAppointInfor />,
     },
   ];
