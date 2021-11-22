@@ -5,8 +5,11 @@ import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from '@reach/router';
 import MerchantDetail from '../features/MerchantDetail/index';
 import Partner from "../features/Partner";
-import Cart from "../features/Cart/index"
+import Cart from "../features/Cart/index";
+import CartPayment from "../features/CartPayment/index"
 import Account from "../features/Account";
+import ProductDetail from "../features/ProductDetail";
+import ServiceDetail from "../features/ServiceDetail"
 
 const RouterPage = (
       props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -36,6 +39,18 @@ function RouterConfig(props: any) {
             {
                   path:"/Cart",
                   component: <Cart/>
+            },
+            {
+                  path:'/Payment',
+                  component: <CartPayment/>
+            },
+            {
+                  path:'/Product-detail/:name',
+                  component: <ProductDetail/>
+            },
+            {
+                  path:'/Service-detail/',
+                  component: <ServiceDetail/>
             }
       ]
       return (

@@ -7,7 +7,7 @@ import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice'
 
 function CartItem(props: any) {
-      const { cartItem } = props;
+      const { cartItem, chooseOrg } = props;
       const dispatch = useDispatch();
       const [isCheck, setIsCheck] = useState(cartItem.isConfirm)
       const isConfirm = isCheck
@@ -15,7 +15,7 @@ function CartItem(props: any) {
       const handleConfirm = (e: any) => {
             setIsCheck(e.target.checked)
             const action = checkConfirm({ ...cartItem, isConfirm });
-            dispatch(action)
+                  dispatch(action)
       }
       const handleAscCart = () => {
             const action = addCart(cartItem);

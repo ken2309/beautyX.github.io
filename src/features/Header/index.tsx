@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React, {useState, useRef, useEffect} from 'react';
 import {Container} from '@mui/material';
 import {headerStyle} from './style';
@@ -17,7 +18,7 @@ const userInfo={
       userAvatar: img.Avatar
 }
 function Header(props: any) {
-      const {isCart} = props;
+      const {isCart, title} = props;
       const history = useHistory();
       const useStyle = headerStyle();
       const ref:any = useRef()
@@ -92,6 +93,7 @@ function Header(props: any) {
       return () => {
             document.removeEventListener("mousedown", checkIfClickedOutside)
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [openLang])
       return (
             <div className={useStyle.header} ref={ref} >
@@ -109,7 +111,7 @@ function Header(props: any) {
                               {
                                     isCart ?
                                           <SectionTitle
-                                                title="Giỏ hàng"
+                                                title={title}
                                           />
                                           :
                                           <img

@@ -61,6 +61,12 @@ function ServiceList(props: any) {
                   descPrice()
             }
       }
+      //Add values is product: false
+      const servicesIs = [];
+      for (var item of serviceByFilter) {
+            const service = { ...item, isProduct: false };
+            servicesIs.push(service);
+      }
       return (
             <div className='ser-list'>
                   <div className="flex-row-sp list-filter">
@@ -95,7 +101,7 @@ function ServiceList(props: any) {
                   <div className="flex-column ser-list__content">
                         <ul className="ser-list__content-list">
                               {
-                                    serviceByFilter.map(item => (
+                                    servicesIs.map(item => (
                                           <li
                                                 key={item.id}
                                                 className="ser-list__content-list-item"
