@@ -116,7 +116,7 @@ export default function FormPartner() {
             value={form.phone}
             onChange={inputChange}
             placeholder="Số điện thoại"
-            type="number"
+            type="text"
             name="phone"
             id="phone"
           />

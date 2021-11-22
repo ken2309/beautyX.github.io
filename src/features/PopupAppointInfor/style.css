@@ -22,9 +22,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-radius: 0 8px 8px 0;
-  overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
 
 .appointInfor .service-input {
@@ -54,6 +53,7 @@
 .appointInfor .service-input__btn {
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  border-radius: 0 8px 8px 0;
   width: 39.96px;
   background-color: var(--purple);
   display: -webkit-box;
@@ -285,5 +285,31 @@
 .appointInfor-btn {
   margin: 0 auto;
   padding-top: 24px;
+}
+
+.appointInfor .drop-category {
+  border-radius: 14px;
+  top: 40px;
+  width: 100%;
+  position: absolute;
+  background-color: var(--bg-color);
+  padding: 10px 16px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  z-index: 1;
+}
+
+.appointInfor .drop-category ul li {
+  list-style: none;
+  padding: 8px 4px;
+  border: solid 1px var(--purple);
+  margin: 4px 0px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  border-radius: 18px;
+  color: var(--purple);
 }
 /*# sourceMappingURL=style.css.map */

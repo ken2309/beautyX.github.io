@@ -5,12 +5,12 @@ import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { RouteComponentProps } from "@reach/router";
 import MerchantDetail from "../features/MerchantDetail/index";
 import Partner from "../features/Partner";
-import PopupAppointInfor from "../components/PopupAppointInfor";
 import Cart from "../features/Cart/index";
 import CartPayment from "../features/CartPayment/index";
 import Account from "../features/Account";
 import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
+import PopupAppointInfor from "../features/PopupAppointInfor";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -54,7 +54,7 @@ function RouterConfig(props: any) {
       component: <ServiceDetail />,
     },
     {
-      path: "/Popup/",
+      path: "/popup",
       component: <PopupAppointInfor />,
     },
   ];
