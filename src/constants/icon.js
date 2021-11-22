@@ -12,6 +12,8 @@ import Phone from "../assets/icon/Phone.svg";
 import Storefront from "../assets/icon/Storefront.svg";
 import User from "../assets/icon/User.svg";
 import Location from "../assets/icon/Location.svg";
+import ArrowDownWhite from "../assets/icon/arrow-down-white.svg";
+import SearchWhite from "../assets/icon/search-white.svg";
 
 const icon = {
   Avatar,
@@ -28,5 +30,7 @@ const icon = {
   Storefront,
   User,
   Location,
+  ArrowDownWhite,
+  SearchWhite,
 };
 export default icon;

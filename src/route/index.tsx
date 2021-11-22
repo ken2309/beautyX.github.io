@@ -3,6 +3,7 @@ import Header from "../features/Header/index";
 import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { RouteComponentProps } from "@reach/router";
 import Partner from "../features/Partner";
+import PopupAppointInfor from "../components/PopupAppointInfor";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -16,6 +17,10 @@ function RouterConfig(props: any) {
     {
       path: "/Partner",
       component: <Partner />,
+    },
+    {
+      path: "/popup",
+      component: <PopupAppointInfor />,
     },
   ];
   return (
