@@ -52,38 +52,41 @@ const cart = createSlice({
             },
             chooseAll: (state, action) => {
                   const cartTrue = []
-                  // const cartFalse = []
-                  // const cartOrgTrue = storage.filter((item: any) => item.org_id === action.payload)
-                  // console.log(cartOrgTrue);
-                  // for (var item of cartOrgTrue) {
-                  //       const arr = { ...item, isConfirm: true }
-                  //       cartTrue.push(arr);
-                  // }
-                  // const cartOrgFalse = storage.filter((item: any) => item.org_id !== action.payload)
-                  // console.log(cartOrgFalse);
-                  // for (var itemFalse of cartOrgFalse) {
-                  //       const arr = { ...itemFalse, isConfirm: false }
-                  //       cartFalse.push(arr);
-                  // }
-                  // console.log(cartTrue);
-                  // const nextCart = cartTrue.concat(cartFalse);
-                  // state.cartList = nextCart
+                  const cartFalse = []
                   for (var item of storage) {
                         let arr = item;
                         if (item.org_id === action.payload) {
                               arr = { ...item, isConfirm: true }
                               cartTrue.push(arr);
-                        } else {
-                              arr = { ...item, isConfirm: false }
-                              cartTrue.push(arr);
+                        }else if(item.org_id !== action.payload){
+                              arr = { ...item, isConfirm: true }
+                              cartFalse.push(arr);
                         }
                   }
-                  console.log(cartTrue)
-                  state.cartList = cartTrue
+                  console.log(cartTrue, cartFalse)
+                  //state.cartList = cartTrue
                   localStorage.setItem(storageName, JSON.stringify(state.cartList))
+            },
+            getTotal: (state) => {
+                  let{total, quantity} = state.cartList.reduce(
+                        (cartTotal:any, cartItem:any )=>{
+                              const {quantity, price, isConfirm} = cartItem;
+                              if (isConfirm === true) {
+                                    const itemTotal = price * quantity;
+                                    cartTotal.total += itemTotal;
+                                    cartTotal.quantity += quantity;
+                              }
+                              return cartTotal;
+                        },
+                        {
+                              total:0, quantity: 0
+                        }
+                  );
+                  state.cartAmount = total;
+                  state.cartQuantity = quantity
             }
       }
 });
 const { reducer, actions } = cart;
-export const { addCart, descItem, checkConfirm, removeItem, chooseAll } = actions;
+export const { addCart, descItem, checkConfirm, removeItem, chooseAll, getTotal } = actions;
 export default reducer;

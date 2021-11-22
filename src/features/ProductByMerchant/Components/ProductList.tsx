@@ -6,6 +6,7 @@ import {Product} from '../../../interface/product';
 import Loading from '../../Loading/index';
 import { Pagination } from '@mui/material';
 import scrollTop from '../../../utils/scrollTop';
+import {useLocation} from 'react-router-dom'
 
 const buttons = [
       { id: 1, title: 'Phổ biến' },
@@ -17,6 +18,7 @@ const cardStyle = {
       width: '100%'
 }
 function ProductList(props: any) {
+      const location = useLocation();
       const {products, setPage,loading, pageLength} = props;
       const [activeFilter, setActiveFilter] = useState();
       const [serviceSort, setServiceSort] = useState<Product[]>([]);
@@ -108,6 +110,7 @@ function ProductList(props: any) {
                                                       className="ser-list__content-list-item"
                                                 >
                                                       <CardItem
+                                                            org_id={location.search.slice(4, location.search.length)}
                                                             name={item.product_name}
                                                             detail={item}
                                                             retail_price={item.retail_price}

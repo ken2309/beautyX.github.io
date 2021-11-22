@@ -14,7 +14,7 @@ import Footer from '../Footer';
 const id_tab = 1;
 function MerchantDetail(props:any) {
       const location = useLocation();
-      //const mer_id = location.search.slice(4, location.search.length);
+      const mer_id = location.search.slice(4, location.search.length);
       //console.log(location)
       const merDetail = location.state
       //---
@@ -41,10 +41,10 @@ function MerchantDetail(props:any) {
                               <ServiceByMerchant
                                     activeTab={activeTab}
                               />
-                              {/* <ProductByMerchant
+                              <ProductByMerchant
                                     mer_id={mer_id}
                                     activeTab={activeTab}
-                              /> */}
+                              />
                         </Container>
                   </div>
                   <Footer />

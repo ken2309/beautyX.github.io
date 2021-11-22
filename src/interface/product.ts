@@ -1,6 +1,7 @@
 export interface Product {
       branch_id: number
       brand_id: number
+      is_product: true
       commission_money: number
       commission_percen: number
       commission_plan: number

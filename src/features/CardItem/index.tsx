@@ -2,21 +2,23 @@ import React from 'react';
 import './CardItem.css';
 import icon from '../../constants/icon';
 import formatPrice from '../../utils/formatPrice';
-import {useLocation} from 'react-router-dom';
+import {useLocation, useHistory} from 'react-router-dom';
 import {addCart} from '../../redux/cartSlice';
 import {useDispatch} from 'react-redux'
 
 function CardItem(props:any) {
-      const location = useLocation();
-      const dispatch = useDispatch();
-      const mer_id = location.search.slice(4, location.search.length);
-      const { 
-                  detail, 
-                  style,
-                  name,
+      const {
+            detail,
+            style,
+            name,
             retail_price,
             special_price,
+            org_id
       } = props;
+      const location = useLocation();
+      const dispatch = useDispatch();
+      const history = useHistory();
+      const mer_id = location.search.slice(4, location.search.length);
       const discount = 100 - (special_price / retail_price * 100)
       const handleAddCart = () => {
             const values = {
@@ -31,8 +33,30 @@ function CardItem(props:any) {
             const action = addCart(values);
             dispatch(action)
       }
+      const gotoDetail = () => {
+            const param = {
+                  org: org_id,
+                  id: detail.id
+            }
+            const search = JSON.stringify(param);
+            if (detail.is_product === true) {
+                  history.push({
+                        pathname: `/Product-detail/${encodeURI(name)}`,
+                        search: `${encodeURI(search)}`
+                  })
+            } else {
+                  history.push({
+                        pathname: '/Service-detail/',
+                        search: `id=${detail.id}`
+                  })
+            }
+      }
       return (
-            <div style={{ width: style?.width }} className="card">
+            <div 
+                  onClick={gotoDetail}
+                  style={{ width: style?.width }} 
+                  className="card"
+            >
                   <div
                         style={special_price < 0 ? { display: 'none' } : {}}
                         className="card-discount">
@@ -79,7 +103,7 @@ function CardItem(props:any) {
                               HSD: 20-01-2022
                         </span>
                   </div>
-                  <button onClick={handleAddCart} >Add cart</button>
+                  {/* <button onClick={handleAddCart} >Add cart</button> */}
             </div>
       );
 }
