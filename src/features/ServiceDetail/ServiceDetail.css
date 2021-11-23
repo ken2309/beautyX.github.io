@@ -42,11 +42,17 @@
 .suggest__retail-pr{
       text-decoration: line-through;
 }
+.suggest-card{
+      margin-top: 24px;
+}
 .suggest-card__list-name{
       font-size: 14px !important;
       line-height: 20px !important;
       font-weight: 700 !important;
       color: var(--text-black) !important;
+}
+.suggest-card__list-quantity{
+      width: 44%;
 }
 .suggest-card__list-quantity button{
       border: solid 1px var(--purple);
@@ -58,5 +64,6 @@
       margin: 0px 11px;
 }
 .suggest-card__list-quantity span{
-      margin-left: 26px;
+      /* margin-left: 26px; */
+      text-align: end;
 }

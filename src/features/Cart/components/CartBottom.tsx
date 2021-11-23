@@ -1,14 +1,17 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import {Container} from '@mui/material';
 import {getTotal} from '../../../redux/cartSlice'
 import ButtonCus from '../../../components/ButtonCus/index';
 import {useSelector, useDispatch} from 'react-redux';
 import formatPrice from '../../../utils/formatPrice';
 import {useHistory} from 'react-router-dom';
+import CartPopupNoti from './CartPopupNoti'
 
 function CartBottom(props: any) {
+      const {orgs, chooseOrg, chooseOrgClick} = props;
       const dispatch = useDispatch();
-      const history=useHistory();
+      const history = useHistory();
+      const [popUp, setPopUp] = useState(false)
       const carts = useSelector((state: any) => state.carts)
       useEffect(() => {
             dispatch(getTotal())
@@ -17,9 +20,11 @@ function CartBottom(props: any) {
       const firstItem = cartConfirm[0];
       const cartFirstList = cartConfirm.filter((item: any) => item.org_id === firstItem.org_id)
       const gotoPayment = () => {
-            // if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
-            //       history.push('/Payment')
-            // }
+            if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
+                  history.push('/Payment')
+            }else{
+                  setPopUp(true);
+            }
       }
       return (
             <div className="cart-bottom">
@@ -42,6 +47,13 @@ function CartBottom(props: any) {
                               />
                         </div>
                   </Container>
+                  <CartPopupNoti
+                        popUp={popUp}
+                        setPopUp={setPopUp}
+                        orgs={orgs}
+                        chooseOrg={chooseOrg}
+                        chooseOrgClick={chooseOrgClick}
+                  />
             </div>
       );
 }

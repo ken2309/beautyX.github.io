@@ -8,6 +8,7 @@ import {useDispatch} from 'react-redux'
 function DetailCard(props:any) {
       const { product, org } = props;
       const dispatch = useDispatch();
+      const [sum, setSum] = useState(0);
       const [quantity, setQuantity] = useState(1)
       const handleDesc = () => {
             if (quantity > 1) {
@@ -70,13 +71,20 @@ function DetailCard(props:any) {
                               <input className="product-code__discount" type="text" placeholder="Nhập mã giảm giá" />
                         </div>
                         {
-                              product.is_product === false ? <SuggestionPush /> : ''
+                              product.is_product === false ?
+                                    <SuggestionPush
+                                          org={org}
+                                          product={product}
+                                          setSum={setSum}
+                                    />
+                                    :
+                                    ''
                         }
                   </div>
                   <div className="product-cnt__right-bot">
                         <div className="flex-row-sp product-cnt__right-bot__total">
                               <span>Tổng cộng</span>
-                              <span>{formatPrice(quantity * product?.retail_price)} đ</span>
+                              <span>{formatPrice(quantity * product?.retail_price + sum)} đ</span>
                         </div>
                         <div className="flex-row" style={{justifyContent:'flex-end'}}>
                               <button

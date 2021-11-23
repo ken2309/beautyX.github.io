@@ -6,7 +6,8 @@ import icon from '../../constants/icon';
 import CartList from './components/CartList';
 import CartBottom from './components/CartBottom'
 import {useSelector, useDispatch} from 'react-redux';
-import {unCheck} from '../../redux/cartSlice'
+import {unCheck} from '../../redux/cartSlice';
+import scrollTop from '../../utils/scrollTop'
 import './Cart.css'
 
 interface Org{
@@ -24,6 +25,7 @@ function Cart(props: any) {
             setShowOrg(!showOrg)
       }
       const chooseOrgClick = (org: any) => {
+            scrollTop();
             setChooseOrg(org)
             setShowOrg(false)
             for (var item of carts.cartList) {
@@ -121,7 +123,11 @@ function Cart(props: any) {
                               />
                         </div>
                   </Container>
-                  <CartBottom/>
+                  <CartBottom
+                        orgs={orgs}
+                        chooseOrg={chooseOrg}
+                        chooseOrgClick={chooseOrgClick}
+                  />
                   <Footer />
             </div>
       );

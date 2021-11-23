@@ -16,6 +16,11 @@ import nv from '../assets/image/employee.png';
 import rectangle from '../assets/image/Rectangle 148.png';
 import service from '../assets/image/Service.png';
 import Partner from "../assets/image/partner.png";
+import money from "../assets/image/money.png";
+import cardAtm from "../assets/image/cardAtm.png";
+import creditMachine from "../assets/image/creditMachine .png";
+import payon from "../assets/image/payon.png";
+import imagePay from "../assets/image/image 23.png";
 
 const img={
       Avatar,
@@ -35,6 +40,7 @@ const img={
       nv,
       rectangle,
       service,
-      Partner
+      Partner,
+      money, creditMachine, cardAtm, payon, imagePay
 }
 export default img

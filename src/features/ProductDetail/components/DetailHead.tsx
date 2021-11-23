@@ -53,6 +53,7 @@ function DetailHead(props: any) {
                                           product.is_product === false ?
                                                 <TabPanel value="4">
                                                       <SuggestionList
+                                                            org={org}
                                                             product={product}
                                                             listServices={listServices}
                                                       />

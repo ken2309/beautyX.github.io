@@ -1,0 +1,146 @@
+.payment-cnt{
+      padding-top: 64px;
+}
+.payment-form__left{
+      width: 58.1%;
+      box-shadow: 0px 6px 15px #DCD8EE;
+      border-radius: 24px;
+      padding: 24px;
+}
+.payment-form__left input{
+      width: 100%;
+      margin: 8px 0px;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      color: var(--text-black);
+      background-color: var(--bg-gray);
+      padding: 8px 8px 8px 40px;
+      box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+      border-radius: 18px;
+}
+.payment-form__left span{
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--purple);
+}
+.payment-form__ipt-top{
+      margin-top: 8px;
+      width: 48.5%;
+      position: relative;
+}
+.payment-form__ipt-top img{
+      position: absolute;
+      margin-left: 8px;
+}
+.payment-form__left-bt{
+      width: 100%;
+      position: relative;
+}
+.payment-form__left-bt img{
+      position: absolute;
+      margin-left: 8px;
+}
+.payment-form__right{
+      padding-left: 36px;
+      width: calc(100% - 58.1%);
+}
+.payment-form__right textarea{
+      padding: 24px;
+      width: 100%;
+      height: 184px;
+      background-color: var(--bg-gray);
+      box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+      box-shadow: 0px 6px 15px #DCD8EE;
+      border-radius: 18px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--text-black);
+}
+/* cart */
+.cart-list__payment{
+      padding: 68px 0px 72px 0px;
+}
+.payment-method li{
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin: 20px 0px;
+}
+.payment-method li img{
+      position: absolute;
+      margin-left: 32px;
+}
+.payment-method .css-ahj2mt-MuiTypography-root{
+      margin-left: 90px !important;
+      font-size: 20px !important;
+      line-height: 24px !important;
+      font-weight: 700 !important;
+      color: var(--text-black) !important;
+      font-family: "Quicksand" !important;
+}
+/* payment-total */
+.payment-total{
+      /* bottom: 0;
+      position: sticky;
+      z-index: 1; */
+      width: 100%;
+      background-color: var(--bg-gray);
+      box-shadow: 0px 4px 20px rgba(113, 97, 186, 0.2);
+      padding-bottom: 60px;
+}
+.payment-total__head{
+      justify-content: flex-end;
+      padding: 30px 0px;
+      border-bottom: solid 1px var(--purple);
+}
+.payment-total__head span{
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--purple);
+      margin-right: 60px;
+}
+.payment-total__head input{
+      padding: 8px 16px;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text-black);
+      border: none;
+      outline: none;
+      background-color: var(--bg-gray);
+      box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+      border-radius: 18px;
+}
+.payment-total__body{
+      padding: 24px 0px;
+      justify-content: flex-end;
+}
+.payment-total__body-item p{
+      text-align: end;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text-black);
+      margin: 2px 0px;
+}
+.payment-total__body .payment-total__body-item:nth-child(2){
+      margin-left: 77px;
+}
+.payment-total__body .payment-total__body-item:nth-child(2) p{
+      font-weight: 700;
+      color: var(--purple);
+}
+.payment-total__body-submit span{
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text-black);
+}

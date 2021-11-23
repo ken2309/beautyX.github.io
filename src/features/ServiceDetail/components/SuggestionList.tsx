@@ -2,14 +2,29 @@ import React from 'react';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
-import {Service} from '../../../interface/service'
+import {Service} from '../../../interface/service';
+import {useDispatch} from 'react-redux';
+import {addCart} from '../../../redux/cartSlice'
 
 function SuggestionList(props:any) {
-      const {listServices, product } = props;
+      const dispatch = useDispatch();
+      const {listServices, product, org } = props;
       const suggestions = listServices.filter((item: any) => item.id !== product.id)
       const arr: Service[] = []
       const handlePushSuggest = (item: any) => {
-            // arr.push(item);
+            const values = {
+                  org_id: org.id,
+                  org_name: org.name,
+                  cart_id: parseInt(`${org.id}${item.id}`),
+                  name: item.product_name,
+                  quantity: 1,
+                  isPr: item.is_product === false ? false : true,
+                  isConfirm: false,
+                  price: item.special_price < 0 ? item.retail_price : item.special_price
+            }
+            const action = addCart(values);
+            dispatch(action);
+            
       }
       console.log(arr);
       return (

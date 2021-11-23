@@ -8,7 +8,7 @@ import formatPrice from '../../../utils/formatPrice';
 import PopupConfirm from '../../popupConfirm/index'
 
 function CartItem(props: any) {
-      const { cartItem } = props;
+      const { cartItem, inPayment } = props;
       const dispatch = useDispatch();
       const [isCheck, setIsCheck] = useState(cartItem.isConfirm)
       const [openConfirm, setOpenConfirm] = useState(false)
@@ -41,6 +41,7 @@ function CartItem(props: any) {
             <div className="flex-row cart-item">
                   <div className="flex-row cart-item__name">
                         <Checkbox
+                              style={inPayment === true ? { display: 'none' } : {}}
                               sx={{
                                     color: "#7161BA",
                                     "&.Mui-checked": {
@@ -57,18 +58,30 @@ function CartItem(props: any) {
                         />
                         {cartItem.name} {cartItem.org_id}
                   </div>
-                  <div className="flex-row cart-item__quantity">
+                  <div 
+                        style={inPayment === true ? { width: '16.6%' } : {}}
+                        className="flex-row cart-item__quantity"
+                  >
                         <button  onClick={handleDesc} style={{ backgroundColor: 'var(--bg-gray)', color: 'var(--purple)' }}>-</button>
                         <span>{cartItem.quantity}</span>
                         <button onClick={handleAscCart}>+</button>
                   </div>
-                  <div className="flex-row cart-item__price">
+                  <div 
+                        style={inPayment === true ? { width: '16.6%' } : {}}
+                        className="flex-row cart-item__price"
+                  >
                         {formatPrice(cartItem.price)} đ
                   </div>
-                  <div className="flex-row cart-item__total">
+                  <div
+                        style={inPayment === true ? { width: '16.6%' } : {}}
+                        className="flex-row cart-item__total"
+                  >
                         {formatPrice(cartItem.price * cartItem.quantity)} đ
                   </div>
-                  <div className="flex-row cart-item__control">
+                  <div
+                        style={inPayment === true ? { display: 'none' } : {}}
+                        className="flex-row cart-item__control"
+                  >
                         <ButtonCus
                               imgIcon={icon.trash}
                               padding="4px 4px 4px 4px"
@@ -81,6 +94,7 @@ function CartItem(props: any) {
                         openConfirm={openConfirm}
                         setOpenConfirm={setOpenConfirm}
                         handleRemoveItemCart={handleRemoveItemCart}
+                        title={cartItem.name}
                   />
             </div>
       );

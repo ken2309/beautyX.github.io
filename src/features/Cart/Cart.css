@@ -181,3 +181,15 @@
       color: var(--purple);
       margin: 0px 24px 0px 8px;
 }
+.cart-dialog{
+      margin: 0px;
+      transition: 0.3s;
+      box-shadow: none;
+}
+.cart-dialog_org-list{
+      box-shadow: none;
+}
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
+      background-color: transparent !important;
+      box-shadow: none !important;
+}

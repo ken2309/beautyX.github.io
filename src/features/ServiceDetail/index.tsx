@@ -25,7 +25,7 @@ function ServiceDetail(props: any) {
             handleGetOrgById();
       }, [param.org])
       //service demo
-      const service = listServices.find(item => item.id === param.id)
+      const service = listServices.find((item:any) => item.id === param.id)
       return (
             <div className="product">
                   <Header />
