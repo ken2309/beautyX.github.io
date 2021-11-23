@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
+import SuggestionPush from '../../ServiceDetail/components/SuggestionPush';
+import {addCart} from '../../../redux/cartSlice';
+import {useDispatch} from 'react-redux'
 
 function DetailCard(props:any) {
       const { product, org } = props;
+      const dispatch = useDispatch();
       const [quantity, setQuantity] = useState(1)
       const handleDesc = () => {
             if (quantity > 1) {
                   setQuantity(quantity - 1)
             }
       }
+      //add cart
+      const values = {
+            org_id: org.id,
+            org_name: org.name,
+            cart_id: parseInt(`${org.id}${product.id}`),
+            name: product.product_name,
+            quantity: quantity,
+            isPr: product.is_product === false ? false : true,
+            isConfirm: false,
+            price: product.special_price < 0 ? product.retail_price : product.special_price
+      }
+      const handleAddCart = () => {
+            const action = addCart(values);
+            dispatch(action);
+      }
       return (
             <div className="product-cnt__right">
                   <div className="product-cnt__right-head">
-                        <h2>{product.product_name}</h2>
+                        <h2>{product?.product_name}</h2>
                         <span>{org?.name} | Đang mở cửa</span>
                         <div className="flex-row product-cnt__right-head__rate">
                               <span>90</span>
@@ -50,14 +69,20 @@ function DetailCard(props:any) {
                               <span>Nhập mã giảm giá</span>
                               <input className="product-code__discount" type="text" placeholder="Nhập mã giảm giá" />
                         </div>
+                        {
+                              product.is_product === false ? <SuggestionPush /> : ''
+                        }
                   </div>
                   <div className="product-cnt__right-bot">
                         <div className="flex-row-sp product-cnt__right-bot__total">
                               <span>Tổng cộng</span>
-                              <span>{formatPrice(quantity * product.retail_price)} đ</span>
+                              <span>{formatPrice(quantity * product?.retail_price)} đ</span>
                         </div>
                         <div className="flex-row" style={{justifyContent:'flex-end'}}>
-                              <button className="flex-row product-cnt__right-bot__add">
+                              <button
+                                    onClick={handleAddCart} 
+                                    className="flex-row product-cnt__right-bot__add"
+                              >
                                     <img src={icon.ShoppingCartSimple} alt="" />
                                     Thêm vào giỏ hàng
                               </button>

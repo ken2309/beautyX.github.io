@@ -7,23 +7,22 @@ function CartList(props:any) {
       const {listOrg, chooseOrg, carts, cartByOrgId} = props;
       const cartJoin = [];
       for(var org of listOrg){
-            const orgId = org.id;
-            const arr = carts.cartList.filter((item:any) => item.org_id === orgId);
+            // eslint-disable-next-line no-loop-func
+            const arr = carts.cartList.filter((item:any)=> item.org_name === org);
             const arrJoin={
-                  orgId: org.id,
-                  name: org.name,
+                  name:org,
                   cart: arr
             }
-            cartJoin.push(arrJoin)
+            cartJoin.push(arrJoin);
       }
       return (
             <div className="cart-list">
                   {
                         cartByOrgId.length === 0 ?
-                              cartJoin.map(item => (
+                              cartJoin.map((item, index) => (
                                     <div
                                           className="cart-section-item"
-                                          key={item.orgId}
+                                          key={index}
                                           style={item.cart.length === 0 ?
                                                 {
                                                       display: 'none',
@@ -81,7 +80,7 @@ function CartList(props:any) {
                               :
                               <>
                                     <SectionTitle
-                                          title={chooseOrg.name}
+                                          title={chooseOrg}
                                     />
                                     <span
                                           className="flex-row cart-list-item__head"

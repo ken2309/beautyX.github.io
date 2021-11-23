@@ -12,8 +12,8 @@ function MapWrapper(props:any) {
                         googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${key}`}
                         loadingElement={<div style={{ height: `100%` }} />}
                         zoom={16}
-                        lat={chooseItem ? chooseItem?.lat : lat}
-                        lng={chooseItem ? chooseItem?.long : long}
+                        lat={chooseItem ? chooseItem?.latitude : lat}
+                        lng={chooseItem ? chooseItem?.longitude : long}
                         containerElement={
                               <div
                                     style={{

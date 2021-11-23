@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useRef } from 'react';
 import {headerStyle} from '../style';
 import icon from '../../../constants/icon';
 import '../header.css';
@@ -9,6 +10,7 @@ interface Toggle {
 }
 function Language({openLang,openLangClick}: Toggle) {
       const lang = headerStyle();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const ref:any = useRef();
         const handleLang:any = (props:any) =>{
             console.log('props',props.target.classList);

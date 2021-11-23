@@ -2,9 +2,8 @@ import React from 'react';
 import './CardItem.css';
 import icon from '../../constants/icon';
 import formatPrice from '../../utils/formatPrice';
-import {useLocation, useHistory} from 'react-router-dom';
-import {addCart} from '../../redux/cartSlice';
-import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom';
+import scrollTop from '../../utils/scrollTop';
 
 function CardItem(props:any) {
       const {
@@ -13,27 +12,13 @@ function CardItem(props:any) {
             name,
             retail_price,
             special_price,
-            org_id
+            org_id,
+            org_name
       } = props;
-      const location = useLocation();
-      const dispatch = useDispatch();
       const history = useHistory();
-      const mer_id = location.search.slice(4, location.search.length);
       const discount = 100 - (special_price / retail_price * 100)
-      const handleAddCart = () => {
-            const values = {
-                  org_id: parseInt(mer_id),
-                  cart_id: parseInt(`${mer_id}${detail.id}`),
-                  name:name,
-                  quantity: 1,
-                  isPr:false,
-                  isConfirm: false,
-                  price: special_price < 0 ? retail_price : special_price
-            }
-            const action = addCart(values);
-            dispatch(action)
-      }
       const gotoDetail = () => {
+            scrollTop()
             const param = {
                   org: org_id,
                   id: detail.id
@@ -46,8 +31,8 @@ function CardItem(props:any) {
                   })
             } else {
                   history.push({
-                        pathname: '/Service-detail/',
-                        search: `id=${detail.id}`
+                        pathname: `/Service-detail/${encodeURI(name)}`,
+                        search: `${encodeURI(search)}`
                   })
             }
       }
@@ -68,7 +53,7 @@ function CardItem(props:any) {
                               {detail.id} - {name}
                         </div>
                         <span className="card-spa-name">
-                              Kanessa Beauty  Spa
+                              {org_name}
                         </span>
                         <div className="flex-row-sp card-price">
                               <span className="flex-row card-price__detail">

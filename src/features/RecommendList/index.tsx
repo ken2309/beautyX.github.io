@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import SectionTitle from '../../SectionTitle';
-import CardItem from '../../CardItem/index';
+import SectionTitle from '../SectionTitle/index';
+import CardItem from '../CardItem/index';
 import Carousel from 'react-elastic-carousel';
 
 const saleList = [
@@ -17,26 +17,27 @@ interface SaleList {
       retail_price: number,
       special_price: number
 }
-const cardStyle={
-      width:'272px'
+const cardStyle = {
+      width: '272px'
 }
 const buttons = [{ id: 1, text: 'Sắp hết hạn' }, { id: 2, text: 'Giảm nhiều' }]
-function DetailSaleList(props:any) {
-      const { merDetail } = props;
-      const title = `Ưu đãi của "${merDetail?.name}"`;
+
+function RecommendList(props: any) {
+      const { org, list } = props;
+      const title = `Ưu đãi của "${org?.name}"`;
       const [activeBtn, setActiveBtn] = useState();
       const [productSort, setProductSort] = useState<SaleList[]>([]);
       const [sort, setSort] = useState({
             _sortPrice: saleList
       })
-      useEffect(()=>{
-            async function handleSort(){
+      useEffect(() => {
+            async function handleSort() {
                   setProductSort(saleList)
             }
             handleSort();
-      },[sort, productSort])
-      const sortPrice=()=>{
-            const sortAsc = saleList.sort((a,b)=> (b.retail_price / b.special_price) - (a.retail_price / a.special_price))
+      }, [sort, productSort])
+      const sortPrice = () => {
+            const sortAsc = saleList.sort((a, b) => (b.retail_price / b.special_price) - (a.retail_price / a.special_price))
             setSort({
                   ...sort,
                   _sortPrice: sortAsc
@@ -45,7 +46,7 @@ function DetailSaleList(props:any) {
       const sortClick = (item: any) => {
             setActiveBtn(item);
             if (item.id === 1) {
-                  
+
             } else if (item.id === 2) {
                   sortPrice()
             }
@@ -74,13 +75,14 @@ function DetailSaleList(props:any) {
                   </div>
                   <div className="mer-sale-list">
                         <Carousel
-                              children={productSort.map(item =>
+                              children={list.map((item:any) =>
                                     <
                                           CardItem key={item.id}
                                           style={cardStyle}
                                           detail={item}
-                                          org_id={merDetail.id}
-                                          name={item.name}
+                                          name={item.product_name}
+                                          org_name={org.name}
+                                          org_id={org.id}
                                           retail_price={item.retail_price}
                                           special_price={item.special_price}
                                     />)
@@ -95,4 +97,4 @@ function DetailSaleList(props:any) {
       );
 }
 
-export default DetailSaleList;
+export default RecommendList;

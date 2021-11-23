@@ -15,9 +15,10 @@ const cardStyle = {
       width: '100%'
 }
 interface Services {
-      id: number, name: string, retail_price: number, special_price: number
+      id: number, product_name: string, is_product: boolean, retail_price: number, special_price: number
 }
 function ServiceList(props: any) {
+      const { mer_id } = props;
       const [activeFilter, setActiveFilter] = useState();
       const [serviceSort, setServiceSort] = useState<Services[]>([]);
       const [sort, setSort] = useState({
@@ -64,7 +65,7 @@ function ServiceList(props: any) {
       //Add values is product: false
       const servicesIs = [];
       for (var item of serviceByFilter) {
-            const service = { ...item, isProduct: false };
+            const service = { ...item, is_product: false};
             servicesIs.push(service);
       }
       return (
@@ -107,7 +108,8 @@ function ServiceList(props: any) {
                                                 className="ser-list__content-list-item"
                                           >
                                                 <CardItem
-                                                      name={item.name}
+                                                      org_id={mer_id}
+                                                      name={item.product_name}
                                                       retail_price={item.retail_price}
                                                       special_price={item.special_price}
                                                       detail={item}

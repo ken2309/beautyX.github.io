@@ -10,6 +10,8 @@ import Menu from './components/Menu';
 import {useHistory} from 'react-router-dom';
 import SectionTitle from '../SectionTitle';
 import Language from './components/Language';
+import {getTotal} from '../../redux/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const logged:boolean = true;
 const notification = true;
@@ -19,6 +21,7 @@ const userInfo={
 }
 function Header(props: any) {
       const {isCart, title} = props;
+      const dispatch = useDispatch();
       const history = useHistory();
       const useStyle = headerStyle();
       const ref:any = useRef()
@@ -95,6 +98,11 @@ function Header(props: any) {
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [openLang])
+      //get total amount cart
+      const carts = useSelector((state: any) => state.carts)
+      useEffect(() => {
+            dispatch(getTotal())
+      }, [dispatch, carts])
       return (
             <div className={useStyle.header} ref={ref} >
                   <Container maxWidth="lg">
@@ -170,6 +178,7 @@ function Header(props: any) {
                                                 className={useStyle.headerRightItem}
                                           >
                                                 <img src={icon.ShoppingCartSimple} alt="" />
+                                                <span className={useStyle.headerCartCount}>{carts.cartQuantity}</span>
                                           </li>
                                           <li className={useStyle.headerRightItem}>
                                                 <img 

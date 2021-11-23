@@ -2,9 +2,9 @@ import React from 'react';
 import HomeFilter from '../../Home/components/HomeFilter';
 import icon from '../../../constants/icon';
 import '../../Home/Home.css';
-import Pagination from './Pagination';
 import {useHistory} from 'react-router-dom';
-import scrollTop from '../../../utils/scrollTop'
+import scrollTop from '../../../utils/scrollTop';
+import {Pagination} from '@mui/material'
 
 const serviceOfCardOrg=[
       {title:'Bãi đỗ xe', text:'100m2', icon: icon.car},
@@ -18,11 +18,8 @@ function Result(props:any) {
             keySearch,
             resultList,
             setChooseItem,
-            setCurrent,
-            current,
-            listLength,
-            list
       } = props;
+      const pageCount = (resultList.length / 3).toFixed()
       const history = useHistory();
       const handleChooseItem =(item:any)=>{
             setChooseItem(item);
@@ -34,6 +31,9 @@ function Result(props:any) {
                   state: item
             })
             scrollTop();
+      }
+      const pageChange=()=>{
+            
       }
       return (
             <div className='result-detail'>
@@ -84,7 +84,7 @@ function Result(props:any) {
                                                                   className="result-item__detail-address"
                                                             >
                                                                   <img src={icon.location} alt="" />
-                                                                  <span>{item.address}</span>
+                                                                  <span>{item.full_address}</span>
                                                             </div>
                                                             <div className="result-item__detail-address">
                                                                   <img src={icon.time} alt="" />
@@ -111,11 +111,10 @@ function Result(props:any) {
                         }
                   </ul>
                   <Pagination
-                        setCurrent={setCurrent}
-                        current={current}
-                        listLength={listLength}
-                        list={list}
-                        resultList={resultList}
+                        color='secondary'
+                        shape="rounded"
+                        count={parseInt(pageCount)}
+                        onChange={pageChange}
                   />
             </div>
       );

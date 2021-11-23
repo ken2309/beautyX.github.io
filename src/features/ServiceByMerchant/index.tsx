@@ -1,11 +1,11 @@
 import React from 'react';
 import ServiceCate from './components/ServiceCate';
-import ServiceList from './components/ServiceList'
+import ServiceList from './components/ServiceList';
 import './ServiceByMerchant.css'
 
 const tab_id = 2;
 function ServiceByMerchant(props:any) {
-      const { activeTab } = props;
+      const { activeTab, mer_id } = props;
       return (
             <div style={tab_id === activeTab ? { display: 'block' } : { display: 'none' }}>
                   <div
@@ -13,7 +13,9 @@ function ServiceByMerchant(props:any) {
                         style={{alignItems:'flex-start'}}
                   >
                         <ServiceCate />
-                        <ServiceList />
+                        <ServiceList
+                              mer_id={mer_id}
+                        />
                   </div>
             </div>
 

@@ -46,7 +46,7 @@
       font-weight: 500;
 }
 .result-detail__org{
-      height: 504px;
+      height: 560px;
 }
 .result-detail__org li{
       list-style: none;
@@ -141,6 +141,11 @@
       height: 100%;
 }
 /* pagination */
+.css-1oj2twp-MuiPagination-root{
+      display: flex;
+      justify-content: center;
+}
+
 .result-pagination{
       width: 100%;
       display: flex;

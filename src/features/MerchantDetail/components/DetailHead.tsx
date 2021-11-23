@@ -45,7 +45,7 @@ function DetailHead(props:any) {
                                                 <img src={icon.location} alt="" />
                                                 <span>
                                                       <h5>Địa chỉ</h5>
-                                                      {merDetail?.address}
+                                                      {merDetail?.full_address}
                                                 </span>
                                           </div>
                                     </div>

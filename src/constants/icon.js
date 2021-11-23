@@ -54,6 +54,7 @@ import Clock_purple from "../assets/icon/ClockCounterClockwise.svg";
 import Bell from "../assets/icon/Bell.svg";
 import Union from "../assets/icon/Union.svg";
 import Headphones_purple from "../assets/icon/Headphones_fill.svg";
+import plus from "../assets/icon/plus.svg"
 const icon = {
   Avatar,
   Logo,
@@ -110,6 +111,7 @@ const icon = {
   Clock_purple,
   Bell,
   Union,
-  Headphones_purple
+  Headphones_purple,
+  plus
 }
 export default icon;

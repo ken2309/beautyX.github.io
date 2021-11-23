@@ -12,13 +12,14 @@ const cart = createSlice({
       initialState,
       reducers: {
             addCart: (state, action) => {
+                  console.log(action)
                   const iIndex = state.cartList.findIndex((item:any) =>
                         item.cart_id === action.payload.cart_id
                   );
                   if(iIndex >= 0){
-                        state.cartList[iIndex].quantity += 1;
+                        state.cartList[iIndex].quantity += action.payload.quantity;
                   }else{
-                        const templeCart = { ...action.payload, quantity: 1 };
+                        const templeCart = { ...action.payload, quantity: action.payload.quantity };
                         state.cartList.push(templeCart);
                   }
                   localStorage.setItem(storageName, JSON.stringify(state.cartList))
@@ -41,6 +42,13 @@ const cart = createSlice({
                   } else {
                         state.cartList[iIndex].isConfirm = false;
                   }
+                  localStorage.setItem(storageName, JSON.stringify(state.cartList))
+            },
+            unCheck: (state, action) => {
+                  const iIndex = state.cartList.findIndex((item: any) =>
+                        item.cart_id === action.payload.cart_id
+                  )
+                  state.cartList[iIndex].isConfirm = false;
                   localStorage.setItem(storageName, JSON.stringify(state.cartList))
             },
             removeItem:(state, action)=>{
@@ -88,5 +96,5 @@ const cart = createSlice({
       }
 });
 const { reducer, actions } = cart;
-export const { addCart, descItem, checkConfirm, removeItem, chooseAll, getTotal } = actions;
+export const { addCart, descItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck } = actions;
 export default reducer;

@@ -13,8 +13,11 @@ function CartBottom(props: any) {
       useEffect(() => {
             dispatch(getTotal())
       }, [dispatch, carts])
-      const gotoPayment=()=>{
-            if(carts.cartAmount > 0){
+      const cartConfirm = carts.cartList.filter((item: any) => item.isConfirm === true);
+      const firstItem = cartConfirm[0];
+      const cartFirstList = cartConfirm.filter((item: any) => item.org_id === firstItem.org_id)
+      const gotoPayment = () => {
+            if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
                   history.push('/Payment')
             }
       }

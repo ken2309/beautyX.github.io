@@ -3,16 +3,16 @@ import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 import img from '../../../constants/img';
 import {imgRotate} from '../../../utils/imgRotate';
-import ButtonCus from '../../../components/ButtonCus';
+import DetailPersonnel from './DetailPersonnel';
 
 const introText='Với những thành phần thiên nhiên mang đến những tác dụng tốt cho làn da, được bào chế, pha trộn theo tỷ lệ vàng thích hợp cùng công nghệ hiện đại tiên tiến. Vì thế hiệu quả trị nám của dòng kem này được đánh giá khá tốt. Cụ thể như sau:Kem trị nám dùng cho ban ngày với thành phần Glycerol momonnostearate có tác dụng thẩm thấu nhanh, sâu vào tế bào da, ngăn chặn, ức chế sự hình thành melanin.Không gian sang trọng, tư vấn cũng ok, dịch vụ cũng khá ổn nhưng hơi đắt. Đánh giá 3 sao vì nhân viên mượn đt nói là check in gì đấy nhưng thật ra là tự đánh giá 5 sao...Xem thêm'
-const utilsList = [
+export const utilsList = [
       { icon: icon.car, text: 'Bãi đỗ xe', count: '200m2' },
       { icon: icon.bed, text: 'Giường', count: '200' },
       { icon: icon.door, text: 'Phòng', count: '20' },
       { icon: icon.car, text: 'Sức chứa', count: '20 người' }
 ]
-const staffList=[
+export const staffList=[
       {avatar:img.nv, name:'Nguyễn Tuấn Anh', exp:2, position:'CV tư vấn'},
       {avatar:img.nv, name:'Võ Thị Thanh Nhàn', exp:2, position:'Kỹ thuật viên'},
       {avatar:img.nv, name:'Đoàn Minh Nhật', exp:5, position:'BS tư vấn'},
@@ -68,44 +68,8 @@ function DetailInfo(props:any) {
                         <SectionTitle
                               title="Đội ngũ nhân sự"
                         />
-                        <ul className="flex-row-sp mer__content-info__personnel-list">
-                              {
-                                    staffList.map((item, index) => (
-                                          <li key={index}>
-                                                <div className="flex-row-sp mer__content-info__personnel-item">
-                                                      <img src={item.avatar} alt="" />
-                                                      <div className="info__personnel-item-box">
-                                                            <span>{item.name}</span>
-                                                            <div className="flex-row-sp info__personnel-detail">
-                                                                  <div>
-                                                                        <h4>
-                                                                              Chuyên môn
-                                                                        </h4>
-                                                                        <p>
-                                                                              {item.position}
-                                                                        </p>
-                                                                  </div>
-                                                                  <div>
-                                                                        <h4>
-                                                                              Năm kinh nghiệm
-                                                                        </h4>
-                                                                        <p>
-                                                                              {item.exp} Năm
-                                                                        </p>
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-                                                </div>
-                                          </li>
-                                    ))
-                              }
-                        </ul>
-                        <ButtonCus
-                              text="Xem tất cả nhân sự"
-                              imgIcon={icon.next}
-                              color="var(--purple)"
-                              border="solid 1px var(--purple)"
-                              borderRadius="18px"
+                        <DetailPersonnel
+                              list={staffList}
                         />
                   </div>
             </div>

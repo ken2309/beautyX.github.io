@@ -56,7 +56,6 @@ function HomeFilterForm(props:any) {
                   category: chooseCate.name,
                   province_code: chooseLocal.province_code
             }
-            console.log(filterValues);
             history.push({
                   pathname:'/Search-result/',
                   state:filterValues

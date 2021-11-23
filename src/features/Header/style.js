@@ -65,6 +65,18 @@ export const headerStyle = makeStyles({
             listStyle:'none',
             position: 'relative'
       },
+      headerCartCount:{
+            position:'absolute',
+            backgroundColor:'var(--red-cl)',
+            fontSize:'12px',
+            lineHeight:'18px',
+            fontWeight:'100',
+            color:'var(--bg-gray)',
+            width:'18px',
+            borderRadius:'100%',
+            textAlign:'center',
+            margin:'-30px 0px 0px 16px'
+      },
       // notification
       noBox:{
             zIndex:'2',

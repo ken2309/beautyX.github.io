@@ -4,14 +4,15 @@ import ButtonCus from '../../../components/ButtonCus';
 import { checkConfirm,addCart, descItem, removeItem } from '../../../redux/cartSlice'
 import { useDispatch } from 'react-redux'
 import icon from '../../../constants/icon';
-import formatPrice from '../../../utils/formatPrice'
+import formatPrice from '../../../utils/formatPrice';
+import PopupConfirm from '../../popupConfirm/index'
 
 function CartItem(props: any) {
-      const { cartItem, chooseOrg } = props;
+      const { cartItem } = props;
       const dispatch = useDispatch();
       const [isCheck, setIsCheck] = useState(cartItem.isConfirm)
+      const [openConfirm, setOpenConfirm] = useState(false)
       const isConfirm = isCheck
-
       const handleConfirm = (e: any) => {
             setIsCheck(e.target.checked)
             const action = checkConfirm({ ...cartItem, isConfirm });
@@ -21,13 +22,20 @@ function CartItem(props: any) {
             const action = addCart(cartItem);
             dispatch(action)
       }
-      const handleDesc=()=>{
-            const action = descItem(cartItem);
-            dispatch(action)
+      const handleDesc = () => {
+            if (cartItem.quantity === 1) {
+                  setOpenConfirm(true);
+            } else {
+                  const action = descItem(cartItem);
+                  dispatch(action)
+            }
       }
-      const handleRemoveItem=()=>{
+      const handleRemoveItemCart = () => {
             const action = removeItem(cartItem);
             dispatch(action);
+      }
+      const openConfirmClick = () => {
+            setOpenConfirm(true);
       }
       return (
             <div className="flex-row cart-item">
@@ -66,9 +74,14 @@ function CartItem(props: any) {
                               padding="4px 4px 4px 4px"
                               backColor="var(--red-cl)"
                               borderRadius="8px"
-                              onClick={handleRemoveItem}
+                              onClick={openConfirmClick}
                         />
                   </div>
+                  <PopupConfirm
+                        openConfirm={openConfirm}
+                        setOpenConfirm={setOpenConfirm}
+                        handleRemoveItemCart={handleRemoveItemCart}
+                  />
             </div>
       );
 }

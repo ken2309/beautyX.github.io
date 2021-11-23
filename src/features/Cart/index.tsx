@@ -3,11 +3,10 @@ import Header from '../Header/index';
 import Footer from '../Footer/index';
 import {Container} from '@mui/material';
 import icon from '../../constants/icon';
-import {listOrg} from '../../data/listOrg';
 import CartList from './components/CartList';
 import CartBottom from './components/CartBottom'
 import {useSelector, useDispatch} from 'react-redux';
-import {chooseAll, checkConfirm} from '../../redux/cartSlice'
+import {unCheck} from '../../redux/cartSlice'
 import './Cart.css'
 
 interface Org{
@@ -19,6 +18,7 @@ function Cart(props: any) {
       const dispatch = useDispatch();
       const carts = useSelector((state: any) => state.carts);
       const [showOrg, setShowOrg] = useState(false);
+      const orgCart: any[] = []
       const [chooseOrg, setChooseOrg] = useState<Org>();
       const handleShowOrgBox = () => {
             setShowOrg(!showOrg)
@@ -26,8 +26,33 @@ function Cart(props: any) {
       const chooseOrgClick = (org: any) => {
             setChooseOrg(org)
             setShowOrg(false)
+            for (var item of carts.cartList) {
+                  const action = unCheck(item);
+                  dispatch(action);
+            }
       }
-      const cartByOrgId = carts.cartList.filter((item: any) => item.org_id === chooseOrg?.id);
+      const cartByOrgId = carts.cartList.filter((item: any) => item.org_name === chooseOrg);
+      //
+      const listOrg:any[] = [];
+      for (var i of carts.cartList) {
+            listOrg.push({ id: i.org_id, name: i.org_name })
+      }
+      for (var item of carts.cartList) {
+            const org = {
+                  name: item.org_name
+            }
+            orgCart.push(org);
+      }
+      function unique(arr:any) {
+            var newArr = []
+            for (var i = 0; i < arr.length; i++) {
+              if (newArr.indexOf(arr[i].name) === -1) {
+                newArr.push(arr[i].name)
+              }
+            }
+            return newArr
+          }
+      const orgs = unique(orgCart)
       return (
             <div className="cart" >
                   <Header
@@ -50,7 +75,7 @@ function Cart(props: any) {
                                           <div className="flex-row-sp cart-notification__or-box">
                                                 <div className="cart-notification__or-box-dis">
                                                       {
-                                                            chooseOrg ? chooseOrg.name : 'Tên doanh nghiệp'
+                                                            chooseOrg ? chooseOrg : 'Tên doanh nghiệp'
                                                       }
                                                 </div>
                                                 <div 
@@ -69,7 +94,7 @@ function Cart(props: any) {
                                                             onClick={() => chooseOrgClick(undefined)}
                                                       >Tất cả</li>
                                                       {
-                                                            listOrg.map(item => (
+                                                            orgs.map((item, index) => (
                                                                   <li
                                                                         style={item === chooseOrg ?
                                                                               {
@@ -80,9 +105,8 @@ function Cart(props: any) {
                                                                               {}
                                                                         }
                                                                         onClick={() => chooseOrgClick(item)}
-                                                                        key={item.id
-                                                                        }
-                                                                  >{item.name}</li>
+                                                                        key={index}
+                                                                  >{item}</li>
                                                             ))
                                                       }
                                                 </ul>
@@ -92,7 +116,7 @@ function Cart(props: any) {
                               <CartList
                                     cartByOrgId={cartByOrgId}
                                     carts={carts}
-                                    listOrg={listOrg}
+                                    listOrg={orgs}
                                     chooseOrg={chooseOrg}
                               />
                         </div>

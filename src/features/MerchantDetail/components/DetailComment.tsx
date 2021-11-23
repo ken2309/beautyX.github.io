@@ -10,8 +10,12 @@ const cmtList = [
       { id: 3, name: 'Vuong Xuan Duy', rateStar: 4, date: '21-11-2021', text: 'Nhân viên tư vấn nhiệt tình , chế độ chăm sóc hậu mãi lâu dài. Sẽ quay lại sử dụng dịch vụ lần sau. ' }
 ]
 function DetailComment(props:any) {
+      const {styleCmt} = props;
       return (
-            <div className="mer-detail__content-cmt">
+            <div
+                  style={{ width: styleCmt?.width }}
+                  className="mer-detail__content-cmt"
+            >
                   <div className="flex-row-sp mer-detail-cmt__head">
                         <span className="flex-row-sp">
                               <SectionTitle
