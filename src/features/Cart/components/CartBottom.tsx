@@ -17,9 +17,9 @@ function CartBottom(props: any) {
       const firstItem = cartConfirm[0];
       const cartFirstList = cartConfirm.filter((item: any) => item.org_id === firstItem.org_id)
       const gotoPayment = () => {
-            if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
-                  history.push('/Payment')
-            }
+            // if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
+            //       history.push('/Payment')
+            // }
       }
       return (
             <div className="cart-bottom">
