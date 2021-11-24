@@ -4,7 +4,8 @@ import icon from '../../../constants/icon';
 import '../../Home/Home.css';
 import {useHistory} from 'react-router-dom';
 import scrollTop from '../../../utils/scrollTop';
-import {Pagination} from '@mui/material'
+import {Pagination} from '@mui/material';
+import Loading from '../../Loading';
 
 const serviceOfCardOrg=[
       {title:'Bãi đỗ xe', text:'100m2', icon: icon.car},
@@ -18,6 +19,7 @@ function Result(props:any) {
             keySearch,
             resultList,
             setChooseItem,
+            loading,
       } = props;
       const pageCount = (resultList.length / 3).toFixed()
       const history = useHistory();
@@ -57,57 +59,60 @@ function Result(props:any) {
                   </div>
                   <ul className="result-detail__org">
                         {
-                              resultList.map((item:any) => (
-                                    <li 
-                                          onMouseEnter={()=>handleChooseItem(item)}
-                                          onClick={()=> gotoDetail(item)}
-                                          key={item.id}
-                                    >
-                                          <div className="result-item">
-                                                <img
-                                                      className="result-item__thumbnail"
-                                                      src={"https://picsum.photos/650/976?random="+item.id}
-                                                      alt=""
-                                                />
-                                                <div className="result-item__detail">
-                                                      <div className="org__detail">
-                                                            <div className="result-item__detail-header">
-                                                                  <span className="org-name">{item.name}</span>
-                                                                  <div className="detail-header__rate">
-                                                                        <span>4.5</span>
-                                                                        <img style={{ marginRight: '8px' }} src={icon.star} alt="" />
-                                                                        <span>500</span>
-                                                                        <img src={icon.chatAll} alt="" />
+                              loading === true ?
+                                    <Loading />
+                                    :
+                                    resultList.map((item: any) => (
+                                          <li
+                                                onMouseEnter={() => handleChooseItem(item)}
+                                                onClick={() => gotoDetail(item)}
+                                                key={item.id}
+                                          >
+                                                <div className="result-item">
+                                                      <img
+                                                            className="result-item__thumbnail"
+                                                            src={"https://picsum.photos/650/976?random=" + item.id}
+                                                            alt=""
+                                                      />
+                                                      <div className="result-item__detail">
+                                                            <div className="org__detail">
+                                                                  <div className="result-item__detail-header">
+                                                                        <span className="org-name">{item.name}</span>
+                                                                        <div className="detail-header__rate">
+                                                                              <span>4.5</span>
+                                                                              <img style={{ marginRight: '8px' }} src={icon.star} alt="" />
+                                                                              <span>500</span>
+                                                                              <img src={icon.chatAll} alt="" />
+                                                                        </div>
+                                                                  </div>
+                                                                  <div
+                                                                        className="result-item__detail-address"
+                                                                  >
+                                                                        <img src={icon.location} alt="" />
+                                                                        <span>{item.full_address}</span>
+                                                                  </div>
+                                                                  <div className="result-item__detail-address">
+                                                                        <img src={icon.time} alt="" />
+                                                                        <span className="time">Đang mở cửa  09.00 - 21.00</span>
                                                                   </div>
                                                             </div>
-                                                            <div 
-                                                                  className="result-item__detail-address"
-                                                            >
-                                                                  <img src={icon.location} alt="" />
-                                                                  <span>{item.full_address}</span>
-                                                            </div>
-                                                            <div className="result-item__detail-address">
-                                                                  <img src={icon.time} alt="" />
-                                                                  <span className="time">Đang mở cửa  09.00 - 21.00</span>
-                                                            </div>
+                                                            <ul className="org__service">
+                                                                  {
+                                                                        serviceOfCardOrg.map((item, index) => (
+                                                                              <li key={index} className="org__service-item">
+                                                                                    <img src={item.icon} alt="" />
+                                                                                    <span>
+                                                                                          <h4>{item.title}</h4>
+                                                                                          <p>{item.text}</p>
+                                                                                    </span>
+                                                                              </li>
+                                                                        ))
+                                                                  }
+                                                            </ul>
                                                       </div>
-                                                      <ul className="org__service">
-                                                            {
-                                                                  serviceOfCardOrg.map((item, index) => (
-                                                                        <li key={index} className="org__service-item">
-                                                                              <img src={item.icon} alt="" />
-                                                                              <span>
-                                                                                    <h4>{item.title}</h4>
-                                                                                    <p>{item.text}</p>
-                                                                              </span>
-                                                                        </li>
-                                                                  ))
-                                                            }
-                                                      </ul>
                                                 </div>
-                                          </div>
-                                    </li>
-                              ))
+                                          </li>
+                                    ))
                         }
                   </ul>
                   <Pagination

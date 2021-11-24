@@ -19,7 +19,8 @@
       filter: drop-shadow(0px 6px 15px #DCD8EE);
       border-radius: 24px;
 }
-.product-cnt__left-tabs .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+.product-cnt__left-tabs .css-1h9z7r5-MuiButtonBase-root-MuiTab-root,
+.product-cnt__left-tabs .css-1q2h7u5{
       color: var(--purple) !important;
       font-size: 18px !important;
       line-height: 20px !important;
@@ -30,7 +31,8 @@
       min-height: unset !important;
       margin-top: 14px !important;
 }
-.product-cnt__left-tabs .css-1aquho2-MuiTabs-indicator{
+.product-cnt__left-tabs .css-1aquho2-MuiTabs-indicator,
+.product-cnt__left-tabs .css-ttwr4n{
       background-color: var(--purple) !important;
 }
 .product-cnt__left-tabs .css-13xfq8m-MuiTabPanel-root{

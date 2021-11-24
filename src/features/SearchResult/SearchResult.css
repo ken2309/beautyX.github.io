@@ -142,10 +142,15 @@
 }
 /* pagination */
 .css-1oj2twp-MuiPagination-root{
-      display: flex;
-      justify-content: center;
+      display: flex !important;
+      justify-content: center !important;
 }
-
+.css-nhb8h9{
+      justify-content: center !important;
+}
+.css-1bnedkx.Mui-selected{
+      background-color: var(--purple) !important;
+}
 .result-pagination{
       width: 100%;
       display: flex;

@@ -5,7 +5,8 @@ import ButtonCus from '../../../components/ButtonCus/index';
 import {useSelector, useDispatch} from 'react-redux';
 import formatPrice from '../../../utils/formatPrice';
 import {useHistory} from 'react-router-dom';
-import CartPopupNoti from './CartPopupNoti'
+import CartPopupNoti from './CartPopupNoti';
+import scrollTop from '../../../utils/scrollTop';
 
 function CartBottom(props: any) {
       const {orgs, chooseOrg, chooseOrgClick} = props;
@@ -21,6 +22,7 @@ function CartBottom(props: any) {
       const cartFirstList = cartConfirm.filter((item: any) => item.org_id === firstItem.org_id)
       const gotoPayment = () => {
             if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
+                  scrollTop();
                   history.push('/Payment')
             }else{
                   setPopUp(true);
