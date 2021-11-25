@@ -5,7 +5,7 @@
 .m-0 {
   margin: 0;
 }
-.mb-16 {
+.mb-tb-8px {
   margin-bottom: 16px;
 }
 .mt-16 {
@@ -16,6 +16,9 @@
 }
 .mt-38 {
   margin-top: 38px;
+}
+.w-100 {
+  width: 100%;
 }
 .MuiFormControl-root {
   width: 100%;
@@ -172,28 +175,16 @@
   cursor: pointer;
 }
 .sign-other-setup {
-  text-align: center;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 20px;
   color: var(--text-hover);
-  text-align: left;
-  width: 100%;
-  white-space: nowrap;
 }
 .sign-other-setup span {
   margin-left: 4px;
   cursor: pointer;
   font-weight: 700;
   color: var(--purple);
-}
-
-.wrapper-name-sex {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  margin-bottom: 16px;
-  gap: 0 16px;
 }
 
 .dialog-forgot__password {
@@ -234,10 +225,10 @@
   letter-spacing: 2px;
   font: large Verdana, sans-serif;
 }
-.sign-form .err-text {
-  margin: 4px 0px 4px 10px;
+.err-text {
+  margin: 6px 0px 0px 10px;
   font-size: 12px;
-  line-height: 26px;
   font-weight: 700;
   color: var(--red-cl);
+  width: 100%;
 }
