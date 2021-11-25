@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import {useLocation} from 'react-router-dom';
 import productsApi from '../../api/productApi';
 import orgApi from '../../api/organizationApi'
@@ -10,9 +10,11 @@ import DetailHead from './components/DetailHead';
 import Footer from '../Footer';
 import RecommendList from '../RecommendList/index';
 import {Product} from '../../interface/product'
+import { AppContext } from '../../context/AppProvider';
 
 function ProductDetail(props:any) {
       const location = useLocation();
+      const { t } = useContext(AppContext);
       const [product, setProduct] = useState({});
       const [products, setProducts] = useState<Product[]>([])
       const [org, setOrg] = useState({})
@@ -49,6 +51,7 @@ function ProductDetail(props:any) {
                   <Container>
                         <div className="product-cnt">
                               <DetailHead
+                                    t={t}
                                     product={product}
                                     org={org}
                               />

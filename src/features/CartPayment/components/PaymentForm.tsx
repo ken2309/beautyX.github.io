@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import icon from '../../../constants/icon';
 import PopupSuccess from '../../PopupSuccess/index'
 import {useFormik} from 'formik';
 import * as Yup from 'yup'
+import { AppContext } from '../../../context/AppProvider';
 
 const phoneFormat = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 function PaymentForm(props: any) {
+      const { t } = useContext(AppContext)
       const { setUserInfo } = props;
       const [popup, setPopup] = useState(false);
       const user = JSON.parse(`${localStorage.getItem('user-payment-wb')}`);
@@ -18,12 +20,12 @@ function PaymentForm(props: any) {
             },
             validationSchema: Yup.object({
                   cus_name: Yup.string()
-                        .required("Vui lòng nhập đầy đủ họ và tên !"),
+                        .required(`${t('pm.please_enter')}${t('pm.full_name')} !`),
                   cus_address: Yup.string()
-                        .required("Vui lòng nhập địa chỉ !"),
+                        .required(`${t('pm.please_enter')}${t('Mer_de.address')} !`),
                   cus_phone: Yup.string()
-                        .matches(phoneFormat, 'Số điện thoại không đúng !')
-                        .required("Vui lòng nhập số điện thoại !")
+                        .matches(phoneFormat, t('pm.phone_invalid'))
+                        .required(`${t('pm.please_enter')}${t('pm.phone_number')} !`)
             }),
             onSubmit: (values: any) => {
                   setUserInfo(values);
@@ -41,7 +43,7 @@ function PaymentForm(props: any) {
                   >
                         <div style={{ width: '100%' }} className="flex-row-sp">
                               <div className="payment-form__left">
-                                    <span>Thông tin thanh toán</span>
+                                    <span>{t('pm.payment_info')}</span>
                                     <div className="flex-row-sp pm-form__top">
                                           <div className="pm-form__top-item">
                                                 <div className="pm-form__top-item_ip">
@@ -51,7 +53,7 @@ function PaymentForm(props: any) {
                                                             value={formik.values.cus_name}
                                                             onChange={formik.handleChange}
                                                             type="text"
-                                                            placeholder="Họ và tên"
+                                                            placeholder={t('pm.full_name')}
                                                       />
                                                 </div>
                                                 {formik.errors.cus_name && formik.touched.cus_name && (
@@ -66,7 +68,7 @@ function PaymentForm(props: any) {
                                                             value={formik.values.cus_phone}
                                                             onChange={formik.handleChange}
                                                             type="text"
-                                                            placeholder="Số điện thoại"
+                                                            placeholder={t('pm.phone_number')}
                                                       />
                                                 </div>
                                                 {formik.errors.cus_phone && formik.touched.cus_phone && (
@@ -82,7 +84,7 @@ function PaymentForm(props: any) {
                                                       value={formik.values.cus_address}
                                                       onChange={formik.handleChange}
                                                       type="text"
-                                                      placeholder="Địa chỉ"
+                                                      placeholder={t('Mer_de.address')}
                                                 />
                                           </div>
                                           {formik.errors.cus_address && formik.touched.cus_address && (
@@ -95,16 +97,16 @@ function PaymentForm(props: any) {
                                           name="cus_note"
                                           value={formik.values.cus_note}
                                           onChange={formik.handleChange}
-                                          placeholder="Ghi chú cho doanh nghiệp"
+                                          placeholder={t('pm.note')}
                                     ></textarea>
                               </div>
                         </div>
-                        <button className="payment-submit" type="submit" >Lưu thông tin</button>
+                        <button className="payment-submit" type="submit" >{t('pm.save_info')}</button>
                   </form>
                   <PopupSuccess
                         popup={popup}
                         setPopup={setPopup}
-                        title="Lưu thông tin thành công"
+                        title={t('pm.save_success')}
                   />
             </>
       );

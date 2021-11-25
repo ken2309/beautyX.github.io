@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
 import SuggestionPush from '../../ServiceDetail/components/SuggestionPush';
 import {addCart} from '../../../redux/cartSlice';
 import {useDispatch} from 'react-redux';
 import PopupSuccess from '../../PopupSuccess/index'
+import { AppContext } from '../../../context/AppProvider';
 
 function DetailCard(props:any) {
       const { product, org } = props;
-      const popupTitle = `Đã thêm ${product.product_name} vào giỏ hàng`
+      const { t } = useContext(AppContext);
+      const popupTitle = `${t('pr.added')} "${product.product_name}" ${t('pr.to_cart')}`
       const dispatch = useDispatch();
       const [sum, setSum] = useState(0);
       const [popup, setPopup] = useState(false);
@@ -38,10 +40,10 @@ function DetailCard(props:any) {
             <div className="product-cnt__right">
                   <div className="product-cnt__right-head">
                         <h2>{product?.product_name}</h2>
-                        <span>{org?.name} | Đang mở cửa</span>
+                        <span>{org?.name} | {t('Search_result.opening')}</span>
                         <div className="flex-row product-cnt__right-head__rate">
                               <span>90</span>
-                              Lượt mua
+                              {t('pr.purchases')}
                               <span>4.5</span>
                               <img src={icon.star} alt="" />
                               <span>250</span>
@@ -50,7 +52,7 @@ function DetailCard(props:any) {
                   </div>
                   <div className="product-cnt__right-body">
                         <div className="product-cnt__right-body-item">
-                              <span>Phân loại</span>
+                              <span>{t('pr.category')}</span>
                               <div className="product-cate">
                                     <div className="product-cate__item">
                                           500ml
@@ -61,7 +63,7 @@ function DetailCard(props:any) {
                               </div>
                         </div>
                         <div className="product-cnt__right-body-item">
-                              <span>Số lượng</span>
+                              <span>{t('pr.quantity')}</span>
                               <div className="flex-row product-quantity">
                                     <button onClick={handleDesc} >-</button>
                                     <div className="product-quantity__number">
@@ -71,8 +73,8 @@ function DetailCard(props:any) {
                               </div>
                         </div>
                         <div className="product-cnt__right-body-item">
-                              <span>Nhập mã giảm giá</span>
-                              <input className="product-code__discount" type="text" placeholder="Nhập mã giảm giá" />
+                              <span>{t('pr.enter_sale_code')}</span>
+                              <input className="product-code__discount" type="text" placeholder={t('pr.enter_sale_code')} />
                         </div>
                         {
                               product.is_product === false ?
@@ -87,7 +89,7 @@ function DetailCard(props:any) {
                   </div>
                   <div className="product-cnt__right-bot">
                         <div className="flex-row-sp product-cnt__right-bot__total">
-                              <span>Tổng cộng</span>
+                              <span>{t('pr.total')}</span>
                               <span>{formatPrice(quantity * product?.retail_price + sum)} đ</span>
                         </div>
                         <div className="flex-row" style={{justifyContent:'flex-end'}}>
@@ -96,7 +98,7 @@ function DetailCard(props:any) {
                                     className="flex-row product-cnt__right-bot__add"
                               >
                                     <img src={icon.ShoppingCartSimple} alt="" />
-                                    Thêm vào giỏ hàng
+                                    {t('pr.add_to_cart')}
                               </button>
                         </div>
                   </div>

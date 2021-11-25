@@ -8,19 +8,20 @@ import { Pagination } from '@mui/material';
 import scrollTop from '../../../utils/scrollTop';
 import {useLocation} from 'react-router-dom'
 
-const buttons = [
-      { id: 1, title: 'Phổ biến' },
-      { id: 2, title: 'Bán chạy' },
-      { id: 3, title: 'Giá thấp' },
-      { id: 4, title: 'Giá cao' }
-]
 const cardStyle = {
       width: '100%'
 }
+interface ActiveFilter { id: number, title: string }
 function ProductList(props: any) {
       const location = useLocation();
-      const {products, setPage,loading, pageLength} = props;
-      const [activeFilter, setActiveFilter] = useState();
+      const { t, products, setPage, loading, pageLength } = props;
+      const buttons = [
+            { id: 1, title: t('Mer_de.popular') },
+            { id: 2, title: t('Mer_de.selling') },
+            { id: 3, title: t('Mer_de.ascending_price') },
+            { id: 4, title: t('Mer_de.decrease_price') }
+      ]
+      const [activeFilter, setActiveFilter] = useState<ActiveFilter>({ id: 0, title: '' });
       const [serviceSort, setServiceSort] = useState<Product[]>([]);
       const [sort, setSort] = useState({
             _sortPrice: products
@@ -28,7 +29,7 @@ function ProductList(props: any) {
       const [searchTerm, setSearchTerm] = useState('')
       const handleSearchOnChange = (e: any) => {
             setSearchTerm(e.target.value)
-            setActiveFilter(undefined)
+            setActiveFilter({ id: 0, title: '' })
       }
       const productFilter = useFilterPro(searchTerm, products)
       useEffect(() => {
@@ -71,11 +72,11 @@ function ProductList(props: any) {
             <div className='ser-list'>
                   <div className="flex-row-sp list-filter">
                         <div className="flex-row list-filter__left">
-                              <span>Sắp xếp theo:</span>
+                              <span>{t('Mer_de.sort_by')}:</span>
                               {
                                     buttons.map(item => (
                                           <button
-                                                style={activeFilter === item ?
+                                                style={activeFilter.id === item.id ?
                                                       { backgroundColor: 'var(--purple)', color: 'var(--bg-gray)' }
                                                       :
                                                       {}
@@ -93,7 +94,7 @@ function ProductList(props: any) {
                                     value={searchTerm}
                                     onChange={handleSearchOnChange}
                                     type="text" 
-                                    placeholder="Tìm theo tên dịch vụ"
+                                    placeholder={t('Mer_de.search_by_product')}
                               />
                               <button><img src={icon.search} alt="" /></button>
                         </div>

@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import formatPrice from '../../../utils/formatPrice';
 import {removeItem, descItem, addCart} from '../../../redux/cartSlice'
+import { AppContext } from '../../../context/AppProvider';
 
 function SuggestionPush(props: any) {
       const { org, product, setSum } = props;
+      const { t } = useContext(AppContext)
       const dispatch = useDispatch();
       const carts = useSelector((state: any) => state.carts);
       const cartItemByOrg = carts.cartList.filter((item: any) =>
@@ -34,7 +36,7 @@ function SuggestionPush(props: any) {
       },[cartItemByOrg])
       return (
             <div className="product-cnt__right-body-item suggest-card">
-                  <span style={{ marginBottom: '18px' }}>Dịch vụ gợi ý đi kèm</span>
+                  <span style={{ marginBottom: '18px' }}>{t('pr.suggestions')}</span>
                   <ul className="suggest-card__list">
                         {
                               cartItemByOrg.map((item: any) => (

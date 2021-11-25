@@ -17,19 +17,20 @@ interface SaleList {
       retail_price: number,
       special_price: number
 }
+interface ActiveBtn { id: number, text: string }
 const cardStyle={
       width:'272px'
 }
-const buttons = [{ id: 1, text: 'Sắp hết hạn' }, { id: 2, text: 'Giảm nhiều' }]
-function DetailSaleList(props:any) {
-      const { merDetail } = props;
+function DetailSaleList(props: any) {
+      const { merDetail, t } = props;
+      const buttons = [{ id: 1, text: t('Mer_de.expiration_soon') }, { id: 2, text: t('Mer_de.a_dramatic_decrease') }]
       const title = `Ưu đãi của "${merDetail?.name}"`;
-      const [activeBtn, setActiveBtn] = useState();
+      const [activeBtn, setActiveBtn] = useState<ActiveBtn>({ id: 0, text: "" });
       const [productSort, setProductSort] = useState<SaleList[]>([]);
       const [sort, setSort] = useState({
             _sortPrice: saleList
       })
-      useEffect(()=>{
+      useEffect(() => {
             async function handleSort(){
                   setProductSort(saleList)
             }
@@ -57,11 +58,11 @@ function DetailSaleList(props:any) {
                               title={title}
                         />
                         <div className="flex-row mer-sale-head__sort">
-                              Sắp xếp theo:
+                              {t('Mer_de.sort_by')}:
                               {
                                     buttons.map((item, index) => (
                                           <button
-                                                style={activeBtn === item ?
+                                                style={activeBtn.id === item.id ?
                                                       { backgroundColor: 'var(--purple)', color: 'var(--bg-gray)' }
                                                       :
                                                       {}}

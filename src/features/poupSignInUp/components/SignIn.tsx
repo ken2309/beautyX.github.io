@@ -5,7 +5,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 
 function SignIn(props:any) {
-      const { activeTabSign, setActiveTabSign } = props;
+      const { activeTabSign, setActiveTabSign, t } = props;
       const [typePass, setTypePass] = useState("password");
       const formik = useFormik({
             initialValues:{
@@ -14,10 +14,10 @@ function SignIn(props:any) {
             },
             validationSchema: Yup.object({
                   userName: Yup.string()
-                        .required('Vui lòng nhập email/số điện thoại'),
+                        .required(t('Home.Sign_val_user')),
                   password: Yup.string()
-                        .min(6, 'Mật khẩu lơn hơn 6 ký tự')
-                        .required('Vui lòng nhập mật khẩu')
+                        .min(6, t('Home.Sign_val_length_pass'))
+                        .required(t('Home.Sign_val_password'))
             }),
             onSubmit: values => {
                   console.log(values);
@@ -38,7 +38,7 @@ function SignIn(props:any) {
                                           value={formik.values.userName}
                                           onChange={formik.handleChange}
                                           type="text"
-                                          placeholder="Email/ Số điện thoại"
+                                          placeholder={t('Home.Sign_in_pl_user_name')}
                                     />
                               </div>
                               {formik.errors.userName && formik.touched.userName && (
@@ -53,7 +53,7 @@ function SignIn(props:any) {
                                           value={formik.values.password}
                                           onChange={formik.handleChange}
                                           type={typePass}
-                                          placeholder="Mật khẩu"
+                                          placeholder={t('Home.Sign_in_pl_password')}
                                     />
                                     <img
                                           onMouseEnter={() => setTypePass("text")}
@@ -67,7 +67,7 @@ function SignIn(props:any) {
                               )}
                         </div>
                         <button type="submit" className="sign-btn">
-                              Đăng nhập
+                              {t('Home.Sign_in')}
                         </button>
                   </form>
                   <div className="flex-row-sp sign-check">
@@ -81,23 +81,23 @@ function SignIn(props:any) {
                                           },
                                     }}
                               />
-                              Ghi nhớ mật khẩu
+                              {t('Home.Sign_remember')}
                         </span>
                         <span>
-                              Quên mật khẩu ?
+                              {t('Home.Sign_forgot')} ?
                         </span>
                   </div>
                   <p className="sign-or">
-                        Hoặc đăng nhập với
+                        {t('Home.Sign_or')}
                   </p>
                   <div className="flex-row sign-other-social">
                         <img src={icon.google} alt="" />
                         <img src={icon.facebook} alt="" />
                   </div>
                   <p className="sign-other-setup">
-                        Bạn chưa có tài khoản
+                        {t('Home.Sign_no_acc')} ?
                         <span onClick={() => setActiveTabSign(2)}>
-                              Đăng ký ngay
+                              {t('Home.Sign_up_now')}
                         </span>
                   </p>
             </div>

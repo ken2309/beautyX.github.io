@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Header from '../Header/index';
 import Footer from '../Footer/index';
-import {Container} from '@mui/material';
+import { Container } from '@mui/material';
 import icon from '../../constants/icon';
 import CartList from './components/CartList';
 import CartBottom from './components/CartBottom'
-import {useSelector, useDispatch} from 'react-redux';
-import {unCheck} from '../../redux/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { unCheck } from '../../redux/cartSlice';
 import scrollTop from '../../utils/scrollTop'
 import './Cart.css'
+import { AppContext } from '../../context/AppProvider';
 
-interface Org{
-      id:number, name:string
+interface Org {
+      id: number, name: string
 }
-const headerTitle="GIỎ HÀNG"
 const isCart: boolean = true
 function Cart(props: any) {
+      const { t } = useContext(AppContext)
+      const headerTitle = t('cart.cart')
       const dispatch = useDispatch();
       const carts = useSelector((state: any) => state.carts);
       const [showOrg, setShowOrg] = useState(false);
@@ -35,7 +37,7 @@ function Cart(props: any) {
       }
       const cartByOrgId = carts.cartList.filter((item: any) => item.org_name === chooseOrg);
       //
-      const listOrg:any[] = [];
+      const listOrg: any[] = [];
       for (var i of carts.cartList) {
             listOrg.push({ id: i.org_id, name: i.org_name })
       }
@@ -45,15 +47,15 @@ function Cart(props: any) {
             }
             orgCart.push(org);
       }
-      function unique(arr:any) {
+      function unique(arr: any) {
             var newArr = []
             for (var i = 0; i < arr.length; i++) {
-              if (newArr.indexOf(arr[i].name) === -1) {
-                newArr.push(arr[i].name)
-              }
+                  if (newArr.indexOf(arr[i].name) === -1) {
+                        newArr.push(arr[i].name)
+                  }
             }
             return newArr
-          }
+      }
       const orgs = unique(orgCart)
       return (
             <div className="cart" >
@@ -66,25 +68,23 @@ function Cart(props: any) {
                               <div className="flex-column cart-notification">
                                     <div className="flex-row cart-notification__header">
                                           <img src={icon.warning} alt="" />
-                                          <span>Lưu ý</span>
+                                          <span>{t('cart.warning')}</span>
                                     </div>
                                     <p>
-                                          Để thuận lơi cho khâu đặt hẹn, quý khách hàng chỉ
-                                          được chọn thanh toán sản phẩm/dịch vụ
-                                          trong cùng một doanh nghiệp
+                                          {t('cart.warning_text')}
                                     </p>
                                     <div className="cart-notification__or">
                                           <div className="flex-row-sp cart-notification__or-box">
                                                 <div className="cart-notification__or-box-dis">
                                                       {
-                                                            chooseOrg ? chooseOrg : 'Tên doanh nghiệp'
+                                                            chooseOrg ? chooseOrg : t('cart.company_name')
                                                       }
                                                 </div>
-                                                <div 
+                                                <div
                                                       onClick={handleShowOrgBox}
-                                                      className="cart-notification__or-box-dr" 
+                                                      className="cart-notification__or-box-dr"
                                                 >
-                                                      <img src={icon.arrowDown} alt=""/>
+                                                      <img src={icon.arrowDown} alt="" />
                                                 </div>
                                           </div>
                                           <div
@@ -94,7 +94,9 @@ function Cart(props: any) {
                                                 <ul>
                                                       <li
                                                             onClick={() => chooseOrgClick(undefined)}
-                                                      >Tất cả</li>
+                                                      >
+                                                            {t('cart.all')}
+                                                      </li>
                                                       {
                                                             orgs.map((item, index) => (
                                                                   <li

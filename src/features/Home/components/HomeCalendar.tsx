@@ -1,33 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img from '../../../constants/img';
 import icon from '../../../constants/icon';
 import SectionTitle from '../../SectionTitle';
+import {AppContext} from '../../../context/AppProvider'
 
-const title = 'Sắp xếp, theo dõi và nhắc nhở lịch hẹn';
-const array = [
-      {
-            icon: icon.miniMapIcon,
-            title: 'Sắp xếp các lịch hẹn',
-            text: 'Bạn sẽ không phải lo việc trùng lịch hẹn khi đặt hẹn tại quá nhiều nơi. Hệ thống sẽ thông báo ngay nếu bạn vô tình chọn nhầm vào khung giờ đã có hẹn'
-      },
-      {
-            icon: icon.miniMapIcon,
-            title: 'Theo dõi lịch hẹn theo ngày, tuần, tháng',
-            text: 'Xem lịch hẹn theo ngày, tuần, tháng sẽ giúp bạn nắm rõ được lịch hẹn và sắp xếp thời gian hợp lý. Cập nhật nhanh nhất các trạng thái đặt hẹn (Đã xác nhận, chưa xác nhận, hoàn thành và hủy hẹn)'
-      },
-      {
-            icon: icon.miniMapIcon,
-            title: 'Thông báo nhắc hẹn khi đến lịch',
-            text: 'Hệ thống sẽ gửi thông báo nhắc hẹn về điện thoại hoặc email để bạn không bị bỏ lỡ bất kỳ buổi hẹn nào.'
-      }
-]
-function HomeCalendar(props:any) {
+function HomeCalendar(props: any) {
+      const { t } = useContext(AppContext)
+      const array = [
+            {
+                  icon: icon.miniMapIcon,
+                  title: t('Home.Ca_title_1'),
+                  text: t('Home.Ca_text_1')
+            },
+            {
+                  icon: icon.miniMapIcon,
+                  title: t('Home.Ca_title_2'),
+                  text: t('Home.Ca_text_2')
+            },
+            {
+                  icon: icon.miniMapIcon,
+                  title: t('Home.Ca_title_3'),
+                  text: t('Home.Ca_text_3')
+            }
+      ]
       return (
             <div className="home-calendar">
-                 <SectionTitle
-                        title = {title}
+                  <SectionTitle
+                        title={t('Home.Ca_title')}
                         textAlign='center'
-                 />
+                  />
                   <div className="home-calendar-content">
                         <ul>
                               {

@@ -4,6 +4,7 @@ import icon from '../../../constants/icon';
 import {category} from '../../../data/category';
 
 function ServiceCate(props: any) {
+      const {t} = props;
       const [activeCate, setActiveCate] = useState();
       const handleActiveCateClick = (cate: any) => {
             setActiveCate(cate)
@@ -13,7 +14,7 @@ function ServiceCate(props: any) {
                   <div className="flex-row">
                         <img src={icon.dashboard} alt="" />
                         <SectionTitle
-                              title="Danh mục"
+                              title={t('Home.Filter_category')}
                         />
                   </div>
                   <div className="ser-category-box">

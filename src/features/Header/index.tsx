@@ -12,6 +12,7 @@ import SectionTitle from '../SectionTitle';
 import Language from './components/Language';
 import {getTotal} from '../../redux/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import {AppContext} from '../../context/AppProvider'
 
 const logged:boolean = true;
 const notification = true;
@@ -21,6 +22,7 @@ const userInfo={
 }
 function Header(props: any) {
       const { isCart, title } = props;
+      const { t } = useContext(AppContext);
       const dispatch = useDispatch();
       const history = useHistory();
       const useStyle = headerStyle();
@@ -64,7 +66,6 @@ function Header(props: any) {
             history.push('/Cart');
       }
       const openLangClick = () => {
-            console.log('object');
             if (openLang === true) {
                   setOpentLang(false)
                   setOpenMenu(false)
@@ -108,13 +109,13 @@ function Header(props: any) {
                   <Container maxWidth="lg">
                         <div className={useStyle.headerContainer}>
                               <ButtonCus
-                                    text={isCart ? 'Trở lại' : 'Trở thành đối tác'}
+                                    text={isCart ? 'Trở lại' : t('Header.1')}
                                     borderRadius='18px'
                                     lineHeight='20px'
                                     color='var(--purple)'
                                     border='solid 1px var(--purple)'
                                     onClick={gotoPartner}
-                                    // onClick={}
+                              // onClick={}
                               />
                               {
                                     isCart ?

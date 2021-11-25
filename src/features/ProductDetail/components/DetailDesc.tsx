@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 import {imgRotate} from '../../../utils/imgRotate'
+import { AppContext } from '../../../context/AppProvider';
 
 function DetailDesc(props:any) {
       const {product} = props;
       const [viewMore, setViewMore] = useState(false);
+      const { t } = useContext(AppContext)
       return (
             <div className="product-desc">
                   <SectionTitle
@@ -29,7 +31,7 @@ function DetailDesc(props:any) {
                         className="flex-row product-desc__more"
                   >
                         <img style={viewMore === true ? imgRotate : {}} src={icon.down} alt="" />
-                        {viewMore === true ? 'Ẩn bớt' : 'Xem thêm'}
+                        {viewMore === true ? t('Mer_de.hide') : t('Mer_de.view_more')}
                   </span>
             </div>
       );

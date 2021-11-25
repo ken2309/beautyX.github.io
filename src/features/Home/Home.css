@@ -22,10 +22,12 @@
       position: relative;
 }
 .home-banner__slogan{
+      text-align: center;
       font-weight: bold;
       font-size: 32px;
       line-height: 36px;
       color: var(--purple);
+      white-space: pre-line;
 }
 .home-banner__slogan p{
       text-align: center;

@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useContext } from 'react';
 import productsApi from '../../api/productApi';
 import ProductCate from './Components/ProductCate'
 import ProductList from './Components/ProductList';
 import { Product } from '../../interface/product';
+import { AppContext } from '../../context/AppProvider';
 
-function ProductByMerchant(props:any) {
-      const {activeTab, mer_id} = props;
+function ProductByMerchant(props: any) {
+      const { t } = useContext(AppContext)
+      const { activeTab, mer_id } = props;
       const [products, setProducts] = useState<Product[]>([]);
       const [loading, setLoading] = useState(false)
       const [page, setPage] = useState(1)
@@ -43,9 +45,11 @@ function ProductByMerchant(props:any) {
                         style={{ alignItems: 'flex-start' }}
                   >
                         <ProductCate
+                              t={t}
                               mer_id={mer_id}
                         />
                         <ProductList
+                              t={t}
                               pageLength={pageLength}
                               loading={loading}
                               products={productsIs}

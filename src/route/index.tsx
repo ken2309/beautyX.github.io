@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Home from "../features/Home/index";
 import SearchResult from "../features/SearchResult/index";
 import { BrowserRouter, Switch, Redirect } from "react-router-dom";
@@ -11,14 +11,16 @@ import Account from "../features/Account";
 import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
 import PopupAppointInfor from "../features/PopupAppointInfor";
+import { AppContext } from "../context/AppProvider";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
 ) => props.pageComponent;
 function RouterConfig(props: any) {
+  const { t } = useContext(AppContext)
   const routes = [
     {
-      path: "/Home",
+      path: `/Home`,
       component: <Home />,
     },
     {
@@ -61,7 +63,7 @@ function RouterConfig(props: any) {
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="/Home" />
+        <Redirect exact from="/" to="home" />
         {routes.map((item, index) => (
           <RouterPage
             key={index}

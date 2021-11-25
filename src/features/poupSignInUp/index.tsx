@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./popupSignInUp.css";
 import img from "../../constants/img";
 import icon from "../../constants/icon";
@@ -6,6 +6,7 @@ import { Slide, Dialog } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import { AppContext } from "../../context/AppProvider";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -15,12 +16,13 @@ const Transition = React.forwardRef(function Transition(
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-const buttons = [
-  { id: 1, title: "Đăng nhập" },
-  { id: 2, title: "Đăng ký" },
-];
 function SignInUp(props: any) {
   const { openSignIn, setOpenSignIn, activeTabSign, setActiveTabSign } = props;
+  const { t } = useContext(AppContext)
+  const buttons = [
+    { id: 1, title: t('Home.Sign_in') },
+    { id: 2, title: t('Home.Sign_up') },
+  ];
   const handleClose = () => {
     setOpenSignIn(false);
   };
@@ -69,6 +71,7 @@ function SignInUp(props: any) {
           <SignIn
             activeTabSign={activeTabSign}
             setActiveTabSign={setActiveTabSign}
+            t={t}
           />
           <SignUp activeTabSign={activeTabSign} />
         </div>

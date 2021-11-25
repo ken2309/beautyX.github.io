@@ -5,21 +5,22 @@ import CardItem from '../../CardItem';
 import ButtonCus from '../../../components/ButtonCus';
 import useSearchTerm from '../../../utils/useSearchTerm'
 
-const buttons = [
-      { id: 1, title: 'Phổ biến' },
-      { id: 2, title: 'Bán chạy' },
-      { id: 3, title: 'Giá thấp' },
-      { id: 4, title: 'Giá cao' }
-]
 const cardStyle = {
       width: '100%'
 }
 interface Services {
       id: number, product_name: string, is_product: boolean, retail_price: number, special_price: number
 }
+interface ActiveFilter { id: number, title: string }
 function ServiceList(props: any) {
-      const { mer_id } = props;
-      const [activeFilter, setActiveFilter] = useState();
+      const { t, mer_id } = props;
+      const buttons = [
+            { id: 1, title: t('Mer_de.popular') },
+            { id: 2, title: t('Mer_de.selling') },
+            { id: 3, title: t('Mer_de.ascending_price') },
+            { id: 4, title: t('Mer_de.decrease_price') }
+      ]
+      const [activeFilter, setActiveFilter] = useState<ActiveFilter>({id:0, title:''});
       const [serviceSort, setServiceSort] = useState<Services[]>([]);
       const [sort, setSort] = useState({
             _sortPrice: listServices
@@ -27,7 +28,7 @@ function ServiceList(props: any) {
       const [searchTerm, setSearchTerm] = useState('')
       const handleSearchOnChange = (e: any) => {
             setSearchTerm(e.target.value)
-            setActiveFilter(undefined)
+            setActiveFilter({id:0, title:''})
       }
       const serviceByFilter = useSearchTerm(searchTerm, listServices);
       useEffect(() => {
@@ -76,7 +77,7 @@ function ServiceList(props: any) {
                               {
                                     buttons.map(item => (
                                           <button
-                                                style={activeFilter === item ?
+                                                style={activeFilter.id === item.id ?
                                                       { backgroundColor: 'var(--purple)', color: 'var(--bg-gray)' }
                                                       :
                                                       {}
@@ -94,7 +95,7 @@ function ServiceList(props: any) {
                                     value={searchTerm}
                                     onChange={handleSearchOnChange}
                                     type="text" 
-                                    placeholder="Tìm theo tên dịch vụ"
+                                    placeholder={t('Mer_de.search_by_service')}
                               />
                               <button><img src={icon.search} alt="" /></button>
                         </div>

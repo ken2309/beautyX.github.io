@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './PopupSuccess.css';
 import icon from '../../constants/icon';
 import { Dialog } from '@mui/material';
 import ButtonCus from '../../components/ButtonCus';
 import {useHistory} from 'react-router-dom'
+import { AppContext } from '../../context/AppProvider';
 
 function PopupSuccess(props: any) {
       const history = useHistory();
+      const {t} = useContext(AppContext)
       const { popup, setPopup, title, useInPayment } = props;
       const handleClose = () => {
             setPopup(false);
@@ -31,7 +33,6 @@ function PopupSuccess(props: any) {
       return (
             <Dialog
                   open={popup}
-                  onClose={() => setPopup(false)}
             >
                   <div className="flex-column pu-success">
                         <img className="pu-success__img" src={icon.success} alt="" />
@@ -46,7 +47,7 @@ function PopupSuccess(props: any) {
                                     <ButtonCus
                                           borderRadius="18px"
                                           margin="16px 16px 0px 0px"
-                                          text="Để sau"
+                                          text={t('pm.later')}
                                           color="var(--purple)"
                                           backColor="var(--bg-color)"
                                           onClick={goBack}
@@ -54,7 +55,7 @@ function PopupSuccess(props: any) {
                                     <ButtonCus
                                           borderRadius="18px"
                                           margin="16px 0px 0px 16px"
-                                          text="Đặt hẹn ngay"
+                                          text={t('pm.booking_now')}
                                           color="var(--bg-color)"
                                           backColor="var(--purple)"
                                           onClick={gotoBooking}

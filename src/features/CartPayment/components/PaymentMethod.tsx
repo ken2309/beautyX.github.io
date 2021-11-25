@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {RadioGroup, FormControlLabel, Radio} from '@mui/material';
 import SectionTitle from '../../SectionTitle';
+import { AppContext } from '../../../context/AppProvider';
 
 function PaymentMethod(props:any) {
+      const {t} = useContext(AppContext)
       const { methodList, value, setValue } = props;
       const handleChange = (event: any) => {
             setValue(event.target.value);
@@ -10,7 +12,7 @@ function PaymentMethod(props:any) {
       return (
             <div>
                   <SectionTitle
-                        title="Chọn phương thức thanh toán"
+                        title={t('pm.choose_payment_method')}
                   />
                   <RadioGroup
                         aria-label="gender"

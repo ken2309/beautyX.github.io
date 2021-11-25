@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CartItem from './CartItem';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
+import { AppContext } from '../../../context/AppProvider';
 
 function CartList(props:any) {
       const {listOrg, chooseOrg, carts, cartByOrgId} = props;
+      const {t} = useContext(AppContext)
       const cartJoin = [];
       for(var org of listOrg){
             // eslint-disable-next-line no-loop-func
@@ -38,14 +40,14 @@ function CartList(props:any) {
                                                 className="flex-row cart-list-item__head"
                                           >
                                                 <img src={icon.box} alt="" />
-                                                Dịch vụ
+                                                {t('Mer_de.services')}
                                           </span>
                                           <div className="flex-row cart-list-item__title">
-                                                <span>Tên dịch vụ</span>
-                                                <span>Số lượng</span>
-                                                <span>Đơn giá</span>
-                                                <span>Thành tiền</span>
-                                                <span>Lựa chọn</span>
+                                                <span>{t('Mer_de.services_name')}</span>
+                                                <span>{t('pr.quantity')}</span>
+                                                <span>{t('cart.unit_price')}</span>
+                                                <span>{t('pr.total')}</span>
+                                                <span>{t('cart.option')}</span>
                                           </div>
                                           <ul className="flex-column">
                                                 {
@@ -62,7 +64,7 @@ function CartList(props:any) {
                                                 className="flex-row cart-list-item__head"
                                           >
                                                 <img src={icon.bag} alt="" />
-                                                Sản phẩm
+                                                {t('Mer_de.products')}
                                           </span>
                                           <ul className="flex-column">
                                                 {

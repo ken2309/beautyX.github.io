@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ButtonCus from '../../../components/ButtonCus';
 import SectionTitle from '../../SectionTitle';
 import SignInUp from '../../poupSignInUp/index'
+import { AppContext } from '../../../context/AppProvider';
 
-const title = 'Đăng ký tài khoản tại Myspa Booking Flatform \n để có trải nghiệm tốt nhất'
 function HomeSignIn(props:any) {
+      const {t} = useContext(AppContext)
       const [openSignIn, setOpenSignIn] = useState(false);
       const [activeTabSign, setActiveTabSign] = useState(1);
       const popupSignInClick=()=>{
@@ -18,13 +19,13 @@ function HomeSignIn(props:any) {
       return (
             <div className="home-sign">
                   <SectionTitle
-                        title={title}
+                        title={t('Home.Sign_tile')}
                         textAlign='center'
                   />
                   <div className="home-sign-button">
                         <ButtonCus
                               onClick={popupSignInClick}
-                              text="Đăng nhập"
+                              text={t('Home.Sign_up')}
                               backColor="var(--purple)"
                               color='var(--bg-gray)'
                               fontSize="20px"
@@ -34,7 +35,7 @@ function HomeSignIn(props:any) {
                         />
                         <ButtonCus
                               onClick={popupSignUpClick}
-                              text="Đăng ký"
+                              text={t('Home.Sign_in')}
                               color='var(--purple)'
                               fontSize="20px"
                               lineHeight='24px'

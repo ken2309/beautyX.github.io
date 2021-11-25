@@ -20,7 +20,7 @@ export const staffList=[
       {avatar:img.nv, name:'Nguyễn Hoàng Phúc', exp:2, position:'Kỹ thuật viên'},
 ]
 function DetailInfo(props:any) {
-      const {merDetail} = props;
+      const {merDetail, t} = props;
       const [showViewMore, setShowViewMore] = useState(false)
       return (
             <div className="mer-detail__content-info">
@@ -41,12 +41,12 @@ function DetailInfo(props:any) {
                                     style={showViewMore === true ? imgRotate : {}}
                                     src={icon.down} alt=""
                               />
-                              {showViewMore === false ? 'Xem thêm' : 'Ẩn bớt'}
+                              {showViewMore === false ? t('Mer_de.view_more') : t('Mer_de.hide')}
                         </span>
                   </div>
                   <div className="mer__content-info__util">
                         <SectionTitle
-                              title="Tiện ích"
+                              title={t('Mer_de.utilities')}
                         />
                         <ul className="mer__content-info__util-list">
                               {
@@ -66,9 +66,10 @@ function DetailInfo(props:any) {
                   </div>
                   <div className="mer__content-info__personnel">
                         <SectionTitle
-                              title="Đội ngũ nhân sự"
+                              title={t('Mer_de.staff')}
                         />
                         <DetailPersonnel
+                              t={t}
                               list={staffList}
                         />
                   </div>

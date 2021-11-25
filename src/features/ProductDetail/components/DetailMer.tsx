@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '../../SectionTitle/index';
 import icon from '../../../constants/icon';
 import ButtonCus from '../../../components/ButtonCus';
@@ -7,11 +7,13 @@ import {staffList} from '../../MerchantDetail/components/DetailInfo'
 import DetailPersonnel from '../../MerchantDetail/components/DetailPersonnel';
 import {useHistory} from 'react-router-dom';
 import scrollTop from '../../../utils/scrollTop';
+import { AppContext } from '../../../context/AppProvider';
 
 function DetailMer(props:any) {
       const { org } = props;
+      const { t } = useContext(AppContext)
       const history = useHistory();
-      const gotoMerDetail=(item:any)=>{
+      const gotoMerDetail = (item: any) => {
             history.push({
                   pathname: `/Merchant-detail/`,
                   search: `id=${org.id}`,
@@ -22,7 +24,7 @@ function DetailMer(props:any) {
       return (
             <div className="pr-de-mer">
                   <SectionTitle
-                        title="Về doanh nghiệp"
+                        title={t('pr.merchant_detail')}
                   />
                   <div className="flex-row-sp pr-de-mer__content">
                         <img
@@ -51,12 +53,12 @@ function DetailMer(props:any) {
                               </div>
                               <div className="flex-row detail-time">
                                     <img src={icon.Clock_purple} alt="" />
-                                    Thời gian mở cửa
+                                    {t('pr.open_time')}
                                     <span>09.00 - 21.00</span>
                               </div>
                               <div className="flex-row detail-btn">
                                     <ButtonCus
-                                          text="Tư vấn"
+                                          text={t('pr.advise')}
                                           fontSize="14px"
                                           lineHeight="20px"
                                           color="var(--bg-gray)"
@@ -66,7 +68,7 @@ function DetailMer(props:any) {
                                     />
                                     <ButtonCus
                                           margin="0px 0px 0px 16px"
-                                          text="Tìm hiểu thêm"
+                                          text={t('pr.looking_for_more_information')}
                                           fontSize="14px"
                                           lineHeight="20px"
                                           color="var(--purple)"
@@ -80,7 +82,7 @@ function DetailMer(props:any) {
                   </div>
                   <div className="mer__content-info__util">
                         <SectionTitle
-                              title="Tiện ích"
+                              title={t('Mer_de.utilities')}
                         />
                         <ul className="mer__content-info__util-list">
                               {
@@ -100,9 +102,10 @@ function DetailMer(props:any) {
                   </div>
                   <div className="mer__content-info__util">
                         <SectionTitle
-                              title="Đội ngũ nhân sự"
+                              title={t('Mer_de.staff')}
                         />
                         <DetailPersonnel
+                              t={t}
                               list={staffList}
                         />
                   </div>
