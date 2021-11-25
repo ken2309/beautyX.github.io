@@ -1,30 +1,30 @@
-import Avatar from '../assets/icon/Avatar.svg';
-import Logo from '../assets/icon/Logo.svg'
-import Menu from '../assets/icon/Menu.svg';
-import ShoppingCartSimple from '../assets/icon/ShoppingCartSimple.svg';
-import Check from '../assets/icon/Check.svg';
-import Check2 from '../assets/icon/Check-2.svg';
-import dotPurple from '../assets/icon/Ellipse 109.svg';
-import next from '../assets/icon/Expand_right.svg';
-import down from '../assets/icon/Expand_down.svg';
-import search from '../assets/icon/Search.svg';
-import down_2 from '../assets/icon/Vector 10.svg';
-import miniMapIcon from '../assets/icon/miniMapIcon.svg';
-import pinMap from '../assets/icon/pinMap.svg';
-import Expand_right_2 from '../assets/icon/Expand_right.svg';
-import star from '../assets/icon/Star_fill.svg';
-import chatAll from '../assets/icon/Chat_alt_fill.svg';
-import location from '../assets/icon/locate.svg';
-import time from '../assets/icon/Time.svg';
-import car from '../assets/icon/CarSimple.svg'
-import bed from '../assets/icon/Bed.svg';
-import door from '../assets/icon/Door.svg';
-import pPrev from '../assets/icon/pPrev.svg';
-import pNext from '../assets/icon/pNext.svg';
-import logoBusiness from '../assets/icon/Logo_cong_ty.svg';
-import phone from '../assets/icon/Phone.png';
-import gps from '../assets/icon/Gps_fixed.png';
-import dashboard from '../assets/icon/darhboard.svg';
+import Avatar from "../assets/icon/Avatar.svg";
+import Logo from "../assets/icon/Logo.svg";
+import Menu from "../assets/icon/Menu.svg";
+import ShoppingCartSimple from "../assets/icon/ShoppingCartSimple.svg";
+import Check from "../assets/icon/Check.svg";
+import Check2 from "../assets/icon/Check-2.svg";
+import dotPurple from "../assets/icon/Ellipse 109.svg";
+import next from "../assets/icon/Expand_right.svg";
+import down from "../assets/icon/Expand_down.svg";
+import search from "../assets/icon/Search.svg";
+import down_2 from "../assets/icon/Vector 10.svg";
+import miniMapIcon from "../assets/icon/miniMapIcon.svg";
+import pinMap from "../assets/icon/pinMap.svg";
+import Expand_right_2 from "../assets/icon/Expand_right.svg";
+import star from "../assets/icon/Star_fill.svg";
+import chatAll from "../assets/icon/Chat_alt_fill.svg";
+import location from "../assets/icon/locate.svg";
+import time from "../assets/icon/Time.svg";
+import car from "../assets/icon/CarSimple.svg";
+import bed from "../assets/icon/Bed.svg";
+import door from "../assets/icon/Door.svg";
+import pPrev from "../assets/icon/pPrev.svg";
+import pNext from "../assets/icon/pNext.svg";
+import logoBusiness from "../assets/icon/Logo_cong_ty.svg";
+import phone from "../assets/icon/Phone.png";
+import gps from "../assets/icon/Gps_fixed.png";
+import dashboard from "../assets/icon/darhboard.svg";
 import Buildings from "../assets/icon/Buildings.svg";
 import Message from "../assets/icon/Message.svg";
 import Phone from "../assets/icon/Phone.svg";
@@ -32,6 +32,9 @@ import Storefront from "../assets/icon/Storefront.svg";
 import User from "../assets/icon/User.svg";
 import User_purple from "../assets/icon/User_box.svg";
 import Location from "../assets/icon/Location.svg";
+import ArrowDownWhite from "../assets/icon/arrow-down-white.svg";
+import SearchWhite from "../assets/icon/search-white.svg";
+
 import Lock from "../assets/icon/Lock.svg";
 import eye from "../assets/icon/Eye.svg";
 import facebook from "../assets/icon/Facebook.svg";
@@ -54,8 +57,12 @@ import Clock_purple from "../assets/icon/ClockCounterClockwise.svg";
 import Bell from "../assets/icon/Bell.svg";
 import Union from "../assets/icon/Union.svg";
 import Headphones_purple from "../assets/icon/Headphones_fill.svg";
-import plus from "../assets/icon/plus.svg"
+import plus from "../assets/icon/plus.svg";
+import success from "../assets/icon/success.png";
+import checkWhite from "../assets/icon/checkWhite.svg";
+
 const icon = {
+  success,
   Avatar,
   Logo,
   Menu,
@@ -112,6 +119,9 @@ const icon = {
   Bell,
   Union,
   Headphones_purple,
-  plus
+  plus,
+  ArrowDownWhite,
+  SearchWhite,
+  checkWhite,
 }
 export default icon;

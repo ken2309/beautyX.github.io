@@ -1,5 +1,5 @@
 /* eslint-disable no-mixed-operators */
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useContext} from 'react';
 import {Container} from '@mui/material';
 import {headerStyle} from './style';
 import img from '../../constants/img';
@@ -20,12 +20,12 @@ const userInfo={
       userAvatar: img.Avatar
 }
 function Header(props: any) {
-      const {isCart, title} = props;
+      const { isCart, title } = props;
       const dispatch = useDispatch();
       const history = useHistory();
       const useStyle = headerStyle();
-      const ref:any = useRef()
-      const res=()=>{
+      const ref: any = useRef()
+      const res = () => {
             console.log('Res')
       }
       const [openNo, setOpenNo] = useState(false);

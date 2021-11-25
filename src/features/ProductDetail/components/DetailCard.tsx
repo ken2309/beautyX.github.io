@@ -3,12 +3,15 @@ import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
 import SuggestionPush from '../../ServiceDetail/components/SuggestionPush';
 import {addCart} from '../../../redux/cartSlice';
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
+import PopupSuccess from '../../PopupSuccess/index'
 
 function DetailCard(props:any) {
       const { product, org } = props;
+      const popupTitle = `Đã thêm ${product.product_name} vào giỏ hàng`
       const dispatch = useDispatch();
       const [sum, setSum] = useState(0);
+      const [popup, setPopup] = useState(false);
       const [quantity, setQuantity] = useState(1)
       const handleDesc = () => {
             if (quantity > 1) {
@@ -27,6 +30,7 @@ function DetailCard(props:any) {
             price: product.special_price < 0 ? product.retail_price : product.special_price
       }
       const handleAddCart = () => {
+            setPopup(true);
             const action = addCart(values);
             dispatch(action);
       }
@@ -96,6 +100,11 @@ function DetailCard(props:any) {
                               </button>
                         </div>
                   </div>
+                  <PopupSuccess
+                        popup={popup}
+                        setPopup={setPopup}
+                        title={popupTitle}
+                  />
             </div>
       );
 }

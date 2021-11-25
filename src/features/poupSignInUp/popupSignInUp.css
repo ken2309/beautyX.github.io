@@ -41,6 +41,13 @@
       width: 100%;
       margin-top: 32px;
 }
+.sign-form p{
+      margin: 4px 0px 4px 10px;
+      font-size: 12px;
+      line-height: 26px;
+      font-weight: 700;
+      color: var(--red-cl);
+}
 .sign-form__box{
       position: relative;
 }
@@ -52,7 +59,6 @@
       width: 100%;
 }
 .sign-form__box input{
-      margin-bottom: 16px;
       border: none;
       outline: none;
       width: 100%;
@@ -68,7 +74,7 @@
 .sign-form__box-icon-show{
       position: absolute;
       right: 0;
-      margin: -43px 10px 0px 0px;
+      margin: -27px 10px 0px 0px;
       cursor: pointer;
 }
 .sign-btn{
@@ -83,7 +89,7 @@
       border-radius: 22px;
 }
 .sign-check{
-      margin-top: -108px;
+      margin-top: -90px;
       position: absolute;
       width: 38%;
 }

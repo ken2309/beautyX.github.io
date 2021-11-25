@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Header/index';
 import './CartPayment.css';
 import {Container} from '@mui/material';
@@ -20,23 +20,38 @@ const PAYMENT_METHOD = [
       { id: 4, img:img.payon , title: 'Thanh toán quan Payon', method: 'PAYMENT_PAYON' },
       { id: 5, img:img.imagePay , title: 'Thanh toán qua Ví Ngân Lượng', method: 'PAYMENT_CL' },
 ]
+interface User {
+      cus_name: string;
+      cus_phone: string;
+      cus_address: string;
+      cus_note: string;
+}
 function CartPayment(props: any) {
       const [value, setValue] = React.useState('');
+      const [userInfo, setUserInfo] = useState<User>();
       const dispatch = useDispatch();
       const carts = useSelector((state: any) => state.carts);
       const list = carts.cartList.filter((item: any) => item.isConfirm === true);
-      useEffect(()=>{
+      useEffect(() => {
             dispatch(getTotal())
-      },[dispatch, carts])
+      }, [dispatch, carts])
+      useEffect(() => {
+            const userPayment = JSON.parse(`${localStorage.getItem('user-payment-wb')}`);
+            if (userPayment) {
+                  setUserInfo(userPayment)
+            }
+      }, [])
       return (
-            <div>
+            <div className="payment">
                   <Header
                         isCart={isCart}
                         title={headerTitle}
                   />
                   <Container>
                         <div className="payment-cnt">
-                              <PaymentForm/>
+                              <PaymentForm
+                                    setUserInfo={setUserInfo}
+                              />
                               <PaymentCart
                                     list={list}
                               />
@@ -48,9 +63,11 @@ function CartPayment(props: any) {
                         </div>
                   </Container>
                   <PaymentTotal
+                        userInfo={userInfo}
                         value={value}
                         methodList={PAYMENT_METHOD}
                         carts={carts}
+                        list={list}
                   />
                   <Footer/>
             </div>

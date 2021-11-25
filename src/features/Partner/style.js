@@ -1,21 +1,42 @@
 import { makeStyles } from "@mui/styles";
-export const partnerStyle = makeStyles({
+export const partnerStyle = makeStyles((theme) => ({
   container: {
     height: "100%",
     margin: "0 auto",
-    width: "1200px",
+    maxWidth: "1232px",
+  },
+  errText: {
+    marginTop: "-8px",
+    marginBottom: "10px",
+    fontStyle: "italic",
+    fontSize: "14px",
+    lineHeight: "20px",
+    color: "red",
   },
   partner: {
-    paddingTop: "64px",
+    padding: "64px 15px 64px 15px",
     backgroundColor: "var(--bg-gray)",
+    "@media (max-width: 768px)": {
+      maxWidth: "100%",
+    },
   },
   content: {
     display: "flex",
     justifyContent: "center",
     gap: "0 44px",
+    "@media (max-width: 768px), (max-width: 1024px)": {
+      flexDirection: "column",
+      padding: "0 16px 0 16px",
+      alignItems: "center",
+      gap: "24px 0",
+    },
   },
   partnerInfor: {
     maxWidth: "670px",
+    "@media (max-width: 768px), (max-width: 1024px)": {
+      flexDirection: "column",
+      maxWidth: "100%",
+    },
   },
   partnerTitle: {
     fontStyle: "normal",
@@ -61,10 +82,13 @@ export const partnerStyle = makeStyles({
     marginBottom: "16px",
   },
   partnerRegis: {
-    maxWidth: "100%",
+    maxWidth: "calc( 100% - 670px )",
     boxShadow: "0px 6px 15px #DCD8EE",
     borderRadius: "24px",
     height: "max-content",
+    "@media (max-width: 768px), (max-width: 1024px)": {
+      maxWidth: "100%",
+    },
   },
   partnerRegisTitle: {
     fontFamily: "Quicksand",
@@ -133,4 +157,4 @@ export const partnerStyle = makeStyles({
     justifyContent: "center",
     padding: "14px 0 36px 0",
   },
-});
+}));
