@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '../../SectionTitle/index'
 import img from '../../../constants/img'
+import { AppContext } from '../../../context/AppProvider';
 
-const title='Hàng ngàn đối tác \n là các thương hiệu spa uy tín trong và ngoài nước'
-function HomeMap(props:any) {
+function HomeMap(props: any) {
+      const { t } = useContext(AppContext)
       return (
             <div className="home-map">
                   <SectionTitle
-                        title={title}
+                        title={t('Home.Mini_map_title')}
                         textAlign='center'
                   />
-                  <img src={img.mapCustomer} alt=""/>
+                  <img src={img.mapCustomer} alt="" />
             </div>
       );
 }

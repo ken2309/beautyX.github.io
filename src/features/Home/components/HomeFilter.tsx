@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ButtonCus from '../../../components/ButtonCus/index';
 import icon from '../../../constants/icon';
 import HomeFilterForm from './HomeFilterForm';
-import {useHistory} from 'react-router-dom'
+import { AppContext } from '../../../context/AppProvider'
+import { useHistory } from 'react-router-dom'
 
-function HomeFilter(props:any) {
-      const {styleFilter} = props;
+function HomeFilter(props: any) {
+      const { styleFilter } = props;
+      const { t } = useContext(AppContext);
       const history = useHistory();
       const [searchText, setSearchText] = useState("");
-      const handleOnSearchChange=(e:any)=>{
+      const handleOnSearchChange = (e: any) => {
             setSearchText(e.target.value)
       }
-      const handleSearchClick=()=>{
+      const handleSearchClick = () => {
             // history.push(`/Search-result/${searchText}`)
             history.push({
                   pathname: "/Search-result/",
@@ -32,9 +34,9 @@ function HomeFilter(props:any) {
                         <input 
                               onChange={handleOnSearchChange}
                               value={searchText}
-                              className="input-search" 
+                              className="input-search"
                               type="text"
-                              placeholder='Tên doanh nghiệp/Sản phẩm/Dịch vụ'
+                              placeholder={t('Home.Filter_form_input')}
                         />
                         <ButtonCus
                               disabled={searchText.length === 0 ? true : false}

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import icon from '../../../constants/icon';
 import ButtonCus from '../../../components/ButtonCus/index';
-import {useHistory} from 'react-router-dom'
+import { AppContext } from '../../../context/AppProvider'
+import { useHistory } from 'react-router-dom'
 
-const categories=[
-      {id: 1, name:'Danh mục 1'},
-      {id: 2, name:'Danh mục 2'},
-      {id: 3, name:'Danh mục 3'}
+const categories = [
+      { id: 1, name: 'Danh mục 1' },
+      { id: 2, name: 'Danh mục 2' },
+      { id: 3, name: 'Danh mục 3' }
 ]
 const locals = [
       { id: 1, province_code: 11, name: 'Vị trí 1' },
@@ -22,13 +23,14 @@ interface ChooseLocal {
       province_code: number,
       name:string
 }
-function HomeFilterForm(props:any) {
+function HomeFilterForm(props: any) {
       const history = useHistory();
+      const { t } = useContext(AppContext);
       const [chooseCate, setChooseCate] = useState<ChooseCate>({ id: 0, name: '' });
       const [chooseLocal, setChooseLocal] = useState<ChooseLocal>({ id: 0, province_code: 0, name: '' })
       const [openCate, setOpenCate] = useState(false)
       const [openLocal, setOpenLocal] = useState(false)
-      const openCateClick=()=>{
+      const openCateClick = () => {
             if(openCate === true){
                   setOpenCate(false);
             }else{
@@ -74,7 +76,7 @@ function HomeFilterForm(props:any) {
                                     <div className="filter-form__item-left">
                                           <img src={icon.Menu} alt="" />
                                           <span>
-                                                {chooseCate.name.length === 0 ? 'Danh mục' : chooseCate.name}
+                                                {chooseCate.name.length === 0 ? t('Home.Filter_category') : chooseCate.name}
                                           </span>
                                     </div>
                                     <img src={icon.down_2} alt="" />
@@ -111,7 +113,7 @@ function HomeFilterForm(props:any) {
                                     <div className="filter-form__item-left">
                                           <img src={icon.Menu} alt="" />
                                           <span>
-                                                {chooseLocal.name.length === 0 ? 'Khu vực' : chooseLocal.name}
+                                                {chooseLocal.name.length === 0 ? t('Home.Filter_location') : chooseLocal.name}
                                           </span>
                                     </div>
                                     <img src={icon.down_2} alt="" />
@@ -144,14 +146,14 @@ function HomeFilterForm(props:any) {
                               <div className="filter-form__item">
                                     <div className="filter-form__item-left">
                                           <img src={icon.Menu} alt="" />
-                                          <span>Danh mục</span>
+                                          <span>{t('Home.Filter_price')}</span>
                                     </div>
                                     <img src={icon.down_2} alt="" />
                               </div>
                         </li>
                   </ul>
                   <ButtonCus
-                        text='Tìm kiếm ngay'
+                        text={t('Home.Filter_search_title')}
                         fontSize='20px'
                         lineHeight='24px'
                         color='var(--bg-color)'

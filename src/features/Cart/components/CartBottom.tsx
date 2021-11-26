@@ -1,15 +1,17 @@
-import React,{useEffect, useState} from 'react';
-import {Container} from '@mui/material';
-import {getTotal} from '../../../redux/cartSlice'
+import React, { useContext, useEffect, useState } from 'react';
+import { Container } from '@mui/material';
+import { getTotal } from '../../../redux/cartSlice'
 import ButtonCus from '../../../components/ButtonCus/index';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import formatPrice from '../../../utils/formatPrice';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import CartPopupNoti from './CartPopupNoti';
 import scrollTop from '../../../utils/scrollTop';
+import { AppContext } from '../../../context/AppProvider';
 
 function CartBottom(props: any) {
-      const {orgs, chooseOrg, chooseOrgClick} = props;
+      const { orgs, chooseOrg, chooseOrgClick } = props;
+      const { t } = useContext(AppContext)
       const dispatch = useDispatch();
       const history = useHistory();
       const [popUp, setPopUp] = useState(false)
@@ -24,7 +26,7 @@ function CartBottom(props: any) {
             if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
                   scrollTop();
                   history.push('/Payment')
-            }else{
+            } else {
                   setPopUp(true);
             }
       }
@@ -33,13 +35,13 @@ function CartBottom(props: any) {
                   <Container>
                         <div className="flex-row cart-bottom__content">
                               <span>
-                                    Tổng thanh toán ({carts.cartQuantity} sản phẩm)
+                                    {t('cart.total_payment')} ({carts.cartQuantity} {t('Mer_de.services')}/{t('Mer_de.products')})
                               </span>
                               <span>
                                     {formatPrice(carts.cartAmount)} đ
                               </span>
                               <ButtonCus
-                                    text="Mua hàng"
+                                    text={t('cart.payment_now')}
                                     fontSize="14px"
                                     lineHeight="20px"
                                     color="var(--purple)"

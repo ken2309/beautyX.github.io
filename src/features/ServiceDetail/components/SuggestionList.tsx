@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
 import {Service} from '../../../interface/service';
 import {useDispatch} from 'react-redux';
 import {addCart} from '../../../redux/cartSlice'
+import { AppContext } from '../../../context/AppProvider';
 
 function SuggestionList(props:any) {
       const dispatch = useDispatch();
+      const {t} = useContext(AppContext)
       const {listServices, product, org } = props;
       const suggestions = listServices.filter((item: any) => item.id !== product.id)
       const arr: Service[] = []
@@ -29,9 +31,9 @@ function SuggestionList(props:any) {
       console.log(arr);
       return (
             <div className="suggest-cnt">
-                  <SectionTitle title="Gợi ý đi kèm" />
+                  <SectionTitle title={t('pr.recommend')} />
                   <span className="suggest-cnt__title">
-                        Hãy chọn thêm những sản phẩm/dịch vụ khác phù hợp với bạn
+                        {t('pr.re_text')}
                   </span>
                   <ul className="suggest-cnt__list">
                         {
@@ -58,7 +60,7 @@ function SuggestionList(props:any) {
                                                       <div className="flex-row-sp suggest-cnt__list-tem__bot">
                                                             <div className="flex-row">
                                                                   <span>200</span>
-                                                                  lượt mua
+                                                                  {t('pr.purchases')}
                                                                   <span>4.5</span>
                                                                   <img src={icon.star} alt="" />
                                                                   69

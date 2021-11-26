@@ -11,12 +11,12 @@ const images=[
       {url:img.slider4},
 ]
 function DetailHead(props:any) {
-      const { merDetail, activeTab, setActiveTab } = props;
-      const [heightSlider, setHeightSlider]= useState(0);
+      const { t, merDetail, activeTab, setActiveTab } = props;
+      const [heightSlider, setHeightSlider] = useState(0);
       const slider = useRef(null);
       const infoBox = useRef(null);
-      const {width} = useElementSize(slider);
-      const {height} = useElementSize(infoBox)
+      const { width } = useElementSize(slider);
+      const { height } = useElementSize(infoBox)
       const [follow, setFollow] = useState(false);
       useEffect(()=>{
             setHeightSlider(height)
@@ -44,7 +44,7 @@ function DetailHead(props:any) {
                                           <div className="content-left__info-detail">
                                                 <img src={icon.location} alt="" />
                                                 <span>
-                                                      <h5>Địa chỉ</h5>
+                                                      <h5>{t('Mer_de.address')}</h5>
                                                       {merDetail?.full_address}
                                                 </span>
                                           </div>
@@ -53,22 +53,22 @@ function DetailHead(props:any) {
                                           <div className="content-left__info-detail">
                                                 <img src={icon.time} alt="" />
                                                 <span>
-                                                      <h5>Lịch làm việc</h5>
+                                                      <h5>{t('Mer_de.time_work')}</h5>
                                                 </span>
                                           </div>
                                     </div>
                                     <div className="content-left__work">
                                           <div className="content-left__work-item">
-                                                <span>Thứ 2 - Thứ 7</span>
+                                                <span>{t('Mer_de.weeks_day')}</span>
                                                 <p>09.00 - 21.00</p>
                                           </div>
                                           <div className="content-left__work-item">
-                                                <span>Thứ 2 - Thứ 7</span>
+                                                <span>{t('Mer_de.sunday')}</span>
                                                 <p>09.00 - 21.00</p>                                          
                                           </div>
                                     </div>
                                     <div className="content-left__follow">
-                                          <button>Liên hệ tư vấn</button>
+                                          <button>{t('Mer_de.contact')}</button>
                                           <button
                                                 style={
                                                       follow === true ?
@@ -81,7 +81,7 @@ function DetailHead(props:any) {
                                                 }
                                                 onClick={() => setFollow(!follow)}
                                           >
-                                                {follow === true ? 'Đang theo dõi' : 'Theo dõi'}
+                                                {follow === true ? t('Mer_de.flowing') : t('Mer_de.flow')}
                                           </button>
                                     </div>
                               </div>
@@ -98,6 +98,7 @@ function DetailHead(props:any) {
                               </div>
                         </div>
                         <DetailTab
+                              t={t}
                               setActiveTab={setActiveTab}
                               activeTab={activeTab}
                         />

@@ -5,7 +5,7 @@ import categoryApi from '../../../api/categoryApi';
 import {Category} from '../../../interface/category'
 
 function ProductCate(props:any) {
-      const { mer_id } = props;
+      const { mer_id, t } = props;
       const [activeCate, setActiveCate] = useState();
       const [categories, setCategories] = useState<Category[]>([]);
       const handleActiveCateClick = (cate: any) => {
@@ -25,7 +25,7 @@ function ProductCate(props:any) {
                   <div className="flex-row">
                         <img src={icon.dashboard} alt="" />
                         <SectionTitle
-                              title="Danh mục"
+                              title={t('Home.Filter_category')}
                         />
                   </div>
                   <div className="ser-category-box">

@@ -1,32 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import img from '../../../constants/img';
+import { AppContext } from '../../../context/AppProvider';
 import SectionTitle from '../../SectionTitle';
 
-const title = 'Ngoài ra, khi sử dụng Booking Flatform Myspa bạn còn có thể'
+
 function HomeFlatForm(props:any) {
+      const {t} = useContext(AppContext)
       return (
             <div className="home-flatform">
                   <SectionTitle
-                        title={title}
+                        title={t('Home.Flat_form')}
                         textAlign="center"
                   />
                   <div className="home-flatform__content">
                         <div className="flatform-card">
                               <img src={img.flatform1} alt="" />
                               <div>
-                                    Lưu thông tin doanh nghiệp bạn từng ghé đến và thông tin của bạn tại doanh nghiệp đó bao gồm (Tên, số điểm tích được, số dư, hạng,...)
+                                    {t('Home.Flat_form_item_1')}
                               </div>
                         </div>
                         <div className="flatform-card">
                               <img src={img.flatform1} alt="" />
                               <div>
-                                    Lưu thông tin doanh nghiệp bạn từng ghé đến và thông tin của bạn tại doanh nghiệp đó bao gồm (Tên, số điểm tích được, số dư, hạng,...)
+                                    {t('Home.Flat_form_item_2')}
                               </div>
                         </div>
                         <div className="flatform-card">
                               <img src={img.flatform1} alt="" />
                               <div>
-                                    Lưu thông tin doanh nghiệp bạn từng ghé đến và thông tin của bạn tại doanh nghiệp đó bao gồm (Tên, số điểm tích được, số dư, hạng,...)
+                                    {t('Home.Flat_form_item_3')}
                               </div>
                         </div>
                   </div>

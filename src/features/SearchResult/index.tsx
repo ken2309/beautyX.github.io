@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Header from '../Header/index';
 import './SearchResult.css'
 import {useLocation} from 'react-router-dom';
@@ -8,8 +8,10 @@ import {Container} from '@mui/material';
 import Footer from '../Footer/index';
 import {Organization} from '../../interface/organization';
 import orgApi from '../../api/organizationApi';
+import { AppContext } from '../../context/AppProvider';
 
 function SearchResult(props:any) {
+      const {t} = useContext(AppContext)
       const location = useLocation();
       const [chooseItem, setChooseItem] = useState();
       const params = location.search.slice(8, location.search.length)
@@ -37,6 +39,7 @@ function SearchResult(props:any) {
                   <Container>
                         <div className="result-content">
                               <Result
+                                    t={t}
                                     keySearch={keySearch}
                                     resultList={orgs}
                                     setChooseItem={setChooseItem}

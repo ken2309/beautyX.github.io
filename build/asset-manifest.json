@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.5459ef8f.chunk.css",
-    "main.js": "/static/js/main.8cf1facf.chunk.js",
-    "main.js.map": "/static/js/main.8cf1facf.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.60b4b519.js",
-    "runtime-main.js.map": "/static/js/runtime-main.60b4b519.js.map",
-    "static/js/2.00af2513.chunk.js": "/static/js/2.00af2513.chunk.js",
-    "static/js/2.00af2513.chunk.js.map": "/static/js/2.00af2513.chunk.js.map",
-    "static/js/3.86399366.chunk.js": "/static/js/3.86399366.chunk.js",
-    "static/js/3.86399366.chunk.js.map": "/static/js/3.86399366.chunk.js.map",
+    "main.css": "/static/css/main.ae10864f.chunk.css",
+    "main.js": "/static/js/main.b2686e33.chunk.js",
+    "main.js.map": "/static/js/main.b2686e33.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b5f1f805.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b5f1f805.js.map",
+    "static/js/2.99464052.chunk.js": "/static/js/2.99464052.chunk.js",
+    "static/js/2.99464052.chunk.js.map": "/static/js/2.99464052.chunk.js.map",
+    "static/js/3.cb5044cd.chunk.js": "/static/js/3.cb5044cd.chunk.js",
+    "static/js/3.cb5044cd.chunk.js.map": "/static/js/3.cb5044cd.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.5459ef8f.chunk.css.map": "/static/css/main.5459ef8f.chunk.css.map",
-    "static/js/2.00af2513.chunk.js.LICENSE.txt": "/static/js/2.00af2513.chunk.js.LICENSE.txt",
+    "static/css/main.ae10864f.chunk.css.map": "/static/css/main.ae10864f.chunk.css.map",
+    "static/js/2.99464052.chunk.js.LICENSE.txt": "/static/js/2.99464052.chunk.js.LICENSE.txt",
     "static/media/Arrow_drop_down.5354c622.svg": "/static/media/Arrow_drop_down.5354c622.svg",
     "static/media/Avatar.6b4385ae.svg": "/static/media/Avatar.6b4385ae.svg",
     "static/media/Bag_alt.84df585f.svg": "/static/media/Bag_alt.84df585f.svg",
@@ -61,8 +61,10 @@
     "static/media/Vector 10.e90f7c22.svg": "/static/media/Vector 10.e90f7c22.svg",
     "static/media/Wallet_alt.d9262249.svg": "/static/media/Wallet_alt.d9262249.svg",
     "static/media/Warning.7d5d1a70.svg": "/static/media/Warning.7d5d1a70.svg",
+    "static/media/arrow-down-white.0eabb3a7.svg": "/static/media/arrow-down-white.0eabb3a7.svg",
     "static/media/bath.2c517234.png": "/static/media/bath.2c517234.png",
     "static/media/camera.943c2a12.svg": "/static/media/camera.943c2a12.svg",
+    "static/media/checkWhite.c11f2455.svg": "/static/media/checkWhite.c11f2455.svg",
     "static/media/crown.4960893c.svg": "/static/media/crown.4960893c.svg",
     "static/media/darhboard.2036a39b.svg": "/static/media/darhboard.2036a39b.svg",
     "static/media/en.4814bd13.svg": "/static/media/en.4814bd13.svg",
@@ -82,12 +84,13 @@
     "static/media/pinMap.6b73bd52.svg": "/static/media/pinMap.6b73bd52.svg",
     "static/media/plus.96b1cacb.svg": "/static/media/plus.96b1cacb.svg",
     "static/media/schedule.fab3997a.png": "/static/media/schedule.fab3997a.png",
+    "static/media/search-white.915258ca.svg": "/static/media/search-white.915258ca.svg",
     "static/media/vi.7e63937a.svg": "/static/media/vi.7e63937a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.60b4b519.js",
-    "static/js/2.00af2513.chunk.js",
-    "static/css/main.5459ef8f.chunk.css",
-    "static/js/main.8cf1facf.chunk.js"
+    "static/js/runtime-main.b5f1f805.js",
+    "static/js/2.99464052.chunk.js",
+    "static/css/main.ae10864f.chunk.css",
+    "static/js/main.b2686e33.chunk.js"
   ]
 }

@@ -6,7 +6,7 @@ import icon from '../../../constants/icon';
 import img from '../../../constants/img';
 import branchApi from '../../../api/branchApi';
 function DetailBranchList(props: any) {
-      const { mer_id } = props;
+      const { mer_id, t } = props;
       const [branches, setBranches] = useState([]);
       useEffect(()=>{
             async function handleGetBranches(){
@@ -26,7 +26,7 @@ function DetailBranchList(props: any) {
       return (
             <div>
                   <SectionTitle
-                        title="Danh sách chi nhánh"
+                        title={t('Mer_de.list_branch')}
                   />
                   <div className="mer-branch-box">
                         <div className="mer-branch-box__map">
@@ -37,7 +37,7 @@ function DetailBranchList(props: any) {
                         </div>
                         <div className="mer-branch-box__branch">
                               <div className="flex-row-sp mer-branch-box__branch-search">
-                                    <input type="text" placeholder="Tìm chi nhánh theo khu vực gần bạn..."/>
+                                    <input type="text" placeholder={t('Mer_de.search_by_location')}/>
                                     <button><img src={icon.search} alt="" /></button>
                               </div>
                               <div className="mer-branch-box__branch-wrapper">
@@ -57,11 +57,11 @@ function DetailBranchList(props: any) {
                                                                   <div className="flex-row-sp branch-item__option">
                                                                         <span className="flex-column-sp">
                                                                               <img src={icon.gps} alt="" />
-                                                                              Chỉ đường
+                                                                              {t('Mer_de.direct')}
                                                                         </span>
                                                                         <span className="flex-column-sp">
                                                                               <img src={icon.phone} alt="" />
-                                                                              Liên hệ
+                                                                              {t('Mer_de.contact_2')}
                                                                         </span>
                                                                   </div>
                                                             </div>

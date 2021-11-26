@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '../../SectionTitle';
 import img from '../../../constants/img';
 import icon from '../../../constants/icon';
+import { AppContext } from '../../../context/AppProvider';
 
-const title = 'Dễ dàng xem xét và chọn lựa \n sản phẩm, dịch vụ, địa điểm làm đẹp ưng ý';
-const miniCards=[
-      {icon: icon.miniMapIcon, text:'Tìm kiếm chính xác nhu cầu của bạn với bộ lọc nâng cao theo danh mục, vị trí và khoảng giá mong muốn'},
-      {icon: icon.miniMapIcon, text:'Cung cấp cho bạn thông tin chi tiết của các doanh nghiệp như: hình ảnh, địa chỉ, đánh giá, thời gian làm việc,...'},
-      {icon: icon.miniMapIcon, text:'Thể hiện vị trí doanh nghiệp trên bản đồ, đồng thời chỉ đường cho bạn đến nơi làm đẹp bạn mong muốn'}
-
-]
+//const title = 'Dễ dàng xem xét và chọn lựa \n sản phẩm, dịch vụ, địa điểm làm đẹp ưng ý';
 function HomeMiniMap(props: any) {
+      const { t } = useContext(AppContext)
+      const miniCards = [
+            { icon: icon.miniMapIcon, text: t('Home.Mini_map_item_1') },
+            { icon: icon.miniMapIcon, text: t('Home.Mini_map_item_2') },
+            { icon: icon.miniMapIcon, text: t('Home.Mini_map_item_3') }
+
+      ]
       return (
             <div className="home-mini-map">
                   <SectionTitle
-                        title={title}
+                        title={t('Home.Mini_map_title_1')}
                         textAlign='center'
                   />
                   <div className="home-mini-map__content">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {useLocation} from 'react-router-dom';
 import Header from '../Header/index';
 import './MerchantDetail.css';
@@ -11,9 +11,11 @@ import ServiceByMerchant from '../ServiceByMerchant/index';
 import ProductByMerchant from '../ProductByMerchant/index';
 import Footer from '../Footer';
 import orgApi from '../../api/organizationApi';
+import {AppContext} from '../../context/AppProvider'
 
 const id_tab = 1;
-function MerchantDetail(props:any) {
+function MerchantDetail(props: any) {
+      const { t } = useContext(AppContext)
       const location = useLocation();
       const mer_id = location.search.slice(4, location.search.length);
       const [org, setOrg] = useState({})
@@ -35,6 +37,7 @@ function MerchantDetail(props:any) {
             <div>
                   <Header />
                   <DetailHead
+                        t={t}
                         merDetail={org}
                         setActiveTab={setActiveTab}
                         activeTab={activeTab}
@@ -43,13 +46,16 @@ function MerchantDetail(props:any) {
                         <Container>
                               <div style={id_tab === activeTab ? { display: 'block' } : { display: 'none' }} >
                                     <DetailMer
+                                          t={t}
                                           merDetail={org}
                                     />
                                     <DetailBranchList
+                                          t={t}
                                           mer_id={mer_id}
                                           org={org}
                                     />
                                     <DetailSaleList
+                                          t={t}
                                           merDetail={org}
                                     />
                               </div>

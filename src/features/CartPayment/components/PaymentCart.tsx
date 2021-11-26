@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 import CartItem from '../../Cart/components/CartItem';
+import { AppContext } from '../../../context/AppProvider';
 
 function PaymentCart(props: any) {
+      const { t } = useContext(AppContext)
       const inPayment: boolean = true
       const { list } = props;
       const org_name = list[0].org_name;
@@ -16,13 +18,13 @@ function PaymentCart(props: any) {
                         className="flex-row cart-list-item__head"
                   >
                         <img src={icon.box} alt="" />
-                        Dịch vụ
+                        {t('Mer_de.services')}
                   </span>
                   <div className="flex-row cart-list-item__title">
-                        <span>Tên dịch vụ</span>
-                        <span style={{ width: '16.67%' }} >Số lượng</span>
-                        <span style={{ width: '16.67%' }} >Đơn giá</span>
-                        <span style={{ width: '16.67%' }} >Thành tiền</span>
+                        <span>{t('Mer_de.services_name')}</span>
+                        <span style={{ width: '16.67%' }} >{t('pr.quantity')}</span>
+                        <span style={{ width: '16.67%' }} >{t('cart.unit_price')}</span>
+                        <span style={{ width: '16.67%' }} >{t('pr.total')}</span>
                   </div>
                   <ul className="flex-column">
                         {
@@ -39,7 +41,7 @@ function PaymentCart(props: any) {
                         className="flex-row cart-list-item__head"
                   >
                         <img src={icon.bag} alt="" />
-                        Sản phẩm
+                        {t('Mer_de.products')}
                   </span>
                   <ul className="flex-column">
                         {

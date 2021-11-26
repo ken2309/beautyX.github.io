@@ -11,18 +11,19 @@ import HomeCalendar from "./components/HomeCalendar";
 import HomeFlatForm from "./components/HomeFlatForm";
 import HomeSignIn from "./components/HomeSignIn";
 import Footer from "../Footer/index";
-import Test from '../translation'
+import HomeLoggedCalendar from "./components/HomeLoggedCalendar";
 
 const logged: boolean = false;
 function Home(props: any) {
   return (
     <div className="home">
       <Header />
-      <Test/>
       <Container>
         <HomeBanner />
-        {logged === true ? (
-          <></>
+        {logged === false ? (
+          <>
+            <HomeLoggedCalendar />
+          </>
         ) : (
           <>
             <HomeMap />

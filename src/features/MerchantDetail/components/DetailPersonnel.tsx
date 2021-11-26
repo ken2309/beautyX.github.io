@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ButtonCus from '../../../components/ButtonCus';
 import icon from '../../../constants/icon';
+import {AppContext} from '../../../context/AppProvider'
 
 function DetailPersonnel(props: any) {
       const { list } = props;
+      const { t } = useContext(AppContext)
       return (
             <>
                   <ul className="flex-row-sp mer__content-info__personnel-list">
                         {
-                              list.map((item: any, index:any) => (
+                              list.map((item: any, index: any) => (
                                     <li key={index}>
                                           <div className="flex-row-sp mer__content-info__personnel-item">
                                                 <img src={item.avatar} alt="" />
@@ -17,7 +19,7 @@ function DetailPersonnel(props: any) {
                                                       <div className="flex-row-sp info__personnel-detail">
                                                             <div>
                                                                   <h4>
-                                                                        Chuyên môn
+                                                                        {t('Mer_de.specialized')}
                                                                   </h4>
                                                                   <p>
                                                                         {item.position}
@@ -25,10 +27,10 @@ function DetailPersonnel(props: any) {
                                                             </div>
                                                             <div>
                                                                   <h4>
-                                                                        Năm kinh nghiệm
+                                                                        {t('Mer_de.experience')}
                                                                   </h4>
                                                                   <p>
-                                                                        {item.exp} Năm
+                                                                        {item.exp} {t('Mer_de.year')}
                                                                   </p>
                                                             </div>
                                                       </div>
@@ -39,7 +41,7 @@ function DetailPersonnel(props: any) {
                         }
                   </ul>
                   <ButtonCus
-                        text="Xem tất cả nhân sự"
+                        text={t('Mer_de.view_all_staff')}
                         imgIcon={icon.next}
                         color="var(--purple)"
                         border="solid 1px var(--purple)"

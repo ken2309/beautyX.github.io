@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Header from '../Header/index';
 import './CartPayment.css';
 import {Container} from '@mui/material';
@@ -10,14 +10,14 @@ import PaymentTotal from './components/PaymentTotal';
 import Footer from '../Footer/index';
 import img from '../../constants/img';
 import {getTotal} from '../../redux/cartSlice'
+import { AppContext } from '../../context/AppProvider';
 
 const isCart: boolean = true;
-const headerTitle="THANH TOÁN"
 const PAYMENT_METHOD = [
       { id: 1, img:img.money , title: 'Thanh toán tại cơ sở', method: 'PAYMENT_IN_BRANCH' },
       { id: 2, img:img.cardAtm , title: 'Thanh toán bằng thẻ ATM và tài khoản ngân hàng', method: 'PAYMENT_ATM' },
       { id: 3, img:img.creditMachine , title: 'Thanh toán bằng thẻ quốc tế Visa/Master/JCB', method: 'PAYMENT_VISA' },
-      { id: 4, img:img.payon , title: 'Thanh toán quan Payon', method: 'PAYMENT_PAYON' },
+      { id: 4, img:img.payon , title: 'Thanh toán qua Payon', method: 'PAYMENT_PAYON' },
       { id: 5, img:img.imagePay , title: 'Thanh toán qua Ví Ngân Lượng', method: 'PAYMENT_CL' },
 ]
 interface User {
@@ -27,6 +27,8 @@ interface User {
       cus_note: string;
 }
 function CartPayment(props: any) {
+      const { t } = useContext(AppContext)
+      const headerTitle=t('pm.payment')
       const [value, setValue] = React.useState('');
       const [userInfo, setUserInfo] = useState<User>();
       const dispatch = useDispatch();

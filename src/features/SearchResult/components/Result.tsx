@@ -7,26 +7,26 @@ import scrollTop from '../../../utils/scrollTop';
 import {Pagination} from '@mui/material';
 import Loading from '../../Loading';
 
-const serviceOfCardOrg=[
-      {title:'Bãi đỗ xe', text:'100m2', icon: icon.car},
-      {title:'Giường', text:'80', icon: icon.bed},
-      {title:'Phòng', text:'190', icon: icon.door},
-      {title:'Sức chứa', text:'106 người', icon: icon.car},
-]
-
 function Result(props:any) {
       const {
+            t,
             keySearch,
             resultList,
             setChooseItem,
             loading,
       } = props;
+      const serviceOfCardOrg = [
+            { title: t('Search_result.parking'), text: '100m2', icon: icon.car },
+            { title: t('Search_result.bed'), text: '80', icon: icon.bed },
+            { title: t('Search_result.room'), text: '190', icon: icon.door },
+            { title: t('Search_result.capacity'), text: '106 người', icon: icon.car },
+      ]
       const pageCount = (resultList.length / 3).toFixed()
       const history = useHistory();
-      const handleChooseItem =(item:any)=>{
+      const handleChooseItem = (item: any) => {
             setChooseItem(item);
       }
-      const gotoDetail=(item:any)=>{
+      const gotoDetail = (item: any) => {
             history.push({
                   pathname: `/Merchant-detail/`,
                   search: `id=${item.id}`,
@@ -44,13 +44,13 @@ function Result(props:any) {
                         <div className="result-detail__result">
                               <h3>"{keySearch}"</h3>
                               <span className="result-detail__result-total">
-                                    có <span>212</span> kết quả tìm kiếm
+                                    <span>212</span> {t('Search_result.text_result')}
                               </span>
                         </div>
                         <div className="result-detail__path">
-                              <span>Trang chủ</span>
+                              <span>{t('Search_result.text_home')}</span>
                               <img src={icon.Expand_right_2} alt="" />
-                              <span>Tìm kiếm</span>
+                              <span>{t('Search_result.text_search')}</span>
                               <img src={icon.Expand_right_2} alt="" />
                               <span>Tp. Hồ Chí Minh</span>
                               <img src={icon.Expand_right_2} alt="" />
@@ -93,7 +93,7 @@ function Result(props:any) {
                                                                   </div>
                                                                   <div className="result-item__detail-address">
                                                                         <img src={icon.time} alt="" />
-                                                                        <span className="time">Đang mở cửa  09.00 - 21.00</span>
+                                                                        <span className="time">{t('Search_result.opening')}  09.00 - 21.00</span>
                                                                   </div>
                                                             </div>
                                                             <ul className="org__service">
