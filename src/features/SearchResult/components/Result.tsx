@@ -14,6 +14,8 @@ function Result(props:any) {
             resultList,
             setChooseItem,
             loading,
+            totalItem,
+            setCurPage
       } = props;
       const serviceOfCardOrg = [
             { title: t('Search_result.parking'), text: '100m2', icon: icon.car },
@@ -21,7 +23,7 @@ function Result(props:any) {
             { title: t('Search_result.room'), text: '190', icon: icon.door },
             { title: t('Search_result.capacity'), text: '106 người', icon: icon.car },
       ]
-      const pageCount = (resultList.length / 3).toFixed()
+      const pageCount = Math.ceil(totalItem / 3)
       const history = useHistory();
       const handleChooseItem = (item: any) => {
             setChooseItem(item);
@@ -34,12 +36,14 @@ function Result(props:any) {
             })
             scrollTop();
       }
-      const pageChange=()=>{
-            
+      const pageChange = (event: any, value: any) => {
+            setCurPage(value)
       }
       return (
             <div className='result-detail'>
-                  <HomeFilter/>
+                  <HomeFilter
+                        setCurPage={setCurPage}
+                  />
                   <div className="result-detail__title">
                         <div className="result-detail__result">
                               <h3>"{keySearch}"</h3>
@@ -118,7 +122,7 @@ function Result(props:any) {
                   <Pagination
                         color='secondary'
                         shape="rounded"
-                        count={parseInt(pageCount)}
+                        count={pageCount}
                         onChange={pageChange}
                   />
             </div>

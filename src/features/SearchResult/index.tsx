@@ -18,11 +18,17 @@ function SearchResult(props:any) {
       const keySearch = decodeURI(params)
       const [loading, setLoading] = useState(false);
       const [orgs, setOrgs] = useState<Organization[]>([])
+      const [totalItem, setTotalItem] = useState()
+      const [curPage, setCurPage] = useState(1)
       useEffect(() => {
             async function handleGetOrgs() {
                   setLoading(true)
                   try {
-                        const res = await orgApi.getOrgByKeyword(keySearch);
+                        const res = await orgApi.getOrgByKeyword({
+                              page: curPage,
+                              keySearch: keySearch
+                        });
+                        setTotalItem(res.data.context.total);
                         setOrgs(res.data.context.data);
                         setLoading(false);
                   } catch (err) {
@@ -30,7 +36,7 @@ function SearchResult(props:any) {
                   }
             }
             handleGetOrgs()
-      }, [keySearch])
+      }, [keySearch, curPage])
       return (
             <div style={{
                   backgroundColor: 'var(--bg-gray)'
@@ -41,6 +47,8 @@ function SearchResult(props:any) {
                               <Result
                                     t={t}
                                     keySearch={keySearch}
+                                    totalItem={totalItem}
+                                    setCurPage={setCurPage}
                                     resultList={orgs}
                                     setChooseItem={setChooseItem}
                                     loading={loading}

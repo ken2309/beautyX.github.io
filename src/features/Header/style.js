@@ -208,6 +208,7 @@ export const headerStyle = makeStyles({
             fontWeight:'500'
       },
       menuLangItem:{
+            cursor:'pointer',
             fontSize: '.875rem',
             letterSpacing: '.2px',
             position: 'relative',
@@ -228,11 +229,12 @@ export const headerStyle = makeStyles({
             display: 'flex',
       },
       national:{
+            cursor:'pointer',
             flexBasis: '50%',
             maxWidth: '50%',
             borderRight:'1px solid #d6d6d6',
             padding: '0 0.5rem',
-            '& a':{
+            '& div':{
                   display: 'flex',
                   marginBottom: '0.5rem',
                   fontSize: '1rem',
@@ -333,5 +335,13 @@ export const headerStyle = makeStyles({
             top: '3.7rem',
             opacity: '1',
             visibility: 'visible'
+      },
+      changeLangBtn:{
+            // backgroundColor:'var(--purple)',
+            // display:'flex',
+            // padding:'10px 0px',
+            // fontSize:'16px',
+            // lineHeight:'20px',
+            // fontWeight:'700'
       }
 })

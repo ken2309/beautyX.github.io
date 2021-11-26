@@ -22,32 +22,32 @@ function Menu(props:any) {
                   <ul>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
-                                    <img src={icon.ShoppingCartSimple} alt="" />
+                                    <img src={icon.User_purple} alt="" />
                                     <span className={menu.menuItemText}>Tài khoản của tôi</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
-                                    <img src={icon.ShoppingCartSimple} alt="" />
-                                    <span className={menu.menuItemText}>Tài khoản của tôi</span>
+                                    <img src={icon.Credit_card} alt="" />
+                                    <span className={menu.menuItemText}>Phương thức thanh toán</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
-                                    <img src={icon.ShoppingCartSimple} alt="" />
-                                    <span className={menu.menuItemText}>Tài khoản của tôi</span>
+                                    <img src={icon.Clock_purple} alt="" />
+                                    <span className={menu.menuItemText}>Lịch sử đơn hàng</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
-                                    <img src={icon.ShoppingCartSimple} alt="" />
-                                    <span className={menu.menuItemText}>Tài khoản của tôi</span>
+                                    <img src={icon.Ticket} alt="" />
+                                    <span className={menu.menuItemText}>Danh sách mã ưu đãi</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
-                                    <img src={icon.ShoppingCartSimple} alt="" />
-                                    <span className={menu.menuItemText}>Tài khoản của tôi</span>
+                                    <img src={icon.Bell} alt="" />
+                                    <span className={menu.menuItemText}>Thông báo</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
@@ -56,7 +56,7 @@ function Menu(props:any) {
                                     className={menu.menuItemDrop}
                               >
                                     <div className={menu.menuItemContent}>
-                                          <img src={icon.ShoppingCartSimple} alt="" />
+                                          <img src={icon.Setting} alt="" />
                                           <span className={menu.menuItemText}>Cài đặt</span>
                                     </div>
                                     <img src={icon.down} alt="" />
@@ -77,8 +77,8 @@ function Menu(props:any) {
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
-                                    <img src={icon.ShoppingCartSimple} alt="" />
-                                    <span className={menu.menuItemText}>Tài khoản của tôi</span>
+                                    <img src={icon.Headphones_purple} alt="" />
+                                    <span className={menu.menuItemText}>Hỗ trợ</span>
                               </div>
                         </li>
                   </ul>

@@ -1,135 +1,247 @@
-.css-1t1j96h-MuiPaper-root-MuiDialog-paper{
-      max-width: unset !important;
+/* .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  width: 70% !important;
+  max-width: unset !important;
+} */
+.m-0 {
+  margin: 0;
 }
-.sign-content{
-      padding: 36px;
-      background-color: var(--bg-color);
+.mb-tb-8px {
+  margin-bottom: 16px;
 }
-.sign-content__left{
-      width: 50%;
-      padding-right: 36px;
+.mt-16 {
+  margin-top: 16px;
 }
-.sign-content__left-partner{
-      width: 100%;
+.mt-48 {
+  margin-top: 48px;
 }
-.sign-content__right{
-      width: 50%;
-      background-color: var(--bg-gray);
-      border-radius: 24px;
-      box-shadow: 0px 6px 15px #DCD8EE;
-      padding: 36px;
+.mt-38 {
+  margin-top: 38px;
 }
-.sign-content__right-tab{
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.w-100 {
+  width: 100%;
 }
-.sign-content__right-tab button{
-      font-size: 20px;
-      line-height: 24px;
-      font-weight: 700;
-      color: var(--text-hover);
-      padding-bottom: 6px;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      margin: 0px 12px;
-      transition: 0.4s;
+.MuiFormControl-root {
+  width: 100%;
 }
-.sign-form{
-      position: relative;
-      width: 100%;
-      margin-top: 32px;
+.MuiFormControlLabel-root {
+  margin: 0 !important;
+  padding: 0 !important;
 }
-.sign-form p{
-      margin: 4px 0px 4px 10px;
-      font-size: 12px;
-      line-height: 26px;
-      font-weight: 700;
-      color: var(--red-cl);
+.MuiFormGroup-root {
+  flex-wrap: nowrap !important;
 }
-.sign-form__box{
-      position: relative;
+.MuiFormControlLabel-label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
-.sign-form__box-icon{
-      position: absolute;
-      margin: 7px 0px 0px 16px;
+.MuiPaper-root {
+  max-width: unset !important;
+  border-radius: 24px !important;
 }
-.sign-form__box{
-      width: 100%;
+.sign-content {
+  padding: 36px;
+  background-color: var(--bg-color);
+  gap: 0 36px;
+  width: 1020px;
 }
-.sign-form__box input{
-      border: none;
-      outline: none;
-      width: 100%;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-      color: var(--purple);
-      padding: 8px 24px 8px 44px;
-      border-radius: 18px;
-      background-color: var(--bg-gray);
-      box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+.sign-content__left {
+  width: 45%;
 }
-.sign-form__box-icon-show{
-      position: absolute;
-      right: 0;
-      margin: -27px 10px 0px 0px;
-      cursor: pointer;
+.sign-content__left-partner {
+  width: 100%;
 }
-.sign-btn{
-      margin-top: 48px;
-      font-size: 20px;
-      line-height: 24px;
-      color: var(--bg-gray);
-      outline: none;
-      border: none;
-      padding: 10px 16px;
-      background-color: var(--purple);
-      border-radius: 22px;
+.sign-content__left-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  color: var(--purple);
+  padding: 24px 0;
 }
-.sign-check{
-      margin-top: -90px;
-      position: absolute;
-      width: 38%;
+.sign-content__right {
+  width: 55%;
+  background-color: var(--bg-gray);
+  border-radius: 24px;
+  box-shadow: 0px 6px 15px #dcd8ee;
+  padding: 36px;
 }
-.sign-check span{
-      font-weight: 500;
-      font-size: 11px;
-      line-height: 12px;
-      color: var(--text-black);
+.sign-content__right-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.sign-check span:nth-child(2){
-      color: var(--purple);
-      cursor: pointer;
+.sign-content__right-tab button {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--text-hover);
+  padding-bottom: 6px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  margin: 0px 12px;
+  transition: 0.4s;
 }
-.sign-or{
-      margin-top: 32px;
-      text-align: center;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-      color: var(--text-hover);
+.signIn-checkbox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
-.sign-other-social{
-      width: 100%;
-      justify-content: center;
-      margin: 16px 0px;
+.signIn-checkbox span {
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--purple);
+  font-weight: 500;
+  cursor: pointer;
 }
-.sign-other-social img{
-      margin: 0px 8px;
-      cursor: pointer;
+.signIn-checkbox__wrap {
+  display: flex;
+  align-items: center;
 }
-.sign-other-setup{
-      text-align: center;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-      color: var(--text-hover);
+.signIn-checkbox__wrap span {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--text-black);
 }
-.sign-other-setup span{
-      margin-left: 4px;
-      cursor: pointer;
-      font-weight: 700;
-      color: var(--purple);
+.sign-form {
+  position: relative;
+  width: 100%;
+  margin-top: 32px;
+}
+.sign-form__box {
+  position: relative;
+}
+.sign-form__box-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.sign-form__box {
+  width: 100%;
+}
+.sign-form__box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--purple);
+  padding: 8px 24px 8px 44px;
+  border-radius: 18px;
+  background-color: var(--bg-gray) !important;
+  box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+}
+.sign-form__box-icon-show {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.sign-btn {
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--bg-gray);
+  outline: none;
+  border: none;
+  padding: 10px 16px;
+  background-color: var(--purple);
+  border-radius: 22px;
+}
+
+.sign-or {
+  margin-top: 32px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-hover);
+}
+.sign-other-social {
+  width: 100%;
+  justify-content: center;
+  margin: 16px 0px;
+}
+.sign-other-social img {
+  margin: 0px 8px;
+  cursor: pointer;
+}
+.sign-other-setup {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--text-hover);
+}
+.sign-other-setup span {
+  margin-left: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.dialog-forgot__password {
+  padding: 36px;
+  background-color: var(--bg-gray);
+}
+.dialog-forgot__password .errText {
+  margin: unset;
+  margin-top: 6px;
+}
+.dialog-forgot__password h2 {
+  /* padding: 36px; */
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
+  color: var(--purple);
+  text-align: center;
+  padding-bottom: 8px;
+}
+.dialog-forgot__password-desc {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+  padding-bottom: 32px;
+  text-align: center;
+}
+.dialog-forgot__password-btn {
+  display: flex;
+  justify-content: center;
+  gap: 0 16px;
+  padding-top: 32px;
+}
+.input-Verification {
+  padding: unset !important;
+  padding: 8px 0 !important;
+  text-align: center;
+  letter-spacing: 2px;
+  font: large Verdana, sans-serif;
+}
+.err-text {
+  margin: 6px 0px 0px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--red-cl);
+  width: 100%;
+}
+/* Tablet */
+@media only screen and (min-width: 740px) and (max-width: 1023px){
+  .sign-content{
+    padding: 0px;
+    width: 100%;
+  }
+  .sign-content__left{
+    display: none;
+  }
+  .sign-content__right{
+    width: 100%;
+  }
 }

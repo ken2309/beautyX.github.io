@@ -156,6 +156,22 @@
             "booking_now": "Booking now"
       },
       "url": {
-            "home": "home"
+            "home": "home",
+            "search":"/search/"
+      },
+      "booking": {
+            "booking_info": "Booking information",
+            "choose_service":"Please select the service",
+            "choose_service_name":"Choose service",
+            "date":"Date",
+            "time":"Time",
+            "branch":"Branch",
+            "staff":"Implementation staff",
+            "optional":"Optional",
+            "search_staff":"Search by employee name...",
+            "accept":"Accept",
+            "success":"Appointment successful",
+            "review":"You can review products/services \n and book an appointment",
+            "here":"here"
       }
 }

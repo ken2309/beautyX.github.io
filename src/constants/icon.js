@@ -60,6 +60,8 @@ import Headphones_purple from "../assets/icon/Headphones_fill.svg";
 import plus from "../assets/icon/plus.svg";
 import success from "../assets/icon/success.png";
 import checkWhite from "../assets/icon/checkWhite.svg";
+import Calendar from "../assets/icon/Calendar.svg";
+import Setting from "../assets/icon/Setting_line.svg";
 
 const icon = {
   success,
@@ -123,5 +125,7 @@ const icon = {
   ArrowDownWhite,
   SearchWhite,
   checkWhite,
-}
+  Calendar,
+  Setting
+};
 export default icon;

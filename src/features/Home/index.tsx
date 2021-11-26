@@ -19,18 +19,20 @@ function Home(props: any) {
       <Header />
       <Container>
         <HomeBanner />
-        {logged === true ? (
-          <></>
-        ) : (
-          <>
-            <HomeMap />
-            <HomeMiniMap />
-            <HomeOrder />
-            <HomeCalendar />
-            <HomeFlatForm />
-            <HomeSignIn />
-          </>
-        )}
+        {logged === true ?
+          (
+            <></>
+          ) : (
+            <>
+              <HomeMap />
+              <HomeMiniMap />
+              <HomeOrder />
+              <HomeCalendar />
+              <HomeFlatForm />
+              <HomeSignIn />
+            </>
+          )
+        }
       </Container>
       <Footer />
     </div>
