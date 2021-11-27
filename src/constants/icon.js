@@ -61,8 +61,15 @@ import plus from "../assets/icon/plus.svg";
 import success from "../assets/icon/success.png";
 import checkWhite from "../assets/icon/checkWhite.svg";
 import Calendar from "../assets/icon/Calendar.svg";
+import onedot from "../assets/icon/onedot.svg";
+import TicketHome from "../assets/icon/TicketHome.svg";
+import CloseRing from "../assets/icon/close_ring.svg";
+import Info from "../assets/icon/Info.svg";
 
 const icon = {
+  Info,
+  CloseRing,
+  TicketHome,
   success,
   Avatar,
   Logo,
@@ -125,5 +132,6 @@ const icon = {
   SearchWhite,
   checkWhite,
   Calendar,
+  onedot,
 };
 export default icon;

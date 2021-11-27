@@ -17,7 +17,7 @@ const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
 ) => props.pageComponent;
 function RouterConfig(props: any) {
-  const { t } = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const routes = [
     {
       path: `/Home`,

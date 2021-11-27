@@ -12,6 +12,9 @@ import HomeFlatForm from "./components/HomeFlatForm";
 import HomeSignIn from "./components/HomeSignIn";
 import Footer from "../Footer/index";
 import HomeLoggedCalendar from "./components/HomeLoggedCalendar";
+import HomeLoggedLocation from "./components/HomeLoggedLocation";
+import HomeLoggedProduct from "./components/HomeLoggedProduct";
+import HomeLoggedForYou from "./components/HomeLoggedForYou";
 
 const logged: boolean = false;
 function Home(props: any) {
@@ -20,9 +23,12 @@ function Home(props: any) {
       <Header />
       <Container>
         <HomeBanner />
-        {logged === false ? (
+        {logged === true ? (
           <>
             <HomeLoggedCalendar />
+            <HomeLoggedLocation />
+            <HomeLoggedProduct />
+            <HomeLoggedForYou />
           </>
         ) : (
           <>
