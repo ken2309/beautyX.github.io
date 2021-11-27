@@ -321,12 +321,13 @@ export const headerStyle = makeStyles({
                               transition: 'all .3s'
                         }
                   },
-                  active:{
+                  "& a.active":{
                         "&:after":{
                               opacity: '1',
                               visibility: 'visible'
                         }
                   }
+                  
             }
       },
       popoverOpened:{
