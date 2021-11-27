@@ -1,4 +1,4 @@
-import Title from "./components/PaymentMethod";
+import Title from "./components/Combolist";
 import "./style.css";
 function Payment(props:any) {
     return(
