@@ -1,4 +1,7 @@
 /* title */
+img {
+  user-select: none;
+}
 .title-home {
   font-size: 32px;
   line-height: 36px;
@@ -10,6 +13,7 @@
 /* home */
 .home {
   background-color: var(--bg-gray);
+  overflow: hidden;
 }
 .color-purple {
   color: var(--purple);
@@ -306,12 +310,12 @@
 }
 .homelogged-calendar__content {
   background-color: var(--purple);
-  padding-bottom: 64px;
+  padding: 64px 0;
 }
 .homelogged-calendar__wrap {
   display: flex;
   width: 100%;
-  gap: 0 30px;
+  gap: 0 36px;
   padding-top: 36px;
 }
 .homelogged-calendar .section-title {
@@ -323,24 +327,224 @@
   width: 30%;
   display: flex;
   flex-direction: column;
-  gap: 30px 0;
+  gap: 24px 0;
 }
 .homelogged-calendar__right {
   width: 70%;
   background-color: var(--bg-gray);
   border-radius: 30px;
 }
+/* calendar left */
+.week-active {
+  background: #f5f5f7;
+  box-shadow: 0px 6px 15px #dcd8ee;
+  border-radius: 8px;
+}
 .calendar-choosedate {
   width: 100%;
-  height: 400px;
   background-color: var(--bg-gray);
   border-radius: 30px;
+  padding: 36px;
 }
+.calendar-mounth {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  user-select: none;
+}
+.calendar-mounth__time {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--text-black);
+}
+.calendar-mounth__prev {
+  position: absolute;
+  left: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.calendar-mounth__next {
+  position: absolute;
+  right: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.week-container,
+.day-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+}
+.week-container {
+  padding-top: 32px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--purple);
+}
+.week-cell,
+.day-cell {
+  flex: 0 0 calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--text-black);
+}
+.week-cell {
+  color: #7161ba;
+  font-weight: 500;
+
+  user-select: none;
+}
+.day-cell {
+  color: #3b3a40;
+  display: flex;
+  flex-direction: column-reverse;
+  cursor: pointer;
+  user-select: none;
+}
+.day-cell--faded {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: #a2a1ab;
+  pointer-events: none;
+  user-select: none;
+}
+.day-cell--today {
+  border-radius: 8px;
+  border: 1px solid var(--purple);
+  color: var(--purple);
+}
+.border-none {
+  border: none;
+}
+/* homelogged calender right */
+.week-container__right {
+  box-shadow: 0px 6px 15px #dcd8ee;
+  border-radius: 8px;
+  padding: 12px 0;
+}
+.week-container__right .week-cell {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+  color: var(--text-black);
+}
+.homelogged-calendar__right .day-cell--faded {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+.week-day__right {
+  font-size: 20px;
+  line-height: 24px;
+}
+.calendar-appointment {
+  display: grid;
+  gap: 0 24px;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar-appointment__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px 0;
+  padding-top: 24px;
+}
+.calendar-appointment__item {
+  border-left: 2px solid var(--purple);
+}
+.calendar-appointment__item p {
+  margin-left: 4px;
+}
+.calendar-appointment__item p:nth-child(1) {
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 12px;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+.calendar-appointment__item p:nth-child(2) {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+  margin-bottom: 24px;
+}
+.calendar-appointment__item p:nth-child(3) {
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 12px;
+  color: #84828c;
+}
+/* status dot in calendar */
+.status-dots {
+  display: flex;
+  gap: 0 2px;
+  justify-content: center;
+}
+.status-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  display: none;
+}
+.status-dot-green {
+  background-color: #7fc128;
+}
+.status-dot-purple {
+  background-color: #7161ba;
+}
+.status-dot-blue {
+  background-color: #0faff6;
+}
+.status-dot-red {
+  background-color: #ee6955;
+}
+/* status */
 .calendar-status {
   width: 100%;
-  height: 250px;
   background-color: var(--bg-gray);
   border-radius: 30px;
+  padding: 36px;
+}
+.calendar-status__title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--purple);
+  padding-bottom: 24px;
+}
+.calendar-status__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0;
+  padding-top: 24px;
+}
+.calendar-status__item {
+  display: flex;
+  gap: 0 8px;
+  align-items: center;
+}
+.calendar-status .calendar-status__list .calendar-status__item span {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+}
+.dot-active .status-dot {
+  display: flex;
 }
 /* homelogged location */
 .homelogged-location {
@@ -356,9 +560,10 @@
   display: flex;
   gap: 0 36px;
 }
-.homelogged-location__item {
-}
+/* .homelogged-location__item {
+} */
 .item-top {
+  cursor: pointer;
 }
 .item-top__img {
   width: 376px;
@@ -387,10 +592,17 @@
   font-size: 20px;
   line-height: 24px;
   color: var(--text-black);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 .item-top__content-rate {
   display: flex;
   gap: 0 11.63px;
+  flex-shrink: 0;
 }
 .rate-left,
 .rate-right {
@@ -621,6 +833,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 .item-img {
   width: 100%;
@@ -659,6 +872,7 @@
   font-size: 14px;
   line-height: 20px;
   color: var(--purple);
+  padding-top: 8px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -727,9 +941,15 @@
 }
 .dead-line {
   display: flex;
+  padding-top: 8px;
   gap: 0 4px;
   font-weight: bold;
   font-size: 11px;
   line-height: 12px;
   color: #ee6955;
+}
+
+/* homelogged calendar right */
+.homelogged-calendar__right {
+  padding: 36px;
 }

@@ -1,18 +1,22 @@
 import React from "react";
 import icon from "../../../constants/icon";
 
-export default function HomeLoggedForYouItem() {
+interface IHomeLoggedForYouItem {
+  name: string;
+  desc: string;
+}
+
+export default function HomeLoggedForYouItem(props: IHomeLoggedForYouItem) {
+  const { name, desc } = props;
   return (
     <div className="homelogged-product__item">
       <div className="item-img">
         <img src="https://source.unsplash.com/random" alt="" />
       </div>
       <div className="item-content">
-        <span className="item-content__title">
-          Massage Thái Lan, giảm đau xương khớp
-        </span>
+        <span className="item-content__title">{name}</span>
         <div className="item-content__info">
-          <span className="item-content__info-name">Bay Spa & Massage</span>
+          <span className="item-content__info-name">{desc}</span>
           <div className="price-rate__wrap">
             <div className="price">
               <span>300.000</span>

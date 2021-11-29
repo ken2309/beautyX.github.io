@@ -65,8 +65,16 @@ import onedot from "../assets/icon/onedot.svg";
 import TicketHome from "../assets/icon/TicketHome.svg";
 import CloseRing from "../assets/icon/close_ring.svg";
 import Info from "../assets/icon/Info.svg";
+import Exclude from "../assets/icon/Exclude.svg";
+import Exclude2 from "../assets/icon/Exclude2.svg";
+import Exclude3 from "../assets/icon/Exclude3.svg";
+import Exclude4 from "../assets/icon/Exclude4.svg";
 
 const icon = {
+  Exclude,
+  Exclude2,
+  Exclude3,
+  Exclude4,
   Info,
   CloseRing,
   TicketHome,

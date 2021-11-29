@@ -23,7 +23,7 @@ function Home(props: any) {
       <Header />
       <Container>
         <HomeBanner />
-        {logged === true ? (
+        {logged === false ? (
           <>
             <HomeLoggedCalendar />
             <HomeLoggedLocation />

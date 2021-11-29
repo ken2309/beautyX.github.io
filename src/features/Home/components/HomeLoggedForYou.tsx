@@ -5,19 +5,23 @@ import HomeLoggedProductSelector from "./HomeLoggedProductSelector";
 const dataProduct = [
   {
     id: 1,
-    name: "Spa 1",
+    name: "Massage Thái Lan, giảm đau xương khớp",
+    desc: "Bay Spa & Massage",
   },
   {
     id: 2,
-    name: "Spa 2",
+    name: "Liệu pháp lưng vai",
+    desc: "Temple Tree Spa",
   },
   {
     id: 3,
-    name: "Spa 3",
+    name: "Chăm sóc da mặt bằng đất sét tự nhiên",
+    desc: "YKC Wellness Spa",
   },
   {
     id: 4,
-    name: "Spa 4",
+    name: "Massage trị liệu đá nóng",
+    desc: "Payya Thái Spa & Massage",
   },
 ];
 export default function HomeLoggedForYou() {
@@ -44,7 +48,7 @@ export default function HomeLoggedForYou() {
       </div>
       <div className="homelogged-product__list">
         {dataProduct.map((item, i) => (
-          <HomeLoggedForYouItem key={i} />
+          <HomeLoggedForYouItem key={i} name={item.name} desc={item.desc} />
         ))}
       </div>
     </div>
