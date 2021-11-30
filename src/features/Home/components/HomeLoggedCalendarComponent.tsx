@@ -51,7 +51,7 @@ export default function HomeLoggedCalendarComponent(
       case 2:
         return <div className="status-dot status-dot-blue"></div>;
       case 3:
-        return <div className="status-dot status-dot-purple"></div>;
+        return <div className="status-dot status-dot-pink"></div>;
       case 4:
         return <div className="status-dot status-dot-red"></div>;
       default:

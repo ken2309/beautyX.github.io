@@ -1,10 +1,37 @@
 import React from "react";
-
-export default function HomeLoggedCalendarAppointmentItem() {
+interface IAppointmentItem {
+  time: any;
+  name: any;
+  addSpa: any;
+  status: any;
+}
+export default function HomeLoggedCalendarAppointmentItem(
+  props: IAppointmentItem
+) {
+  const { time, name, addSpa, status } = props;
+  const checkdotstt = (stt: any) => {
+    switch (stt) {
+      case 1:
+        return <span className="appointment-status status-dot-green" />;
+      case 2:
+        return <span className="appointment-status status-dot-blue" />;
+      case 3:
+        return <span className="appointment-status status-dot-pink" />;
+      case 4:
+        return <span className="appointment-status status-dot-red" />;
+      default:
+        break;
+    }
+  };
   return (
     <div className="calendar-appointment__item">
-      <p>09:00 - 12:00</p> <p>Buổi 2 - Liệu trình xóa nám</p>
-      <p>163 Trần Quang Khải, P. Tân Định, Q.1</p>
+      <div className="calendar-appointment__item-row">
+        {checkdotstt(status)}
+        <div className="calendar-appointment__item-column">
+          <p>{time}</p> <p>{name}</p>
+          <p>{addSpa}</p>
+        </div>
+      </div>
     </div>
   );
 }

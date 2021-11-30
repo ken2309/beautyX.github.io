@@ -403,7 +403,6 @@ img {
 .week-cell {
   color: #7161ba;
   font-weight: 500;
-
   user-select: none;
 }
 .day-cell {
@@ -462,11 +461,18 @@ img {
   gap: 24px 0;
   padding-top: 24px;
 }
-.calendar-appointment__item {
-  border-left: 2px solid var(--purple);
+.appointment-status {
+  width: 2px;
+  height: auto;
+  margin-right: 4px;
+  flex-shrink: 0;
 }
-.calendar-appointment__item p {
-  margin-left: 4px;
+.calendar-appointment__item-row {
+  display: flex;
+}
+.calendar-appointment__item-column {
+  display: flex;
+  flex-direction: column;
 }
 .calendar-appointment__item p:nth-child(1) {
   font-weight: bold;
@@ -503,8 +509,8 @@ img {
 .status-dot-green {
   background-color: #7fc128;
 }
-.status-dot-purple {
-  background-color: #7161ba;
+.status-dot-pink {
+  background-color: #f893c8;
 }
 .status-dot-blue {
   background-color: #0faff6;

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";
 import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
 
 interface IHomeLoggedCalendarList {
   weekDays: any;
-  todayObj: any;
   weekDayOfFirst: any;
   weekDayOfLast: any;
   thisYear: any;
@@ -13,14 +11,12 @@ interface IHomeLoggedCalendarList {
   daysInMonth: any;
   dayObjOfFirstMonth: any;
   dayObjOfLastMonth: any;
-  handleAppoint: any;
-  dotAppoint: any;
   datepick: any;
   handleGetDate: any;
+  datingList: any;
 }
 export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
   const {
-    todayObj,
     weekDayOfFirst,
     weekDayOfLast,
     thisYear,
@@ -28,10 +24,9 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
     daysInMonth,
     dayObjOfFirstMonth,
     dayObjOfLastMonth,
-    handleAppoint,
     datepick,
-    dotAppoint,
     handleGetDate,
+    datingList,
   } = props;
   const weekDays = [
     "Thứ Hai",
@@ -64,7 +59,6 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
               ))}
 
           {range(daysInMonth).map((i) => {
-            // console.log(`${dayObjOfFirstMonth.date()} --- ${dayObjOfLastMonth.date()}`)
             if (
               i >= dayObjOfFirstMonth.date() - 1 &&
               i <= dayObjOfLastMonth.date() - 1
@@ -87,7 +81,6 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
             }
           })}
 
-          {console.log(">>qqqq", dayObjOfLastMonth.date())}
           {dayObjOfFirstMonth.date() >= 26
             ? range(6 - weekDayOfLast).map((i) => (
                 <div className="day-cell day-cell--faded " key={i}>
@@ -98,7 +91,7 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
         </div>
       </div>
 
-      <HomeLoggedCalendarAppointment />
+      <HomeLoggedCalendarAppointment datingList={datingList} />
     </div>
   );
 }
