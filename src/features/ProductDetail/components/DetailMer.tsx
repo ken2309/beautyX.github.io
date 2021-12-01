@@ -8,6 +8,7 @@ import DetailPersonnel from '../../MerchantDetail/components/DetailPersonnel';
 import {useHistory} from 'react-router-dom';
 import scrollTop from '../../../utils/scrollTop';
 import { AppContext } from '../../../context/AppProvider';
+import slugify from '../../../utils/formatUrlString';
 
 function DetailMer(props:any) {
       const { org } = props;
@@ -15,8 +16,8 @@ function DetailMer(props:any) {
       const history = useHistory();
       const gotoMerDetail = (item: any) => {
             history.push({
-                  pathname: `/Merchant-detail/`,
-                  search: `id=${org.id}`,
+                  pathname: `/Merchant-detail/${slugify(org.name)}`,
+                  search: `${org.id}`,
                   state: item
             })
             scrollTop();

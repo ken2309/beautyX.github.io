@@ -28,7 +28,7 @@ function RouterConfig(props: any) {
       component: <SearchResult />,
     },
     {
-      path: "/Merchant-detail/",
+      path: "/Merchant-detail/:name",
       component: <MerchantDetail />,
     },
     {

@@ -1,26 +1,21 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Container} from '@mui/material';
+import React, { useRef, useState } from 'react';
+import { Container } from '@mui/material';
 import icon from '../../../constants/icon';
-import {useElementSize} from 'usehooks-ts'
+import { useElementSize } from 'usehooks-ts'
 import SimpleImageSlider from 'react-simple-image-slider';
 import img from '../../../constants/img';
 import DetailTab from './DetailTab';
 
-const images=[
-      {url:img.slider},
-      {url:img.slider4},
+const images = [
+      { url: img.slider },
+      { url: img.slider4 },
 ]
-function DetailHead(props:any) {
+function DetailHead(props: any) {
       const { t, merDetail, activeTab, setActiveTab } = props;
-      const [heightSlider, setHeightSlider] = useState(0);
       const slider = useRef(null);
       const infoBox = useRef(null);
       const { width } = useElementSize(slider);
-      const { height } = useElementSize(infoBox)
       const [follow, setFollow] = useState(false);
-      useEffect(()=>{
-            setHeightSlider(height)
-      },[height])
       return (
             <div className="mer-detail">
                   <Container>
@@ -42,7 +37,7 @@ function DetailHead(props:any) {
                                     </div>
                                     <div className="content-left__info">
                                           <div className="content-left__info-detail">
-                                                <img src={icon.location} alt="" />
+                                                <img style={{ marginTop: '-20px' }} src={icon.location} alt="" />
                                                 <span>
                                                       <h5>{t('Mer_de.address')}</h5>
                                                       {merDetail?.full_address}
@@ -64,7 +59,7 @@ function DetailHead(props:any) {
                                           </div>
                                           <div className="content-left__work-item">
                                                 <span>{t('Mer_de.sunday')}</span>
-                                                <p>09.00 - 21.00</p>                                          
+                                                <p>09.00 - 21.00</p>
                                           </div>
                                     </div>
                                     <div className="content-left__follow">
@@ -88,7 +83,7 @@ function DetailHead(props:any) {
                               <div ref={slider} className="mer-detail__content-right">
                                     <SimpleImageSlider
                                           width={width}
-                                          height={heightSlider}
+                                          height={372}
                                           images={images}
                                           showBullets={false}
                                           showNavs={false}

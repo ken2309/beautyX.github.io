@@ -9,6 +9,7 @@ import DetailBranchList from './components/DetailBranchList';
 import DetailSaleList from './components/DetailSaleList';
 import ServiceByMerchant from '../ServiceByMerchant/index';
 import ProductByMerchant from '../ProductByMerchant/index';
+import ComboByMerchant from '../ComboByMerchant/index';
 import Footer from '../Footer';
 import orgApi from '../../api/organizationApi';
 import {AppContext} from '../../context/AppProvider'
@@ -17,7 +18,8 @@ const id_tab = 1;
 function MerchantDetail(props: any) {
       const { t } = useContext(AppContext)
       const location = useLocation();
-      const mer_id = location.search.slice(4, location.search.length);
+      const mer_id = location.search.slice(1, location.search.length);
+      //console.log(mer_id)
       const [org, setOrg] = useState({})
       //console.log(location)
       //---
@@ -65,6 +67,10 @@ function MerchantDetail(props: any) {
                               />
                               <ProductByMerchant
                                     mer_id={mer_id}
+                                    activeTab={activeTab}
+                              />
+                              <ComboByMerchant
+                                    org={org}
                                     activeTab={activeTab}
                               />
                         </Container>

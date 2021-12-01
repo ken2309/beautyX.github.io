@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import SectionTitle from '../../SectionTitle';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
-import {Service} from '../../../interface/service';
 import {useDispatch} from 'react-redux';
 import {addCart} from '../../../redux/cartSlice'
 import { AppContext } from '../../../context/AppProvider';
@@ -12,23 +11,20 @@ function SuggestionList(props:any) {
       const {t} = useContext(AppContext)
       const {listServices, product, org } = props;
       const suggestions = listServices.filter((item: any) => item.id !== product.id)
-      const arr: Service[] = []
       const handlePushSuggest = (item: any) => {
             const values = {
                   org_id: org.id,
                   org_name: org.name,
                   cart_id: parseInt(`${org.id}${item.id}`),
-                  name: item.product_name,
+                  name: item.service_name,
                   quantity: 1,
-                  isPr: item.is_product === false ? false : true,
-                  isConfirm: false,
-                  price: item.special_price < 0 ? item.retail_price : item.special_price
+                  is_type: '2',
+                  isConfirm: true,
+                  price: item.special_price < 0 ? item.price : item.special_price
             }
             const action = addCart(values);
             dispatch(action);
-            
       }
-      console.log(arr);
       return (
             <div className="suggest-cnt">
                   <SectionTitle title={t('pr.recommend')} />
@@ -47,13 +43,13 @@ function SuggestionList(props:any) {
                                                 />
                                                 <div className="suggest-cnt__list-tem__detail">
                                                       <div className="flex-row-sp suggest-cnt__list-tem__top">
-                                                            <span>{item.product_name}</span>
+                                                            <span>{item.service_name}</span>
                                                             <span>
                                                                   {
                                                                         item.special_price > 0 ?
                                                                               formatPrice(item.special_price)
                                                                               :
-                                                                              formatPrice(item.retail_price)
+                                                                              formatPrice(item.price)
                                                                   }
                                                             </span>
                                                       </div>
@@ -70,7 +66,7 @@ function SuggestionList(props:any) {
                                                                   style={item.special_price < 0 ? { display: 'none' } : {}}
                                                                   className="suggest__retail-pr"
                                                             >
-                                                                  {formatPrice(item.retail_price)}
+                                                                  {formatPrice(item.price)}
                                                             </span>
                                                       </div>
                                                 </div>

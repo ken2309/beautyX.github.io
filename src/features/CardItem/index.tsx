@@ -4,7 +4,9 @@ import icon from '../../constants/icon';
 import formatPrice from '../../utils/formatPrice';
 import {useHistory} from 'react-router-dom';
 import scrollTop from '../../utils/scrollTop';
+import slugify from '../../utils/formatUrlString';
 
+//note: product : is_type = 1, service: is_type = 2
 function CardItem(props:any) {
       const {
             detail,
@@ -19,20 +21,23 @@ function CardItem(props:any) {
       const discount = 100 - (special_price / retail_price * 100)
       const gotoDetail = () => {
             scrollTop()
-            const param = {
-                  org: org_id,
-                  id: detail.id
-            }
-            const search = JSON.stringify(param);
+            // const param = {
+            //       org: org_id,
+            //       id: detail.id
+            // }
+            // const search = JSON.stringify(param);
+            //console.log(org_id)
             if (detail.is_product === true) {
+                  const is_type = 1;
                   history.push({
-                        pathname: `/Product-detail/${encodeURI(name)}`,
-                        search: `${encodeURI(search)}`
+                        pathname: `/Product-detail/${slugify(name)}`,
+                        search: `${org_id},${detail.id},${is_type}`
                   })
             } else {
+                  const is_type = 2;
                   history.push({
-                        pathname: `/Service-detail/${encodeURI(name)}`,
-                        search: `${encodeURI(search)}`
+                        pathname: `/Service-detail/${slugify(name)}`,
+                        search: `${org_id},${detail.id},${is_type}`
                   })
             }
       }

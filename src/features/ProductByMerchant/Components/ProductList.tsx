@@ -111,7 +111,7 @@ function ProductList(props: any) {
                                                       className="ser-list__content-list-item"
                                                 >
                                                       <CardItem
-                                                            org_id={location.search.slice(4, location.search.length)}
+                                                            org_id={location.search.slice(1, location.search.length)}
                                                             name={item.product_name}
                                                             detail={item}
                                                             retail_price={item.retail_price}

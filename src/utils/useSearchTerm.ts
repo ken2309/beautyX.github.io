@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
+import {Service} from '../interface/service'
 
-interface Services {
-      id: number, product_name: string, is_product: boolean, retail_price: number, special_price: number
-}
 function useSearchTerm(searchTerm: any, list: any) {
-      const [listBySearchTerm, setListBySearchTerm] = useState<Services[]>([])
+      const [listBySearchTerm, setListBySearchTerm] = useState<Service[]>([])
       useEffect(() => {
             async function handleSearchTerm() {
                   const result = list.filter((item: { [x: string]: { toString: () => string; }; }) => {

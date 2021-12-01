@@ -6,6 +6,7 @@ import {useHistory} from 'react-router-dom';
 import scrollTop from '../../../utils/scrollTop';
 import {Pagination} from '@mui/material';
 import Loading from '../../Loading';
+import slugify from '../../../utils/formatUrlString';
 
 function Result(props:any) {
       const {
@@ -30,8 +31,8 @@ function Result(props:any) {
       }
       const gotoDetail = (item: any) => {
             history.push({
-                  pathname: `/Merchant-detail/`,
-                  search: `id=${item.id}`,
+                  pathname: `/Merchant-detail/${slugify(item.name)}`,
+                  search: `${item.id}`,
                   state: item
             })
             scrollTop();

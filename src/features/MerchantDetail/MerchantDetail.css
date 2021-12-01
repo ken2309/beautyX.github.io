@@ -12,7 +12,7 @@
 }
 .mer-detail__content-left{
       width: 48.5%;
-      height: fit-content;
+      height: 372px;
       background-color: var(--bg-gray);
       border-radius: 24px;
       padding: 36px;
@@ -49,6 +49,9 @@
 .mer-detail__rate img{
       margin-right: 8px;
 }
+.content-left__info{
+      padding-bottom: 4px;
+}
 .content-left__info-detail{
       display: flex;
       align-items: center;
@@ -57,7 +60,6 @@
 .content-left__info-detail span h5{
       padding-left: 4px;
       display: flex;
-      align-items: center;
       font-size: 14px;
       line-height: 20px;
       font-weight: 500;

@@ -14,7 +14,7 @@ const styleCmt = {
       width: '100%'
 }
 function DetailHead(props: any) {
-      const { product, org, listServices } = props;
+      const { product, org, listServices, is_type } = props;
       const { t } = useContext(AppContext)
       const [value, setValue] = React.useState('1');
       const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -35,7 +35,7 @@ function DetailHead(props: any) {
                                                 <Tab label={t('pr.description')} value="1" />
                                                 <Tab label={t('Mer_de.feedback')} value="2" />
                                                 {
-                                                      product.is_product === false ? <Tab label={t('pr.recommend')} value="4" /> : ''
+                                                      is_type === '2' ? <Tab label={t('pr.recommend')} value="4" /> : ''
                                                 }
                                                 <Tab label={t('pr.merchant_detail')} value="3" />
                                           </TabList>
@@ -54,7 +54,7 @@ function DetailHead(props: any) {
                                           />
                                     </TabPanel>
                                     {
-                                          product.is_product === false ?
+                                          is_type === '2' ?
                                                 <TabPanel value="4">
                                                       <SuggestionList
                                                             org={org}

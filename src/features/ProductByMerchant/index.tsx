@@ -9,6 +9,7 @@ function ProductByMerchant(props: any) {
       const { t } = useContext(AppContext)
       const { activeTab, mer_id } = props;
       const [products, setProducts] = useState<Product[]>([]);
+      const [cate_id, setCate_id] = useState();
       const [loading, setLoading] = useState(false)
       const [page, setPage] = useState(1)
       const [pageLength, setPageLength] = useState();
@@ -20,16 +21,26 @@ function ProductByMerchant(props: any) {
             async function handleGetPrByOrgId() {
                   setLoading(true)
                   try {
-                        const res = await productsApi.getByOrgId(param)
-                        setProducts(res.data.context.data)
-                        setPageLength(res.data.context.last_page)
+                        if (!cate_id || cate_id === 0) {
+                              const res = await productsApi.getByOrgId(param)
+                              setProducts(res.data.context.data)
+                              setPageLength(res.data.context.last_page)
+                        } else {
+                              const resByCate_id = await productsApi.getByOrgId_cateId({
+                                    org_id: mer_id,
+                                    cate_id: cate_id,
+                                    page: page
+                              })
+                              setProducts(resByCate_id.data.context.data)
+                              setPageLength(resByCate_id.data.context.last_page)
+                        }
                         setLoading(false);
                   } catch (err) {
                         console.log(err)
                   }
             }
             handleGetPrByOrgId();
-      }, [param])
+      }, [param, cate_id, mer_id, page])
       // add new values product
       const productsIs = [];
       for(var item of products){
@@ -47,6 +58,8 @@ function ProductByMerchant(props: any) {
                         <ProductCate
                               t={t}
                               mer_id={mer_id}
+                              setCate_id={setCate_id}
+                              setPage={setPage}
                         />
                         <ProductList
                               t={t}
