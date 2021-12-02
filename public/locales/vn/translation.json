@@ -156,6 +156,22 @@
         "booking_now": "Đặt hẹn ngay"
     },
     "url":{
-        "home":"Trang-chu"
+        "home":"Trang-chu",
+        "search":"/tim-kiem/"
+    },
+    "booking": {
+        "booking_info": "Thông tin lịch hẹn",
+        "choose_service": "Vui lòng lựa chọn dịch vụ muốn đặt hẹn",
+        "choose_service_name": "Chọn tên dịch vụ",
+        "date": "Ngày",
+        "time": "Giờ",
+        "branch": "Chi nhánh",
+        "staff": "Nhân viên thực hiện",
+        "optional": "Không bắt buộc",
+        "search_staff": "Tìm theo tên nhân viên...",
+        "accept": "Xác nhận đặt hẹn",
+        "success": "Đặt hẹn thành công",
+        "review": "Bạn có thể xem lại sản phẩm/dịch vụ \n và đặt hẹn",
+        "here": "tại đây"
     }
 }

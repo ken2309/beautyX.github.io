@@ -1,24 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import TimePicker from "@mui/lab/TimePicker";
 import icon from "../../../constants/icon";
+import { AppContext } from "../../../context/AppProvider";
 
-export default function Time() {
-  const [time, setTime] = React.useState<Date | null>(null);
-
+export default function Time(props: any) {
+  const { t } = useContext(AppContext)
+  const { timeValue, setTimeValue } = props;
+  //console.log(timeValue?.toLocaleTimeString());
   return (
     <div className="timing-time">
       <div className="service-label">
-        <p>Giờ</p>
+        <p>{t('booking.time')}</p>
       </div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <TimePicker
-          value={time}
+          value={timeValue}
           // placeHolder="hh:mm (a|p)m"
           onChange={(newValue) => {
-            setTime(newValue);
+            setTimeValue(newValue);
           }}
           renderInput={(params) => (
             <TextField

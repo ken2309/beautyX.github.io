@@ -2,30 +2,43 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Header';
 import { Container } from '@mui/material';
 import DetailCard from '../ProductDetail/components/DetailCard';
-import { listServices } from '../../data/listService';
 import { useLocation } from 'react-router-dom';
 import orgApi from '../../api/organizationApi';
+import serviceApi from '../../api/serviceApi';
 import DetailHead from '../ProductDetail/components/DetailHead';
+import RecommendList from './components/RecommendList';
 import './ServiceDetail.css';
+import {Service} from '../../interface/service'
 
 function ServiceDetail(props: any) {
-      const [org, setOrg] = useState({})
       const location = useLocation();
-      const url = location.search.slice(1, location.search.length);
-      const param = JSON.parse(decodeURI(url))
+      const search = location.search.slice(1, location.search.length);
+      const params = search.split(',');
+      const is_type = params[2]
+      const [org, setOrg] = useState({})
+      const [service, setService] = useState({});
+      const [services, setServices] = useState<Service[]>([])
+      // const url = location.search.slice(1, location.search.length);
+      // const param = JSON.parse(decodeURI(url))
+      // console.log(param);
       useEffect(() => {
             async function handleGetOrgById() {
                   try {
-                        const resOrg = await orgApi.getOrgById(param.org)
+                        const resOrg = await orgApi.getOrgById(params[0])
+                        const resSer = await serviceApi.getDetailById({
+                              org_id: params[0], ser_id: params[1]
+                        })
+                        const resListSer = await serviceApi.getByOrg_id({ org_id: params[0], page: 1 });
+                        setService(resSer.data.context);
                         setOrg(resOrg.data.context)
+                        setServices(resListSer.data.context.data);
                   } catch (err) {
                         console.log(err)
                   }
             }
             handleGetOrgById();
-      }, [param.org])
-      //service demo
-      const service = listServices.find((item:any) => item.id === param.id)
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [params[0], params[1]])
       return (
             <div className="product">
                   <Header />
@@ -34,13 +47,19 @@ function ServiceDetail(props: any) {
                               <DetailHead
                                     product={service}
                                     org={org}
-                                    listServices={listServices}
+                                    listServices={services}
+                                    is_type={is_type}
                               />
                               <DetailCard
                                     org={org}
                                     product={service}
+                                    is_type={is_type}
                               />
                         </div>
+                        <RecommendList
+                              org={org}
+                              list={services}
+                        />
                   </Container>
             </div>
       );

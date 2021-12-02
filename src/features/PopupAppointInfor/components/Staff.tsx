@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import icon from "../../../constants/icon";
+import { AppContext } from "../../../context/AppProvider";
 
 const staff = [
   { id: 1, name: "Nhân viên 1" },
@@ -12,6 +13,7 @@ interface ChooseStaff {
   name: string;
 }
 export default function Staff(props: any) {
+  const { t } = useContext(AppContext)
   const { openStaff, setOpenStaff, setOpenService } = props;
   const [chooseStaff, setChooseStaff] = React.useState<ChooseStaff>({
     id: 0,
@@ -33,12 +35,12 @@ export default function Staff(props: any) {
     <div className="appointInfor-staff">
       <div className="service-label">
         <p>
-          Nhân viên thực hiện{" "}
-          <span className="color-gray">(Không bắt buộc)</span>
+          {t('booking.staff')}{" "}
+          <span className="color-gray">({t('booking.optional')})</span>
         </p>
         <div onClick={openStaffClick} className="service-wrap">
           <div className="service-input">
-            <span className="color-gray">Tìm theo tên nhân viên</span>
+            <span className="color-gray">{t('booking.search_staff')}</span>
           </div>
           <div className="service-input__btn">
             <img src={icon.ArrowDownWhite} alt="" />

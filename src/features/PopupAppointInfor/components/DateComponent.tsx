@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import Box from "@mui/material/Box";
 import DesktopDatePicker from "@mui/lab/DatePicker";
-export default function Date() {
-  const [date, setDate] = React.useState<Date | null>(null);
+import { AppContext } from "../../../context/AppProvider";
+export default function DateComponent(props: any) {
+  const { t } = useContext(AppContext)
+  const { dateValue, setDateValue, today } = props;
   return (
     <div className="timing-date">
       <div className="service-label">
-        <p>Ngày</p>
+        <p>{t('booking.date')}</p>
       </div>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DesktopDatePicker
+          minDate={today}
           label="Custom input"
-          value={date}
+          value={dateValue}
           onChange={(newValue) => {
-            setDate(newValue);
+            setDateValue(newValue);
           }}
           renderInput={({ inputRef, inputProps, InputProps }) => (
             <Box sx={{ display: "flex", alignItems: "center" }}>

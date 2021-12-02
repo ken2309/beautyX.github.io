@@ -5,11 +5,13 @@ import categoryApi from '../../../api/categoryApi';
 import {Category} from '../../../interface/category'
 
 function ProductCate(props:any) {
-      const { mer_id, t } = props;
+      const { mer_id, t, setCate_id, setPage } = props;
       const [activeCate, setActiveCate] = useState();
       const [categories, setCategories] = useState<Category[]>([]);
       const handleActiveCateClick = (cate: any) => {
             setActiveCate(cate)
+            setCate_id(cate.id);
+            setPage(1);
       }
       useEffect(()=>{
             async function getCateByOrgId(){
@@ -30,6 +32,15 @@ function ProductCate(props:any) {
                   </div>
                   <div className="ser-category-box">
                         <ul className="ser-category-box__list">
+                              <li
+                                    onClick={()=>setCate_id(0)}
+                                    className="ser-category-box__item"
+                              >
+                                    <div className="flex-row-sp">
+                                          Tất cả
+                                          <img src={icon.next} alt="" />
+                                    </div>
+                              </li>
                               {
                                     categories.map(item => (
                                           <li

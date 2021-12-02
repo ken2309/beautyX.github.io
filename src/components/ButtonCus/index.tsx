@@ -17,9 +17,9 @@ function ButtonCus(props: any) {
     margin,
     disabled,
   } = props;
-  const handleOnClick = (e: any) => {
+  const handleOnClick = () => {
     if (onClick) {
-      onClick(e);
+      onClick();
     }
   };
   return (

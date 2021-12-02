@@ -232,3 +232,16 @@
   color: var(--red-cl);
   width: 100%;
 }
+/* Tablet */
+@media only screen and (min-width: 740px) and (max-width: 1023px){
+  .sign-content{
+    padding: 0px;
+    width: 100%;
+  }
+  .sign-content__left{
+    display: none;
+  }
+  .sign-content__right{
+    width: 100%;
+  }
+}

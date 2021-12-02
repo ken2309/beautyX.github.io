@@ -10,11 +10,6 @@ import * as Yup from "yup";
 function SignUp(props: any) {
   const { activeTabSign } = props;
   const [typePass, setTypePass] = useState("password");
-
-  // function handleRegis(e: React.FormEvent<HTMLInputElement>) {
-  //   console.log("ok");
-  //   e.preventDefault();
-  // }
   const formik = useFormik({
     initialValues: {
       Name: "",

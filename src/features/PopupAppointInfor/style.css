@@ -313,3 +313,31 @@
   color: var(--purple);
 }
 /*# sourceMappingURL=style.css.map */
+.css-195y93z-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
+  background-color: var(--purple) !important;
+}
+/* popup success */
+.ap-pu-cnt{
+  background-color: var(--bg-gray);
+  padding: 36px 64px;
+}
+.ap-pu-cnt__title{
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: bold;
+  color: var(--purple);
+  margin: 8px 0px;
+}
+.ap-pu-cnt__text{
+  text-align: center;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+  color: var(--text-black);
+  white-space: pre-line;
+}
+.ap-pu-cnt__text span{
+  color: var(--purple);
+  margin-left: 4px;
+  cursor: pointer;
+}

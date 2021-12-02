@@ -6,7 +6,7 @@ import { AppContext } from '../../../context/AppProvider'
 import { useHistory } from 'react-router-dom'
 
 function HomeFilter(props: any) {
-      const { styleFilter } = props;
+      const { styleFilter, setCurPage } = props;
       const { t } = useContext(AppContext);
       const history = useHistory();
       const [searchText, setSearchText] = useState("");
@@ -17,11 +17,14 @@ function HomeFilter(props: any) {
             // history.push(`/Search-result/${searchText}`)
             history.push({
                   pathname: "/Search-result/",
-                  search:`?search=${searchText}`
+                  search: `?search=${searchText}`
             })
+            if (setCurPage) {
+                  setCurPage(1)
+            }
       }
       return (
-            <div 
+            <div
                   style={{
                         position: styleFilter?.position,
                         width: styleFilter?.width,
@@ -31,7 +34,7 @@ function HomeFilter(props: any) {
                   className="home-banner__filter"
             >
                   <div className="home__filter-search-box">
-                        <input 
+                        <input
                               onChange={handleOnSearchChange}
                               value={searchText}
                               className="input-search"
@@ -46,7 +49,7 @@ function HomeFilter(props: any) {
                               borderRadius='0px 20px 20px 0px'
                         />
                   </div>
-                  <HomeFilterForm/>
+                  <HomeFilterForm />
             </div>
       );
 }

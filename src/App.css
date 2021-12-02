@@ -46,3 +46,25 @@
     transform: rotate(360deg);
   }
 }
+/* responsive */
+.home-mb{
+  display: none;
+}
+/* Mobile */
+@media only screen and (max-width: 739px){
+  .home-mb{
+        display: none;
+        padding-top: 600px;
+        width: 100vh;
+        height: 1000vh;
+        z-index: 1000;
+        background-color: var(--bg-gray);
+  }
+  .home-mb__title{
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: var(--purple);
+  }
+}

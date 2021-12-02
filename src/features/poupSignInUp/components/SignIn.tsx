@@ -66,6 +66,7 @@ function SignIn(props: any) {
       email: Yup.string()
         .required("Vui lòng nhập Email/số điện thoại")
         .matches(
+          // eslint-disable-next-line no-useless-escape
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
           "Vui lòng nhập đúng định dạng Example@gmail.com"
         ),

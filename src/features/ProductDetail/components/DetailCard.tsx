@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
 import SuggestionPush from '../../ServiceDetail/components/SuggestionPush';
@@ -8,12 +8,35 @@ import PopupSuccess from '../../PopupSuccess/index'
 import { AppContext } from '../../../context/AppProvider';
 
 function DetailCard(props:any) {
-      const { product, org } = props;
+      const { product, org, is_type } = props;
       const { t } = useContext(AppContext);
-      const popupTitle = `${t('pr.added')} "${product.product_name}" ${t('pr.to_cart')}`
+      const popupTitle = `${t('pr.added')} 
+            "${product.product_name ? product.product_name : product.service_name}" 
+            ${t('pr.to_cart')}`
+      const [old_price, setOld_price] = useState(0);
+      const [sale_price, setSale_price] = useState(0);
       const dispatch = useDispatch();
       const [sum, setSum] = useState(0);
       const [popup, setPopup] = useState(false);
+      useEffect(() => {
+            if (is_type === '1') {
+                  if (product.special_price > 0) {
+                        setSale_price(product.special_price)
+                        setOld_price(product.retail_price)
+                  } else {
+                        setSale_price(product.retail_price)
+                  }
+            } else if (is_type === '2') {
+                  if (product.special_price > 0) {
+                        setSale_price(product.special_price)
+                        setOld_price(product.price)
+                  } else {
+                        setSale_price(product.price)
+                  }
+            }
+            
+      }, [is_type, product.price, product.retail_price, product.special_price])
+      const discount = Math.round(sale_price / old_price * 100);
       const [quantity, setQuantity] = useState(1)
       const handleDesc = () => {
             if (quantity > 1) {
@@ -25,11 +48,11 @@ function DetailCard(props:any) {
             org_id: org.id,
             org_name: org.name,
             cart_id: parseInt(`${org.id}${product.id}`),
-            name: product.product_name,
+            name: product.product_name ? product.product_name : product.service_name,
             quantity: quantity,
-            isPr: product.is_product === false ? false : true,
+            is_type: is_type,
             isConfirm: false,
-            price: product.special_price < 0 ? product.retail_price : product.special_price
+            price: sale_price
       }
       const handleAddCart = () => {
             setPopup(true);
@@ -39,7 +62,9 @@ function DetailCard(props:any) {
       return (
             <div className="product-cnt__right">
                   <div className="product-cnt__right-head">
-                        <h2>{product?.product_name}</h2>
+                        <h2>
+                              {product?.product_name ? product?.product_name : product?.service_name}
+                        </h2>
                         <span>{org?.name} | {t('Search_result.opening')}</span>
                         <div className="flex-row product-cnt__right-head__rate">
                               <span>90</span>
@@ -48,6 +73,22 @@ function DetailCard(props:any) {
                               <img src={icon.star} alt="" />
                               <span>250</span>
                               <img src={icon.chatAll} alt="" />
+                        </div>
+                  </div>
+                  <div className="product-cnt__right-price">
+                        <span
+                              style={old_price === 0 ? { display: 'none' } : {}}
+                              className="price-old"
+                        >
+                              {formatPrice(old_price)} đ
+                        </span>
+                        <div className="price__discount-sale">
+                              <span style={old_price === 0 ? { display: 'none' } : {}} >Giảm {100 - discount} %</span>
+                              <span
+                                    style={old_price === 0 ? { color: 'var(--purple)' } : {}}
+                              >
+                                    {formatPrice(sale_price)} đ
+                              </span>
                         </div>
                   </div>
                   <div className="product-cnt__right-body">
@@ -77,7 +118,7 @@ function DetailCard(props:any) {
                               <input className="product-code__discount" type="text" placeholder={t('pr.enter_sale_code')} />
                         </div>
                         {
-                              product.is_product === false ?
+                              is_type === '2' ?
                                     <SuggestionPush
                                           org={org}
                                           product={product}
@@ -90,7 +131,8 @@ function DetailCard(props:any) {
                   <div className="product-cnt__right-bot">
                         <div className="flex-row-sp product-cnt__right-bot__total">
                               <span>{t('pr.total')}</span>
-                              <span>{formatPrice(quantity * product?.retail_price + sum)} đ</span>
+                              {/* <span>{formatPrice(quantity * product?.retail_price + sum)} đ</span> */}
+                              <span>{formatPrice(quantity * sale_price + sum)} đ</span>
                         </div>
                         <div className="flex-row" style={{justifyContent:'flex-end'}}>
                               <button

@@ -74,7 +74,7 @@ function HomeFilterForm(props: any) {
                                     className="filter-form__item"
                               >
                                     <div className="filter-form__item-left">
-                                          <img src={icon.Menu} alt="" />
+                                          <img src={icon.dashboard} alt="" />
                                           <span>
                                                 {chooseCate.name.length === 0 ? t('Home.Filter_category') : chooseCate.name}
                                           </span>
@@ -111,7 +111,7 @@ function HomeFilterForm(props: any) {
                         >
                               <div className="filter-form__item">
                                     <div className="filter-form__item-left">
-                                          <img src={icon.Menu} alt="" />
+                                          <img src={icon.location} alt="" />
                                           <span>
                                                 {chooseLocal.name.length === 0 ? t('Home.Filter_location') : chooseLocal.name}
                                           </span>
@@ -145,7 +145,7 @@ function HomeFilterForm(props: any) {
                         <li className="filter-form__li">
                               <div className="filter-form__item">
                                     <div className="filter-form__item-left">
-                                          <img src={icon.Menu} alt="" />
+                                          <img src={icon.Ticket} alt="" />
                                           <span>{t('Home.Filter_price')}</span>
                                     </div>
                                     <img src={icon.down_2} alt="" />

@@ -42,7 +42,11 @@ function Language({ openLang, openLangClick }: Toggle) {
                 <div className={lang.national} >
                     {
                         languages.map((item: any) => (
-                            <a key={item.code} href="#" onClick={() => handleLang(item.code)}>
+                            <div
+                                className={lang.changeLangBtn}
+                                key={item.code}
+                                onClick={() => handleLang(item.code)}
+                            >
                                 <img src={item.icon} alt="" width="16px" />
                                 <span>{item.title}</span>
                                 {
@@ -55,7 +59,7 @@ function Language({ openLang, openLangClick }: Toggle) {
                                         :
                                         ''
                                 }
-                            </a>
+                            </div>
                         ))
                     }
                 </div>

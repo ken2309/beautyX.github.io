@@ -959,3 +959,33 @@ img {
 .homelogged-calendar__right {
   padding: 36px;
 }
+.home-sign {
+  margin-top: 124px;
+}
+.home-sign-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Tablet */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+  /* home mini map */
+  .home-mini-map__content {
+    flex-direction: column;
+  }
+  .mini-map__content-item {
+    align-items: center;
+    padding: 0px 10px;
+  }
+  .home-order__step {
+    flex-direction: column;
+  }
+  .home-order__card {
+    width: 100%;
+  }
+  /* home calendar content */
+  .home-calendar-content {
+    flex-direction: column-reverse;
+  }
+}

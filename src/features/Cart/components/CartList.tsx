@@ -51,7 +51,7 @@ function CartList(props:any) {
                                           </div>
                                           <ul className="flex-column">
                                                 {
-                                                      item.cart.filter((item: any) => item.isPr === false).map((child: any) => (
+                                                      item.cart.filter((item: any) => item.is_type === '2').map((child: any) => (
                                                             <CartItem
                                                                   key={child.cart_id}
                                                                   cartItem={child}
@@ -68,7 +68,7 @@ function CartList(props:any) {
                                           </span>
                                           <ul className="flex-column">
                                                 {
-                                                      item.cart.filter((item: any) => item.isPr === true).map((child: any) => (
+                                                      item.cart.filter((item: any) => item.is_type === '1').map((child: any) => (
                                                             <CartItem
                                                                   key={child.cart_id}
                                                                   cartItem={child}
@@ -99,7 +99,7 @@ function CartList(props:any) {
                                     </div>
                                     <ul className="flex-column">
                                           {
-                                                cartByOrgId.filter((item: any) => item.isPr === false).map((child: any) => (
+                                                cartByOrgId.filter((item: any) => item.is_type === '2').map((child: any) => (
                                                       <CartItem
                                                             key={child.cart_id}
                                                             cartItem={child}
@@ -116,7 +116,7 @@ function CartList(props:any) {
                                     </span>
                                     <ul className="flex-column">
                                           {
-                                                cartByOrgId.filter((item: any) => item.isPr === true).map((child: any) => (
+                                                cartByOrgId.filter((item: any) => item.is_type === '1').map((child: any) => (
                                                       <CartItem
                                                             key={child.cart_id}
                                                             cartItem={child}
