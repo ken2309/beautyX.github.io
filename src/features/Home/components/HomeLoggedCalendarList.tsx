@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
 

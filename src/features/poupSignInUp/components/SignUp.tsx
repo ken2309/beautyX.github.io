@@ -31,12 +31,14 @@ function SignUp(props: any) {
       dateOfBirth: Yup.string()
         .required("Vui lòng nhập ngày tháng năm sinh")
         .matches(
+          // eslint-disable-next-line no-useless-escape
           /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
           "Vui lòng nhập đúng định dạng dd/mm/yyyy"
         ),
       EmailPhone: Yup.string()
         .required("Vui lòng nhập Email hoặc Số điện thoại")
         .matches(
+          // eslint-disable-next-line no-useless-escape
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
           "Vui lòng nhập đúng định dạng Example@gmail.com"
         ),

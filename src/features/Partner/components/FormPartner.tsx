@@ -36,6 +36,7 @@ export default function FormPartner() {
       Email: Yup.string()
         .required("Vui lòng nhập Email")
         .matches(
+          // eslint-disable-next-line no-useless-escape
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
           "Email không đúng định dạng Example@gmail.com"
         ),
