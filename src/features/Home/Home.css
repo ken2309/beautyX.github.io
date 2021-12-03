@@ -115,6 +115,16 @@ img {
   padding-left: 8px;
   color: var(--purple);
 }
+.drop-category {
+  margin: 8px 0px 0px -7px;
+  padding: 8px;
+  position: absolute;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: rgb(113 97 186 / 10%) 0px 6px 37px;
+  z-index: 2;
+  background-color: var(--bg-color);
+}
 .drop-all__enterprise {
   border-radius: 14px;
   margin-top: 10px;
@@ -302,11 +312,42 @@ img {
   justify-content: center;
 }
 
+/* Tablet */
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+  /* home mini map */
+  .home-mini-map__content {
+    flex-direction: column;
+  }
+  .mini-map__content-item {
+    align-items: center;
+    padding: 0px 10px;
+  }
+  .home-order__step {
+    flex-direction: column;
+  }
+  .home-order__card {
+    width: 100%;
+  }
+  /* home calendar content */
+  .home-calendar-content {
+    flex-direction: column-reverse;
+  }
+}
+.home-sign {
+  margin-top: 124px;
+}
+.home-sign-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 /* ==================== HOME LOGGED ======================= */
 /* homelogged calendar */
 .homelogged-calendar {
+  background-color: var(--purple);
   width: 100%;
-  padding-top: 170px;
+  margin-top: 170px;
 }
 .homelogged-calendar__content {
   background-color: var(--purple);
@@ -562,6 +603,7 @@ img {
   border-bottom: 1px solid var(--purple);
 }
 .homelogged-location__list {
+  overflow-x: scroll;
   padding-top: 36px;
   display: flex;
   gap: 0 36px;
@@ -958,34 +1000,4 @@ img {
 /* homelogged calendar right */
 .homelogged-calendar__right {
   padding: 36px;
-}
-.home-sign {
-  margin-top: 124px;
-}
-.home-sign-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-/* Tablet */
-@media only screen and (min-width: 740px) and (max-width: 1023px) {
-  /* home mini map */
-  .home-mini-map__content {
-    flex-direction: column;
-  }
-  .mini-map__content-item {
-    align-items: center;
-    padding: 0px 10px;
-  }
-  .home-order__step {
-    flex-direction: column;
-  }
-  .home-order__card {
-    width: 100%;
-  }
-  /* home calendar content */
-  .home-calendar-content {
-    flex-direction: column-reverse;
-  }
 }

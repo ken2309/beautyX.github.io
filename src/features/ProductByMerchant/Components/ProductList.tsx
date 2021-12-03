@@ -3,10 +3,10 @@ import icon from '../../../constants/icon';
 import CardItem from '../../CardItem';
 import useFilterPro from '../../../utils/useFilterPro';
 import {Product} from '../../../interface/product';
-import Loading from '../../Loading/index';
 import { Pagination } from '@mui/material';
-import scrollTop from '../../../utils/scrollTop';
-import {useLocation} from 'react-router-dom'
+import scrollTop_2 from '../../../utils/scrollTop_2';
+import {useLocation} from 'react-router-dom';
+import GridLoading from '../../Loading/GridLoading'
 
 const cardStyle = {
       width: '100%'
@@ -66,7 +66,7 @@ function ProductList(props: any) {
       }
       const pageChange=(event:any, value:any)=>{
             setPage(value)
-            scrollTop();
+            scrollTop_2(500);
       }
       return (
             <div className='ser-list'>
@@ -103,7 +103,7 @@ function ProductList(props: any) {
                         <ul className="ser-list__content-list">
                               {
                                     loading === true ?
-                                          <Loading />
+                                          <GridLoading />
                                           :
                                           productFilter?.map((item: any, index) => (
                                                 <li

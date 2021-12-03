@@ -9,6 +9,11 @@ class Organization {
             const url = `/organizations?page=${params.page}&limit=3&filter%5Bkeyword%5D=${params.keySearch}`;
             return axiosClient.get(url);
       }
+      //ex get all
+      getAll = () => {
+            const url = `/organizations?page=1&limit=15`;
+            return axiosClient.get(url)
+      }
 }
 const orgApi = new Organization();
 export default orgApi;

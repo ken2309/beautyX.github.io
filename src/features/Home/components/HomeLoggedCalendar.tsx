@@ -5,6 +5,8 @@ import HomeLoggedCalendarComponent from "./HomeLoggedCalendarComponent";
 import HomeLoggedCalendarChooseMonth from "./HomeLoggedCalendarChooseMonth";
 import HomeLoggedCalendarStatus from "./HomeLoggedCalendarStatus";
 import HomeLoggedCalendarList from "./HomeLoggedCalendarList";
+import { Container } from "@mui/material";
+
 const weekDays = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
 const todayObj = dayjs();
 const dataCalendar = [
@@ -158,48 +160,51 @@ export default function HomeLoggedCalendar() {
   }, []);
   return (
     <div className="homelogged-calendar">
-      <div className="homelogged-calendar__content">
-        <SectionTitle title="Lịch hẹn của bạn" textAlign="left" />
-        <div className="homelogged-calendar__wrap">
-          <div className="homelogged-calendar__left">
-            <div className="calendar-choosedate">
-              <HomeLoggedCalendarChooseMonth
-                handlePrev={handlePrev}
-                handleNext={handleNext}
-                dayObj={dayObj}
-                Class={""}
-              />
-              <HomeLoggedCalendarComponent
-                weekDays={weekDays}
-                weekDayOfFirst={weekDayOfFirst}
-                weekDayOfLast={weekDayOfLast}
-                thisYear={thisYear}
-                thisMonth={thisMonth}
-                daysInMonth={daysInMonth}
-                dayObjOfFirstMonth={dayObjOfFirstMonth}
-                dayObjOfLastMonth={dayObjOfLastMonth}
-                dotAppoint={dotAppoint}
-                datepick={datepick}
-                handleGetDate={handleGetDate}
-              />
+      <Container>
+        <div className="homelogged-calendar__content">
+          <SectionTitle title="Lịch hẹn của bạn" textAlign="left" />
+          <div className="homelogged-calendar__wrap">
+            <div className="homelogged-calendar__left">
+              <div className="calendar-choosedate">
+                <HomeLoggedCalendarChooseMonth
+                  handlePrev={handlePrev}
+                  handleNext={handleNext}
+                  dayObj={dayObj}
+                  Class={""}
+                />
+                <HomeLoggedCalendarComponent
+                  weekDays={weekDays}
+                  weekDayOfFirst={weekDayOfFirst}
+                  weekDayOfLast={weekDayOfLast}
+                  thisYear={thisYear}
+                  thisMonth={thisMonth}
+                  daysInMonth={daysInMonth}
+                  dayObjOfFirstMonth={dayObjOfFirstMonth}
+                  dayObjOfLastMonth={dayObjOfLastMonth}
+                  dotAppoint={dotAppoint}
+                  handleAppoint={handleAppoint}
+                  datepick={datepick}
+                  handleGetDate={handleGetDate}
+                />
+              </div>
+              <HomeLoggedCalendarStatus />
             </div>
-            <HomeLoggedCalendarStatus />
+            <HomeLoggedCalendarList
+              weekDays={weekDays}
+              weekDayOfFirst={weekDayOfFirst}
+              weekDayOfLast={weekDayOfLast}
+              thisYear={thisYear}
+              thisMonth={thisMonth}
+              daysInMonth={daysInMonth}
+              dayObjOfFirstMonth={getFirstDayOfW(selectedDay)}
+              dayObjOfLastMonth={getLastDayOfW(selectedDay)}
+              datepick={datepick}
+              handleGetDate={handleGetDate}
+              datingList={datingList}
+            />
           </div>
-          <HomeLoggedCalendarList
-            weekDays={weekDays}
-            weekDayOfFirst={weekDayOfFirst}
-            weekDayOfLast={weekDayOfLast}
-            thisYear={thisYear}
-            thisMonth={thisMonth}
-            daysInMonth={daysInMonth}
-            dayObjOfFirstMonth={getFirstDayOfW(selectedDay)}
-            dayObjOfLastMonth={getLastDayOfW(selectedDay)}
-            datepick={datepick}
-            handleGetDate={handleGetDate}
-            datingList={datingList}
-          />
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

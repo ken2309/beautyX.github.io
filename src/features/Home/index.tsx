@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Header from "../Header/index";
 import "./Home.css";
 import "../poupSignInUp/popupSignInUp.css";
@@ -15,32 +15,46 @@ import HomeLoggedCalendar from "./components/HomeLoggedCalendar";
 import HomeLoggedLocation from "./components/HomeLoggedLocation";
 import HomeLoggedProduct from "./components/HomeLoggedProduct";
 import HomeLoggedForYou from "./components/HomeLoggedForYou";
+import { AppContext } from "../../context/AppProvider";
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
-const logged: boolean = false;
+// const logged: boolean = false;
 function Home(props: any) {
+  const { userInfo } = useContext(AppContext);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchAsyncOrg())
+  // }, [dispatch])
+
+  // const org = useSelector(getAllOrg);
+  // console.log(org);
+
   return (
     <div className="home">
       <Header />
       <Container>
         <HomeBanner />
-        {logged === false ? (
-          <>
-            <HomeLoggedCalendar />
+      </Container>
+      {userInfo ? (
+        <>
+          <HomeLoggedCalendar />
+          <Container>
             <HomeLoggedLocation />
             <HomeLoggedProduct />
             <HomeLoggedForYou />
-          </>
-        ) : (
-          <>
-            <HomeMap />
-            <HomeMiniMap />
-            <HomeOrder />
-            <HomeCalendar />
-            <HomeFlatForm />
-            <HomeSignIn />
-          </>
-        )}
-      </Container>
+          </Container>
+        </>
+      ) : (
+        <Container>
+          <HomeMap />
+          <HomeMiniMap />
+          <HomeOrder />
+          <HomeCalendar />
+          <HomeFlatForm />
+          <HomeSignIn />
+        </Container>
+      )}
       <Footer />
     </div>
   );

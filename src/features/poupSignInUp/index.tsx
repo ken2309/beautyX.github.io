@@ -69,6 +69,7 @@ function SignInUp(props: any) {
             ))}
           </div>
           <SignIn
+            setOpenSignIn={setOpenSignIn}
             activeTabSign={activeTabSign}
             setActiveTabSign={setActiveTabSign}
             t={t}

@@ -1,17 +1,38 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Dialog from "@mui/material/Dialog";
 import ButtonCus from "../../../components/ButtonCus";
+import auth from '../../../api/authApi';
+import { AppContext } from '../../../context/AppProvider'
 
 function SignIn(props: any) {
-  const { activeTabSign, setActiveTabSign } = props;
+  const { t } = useContext(AppContext)
+  const { activeTabSign, setActiveTabSign, setOpenSignIn } = props;
   const [typePass, setTypePass] = useState("password");
   const [openForgotPass, setOpenForgotPass] = React.useState(false);
   const [openVerification, setOpenVerification] = React.useState(false);
   const [openNewPass, setOpenNewPass] = React.useState(false);
+
+  //submit form login
+  async function handleSubmitLogin(params: any) {
+    try {
+      const res = await auth.login(params);
+      if (res.data.status === 200) {
+        const uuid = res.data.context.token;
+        const userInfo = res.data.context;
+        window.sessionStorage.setItem('_WEB_US', JSON.stringify(userInfo));
+        window.sessionStorage.setItem('_WEB_TK', uuid);
+        window.location.reload();
+        setOpenSignIn(false);
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
 
   // mở popup forgot
   const handleClickOpenForgotPass = () => {
@@ -41,23 +62,25 @@ function SignIn(props: any) {
 
   const formik = useFormik({
     initialValues: {
-      userName: "",
+      email: "",
       password: "",
     },
     validationSchema: Yup.object({
-      userName: Yup.string().required("Vui lòng nhập email/số điện thoại"),
+      email: Yup.string().required("Vui lòng nhập email/số điện thoại"),
       password: Yup.string()
-        .min(8, "Mật khẩu lớn hơn 8 ký tự")
+        .min(6, "Mật khẩu lớn hơn 8 ký tự")
         .required("Vui lòng nhập mật khẩu")
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
-        ),
+        // .matches(
+        //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+        //   "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
+        // ),
     }),
+    //SUBMIT LOGIN FORM
     onSubmit: (values) => {
-      console.log(values);
+      handleSubmitLogin(values)
     },
   });
+  //form forgot pass
   const formikForgotPass = useFormik({
     initialValues: {
       email: "",
@@ -113,7 +136,7 @@ function SignIn(props: any) {
     }),
     onSubmit: (values) => {
       console.log(values);
-      handleCloseNewPass();
+      //handleCloseNewPass();
     },
   });
   return (
@@ -129,15 +152,15 @@ function SignIn(props: any) {
           <div className="sign-form__box">
             <img className="sign-form__box-icon" src={icon.User} alt="" />
             <input
-              name="userName"
-              value={formik.values.userName}
+              name="email"
+              value={formik.values.email}
               onChange={formik.handleChange}
               type="text"
-              placeholder="Email/ Số điện thoại"
+              placeholder={t('Home.Sign_in_pl_user_name')}
             />
           </div>
-          {formik.errors.userName && formik.touched.userName && (
-            <p className="err-text">{formik.errors.userName}</p>
+          {formik.errors.email && formik.touched.email && (
+            <p className="err-text">{formik.errors.email}</p>
           )}
         </div>
         <div style={{ width: "100%", padding: "8px 0" }}>
@@ -148,7 +171,7 @@ function SignIn(props: any) {
               value={formik.values.password}
               onChange={formik.handleChange}
               type={typePass}
-              placeholder="Mật khẩu"
+              placeholder={t('Home.Sign_in_pl_password')}
             />
             <img
               onMouseEnter={() => setTypePass("text")}
@@ -173,15 +196,15 @@ function SignIn(props: any) {
                 },
               }}
             />
-            <span>Ghi nhớ mật khẩu</span>
+            <span>{t('Home.Sign_remember')}</span>
           </div>
-          <span onClick={handleClickOpenForgotPass}>Quên mật khẩu ?</span>
+          <span onClick={handleClickOpenForgotPass}>{t('Home.Sign_forgot')} ?</span>
         </div>
         <button type="submit" className="sign-btn">
-          Đăng nhập
+          {t('Home.Sign_in')}
         </button>
       </form>
-      <p className="sign-or">Hoặc đăng nhập với</p>
+      <p className="sign-or">{t}</p>
       <div className="flex-row sign-other-social">
         <img src={icon.google} alt="" />
         <img src={icon.facebook} alt="" />

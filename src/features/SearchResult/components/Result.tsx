@@ -5,8 +5,9 @@ import '../../Home/Home.css';
 import {useHistory} from 'react-router-dom';
 import scrollTop from '../../../utils/scrollTop';
 import {Pagination} from '@mui/material';
-import Loading from '../../Loading';
+//import Loading from '../loading/Loading';
 import slugify from '../../../utils/formatUrlString';
+import SearchLoading from '../../Loading/SearchLoading'
 
 function Result(props:any) {
       const {
@@ -65,7 +66,9 @@ function Result(props:any) {
                   <ul className="result-detail__org">
                         {
                               loading === true ?
-                                    <Loading />
+                                    <>
+                                          <SearchLoading/>
+                                    </>
                                     :
                                     resultList.map((item: any) => (
                                           <li

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import range from "lodash-es/range";
 
 interface IHomeLoggedCalendarComponent {
@@ -13,6 +13,7 @@ interface IHomeLoggedCalendarComponent {
   dotAppoint: any;
   datepick: any;
   handleGetDate: any;
+  handleAppoint: any;
 }
 export default function HomeLoggedCalendarComponent(
   props: IHomeLoggedCalendarComponent

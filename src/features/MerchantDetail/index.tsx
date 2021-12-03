@@ -71,6 +71,7 @@ function MerchantDetail(props: any) {
                               />
                               <ComboByMerchant
                                     org={org}
+                                    org_id={mer_id}
                                     activeTab={activeTab}
                               />
                         </Container>
