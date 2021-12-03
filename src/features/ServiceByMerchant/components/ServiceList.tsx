@@ -3,14 +3,16 @@ import icon from '../../../constants/icon';
 import CardItem from '../../CardItem';
 import {Pagination} from '@mui/material'
 import useSearchTerm from '../../../utils/useSearchTerm';
-import {Service} from '../../../interface/service'
+import {Service} from '../../../interface/service';
+import GridLoading from '../../Loading/GridLoading';
+import scrollTop_2 from '../../../utils/scrollTop_2';
 
 const cardStyle = {
       width: '100%'
 }
 interface ActiveFilter { id: number, title: string }
 function ServiceList(props: any) {
-      const { t, mer_id, services, totalPage, setPage } = props;
+      const { t, mer_id, services, totalPage, setPage, loading } = props;
       const buttons = [
             { id: 1, title: t('Mer_de.popular') },
             { id: 2, title: t('Mer_de.selling') },
@@ -68,6 +70,7 @@ function ServiceList(props: any) {
       }
       const pageChange=(event:any, value:any)=>{
             setPage(value);
+            scrollTop_2(500)
       }
       return (
             <div className='ser-list'>
@@ -103,21 +106,24 @@ function ServiceList(props: any) {
                   <div className="flex-column ser-list__content">
                         <ul className="ser-list__content-list">
                               {
-                                    servicesIs.map((item:any) => (
-                                          <li
-                                                key={item.id}
-                                                className="ser-list__content-list-item"
-                                          >
-                                                <CardItem
-                                                      org_id={mer_id}
-                                                      name={item.service_name}
-                                                      retail_price={item.price}
-                                                      special_price={item.special_price}
-                                                      detail={item}
-                                                      style={cardStyle}
-                                                />
-                                          </li>
-                                    ))
+                                    loading === true ?
+                                          <GridLoading />
+                                          :
+                                          servicesIs.map((item: any) => (
+                                                <li
+                                                      key={item.id}
+                                                      className="ser-list__content-list-item"
+                                                >
+                                                      <CardItem
+                                                            org_id={mer_id}
+                                                            name={item.service_name}
+                                                            retail_price={item.price}
+                                                            special_price={item.special_price}
+                                                            detail={item}
+                                                            style={cardStyle}
+                                                      />
+                                                </li>
+                                          ))
                               }
                         </ul>
                         <Pagination

@@ -5,13 +5,13 @@ export const partnerStyle = makeStyles((theme) => ({
     margin: "0 auto",
     maxWidth: "1232px",
   },
-  errText: {
-    marginTop: "-8px",
-    marginBottom: "10px",
+  errtext: {
+    marginLeft: "20px",
+    fontSize: "12px",
+    fontWeight: 700,
+    color: "var(--red-cl)",
+    width: "100%",
     fontStyle: "italic",
-    fontSize: "14px",
-    lineHeight: "20px",
-    color: "red",
   },
   partner: {
     padding: "64px 15px 64px 15px",
@@ -98,7 +98,7 @@ export const partnerStyle = makeStyles((theme) => ({
     lineHeight: "28px",
     maxWidth: "432px",
     textAlign: "center",
-    color: "var( --purple)",
+    color: "var(--purple)",
     margin: "36px 27px 32px 36px",
   },
   form: {
@@ -110,7 +110,6 @@ export const partnerStyle = makeStyles((theme) => ({
     borderRadius: "18px",
     overflow: "hidden",
     width: "100%",
-    marginBottom: "16px",
     "&:nth-child(6)": {
       marginBottom: "0",
     },
@@ -125,7 +124,7 @@ export const partnerStyle = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: "14px",
     lineHheight: "20px",
-    color: "#A2A1AB",
+    color: "var(--purple)",
     "&::placeholder": {
       color: "#A2A1AB",
     },

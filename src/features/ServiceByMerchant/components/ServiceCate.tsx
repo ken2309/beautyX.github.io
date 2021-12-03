@@ -4,10 +4,11 @@ import icon from '../../../constants/icon';
 import {category} from '../../../data/category';
 
 function ServiceCate(props: any) {
-      const {t} = props;
+      const { t, categories, setChooseCate } = props;
       const [activeCate, setActiveCate] = useState();
       const handleActiveCateClick = (cate: any) => {
             setActiveCate(cate)
+            setChooseCate(cate.id);
       }
       return (
             <div className="ser-category">
@@ -20,7 +21,7 @@ function ServiceCate(props: any) {
                   <div className="ser-category-box">
                         <ul className="ser-category-box__list">
                               {
-                                    category.map(item => (
+                                    categories.map((item:any) => (
                                           <li
                                                 onClick={() => handleActiveCateClick(item)}
                                                 key={item.id}
@@ -37,7 +38,7 @@ function ServiceCate(props: any) {
                                                       {item.name}
                                                       <img src={icon.next} alt="" />
                                                 </div>
-                                                <ul
+                                                {/* <ul
                                                       style={activeCate === item ?
                                                             { display: 'block' }
                                                             :
@@ -49,7 +50,7 @@ function ServiceCate(props: any) {
                                                                   <li key={itemChild.id} >{itemChild.name}</li>
                                                             ))
                                                       }
-                                                </ul>
+                                                </ul> */}
                                           </li>
                                     ))
                               }

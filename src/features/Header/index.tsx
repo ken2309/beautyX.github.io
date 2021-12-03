@@ -12,17 +12,15 @@ import SectionTitle from '../SectionTitle';
 import Language from './components/Language';
 import {getTotal} from '../../redux/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import {AppContext} from '../../context/AppProvider'
+import {AppContext} from '../../context/AppProvider';
 
 const logged:boolean = true;
 const notification = true;
-const userInfo={
-      userName:'Nguyen Thuy Binh',
-      userAvatar: img.Avatar
-}
+
 function Header(props: any) {
       const { isCart, title } = props;
-      const { t } = useContext(AppContext);
+      const { t, userInfo } = useContext(AppContext);
+      // console.log(userInfo)
       const dispatch = useDispatch();
       const history = useHistory();
       const useStyle = headerStyle();
@@ -133,7 +131,7 @@ function Header(props: any) {
                                     <ul className={useStyle.headerRightList}>
                                           <li className={useStyle.headerRightItem}>
                                                 {
-                                                      logged === true ? ''
+                                                      userInfo ? ''
                                                             :
                                                             <ButtonCus
                                                                   text='Đăng ký'
@@ -146,9 +144,9 @@ function Header(props: any) {
                                           </li>
                                           <li className={useStyle.headerRightItem}>
                                                 {
-                                                      logged === true ?
+                                                      userInfo ?
                                                             <span className={useStyle.headerUserName}>
-                                                                  {userInfo.userName}
+                                                                  {userInfo.fullname}
                                                             </span>
                                                             :
                                                             <ButtonCus
@@ -165,14 +163,21 @@ function Header(props: any) {
                                                 onClick={openNoClick}
                                                 className={useStyle.headerRightItem}
                                           >
-                                                <img
-                                                      className={useStyle.headerAvatar}
-                                                      src={logged === true ? userInfo.userAvatar : icon.Avatar} alt=""
-                                                />
-                                                {notification === true ? <div className={useStyle.headerDotNo}></div> : ''}
-                                                <Notification
-                                                      openNo={openNo}
-                                                />
+                                                {
+                                                      userInfo ?
+                                                            <>
+                                                                  <img
+                                                                        className={useStyle.headerAvatar}
+                                                                        src={img.Avatar} alt=""
+                                                                  />
+                                                                  <div className={useStyle.headerDotNo}></div>
+                                                                  <Notification
+                                                                        openNo={openNo}
+                                                                  />
+                                                            </>
+                                                            :
+                                                            ''
+                                                }
                                           </li>
                                           <li 
                                                 onClick={gotoCart}
@@ -182,13 +187,13 @@ function Header(props: any) {
                                                 <span className={useStyle.headerCartCount}>{carts.cartQuantity}</span>
                                           </li>
                                           <li className={useStyle.headerRightItem}>
-                                                <img 
+                                                <img
                                                       onClick={openMenuClick}
-                                                      className={useStyle.menu} src={icon.Menu} alt="" 
-                                                      />
-                                                <Menu
-                                                      openMenu={openMenu}
+                                                      className={useStyle.menu} src={icon.Menu} alt=""
                                                 />
+                                                {
+                                                      userInfo ? <Menu openMenu={openMenu} /> : ''
+                                                }
                                           </li>
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
