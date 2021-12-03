@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useRef } from 'react';
-import {headerStyle} from '../style';
+import { headerStyle } from '../style';
 import icon from '../../../constants/icon';
 import { AppContext } from '../../../context/AppProvider';
 import i18next from 'i18next'
@@ -11,7 +11,7 @@ interface Toggle {
     openLangClick: () => void
 }
 const languages = [
-    { code: 'vn', title: 'Tiếng việt', icon: icon.VietnamFlat }, { code: 'en', title: 'English', icon: icon.EngFlat }
+    { code: 'vn', title: 'Tiếng việt', icon: icon.VietnamFlat, currency: 'Việt Nam Đồng', unit: 'VND' }, { code: 'en', title: 'English', icon: icon.EngFlat, currency: 'United States Dollar', unit: 'USD' }
 ]
 function Language({ openLang, openLangClick }: Toggle) {
     const lang = headerStyle();
@@ -64,14 +64,13 @@ function Language({ openLang, openLangClick }: Toggle) {
                     }
                 </div>
                 <div className={lang.curency}>
-                    <a href="#" onClick={(e) => handleLang(e)}>
-                        <b> VND </b>
-                        <span> Việt Nam Đồng</span>
-                    </a>
-                    <a href="#" onClick={(e) => handleLang(e)}>
-                        <b> USD </b>
-                        <span> United States Dollar</span>
-                    </a>
+                    {
+                        languages.map((item: any) => (
+                            <a href="#" className={(item.code === language) ? 'active' : ''} onClick={() => handleLang(item.code)}>
+                                <b> {item.unit} </b>
+                                <span> {item.currency} </span>
+                            </a>
+                        ))}
                 </div>
             </div>
         </div>

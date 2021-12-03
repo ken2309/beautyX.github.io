@@ -147,7 +147,7 @@ function Header(props: any) {
                                           <li className={useStyle.headerRightItem}>
                                                 {
                                                       logged === true ?
-                                                            <span className={useStyle.headerUserName}>
+                                                            <span className={useStyle.headerUserName} onClick={()=> history.push('/tai-khoan')}>
                                                                   {userInfo.userName}
                                                             </span>
                                                             :

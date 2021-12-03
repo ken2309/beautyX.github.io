@@ -1,5 +1,6 @@
 import icon from '../../../constants/icon';
-// import { useRef, useState } from 'react';
+import {useHistory} from 'react-router-dom';
+
 import CheckNotification from './CheckNotification'
 
 interface info {
@@ -18,6 +19,7 @@ const data: info = {
     rank: 'Vàng'
 }
 function MenuSideBar(props: info) {
+    const history = useHistory();
     const handleDropdown = (e:any) =>{
         if(e.target.classList.value.indexOf('active')!== -1){
             e.target.classList.remove('active');
@@ -64,7 +66,7 @@ function MenuSideBar(props: info) {
                     </div>
                 </div>
             </div>
-            <div className="tab">
+            <div className="tab" onClick={()=>history.push('/tai-khoan/thong-tin-ca-nhan')}>
                 <div className="icon">
                     <img src={icon.User_purple} alt="" />
                 </div>
@@ -72,7 +74,7 @@ function MenuSideBar(props: info) {
                     Tài khoản của tôi
                 </span>
             </div>
-            <div className="tab">
+            <div className="tab" onClick={()=>history.push('/tai-khoan/phuong-thuc-thanh-toan')}>
                 <div className="icon">
                     <img src={icon.Credit_card} alt="" />
                 </div>
