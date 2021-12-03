@@ -171,7 +171,6 @@ export default function HomeLoggedCalendar() {
               />
               <HomeLoggedCalendarComponent
                 weekDays={weekDays}
-                todayObj={todayObj}
                 weekDayOfFirst={weekDayOfFirst}
                 weekDayOfLast={weekDayOfLast}
                 thisYear={thisYear}
@@ -180,7 +179,6 @@ export default function HomeLoggedCalendar() {
                 dayObjOfFirstMonth={dayObjOfFirstMonth}
                 dayObjOfLastMonth={dayObjOfLastMonth}
                 dotAppoint={dotAppoint}
-                handleAppoint={handleAppoint}
                 datepick={datepick}
                 handleGetDate={handleGetDate}
               />

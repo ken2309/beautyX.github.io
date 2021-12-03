@@ -37,7 +37,6 @@ const dataProduct = [
   },
 ];
 export default function HomeLoggedProduct() {
-  const [openEnterprise, setOpenEnterprise] = React.useState(false);
   return (
     <div className="homelogged-product">
       <SectionTitle title="Sản phẩm/Dịch vụ đã sử dụng" textAlign="left" />
@@ -48,10 +47,7 @@ export default function HomeLoggedProduct() {
           <span className="sort-item">Sử dụng nhiều</span>
         </div>
         <div className="homelogged-product__sort-right">
-          <HomeLoggedProductSelector
-            openEnterprise={openEnterprise}
-            setOpenEnterprise={setOpenEnterprise}
-          />
+          <HomeLoggedProductSelector />
         </div>
       </div>
       <div className="homelogged-product__list">

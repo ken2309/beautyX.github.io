@@ -3,7 +3,6 @@ import range from "lodash-es/range";
 
 interface IHomeLoggedCalendarComponent {
   weekDays: any;
-  todayObj: any;
   weekDayOfFirst: any;
   weekDayOfLast: any;
   thisYear: any;
@@ -11,7 +10,6 @@ interface IHomeLoggedCalendarComponent {
   daysInMonth: any;
   dayObjOfFirstMonth: any;
   dayObjOfLastMonth: any;
-  handleAppoint: any;
   dotAppoint: any;
   datepick: any;
   handleGetDate: any;
@@ -21,7 +19,6 @@ export default function HomeLoggedCalendarComponent(
 ) {
   const {
     weekDays,
-    todayObj,
     weekDayOfFirst,
     weekDayOfLast,
     thisYear,
@@ -29,7 +26,6 @@ export default function HomeLoggedCalendarComponent(
     daysInMonth,
     dayObjOfFirstMonth,
     dayObjOfLastMonth,
-    handleAppoint,
     dotAppoint,
     datepick,
     handleGetDate,
@@ -44,6 +40,7 @@ export default function HomeLoggedCalendarComponent(
     const datesttArray = dotAppoint.filter((dot: any) => dot.date === newdate);
     return datesttArray;
   };
+
   const checkdotstt = (stt: any) => {
     switch (stt) {
       case 1:

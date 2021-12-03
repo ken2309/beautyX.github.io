@@ -2,22 +2,18 @@ import React from "react";
 import icon from "../../../constants/icon";
 
 const enterprise = [
+  { id: 0, name: "Tất cả doanh nghiệp" },
   { id: 1, name: "Doanh nghiệp 1" },
   { id: 2, name: "Doanh nghiệp 2" },
   { id: 3, name: "Doanh nghiệp 3" },
 ];
 
-interface IChooseEnterprise {
-  id: number;
-  name: string;
-}
-export default function HomeLoggedProductSelector(props: any) {
-  const { openEnterprise, setOpenEnterprise } = props;
-  const [chooseEnterprise, setChooseEnterprise] =
-    React.useState<IChooseEnterprise>({
-      id: 0,
-      name: "",
-    });
+export default function HomeLoggedProductSelector() {
+  const [openEnterprise, setOpenEnterprise] = React.useState(false);
+  const [chooseEnterprise, setChooseEnterprise] = React.useState({
+    id: 0,
+    name: "Tất cả doanh nghiệp",
+  });
   const openEnterpriseClick = () => {
     if (openEnterprise === true) {
       setOpenEnterprise(false);
@@ -25,7 +21,6 @@ export default function HomeLoggedProductSelector(props: any) {
       setOpenEnterprise(true);
     }
   };
-
   const handleChooseEnterprise = (item: any) => {
     setChooseEnterprise(item);
   };
@@ -33,7 +28,7 @@ export default function HomeLoggedProductSelector(props: any) {
     <div className="product-select">
       <div onClick={openEnterpriseClick} className="product-select__wrap">
         <div className="product-select__input">
-          <span className="color-purple">Tất cả doanh nghiệp</span>
+          <span className="color-purple">{chooseEnterprise.name}</span>
         </div>
         <div className="product-select__btn">
           <img src={icon.ArrowDownWhite} alt="" />
