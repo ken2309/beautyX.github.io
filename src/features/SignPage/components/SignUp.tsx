@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import icon from "../../../constants/icon";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -7,11 +7,43 @@ import FormControl from "@mui/material/FormControl";
 import Checkbox from "@mui/material/Checkbox";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { CircularProgress } from '@mui/material'
+import { AppContext } from "../../../context/AppProvider";
+import PopupNoti from './PopupNoti'
 
 
 function SignUp(props: any) {
   const { activeTabSign } = props;
+  const { t } = useContext(AppContext)
   const [typePass, setTypePass] = useState("password");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState()
+  const [errMail, setErrMail] = useState()
+  const [popup, setPopup] = useState(false);
+
+  const handleOnSubmitSignUp = (values: any) => {
+    setLoading(true)
+    const params = {
+      fullname: values.Name,
+      email: values.EmailPhone,
+      telephone: values.Phone,
+      password: values.password
+    }
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, params)
+      .then(function (response) {
+        setLoading(false);
+        setPopup(true)
+      })
+      .catch(function (err) {
+        if (err.response.data.context.telephone || err.response.data.context.email) {
+          setError(err.response.data.context.telephone);
+          setErrMail(err.response.data.context.email)
+        }
+        setLoading(false)
+      })
+  }
+  // console.log(error, errMail)
 
   const formik = useFormik({
     initialValues: {
@@ -19,6 +51,7 @@ function SignUp(props: any) {
       Sex: "",
       dateOfBirth: "",
       EmailPhone: "",
+      Phone: "",
       password: "",
       confirmPassword: "",
     },
@@ -45,6 +78,8 @@ function SignUp(props: any) {
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
           "Vui lòng nhập đúng định dạng Example@gmail.com"
         ),
+      Phone: Yup.string()
+        .required("Vui lòng nhập số điện thoại"),
       password: Yup.string()
         .min(8, "Mật khẩu lớn hơn 8 ký tự")
         .max(32, "Mật khẩu tối đa 32 kí tự")
@@ -57,8 +92,8 @@ function SignUp(props: any) {
         .required("Vui lòng xác nhận lại mật khẩu")
         .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp"),
     }),
-    onSubmit: (values:any) => {
-      
+    onSubmit: (values: any) => {
+      handleOnSubmitSignUp(values)
     },
   });
   return (
@@ -69,8 +104,9 @@ function SignUp(props: any) {
         onSubmit={formik.handleSubmit}
         autoComplete="off"
         className="flex-column sign-form"
+        // style={{alignItems:'start'}}
       >
-        <div className="flex-column">
+        <div className="flex-column" style={{width:'100%'}}>
           <div className="flex-row w-100" style={{ width: "100%" }}>
             <div className="sign-form__box ">
               <img className="sign-form__box-icon" src={icon.User} alt="" />
@@ -181,12 +217,34 @@ function SignUp(props: any) {
               name="EmailPhone"
               id="EmailPhone"
               type="text"
-              placeholder="Email/Số điện thoại"
+              placeholder="Email"
             />
           </div>
           {formik.errors.EmailPhone && formik.touched.EmailPhone && (
             <p className="err-text">{formik.errors.EmailPhone}</p>
           )}
+          <p className="err-text">{errMail}</p>
+        </div>
+
+        <div
+          className="flex-column w-100"
+          style={{ width: "100%", padding: "8px 0" }}
+        >
+          <div className="sign-form__box  mb-16 ">
+            <img className="sign-form__box-icon" src={icon.Message} alt="" />
+            <input
+              value={formik.values.Phone}
+              onChange={formik.handleChange}
+              name="Phone"
+              id="Phone"
+              type="text"
+              placeholder="Số điện thoại"
+            />
+          </div>
+          {formik.errors.Phone && formik.touched.Phone && (
+            <p className="err-text">{formik.errors.Phone}</p>
+          )}
+          <p className="err-text">{error}</p>
         </div>
 
         <div
@@ -260,18 +318,28 @@ function SignUp(props: any) {
 
         <button
           type="submit"
-          // onClick={(e: any) => handleRegis(e)}
           className="sign-btn mt-38"
+          style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
         >
-          Đăng ký
+          {
+            loading === true ?
+              <div className="sign-loading">
+                <CircularProgress size="25px" color="inherit" />
+              </div> : ''
+          }
+          {t('Home.Sign_up')}
         </button>
-
         <p className="sign-or">Hoặc đăng kí với</p>
         <div className="flex-row sign-other-social">
           <img src={icon.google} alt="" />
           <img src={icon.facebook} alt="" />
         </div>
       </form>
+      <PopupNoti
+        popup={popup}
+        setPopup={setPopup}
+        isSignIn={false}
+      />
     </div>
   );
 }

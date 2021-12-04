@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
+import { addCart } from '../../../redux/cartSlice';
+import { useDispatch } from 'react-redux'
 
 function ComboItem(props: any) {
       const { detail, org } = props;
+      const dispatch = useDispatch();
       const [old_price, setOld_price] = useState(0);
       const [sale_price, setSale_price] = useState(0);
       useEffect(() => {
@@ -18,6 +21,22 @@ function ComboItem(props: any) {
             }
       }, [detail.discount, detail.price])
       const discount = Math.round(sale_price / old_price * 100)
+      const handleAddCart = () => {
+            const quantity = 1;
+            const values = {
+                  id: detail.id,
+                  org_id: org.id,
+                  org_name: org.name,
+                  cart_id: parseInt(`${org.id}${detail.id}`),
+                  name: detail.name,
+                  quantity: quantity,
+                  is_type: 3,
+                  isConfirm: false,
+                  price: sale_price
+            }
+            const action = addCart(values);
+            dispatch(action)
+      }
       return (
             <li>
                   <div className="cmb-list__item">
@@ -65,7 +84,11 @@ function ComboItem(props: any) {
                         </div>
                         <div className="flex-column cmb-list__item-view">
                               <button>Xem chi tiết Combo</button>
-                              <button>Thêm vào giỏ hàng</button>
+                              <button
+                                    onClick={handleAddCart}
+                              >
+                                    Thêm vào giỏ hàng
+                              </button>
                         </div>
                   </div>
             </li>

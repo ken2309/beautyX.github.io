@@ -19,17 +19,20 @@ function MerchantDetail(props: any) {
       const { t } = useContext(AppContext)
       const location = useLocation();
       const mer_id = location.search.slice(1, location.search.length);
+      const [loading, setLoading] = useState(false);
       //console.log(mer_id)
       const [org, setOrg] = useState({})
       //console.log(location)
       //---
       const [activeTab, setActiveTab] = useState(1);
-      useEffect(()=>{
-            async function handleGetOrgById(){
-                  try{
+      useEffect(() => {
+            async function handleGetOrgById() {
+                  setLoading(true);
+                  try {
                         const res = await orgApi.getOrgById(mer_id);
                         setOrg(res.data.context);
-                  }catch(err){
+                        setLoading(false);
+                  } catch (err) {
                         console.log(err)
                   }
             }
@@ -40,6 +43,7 @@ function MerchantDetail(props: any) {
                   <Header />
                   <DetailHead
                         t={t}
+                        loading={loading}
                         merDetail={org}
                         setActiveTab={setActiveTab}
                         activeTab={activeTab}

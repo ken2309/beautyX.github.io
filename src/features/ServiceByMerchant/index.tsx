@@ -21,20 +21,28 @@ function ServiceByMerchant(props: any) {
             async function handleGetServices() {
                   setLoading(true)
                   try {
-                        const res = await servicesApi.getByOrg_id({
-                              org_id: mer_id,
-                              page: page
-                        });
-                        setServices(res.data.context.data);
-                        setTotalPage(res.data.context.last_page)
+                        if (!chooseCate) {
+                              const res = await servicesApi.getByOrg_id({
+                                    org_id: mer_id,
+                                    page: page
+                              });
+                              setServices(res.data.context.data);
+                              setTotalPage(res.data.context.last_page)
+                        } else {
+                              const resByCate = await servicesApi.getByOrgId_cateId({
+                                    cate_id: chooseCate, page: page, org_id: mer_id,
+                              })
+                              setServices(resByCate.data.context.data);
+                              setTotalPage(resByCate.data.context.last_page)
+                        }
                         setLoading(false)
                   } catch (err) {
                         console.log(err)
                   }
             }
             handleGetServices()
-      }, [mer_id, page])
-      useEffect(()=>{
+      }, [mer_id, page, chooseCate])
+      useEffect(() => {
             async function handleGetCategories(){
                   try{
                         const resCate = await categoryApi.getByOrgId_services({
@@ -47,7 +55,6 @@ function ServiceByMerchant(props: any) {
             }
             handleGetCategories()
       },[mer_id])
-      console.log(chooseCate);
       return (
             <div style={tab_id === activeTab ? { display: 'block' } : { display: 'none' }}>
                   <div
@@ -58,6 +65,7 @@ function ServiceByMerchant(props: any) {
                               t={t}
                               categories={categories}
                               setChooseCate={setChooseCate}
+                              setPage={setPage}
                         />
                         <ServiceList
                               loading={loading}

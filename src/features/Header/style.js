@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 export const headerStyle = makeStyles({
       header:{
             width:"100%",
-            height:"98px",
+            height:"92px",
             backgroundColor:"var(--bg-gray)",
             borderBottom:'solid 1px #EEEDF2'
       },

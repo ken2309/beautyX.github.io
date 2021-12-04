@@ -4,11 +4,12 @@ import icon from '../../../constants/icon';
 import {category} from '../../../data/category';
 
 function ServiceCate(props: any) {
-      const { t, categories, setChooseCate } = props;
+      const { t, categories, setChooseCate, setPage } = props;
       const [activeCate, setActiveCate] = useState();
       const handleActiveCateClick = (cate: any) => {
             setActiveCate(cate)
             setChooseCate(cate.id);
+            setPage(1);
       }
       return (
             <div className="ser-category">

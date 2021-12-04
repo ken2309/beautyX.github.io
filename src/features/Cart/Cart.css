@@ -121,6 +121,14 @@
       object-fit: cover;
       margin-right: 16px;
 }
+.cart-item__name-text{
+      cursor: pointer;
+      transition: all 0.2;
+      font-weight: bold;
+}
+.cart-item__name-text:hover{
+      color: var(--purple);
+}
 .cart-item__quantity,
 .cart-item__price,
 .cart-item__total,

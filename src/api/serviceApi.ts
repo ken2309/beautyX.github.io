@@ -6,7 +6,7 @@ class ServiceApi {
             return axiosClient.get(url);
       }
       getByOrgId_cateId=(params:any)=>{
-            const url =`/organizations/4/services?page=1&limit=9&filter%5Bservice_group_id%5D=2`
+            const url =`/organizations/${params.org_id}/services?page=${params.page}&limit=9&filter%5Bservice_group_id%5D=${params.cate_id}`
             return axiosClient.get(url)
       }
       getDetailById=(params:any)=>{

@@ -156,6 +156,13 @@
   background-color: var(--purple);
   border-radius: 22px;
 }
+.sign-loading{
+  width: 66%;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
 
 .sign-or {
   margin-top: 32px;
@@ -231,6 +238,34 @@
   font-weight: 700;
   color: var(--red-cl);
   width: 100%;
+}
+/* sign page */
+.page-sign{
+  background-color: var(--bg-color);
+}
+.page-sign__cnt{
+  width: unset !important;
+}
+.sign-up-noti{
+  background-color: var(--bg-gray);
+  padding: 36px;
+}
+.page-sign .css-1oqqzyl-MuiContainer-root{
+  height: 100vh !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sign-up-noti__check{
+  width: 48px;
+  height: 48px;
+}
+.sign-up-noti span{
+  margin: 8px 0px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--purple);
 }
 /* Tablet */
 @media only screen and (min-width: 740px) and (max-width: 1023px){

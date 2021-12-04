@@ -19,6 +19,7 @@ img {
   color: var(--purple);
 }
 .home-banner {
+  margin-top: 64px;
   padding-top: 63px;
   background-image: url("../../assets/image/Banner.png");
   width: 100%;

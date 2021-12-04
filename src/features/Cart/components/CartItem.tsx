@@ -5,11 +5,15 @@ import { checkConfirm,addCart, descItem, removeItem } from '../../../redux/cartS
 import { useDispatch } from 'react-redux'
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
-import PopupConfirm from '../../popupConfirm/index'
+import PopupConfirm from '../../popupConfirm/index';
+import slugify from '../../../utils/formatUrlString';
+import {useHistory} from 'react-router-dom';
+import scrollTop from '../../../utils/scrollTop';
 
 function CartItem(props: any) {
       const { cartItem, inPayment } = props;
       const dispatch = useDispatch();
+      const history = useHistory();
       const [isCheck, setIsCheck] = useState(cartItem.isConfirm)
       const [openConfirm, setOpenConfirm] = useState(false)
       const isConfirm = isCheck
@@ -37,6 +41,22 @@ function CartItem(props: any) {
       const openConfirmClick = () => {
             setOpenConfirm(true);
       }
+      const goBackDetail = () => {
+            if (cartItem.is_type === 1) {
+                  history.push({
+                        pathname: `/Product-detail/${slugify(cartItem.name)}`,
+                        search: `${cartItem.org_id},${cartItem.id},${cartItem.is_type}`
+                  })
+            } else if (cartItem.is_type === 2) {
+                  history.push({
+                        pathname: `/Service-detail/${slugify(cartItem.name)}`,
+                        search: `${cartItem.org_id},${cartItem.id},${cartItem.is_type}`
+                  })
+            } else if (cartItem.is_type === 3) {
+                  //page combo detail
+            }
+            scrollTop();
+      }
       return (
             <div className="flex-row cart-item">
                   <div className="flex-row cart-item__name">
@@ -56,9 +76,11 @@ function CartItem(props: any) {
                               src={"https://picsum.photos/650/976?random=" + cartItem.cart_id}
                               alt=""
                         />
-                        {cartItem.name} {cartItem.org_id}
+                        <span onClick={goBackDetail} className="cart-item__name-text">
+                              {cartItem.name} - {cartItem.org_id}
+                        </span>
                   </div>
-                  <div 
+                  <div
                         style={inPayment === true ? { width: '16.6%' } : {}}
                         className="flex-row cart-item__quantity"
                   >

@@ -12,21 +12,25 @@ import SectionTitle from '../SectionTitle';
 import Language from './components/Language';
 import {getTotal} from '../../redux/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import {AppContext} from '../../context/AppProvider';
-
-const logged:boolean = true;
-const notification = true;
+import { AppContext } from '../../context/AppProvider';
 
 function Header(props: any) {
       const { isCart, title } = props;
       const { t, userInfo } = useContext(AppContext);
+      const history = useHistory();
       // console.log(userInfo)
       const dispatch = useDispatch();
-      const history = useHistory();
       const useStyle = headerStyle();
       const ref: any = useRef()
-      const res = () => {
-            console.log('Res')
+      const gotoPageSignUp = () => {
+            history.push({
+                  pathname: '/sign-up', search: '2'
+            })
+      }
+      const gotoPageSignIn = () => {
+            history.push({
+                  pathname: '/sign-in', search: '1'
+            })
       }
       const [openNo, setOpenNo] = useState(false);
       const [openMenu, setOpenMenu] = useState(false);
@@ -138,7 +142,7 @@ function Header(props: any) {
                                                                   fontSize='14px'
                                                                   lineHeight='20px'
                                                                   color='var(--purple)'
-                                                                  onClick={res}
+                                                                  onClick={gotoPageSignUp}
                                                             />
                                                 }
                                           </li>
@@ -156,6 +160,7 @@ function Header(props: any) {
                                                                   lineHeight='20px'
                                                                   backColor='var(--purple)'
                                                                   borderRadius='18px'
+                                                                  onClick={gotoPageSignIn}
                                                             />
                                                 }
                                           </li>

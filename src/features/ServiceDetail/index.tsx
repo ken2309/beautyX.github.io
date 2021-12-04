@@ -14,24 +14,24 @@ function ServiceDetail(props: any) {
       const location = useLocation();
       const search = location.search.slice(1, location.search.length);
       const params = search.split(',');
-      const is_type = params[2]
+      const is_type = parseInt(params[2])
+      // console.log(is_type)
       const [org, setOrg] = useState({})
       const [service, setService] = useState({});
       const [services, setServices] = useState<Service[]>([])
+      const [loading, setLoading] = useState(false);
       // const url = location.search.slice(1, location.search.length);
       // const param = JSON.parse(decodeURI(url))
       // console.log(param);
       useEffect(() => {
             async function handleGetOrgById() {
+                  setLoading(true)
                   try {
-                        const resOrg = await orgApi.getOrgById(params[0])
                         const resSer = await serviceApi.getDetailById({
                               org_id: params[0], ser_id: params[1]
                         })
-                        const resListSer = await serviceApi.getByOrg_id({ org_id: params[0], page: 1 });
                         setService(resSer.data.context);
-                        setOrg(resOrg.data.context)
-                        setServices(resListSer.data.context.data);
+                        setLoading(false)
                   } catch (err) {
                         console.log(err)
                   }
@@ -39,6 +39,18 @@ function ServiceDetail(props: any) {
             handleGetOrgById();
             // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [params[0], params[1]])
+      useEffect(() => {
+            async function handleGetOrg_Ser() {
+                  try {
+                        const resOrg = await orgApi.getOrgById(params[0])
+                        const resListSer = await serviceApi.getByOrg_id({ org_id: params[0], page: 1 });
+                        setOrg(resOrg.data.context)
+                        setServices(resListSer.data.context.data);
+                  } catch (err) { console.log(err) }
+            }
+            handleGetOrg_Ser()
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [params[0]])
       return (
             <div className="product">
                   <Header />
@@ -54,6 +66,7 @@ function ServiceDetail(props: any) {
                                     org={org}
                                     product={service}
                                     is_type={is_type}
+                                    loading={loading}
                               />
                         </div>
                         <RecommendList

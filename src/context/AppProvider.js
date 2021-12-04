@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import auth from '../api/authApi'
 
 
 export const AppContext = createContext();
@@ -9,6 +10,9 @@ export default function AppProvider({ children }) {
       const [language, setLanguage] = useState();
       const [tk, setTk] = useState();
       const [userInfo, setUserInfo] = useState()
+
+      const [profile, setProfile] = useState();
+
       useEffect(() => {
             if (lg === 'en-US' || lg === 'en') {
                   setLanguage('en')
@@ -16,8 +20,9 @@ export default function AppProvider({ children }) {
                   setLanguage('vn')
             }
       }, [lg])
+
+      const TK = window.sessionStorage.getItem('_WEB_TK')
       useEffect(() => {
-            const TK = window.sessionStorage.getItem('_WEB_TK')
             function handleGetToken() {
                   if (TK) {
                         setTk(window.sessionStorage.getItem('_WEB_TK'))
@@ -26,14 +31,30 @@ export default function AppProvider({ children }) {
                   }
             }
             handleGetToken()
+            return () => {
+                  console.log('clean')
+            }
+      }, [TK])
+
+
+      useEffect(() => {
+            async function handleGetProfile() {
+                  try {
+                        const res = await auth.getUserProfile();
+                        console.log(res)
+                  } catch (err) { console.log(err) };
+            }
+            handleGetProfile();
       }, [])
+
       const test = "test"
       const value = {
             t,
             test,
             language,
             setLanguage,
-            tk, userInfo
+            tk, userInfo,
+            setTk, setUserInfo
       }
       return (
             <AppContext.Provider

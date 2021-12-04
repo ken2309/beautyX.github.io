@@ -4,7 +4,7 @@ import HomeFilter from './HomeFilter'
 
 const styleFilter={
       position:'absolute',
-      width:'600px',
+      width:'66.66%',
       boxShadow:'0px 6px 37px rgba(113, 97, 186, 0.1)',
       padding:'36px'
 }
