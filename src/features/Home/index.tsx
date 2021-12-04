@@ -19,9 +19,9 @@ import { AppContext } from "../../context/AppProvider";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
-// const logged: boolean = true;
+const logged: boolean = true;
 function Home(props: any) {
-  const { userInfo } = useContext(AppContext);
+  // const { userInfo } = useContext(AppContext);
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(fetchAsyncOrg())
@@ -36,7 +36,7 @@ function Home(props: any) {
       <Container>
         <HomeBanner />
       </Container>
-      {userInfo ? (
+      {logged ? (
         <>
           <HomeLoggedCalendar />
           <Container>

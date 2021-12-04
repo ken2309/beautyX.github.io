@@ -9,13 +9,14 @@ import { Container } from "@mui/material";
 
 const weekDays = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
 const todayObj = dayjs();
+
 const dataCalendar = [
   {
     id: 1,
     time: "09:00 - 10:00",
     name: "Lịch hẹn 1",
     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "1/11/2021",
+    date: "1/12/2021",
     status: 1,
   },
   {
@@ -23,7 +24,7 @@ const dataCalendar = [
     time: "11:00 - 12:00",
     name: "Lịch hẹn 2",
     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "1/11/2021",
+    date: "1/12/2021",
     status: 2,
   },
   {
@@ -31,22 +32,101 @@ const dataCalendar = [
     time: "12:00 - 13:00",
     name: "Lịch hẹn 3",
     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "1/11/2021",
+    date: "2/12/2021",
     status: 3,
   },
   {
     id: 4,
-    time: "13:00 - 14:00",
-    name: "Lịch hẹn 4",
+    time: "11:00 - 12:00",
+    name: "Lịch hẹn 2",
     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "1/11/2021",
-    status: 4,
+    date: "2/12/2021",
+    status: 1,
+  },
+  {
+    id: 5,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "3/12/2021",
+    status: 3,
+  },
+  {
+    id: 6,
+    time: "11:00 - 12:00",
+    name: "Lịch hẹn 2",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "3/12/2021",
+    status: 2,
+  },
+  {
+    id: 7,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "3/12/2021",
+    status: 3,
+  },
+  {
+    id: 8,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "3/12/2021",
+    status: 1,
+  },
+  {
+    id: 9,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "4/12/2021",
+    status: 2,
+  },
+  {
+    id: 10,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "4/12/2021",
+    status: 3,
+  },
+  {
+    id: 11,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "6/12/2021",
+    status: 2,
+  },
+  {
+    id: 12,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "31/12/2021",
+    status: 3,
+  },
+  {
+    id: 13,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "30/12/2021",
+    status: 3,
+  },
+  {
+    id: 14,
+    time: "12:00 - 13:00",
+    name: "Lịch hẹn 3",
+    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
+    date: "7/12/2021",
+    status: 3,
   },
 ];
 export default function HomeLoggedCalendar() {
   const [datingList, setdatingList] = useState([]);
   const [dotAppoint, setdotAppoint] = useState([]);
-
   // dayjs(year-mouth-day) -> tạo ra 1 ngày (format of dayjs)
   const [dayObj, setDayObj] = useState(dayjs()); // lấy time hiện tại (year-mouth-day,...)
   let thisYear = dayObj.year();
@@ -88,18 +168,39 @@ export default function HomeLoggedCalendar() {
     if (!istoday) {
       newdate = date + 1;
     }
-    // console.log(">>newdate", newdate);
     let newmonth = thisMonth + 1;
+    const firstDateOfWeek = selectedDay.startOf("week").date();
+    const lastDateOfWeek = selectedDay.endOf("week").date();
+    console.log(firstDateOfWeek, lastDateOfWeek);
+
+    // const datesInSameWeek = (parts: any) => {
+    //   if (firstDateOfWeek < lastDateOfWeek) {
+    //     // giua thang
+    //     return (
+    //       newdate > firstDateOfWeek &&
+    //       newdate < lastDateOfWeek &&
+    //       newmonth == parts[1] &&
+    //       thisYear == parts[2]
+    //     );
+    //   } else {
+    //     // dau thang
+    //     return (
+    //       ((newdate < firstDateOfWeek && newdate < lastDateOfWeek) ||
+    //         (newdate > firstDateOfWeek && newdate > lastDateOfWeek)) &&
+    //       newmonth == parts[1] + 1 &&
+    //       thisYear == parts[2]
+    //     );
+    //   }
+    // };
+
     const dateList: any = dataCalendar.filter((data) => {
       var parts = data.date.split("/");
-      // console.log(parts[2], parts[1], parts[0]);
       return (
-        // eslint-disable-next-line eqeqeq
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });
+
     setdatingList(dateList);
-    // console.log(">>dateList", dateList);
   }
 
   function handleAppointDot() {
@@ -130,11 +231,12 @@ export default function HomeLoggedCalendar() {
   // lấy ngày đầu tuần trong tuần
   const getFirstDayOfW = (selectedDay: any) => {
     // t2 là 0 , chủ nhật là 6
-    console.log(`(T2 -> 0, CN -> 6) `, selectedDay.day());
+    // console.log(`(T2 -> 0, CN -> 6) `, selectedDay);
+
     if (selectedDay.startOf("week").month() !== selectedDay.month()) {
       return selectedDay.startOf("month");
     }
-    console.log(`đầu tuần`, selectedDay.startOf("week").date());
+    // console.log(`đầu tuần`, selectedDay.startOf("week").date());
     return selectedDay.startOf("week");
   };
 
@@ -148,9 +250,18 @@ export default function HomeLoggedCalendar() {
     ) {
       return selectedDay.endOf("month");
     }
-    console.log(`cuối tuần`, selectedDay.endOf("week").date());
+    // console.log(`cuối tuần`, selectedDay.endOf("week").date());
     return selectedDay.endOf("week");
   };
+
+  const getDaysInWeek = (selectedDay: any) => {
+    const days: any = [];
+    [1, 2, 3, 4, 5, 6, 7].map((i, index) =>
+      days.push(selectedDay.day(index).date())
+    );
+    return days;
+  };
+
   useEffect(() => {
     if (dataCalendar[0].id) {
       let today = todayObj.date();
@@ -201,6 +312,7 @@ export default function HomeLoggedCalendar() {
               datepick={datepick}
               handleGetDate={handleGetDate}
               datingList={datingList}
+              daysInWeek={getDaysInWeek(selectedDay)}
             />
           </div>
         </div>

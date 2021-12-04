@@ -14,6 +14,7 @@ interface IHomeLoggedCalendarList {
   datepick: any;
   handleGetDate: any;
   datingList: any;
+  daysInWeek: any;
 }
 export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
   const {
@@ -27,6 +28,7 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
     datepick,
     handleGetDate,
     datingList,
+    daysInWeek,
   } = props;
   const weekDays = [
     "Thứ Hai",
@@ -91,7 +93,10 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
         </div>
       </div>
 
-      <HomeLoggedCalendarAppointment datingList={datingList} />
+      <HomeLoggedCalendarAppointment
+        datingList={datingList}
+        daysInWeek={daysInWeek}
+      />
     </div>
   );
 }
