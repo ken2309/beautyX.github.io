@@ -7,12 +7,12 @@ export default function HomeLoggedCalendarStatus() {
       <span className="calendar-status__title">Trạng thái lịch hẹn</span>
       <ul className="calendar-status__list">
         <li className="calendar-status__item">
-          <img src={icon.Exclude} alt="" />
-          <span>Đã xác nhận</span>
-        </li>
-        <li className="calendar-status__item">
           <img src={icon.Exclude2} alt="" />
           <span>Chưa xác nhận</span>
+        </li>
+        <li className="calendar-status__item">
+          <img src={icon.Exclude} alt="" />
+          <span>Đã xác nhận</span>
         </li>
         <li className="calendar-status__item">
           <img src={icon.Exclude3} alt="" />

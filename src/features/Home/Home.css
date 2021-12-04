@@ -312,11 +312,20 @@ img {
   justify-content: center;
 }
 
+.home-sign {
+  margin-top: 124px;
+}
+.home-sign-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 /* Tablet */
-@media only screen and (min-width: 740px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* home mini map */
   .home-mini-map__content {
     flex-direction: column;
+    padding: 0 16px;
   }
   .mini-map__content-item {
     align-items: center;
@@ -331,17 +340,20 @@ img {
   /* home calendar content */
   .home-calendar-content {
     flex-direction: column-reverse;
+    padding: 0 16px;
+  }
+  .home-calendar {
+    margin-top: 64px;
+  }
+  .home-flatform {
+    padding: 0 16px;
+    margin-top: 64px;
+  }
+  .home-sign {
+    padding: 0 16px;
+    margin-top: 64px;
   }
 }
-.home-sign {
-  margin-top: 124px;
-}
-.home-sign-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 /* ==================== HOME LOGGED ======================= */
 /* homelogged calendar */
 .homelogged-calendar {
@@ -596,7 +608,7 @@ img {
 /* homelogged location */
 .homelogged-location {
   width: 100%;
-  padding: 64px 0;
+  padding-top: 64px;
 }
 .homelogged-location .section-title {
   padding-bottom: 24px;
@@ -608,8 +620,9 @@ img {
   display: flex;
   gap: 0 36px;
 }
-/* .homelogged-location__item {
-} */
+.homelogged-location__item {
+  width: 100%;
+}
 .item-top {
   cursor: pointer;
 }
@@ -772,6 +785,12 @@ img {
 }
 
 /* home logged product */
+.homelogged-product {
+  padding-top: 112px;
+}
+.homelogged-product:last-child {
+  padding-bottom: 64px;
+}
 .homelogged-product__sort {
   padding: 24px 0;
   border-bottom: 1px solid var(--purple);
@@ -869,11 +888,12 @@ img {
   border: 1px solid var(--purple);
 }
 .homelogged-product__list {
-  padding: 36px 0 64px 0;
+  padding-top: 36px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 36px 38px;
 }
+
 .homelogged-product__item {
   box-shadow: 0px 4px 20px rgba(113, 97, 186, 0.2);
   border-radius: 24px;
@@ -1000,4 +1020,57 @@ img {
 /* homelogged calendar right */
 .homelogged-calendar__right {
   padding: 36px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .home-map {
+    padding: 64px 16px 0 16px;
+  }
+  .homelogged-calendar {
+    margin-top: 134px;
+  }
+  .homelogged-calendar__content {
+    padding: 64px 16px;
+  }
+  .homelogged-calendar__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px 0;
+  }
+  .homelogged-calendar__left {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0 16px;
+  }
+  .homelogged-calendar__right {
+    width: 100%;
+    min-height: 250px;
+  }
+
+  .homelogged-location {
+    padding: 64px 0 0 16px;
+  }
+  .homelogged-location__list {
+    padding-right: 16px;
+    gap: 0 22px;
+  }
+  .item-top__img {
+    width: 320px;
+    height: 180px;
+  }
+
+  .homelogged-product {
+    padding: 64px 16px 0 16px;
+  }
+  .homelogged-product:last-child {
+    padding-bottom: 64px;
+  }
+
+  .homelogged-product__list {
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: unset;
+    padding-top: 36px;
+    gap: 22px;
+  }
 }
