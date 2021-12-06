@@ -5,7 +5,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Dialog from "@mui/material/Dialog";
 import ButtonCus from "../../../components/ButtonCus";
-import auth from '../../../api/authApi';
 import { AppContext } from '../../../context/AppProvider';
 import {useHistory} from 'react-router-dom';
 import {CircularProgress} from '@mui/material';
@@ -13,7 +12,7 @@ import axios from 'axios'
 import PopupNoti from './PopupNoti'
 
 function SignIn(props: any) {
-  const { t, setTk, setUserInfo } = useContext(AppContext)
+  const { t, setSign } = useContext(AppContext)
   const { activeTabSign, setActiveTabSign } = props;
   const history = useHistory()
   const [typePass, setTypePass] = useState("password");
@@ -34,10 +33,8 @@ function SignIn(props: any) {
       .then(function (response: any) {
         window.sessionStorage.setItem('_WEB_US', JSON.stringify(response.context))
         window.sessionStorage.setItem('_WEB_TK', response.context.token)
-        // setUserInfo(response.context)
-        // setTk(response.context.token)
+        setSign(true);
         history.push('/')
-        window.location.reload();
         setLoading(false);
       })
       .catch(function (err) {
@@ -238,8 +235,8 @@ function SignIn(props: any) {
         <img src={icon.facebook} alt="" />
       </div>
       <p className="sign-other-setup">
-        Bạn chưa có tài khoản
-        <span onClick={() => setActiveTabSign(2)}>Đăng ký ngay</span>
+        {t('Home.Sign_no_acc')}?
+        <span onClick={() => setActiveTabSign(2)}>{t('Home.Sign_up_now')}</span>
       </p>
       {/* dialog quên mật khẩu */}
       <Dialog
@@ -435,7 +432,7 @@ function SignIn(props: any) {
         popup={popup}
         setPopup={setPopup}
         isSignIn={true}
-        title={`Emai "${display_email}" chưa được đăng ký`}
+        title={`Emai "${display_email}" ${t('form.is_not_registered')}`}
       />
     </div>
   );

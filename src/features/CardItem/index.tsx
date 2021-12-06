@@ -15,7 +15,8 @@ function CardItem(props:any) {
             retail_price,
             special_price,
             org_id,
-            org_name
+            org_name,
+            org
       } = props;
       const history = useHistory();
       const discount = 100 - (special_price / retail_price * 100)
@@ -31,13 +32,15 @@ function CardItem(props:any) {
                   const is_type = 1;
                   history.push({
                         pathname: `/Product-detail/${slugify(name)}`,
-                        search: `${org_id},${detail.id},${is_type}`
+                        search: `${org_id},${detail.id},${is_type}`,
+                        state: org
                   })
             } else {
                   const is_type = 2;
                   history.push({
                         pathname: `/Service-detail/${slugify(name)}`,
-                        search: `${org_id},${detail.id},${is_type}`
+                        search: `${org_id},${detail.id},${is_type}`,
+                        state: org
                   })
             }
       }

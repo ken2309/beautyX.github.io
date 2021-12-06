@@ -5,32 +5,44 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Dialog from "@mui/material/Dialog";
 import ButtonCus from "../../../components/ButtonCus";
-import auth from '../../../api/authApi';
-import { AppContext } from '../../../context/AppProvider'
+import axios from 'axios'
+import { AppContext } from '../../../context/AppProvider';
+import PopupNoti from '../../SignPage/components/PopupNoti';
+import {CircularProgress} from '@mui/material';
 
 function SignIn(props: any) {
-  const { t } = useContext(AppContext)
+  const { t, setSign } = useContext(AppContext)
   const { activeTabSign, setActiveTabSign, setOpenSignIn } = props;
   const [typePass, setTypePass] = useState("password");
   const [openForgotPass, setOpenForgotPass] = React.useState(false);
   const [openVerification, setOpenVerification] = React.useState(false);
   const [openNewPass, setOpenNewPass] = React.useState(false);
+  const [loading, setLoading] = useState(false)
+  const [errPass, setErrPass] = useState('')
+  const [display_email, setDisplay_email] = useState('')
+  const [popup, setPopup] = useState(false)
 
   //submit form login
-  async function handleSubmitLogin(params: any) {
-    try {
-      const res = await auth.login(params);
-      if (res.data.status === 200) {
-        const uuid = res.data.context.token;
-        const userInfo = res.data.context;
-        window.sessionStorage.setItem('_WEB_US', JSON.stringify(userInfo));
-        window.sessionStorage.setItem('_WEB_TK', uuid);
-        window.location.reload();
+  //handle submit login form
+  const handleLogin = (values: any) => {
+    setLoading(true);
+    setDisplay_email(values.email);
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, values)
+      .then(function (response: any) {
+        window.sessionStorage.setItem('_WEB_US', JSON.stringify(response.context))
+        window.sessionStorage.setItem('_WEB_TK', response.context.token)
+        setSign(true);
+        setLoading(false);
         setOpenSignIn(false);
-      }
-    } catch (err) {
-      console.log(err)
-    }
+      })
+      .catch(function (err) {
+        setLoading(false);
+        if (err.response?.status === 401) {
+          setErrPass('Mật khẩu chưa chính xác. Vui lòng thử lại !')
+        } else if (err.response?.status === 404) {
+          setPopup(true)
+        }
+      })
   }
 
 
@@ -77,7 +89,7 @@ function SignIn(props: any) {
     }),
     //SUBMIT LOGIN FORM
     onSubmit: (values) => {
-      handleSubmitLogin(values)
+      handleLogin(values)
     },
   });
   //form forgot pass
@@ -184,6 +196,7 @@ function SignIn(props: any) {
           {formik.errors.password && formik.touched.password && (
             <p className="err-text">{formik.errors.password}</p>
           )}
+          <p className="err-text">{errPass}</p>
         </div>
         <div className="signIn-checkbox sign-check">
           <div className="signIn-checkbox__wrap">
@@ -200,7 +213,18 @@ function SignIn(props: any) {
           </div>
           <span onClick={handleClickOpenForgotPass}>{t('Home.Sign_forgot')} ?</span>
         </div>
-        <button type="submit" className="sign-btn">
+        <button
+          disabled={loading === true ? true : false}
+          type="submit"
+          className="sign-btn"
+          style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
+        >
+          {
+            loading === true ?
+              <div className="sign-loading">
+                <CircularProgress size="25px" color="inherit" />
+              </div> : ''
+          }
           {t('Home.Sign_in')}
         </button>
       </form>
@@ -403,6 +427,12 @@ function SignIn(props: any) {
           </div>
         </div>
       </Dialog>
+      <PopupNoti
+        popup={popup}
+        setPopup={setPopup}
+        isSignIn={true}
+        title={`Emai "${display_email}" chưa được đăng ký`}
+      />
     </div>
   );
 }

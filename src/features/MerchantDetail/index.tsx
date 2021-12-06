@@ -28,16 +28,21 @@ function MerchantDetail(props: any) {
       useEffect(() => {
             async function handleGetOrgById() {
                   setLoading(true);
-                  try {
-                        const res = await orgApi.getOrgById(mer_id);
-                        setOrg(res.data.context);
+                  if (location.state) {
+                        setOrg(location.state)
                         setLoading(false);
-                  } catch (err) {
-                        console.log(err)
+                  } else {
+                        try {
+                              const res = await orgApi.getOrgById(mer_id);
+                              setOrg(res.data.context);
+                              setLoading(false);
+                        } catch (err) {
+                              console.log(err)
+                        }
                   }
             }
             handleGetOrgById()
-      },[mer_id])
+      }, [location.state, mer_id])
       return (
             <div>
                   <Header />
@@ -67,11 +72,13 @@ function MerchantDetail(props: any) {
                               </div>
                               <ServiceByMerchant
                                     activeTab={activeTab}
-                                    mer_id = {mer_id}
+                                    mer_id={mer_id}
+                                    org={org}
                               />
                               <ProductByMerchant
                                     mer_id={mer_id}
                                     activeTab={activeTab}
+                                    org={org}
                               />
                               <ComboByMerchant
                                     org={org}

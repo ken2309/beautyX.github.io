@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Header from "../Header/index";
 import "./Home.css";
 import "../poupSignInUp/popupSignInUp.css";
@@ -21,7 +21,7 @@ import { AppContext } from "../../context/AppProvider";
 
 // const logged: boolean = false;
 function Home(props: any) {
-  const { userInfo } = useContext(AppContext)
+  const { profile } = useContext(AppContext)
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(fetchAsyncOrg())
@@ -36,7 +36,7 @@ function Home(props: any) {
       <Container>
         <HomeBanner />
       </Container>
-      {userInfo ? (
+      {profile ? (
         <>
           <HomeLoggedCalendar />
           <Container>

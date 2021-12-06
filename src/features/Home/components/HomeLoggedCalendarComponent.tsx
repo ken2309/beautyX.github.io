@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import range from "lodash-es/range";
 
 interface IHomeLoggedCalendarComponent {
@@ -21,7 +21,7 @@ export default function HomeLoggedCalendarComponent(
 ) {
   const {
     weekDays,
-    todayObj,
+    // todayObj,
     weekDayOfFirst,
     weekDayOfLast,
     thisYear,
@@ -29,7 +29,7 @@ export default function HomeLoggedCalendarComponent(
     daysInMonth,
     dayObjOfFirstMonth,
     dayObjOfLastMonth,
-    handleAppoint,
+    // handleAppoint,
     dotAppoint,
     datepick,
     handleGetDate,

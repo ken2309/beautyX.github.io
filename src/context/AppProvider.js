@@ -10,7 +10,7 @@ export default function AppProvider({ children }) {
       const [language, setLanguage] = useState();
       const [tk, setTk] = useState();
       const [userInfo, setUserInfo] = useState()
-
+      const [sign, setSign] = useState();
       const [profile, setProfile] = useState();
 
       useEffect(() => {
@@ -32,20 +32,22 @@ export default function AppProvider({ children }) {
             }
             handleGetToken()
             return () => {
-                  console.log('clean')
+                  //console.log('clean')
             }
-      }, [TK])
-
+      }, [TK, sign])
 
       useEffect(() => {
             async function handleGetProfile() {
                   try {
                         const res = await auth.getUserProfile();
-                        console.log(res)
-                  } catch (err) { console.log(err) };
+                        setProfile(res.data);
+                  } catch (err) {
+                        setProfile(undefined)
+                        //console.log(err)
+                  };
             }
             handleGetProfile();
-      }, [])
+      }, [sign])
 
       const test = "test"
       const value = {
@@ -54,7 +56,9 @@ export default function AppProvider({ children }) {
             language,
             setLanguage,
             tk, userInfo,
-            setTk, setUserInfo
+            setTk, setUserInfo,
+            setSign,
+            profile,
       }
       return (
             <AppContext.Provider

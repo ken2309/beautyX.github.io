@@ -18,7 +18,7 @@ function DetailMer(props:any) {
             history.push({
                   pathname: `/Merchant-detail/${slugify(org.name)}`,
                   search: `${org.id}`,
-                  state: item
+                  state: org
             })
             scrollTop();
       }

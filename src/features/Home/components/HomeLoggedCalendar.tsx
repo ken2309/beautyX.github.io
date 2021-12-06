@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SectionTitle from "../../SectionTitle/index";
 import dayjs from "dayjs";
 import HomeLoggedCalendarComponent from "./HomeLoggedCalendarComponent";
 import HomeLoggedCalendarChooseMonth from "./HomeLoggedCalendarChooseMonth";
 import HomeLoggedCalendarStatus from "./HomeLoggedCalendarStatus";
 import HomeLoggedCalendarList from "./HomeLoggedCalendarList";
-import { Container } from '@mui/material'
+import { Container } from '@mui/material';
+import {AppContext} from '../../../context/AppProvider'
 
-const weekDays = ["T2", "T3", "T4", "T5", "T6", "T7", "CN"];
 const todayObj = dayjs();
 const dataCalendar = [
   {
@@ -46,6 +46,8 @@ const dataCalendar = [
 export default function HomeLoggedCalendar() {
   const [datingList, setdatingList] = useState([]);
   const [dotAppoint, setdotAppoint] = useState([]);
+  const { t } = useContext(AppContext)
+  const weekDays = [t('Home.mo'), t('Home.tu'), t('Home.we'), t('Home.th'), t('Home.fr'), t('Home.sa'), t('Home.su')];
 
   // dayjs(year-mouth-day) -> tạo ra 1 ngày (format of dayjs)
   const [dayObj, setDayObj] = useState(dayjs()); // lấy time hiện tại (year-mouth-day,...)
@@ -104,8 +106,10 @@ export default function HomeLoggedCalendar() {
 
   function handleAppointDot() {
     let appointList: any = [];
+    // eslint-disable-next-line array-callback-return
     dataCalendar.map((date) => {
       let objIndex = appointList.findIndex((obj: any) => {
+        // eslint-disable-next-line eqeqeq
         if (obj.date == date.date && obj.status == date.status) {
           return true;
         }
@@ -157,12 +161,13 @@ export default function HomeLoggedCalendar() {
       handleAppoint(today, thisMonth, thisYear, true);
       handleAppointDot();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="homelogged-calendar">
       <Container>
         <div className="homelogged-calendar__content">
-          <SectionTitle title="Lịch hẹn của bạn" textAlign="left" />
+          <SectionTitle title={t('Home.my_appointment')} textAlign="left" />
           <div className="homelogged-calendar__wrap">
             <div className="homelogged-calendar__left">
               <div className="calendar-choosedate">

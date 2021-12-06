@@ -7,7 +7,7 @@ import { AppContext } from '../../context/AppProvider';
 
 function ProductByMerchant(props: any) {
       const { t } = useContext(AppContext)
-      const { activeTab, mer_id } = props;
+      const { activeTab, mer_id, org } = props;
       const [products, setProducts] = useState<Product[]>([]);
       const [cate_id, setCate_id] = useState();
       const [loading, setLoading] = useState(false)
@@ -68,6 +68,7 @@ function ProductByMerchant(props: any) {
                               products={productsIs}
                               page={page}
                               setPage={setPage}
+                              org={org}
                         />
                   </div>
             </div>

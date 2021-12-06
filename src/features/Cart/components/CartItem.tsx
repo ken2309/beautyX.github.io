@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Checkbox } from '@mui/material';
 import ButtonCus from '../../../components/ButtonCus';
-import { checkConfirm,addCart, descItem, removeItem } from '../../../redux/cartSlice'
+import { checkConfirm, descItem, removeItem, ascItem } from '../../../redux/cartSlice'
 import { useDispatch } from 'react-redux'
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
@@ -23,7 +23,7 @@ function CartItem(props: any) {
                   dispatch(action)
       }
       const handleAscCart = () => {
-            const action = addCart(cartItem);
+            const action = ascItem(cartItem);
             dispatch(action)
       }
       const handleDesc = () => {

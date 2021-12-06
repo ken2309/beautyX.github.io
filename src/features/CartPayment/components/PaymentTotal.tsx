@@ -1,31 +1,54 @@
-import React, {useContext, useState} from 'react';
-import {Container} from '@mui/material';
+import React, { useContext, useState } from 'react';
+import { Container } from '@mui/material';
 import formatPrice from '../../../utils/formatPrice';
 import ButtonCus from '../../../components/ButtonCus';
 import PopupSuccess from '../../PopupSuccess/index';
 import { AppContext } from '../../../context/AppProvider';
 
+interface ItemOrder {
+      id: number, quantity: number
+}
+
 const useInPayment: boolean = true;
 function PaymentTotal(props: any) {
       const { t } = useContext(AppContext)
-      const { methodList, value, list, carts, userInfo } = props;
+      const { methodList, value, list, carts, userInfo, profile } = props;
       const pmMethod = methodList.find((item: any) => item.method === value);
       const [popup, setPopup] = useState(false);
+      const org_id = list[0].org_id
+      const products = list.filter((item: any) => item.is_type === 1)
+      const services = list.filter((item: any) => item.is_type === 2)
+      const combos = list.filter((item: any) => item.is_type === 3)
+
+      const productsPost: ItemOrder[] = [];
+      const servicesPost: ItemOrder[] = [];
+      const combosPost: ItemOrder[] = []
+      for (var item of products) {
+            const product = { id: item.id, quantity: item.quantity }
+            productsPost.push(product)
+      }
+      for (var itemService of services) {
+            const service = { id: itemService.id, quantity: itemService.quantity }
+            servicesPost.push(service)
+      }
+      for (var itemCombo of combos) {
+            const combo = { id: itemCombo.id, quantity: itemCombo.quantity }
+            combosPost.push(combo);
+      }
+      const params = {
+            org_id: org_id,
+            products: productsPost,
+            services: servicesPost,
+            prepay_cards: [],
+            treatment_combo: combosPost
+      }
       const handleSubmitPayment = () => {
-            if (value && userInfo) {
-                  // const params = {
-                  //       name: userInfo.cus_name,
-                  //       phone: userInfo.cus_phone,
-                  //       address: userInfo.cus_address,
-                  //       note: userInfo.cus_note,
-                  //       payment_method: value,
-                  //       cart: list
-                  // }
-                  console.log(list);
-                  localStorage.setItem('booking-service', JSON.stringify(list))
-                  setPopup(true)
-            } else {
-                  console.log('err !')
+            if (profile) {
+                  if (value && userInfo) {
+                        console.log(params)
+                  } else {
+                        console.log('err !')
+                  }
             }
       }
       return (

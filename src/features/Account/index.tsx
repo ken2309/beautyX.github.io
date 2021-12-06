@@ -4,7 +4,7 @@
 //     Route,
 //     Link
 // } from 'react-router-dom';
-import { RouteComponentProps } from '@reach/router';
+//import { RouteComponentProps } from '@reach/router';
 import Header from '../Header/index';
 import "./Account.css";
 import SideBar from './components/MenuSideBar';
@@ -27,9 +27,9 @@ import SideBar from './components/MenuSideBar';
 //     }
 //   ];
 function Account() {
-    const RouterPage = (
-        props: { pageComponent: JSX.Element } & RouteComponentProps
-  ) => props.pageComponent;
+    // const RouterPage = (
+    //     props: { pageComponent: JSX.Element } & RouteComponentProps
+    // ) => props.pageComponent;
     return (
         <>
             <Header />
@@ -38,7 +38,7 @@ function Account() {
                 <SideBar
                 />
                 <div className="display_section">
-                {/* <Router>
+                    {/* <Router>
                     <Switch>
                             {routes.map((item, index) => (
                                 <RouterPage key={index} path={`${item.path}`} pageComponent={item.component} />

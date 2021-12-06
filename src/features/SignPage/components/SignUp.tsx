@@ -21,7 +21,12 @@ function SignUp(props: any) {
   const [error, setError] = useState()
   const [errMail, setErrMail] = useState()
   const [popup, setPopup] = useState(false);
+  const [agree, setAgree] = useState(false)
 
+  const handleAgreeClick=(e:any)=>{
+    setAgree(e.target.checked)
+  }
+  //submit register from
   const handleOnSubmitSignUp = (values: any) => {
     setLoading(true)
     const params = {
@@ -58,39 +63,39 @@ function SignUp(props: any) {
     validationSchema: Yup.object({
       Name: Yup.string()
         .min(2, "Tên lớn hơn 2 ký tự")
-        .required("Vui lòng nhập họ và tên")
+        .required(t('form.please_enter_full_name'))
         .matches(
           /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/,
           "Tên không đúng định dạng"
         ),
-      Sex: Yup.string().required("Vui lòng chọn giới tính"),
+      Sex: Yup.string().required(t('form.please_choose_sex')),
       dateOfBirth: Yup.string()
-        .required("Vui lòng nhập ngày tháng năm sinh")
+        .required(t('form.please_enter_dob'))
         .matches(
           // eslint-disable-next-line no-useless-escape
           /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-          "Vui lòng nhập đúng định dạng dd/mm/yyyy"
+          t('form.dob_format')
         ),
       EmailPhone: Yup.string()
-        .required("Vui lòng nhập Email hoặc Số điện thoại")
+        .required(t('form.please_enter_email'))
         .matches(
           // eslint-disable-next-line no-useless-escape
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-          "Vui lòng nhập đúng định dạng Example@gmail.com"
+          t('form.email_format')
         ),
       Phone: Yup.string()
-        .required("Vui lòng nhập số điện thoại"),
+        .required(`${t('pm.please_enter')} ${t('pm.phone_number')}`),
       password: Yup.string()
-        .min(8, "Mật khẩu lớn hơn 8 ký tự")
-        .max(32, "Mật khẩu tối đa 32 kí tự")
-        .required("Vui lòng nhập mật khẩu")
+        .min(8, t('form.password_min'))
+        .max(32, t('form.password_max'))
+        .required(t('Home.Sign_val_password'))
         .matches(
           /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
+          t('form.password_rule')
         ),
       confirmPassword: Yup.string()
-        .required("Vui lòng xác nhận lại mật khẩu")
-        .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp"),
+        .required(t('form.please_confirm_password'))
+        .oneOf([Yup.ref("password"), null], t('form.password_confirm_invalid')),
     }),
     onSubmit: (values: any) => {
       handleOnSubmitSignUp(values)
@@ -115,7 +120,7 @@ function SignUp(props: any) {
                 onChange={formik.handleChange}
                 name="Name"
                 type="text"
-                placeholder="Họ và tên"
+                placeholder={t('pm.full_name')}
               />
             </div>
 
@@ -139,7 +144,7 @@ function SignUp(props: any) {
                       }}
                     />
                   }
-                  label="Nam"
+                  label={t('form.male')}
                 />
                 <FormControlLabel
                   value="female"
@@ -153,7 +158,7 @@ function SignUp(props: any) {
                       }}
                     />
                   }
-                  label="Nữ"
+                  label={t('form.female')}
                 />
                 <FormControlLabel
                   value="other"
@@ -167,7 +172,7 @@ function SignUp(props: any) {
                       }}
                     />
                   }
-                  label="Khác"
+                  label={t('form.other')}
                 />
               </RadioGroup>
             </FormControl>
@@ -197,7 +202,7 @@ function SignUp(props: any) {
               name="dateOfBirth"
               id="dateOfBirth"
               type="text"
-              placeholder="Ngày/tháng/năm sinh"
+              placeholder={t('form.date_of_birth')}
             />
           </div>
           {formik.errors.dateOfBirth && formik.touched.dateOfBirth && (
@@ -238,7 +243,7 @@ function SignUp(props: any) {
               name="Phone"
               id="Phone"
               type="text"
-              placeholder="Số điện thoại"
+              placeholder={t('pm.phone_number')}
             />
           </div>
           {formik.errors.Phone && formik.touched.Phone && (
@@ -259,7 +264,7 @@ function SignUp(props: any) {
               name="password"
               id="password"
               type={typePass}
-              placeholder="Mật khẩu"
+              placeholder={t('Home.Sign_in_pl_password')}
             />
             <img
               onMouseEnter={() => setTypePass("text")}
@@ -286,7 +291,7 @@ function SignUp(props: any) {
               name="confirmPassword"
               id="confirmPassword"
               type={typePass}
-              placeholder="Nhập lại mật khẩu"
+              placeholder={t('form.confirm_password')}
             />
             <img
               onMouseEnter={() => setTypePass("text")}
@@ -302,7 +307,8 @@ function SignUp(props: any) {
         </div>
         <div className="flex-row w-100">
           <Checkbox
-            defaultChecked
+            onChange={handleAgreeClick}
+            value={agree}
             sx={{
               color: "#7161BA",
               "&.Mui-checked": {
@@ -311,12 +317,13 @@ function SignUp(props: any) {
             }}
           />
           <p className="sign-other-setup">
-            Tôi đã đọc và đồng ý với
-            <span>Điều khoản & Điều kiện của Myspa</span>
+            {t('form.i_agree')}
+            <span>{t('form.myspa_s_terms')}</span>
           </p>
         </div>
 
         <button
+          disabled={agree === true ? false : true}
           type="submit"
           className="sign-btn mt-38"
           style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
@@ -329,7 +336,7 @@ function SignUp(props: any) {
           }
           {t('Home.Sign_up')}
         </button>
-        <p className="sign-or">Hoặc đăng kí với</p>
+        <p className="sign-or">{t('Home.Sign_or')}</p>
         <div className="flex-row sign-other-social">
           <img src={icon.google} alt="" />
           <img src={icon.facebook} alt="" />

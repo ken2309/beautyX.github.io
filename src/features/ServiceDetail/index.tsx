@@ -42,9 +42,13 @@ function ServiceDetail(props: any) {
       useEffect(() => {
             async function handleGetOrg_Ser() {
                   try {
-                        const resOrg = await orgApi.getOrgById(params[0])
+                        if (location.state) {
+                              setOrg(location.state)
+                        } else {
+                              const resOrg = await orgApi.getOrgById(params[0])
+                              setOrg(resOrg.data.context)
+                        }
                         const resListSer = await serviceApi.getByOrg_id({ org_id: params[0], page: 1 });
-                        setOrg(resOrg.data.context)
                         setServices(resListSer.data.context.data);
                   } catch (err) { console.log(err) }
             }

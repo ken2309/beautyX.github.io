@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
+import { AppContext } from "../../../context/AppProvider";
 
 interface IHomeLoggedCalendarList {
   weekDays: any;
@@ -16,6 +17,7 @@ interface IHomeLoggedCalendarList {
   datingList: any;
 }
 export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
+  const { t } = useContext(AppContext);
   const {
     weekDayOfFirst,
     weekDayOfLast,
@@ -29,13 +31,13 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
     datingList,
   } = props;
   const weekDays = [
-    "Thứ Hai",
-    "Thứ Ba",
-    "Thứ Tư",
-    "Thứ Năm",
-    "Thứ Sáu",
-    "Thứ Bảy",
-    "Chủ nhật",
+    t('Home.Monday'),
+    t('Home.Tuesday'),
+    t('Home.Wednesday'),
+    t('Home.Thursday'),
+    t('Home.Friday'),
+    t('Home.Saturday'),
+    t('Home.Sunday')
   ];
 
   return (

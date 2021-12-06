@@ -19,6 +19,7 @@ function SearchResult(props:any) {
       const [loading, setLoading] = useState(false);
       const [orgs, setOrgs] = useState<Organization[]>([])
       const [totalItem, setTotalItem] = useState()
+      const [total, setTotal] = useState();
       const [curPage, setCurPage] = useState(1)
       useEffect(() => {
             async function handleGetOrgs() {
@@ -28,8 +29,9 @@ function SearchResult(props:any) {
                               page: curPage,
                               keySearch: keySearch
                         });
-                        setTotalItem(res.data.context.total);
+                        setTotalItem(res.data.context.last_page);
                         setOrgs(res.data.context.data);
+                        setTotal(res.data.context.total)
                         setLoading(false);
                   } catch (err) {
                         console.log(err)
@@ -52,6 +54,7 @@ function SearchResult(props:any) {
                                     resultList={orgs}
                                     setChooseItem={setChooseItem}
                                     loading={loading}
+                                    total={total}
                               />
                               <MapWrapper
                                     chooseItem={chooseItem}

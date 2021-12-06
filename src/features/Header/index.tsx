@@ -16,7 +16,8 @@ import { AppContext } from '../../context/AppProvider';
 
 function Header(props: any) {
       const { isCart, title } = props;
-      const { t, userInfo } = useContext(AppContext);
+      const { t, userInfo, profile, setSign } = useContext(AppContext);
+      //console.log(profile);
       const history = useHistory();
       // console.log(userInfo)
       const dispatch = useDispatch();
@@ -135,10 +136,10 @@ function Header(props: any) {
                                     <ul className={useStyle.headerRightList}>
                                           <li className={useStyle.headerRightItem}>
                                                 {
-                                                      userInfo ? ''
+                                                      profile ? ''
                                                             :
                                                             <ButtonCus
-                                                                  text='Đăng ký'
+                                                                  text={t('Home.Sign_up')}
                                                                   fontSize='14px'
                                                                   lineHeight='20px'
                                                                   color='var(--purple)'
@@ -148,13 +149,13 @@ function Header(props: any) {
                                           </li>
                                           <li className={useStyle.headerRightItem}>
                                                 {
-                                                      userInfo ?
+                                                      profile ?
                                                             <span className={useStyle.headerUserName}>
                                                                   {userInfo.fullname}
                                                             </span>
                                                             :
                                                             <ButtonCus
-                                                                  text='Đăng nhập'
+                                                                  text={t('Home.Sign_in')}
                                                                   color='var(--bg-gray)'
                                                                   fontSize='14px'
                                                                   lineHeight='20px'
@@ -169,7 +170,7 @@ function Header(props: any) {
                                                 className={useStyle.headerRightItem}
                                           >
                                                 {
-                                                      userInfo ?
+                                                      profile ?
                                                             <>
                                                                   <img
                                                                         className={useStyle.headerAvatar}
@@ -197,7 +198,7 @@ function Header(props: any) {
                                                       className={useStyle.menu} src={icon.Menu} alt=""
                                                 />
                                                 {
-                                                      userInfo ? <Menu openMenu={openMenu} /> : ''
+                                                      profile ? <Menu setSign={setSign} openMenu={openMenu} /> : ''
                                                 }
                                           </li>
                                           <li className={useStyle.headerRightItem}></li>

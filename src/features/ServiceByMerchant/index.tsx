@@ -10,7 +10,7 @@ import './ServiceByMerchant.css'
 const tab_id = 2;
 function ServiceByMerchant(props: any) {
       const { t } = useContext(AppContext);
-      const { activeTab, mer_id } = props;
+      const { activeTab, mer_id, org } = props;
       const [services, setServices] = useState<Service[]>([]);
       const [page, setPage] = useState(1)
       const [totalPage, setTotalPage] = useState(1)
@@ -72,6 +72,7 @@ function ServiceByMerchant(props: any) {
                               services={services}
                               t={t}
                               mer_id={mer_id}
+                              org={org}
                               totalPage={totalPage}
                               setPage={setPage}
                         />

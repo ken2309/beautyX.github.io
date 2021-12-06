@@ -13,12 +13,13 @@ class Auth {
       }
       getUserProfile = () => {
             const url = `/users/profile`
-            console.log(window.sessionStorage.getItem('_WEB_TK'));
-            return axiosClient.get(url, {
-                  headers: {
-                        'Authorization': 'Bearer ' + window.sessionStorage.getItem('_WEB_TK')
-                  }
-            })
+            if (window.sessionStorage.getItem('_WEB_TK')) {
+                  return axiosClient.get(url, {
+                        headers: {
+                              'Authorization': 'Bearer ' + window.sessionStorage.getItem('_WEB_TK')
+                        }
+                  })
+            }
       }
 }
 const auth = new Auth();

@@ -205,3 +205,21 @@
       background-color: transparent !important;
       box-shadow: none !important;
 }
+/* cart must sign noti */
+.cart-sign{
+      background-color: var(--bg-gray);
+      padding: 36px;
+}
+.cart-sign__head{
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--purple);
+}
+.cart-sign__title{
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      color: var(--text-black);
+      margin: 16px 0px;
+}

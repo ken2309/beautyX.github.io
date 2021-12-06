@@ -18,7 +18,7 @@ function SuggestionList(props:any) {
                   cart_id: parseInt(`${org.id}${item.id}`),
                   name: item.service_name,
                   quantity: 1,
-                  is_type: '2',
+                  is_type: 2,
                   isConfirm: true,
                   price: item.special_price < 0 ? item.price : item.special_price
             }

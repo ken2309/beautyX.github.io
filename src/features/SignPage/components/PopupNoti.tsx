@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Dialog } from '@mui/material';
 import icon from '../../../constants/icon';
 import ButtonCus from '../../../components/ButtonCus';
 import { useHistory } from 'react-router-dom'
+import { AppContext } from '../../../context/AppProvider';
 
 function PopupNoti(props: any) {
+      const { t } = useContext(AppContext);
       const { popup, setPopup, isSignIn, title } = props;
       const history = useHistory();
       const later = () => {
@@ -12,8 +14,10 @@ function PopupNoti(props: any) {
       }
       const gotoPageSignIn = () => {
             if (isSignIn === true) {
+                   setPopup(false)
                   history.push({ pathname: '/sign-up', search: '2' })
             } else {
+                   setPopup(false)
                   history.push({ pathname: '/sign-in', search: '1' })
             }
       }
@@ -29,14 +33,14 @@ function PopupNoti(props: any) {
                               src={icon.success} alt=""
                         />
                         <span>
-                              {isSignIn === true ? title : 'Đăng ký tài khoản thành công'}
+                              {isSignIn === true ? title : t('form.register_success')}
                         </span>
                         <div className="flex-row-sp sign-up-noti__btn">
                               <ButtonCus
                                     border="solid 1px var(--purple)"
                                     margin="0px 8px"
                                     borderRadius="16px"
-                                    text={isSignIn === true ? 'Đăng ký ngay' : 'Đăng ký ngay'}
+                                    text={isSignIn === true ? `${t('Home.Sign_up')} ${t('form.now')}` : `${t('Home.Sign_in')} ${t('form.now')}`}
                                     backColor="var(--purple)"
                                     color="var(--bgWhite)"
                                     onClick={gotoPageSignIn}
@@ -45,7 +49,7 @@ function PopupNoti(props: any) {
                                     border="solid 1px var(--purple)"
                                     margin="0px 8px"
                                     borderRadius="16px"
-                                    text="Để sau"
+                                    text={t('pm.later')}
                                     backColor="var(--bgWhite)"
                                     color="var(--purple)"
                                     onClick={later}

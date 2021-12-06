@@ -50,7 +50,7 @@ function DetailCard(props:any) {
             id: product.id,
             org_id: org.id,
             org_name: org.name,
-            cart_id: parseInt(`${org.id}${product.id}`),
+            cart_id: parseInt(`${is_type}${org.id}${product.id}`), //is_type + org_id + id
             name: product.product_name ? product.product_name : product.service_name,
             quantity: quantity,
             is_type: is_type,

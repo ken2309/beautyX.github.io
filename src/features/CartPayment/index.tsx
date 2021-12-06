@@ -11,6 +11,7 @@ import Footer from '../Footer/index';
 import img from '../../constants/img';
 import {getTotal} from '../../redux/cartSlice'
 import { AppContext } from '../../context/AppProvider';
+// import {useHistory} from 'react-router-dom'
 
 const isCart: boolean = true;
 const PAYMENT_METHOD = [
@@ -27,7 +28,7 @@ interface User {
       cus_note: string;
 }
 function CartPayment(props: any) {
-      const { t } = useContext(AppContext)
+      const { t, profile } = useContext(AppContext)
       const headerTitle=t('pm.payment')
       const [value, setValue] = React.useState('');
       const [userInfo, setUserInfo] = useState<User>();
@@ -70,8 +71,9 @@ function CartPayment(props: any) {
                         methodList={PAYMENT_METHOD}
                         carts={carts}
                         list={list}
+                        profile={profile}
                   />
-                  <Footer/>
+                  <Footer />
             </div>
       );
 }

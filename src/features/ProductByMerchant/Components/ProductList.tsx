@@ -14,7 +14,7 @@ const cardStyle = {
 interface ActiveFilter { id: number, title: string }
 function ProductList(props: any) {
       const location = useLocation();
-      const { t, products, setPage, loading, pageLength } = props;
+      const { t, products, setPage, loading, pageLength, org } = props;
       const buttons = [
             { id: 1, title: t('Mer_de.popular') },
             { id: 2, title: t('Mer_de.selling') },
@@ -111,6 +111,7 @@ function ProductList(props: any) {
                                                       className="ser-list__content-list-item"
                                                 >
                                                       <CardItem
+                                                            org={org}
                                                             org_id={location.search.slice(1, location.search.length)}
                                                             name={item.product_name}
                                                             detail={item}

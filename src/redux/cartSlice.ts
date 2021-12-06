@@ -12,7 +12,6 @@ const cart = createSlice({
       initialState,
       reducers: {
             addCart: (state, action) => {
-                  console.log(action)
                   const iIndex = state.cartList.findIndex((item:any) =>
                         item.cart_id === action.payload.cart_id
                   );
@@ -21,6 +20,15 @@ const cart = createSlice({
                   }else{
                         const templeCart = { ...action.payload, quantity: action.payload.quantity };
                         state.cartList.push(templeCart);
+                  }
+                  localStorage.setItem(storageName, JSON.stringify(state.cartList))
+            },
+            ascItem :(state, action)=>{
+                  const iIndex = state.cartList.findIndex((item:any)=>
+                        item.cart_id === action.payload.cart_id
+                  );
+                  if (state.cartList[iIndex].quantity > 1) {
+                        state.cartList[iIndex].quantity += 1;
                   }
                   localStorage.setItem(storageName, JSON.stringify(state.cartList))
             },
@@ -96,5 +104,5 @@ const cart = createSlice({
       }
 });
 const { reducer, actions } = cart;
-export const { addCart, descItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck } = actions;
+export const { addCart, descItem, ascItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck } = actions;
 export default reducer;

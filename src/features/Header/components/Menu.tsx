@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {headerStyle} from '../style';
 import icon from '../../../constants/icon';
 import ButtonCus from '../../../components/ButtonCus';
 import CheckNotification from './CheckNotification'
 import '../header.css';
+import { AppContext } from '../../../context/AppProvider';
 
 function Menu(props:any) {
-      const {openMenu} = props;
+      const {t} = useContext(AppContext)
+      const {openMenu, setSign} = props;
       const menu = headerStyle();
       const [openSetting, setOpenSetting] = useState(false);
-      const openSettingClick = () => {
-            if (openSetting === false) { setOpenSetting(true) }
-            else { setOpenSetting(false) }
+      const handleSignOut = () => {
+            console.log('logout');
+            setSign(false);
+            const token = '';
+            window.sessionStorage.setItem('_WEB_TK', token)
       }
       return (
             <div
@@ -23,41 +27,41 @@ function Menu(props:any) {
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
                                     <img src={icon.User_purple} alt="" />
-                                    <span className={menu.menuItemText}>Tài khoản của tôi</span>
+                                    <span className={menu.menuItemText}>{t('Header.my_acc')}</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
                                     <img src={icon.Credit_card} alt="" />
-                                    <span className={menu.menuItemText}>Phương thức thanh toán</span>
+                                    <span className={menu.menuItemText}>{t('pm.payment_method')}</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
                                     <img src={icon.Clock_purple} alt="" />
-                                    <span className={menu.menuItemText}>Lịch sử đơn hàng</span>
+                                    <span className={menu.menuItemText}>{t('Header.my_order')}</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
                                     <img src={icon.Ticket} alt="" />
-                                    <span className={menu.menuItemText}>Danh sách mã ưu đãi</span>
+                                    <span className={menu.menuItemText}>{t('Header.my_codes')}</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
                                     <img src={icon.Bell} alt="" />
-                                    <span className={menu.menuItemText}>Thông báo</span>
+                                    <span className={menu.menuItemText}>{t('cart.noti')}</span>
                               </div>
                         </li>
                         <li className={menu.menuBoxItem}>
                               <div 
-                                    onClick={openSettingClick}
+                                    onClick={()=>setOpenSetting(!openSetting)}
                                     className={menu.menuItemDrop}
                               >
                                     <div className={menu.menuItemContent}>
                                           <img src={icon.Setting} alt="" />
-                                          <span className={menu.menuItemText}>Cài đặt</span>
+                                          <span className={menu.menuItemText}>{t('Header.settings')}</span>
                                     </div>
                                     <img src={icon.down} alt="" />
                               </div>
@@ -78,18 +82,19 @@ function Menu(props:any) {
                         <li className={menu.menuBoxItem}>
                               <div className={menu.menuItemContent}>
                                     <img src={icon.Headphones_purple} alt="" />
-                                    <span className={menu.menuItemText}>Hỗ trợ</span>
+                                    <span className={menu.menuItemText}>{t('Header.support')}</span>
                               </div>
                         </li>
                   </ul>
                   <div className={menu.menuBottom}>
                         <img src={icon.Menu} alt="" />
                         <ButtonCus
-                              text='Đăng xuất'
+                              text={t('Header.sign_out')}
                               color='var(--purple)'
                               fontSize='14px'
                               lineHeight='20px'
                               paddingLeft='4px'
+                              onClick={handleSignOut}
                         />
                   </div>
             </div>

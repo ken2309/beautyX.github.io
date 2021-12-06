@@ -46,9 +46,13 @@ function ProductDetail(props: any) {
             async function handleGetOrg_Products() {
                   setLoading(true);
                   try {
-                        const resOrg = await orgApi.getOrgById(params[0]);
+                        if (location.state) {
+                              setOrg(location.state);
+                        } else {
+                              const resOrg = await orgApi.getOrgById(params[0]);
+                              setOrg(resOrg.data.context);
+                        }
                         const resProducts = await productsApi.getByOrgId({ org_id: params[0], page: 1 })
-                        setOrg(resOrg.data.context);
                         setProducts(resProducts.data.context.data);
                         setLoading(false);
                   } catch (err) { console.log(err) }

@@ -12,7 +12,7 @@ const cardStyle = {
 }
 interface ActiveFilter { id: number, title: string }
 function ServiceList(props: any) {
-      const { t, mer_id, services, totalPage, setPage, loading } = props;
+      const { t, mer_id, org, services, totalPage, setPage, loading } = props;
       const buttons = [
             { id: 1, title: t('Mer_de.popular') },
             { id: 2, title: t('Mer_de.selling') },
@@ -116,6 +116,7 @@ function ServiceList(props: any) {
                                                 >
                                                       <CardItem
                                                             org_id={mer_id}
+                                                            org={org}
                                                             name={item.service_name}
                                                             retail_price={item.price}
                                                             special_price={item.special_price}

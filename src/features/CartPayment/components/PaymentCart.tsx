@@ -28,7 +28,7 @@ function PaymentCart(props: any) {
                   </div>
                   <ul className="flex-column">
                         {
-                              list.filter((item: any) => item.isPr === false).map((child: any) => (
+                              list.filter((item: any) => item.is_type === 2).map((child: any) => (
                                     <CartItem
                                           inPayment={inPayment}
                                           key={child.cart_id}
@@ -45,7 +45,24 @@ function PaymentCart(props: any) {
                   </span>
                   <ul className="flex-column">
                         {
-                              list.filter((item: any) => item.isPr === true).map((child: any) => (
+                              list.filter((item: any) => item.is_type === 1).map((child: any) => (
+                                    <CartItem
+                                          key={child.cart_id}
+                                          cartItem={child}
+                                          inPayment={inPayment}
+                                    />
+                              ))
+                        }
+                  </ul>
+                  <span
+                        className="flex-row cart-list-item__head"
+                  >
+                        <img src={icon.bag} alt="" />
+                        Combo
+                  </span>
+                  <ul className="flex-column">
+                        {
+                              list.filter((item: any) => item.is_type === 3).map((child: any) => (
                                     <CartItem
                                           key={child.cart_id}
                                           cartItem={child}

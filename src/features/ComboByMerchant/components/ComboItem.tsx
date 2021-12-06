@@ -27,7 +27,7 @@ function ComboItem(props: any) {
                   id: detail.id,
                   org_id: org.id,
                   org_name: org.name,
-                  cart_id: parseInt(`${org.id}${detail.id}`),
+                  cart_id: parseInt(`${3}${org.id}${detail.id}`),
                   name: detail.name,
                   quantity: quantity,
                   is_type: 3,

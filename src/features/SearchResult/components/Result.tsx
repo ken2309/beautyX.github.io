@@ -17,7 +17,8 @@ function Result(props:any) {
             setChooseItem,
             loading,
             totalItem,
-            setCurPage
+            setCurPage,
+            total
       } = props;
       const serviceOfCardOrg = [
             { title: t('Search_result.parking'), text: '100m2', icon: icon.car },
@@ -25,7 +26,6 @@ function Result(props:any) {
             { title: t('Search_result.room'), text: '190', icon: icon.door },
             { title: t('Search_result.capacity'), text: '106 người', icon: icon.car },
       ]
-      const pageCount = Math.ceil(totalItem / 3)
       const history = useHistory();
       const handleChooseItem = (item: any) => {
             setChooseItem(item);
@@ -50,7 +50,7 @@ function Result(props:any) {
                         <div className="result-detail__result">
                               <h3>"{keySearch}"</h3>
                               <span className="result-detail__result-total">
-                                    <span>212</span> {t('Search_result.text_result')}
+                                    <span>{total}</span> {t('Search_result.text_result')}
                               </span>
                         </div>
                         <div className="result-detail__path">
@@ -126,7 +126,7 @@ function Result(props:any) {
                   <Pagination
                         color='secondary'
                         shape="rounded"
-                        count={pageCount}
+                        count={totalItem}
                         onChange={pageChange}
                   />
             </div>

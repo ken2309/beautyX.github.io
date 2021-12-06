@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SectionTitle from '../../SectionTitle/index';
 import icon from '../../../constants/icon';
-import {category} from '../../../data/category';
 
 function ServiceCate(props: any) {
       const { t, categories, setChooseCate, setPage } = props;
