@@ -3,45 +3,39 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Dialog from "@mui/material/Dialog";
-import ButtonCus from "../../../components/ButtonCus";
-import axios from 'axios'
-import { AppContext } from '../../../context/AppProvider';
-import PopupNoti from '../../SignPage/components/PopupNoti';
-import {CircularProgress} from '@mui/material';
-import ForgotPass from './ForgotPass';
-import Verification from './Verification';
-import NewPass from './NewPass';
+import axios from "axios";
+import { AppContext } from "../../../context/AppProvider";
+import PopupNoti from "../../SignPage/components/PopupNoti";
+import { CircularProgress } from "@mui/material";
+import ForgotPass from "./ForgotPass";
+import Verification from "./Verification";
+import NewPass from "./NewPass";
 
 function SignIn(props: any) {
-  const { t, setSign } = useContext(AppContext)
-  const {
-    activeTabSign,
-    setActiveTabSign,
-    setOpenSignIn,
-    handleClickOpenVerification,
-    handleCloseForgotPass,
-    handleClickOpenNewPass,
-    handleCloseVerification
-  } = props;
+  const { t, setSign } = useContext(AppContext);
+  const { activeTabSign, setActiveTabSign, setOpenSignIn } = props;
   const [typePass, setTypePass] = useState("password");
   const [openForgotPass, setOpenForgotPass] = React.useState(false);
   const [openVerification, setOpenVerification] = React.useState(false);
   const [openNewPass, setOpenNewPass] = React.useState(false);
-  const [loading, setLoading] = useState(false)
-  const [errPass, setErrPass] = useState('')
-  const [display_email, setDisplay_email] = useState('')
-  const [popup, setPopup] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [errPass, setErrPass] = useState("");
+  const [display_email, setDisplay_email] = useState("");
+  const [popup, setPopup] = useState(false);
 
   //submit form login
   //handle submit login form
   const handleLogin = (values: any) => {
     setLoading(true);
     setDisplay_email(values.email);
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, values)
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/login`, values)
       .then(function (response: any) {
-        window.sessionStorage.setItem('_WEB_US', JSON.stringify(response.context))
-        window.sessionStorage.setItem('_WEB_TK', response.context.token)
+        window.sessionStorage.setItem(
+          "_WEB_US",
+          JSON.stringify(response.context)
+        );
+        window.sessionStorage.setItem("_WEB_TK", response.context.token);
         setSign(true);
         setLoading(false);
         setOpenSignIn(false);
@@ -49,12 +43,12 @@ function SignIn(props: any) {
       .catch(function (err) {
         setLoading(false);
         if (err.response?.status === 401) {
-          setErrPass('Mật khẩu chưa chính xác. Vui lòng thử lại !')
+          setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
         } else if (err.response?.status === 404) {
-          setPopup(true)
+          setPopup(true);
         }
-      })
-  }
+      });
+  };
 
   // Open Popup Forgot
   const handleClickOpenForgotPass = () => {
@@ -78,66 +72,7 @@ function SignIn(props: any) {
     }),
     //SUBMIT LOGIN FORM
     onSubmit: (values) => {
-      handleLogin(values)
-    },
-  });
-  //form forgot pass
-  const formikForgotPass = useFormik({
-    initialValues: {
-      email: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .required("Vui lòng nhập Email/số điện thoại")
-        .matches(
-          // eslint-disable-next-line no-useless-escape
-          /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-          "Vui lòng nhập đúng định dạng Example@gmail.com"
-        ),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      handleClickOpenVerification();
-      handleCloseForgotPass();
-    },
-  });
-  const formikVerification = useFormik({
-    initialValues: {
-      verification: "",
-    },
-    validationSchema: Yup.object({
-      verification: Yup.string()
-        .required("Vui lòng nhập mã xác nhận")
-        .min(6, "Mã xác nhận lớn hơn 6 ký tự")
-        .max(6, "Mã xác nhận nhỏ hơn 6 ký tự"),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      handleCloseVerification();
-      handleClickOpenNewPass();
-    },
-  });
-  const formikNewpass = useFormik({
-    initialValues: {
-      password: "",
-      confirmPassword: "",
-    },
-    validationSchema: Yup.object({
-      password: Yup.string()
-        .min(8, "Mật khẩu lớn hơn 8 ký tự")
-        .max(32, "Mật khẩu tối đa 32 kí tự")
-        .required("Vui lòng nhập mật khẩu mới")
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
-        ),
-      confirmPassword: Yup.string()
-        .required("Vui lòng xác nhận lại mật khẩu mới")
-        .oneOf([Yup.ref("password"), null], "Mật khẩu mới không khớp"),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      //handleCloseNewPass();
+      handleLogin(values);
     },
   });
 
@@ -209,15 +144,18 @@ function SignIn(props: any) {
           disabled={loading === true ? true : false}
           type="submit"
           className="sign-btn"
-          style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
-        >
-          {
-            loading === true ?
-              <div className="sign-loading">
-                <CircularProgress size="25px" color="inherit" />
-              </div> : ''
+          style={
+            loading === true ? { position: "relative", opacity: "0.6" } : {}
           }
-          {t('Home.Sign_in')}
+        >
+          {loading === true ? (
+            <div className="sign-loading">
+              <CircularProgress size="25px" color="inherit" />
+            </div>
+          ) : (
+            ""
+          )}
+          {t("Home.Sign_in")}
         </button>
       </form>
       <p className="sign-or">{t}</p>

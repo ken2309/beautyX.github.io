@@ -8,46 +8,49 @@ import Checkbox from "@mui/material/Checkbox";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { CircularProgress } from '@mui/material'
+import { CircularProgress } from "@mui/material";
 import { AppContext } from "../../../context/AppProvider";
-import PopupNoti from './PopupNoti'
-
+import PopupNoti from "./PopupNoti";
 
 function SignUp(props: any) {
   const { activeTabSign } = props;
-  const { t } = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const [typePass, setTypePass] = useState("password");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState()
-  const [errMail, setErrMail] = useState()
+  const [error, setError] = useState();
+  const [errMail, setErrMail] = useState();
   const [popup, setPopup] = useState(false);
-  const [agree, setAgree] = useState(false)
+  const [agree, setAgree] = useState(false);
 
-  const handleAgreeClick=(e:any)=>{
-    setAgree(e.target.checked)
-  }
+  // const handleAgreeClick=(e:any)=>{
+  //   setAgree(e.target.checked)
+  // }
   //submit register from
   const handleOnSubmitSignUp = (values: any) => {
-    setLoading(true)
+    setLoading(true);
     const params = {
       fullname: values.Name,
       email: values.EmailPhone,
       telephone: values.Phone,
-      password: values.password
-    }
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, params)
+      password: values.password,
+    };
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/register`, params)
       .then(function (response) {
         setLoading(false);
-        setPopup(true)
+        setPopup(true);
       })
       .catch(function (err) {
-        if (err.response.data.context.telephone || err.response.data.context.email) {
+        if (
+          err.response.data.context.telephone ||
+          err.response.data.context.email
+        ) {
           setError(err.response.data.context.telephone);
-          setErrMail(err.response.data.context.email)
+          setErrMail(err.response.data.context.email);
         }
-        setLoading(false)
-      })
-  }
+        setLoading(false);
+      });
+  };
   // console.log(error, errMail)
 
   const formik = useFormik({
@@ -59,46 +62,52 @@ function SignUp(props: any) {
       Phone: "",
       password: "",
       confirmPassword: "",
+      agree: false,
     },
     validationSchema: Yup.object({
       Name: Yup.string()
         .min(2, "Tên lớn hơn 2 ký tự")
-        .required(t('form.please_enter_full_name'))
+        .required(t("form.please_enter_full_name"))
         .matches(
           /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/,
           "Tên không đúng định dạng"
         ),
-      Sex: Yup.string().required(t('form.please_choose_sex')),
+      Sex: Yup.string().required(t("form.please_choose_sex")),
       dateOfBirth: Yup.string()
-        .required(t('form.please_enter_dob'))
+        .required(t("form.please_enter_dob"))
         .matches(
           // eslint-disable-next-line no-useless-escape
           /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-          t('form.dob_format')
+          t("form.dob_format")
         ),
       EmailPhone: Yup.string()
-        .required(t('form.please_enter_email'))
+        .required(t("form.please_enter_email"))
         .matches(
           // eslint-disable-next-line no-useless-escape
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-          t('form.email_format')
+          t("form.email_format")
         ),
-      Phone: Yup.string()
-        .required(`${t('pm.please_enter')} ${t('pm.phone_number')}`),
+      Phone: Yup.string().required(
+        `${t("pm.please_enter")} ${t("pm.phone_number")}`
+      ),
       password: Yup.string()
-        .min(8, t('form.password_min'))
-        .max(32, t('form.password_max'))
-        .required(t('Home.Sign_val_password'))
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          t('form.password_rule')
-        ),
+        .min(8, t("form.password_min"))
+        .max(32, t("form.password_max"))
+        .required(t("Home.Sign_val_password")),
+      // .matches(
+      //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      //   t("form.password_rule")
+      // ),
       confirmPassword: Yup.string()
-        .required(t('form.please_confirm_password'))
-        .oneOf([Yup.ref("password"), null], t('form.password_confirm_invalid')),
+        .required(t("form.please_confirm_password"))
+        .oneOf([Yup.ref("password"), null], t("form.password_confirm_invalid")),
+      agree: Yup.boolean().oneOf(
+        [true],
+        "Vui lòng đọc và chấp nhận điều khoản"
+      ),
     }),
     onSubmit: (values: any) => {
-      handleOnSubmitSignUp(values)
+      handleOnSubmitSignUp(values);
     },
   });
   return (
@@ -111,7 +120,7 @@ function SignUp(props: any) {
         className="flex-column sign-form"
         // style={{alignItems:'start'}}
       >
-        <div className="flex-column" style={{width:'100%'}}>
+        <div className="flex-column" style={{ width: "100%" }}>
           <div className="flex-row w-100" style={{ width: "100%" }}>
             <div className="sign-form__box ">
               <img className="sign-form__box-icon" src={icon.User} alt="" />
@@ -120,7 +129,7 @@ function SignUp(props: any) {
                 onChange={formik.handleChange}
                 name="Name"
                 type="text"
-                placeholder={t('pm.full_name')}
+                placeholder={t("pm.full_name")}
               />
             </div>
 
@@ -144,7 +153,7 @@ function SignUp(props: any) {
                       }}
                     />
                   }
-                  label={t('form.male')}
+                  label={t("form.male")}
                 />
                 <FormControlLabel
                   value="female"
@@ -158,7 +167,7 @@ function SignUp(props: any) {
                       }}
                     />
                   }
-                  label={t('form.female')}
+                  label={t("form.female")}
                 />
                 <FormControlLabel
                   value="other"
@@ -172,7 +181,7 @@ function SignUp(props: any) {
                       }}
                     />
                   }
-                  label={t('form.other')}
+                  label={t("form.other")}
                 />
               </RadioGroup>
             </FormControl>
@@ -202,7 +211,7 @@ function SignUp(props: any) {
               name="dateOfBirth"
               id="dateOfBirth"
               type="text"
-              placeholder={t('form.date_of_birth')}
+              placeholder={t("form.date_of_birth")}
             />
           </div>
           {formik.errors.dateOfBirth && formik.touched.dateOfBirth && (
@@ -243,7 +252,7 @@ function SignUp(props: any) {
               name="Phone"
               id="Phone"
               type="text"
-              placeholder={t('pm.phone_number')}
+              placeholder={t("pm.phone_number")}
             />
           </div>
           {formik.errors.Phone && formik.touched.Phone && (
@@ -264,7 +273,7 @@ function SignUp(props: any) {
               name="password"
               id="password"
               type={typePass}
-              placeholder={t('Home.Sign_in_pl_password')}
+              placeholder={t("Home.Sign_in_pl_password")}
             />
             <img
               onMouseEnter={() => setTypePass("text")}
@@ -291,7 +300,7 @@ function SignUp(props: any) {
               name="confirmPassword"
               id="confirmPassword"
               type={typePass}
-              placeholder={t('form.confirm_password')}
+              placeholder={t("form.confirm_password")}
             />
             <img
               onMouseEnter={() => setTypePass("text")}
@@ -307,8 +316,10 @@ function SignUp(props: any) {
         </div>
         <div className="flex-row w-100">
           <Checkbox
-            onChange={handleAgreeClick}
-            value={agree}
+            onChange={formik.handleChange}
+            value={formik.values.agree}
+            name="agree"
+            id="agree"
             sx={{
               color: "#7161BA",
               "&.Mui-checked": {
@@ -316,37 +327,42 @@ function SignUp(props: any) {
               },
             }}
           />
+
           <p className="sign-other-setup">
-            {t('form.i_agree')}
-            <span>{t('form.myspa_s_terms')}</span>
+            {t("form.i_agree")}
+            <span>{t("form.myspa_s_terms")}</span>
           </p>
         </div>
+        {formik.errors.agree && formik.touched.agree && (
+          <p className="err-text" style={{ margin: "0 0 0 10px" }}>
+            {formik.errors.agree}
+          </p>
+        )}
 
         <button
-          disabled={agree === true ? false : true}
+          // disabled={agree === true ? false : true}
           type="submit"
           className="sign-btn mt-38"
-          style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
-        >
-          {
-            loading === true ?
-              <div className="sign-loading">
-                <CircularProgress size="25px" color="inherit" />
-              </div> : ''
+          style={
+            loading === true ? { position: "relative", opacity: "0.6" } : {}
           }
-          {t('Home.Sign_up')}
+        >
+          {loading === true ? (
+            <div className="sign-loading">
+              <CircularProgress size="25px" color="inherit" />
+            </div>
+          ) : (
+            ""
+          )}
+          {t("Home.Sign_up")}
         </button>
-        <p className="sign-or">{t('Home.Sign_or')}</p>
+        <p className="sign-or">{t("Home.Sign_or")}</p>
         <div className="flex-row sign-other-social">
           <img src={icon.google} alt="" />
           <img src={icon.facebook} alt="" />
         </div>
       </form>
-      <PopupNoti
-        popup={popup}
-        setPopup={setPopup}
-        isSignIn={false}
-      />
+      <PopupNoti popup={popup} setPopup={setPopup} isSignIn={false} />
     </div>
   );
 }
