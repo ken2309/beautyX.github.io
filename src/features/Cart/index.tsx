@@ -88,7 +88,7 @@ function Cart(props: any) {
                                                 </div>
                                           </div>
                                           <div
-                                                style={showOrg === false ? { display: 'none' } : { display: 'block' }}
+                                                style={showOrg === true ? { top: '2.5rem', opacity: '1', visibility: 'visible' } : {top: '5rem', opacity:'0', visibility: 'hidden' }}
                                                 className="cart-notification__or-list"
                                           >
                                                 <ul>

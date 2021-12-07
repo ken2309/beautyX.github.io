@@ -17,6 +17,7 @@ function ServiceByMerchant(props: any) {
       const [categories, setCategories] = useState([])
       const [chooseCate, setChooseCate] = useState();
       const [loading, setLoading] = useState(false)
+      const [loading_cate, setLoading_cate] = useState(false);
       useEffect(() => {
             async function handleGetServices() {
                   setLoading(true)
@@ -40,21 +41,27 @@ function ServiceByMerchant(props: any) {
                         console.log(err)
                   }
             }
-            handleGetServices()
-      }, [mer_id, page, chooseCate])
+            if (tab_id === activeTab) {
+                  handleGetServices()
+            }
+      }, [mer_id, page, chooseCate, activeTab])
       useEffect(() => {
-            async function handleGetCategories(){
-                  try{
+            setLoading_cate(true)
+            async function handleGetCategories() {
+                  try {
                         const resCate = await categoryApi.getByOrgId_services({
                               org_id: mer_id
                         })
                         setCategories(resCate.data.context.data);
-                  }catch(err){
+                        setLoading_cate(false)
+                  } catch (err) {
                         console.log(err)
                   }
             }
-            handleGetCategories()
-      },[mer_id])
+            if (tab_id === activeTab) {
+                  handleGetCategories()
+            }
+      }, [activeTab, mer_id])
       return (
             <div style={tab_id === activeTab ? { display: 'block' } : { display: 'none' }}>
                   <div
@@ -66,6 +73,7 @@ function ServiceByMerchant(props: any) {
                               categories={categories}
                               setChooseCate={setChooseCate}
                               setPage={setPage}
+                              loading_cate={loading_cate}
                         />
                         <ServiceList
                               loading={loading}

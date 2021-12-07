@@ -39,8 +39,10 @@ function ProductByMerchant(props: any) {
                         console.log(err)
                   }
             }
-            handleGetPrByOrgId();
-      }, [param, cate_id, mer_id, page])
+            if (activeTab === 3) {
+                  handleGetPrByOrgId();
+            }
+      }, [param, cate_id, mer_id, page, activeTab])
       // add new values product
       const productsIs = [];
       for(var item of products){
@@ -60,6 +62,7 @@ function ProductByMerchant(props: any) {
                               mer_id={mer_id}
                               setCate_id={setCate_id}
                               setPage={setPage}
+                              activeTab={activeTab}
                         />
                         <ProductList
                               t={t}

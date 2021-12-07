@@ -2,26 +2,32 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../SectionTitle/index';
 import icon from '../../../constants/icon';
 import categoryApi from '../../../api/categoryApi';
-import {Category} from '../../../interface/category'
+import {Category} from '../../../interface/category';
+import Skeleton from 'react-loading-skeleton'
 
 function ProductCate(props:any) {
-      const { mer_id, t, setCate_id, setPage } = props;
+      const { mer_id, t, setCate_id, setPage, activeTab } = props;
       const [activeCate, setActiveCate] = useState();
       const [categories, setCategories] = useState<Category[]>([]);
+      const [loading, setLoading] = useState(false);
       const handleActiveCateClick = (cate: any) => {
             setActiveCate(cate)
             setCate_id(cate.id);
             setPage(1);
       }
-      useEffect(()=>{
-            async function getCateByOrgId(){
-                  try{
+      useEffect(() => {
+            setLoading(true);
+            async function getCateByOrgId() {
+                  try {
                         const res = await categoryApi.getByOrgId(mer_id);
                         setCategories(res.data.context.data);
-                  }catch(err){console.log(err)}
+                        setLoading(false)
+                  } catch (err) { console.log(err) }
             }
-            getCateByOrgId()
-      },[mer_id])
+            if (activeTab === 3) {
+                  getCateByOrgId()
+            }
+      }, [activeTab, mer_id])
       return (
             <div className="ser-category">
                   <div className="flex-row">
@@ -42,38 +48,35 @@ function ProductCate(props:any) {
                                     </div>
                               </li>
                               {
-                                    categories.map(item => (
-                                          <li
-                                                onClick={() => handleActiveCateClick(item)}
-                                                key={item.id}
-                                                className="ser-category-box__item"
-                                          >
-                                                <div
-                                                      style={activeCate === item ?
-                                                            { color: 'var(--purple)' }
-                                                            :
-                                                            { color: 'var(--text-hover)' }
-                                                      }
-                                                      className="flex-row-sp"
+                                    loading === true ?
+                                          <Skeleton
+                                                count={8}
+                                                style={{
+                                                      width: '100%',
+                                                      height: '20px',
+                                                      margin: '6px 0px'
+                                                }}
+                                          />
+                                          :
+                                          categories.map(item => (
+                                                <li
+                                                      onClick={() => handleActiveCateClick(item)}
+                                                      key={item.id}
+                                                      className="ser-category-box__item"
                                                 >
-                                                      {item.name}
-                                                      <img src={icon.next} alt="" />
-                                                </div>
-                                                {/* <ul
-                                                      style={activeCate === item ?
-                                                            { display: 'block' }
-                                                            :
-                                                            { display: 'none' }}
-                                                      className="ser-category-box__item-child"
-                                                >
-                                                      {
-                                                            item.child.map(itemChild => (
-                                                                  <li key={itemChild.id} >{itemChild.name}</li>
-                                                            ))
-                                                      }
-                                                </ul> */}
-                                          </li>
-                                    ))
+                                                      <div
+                                                            style={activeCate === item ?
+                                                                  { color: 'var(--purple)' }
+                                                                  :
+                                                                  { color: 'var(--text-hover)' }
+                                                            }
+                                                            className="flex-row-sp"
+                                                      >
+                                                            {item.name}
+                                                            <img src={icon.next} alt="" />
+                                                      </div>
+                                                </li>
+                                          ))
                               }
                         </ul>
                   </div>

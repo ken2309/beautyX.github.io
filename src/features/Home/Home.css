@@ -126,6 +126,11 @@ img {
   z-index: 2;
   background-color: var(--bg-color);
 }
+.drop-category ul li{
+  margin: 2px 0px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 .drop-all__enterprise {
   border-radius: 14px;
   margin-top: 10px;
@@ -1022,7 +1027,8 @@ img {
 .homelogged-calendar__right {
   padding: 36px;
 }
-
+   
+/* responsive */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .home-map {
     padding: 64px 16px 0 16px;
@@ -1074,4 +1080,10 @@ img {
     padding-top: 36px;
     gap: 22px;
   }
+}
+
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px){
+  
 }

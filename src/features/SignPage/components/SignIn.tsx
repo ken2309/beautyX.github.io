@@ -229,7 +229,7 @@ function SignIn(props: any) {
           {t('Home.Sign_in')}
         </button>
       </form>
-      <p className="sign-or">{t}</p>
+      <p className="sign-or">{t('Home.Sign_or')}</p>
       <div className="flex-row sign-other-social">
         <img src={icon.google} alt="" />
         <img src={icon.facebook} alt="" />
@@ -239,7 +239,7 @@ function SignIn(props: any) {
         <span onClick={() => setActiveTabSign(2)}>{t('Home.Sign_up_now')}</span>
       </p>
       {/* dialog quên mật khẩu */}
-      <Dialog
+      {/* <Dialog
         open={openForgotPass}
         keepMounted
         onClose={handleCloseForgotPass}
@@ -286,9 +286,9 @@ function SignIn(props: any) {
             />
           </div>
         </div>
-      </Dialog>
+      </Dialog> */}
       {/* dialog nhập mã xác nhận */}
-      <Dialog
+      {/* <Dialog
         open={openVerification}
         keepMounted
         onClose={handleCloseVerification}
@@ -336,9 +336,9 @@ function SignIn(props: any) {
             />
           </div>
         </div>
-      </Dialog>
+      </Dialog> */}
       {/* dialog đặt lại mật khẫu mới */}
-      <Dialog
+      {/* <Dialog
         open={openNewPass}
         keepMounted
         onClose={handleCloseNewPass}
@@ -433,7 +433,7 @@ function SignIn(props: any) {
         setPopup={setPopup}
         isSignIn={true}
         title={`Emai "${display_email}" ${t('form.is_not_registered')}`}
-      />
+      /> */}
     </div>
   );
 }

@@ -8,9 +8,9 @@ export default function HomeLoggedCalendarAppointmentList(
   props: IAppointmentList
 ) {
   const { datingList } = props;
-  return datingList.map((item: any, i: number) => {
+  return datingList.map((item: any, index: number) => {
     return (
-      <div className="calendar-appointment__list">
+      <div key={index} className="calendar-appointment__list">
         {item &&
           item.map((date: any, i: number) => (
             <HomeLoggedCalendarAppointmentItem

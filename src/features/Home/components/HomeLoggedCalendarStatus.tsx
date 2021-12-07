@@ -17,10 +17,6 @@ export default function HomeLoggedCalendarStatus() {
           <span>{t('Home.unconfimred')}</span>
         </li>
         <li className="calendar-status__item">
-          <img src={icon.Exclude} alt="" />
-          <span>Đã xác nhận</span>
-        </li>
-        <li className="calendar-status__item">
           <img src={icon.Exclude3} alt="" />
           <span>{t('Home.complete')}</span>
         </li>

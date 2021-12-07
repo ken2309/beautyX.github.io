@@ -36,7 +36,7 @@ function Home(props: any) {
       <Container>
         <HomeBanner />
       </Container>
-      {profile ? (
+      {profile ?
         <>
           <HomeLoggedCalendar />
           <Container>
@@ -45,7 +45,7 @@ function Home(props: any) {
             <HomeLoggedForYou />
           </Container>
         </>
-      ) : (
+        :
         <Container>
           <HomeMap />
           <HomeMiniMap />
@@ -54,7 +54,7 @@ function Home(props: any) {
           <HomeFlatForm />
           <HomeSignIn />
         </Container>
-      )}
+      }
       <Footer />
     </div>
   );

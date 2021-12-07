@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import auth from '../api/authApi'
-
+import auth from '../api/authApi';
 
 export const AppContext = createContext();
 export default function AppProvider({ children }) {
@@ -48,7 +47,7 @@ export default function AppProvider({ children }) {
             }
             handleGetProfile();
       }, [sign])
-
+      //get all tags
       const test = "test"
       const value = {
             t,

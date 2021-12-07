@@ -70,6 +70,7 @@ function Result(props:any) {
                                     :
                                     resultList.map((item: any) => (
                                           <ResultItem
+                                                key={item.id}
                                                 item={item}
                                                 setChooseItem={setChooseItem}
                                                 serviceOfCardOrg={serviceOfCardOrg}
