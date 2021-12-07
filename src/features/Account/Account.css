@@ -22,10 +22,17 @@
 .text-color-grey{
     color: #A2A1AB;
 }
+.text-color-purple{
+    color: var(--purple);
+}
 .wrapper{
     max-width: 1200px;
     margin: auto;
     padding: 64px 0;
+}
+.account_section{
+    display: flex;
+    flex-direction: row;
 }
 .infor_section{
     background: #F5F5F7;
@@ -149,4 +156,8 @@
 .infor_section .dropdown .tab.active::after{
     transform: rotate(225deg);
     
+}
+.purple_line{
+    border-top: 1px solid #7161BA;
+    border-bottom: none;
 }

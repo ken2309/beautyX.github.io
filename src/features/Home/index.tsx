@@ -19,7 +19,7 @@ import { AppContext } from "../../context/AppProvider";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
-// const logged: boolean = false;
+const logged: boolean = true;
 function Home(props: any) {
   const { profile } = useContext(AppContext)
   // const dispatch = useDispatch();

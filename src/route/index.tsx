@@ -37,7 +37,7 @@ function RouterConfig(props: any) {
       component: <Partner />,
     },
     {
-      path: "/Account",
+      path: "/tai-khoan",
       component: <Account />,
     },
     {
@@ -72,7 +72,7 @@ function RouterConfig(props: any) {
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="home" />
+        <Redirect exact from="/" to="Home" />
         {routes.map((item, index) => (
           <RouterPage
             key={index}

@@ -50,10 +50,7 @@ export default function HomeLoggedProduct() {
           <span className="sort-item">Sử dụng nhiều</span>
         </div>
         <div className="homelogged-product__sort-right">
-          <HomeLoggedProductSelector
-            openEnterprise={openEnterprise}
-            setOpenEnterprise={setOpenEnterprise}
-          />
+          <HomeLoggedProductSelector />
         </div>
       </div>
       <div className="homelogged-product__list">

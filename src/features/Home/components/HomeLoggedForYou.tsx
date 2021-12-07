@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../../context/AppProvider";
 import SectionTitle from "../../SectionTitle";
 import HomeLoggedForYouItem from "./HomeLoggedForYouItem";
-import HomeLoggedProductSelector from "./HomeLoggedProductSelector";
+import HomeLoggedForYouSelector from "./HomeLoggedForYouSelector";
 const dataProduct = [
   {
     id: 1,
@@ -42,10 +42,7 @@ export default function HomeLoggedForYou() {
           <span className="sort-item">Giảm nhiều</span>
         </div>
         <div className="homelogged-product__sort-right">
-          <HomeLoggedProductSelector
-            openEnterprise={openForYouEnterprise}
-            setOpenEnterprise={setOpenopenForYouEnterprise}
-          />
+          <HomeLoggedForYouSelector />
         </div>
       </div>
       <div className="homelogged-product__list">

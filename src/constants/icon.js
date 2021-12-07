@@ -142,6 +142,6 @@ const icon = {
   checkWhite,
   Calendar,
   onedot,
-  Setting
+  Setting,
 };
 export default icon;

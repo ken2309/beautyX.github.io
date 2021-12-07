@@ -1,16 +1,16 @@
 /* eslint-disable no-mixed-operators */
-import React, {useState, useRef, useEffect, useContext} from 'react';
-import {Container} from '@mui/material';
-import {headerStyle} from './style';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { Container } from '@mui/material';
+import { headerStyle } from './style';
 import img from '../../constants/img';
 import icon from '../../constants/icon';
 import ButtonCus from '../../components/ButtonCus/index';
 import Notification from './components/Notification';
 import Menu from './components/Menu';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import SectionTitle from '../SectionTitle';
 import Language from './components/Language';
-import {getTotal} from '../../redux/cartSlice';
+import { getTotal } from '../../redux/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppContext } from '../../context/AppProvider';
 
@@ -58,14 +58,14 @@ function Header(props: any) {
                   setOpentLang(false)
             }
       }
-      const gotoPartner=()=>{
-            if(isCart){
+      const gotoPartner = () => {
+            if (isCart) {
                   history.goBack();
-            }else{
+            } else {
                   history.push('/Partner');
             }
       }
-      const gotoCart = () =>{
+      const gotoCart = () => {
             history.push('/Cart');
       }
       const openLangClick = () => {
@@ -79,28 +79,28 @@ function Header(props: any) {
                   setOpentLang(true)
             }
       }
-      
+
       useEffect(() => {
-      const checkIfClickedOutside = (e:any) => {
-            if (
-                  openNo
-                  || openMenu
-                  || openLang
-                  && ref.current 
-                  && !ref.current.contains(e.target)) {
-                  setOpentLang(false);
-                  setOpenMenu(false);
-                  setOpenNo(false);
-                  console.log('ref',ref.current.contains(e.target));
+            const checkIfClickedOutside = (e: any) => {
+                  if (
+                        openNo
+                        || openMenu
+                        || openLang
+                        && ref.current
+                        && !ref.current.contains(e.target)) {
+                        setOpentLang(false);
+                        setOpenMenu(false);
+                        setOpenNo(false);
+                        console.log('ref', ref.current.contains(e.target));
+                  }
             }
-      }
 
-      document.addEventListener("mousedown", checkIfClickedOutside)
+            document.addEventListener("mousedown", checkIfClickedOutside)
 
-      return () => {
-            document.removeEventListener("mousedown", checkIfClickedOutside)
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+            return () => {
+                  document.removeEventListener("mousedown", checkIfClickedOutside)
+            }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [openLang])
       //get total amount cart
       const carts = useSelector((state: any) => state.carts)
@@ -185,7 +185,7 @@ function Header(props: any) {
                                                             ''
                                                 }
                                           </li>
-                                          <li 
+                                          <li
                                                 onClick={gotoCart}
                                                 className={useStyle.headerRightItem}
                                           >
@@ -204,9 +204,9 @@ function Header(props: any) {
                                           <li className={useStyle.headerRightItem}></li>
                                     </ul>
                                     <Language
-                                    openLang={openLang}
-                                    openLangClick = {openLangClick}
-                                    
+                                          openLang={openLang}
+                                          openLangClick={openLangClick}
+
                                     />
                               </div>
                         </div>
@@ -214,5 +214,5 @@ function Header(props: any) {
             </div>
       );
 }
-    
+
 export default Header;
