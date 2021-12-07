@@ -2,12 +2,10 @@ import React from 'react';
 import HomeFilter from '../../Home/components/HomeFilter';
 import icon from '../../../constants/icon';
 import '../../Home/Home.css';
-import {useHistory} from 'react-router-dom';
-import scrollTop from '../../../utils/scrollTop';
 import {Pagination} from '@mui/material';
 //import Loading from '../loading/Loading';
-import slugify from '../../../utils/formatUrlString';
-import SearchLoading from '../../Loading/SearchLoading'
+import SearchLoading from '../../Loading/SearchLoading';
+import ResultItem from './ResultItem';
 
 function Result(props:any) {
       const {
@@ -26,18 +24,18 @@ function Result(props:any) {
             { title: t('Search_result.room'), text: '190', icon: icon.door },
             { title: t('Search_result.capacity'), text: '106 người', icon: icon.car },
       ]
-      const history = useHistory();
-      const handleChooseItem = (item: any) => {
-            setChooseItem(item);
-      }
-      const gotoDetail = (item: any) => {
-            history.push({
-                  pathname: `/Merchant-detail/${slugify(item.name)}`,
-                  search: `${item.id}`,
-                  state: item
-            })
-            scrollTop();
-      }
+      //const history = useHistory();
+      // const handleChooseItem = (item: any) => {
+      //       setChooseItem(item);
+      // }
+      // const gotoDetail = (org: any) => {
+      //       history.push({
+      //             pathname: `/Merchant-detail/${slugify(org.name)}`,
+      //             search: `${org.id}`,
+      //             state: org
+      //       })
+      //       scrollTop();
+      // }
       const pageChange = (event: any, value: any) => {
             setCurPage(value)
       }
@@ -67,59 +65,15 @@ function Result(props:any) {
                         {
                               loading === true ?
                                     <>
-                                          <SearchLoading/>
+                                          <SearchLoading />
                                     </>
                                     :
                                     resultList.map((item: any) => (
-                                          <li
-                                                onMouseEnter={() => handleChooseItem(item)}
-                                                onClick={() => gotoDetail(item)}
-                                                key={item.id}
-                                          >
-                                                <div className="result-item">
-                                                      <img
-                                                            className="result-item__thumbnail"
-                                                            src={"https://picsum.photos/650/976?random=" + item.id}
-                                                            alt=""
-                                                      />
-                                                      <div className="result-item__detail">
-                                                            <div className="org__detail">
-                                                                  <div className="result-item__detail-header">
-                                                                        <span className="org-name">{item.name}</span>
-                                                                        <div className="detail-header__rate">
-                                                                              <span>4.5</span>
-                                                                              <img style={{ marginRight: '8px' }} src={icon.star} alt="" />
-                                                                              <span>500</span>
-                                                                              <img src={icon.chatAll} alt="" />
-                                                                        </div>
-                                                                  </div>
-                                                                  <div
-                                                                        className="result-item__detail-address"
-                                                                  >
-                                                                        <img src={icon.location} alt="" />
-                                                                        <span>{item.full_address}</span>
-                                                                  </div>
-                                                                  <div className="result-item__detail-address">
-                                                                        <img src={icon.time} alt="" />
-                                                                        <span className="time">{t('Search_result.opening')}  09.00 - 21.00</span>
-                                                                  </div>
-                                                            </div>
-                                                            <ul className="org__service">
-                                                                  {
-                                                                        serviceOfCardOrg.map((item, index) => (
-                                                                              <li key={index} className="org__service-item">
-                                                                                    <img src={item.icon} alt="" />
-                                                                                    <span>
-                                                                                          <h4>{item.title}</h4>
-                                                                                          <p>{item.text}</p>
-                                                                                    </span>
-                                                                              </li>
-                                                                        ))
-                                                                  }
-                                                            </ul>
-                                                      </div>
-                                                </div>
-                                          </li>
+                                          <ResultItem
+                                                item={item}
+                                                setChooseItem={setChooseItem}
+                                                serviceOfCardOrg={serviceOfCardOrg}
+                                          />
                                     ))
                         }
                   </ul>

@@ -6,7 +6,13 @@
         "1": "Vì đã xem video"
     },
     "Header": {
-        "1": "Trở thành đối tác"
+        "1": "Trở thành đối tác",
+        "my_acc":"Tài khoản của tôi",
+        "my_order":"Lịch sư đơn hàng",
+        "my_codes":"Danh sách mã ưu đãi",
+        "settings":"Cài đặt",
+        "support":"Hỗ trợ",
+        "sign_out":"Đăng xuất"
     },
     "Banner": {
         "1": "Khám phá và trải nghiệm \n thiên đường làm đẹp ngay gần bạn với \n Booking Flatform Myspa"
@@ -51,7 +57,15 @@
         "Sign_up_now": "Đăng ký ngay",
         "Sign_val_password": "Vui lòng nhập mật khẩu",
         "Sign_val_user": "Vui lòng nhập email/số điện thoại",
-        "Sign_val_length_pass": "Mật khẩu lơn hơn 6 ký tự"
+        "Sign_val_length_pass": "Mật khẩu lơn hơn 6 ký tự",
+        "my_appointment":"Lịch hẹn của bạn",
+        "mo":"T2","Monday":"Thứ Hai",
+        "tu":"T3","Tuesday":"Thứ Ba",
+        "we":"T4","Wednesday":"Thứ Tư",
+        "th":"T5","Thursday":"Thứ Năm",
+        "fr":"T6","Friday":"Thứ Sáu",
+        "sa":"T7","Saturday":"Thứ Bảy",
+        "su":"CN","Sunday":"Chủ Nhật"
     },
     "Search_result": {
         "text_result": "kết quả tìm kiếm",
@@ -133,7 +147,8 @@
         "total_payment": "Tổng tiền thanh toán",
         "accept": "Đồng ý",
         "cancel": "Hủy",
-        "payment_now":"Mua ngay"
+        "payment_now":"Mua ngay",
+        "must_sign_in":"Vui lòng đăng nhập trước khi thanh toán"
     },
     "pm":{
         "payment":"THANH TOÁN",
@@ -155,7 +170,46 @@
         "later": "Để sau",
         "booking_now": "Đặt hẹn ngay"
     },
-    "url": {
-        "home": "Trang-chu"
+    "url":{
+        "home":"Trang-chu",
+        "search":"/tim-kiem/"
+    },
+    "booking": {
+        "booking_info": "Thông tin lịch hẹn",
+        "choose_service": "Vui lòng lựa chọn dịch vụ muốn đặt hẹn",
+        "choose_service_name": "Chọn tên dịch vụ",
+        "date": "Ngày",
+        "time": "Giờ",
+        "branch": "Chi nhánh",
+        "staff": "Nhân viên thực hiện",
+        "optional": "Không bắt buộc",
+        "search_staff": "Tìm theo tên nhân viên...",
+        "accept": "Xác nhận đặt hẹn",
+        "success": "Đặt hẹn thành công",
+        "review": "Bạn có thể xem lại sản phẩm/dịch vụ \n và đặt hẹn",
+        "here": "tại đây"
+    },
+    "form":{
+        "male":"Name",
+        "female":"Nữ",
+        "other":"Khác",
+        "date_of_birth":"Ngày/tháng/năm sinh",
+        "confirm_password":"Nhập lại mật khẩu",
+        "i_agree":"Tôi đã đọc và đồng ý với",
+        "myspa_s_terms":"Điều khoản & Dịch vụ của Myspa",
+        "please_enter_full_name":"Vui lòng nhập họ và tên",
+        "please_choose_sex":"Vui chọn giới tính",
+        "please_enter_dob":"Vui lòng nhập ngày thánh năm sinh",
+        "dob_format":"Vui lòng nhập đúng định dạng ngày/tháng/năm",
+        "please_enter_email":"Vui lòng nhập email",
+        "email_format":"Vui lòng nhập đúng định dạng Example@gmail.com",
+        "password_min":"Mật khẩu lớn hơn 8 ký tự",
+        "password_max":"Mật khẩu tối đa 32 kí tự",
+        "password_rule":"Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự đặc biệt",
+        "please_confirm_password":"Vui lòng xác nhận lại mật khẩu",
+        "password_confirm_invalid":"Mật khẩu không khớp",
+        "now":"ngay",
+        "is_not_registered":"chưa được đăng ký",
+        "register_success":"Đăng ký tài khoản thành công"
     }
 }

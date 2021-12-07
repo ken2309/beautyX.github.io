@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../../context/AppProvider";
 import SectionTitle from "../../SectionTitle";
 import HomeLoggedForYouItem from "./HomeLoggedForYouItem";
 import HomeLoggedProductSelector from "./HomeLoggedProductSelector";
@@ -25,12 +26,13 @@ const dataProduct = [
   },
 ];
 export default function HomeLoggedForYou() {
+  const {t} = useContext(AppContext)
   const [openForYouEnterprise, setOpenopenForYouEnterprise] =
     React.useState(false);
   return (
     <div className="homelogged-product">
       <SectionTitle
-        title="Ưu đãi nổi bật dành riêng cho bạn"
+        title={t('Home.sale_for_me')}
         textAlign="left"
       />
       <div className="homelogged-product__sort">

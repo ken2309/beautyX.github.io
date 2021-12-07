@@ -6,7 +6,13 @@
             "1": "For watching this video"
       },
       "Header": {
-            "1": "Become a partner"
+            "1": "Become a partner",
+            "my_acc":"My account",
+            "my_order":"My orders",
+            "my_codes":"List of promo codes",
+            "settings":"Settings",
+            "support":"Support",
+            "sign_out":"Sign out"
       },
       "Banner": {
             "1": "Explore and experience \n Beauty paradise right near you \n Booking Flatform Myspa"
@@ -51,7 +57,15 @@
             "Sign_up_now": "Sign up now",
             "Sign_val_password": "Please enter a password",
             "Sign_val_user": "Please enter email/phone number",
-            "Sign_val_length_pass": "Password is more than 6 characters"
+            "Sign_val_length_pass": "Password is more than 6 characters",
+            "my_appointment": "My appointment",
+            "mo": "Mo","Monday":"Monday",
+            "tu": "Tu","Tuesday":"Tuesday",
+            "we": "We","Wednesday":"Wednesday",
+            "th": "Th","Thursday":"Thursday",
+            "fr": "Fr","Friday":"Friday",
+            "sa": "Sa","Saturday":"Saturday",
+            "su": "Su","Sunday":"Sunday"
       },
       "Search_result": {
             "text_result": "search results",
@@ -133,7 +147,8 @@
             "total_payment":"Total payment",
             "accept":"Accept",
             "cancel":"Cancel",
-            "payment_now":"Payment now"
+            "payment_now":"Payment now",
+            "must_sign_in":"Please sign in before paying"
       },
       "pm":{
             "payment":"PAYMENT",
@@ -156,6 +171,45 @@
             "booking_now": "Booking now"
       },
       "url": {
-            "home": "home"
+            "home": "home",
+            "search":"/search/"
+      },
+      "booking": {
+            "booking_info": "Booking information",
+            "choose_service":"Please select the service",
+            "choose_service_name":"Choose service",
+            "date":"Date",
+            "time":"Time",
+            "branch":"Branch",
+            "staff":"Implementation staff",
+            "optional":"Optional",
+            "search_staff":"Search by employee name...",
+            "accept":"Accept",
+            "success": "Appointment successful",
+            "review": "You can review products/services \n and book an appointment",
+            "here": "here"
+      },
+      "form": {
+            "male": "Male",
+            "female": "Female",
+            "other": "Other",
+            "date_of_birth": "Date of birth (Ex: dd/mm/yyy)",
+            "confirm_password": "Confirm password",
+            "i_agree": "I have read and agree to",
+            "myspa_s_terms": "Myspa's Terms & Conditions",
+            "please_enter_full_name":"Please enter full name",
+            "please_choose_sex":"Please choose sex",
+            "please_enter_dob":"Please enter date of birth",
+            "dob_format":"Date of birth must be format dd/mm/yyyy",
+            "please_enter_email":"Please enter your email",
+            "email_format":"Your email must be format Example@gmail.com",
+            "password_min":"Password more than 8 characters",
+            "password_max":"Password up to 32 characters",
+            "password_rule":"Password must have at least 8 characters, 1 uppercase letter, 1 number and 1 special character",
+            "please_confirm_password":"Please enter confirm password",
+            "password_confirm_invalid":"Confirm password invalid",
+            "now":"now",
+            "is_not_registered":"is not registered",
+            "register_success":"Successful account registration"
       }
 }
