@@ -25,6 +25,7 @@ function SignPage(props:any) {
     <div className="page-sign">
       <Container>
         <div className="flex-row-sp sign-content page-sign__cnt">
+          <img src={icon.Logo} alt="" className="sign-content__left-logo-mb" />
           <div
             className="flex-column sign-content__left"
             style={{ justifyContent: "center" }}

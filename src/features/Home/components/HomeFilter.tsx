@@ -26,21 +26,21 @@ function HomeFilter(props: any) {
                   setCurPage(1)
             }
       }
-      useEffect(()=>{
-            const  source = axios.CancelToken.source();
-            async function handleGetAllTags(){
-                  try{
+      useEffect(() => {
+            const source = axios.CancelToken.source();
+            async function handleGetAllTags() {
+                  try {
                         const res = await tagsApi.getAll();
                         setTags(res.data.context.data);
-                  }catch(err){
+                  } catch (err) {
                         console.log(err);
                   }
             }
             handleGetAllTags()
-            return ()=>{
+            return () => {
                   source.cancel();
             }
-      },[])
+      }, [])
       return (
             <div
                   style={{

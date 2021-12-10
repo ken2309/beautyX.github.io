@@ -3,18 +3,35 @@ import ButtonCus from "../../../components/ButtonCus";
 import SectionTitle from "../../SectionTitle";
 import SignInUp from "../../poupSignInUp/index";
 import { AppContext } from "../../../context/AppProvider";
+import {useHistory} from 'react-router-dom';
+import scrollTop from "../../../utils/scrollTop";
 
 function HomeSignIn(props: any) {
   const { t } = useContext(AppContext);
+  const history = useHistory();
   const [openSignIn, setOpenSignIn] = useState(false);
   const [activeTabSign, setActiveTabSign] = useState(1);
   const popupSignInClick = () => {
-    setOpenSignIn(true);
-    setActiveTabSign(1);
+    if (document.body.offsetWidth < 767) {
+      history.push({
+        pathname: '/sign-in', search: '1'
+      })
+      scrollTop()
+    } else {
+      setOpenSignIn(true);
+      setActiveTabSign(1);
+    }
   };
   const popupSignUpClick = () => {
-    setOpenSignIn(true);
-    setActiveTabSign(2);
+    if (document.body.offsetWidth < 767) {
+      history.push({
+        pathname: '/sign-up', search: '2'
+      })
+      scrollTop()
+    } else {
+      setOpenSignIn(true);
+      setActiveTabSign(2);
+    }
   };
   return (
     <div className="home-sign">

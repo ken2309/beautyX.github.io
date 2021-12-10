@@ -15,7 +15,7 @@ function Menu(props:any) {
             console.log('logout');
             setSign(false);
             const token = '';
-            window.sessionStorage.setItem('_WEB_TK', token)
+            localStorage.setItem('_WEB_TK', token)
       }
       return (
             <div

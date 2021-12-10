@@ -11,7 +11,8 @@ import Account from "../features/Account";
 import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
 import PopupAppointInfor from "../features/PopupAppointInfor";
-import SignPage from '../features/SignPage/index'
+import SignPage from '../features/SignPage/index';
+import PrivateRoute from './PrivateRoute';
 //import { AppContext } from "../context/AppProvider";
 
 const RouterPage = (
@@ -31,14 +32,6 @@ function RouterConfig(props: any) {
     {
       path: "/Merchant-detail/:name",
       component: <MerchantDetail />,
-    },
-    {
-      path: "/Partner",
-      component: <Partner />,
-    },
-    {
-      path: "/tai-khoan",
-      component: <Account />,
     },
     {
       path: "/Cart",
@@ -69,6 +62,16 @@ function RouterConfig(props: any) {
       component: <SignPage />
     }
   ];
+  const routesPrivate = [
+    {
+      path: "/tai-khoan",
+      component: Account,
+    },
+    {
+      path: "/Partner",
+      component: Partner,
+    }
+  ]
   return (
     <BrowserRouter>
       <Switch>
@@ -80,6 +83,15 @@ function RouterConfig(props: any) {
             pageComponent={item.component}
           />
         ))}
+        {
+          routesPrivate.map((item, index) => (
+            <PrivateRoute
+              key={index}
+              path={`${item.path}`}
+              component={item.component}
+            />
+          ))
+        }
       </Switch>
     </BrowserRouter>
   );

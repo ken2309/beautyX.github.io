@@ -96,9 +96,12 @@ export default function HomeLoggedCalendarComponent(
               key={i}
             >
               <div className="status-dots ">
-                {checkdate(i, thisMonth, thisYear, dotAppoint).map((dot: any) =>
-                  checkdotstt(dot.status)
-                )}
+                {checkdate(i, thisMonth, thisYear, dotAppoint).map((dot: any, index:number) => (
+                  <span key={index} >
+                    {checkdotstt(dot.status)}
+                  </span>
+                ))
+                }
               </div>
               {i + 1}
             </div>

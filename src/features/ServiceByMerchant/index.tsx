@@ -41,10 +41,9 @@ function ServiceByMerchant(props: any) {
                         console.log(err)
                   }
             }
-            if (tab_id === activeTab) {
-                  handleGetServices()
-            }
-      }, [mer_id, page, chooseCate, activeTab])
+            handleGetServices()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [mer_id, page, chooseCate])
       useEffect(() => {
             setLoading_cate(true)
             async function handleGetCategories() {
@@ -58,10 +57,10 @@ function ServiceByMerchant(props: any) {
                         console.log(err)
                   }
             }
-            if (tab_id === activeTab) {
-                  handleGetCategories()
-            }
-      }, [activeTab, mer_id])
+            handleGetCategories()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [ mer_id])
+      //console.log(services);
       return (
             <div style={tab_id === activeTab ? { display: 'block' } : { display: 'none' }}>
                   <div

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Header from '../Header/index';
+import Head from '../Head/index';
 import './CartPayment.css';
 import {Container} from '@mui/material';
 import {useSelector, useDispatch} from 'react-redux'
@@ -72,7 +72,7 @@ function CartPayment(props: any) {
       ]
       return (
             <div className="payment">
-                  <Header
+                  <Head
                         isCart={isCart}
                         title={headerTitle}
                   />

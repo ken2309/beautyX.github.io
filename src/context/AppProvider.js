@@ -1,12 +1,14 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import auth from '../api/authApi';
+// import axios from 'axios';
 
 export const AppContext = createContext();
 export default function AppProvider({ children }) {
       const { t } = useTranslation();
       const lg = localStorage.getItem('i18nextLng')
       const [language, setLanguage] = useState();
+
       const [tk, setTk] = useState();
       const [userInfo, setUserInfo] = useState()
       const [sign, setSign] = useState();
@@ -20,38 +22,34 @@ export default function AppProvider({ children }) {
             }
       }, [lg])
 
-      const TK = window.sessionStorage.getItem('_WEB_TK')
+      //const TK = localStorage.getItem('_WEB_TK')
       useEffect(() => {
             function handleGetToken() {
-                  if (TK) {
-                        setTk(window.sessionStorage.getItem('_WEB_TK'))
-                        const res = JSON.parse(`${window.sessionStorage.getItem('_WEB_US')}`)
-                        setUserInfo(res)
-                  }
+                  const res = JSON.parse(`${localStorage.getItem('_WEB_US')}`)
+                  setUserInfo(res)
             }
             handleGetToken()
             return () => {
-                  //console.log('clean')
             }
-      }, [TK, sign])
+      }, [])
 
       useEffect(() => {
-            async function handleGetProfile() {
+           async function handleGetProfile() {
                   try {
                         const res = await auth.getUserProfile();
                         setProfile(res.data);
                   } catch (err) {
                         setProfile(undefined)
-                        //console.log(err)
-                  };
+                  } 
             }
             handleGetProfile();
+            return ()=>{
+
+            }
       }, [sign])
       //get all tags
-      const test = "test"
       const value = {
             t,
-            test,
             language,
             setLanguage,
             tk, userInfo,

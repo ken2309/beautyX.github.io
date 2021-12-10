@@ -21,6 +21,7 @@ import cardAtm from "../assets/image/cardAtm.png";
 import creditMachine from "../assets/image/creditMachine .png";
 import payon from "../assets/image/payon.png";
 import imagePay from "../assets/image/image 23.png";
+import resultNull from '../assets/image/resultNull.png'
 
 const img={
       Avatar,
@@ -41,6 +42,7 @@ const img={
       rectangle,
       service,
       Partner,
-      money, creditMachine, cardAtm, payon, imagePay
+      money, creditMachine, cardAtm, payon, imagePay,
+      resultNull
 }
 export default img

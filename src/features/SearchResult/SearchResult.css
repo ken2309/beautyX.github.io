@@ -6,6 +6,25 @@
       background-color: var(--bg-gray);
       height: 1018px;
 }
+/* result null */
+.result-null{
+      padding: 64px;
+}
+.result-null__title{
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: 700;
+      color: var(--purple);
+}
+.result-null__text{
+      text-align: center;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 700;
+      color: var(--text-black);
+      margin: 16px 0px;
+      white-space: pre-line;
+}
 /* result detail */
 .result-detail{
       width: 50%;
@@ -221,7 +240,7 @@
   }
   .filter-form__li{
       width: 100%;
-      margin: 8px 0px;
+      margin: 4px 0px;
       padding: 0px;
   }
   .result-item{

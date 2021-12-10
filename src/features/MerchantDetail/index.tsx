@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {useLocation} from 'react-router-dom';
-import Header from '../Header/index';
+import Head from '../Head/index';
 import './MerchantDetail.css';
 import {Container} from '@mui/material'
 import DetailHead from './components/DetailHead';
@@ -12,7 +12,7 @@ import ProductByMerchant from '../ProductByMerchant/index';
 import ComboByMerchant from '../ComboByMerchant/index';
 import Footer from '../Footer';
 import orgApi from '../../api/organizationApi';
-import {AppContext} from '../../context/AppProvider'
+import {AppContext} from '../../context/AppProvider';
 
 const id_tab = 1;
 function MerchantDetail(props: any) {
@@ -43,9 +43,10 @@ function MerchantDetail(props: any) {
             }
             handleGetOrgById()
       }, [location.state, mer_id])
+      // console.log(org);
       return (
             <div>
-                  <Header />
+                  <Head/>
                   <DetailHead
                         t={t}
                         loading={loading}

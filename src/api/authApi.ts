@@ -13,10 +13,10 @@ class Auth {
       }
       getUserProfile = () => {
             const url = `/users/profile`
-            if (window.sessionStorage.getItem('_WEB_TK')) {
+            if (localStorage.getItem('_WEB_TK')) {
                   return axiosClient.get(url, {
                         headers: {
-                              'Authorization': 'Bearer ' + window.sessionStorage.getItem('_WEB_TK')
+                              'Authorization': 'Bearer ' + localStorage.getItem('_WEB_TK')
                         }
                   })
             }

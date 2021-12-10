@@ -39,10 +39,9 @@ function ProductByMerchant(props: any) {
                         console.log(err)
                   }
             }
-            if (activeTab === 3) {
-                  handleGetPrByOrgId();
-            }
-      }, [param, cate_id, mer_id, page, activeTab])
+            handleGetPrByOrgId();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [param, cate_id, mer_id, page])
       // add new values product
       const productsIs = [];
       for(var item of products){

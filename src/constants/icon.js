@@ -70,6 +70,9 @@ import Exclude2 from "../assets/icon/Exclude2.svg";
 import Exclude3 from "../assets/icon/Exclude3.svg";
 import Exclude4 from "../assets/icon/Exclude4.svg";
 import Setting from "../assets/icon/Setting_line.svg";
+import userCircle from "../assets/icon/userCircle.svg";
+import signOut from "../assets/icon/sign_out.svg";
+import home from "../assets/icon/home.svg"
 
 const icon = {
   Exclude,
@@ -143,5 +146,8 @@ const icon = {
   Calendar,
   onedot,
   Setting,
+  userCircle,
+  signOut,
+  home
 };
 export default icon;

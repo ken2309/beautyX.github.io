@@ -12,6 +12,7 @@ import {CircularProgress} from '@mui/material';
 import ForgotPass from './ForgotPass';
 import Verification from './Verification';
 import NewPass from './NewPass';
+import {baseURL} from '../../../api/axios'
 
 function SignIn(props: any) {
   const { t, setSign } = useContext(AppContext)
@@ -38,10 +39,10 @@ function SignIn(props: any) {
   const handleLogin = (values: any) => {
     setLoading(true);
     setDisplay_email(values.email);
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, values)
+    axios.post(`${baseURL}/auth/login`, values)
       .then(function (response: any) {
-        window.sessionStorage.setItem('_WEB_US', JSON.stringify(response.context))
-        window.sessionStorage.setItem('_WEB_TK', response.context.token)
+        localStorage.setItem('_WEB_US', JSON.stringify(response.context))
+        localStorage.setItem('_WEB_TK', response.context.token)
         setSign(true);
         setLoading(false);
         setOpenSignIn(false);

@@ -6,7 +6,7 @@ import {Category} from '../../../interface/category';
 import Skeleton from 'react-loading-skeleton'
 
 function ProductCate(props:any) {
-      const { mer_id, t, setCate_id, setPage, activeTab } = props;
+      const { mer_id, t, setCate_id, setPage } = props;
       const [activeCate, setActiveCate] = useState();
       const [categories, setCategories] = useState<Category[]>([]);
       const [loading, setLoading] = useState(false);
@@ -24,10 +24,8 @@ function ProductCate(props:any) {
                         setLoading(false)
                   } catch (err) { console.log(err) }
             }
-            if (activeTab === 3) {
-                  getCateByOrgId()
-            }
-      }, [activeTab, mer_id])
+            getCateByOrgId()
+      }, [mer_id])
       return (
             <div className="ser-category">
                   <div className="flex-row">
