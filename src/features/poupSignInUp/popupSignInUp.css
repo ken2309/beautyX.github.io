@@ -286,6 +286,10 @@
 /* res-mobile */
 /* Mobile */
 @media only screen and (max-width: 767px){
+  .MuiPaper-root {
+    max-width: unset !important;
+    border-radius: 0px !important;
+  }
   .page-sign{
     background-color: var(--bgWhite);
     padding-top: 48px;

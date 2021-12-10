@@ -6,8 +6,14 @@ class Organization {
             return axiosClient.get(url);
       }
       getOrgByKeyword = (params: any) => {
-            const url = `/organizations?page=${params.page}&limit=3&filter%5Bkeyword%5D=${params.keySearch}`;
-            return axiosClient.get(url);
+            if (document.body.offsetWidth < 767) {
+                  const url = `/organizations?page=${params.page}&limit=10&filter%5Bkeyword%5D=${params.keySearch}`;
+                  return axiosClient.get(url);
+            } else {
+                  const url = `/organizations?page=${params.page}&limit=3&filter%5Bkeyword%5D=${params.keySearch}`;
+                  return axiosClient.get(url);
+            }
+
       }
       //ex get all
       getAll = () => {

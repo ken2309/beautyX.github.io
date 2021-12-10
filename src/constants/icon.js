@@ -72,7 +72,10 @@ import Exclude4 from "../assets/icon/Exclude4.svg";
 import Setting from "../assets/icon/Setting_line.svg";
 import userCircle from "../assets/icon/userCircle.svg";
 import signOut from "../assets/icon/sign_out.svg";
-import home from "../assets/icon/home.svg"
+import home from "../assets/icon/home.svg";
+import chevronLeft from "../assets/icon/chevron-left.svg";
+import searchPurple from "../assets/icon/searchPurple.svg";
+import pinMap_2 from "../assets/icon/pinMap_2.svg"
 
 const icon = {
   Exclude,
@@ -148,6 +151,9 @@ const icon = {
   Setting,
   userCircle,
   signOut,
-  home
+  home,
+  chevronLeft,
+  searchPurple,
+  pinMap_2
 };
 export default icon;

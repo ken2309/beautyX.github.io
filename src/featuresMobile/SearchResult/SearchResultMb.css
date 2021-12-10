@@ -1,0 +1,8 @@
+.mb-filter{
+      height: 100vh;
+      background-color: var(--bgWhite);
+}
+.mb-filter .home-banner__filter{
+      margin-top: 60px;
+      padding: 0px 24px;
+}

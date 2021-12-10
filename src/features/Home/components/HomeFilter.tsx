@@ -8,7 +8,7 @@ import tagsApi from '../../../api/tagApi';
 import axios from 'axios';
 
 function HomeFilter(props: any) {
-      const { styleFilter, setCurPage } = props;
+      const { styleFilter, setCurPage, setOpenFilter } = props;
       const { t } = useContext(AppContext);
       const history = useHistory();
       const [searchText, setSearchText] = useState("");
@@ -24,6 +24,9 @@ function HomeFilter(props: any) {
             })
             if (setCurPage) {
                   setCurPage(1)
+                  if (setOpenFilter) {
+                        setOpenFilter(false)
+                  }
             }
       }
       useEffect(() => {

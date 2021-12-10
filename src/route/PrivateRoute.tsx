@@ -8,6 +8,6 @@ const PrivateRoute = (props: any) => {
       if (profile) {
             return <Route {...rest} />
       }
-      return <Redirect to="/Home" />
+      return <Redirect to="/sign-request" />
 }
 export default PrivateRoute

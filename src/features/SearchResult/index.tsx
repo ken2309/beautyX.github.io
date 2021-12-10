@@ -9,6 +9,7 @@ import {Organization} from '../../interface/organization';
 import orgApi from '../../api/organizationApi';
 import { AppContext } from '../../context/AppProvider';
 import Head from '../Head';
+import Bottom from '../../featuresMobile/Bottom'
 // import img from '../../constants/img';
 
 function SearchResult(props:any) {
@@ -78,6 +79,7 @@ function SearchResult(props:any) {
                         }
                   </Container>
                   <Footer />
+                  <Bottom/>
             </div>
       );
 }

@@ -6,6 +6,7 @@ import {Pagination} from '@mui/material';
 //import Loading from '../loading/Loading';
 import SearchLoading from '../../Loading/SearchLoading';
 import ResultItem from './ResultItem';
+import SearchResultMb from '../../../featuresMobile/SearchResult/SearchResultMb'
 
 function Result(props:any) {
       const {
@@ -41,7 +42,12 @@ function Result(props:any) {
       }
       return (
             <div className='result-detail'>
-                  <HomeFilter
+                  <div className="result-detail__filter">
+                        <HomeFilter
+                              setCurPage={setCurPage}
+                        />
+                  </div>
+                  <SearchResultMb
                         setCurPage={setCurPage}
                   />
                   <div className="result-detail__title">
@@ -74,6 +80,7 @@ function Result(props:any) {
                                                 item={item}
                                                 setChooseItem={setChooseItem}
                                                 serviceOfCardOrg={serviceOfCardOrg}
+                                                resultList={resultList}
                                           />
                                     ))
                         }

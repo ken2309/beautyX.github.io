@@ -16,7 +16,7 @@ import HomeLoggedProduct from "./components/HomeLoggedProduct";
 import HomeLoggedForYou from "./components/HomeLoggedForYou";
 import { AppContext } from "../../context/AppProvider";
 import Head from '../Head/index';
-import Bottom from '../Bottom'
+import Bottom from '../../featuresMobile/Bottom'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
@@ -39,7 +39,9 @@ function Home(props: any) {
       </Container>
       {profile ?
         <>
-          <HomeLoggedCalendar />
+          <div className="h-par-calendar">
+            <HomeLoggedCalendar />
+          </div>
           <Container>
             <HomeLoggedLocation />
             <HomeLoggedProduct />
@@ -57,7 +59,7 @@ function Home(props: any) {
         </Container>
       }
       <Footer />
-      <Bottom/>
+      <Bottom />
     </div>
   );
 }

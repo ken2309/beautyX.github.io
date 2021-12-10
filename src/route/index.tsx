@@ -12,8 +12,12 @@ import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
 import PopupAppointInfor from "../features/PopupAppointInfor";
 import SignPage from '../features/SignPage/index';
+import SignPageRequest from '../features/SignPageRequest/index'
 import PrivateRoute from './PrivateRoute';
 //import { AppContext } from "../context/AppProvider";
+// feature mobile
+import Calendar from '../featuresMobile/Calendar'
+
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -38,10 +42,6 @@ function RouterConfig(props: any) {
       component: <Cart />,
     },
     {
-      path: "/Payment",
-      component: <CartPayment />,
-    },
-    {
       path: "/Product-detail/:name",
       component: <ProductDetail />,
     },
@@ -60,6 +60,10 @@ function RouterConfig(props: any) {
     {
       path: "/sign-in",
       component: <SignPage />
+    },
+    {
+      path: "/sign-request",
+      component: <SignPageRequest />
     }
   ];
   const routesPrivate = [
@@ -70,6 +74,14 @@ function RouterConfig(props: any) {
     {
       path: "/Partner",
       component: Partner,
+    },
+    {
+      path: "/Payment",
+      component: CartPayment,
+    },
+    {
+      path: '/Calendar',
+      component: Calendar
     }
   ]
   return (

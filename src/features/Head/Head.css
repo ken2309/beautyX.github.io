@@ -95,7 +95,7 @@
 .hd-menu-box__bot{
       display: flex;
       align-items: center;
-      justify-content: end;
+      justify-content: flex-end;
 }
 .hd-noti{
       z-index: 5;
@@ -206,6 +206,7 @@
 @media only screen and (max-width: 739px){
       .hd{
             border-bottom: solid 1px var(--text-op);
+            padding: 20px 0px;
       }
       .hd-logo{
             display: none;

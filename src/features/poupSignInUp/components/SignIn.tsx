@@ -12,14 +12,17 @@ import {CircularProgress} from '@mui/material';
 import ForgotPass from './ForgotPass';
 import Verification from './Verification';
 import NewPass from './NewPass';
-import {baseURL} from '../../../api/axios'
+import {baseURL} from '../../../api/axios';
+import { useHistory } from 'react-router-dom'
 
 function SignIn(props: any) {
   const { t, setSign } = useContext(AppContext)
+  const history = useHistory();
   const {
     activeTabSign,
     setActiveTabSign,
     setOpenSignIn,
+    useForSignRes
     // handleClickOpenVerification,
     // handleCloseForgotPass,
     // handleClickOpenNewPass,
@@ -46,6 +49,9 @@ function SignIn(props: any) {
         setSign(true);
         setLoading(false);
         setOpenSignIn(false);
+        if (useForSignRes === true) {
+          history.goBack()
+        }
       })
       .catch(function (err) {
         setLoading(false);
