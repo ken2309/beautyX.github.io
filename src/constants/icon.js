@@ -75,7 +75,8 @@ import signOut from "../assets/icon/sign_out.svg";
 import home from "../assets/icon/home.svg";
 import chevronLeft from "../assets/icon/chevron-left.svg";
 import searchPurple from "../assets/icon/searchPurple.svg";
-import pinMap_2 from "../assets/icon/pinMap_2.svg"
+import pinMap_2 from "../assets/icon/pinMap_2.svg";
+import chevronRight from "../assets/icon/chevron-right.svg"
 
 const icon = {
   Exclude,
@@ -153,6 +154,7 @@ const icon = {
   signOut,
   home,
   chevronLeft,
+  chevronRight,
   searchPurple,
   pinMap_2
 };

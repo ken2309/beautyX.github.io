@@ -31,7 +31,7 @@ export default function AppProvider({ children }) {
             handleGetToken()
             return () => {
             }
-      }, [])
+      }, [sign])
 
       useEffect(() => {
            async function handleGetProfile() {

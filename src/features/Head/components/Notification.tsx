@@ -1,6 +1,7 @@
 import React from 'react';
 import icon from '../../../constants/icon';
-import ButtonCus from '../../../components/ButtonCus'
+import ButtonCus from '../../../components/ButtonCus';
+import {useHistory} from 'react-router-dom'
 
 const notifications = [
       {
@@ -24,10 +25,7 @@ const notifications = [
 ]
 function Notification(props: any) {
       const { openNo } = props;
-      // console.log(openNo);
-      const viewMoreNotification = () => {
-
-      }
+      const history = useHistory();
       return (
             <div
                   style={openNo === true ? { top: '3rem', opacity: '1', visibility: 'visible' } : { top: '5rem', opacity: '0', visibility: 'hidden' }}
@@ -81,7 +79,7 @@ function Notification(props: any) {
                         border='solid 1px var(--purple)'
                         borderRadius='26px'
                         imgIcon={icon.next}
-                        onClick={viewMoreNotification}
+                        onClick={() => history.push('/Notifications')}
                   />
             </div>
       );

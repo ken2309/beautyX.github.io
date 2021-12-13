@@ -1,16 +1,22 @@
 import React from 'react';
 import icon from '../../../constants/icon';
+import formatPrice from '../../../utils/formatPrice';
 
 function MapCard(props: any) {
       const { list } = props;
-      console.log(list)
+      const parent = document.querySelector('.mb-card-list__list li');
+      const handleScroll=(item:any)=>{
+            console.log(item);
+      }
       return (
-            <div className="mb-card-list">
+            <div
+                  className="mb-card-list">
                   <ul className="mb-card-list__list">
                         {
                               list.map((item: any) => (
                                     <li
-                                          key={item}
+                                          onScroll={() => handleScroll(item)}
+                                          key={item.id}
                                     >
                                           <div className="mb-card-list__item">
                                                 <img
@@ -32,6 +38,10 @@ function MapCard(props: any) {
                                                             <span>
                                                                   Mở cửa: 10:00 - 11:00
                                                             </span>
+                                                      </div>
+                                                      <div className="item-cnt__price">
+                                                            <img src={icon.Ticket} alt="" />
+                                                            <span>{formatPrice(item.min_price)}-{formatPrice(item.max_price)}đ</span>
                                                       </div>
                                                 </div>
                                           </div>

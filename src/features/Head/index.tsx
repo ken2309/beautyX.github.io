@@ -11,15 +11,17 @@ import Language from './components/Language';
 import Menu from './components/Menu';
 import SectionTitle from '../SectionTitle';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTotal } from '../../redux/cartSlice'
+import { getTotal } from '../../redux/cartSlice';
+import MbMenu from '../../featuresMobile/Menu'
 
 function Head(props: any) {
-      const { t, profile } = useContext(AppContext)
+      const { t, profile, userInfo } = useContext(AppContext)
       const { isCart, title } = props;
       const dispatch = useDispatch();
       const [openNo, setOpenNo] = useState(false)
       const [openLang, setOpenLang] = useState(false);
       const [openMenu, setOpenMenu] = useState(false);
+      const [openMbMenu, setOpenMbMenu] = useState(false);
       const [unit, setUnit] = useState('VND')
       const history = useHistory()
 
@@ -88,7 +90,10 @@ function Head(props: any) {
                                           onClick={gotoPartner}
                                     />
                               </div>
-                              <div className="flex-row hd-cnt__right">
+                              <div
+                                    style={profile ? { justifyContent: 'space-between' } : { justifyContent: 'flex-end' }}
+                                    className="flex-row hd-cnt__right"
+                              >
                                     {
                                           !profile ?
                                                 <>
@@ -115,7 +120,7 @@ function Head(props: any) {
                                                 :
                                                 <div className="flex-row hd-cnt__right-user">
                                                       <span className="hd-cnt__right-user-name">
-                                                            Nguyen Toan
+                                                            {userInfo?.fullname}
                                                       </span>
                                                       <div className="hd-cnt__right-avatar">
                                                             <img onClick={openNotiClick} src={img.Avatar} alt="" />
@@ -126,6 +131,29 @@ function Head(props: any) {
                                                       </div>
                                                 </div>
                                     }
+                                    {/* menu for mobile */}
+                                    <div className="mb-hd-cnt__right">
+                                          <div className="flex-row">
+                                                <div
+                                                      onClick={() => history.push('/Cart')}
+                                                      className="hd-cnt__right-cart"
+                                                >
+                                                      <img src={icon.ShoppingCartSimple} alt="" />
+                                                      <div className="hd-cnt__right-cart-total">
+                                                            {carts.cartQuantity}
+                                                      </div>
+                                                </div>
+                                                <img
+                                                      onClick={() => setOpenMbMenu(true)}
+                                                      src={icon.Menu} alt=""
+                                                />
+                                          </div>
+                                    </div>
+                                    <MbMenu
+                                          openMbMenu={openMbMenu}
+                                          setOpenMbMenu={setOpenMbMenu}
+                                    />
+                                    {/* --- */}
                                     <div 
                                           onClick={()=>history.push('/Cart')}
                                           className="hd-cnt__right-cart"

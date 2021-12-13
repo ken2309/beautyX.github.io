@@ -47,12 +47,14 @@
       margin: 4px 0px;
 }
 .mb-card-list__item .item-cnt__address,
-.mb-card-list__item .item-cnt__time{
+.mb-card-list__item .item-cnt__time,
+.mb-card-list__item .item-cnt__price{
       display: flex;
       justify-content: flex-start;
 }
 .mb-card-list__item .item-cnt__address img,
-.mb-card-list__item .item-cnt__time img
+.mb-card-list__item .item-cnt__time img,
+.mb-card-list__item .item-cnt__price img
 {
       width: 16px;
       height: 16px;
@@ -77,4 +79,14 @@
       font-size: 12px;
       line-height: 16px;
       color: var(--text-hover);
+}
+.mb-card-list__item .item-cnt__price{
+      align-items: center;
+}
+.mb-card-list__item .item-cnt__price span{
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      padding-left: 4px;
+      color: var(--purple);
 }

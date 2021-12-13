@@ -12,7 +12,8 @@ import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
 import PopupAppointInfor from "../features/PopupAppointInfor";
 import SignPage from '../features/SignPage/index';
-import SignPageRequest from '../features/SignPageRequest/index'
+import SignPageRequest from '../features/SignPageRequest/index';
+import Notification from '../features/Notification/index'
 import PrivateRoute from './PrivateRoute';
 //import { AppContext } from "../context/AppProvider";
 // feature mobile
@@ -82,6 +83,10 @@ function RouterConfig(props: any) {
     {
       path: '/Calendar',
       component: Calendar
+    },
+    {
+      path: '/Notifications',
+      component: Notification
     }
   ]
   return (

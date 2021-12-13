@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import CheckNoti from "./components/CheckNotification";
 import PaymentMethod from "./components/PaymentMethod/index";
 import Information from "./components/Information/index";
-import Header from '../Header/index';
+import Head from '../Head/index';
 import "./Account.css";
 import SideBar from './components/MenuSideBar';
 const routes = [
@@ -22,7 +22,7 @@ function Account() {
     ) => props.pageComponent;
     return (
         <>
-            <Header />
+            <Head/>
             <div className="wrapper account_section">
                 <SideBar
                 />

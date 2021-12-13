@@ -21,6 +21,9 @@
 .hd-cnt__right{
       z-index: 1;
 }
+.mb-hd-cnt__right{
+      display: none;
+}
 .hd-cnt__right-user-name{
       font-size: 14px;
       line-height: 20px;
@@ -217,18 +220,31 @@
       .hd-cnt__right{
             width: 100%;
             padding: 0px 24px;
-            justify-content: end;
+            justify-content: space-between;
+      }
+      .mb-hd-cnt__right{
+            display: block;
+      }
+      .hd-cnt__right-user{
+            flex-direction: row-reverse;
       }
       .hd-cnt__right-cart{
-            margin: 0px 8px;
+            display: none;
+      }
+      .mb-hd-cnt__right .hd-cnt__right-cart{
+            display: block;
+            margin-right: 18px;
       }
       .hd-cnt__right-avatar{
             margin: 0px 4px;
       }
       .hd-cnt__right-menu{
-            margin: 0px 10px;
+            display: none;
       }
       .hd-cnt__sign-btn{
+            display: none;
+      }
+      .hd-cnt__right-lang{
             display: none;
       }
       
