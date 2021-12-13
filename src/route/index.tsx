@@ -11,7 +11,7 @@ import Account from "../features/Account";
 import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
 import PopupAppointInfor from "../features/PopupAppointInfor";
-import SignPage from '../features/SignPage/index'
+import SignPage from "../features/SignPage/index";
 //import { AppContext } from "../context/AppProvider";
 
 const RouterPage = (
@@ -62,12 +62,12 @@ function RouterConfig(props: any) {
     },
     {
       path: "/sign-up",
-      component: <SignPage />
+      component: <SignPage />,
     },
     {
       path: "/sign-in",
-      component: <SignPage />
-    }
+      component: <SignPage />,
+    },
   ];
   return (
     <BrowserRouter>

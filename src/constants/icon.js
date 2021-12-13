@@ -70,8 +70,13 @@ import Exclude2 from "../assets/icon/Exclude2.svg";
 import Exclude3 from "../assets/icon/Exclude3.svg";
 import Exclude4 from "../assets/icon/Exclude4.svg";
 import Setting from "../assets/icon/Setting_line.svg";
+import arrowPurple from "../assets/icon/arrowPurple.svg";
+import TrashOrange from "../assets/icon/TrashOrange.svg";
+import SignOutPurple from "../assets/icon/Sign_out_squre.svg";
 
 const icon = {
+  SignOutPurple,
+  TrashOrange,
   Exclude,
   Exclude2,
   Exclude3,
@@ -143,5 +148,6 @@ const icon = {
   Calendar,
   onedot,
   Setting,
+  arrowPurple,
 };
 export default icon;
