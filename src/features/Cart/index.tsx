@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Header from '../Header/index';
+import Head from '../Head/index';
 import Footer from '../Footer/index';
 import { Container } from '@mui/material';
 import icon from '../../constants/icon';
@@ -59,7 +59,7 @@ function Cart(props: any) {
       const orgs = unique(orgCart)
       return (
             <div className="cart" >
-                  <Header
+                  <Head
                         isCart={isCart}
                         title={headerTitle}
                   />
@@ -88,7 +88,7 @@ function Cart(props: any) {
                                                 </div>
                                           </div>
                                           <div
-                                                style={showOrg === false ? { display: 'none' } : { display: 'block' }}
+                                                style={showOrg === true ? { top: '2.5rem', opacity: '1', visibility: 'visible' } : {top: '5rem', opacity:'0', visibility: 'hidden' }}
                                                 className="cart-notification__or-list"
                                           >
                                                 <ul>

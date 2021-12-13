@@ -3,22 +3,48 @@ import ButtonCus from "../../../components/ButtonCus";
 import SectionTitle from "../../SectionTitle";
 import SignInUp from "../../poupSignInUp/index";
 import { AppContext } from "../../../context/AppProvider";
+import {useHistory} from 'react-router-dom';
+import scrollTop from "../../../utils/scrollTop";
 
 function HomeSignIn(props: any) {
   const { t } = useContext(AppContext);
+  const { useForSignRes } = props;
+  const history = useHistory();
   const [openSignIn, setOpenSignIn] = useState(false);
   const [activeTabSign, setActiveTabSign] = useState(1);
   const popupSignInClick = () => {
-    setOpenSignIn(true);
-    setActiveTabSign(1);
+    if (document.body.offsetWidth < 767) {
+      history.push({
+        pathname: '/sign-in', search: '1'
+      })
+      scrollTop()
+    } else {
+      setOpenSignIn(true);
+      setActiveTabSign(1);
+    }
   };
   const popupSignUpClick = () => {
-    setOpenSignIn(true);
-    setActiveTabSign(2);
+    if (document.body.offsetWidth < 767) {
+      history.push({
+        pathname: '/sign-up', search: '2'
+      })
+      scrollTop()
+    } else {
+      setOpenSignIn(true);
+      setActiveTabSign(2);
+    }
   };
   return (
-    <div className="home-sign">
-      <SectionTitle title={t("Home.Sign_tile")} textAlign="center" />
+    <div
+      style={useForSignRes === true ? { margin: '0px' } : {}}
+      className="home-sign"
+    >
+      {
+        useForSignRes === true ?
+          ''
+          :
+          <SectionTitle title={t("Home.Sign_tile")} textAlign="center" />
+      }
       <div className="home-sign-button">
         <ButtonCus
           onClick={popupSignInClick}
@@ -27,7 +53,7 @@ function HomeSignIn(props: any) {
           color="var(--bg-gray)"
           fontSize="20px"
           lineHeight="24px"
-          margin="36px 12px"
+          margin={useForSignRes === true ? '0px 12px' : '36px 12px'}
           borderRadius="20px"
         />
         <ButtonCus
@@ -37,12 +63,13 @@ function HomeSignIn(props: any) {
           fontSize="20px"
           lineHeight="24px"
           border="solid 1px var(--purple)"
-          margin="36px 12px"
+          margin={useForSignRes === true ? '0px 12px' : '36px 12px'}
           borderRadius="20px"
         />
       </div>
       <div className="home-sign">
         <SignInUp
+          useForSignRes={useForSignRes}
           openSignIn={openSignIn}
           setOpenSignIn={setOpenSignIn}
           activeTabSign={activeTabSign}

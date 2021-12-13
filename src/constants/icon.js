@@ -73,6 +73,13 @@ import Setting from "../assets/icon/Setting_line.svg";
 import arrowPurple from "../assets/icon/arrowPurple.svg";
 import TrashOrange from "../assets/icon/TrashOrange.svg";
 import SignOutPurple from "../assets/icon/Sign_out_squre.svg";
+import userCircle from "../assets/icon/userCircle.svg";
+import signOut from "../assets/icon/sign_out.svg";
+import home from "../assets/icon/home.svg";
+import chevronLeft from "../assets/icon/chevron-left.svg";
+import searchPurple from "../assets/icon/searchPurple.svg";
+import pinMap_2 from "../assets/icon/pinMap_2.svg";
+import chevronRight from "../assets/icon/chevron-right.svg";
 
 const icon = {
   SignOutPurple,
@@ -149,5 +156,12 @@ const icon = {
   onedot,
   Setting,
   arrowPurple,
+  userCircle,
+  signOut,
+  home,
+  chevronLeft,
+  chevronRight,
+  searchPurple,
+  pinMap_2,
 };
 export default icon;

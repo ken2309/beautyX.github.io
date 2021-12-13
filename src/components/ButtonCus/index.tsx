@@ -4,6 +4,7 @@ import { commonStyle } from "../../constants/style";
 function ButtonCus(props: any) {
   const btnStyle = commonStyle();
   const {
+    width,
     padding,
     backColor,
     color,
@@ -34,6 +35,7 @@ function ButtonCus(props: any) {
         borderRadius: borderRadius,
         border: border,
         margin: margin,
+        width: width
       }}
       className={btnStyle.button}
       onClick={handleOnClick}

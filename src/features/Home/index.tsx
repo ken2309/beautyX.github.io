@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Header from "../Header/index";
 import "./Home.css";
 import "../poupSignInUp/popupSignInUp.css";
 import { Container } from "@mui/material";
@@ -16,10 +15,12 @@ import HomeLoggedLocation from "./components/HomeLoggedLocation";
 import HomeLoggedProduct from "./components/HomeLoggedProduct";
 import HomeLoggedForYou from "./components/HomeLoggedForYou";
 import { AppContext } from "../../context/AppProvider";
+import Head from '../Head/index';
+import Bottom from '../../featuresMobile/Bottom'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
-const logged: boolean = true;
+// const logged: boolean = true;
 function Home(props: any) {
   const { profile } = useContext(AppContext)
   // const dispatch = useDispatch();
@@ -32,20 +33,22 @@ function Home(props: any) {
 
   return (
     <div className="home">
-      <Header />
+      <Head/>
       <Container>
         <HomeBanner />
       </Container>
-      {profile ? (
+      {profile ?
         <>
-          <HomeLoggedCalendar />
+          <div className="h-par-calendar">
+            <HomeLoggedCalendar />
+          </div>
           <Container>
             <HomeLoggedLocation />
             <HomeLoggedProduct />
             <HomeLoggedForYou />
           </Container>
         </>
-      ) : (
+        :
         <Container>
           <HomeMap />
           <HomeMiniMap />
@@ -54,8 +57,9 @@ function Home(props: any) {
           <HomeFlatForm />
           <HomeSignIn />
         </Container>
-      )}
+      }
       <Footer />
+      <Bottom />
     </div>
   );
 }

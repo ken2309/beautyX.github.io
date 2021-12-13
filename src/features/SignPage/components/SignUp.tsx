@@ -11,6 +11,7 @@ import axios from "axios";
 import { CircularProgress } from "@mui/material";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "./PopupNoti";
+import { baseURL } from "../../../api/axios";
 
 function SignUp(props: any) {
   const { activeTabSign } = props;
@@ -35,7 +36,7 @@ function SignUp(props: any) {
       password: values.password,
     };
     axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/register`, params)
+      .post(`${baseURL}/auth/register`, params)
       .then(function (response) {
         setLoading(false);
         setPopup(true);
@@ -121,7 +122,10 @@ function SignUp(props: any) {
         // style={{alignItems:'start'}}
       >
         <div className="flex-column" style={{ width: "100%" }}>
-          <div className="flex-row w-100" style={{ width: "100%" }}>
+          <div
+            className="flex-row w-100 sign-input-name"
+            style={{ width: "100%" }}
+          >
             <div className="sign-form__box ">
               <img className="sign-form__box-icon" src={icon.User} alt="" />
               <input

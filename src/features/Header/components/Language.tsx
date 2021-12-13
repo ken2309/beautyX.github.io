@@ -41,10 +41,10 @@ function Language({ openLang, openLangClick }: Toggle) {
             <div className={((openLang) ? `${lang.popover} ${lang.popoverOpened}` : `${lang.popover}`) + ' quicksand-md'}>
                 <div className={lang.national} >
                     {
-                        languages.map((item: any) => (
+                        languages.map((item: any, index) => (
                             <div
                                 className={lang.changeLangBtn}
-                                key={item.code}
+                                key={index}
                                 onClick={() => handleLang(item.code)}
                             >
                                 <img src={item.icon} alt="" width="16px" />
@@ -66,7 +66,11 @@ function Language({ openLang, openLangClick }: Toggle) {
                 <div className={lang.curency}>
                     {
                         languages.map((item: any) => (
-                            <a href="#" className={(item.code === language) ? 'active' : ''} onClick={() => handleLang(item.code)}>
+                            <a
+                                key={item.code}
+                                href="#" className={(item.code === language) ? 'active' : ''}
+                                onClick={() => handleLang(item.code)}
+                            >
                                 <b> {item.unit} </b>
                                 <span> {item.currency} </span>
                             </a>

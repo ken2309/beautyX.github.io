@@ -3,6 +3,8 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+// import Dialog from "@mui/material/Dialog";
+// import ButtonCus from "../../../components/ButtonCus";
 import axios from "axios";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "../../SignPage/components/PopupNoti";
@@ -10,10 +12,22 @@ import { CircularProgress } from "@mui/material";
 import ForgotPass from "./ForgotPass";
 import Verification from "./Verification";
 import NewPass from "./NewPass";
+import { baseURL } from "../../../api/axios";
+import { useHistory } from "react-router-dom";
 
 function SignIn(props: any) {
   const { t, setSign } = useContext(AppContext);
-  const { activeTabSign, setActiveTabSign, setOpenSignIn } = props;
+  const history = useHistory();
+  const {
+    activeTabSign,
+    setActiveTabSign,
+    setOpenSignIn,
+    useForSignRes,
+    // handleClickOpenVerification,
+    // handleCloseForgotPass,
+    // handleClickOpenNewPass,
+    // handleCloseVerification
+  } = props;
   const [typePass, setTypePass] = useState("password");
   const [openForgotPass, setOpenForgotPass] = React.useState(false);
   const [openVerification, setOpenVerification] = React.useState(false);
@@ -29,16 +43,16 @@ function SignIn(props: any) {
     setLoading(true);
     setDisplay_email(values.email);
     axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/login`, values)
+      .post(`${baseURL}/auth/login`, values)
       .then(function (response: any) {
-        window.sessionStorage.setItem(
-          "_WEB_US",
-          JSON.stringify(response.context)
-        );
-        window.sessionStorage.setItem("_WEB_TK", response.context.token);
+        localStorage.setItem("_WEB_US", JSON.stringify(response.context));
+        localStorage.setItem("_WEB_TK", response.context.token);
         setSign(true);
         setLoading(false);
         setOpenSignIn(false);
+        if (useForSignRes === true) {
+          history.goBack();
+        }
       })
       .catch(function (err) {
         setLoading(false);
@@ -153,12 +167,19 @@ function SignIn(props: any) {
               <CircularProgress size="25px" color="inherit" />
             </div>
           ) : (
+            <></>
+          )}
+          {loading === true ? (
+            <div className="sign-loading">
+              <CircularProgress size="25px" color="inherit" />
+            </div>
+          ) : (
             ""
           )}
           {t("Home.Sign_in")}
         </button>
       </form>
-      <p className="sign-or">{t}</p>
+      <p className="sign-or">{t("Home.Sign_or")}</p>
       <div className="flex-row sign-other-social">
         <img src={icon.google} alt="" />
         <img src={icon.facebook} alt="" />
@@ -181,6 +202,12 @@ function SignIn(props: any) {
       />
       {/* Dialog New Pass */}
       <NewPass openNewPass={openNewPass} setOpenNewPass={setOpenNewPass} />
+      <PopupNoti
+        popup={popup}
+        setPopup={setPopup}
+        isSignIn={true}
+        title={`Emai "${display_email}" ${t("form.is_not_registered")}`}
+      />
     </div>
   );
 }

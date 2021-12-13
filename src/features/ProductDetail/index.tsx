@@ -4,7 +4,7 @@ import productsApi from '../../api/productApi';
 import orgApi from '../../api/organizationApi'
 import { Container } from '@mui/material'
 import './Product.css';
-import Header from '../Header';
+import Head from '../Head';
 import DetailCard from './components/DetailCard';
 import DetailHead from './components/DetailHead';
 import Footer from '../Footer';
@@ -69,7 +69,7 @@ function ProductDetail(props: any) {
       }
       return (
             <div className="product">
-                  <Header />
+                  <Head/>
                   <Container>
                         <div className="product-cnt">
                               <DetailHead

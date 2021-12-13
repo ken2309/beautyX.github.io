@@ -4,11 +4,6 @@ import ButtonCus from '../../../components/ButtonCus/index';
 import { AppContext } from '../../../context/AppProvider'
 import { useHistory } from 'react-router-dom'
 
-const categories = [
-      { id: 1, name: 'Danh mục 1' },
-      { id: 2, name: 'Danh mục 2' },
-      { id: 3, name: 'Danh mục 3' }
-]
 const locals = [
       { id: 1, province_code: 11, name: 'Vị trí 1' },
       { id: 2, province_code: 9, name: 'Vị trí 5' },
@@ -26,14 +21,16 @@ interface ChooseLocal {
 function HomeFilterForm(props: any) {
       const history = useHistory();
       const { t } = useContext(AppContext);
+      const { tags } = props;
+      //const tags: any[] = [];
       const [chooseCate, setChooseCate] = useState<ChooseCate>({ id: 0, name: '' });
       const [chooseLocal, setChooseLocal] = useState<ChooseLocal>({ id: 0, province_code: 0, name: '' })
       const [openCate, setOpenCate] = useState(false)
       const [openLocal, setOpenLocal] = useState(false)
       const openCateClick = () => {
-            if(openCate === true){
+            if (openCate === true) {
                   setOpenCate(false);
-            }else{
+            } else {
                   setOpenCate(true)
                   setOpenLocal(false)
             }
@@ -87,7 +84,7 @@ function HomeFilterForm(props: any) {
                               >
                                     <ul>
                                           {
-                                                categories.map(item =>(
+                                                tags.map((item:any) =>(
                                                       <li
                                                             style={
                                                                   item === chooseCate ?

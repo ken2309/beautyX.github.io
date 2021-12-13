@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../Header';
+import Head from '../Head';
 import { Container } from '@mui/material';
 import DetailCard from '../ProductDetail/components/DetailCard';
 import { useLocation } from 'react-router-dom';
@@ -57,7 +57,7 @@ function ServiceDetail(props: any) {
       }, [params[0]])
       return (
             <div className="product">
-                  <Header />
+                  <Head/>
                   <Container>
                         <div className="product-cnt">
                               <DetailHead

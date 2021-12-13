@@ -59,6 +59,7 @@
       width: 100%;
       border-radius: 8px;
       box-shadow: 0px 6px 15px #dcd8ee;
+      transition: all 0.2s;
 }
 .cart-notification__or-list ul li{
       border-radius: 8px;

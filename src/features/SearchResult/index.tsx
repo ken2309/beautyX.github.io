@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Header from '../Header/index';
 import './SearchResult.css'
 import {useLocation} from 'react-router-dom';
 import Result from './components/Result';
@@ -9,6 +8,9 @@ import Footer from '../Footer/index';
 import {Organization} from '../../interface/organization';
 import orgApi from '../../api/organizationApi';
 import { AppContext } from '../../context/AppProvider';
+import Head from '../Head';
+import Bottom from '../../featuresMobile/Bottom'
+// import img from '../../constants/img';
 
 function SearchResult(props:any) {
       const {t} = useContext(AppContext)
@@ -18,6 +20,7 @@ function SearchResult(props:any) {
       const keySearch = decodeURI(params)
       const [loading, setLoading] = useState(false);
       const [orgs, setOrgs] = useState<Organization[]>([])
+      // const [orgsLength, setOrgsLength] = useState();
       const [totalItem, setTotalItem] = useState()
       const [total, setTotal] = useState();
       const [curPage, setCurPage] = useState(1)
@@ -43,26 +46,40 @@ function SearchResult(props:any) {
             <div style={{
                   backgroundColor: 'var(--bg-gray)'
             }}>
-                  <Header />
+                  <Head/>
                   <Container>
-                        <div className="result-content">
-                              <Result
-                                    t={t}
-                                    keySearch={keySearch}
-                                    totalItem={totalItem}
-                                    setCurPage={setCurPage}
-                                    resultList={orgs}
-                                    setChooseItem={setChooseItem}
-                                    loading={loading}
-                                    total={total}
-                              />
-                              <MapWrapper
-                                    chooseItem={chooseItem}
-                                    width='50%'
-                              />
-                        </div>
+                        {
+                              // orgs.length === 0 ?
+                              //       <div className="flex-column result-null">
+                              //             <span className="result-null__title">
+                              //                   {t('Search_result.no_result_title')}
+                              //             </span>
+                              //             <span className="result-null__text">
+                              //                  {t('Search_result.sorry')}
+                              //             </span>
+                              //             <img src={img.resultNull} alt="" />
+                              //       </div>
+                              //       :
+                                    <div className="result-content">
+                                          <Result
+                                                t={t}
+                                                keySearch={keySearch}
+                                                totalItem={totalItem}
+                                                setCurPage={setCurPage}
+                                                resultList={orgs}
+                                                setChooseItem={setChooseItem}
+                                                loading={loading}
+                                                total={total}
+                                          />
+                                          <MapWrapper
+                                                chooseItem={chooseItem}
+                                                width='50%'
+                                          />
+                                    </div>
+                        }
                   </Container>
-                  <Footer/>
+                  <Footer />
+                  <Bottom/>
             </div>
       );
 }

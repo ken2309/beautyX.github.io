@@ -3,22 +3,23 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Dialog from "@mui/material/Dialog";
-import ButtonCus from "../../../components/ButtonCus";
+// import Dialog from "@mui/material/Dialog";
+// import ButtonCus from "../../../components/ButtonCus";
 import { AppContext } from '../../../context/AppProvider';
 import {useHistory} from 'react-router-dom';
 import {CircularProgress} from '@mui/material';
-import axios from 'axios'
-import PopupNoti from './PopupNoti'
+import axios from 'axios';
+import PopupNoti from './PopupNoti';
+import {baseURL} from '../../../api/axios'
 
 function SignIn(props: any) {
   const { t, setSign } = useContext(AppContext)
   const { activeTabSign, setActiveTabSign } = props;
   const history = useHistory()
   const [typePass, setTypePass] = useState("password");
-  const [openForgotPass, setOpenForgotPass] = React.useState(false);
-  const [openVerification, setOpenVerification] = React.useState(false);
-  const [openNewPass, setOpenNewPass] = React.useState(false);
+  // const [openForgotPass, setOpenForgotPass] = React.useState(false);
+  // const [openVerification, setOpenVerification] = React.useState(false);
+  // const [openNewPass, setOpenNewPass] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const [errPass, setErrPass] = useState('')
   const [display_email, setDisplay_email] = useState('')
@@ -29,10 +30,10 @@ function SignIn(props: any) {
   const handleLogin = (values: any) => {
     setLoading(true);
     setDisplay_email(values.email);
-    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, values)
+    axios.post(`${baseURL}/auth/login`, values)
       .then(function (response: any) {
-        window.sessionStorage.setItem('_WEB_US', JSON.stringify(response.context))
-        window.sessionStorage.setItem('_WEB_TK', response.context.token)
+        localStorage.setItem('_WEB_US', JSON.stringify(response.context))
+        localStorage.setItem('_WEB_TK', response.context.token)
         setSign(true);
         history.push('/')
         setLoading(false);
@@ -49,30 +50,30 @@ function SignIn(props: any) {
 
 
   // mở popup forgot
-  const handleClickOpenForgotPass = () => {
-    setOpenForgotPass(true);
-  };
+  // const handleClickOpenForgotPass = () => {
+  //   setOpenForgotPass(true);
+  // };
   // mở popup veri code
-  const handleClickOpenVerification = () => {
-    setOpenVerification(true);
-  };
+  // const handleClickOpenVerification = () => {
+  //   setOpenVerification(true);
+  // };
   // mở popup New Pass
-  const handleClickOpenNewPass = () => {
-    setOpenNewPass(true);
-  };
+  // const handleClickOpenNewPass = () => {
+  //   setOpenNewPass(true);
+  // };
 
   // đóng popup forgot
-  const handleCloseForgotPass = () => {
-    setOpenForgotPass(false);
-  };
+  // const handleCloseForgotPass = () => {
+  //   setOpenForgotPass(false);
+  // };
   // đóng popup veri code
-  const handleCloseVerification = () => {
-    setOpenVerification(false);
-  };
+  // const handleCloseVerification = () => {
+  //   setOpenVerification(false);
+  // };
   // đóng popup New Pass
-  const handleCloseNewPass = () => {
-    setOpenNewPass(false);
-  };
+  // const handleCloseNewPass = () => {
+  //   setOpenNewPass(false);
+  // };
 
   const formik = useFormik({
     initialValues: {
@@ -95,63 +96,63 @@ function SignIn(props: any) {
     },
   });
   //form forgot pass
-  const formikForgotPass = useFormik({
-    initialValues: {
-      email: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .required("Vui lòng nhập Email/số điện thoại")
-        .matches(
-          // eslint-disable-next-line no-useless-escape
-          /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-          "Vui lòng nhập đúng định dạng Example@gmail.com"
-        ),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      handleClickOpenVerification();
-      handleCloseForgotPass();
-    },
-  });
-  const formikVerification = useFormik({
-    initialValues: {
-      verification: "",
-    },
-    validationSchema: Yup.object({
-      verification: Yup.string()
-        .required("Vui lòng nhập mã xác nhận")
-        .min(6, "Mã xác nhận lớn hơn 6 ký tự")
-        .max(6, "Mã xác nhận nhỏ hơn 6 ký tự"),
-    }),
-    onSubmit: (values) => {
-      console.log(values);
-      handleCloseVerification();
-      handleClickOpenNewPass();
-    },
-  });
-  const formikNewpass = useFormik({
-    initialValues: {
-      password: "",
-      confirmPassword: "",
-    },
-    validationSchema: Yup.object({
-      password: Yup.string()
-        .min(8, "Mật khẩu lớn hơn 8 ký tự")
-        .max(32, "Mật khẩu tối đa 32 kí tự")
-        .required("Vui lòng nhập mật khẩu mới")
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
-        ),
-      confirmPassword: Yup.string()
-        .required("Vui lòng xác nhận lại mật khẩu mới")
-        .oneOf([Yup.ref("password"), null], "Mật khẩu mới không khớp"),
-    }),
-    onSubmit: (values) => {
-      //handleCloseNewPass();
-    },
-  });
+  // const formikForgotPass = useFormik({
+  //   initialValues: {
+  //     email: "",
+  //   },
+  //   validationSchema: Yup.object({
+  //     email: Yup.string()
+  //       .required("Vui lòng nhập Email/số điện thoại")
+  //       .matches(
+  //         // eslint-disable-next-line no-useless-escape
+  //         /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
+  //         "Vui lòng nhập đúng định dạng Example@gmail.com"
+  //       ),
+  //   }),
+  //   onSubmit: (values) => {
+  //     console.log(values);
+  //     handleClickOpenVerification();
+  //     handleCloseForgotPass();
+  //   },
+  // });
+  // const formikVerification = useFormik({
+  //   initialValues: {
+  //     verification: "",
+  //   },
+  //   validationSchema: Yup.object({
+  //     verification: Yup.string()
+  //       .required("Vui lòng nhập mã xác nhận")
+  //       .min(6, "Mã xác nhận lớn hơn 6 ký tự")
+  //       .max(6, "Mã xác nhận nhỏ hơn 6 ký tự"),
+  //   }),
+  //   onSubmit: (values) => {
+  //     console.log(values);
+  //     handleCloseVerification();
+  //     handleClickOpenNewPass();
+  //   },
+  // });
+  // const formikNewpass = useFormik({
+  //   initialValues: {
+  //     password: "",
+  //     confirmPassword: "",
+  //   },
+  //   validationSchema: Yup.object({
+  //     password: Yup.string()
+  //       .min(8, "Mật khẩu lớn hơn 8 ký tự")
+  //       .max(32, "Mật khẩu tối đa 32 kí tự")
+  //       .required("Vui lòng nhập mật khẩu mới")
+  //       .matches(
+  //         /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+  //         "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
+  //       ),
+  //     confirmPassword: Yup.string()
+  //       .required("Vui lòng xác nhận lại mật khẩu mới")
+  //       .oneOf([Yup.ref("password"), null], "Mật khẩu mới không khớp"),
+  //   }),
+  //   onSubmit: (values) => {
+  //     //handleCloseNewPass();
+  //   },
+  // });
   return (
     <div
       style={activeTabSign === 1 ? { display: "block" } : { display: "none" }}
@@ -212,7 +213,11 @@ function SignIn(props: any) {
             />
             <span>{t('Home.Sign_remember')}</span>
           </div>
-          <span onClick={handleClickOpenForgotPass}>{t('Home.Sign_forgot')} ?</span>
+          <span
+            // onClick={handleClickOpenForgotPass}
+          >
+            {t('Home.Sign_forgot')} ?
+          </span>
         </div>
         <button
           disabled={loading === true ? true : false}
@@ -229,7 +234,7 @@ function SignIn(props: any) {
           {t('Home.Sign_in')}
         </button>
       </form>
-      <p className="sign-or">{t}</p>
+      <p className="sign-or">{t('Home.Sign_or')}</p>
       <div className="flex-row sign-other-social">
         <img src={icon.google} alt="" />
         <img src={icon.facebook} alt="" />
@@ -239,7 +244,7 @@ function SignIn(props: any) {
         <span onClick={() => setActiveTabSign(2)}>{t('Home.Sign_up_now')}</span>
       </p>
       {/* dialog quên mật khẩu */}
-      <Dialog
+      {/* <Dialog
         open={openForgotPass}
         keepMounted
         onClose={handleCloseForgotPass}
@@ -286,9 +291,9 @@ function SignIn(props: any) {
             />
           </div>
         </div>
-      </Dialog>
+      </Dialog> */}
       {/* dialog nhập mã xác nhận */}
-      <Dialog
+      {/* <Dialog
         open={openVerification}
         keepMounted
         onClose={handleCloseVerification}
@@ -336,9 +341,9 @@ function SignIn(props: any) {
             />
           </div>
         </div>
-      </Dialog>
+      </Dialog> */}
       {/* dialog đặt lại mật khẫu mới */}
-      <Dialog
+      {/* <Dialog
         open={openNewPass}
         keepMounted
         onClose={handleCloseNewPass}
@@ -428,6 +433,7 @@ function SignIn(props: any) {
           </div>
         </div>
       </Dialog>
+      */}
       <PopupNoti
         popup={popup}
         setPopup={setPopup}

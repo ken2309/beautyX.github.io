@@ -12,7 +12,7 @@ interface ItemOrder {
 const useInPayment: boolean = true;
 function PaymentTotal(props: any) {
       const { t } = useContext(AppContext)
-      const { methodList, value, list, carts, userInfo, profile } = props;
+      const { methodList, value, list, carts, userInfo, profile, chooseE_wall } = props;
       const pmMethod = methodList.find((item: any) => item.method === value);
       const [popup, setPopup] = useState(false);
       const org_id = list[0].org_id
@@ -40,14 +40,15 @@ function PaymentTotal(props: any) {
             products: productsPost,
             services: servicesPost,
             prepay_cards: [],
-            treatment_combo: combosPost
+            treatment_combo: combosPost,
+            payment_method_id: chooseE_wall?.id
       }
       const handleSubmitPayment = () => {
             if (profile) {
-                  if (value && userInfo) {
+                  if (value && userInfo && chooseE_wall) {
                         console.log(params)
                   } else {
-                        console.log('err !')
+                        console.log('Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo')
                   }
             }
       }
@@ -69,7 +70,12 @@ function PaymentTotal(props: any) {
                                     <p
                                           style={{ color: 'var(--text-black)' }}
                                     >
-                                          {pmMethod ? pmMethod?.title : t('pm.choose_payment_method')}
+                                          {
+                                                pmMethod ?
+                                                      `${pmMethod?.title}: ${chooseE_wall?.name_key}`
+                                                      :
+                                                      t('pm.choose_payment_method')
+                                          }
                                     </p>
                                     <p>{formatPrice(carts.cartAmount)} đ</p>
                                     <p>0 đ</p>

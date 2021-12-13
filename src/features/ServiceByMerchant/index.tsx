@@ -17,6 +17,7 @@ function ServiceByMerchant(props: any) {
       const [categories, setCategories] = useState([])
       const [chooseCate, setChooseCate] = useState();
       const [loading, setLoading] = useState(false)
+      const [loading_cate, setLoading_cate] = useState(false);
       useEffect(() => {
             async function handleGetServices() {
                   setLoading(true)
@@ -41,20 +42,25 @@ function ServiceByMerchant(props: any) {
                   }
             }
             handleGetServices()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [mer_id, page, chooseCate])
       useEffect(() => {
-            async function handleGetCategories(){
-                  try{
+            setLoading_cate(true)
+            async function handleGetCategories() {
+                  try {
                         const resCate = await categoryApi.getByOrgId_services({
                               org_id: mer_id
                         })
                         setCategories(resCate.data.context.data);
-                  }catch(err){
+                        setLoading_cate(false)
+                  } catch (err) {
                         console.log(err)
                   }
             }
             handleGetCategories()
-      },[mer_id])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [ mer_id])
+      //console.log(services);
       return (
             <div style={tab_id === activeTab ? { display: 'block' } : { display: 'none' }}>
                   <div
@@ -66,6 +72,7 @@ function ServiceByMerchant(props: any) {
                               categories={categories}
                               setChooseCate={setChooseCate}
                               setPage={setPage}
+                              loading_cate={loading_cate}
                         />
                         <ServiceList
                               loading={loading}

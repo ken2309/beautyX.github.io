@@ -40,6 +40,7 @@ function ProductByMerchant(props: any) {
                   }
             }
             handleGetPrByOrgId();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [param, cate_id, mer_id, page])
       // add new values product
       const productsIs = [];
@@ -60,6 +61,7 @@ function ProductByMerchant(props: any) {
                               mer_id={mer_id}
                               setCate_id={setCate_id}
                               setPage={setPage}
+                              activeTab={activeTab}
                         />
                         <ProductList
                               t={t}

@@ -6,6 +6,8 @@ import {Pagination} from '@mui/material';
 //import Loading from '../loading/Loading';
 import SearchLoading from '../../Loading/SearchLoading';
 import ResultItem from './ResultItem';
+import SearchResultMb from '../../../featuresMobile/SearchResult/SearchResultMb';
+import scrollTop from '../../../utils/scrollTop'
 
 function Result(props:any) {
       const {
@@ -37,16 +39,22 @@ function Result(props:any) {
       //       scrollTop();
       // }
       const pageChange = (event: any, value: any) => {
+            scrollTop();
             setCurPage(value)
       }
       return (
             <div className='result-detail'>
-                  <HomeFilter
+                  <div className="result-detail__filter">
+                        <HomeFilter
+                              setCurPage={setCurPage}
+                        />
+                  </div>
+                  <SearchResultMb
                         setCurPage={setCurPage}
                   />
                   <div className="result-detail__title">
                         <div className="result-detail__result">
-                              <h3>"{keySearch}"</h3>
+                              <h3>{keySearch.length > 0 ? keySearch : ''}</h3>
                               <span className="result-detail__result-total">
                                     <span>{total}</span> {t('Search_result.text_result')}
                               </span>
@@ -70,9 +78,11 @@ function Result(props:any) {
                                     :
                                     resultList.map((item: any) => (
                                           <ResultItem
+                                                key={item.id}
                                                 item={item}
                                                 setChooseItem={setChooseItem}
                                                 serviceOfCardOrg={serviceOfCardOrg}
+                                                resultList={resultList}
                                           />
                                     ))
                         }

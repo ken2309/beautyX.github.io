@@ -17,7 +17,13 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 function SignInUp(props: any) {
-  const { openSignIn, setOpenSignIn, activeTabSign, setActiveTabSign } = props;
+  const {
+    openSignIn,
+    setOpenSignIn,
+    activeTabSign,
+    setActiveTabSign,
+    useForSignRes
+  } = props;
   const { t } = useContext(AppContext)
   const buttons = [
     { id: 1, title: t('Home.Sign_in') },
@@ -69,6 +75,7 @@ function SignInUp(props: any) {
             ))}
           </div>
           <SignIn
+            useForSignRes={useForSignRes}
             setOpenSignIn={setOpenSignIn}
             activeTabSign={activeTabSign}
             setActiveTabSign={setActiveTabSign}

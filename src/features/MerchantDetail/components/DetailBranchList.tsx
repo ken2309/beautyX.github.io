@@ -5,20 +5,21 @@ import '../../SearchResult/SearchResult.css';
 import icon from '../../../constants/icon';
 import img from '../../../constants/img';
 import branchApi from '../../../api/branchApi';
+
 function DetailBranchList(props: any) {
       const { mer_id, t } = props;
       const [branches, setBranches] = useState([]);
-      useEffect(()=>{
-            async function handleGetBranches(){
-                  try{
+      useEffect(() => {
+            async function handleGetBranches() {
+                  try {
                         const res = await branchApi.getBranchByOrg(mer_id);
                         setBranches(res.data.context);
-                  }catch(err){
+                  } catch (err) {
                         console.log(err)
                   }
             }
             handleGetBranches()
-      },[mer_id])
+      }, [mer_id])
       const [chooseBranch, setChooseBranch] = useState(branches[0])
       const handleChooseBranch = (item: any) => {
             setChooseBranch(item)
