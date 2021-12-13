@@ -96,16 +96,29 @@ function MenuSideBar(props: info) {
           </span>
         </div>
 
-        <ul>
-          <li>
-            <span className="quicksand-md">Nhận thông báo</span>
-            <CheckNotification />
+        <ul style={{ paddingTop: "18px" }}>
+          <li style={{ marginBottom: "8px" }}>
+            <div
+              className="cursor-pointer"
+              onClick={() => history.push("/tai-khoan/goi-dich-vu")}
+            >
+              <span className="quicksand-md">Gói dịch vụ</span>
+            </div>
           </li>
-          <li>
-            <span className="quicksand-md">Ngôn ngữ</span>
-            <div className="lang">
-              <span className="quicksand-md text-color-grey">Tiếng Việt</span>
-              <CheckNotification />
+          <li className="cursor-pointer" style={{ marginBottom: "8px" }}>
+            <div
+              className="cursor-pointer"
+              onClick={() => history.push("/tai-khoan/san-pham")}
+            >
+              <span className="quicksand-md">Sản phẩm</span>
+            </div>
+          </li>
+          <li className="cursor-pointer">
+            <div
+              className="cursor-pointer"
+              onClick={() => history.push("/tai-khoan/combo")}
+            >
+              <span className="quicksand-md">Combo</span>
             </div>
           </li>
         </ul>

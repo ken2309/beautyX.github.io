@@ -80,8 +80,10 @@ import chevronLeft from "../assets/icon/chevron-left.svg";
 import searchPurple from "../assets/icon/searchPurple.svg";
 import pinMap_2 from "../assets/icon/pinMap_2.svg";
 import chevronRight from "../assets/icon/chevron-right.svg";
+import edit from "../assets/icon/Edit.svg";
 
 const icon = {
+  edit,
   SignOutPurple,
   TrashOrange,
   Exclude,

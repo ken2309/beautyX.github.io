@@ -65,12 +65,16 @@ function RouterConfig(props: any) {
       path: "/sign-request",
       component: <SignPageRequest />,
     },
-  ];
-  const routesPrivate = [
     {
       path: "/tai-khoan",
-      component: Account,
+      component: <Account />,
     },
+  ];
+  const routesPrivate = [
+    // {
+    //   path: "/tai-khoan",
+    //   component: Account,
+    // },
     {
       path: "/Partner",
       component: Partner,
