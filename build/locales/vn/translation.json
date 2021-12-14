@@ -65,7 +65,15 @@
         "th":"T5","Thursday":"Thứ Năm",
         "fr":"T6","Friday":"Thứ Sáu",
         "sa":"T7","Saturday":"Thứ Bảy",
-        "su":"CN","Sunday":"Chủ Nhật"
+        "su":"CN","Sunday":"Chủ Nhật",
+        "appointment_status":"Trạng thái đặt hẹn",
+        "confirmed":"Đã xác nhận",
+        "unconfimred":"Chưa xác nhận",
+        "complete":"Hoàn thành",
+        "cancel":"Hủy",
+        "favorite_list":"Favorite beauty spots",
+        "pr_ser_purchased":"Sản phẩm/Dịch vụ đã sử dụng",
+        "sale_for_me":"Ưu đãi nổi bật dành riêng cho bạn"
     },
     "Search_result": {
         "text_result": "kết quả tìm kiếm",

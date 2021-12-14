@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.9cc8346c.chunk.css",
-    "main.js": "/static/js/main.44967689.chunk.js",
-    "main.js.map": "/static/js/main.44967689.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.9a40b43c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.9a40b43c.js.map",
+    "main.css": "/static/css/main.a303c2fb.chunk.css",
+    "main.js": "/static/js/main.8a5b97f9.chunk.js",
+    "main.js.map": "/static/js/main.8a5b97f9.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.66c1c466.js",
+    "runtime-main.js.map": "/static/js/runtime-main.66c1c466.js.map",
     "static/css/2.943527f3.chunk.css": "/static/css/2.943527f3.chunk.css",
-    "static/js/2.4d887df3.chunk.js": "/static/js/2.4d887df3.chunk.js",
-    "static/js/2.4d887df3.chunk.js.map": "/static/js/2.4d887df3.chunk.js.map",
-    "static/js/3.a0e502d6.chunk.js": "/static/js/3.a0e502d6.chunk.js",
-    "static/js/3.a0e502d6.chunk.js.map": "/static/js/3.a0e502d6.chunk.js.map",
+    "static/js/2.135986c6.chunk.js": "/static/js/2.135986c6.chunk.js",
+    "static/js/2.135986c6.chunk.js.map": "/static/js/2.135986c6.chunk.js.map",
+    "static/js/3.d17c2ef5.chunk.js": "/static/js/3.d17c2ef5.chunk.js",
+    "static/js/3.d17c2ef5.chunk.js.map": "/static/js/3.d17c2ef5.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.943527f3.chunk.css.map": "/static/css/2.943527f3.chunk.css.map",
-    "static/css/main.9cc8346c.chunk.css.map": "/static/css/main.9cc8346c.chunk.css.map",
-    "static/js/2.4d887df3.chunk.js.LICENSE.txt": "/static/js/2.4d887df3.chunk.js.LICENSE.txt",
+    "static/css/main.a303c2fb.chunk.css.map": "/static/css/main.a303c2fb.chunk.css.map",
+    "static/js/2.135986c6.chunk.js.LICENSE.txt": "/static/js/2.135986c6.chunk.js.LICENSE.txt",
     "static/media/Arrow_drop_down.5354c622.svg": "/static/media/Arrow_drop_down.5354c622.svg",
     "static/media/Avatar.6b4385ae.svg": "/static/media/Avatar.6b4385ae.svg",
     "static/media/Bag_alt.84df585f.svg": "/static/media/Bag_alt.84df585f.svg",
@@ -100,10 +100,10 @@
     "static/media/vi.7e63937a.svg": "/static/media/vi.7e63937a.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9a40b43c.js",
+    "static/js/runtime-main.66c1c466.js",
     "static/css/2.943527f3.chunk.css",
-    "static/js/2.4d887df3.chunk.js",
-    "static/css/main.9cc8346c.chunk.css",
-    "static/js/main.44967689.chunk.js"
+    "static/js/2.135986c6.chunk.js",
+    "static/css/main.a303c2fb.chunk.css",
+    "static/js/main.8a5b97f9.chunk.js"
   ]
 }

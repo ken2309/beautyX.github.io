@@ -65,7 +65,15 @@
             "th": "Th","Thursday":"Thursday",
             "fr": "Fr","Friday":"Friday",
             "sa": "Sa","Saturday":"Saturday",
-            "su": "Su","Sunday":"Sunday"
+            "su": "Su","Sunday":"Sunday",
+            "appointment_status":"Appointment status",
+            "confirmed":"Confirmed",
+            "unconfimred":"Unconfimred",
+            "complete":"Complete",
+            "cancel":"Cancel",
+            "favorite_list":"Favorite beauty spots",
+            "pr_ser_purchased":"Products/Services purchased",
+            "sale_for_me":"Special offer just for me"
       },
       "Search_result": {
             "text_result": "search results",
