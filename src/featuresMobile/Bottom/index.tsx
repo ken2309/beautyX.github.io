@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom';
 import SearchFilter from '../SearchResult/SearchFilter';
 import { AppContext } from '../../context/AppProvider';
 import scrollTop from '../../utils/scrollTop';
+import notifications from '../../data/listNotifications';
 
 function Bottom(props: any) {
       const {t} = useContext(AppContext)
@@ -22,6 +23,7 @@ function Bottom(props: any) {
                   icon: icon.Bell,
                   path: '/Notifications',
                   is_badge: true,
+                  count: notifications.filter((item: any) => item.isRead === false).length
             },
             {
                   id: 1,
@@ -60,7 +62,7 @@ function Bottom(props: any) {
                                           {
                                                 item.is_badge === true ?
                                                       <span className="bt-cnt__item-badge">
-                                                            7
+                                                            {item.count}
                                                       </span>
                                                       :
                                                       <></>

@@ -5,7 +5,7 @@ import { useElementSize } from 'usehooks-ts'
 import SimpleImageSlider from 'react-simple-image-slider';
 import img from '../../../constants/img';
 import DetailTab from './DetailTab';
-import OrgCardLoading from '../../Loading/OrgCardLoading'
+import OrgCardLoading from '../../Loading/OrgCardLoading';
 
 const images = [
       { url: img.slider },
@@ -15,7 +15,7 @@ function DetailHead(props: any) {
       const { t, merDetail, activeTab, setActiveTab, loading } = props;
       const slider = useRef(null);
       const infoBox = useRef(null);
-      const { width } = useElementSize(slider);
+      const { width, height } = useElementSize(slider);
       const [follow, setFollow] = useState(false);
       return (
             <div className="mer-detail">
@@ -91,7 +91,7 @@ function DetailHead(props: any) {
                               <div ref={slider} className="mer-detail__content-right">
                                     <SimpleImageSlider
                                           width={width}
-                                          height={372}
+                                          height={height}
                                           images={images}
                                           showBullets={false}
                                           showNavs={false}
