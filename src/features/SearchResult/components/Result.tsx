@@ -39,6 +39,7 @@ function Result(props:any) {
       //       scrollTop();
       // }
       const pageChange = (event: any, value: any) => {
+            console.log(value);
             scrollTop();
             setCurPage(value)
       }
