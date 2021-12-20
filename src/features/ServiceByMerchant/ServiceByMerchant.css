@@ -92,3 +92,86 @@
       width: 33.3%;
       padding: 18px;
 }
+.mb-cate-wrapper{
+      display: none;
+}
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px){
+      /* temp */
+      .list-filter{
+            flex-direction: column;
+      }
+      /* --- */
+      .ser-content{
+            flex-direction: column;
+            padding-top: 0px;
+      }
+      .ser-category{
+            display: none;
+      }
+      .ser-list{
+            width: 100%;
+      }
+      .list-filter__right,
+      .list-filter__left{
+            display: none;
+      }
+      .ser-list__content-list-item{
+            width: 50%;
+            padding: 8px 12px;
+      }
+      .mb-cate-wrapper{
+            position: sticky;
+            top: 39px;
+            z-index: 2;
+            display: block;
+            width: 100%;
+            padding: 8px 24px 8px 24px;
+            background-color: var(--bgWhite);
+      }
+      .mb-cate__list-cate{
+            overflow-x: scroll;
+      }
+      .mb-cate__list{
+            display: flex;
+            flex-direction: row;
+      }
+      .mb-cate__list li{
+            width: max-content;
+            margin-right: 16px;
+      }
+      .mb-cate__list-item{
+            padding: 4px 8px;
+            width: max-content;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--purple);
+            background-color: transparent;
+            border: solid 1px var(--purple);
+            outline: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+      }
+      .mb-cate__filter{
+            padding-bottom: 12px;
+      }
+      .mb-cate__filter input{
+            width: calc(100% - 40px);
+            border: none;
+            outline: none;
+            padding: 6px 12px 6px 36px;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 500;
+            color: var(--purple);
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            position: relative;
+      }
+      .mb-cate__filter-search{
+            position: absolute;
+            margin-left: 12px;
+      }
+}

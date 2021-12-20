@@ -4,11 +4,14 @@ import ProductCate from './Components/ProductCate'
 import ProductList from './Components/ProductList';
 import { Product } from '../../interface/product';
 import { AppContext } from '../../context/AppProvider';
+import ServiceCateMb from '../ServiceByMerchant/components/ServiceCateMb'
+import { Category } from '../../interface/category';
 
 function ProductByMerchant(props: any) {
       const { t } = useContext(AppContext)
       const { activeTab, mer_id, org } = props;
       const [products, setProducts] = useState<Product[]>([]);
+      const [categories, setCategories] = useState<Category[]>([]);
       const [cate_id, setCate_id] = useState();
       const [loading, setLoading] = useState(false)
       const [page, setPage] = useState(1)
@@ -62,7 +65,17 @@ function ProductByMerchant(props: any) {
                               setCate_id={setCate_id}
                               setPage={setPage}
                               activeTab={activeTab}
+                              categories={categories}
+                              setCategories={setCategories}
                         />
+                        {/* for mobile */}
+                        <ServiceCateMb
+                              categories={categories}
+                              chooseCate={cate_id}
+                              setChooseCate={setCate_id}
+                              setPage={setPage}
+                        />
+                        {/* ----- */}
                         <ProductList
                               t={t}
                               pageLength={pageLength}

@@ -52,7 +52,7 @@ function DetailSaleList(props: any) {
             }
       }
       return (
-            <>
+            <div className="mer-sale-list">
                   <div className="flex-row-sp mer-sale-head">
                         <SectionTitle
                               title={title}
@@ -92,7 +92,7 @@ function DetailSaleList(props: any) {
                         />
 
                   </div>
-            </>
+            </div>
       );
 }
 

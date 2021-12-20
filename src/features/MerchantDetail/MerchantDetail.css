@@ -122,8 +122,14 @@
       border-radius: 24px;
 }
 /* Detail tab */
+.mer-detail__cnt{
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background-color: var(--purple);
+      padding: 40px 0px 24px 0px;
+}
 .mer-detail__tab{
-      padding-top: 64px;
       display: flex;
 }
 .mer-detail__tab li{
@@ -456,8 +462,12 @@
 /* res-mobile */
 /* Mobile */
 @media only screen and (max-width: 767px){
+      .mb-cnt{
+            background-color: var(--bg-color);
+      }
       .mer-detail{
             padding: 12px 24px;
+            background-color: var(--bgWhite);
       }
       .mer-detail__content{
             flex-direction: column-reverse;
@@ -470,7 +480,7 @@
       .mer-detail__content-left{
             width: 100%;
             margin-top: 16px;
-            padding: 8px;
+            padding: 0px;
             height: fit-content;
       }
       .content-left__header img:nth-child(1){
@@ -496,9 +506,83 @@
       .content-left__info-detail span h5{
             font-weight: 700;
       }
+      .mer-detail__cnt{
+            display: none;
+      }
       .content-left__follow{
             margin-top: 16px;
             display: flex;
             justify-content: center;
+      }
+      .content-left__follow button{
+            padding: 4px 16px;
+      }
+      .mer-detail__content-desc{
+            flex-direction: column;
+            padding: 12px 24px;
       } 
+      .mer-detail__content-info{
+            width: 100%;
+            padding: 0px;
+      }
+      .mer__content-info__introduction .section-title{
+            font-size: 18px;
+            line-height: 24px;
+      }
+      .mer__content-info__introduction .text{
+            margin: 4px 0px 8px 0px;
+      }
+      .mer__content-info__util{
+            margin-top: 0px;
+      }
+      .mer__content-info__util .mer__content-info__util-wrap{
+            display: none;
+      }
+      .mer__content-info__personnel .mer__content-info__personnel-box{
+            display: none;
+      }
+      .mer__content-info__personnel{
+            margin-top: 0px;
+      }
+      .mer__content-info__personnel-list{
+            flex-direction: column;
+      }
+      .mer__content-info__personnel-list li{
+            width: 100%;
+            margin: 8px 0px;
+      }
+      .mer__content-info__util-list{
+            flex-wrap: wrap;
+      }
+      .mer__content-info__util-list li{
+            width: 50%;
+            padding: 8px;
+      }
+      .mer__content-info__util-item{
+            box-shadow: 0px 4px 20px rgb(113 97 186 / 20%);
+      }
+      .mer-detail__content-desc .mer-detail__content-cmt{
+            display: none;
+      }
+      .mer-detail__content-cmt{
+            width: 100%;
+            padding: 0px;
+            height: 100%;
+            box-shadow: none;
+            overflow-y: scroll;
+            border-radius: 0px;
+      }
+      .mer-detail-cmt__box-item .cmt-text, 
+      .mer-detail-cmt__box-item .cmt-text button{
+            font-size: 12px;
+            line-height: 18px;
+      }
+      /* brach list */
+      .mer-branch-list{
+            display: none;
+      }
+      /* sale list */
+      .mer-sale-list{
+            display: none;
+      }
 }

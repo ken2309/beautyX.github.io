@@ -12,7 +12,14 @@
         "my_codes":"Danh sách mã ưu đãi",
         "settings":"Cài đặt",
         "support":"Hỗ trợ",
-        "sign_out":"Đăng xuất"
+        "sign_out":"Đăng xuất",
+        "back":"Trở lại"
+    },
+    "Bottom":{
+        "appointment":"Lịch hẹn",
+        "home":"Trang chủ",
+        "account":"Tài khoản",
+        "search":"Tìm kiếm"
     },
     "Banner": {
         "1": "Khám phá và trải nghiệm \n thiên đường làm đẹp ngay gần bạn với \n Booking Flatform Myspa"
@@ -83,7 +90,9 @@
         "parking": "Bãi đỗ xe",
         "bed": "Giường",
         "room": "Phòng",
-        "capacity": "Sức chứa"
+        "capacity": "Sức chứa",
+        "no_result_title":"Không tìm thấy kết quả phù hợp",
+        "sorry":" Thành thật xin lỗi, chúng tôi không tìm thấy cơ sở làm đẹp phù hợp với tùy chọn của bạn. \nHãy thử tìm kiếm tùy chọn khác nhé!"
     },
     "Mer_de": {
         "address": "Địa chỉ",

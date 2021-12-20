@@ -210,6 +210,7 @@
       .hd{
             border-bottom: solid 1px var(--text-op);
             padding: 20px 0px;
+            background-color: var(--purple);
       }
       .hd-logo{
             display: none;
@@ -227,6 +228,9 @@
       }
       .hd-cnt__right-user{
             flex-direction: row-reverse;
+      }
+      .hd-cnt__right-user-name{
+            color: var(--bgWhite);
       }
       .hd-cnt__right-cart{
             display: none;

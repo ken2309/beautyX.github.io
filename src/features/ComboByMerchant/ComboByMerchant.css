@@ -120,3 +120,40 @@
       font-weight: 700;
       color: var(--red-cl);
 }
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px){
+      .cmb-list li{
+            width: 50%;
+            padding: 8px 12px;
+      }
+      .cmb-list__item{
+            border-radius: 12px;
+      }
+      .cmb-list__item-img{
+            border-radius: 12px 12px 0px 0px;
+            height: 152px;
+      }
+      .cmb-list__item-view{
+            display: none;
+      }
+      .cmb-list__item-name{
+            font-size: 12px;
+            line-height: 20px;
+            font-weight: 40px;
+      }
+      .cmb-list__item-detail{
+            padding: 8px;
+      }
+      .cmb-list__item-spa-name{
+            margin: 0px;
+      }
+      .cmb-list__item-price .left{
+            flex-direction: column;
+            align-items: flex-start;
+      }
+      .cmb-list__item-price .left span:nth-child(2){
+            font-size: 14px;
+            line-height: 20px;
+      }
+}

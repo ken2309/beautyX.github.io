@@ -1,10 +1,9 @@
-import Title from "./components/PaymentMethod";
 import "./style.css";
-function Payment(props:any) {
-    return(
-        <>
-        <Title/>
-        </>
-    )
+function Product(props: any) {
+  return (
+    <div className="payment_section text-color-purple">
+      <h1 className="title">Sản phẩm</h1>
+    </div>
+  );
 }
-export default Payment;
+export default Product;

@@ -11,14 +11,13 @@ import Account from "../features/Account";
 import ProductDetail from "../features/ProductDetail";
 import ServiceDetail from "../features/ServiceDetail";
 import PopupAppointInfor from "../features/PopupAppointInfor";
-import SignPage from '../features/SignPage/index';
-import SignPageRequest from '../features/SignPageRequest/index';
-import Notification from '../features/Notification/index'
-import PrivateRoute from './PrivateRoute';
+import SignPage from "../features/SignPage/index";
+import SignPageRequest from "../features/SignPageRequest/index";
+import Notification from "../features/Notification/index";
+import PrivateRoute from "./PrivateRoute";
 //import { AppContext } from "../context/AppProvider";
 // feature mobile
-import Calendar from '../featuresMobile/Calendar'
-
+import Calendar from "../featuresMobile/Calendar";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -56,22 +55,26 @@ function RouterConfig(props: any) {
     },
     {
       path: "/sign-up",
-      component: <SignPage />
+      component: <SignPage />,
     },
     {
       path: "/sign-in",
-      component: <SignPage />
+      component: <SignPage />,
     },
     {
       path: "/sign-request",
-      component: <SignPageRequest />
-    }
-  ];
-  const routesPrivate = [
+      component: <SignPageRequest />,
+    },
     {
       path: "/tai-khoan",
-      component: Account,
+      component: <Account />,
     },
+  ];
+  const routesPrivate = [
+    // {
+    //   path: "/tai-khoan",
+    //   component: Account,
+    // },
     {
       path: "/Partner",
       component: Partner,
@@ -81,14 +84,14 @@ function RouterConfig(props: any) {
       component: CartPayment,
     },
     {
-      path: '/Calendar',
-      component: Calendar
+      path: "/Calendar",
+      component: Calendar,
     },
     {
-      path: '/Notifications',
-      component: Notification
-    }
-  ]
+      path: "/Notifications",
+      component: Notification,
+    },
+  ];
   return (
     <BrowserRouter>
       <Switch>
@@ -100,15 +103,13 @@ function RouterConfig(props: any) {
             pageComponent={item.component}
           />
         ))}
-        {
-          routesPrivate.map((item, index) => (
-            <PrivateRoute
-              key={index}
-              path={`${item.path}`}
-              component={item.component}
-            />
-          ))
-        }
+        {routesPrivate.map((item, index) => (
+          <PrivateRoute
+            key={index}
+            path={`${item.path}`}
+            component={item.component}
+          />
+        ))}
       </Switch>
     </BrowserRouter>
   );

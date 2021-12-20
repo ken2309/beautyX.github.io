@@ -76,3 +76,37 @@
       font-weight: 700;
       color: var(--red-cl);
 }
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px){
+      .card{
+            height: 260px;
+            border-radius: 12px;
+      }
+      .card-img{
+            border-radius: 12px 12px 0px 0px;
+            height: 152px;
+      }
+      .card-info{
+            padding: 8px;
+      }
+      .card-name{
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            height: 40px;
+      }
+      .card-price span:nth-child(1){
+            flex-direction: column;
+            align-items: flex-start;
+      }
+      .card-price__detail h4{
+            font-size: 14px !important;
+            line-height: 16px !important;
+      }
+      .card-price__detail h3{
+            margin-left: 0px;
+            font-size: 14px;
+            line-height: 16px;
+      }
+}

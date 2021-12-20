@@ -1,6 +1,6 @@
 import React from 'react';
-import '../MerchantDetail.css'
-
+import '../MerchantDetail.css';
+import { Container } from '@mui/material'
 
 function DetailTab(props: any) {
       const { t, activeTab, setActiveTab } = props;
@@ -15,26 +15,30 @@ function DetailTab(props: any) {
             setActiveTab(id)
       }
       return (
-            <ul className="mer-detail__tab">
-                  {
-                        tabList.map(item => (
-                              <li key={item.id}>
-                                    <div
-                                          style={
-                                                activeTab === item.id ?
-                                                      { color: 'var(--bg-gray)', borderBottom: 'solid 2px var(--text-op)' }
-                                                      :
-                                                      {}
-                                          }
-                                          onClick={() => chooseTabClick(item.id)}
-                                          className="mer-detail__tab-item"
-                                    >
-                                          {item.name}
-                                    </div>
-                              </li>
-                        ))
-                  }
-            </ul>
+            <div className="mer-detail__cnt">
+                  <Container>
+                        <ul className="mer-detail__tab">
+                              {
+                                    tabList.map(item => (
+                                          <li key={item.id}>
+                                                <div
+                                                      style={
+                                                            activeTab === item.id ?
+                                                                  { color: 'var(--bg-gray)', borderBottom: 'solid 2px var(--text-op)' }
+                                                                  :
+                                                                  {}
+                                                      }
+                                                      onClick={() => chooseTabClick(item.id)}
+                                                      className="mer-detail__tab-item"
+                                                >
+                                                      {item.name}
+                                                </div>
+                                          </li>
+                                    ))
+                              }
+                        </ul>
+                  </Container>
+            </div>
       );
 }
 

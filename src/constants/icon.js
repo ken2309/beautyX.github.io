@@ -70,15 +70,30 @@ import Exclude2 from "../assets/icon/Exclude2.svg";
 import Exclude3 from "../assets/icon/Exclude3.svg";
 import Exclude4 from "../assets/icon/Exclude4.svg";
 import Setting from "../assets/icon/Setting_line.svg";
+import arrowPurple from "../assets/icon/arrowPurple.svg";
+import TrashOrange from "../assets/icon/TrashOrange.svg";
+import SignOutPurple from "../assets/icon/Sign_out_squre.svg";
 import userCircle from "../assets/icon/userCircle.svg";
 import signOut from "../assets/icon/sign_out.svg";
 import home from "../assets/icon/home.svg";
 import chevronLeft from "../assets/icon/chevron-left.svg";
 import searchPurple from "../assets/icon/searchPurple.svg";
 import pinMap_2 from "../assets/icon/pinMap_2.svg";
-import chevronRight from "../assets/icon/chevron-right.svg"
+import chevronRight from "../assets/icon/chevron-right.svg";
+import edit from "../assets/icon/Edit.svg";
+import x from "../assets/icon/x.svg";
+import staff from '../assets/icon/staff.svg';
+import branches from '../assets/icon/branches.svg';
+import chevronRight_2 from '../assets/icon/chevronRight_2.svg';
+import filter from '../assets/icon/filter.svg';
+import menuWhite from '../assets/icon/MenuWhite.svg';
+import ShoppingCartSimpleWhite from '../assets/icon/ShoppingCartSimpleWhite.svg';
+import closeCircle from '../assets/icon/closeCircle.svg'
 
 const icon = {
+  edit,
+  SignOutPurple,
+  TrashOrange,
   Exclude,
   Exclude2,
   Exclude3,
@@ -150,12 +165,21 @@ const icon = {
   Calendar,
   onedot,
   Setting,
+  arrowPurple,
   userCircle,
   signOut,
   home,
   chevronLeft,
   chevronRight,
   searchPurple,
-  pinMap_2
+  pinMap_2,
+  x,
+  staff,
+  branches,
+  chevronRight_2,
+  filter,
+  menuWhite,
+  ShoppingCartSimpleWhite,
+  closeCircle
 };
 export default icon;

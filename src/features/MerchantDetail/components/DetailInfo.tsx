@@ -4,6 +4,7 @@ import icon from '../../../constants/icon';
 import img from '../../../constants/img';
 import {imgRotate} from '../../../utils/imgRotate';
 import DetailPersonnel from './DetailPersonnel';
+import DetailInfoUtil from './DetailInfoUtil';
 
 const introText='Với những thành phần thiên nhiên mang đến những tác dụng tốt cho làn da, được bào chế, pha trộn theo tỷ lệ vàng thích hợp cùng công nghệ hiện đại tiên tiến. Vì thế hiệu quả trị nám của dòng kem này được đánh giá khá tốt. Cụ thể như sau:Kem trị nám dùng cho ban ngày với thành phần Glycerol momonnostearate có tác dụng thẩm thấu nhanh, sâu vào tế bào da, ngăn chặn, ức chế sự hình thành melanin.Không gian sang trọng, tư vấn cũng ok, dịch vụ cũng khá ổn nhưng hơi đắt. Đánh giá 3 sao vì nhân viên mượn đt nói là check in gì đấy nhưng thật ra là tự đánh giá 5 sao...Xem thêm'
 export const utilsList = [
@@ -45,31 +46,12 @@ function DetailInfo(props:any) {
                         </span>
                   </div>
                   <div className="mer__content-info__util">
-                        <SectionTitle
-                              title={t('Mer_de.utilities')}
+                        <DetailInfoUtil
+                              utilsList={utilsList}
                         />
-                        <ul className="mer__content-info__util-list">
-                              {
-                                    utilsList.map((item, index) => (
-                                          <li key={index}>
-                                                <div className="flex-row-sp mer__content-info__util-item">
-                                                      <img src={item.icon} alt="" />
-                                                      <span>
-                                                            <h5>{item.text}</h5>
-                                                            <p>{item.count}</p>
-                                                      </span>
-                                                </div>
-                                          </li>
-                                    ))
-                              }
-                        </ul>
                   </div>
                   <div className="mer__content-info__personnel">
-                        <SectionTitle
-                              title={t('Mer_de.staff')}
-                        />
                         <DetailPersonnel
-                              t={t}
                               list={staffList}
                         />
                   </div>

@@ -67,3 +67,53 @@
       /* margin-left: 26px; */
       text-align: end;
 }
+
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px){
+      .product-cnt{
+            flex-direction: column;
+            padding-top: 0px;
+      }
+      .product-cnt__left{
+            width: 100%;
+            padding-right: 0px;
+      }
+      .product-cnt__left-img{
+            border-radius: 0px;
+            filter: none
+      }
+      .product-cnt__left-tabs .css-1h9z7r5-MuiButtonBase-root-MuiTab-root, .product-cnt__left-tabs .css-1q2h7u5{
+            font-size: 14px !important;
+            padding: 4px !important;
+      }
+      /* suggest */
+      .suggest-cnt__list li{
+            border-bottom: solid 1px var(--bgGray);
+      }
+      .suggest-cnt__list-tem__detail{
+            padding-right: 8px;
+      }
+      .suggest-cnt__list-tem__top{
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+      }
+      .suggest-cnt__list-tem__top span:nth-child(1){
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: bold;
+      }
+      .suggest-cnt__list-tem__top span:nth-child(2){
+            font-size: 16px;
+            line-height: 20px;
+      }
+      .suggest-cnt__list-tem__bot{
+            margin-top: 18px;
+      }
+      .suggest__retail-pr{
+            font-size: 14px;
+            position: absolute;
+            margin-top: -40px;
+      }
+}

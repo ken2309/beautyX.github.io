@@ -10,7 +10,7 @@ function SuggestionPush(props: any) {
       const dispatch = useDispatch();
       const carts = useSelector((state: any) => state.carts);
       const cartItemByOrg = carts.cartList.filter((item: any) =>
-            item.org_id === org.id && item.is_type === '2' && item.cart_id !== parseInt(`${org.id}${product.id}`)
+            item.org_id === org.id && item.is_type === 2 && item.cart_id !== parseInt(`${org.id}${product.id}`)
       );
       const ascClick = (item: any) => {
             const action = addCart(item);

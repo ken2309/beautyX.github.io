@@ -4,7 +4,6 @@ import icon from '../../../constants/icon';
 import { useElementSize } from 'usehooks-ts'
 import SimpleImageSlider from 'react-simple-image-slider';
 import img from '../../../constants/img';
-import DetailTab from './DetailTab';
 import OrgCardLoading from '../../Loading/OrgCardLoading';
 
 const images = [
@@ -12,7 +11,7 @@ const images = [
       { url: img.slider4 },
 ]
 function DetailHead(props: any) {
-      const { t, merDetail, activeTab, setActiveTab, loading } = props;
+      const { t, merDetail, loading } = props;
       const slider = useRef(null);
       const infoBox = useRef(null);
       const { width, height } = useElementSize(slider);
@@ -100,11 +99,7 @@ function DetailHead(props: any) {
                                     />
                               </div>
                         </div>
-                        <DetailTab
-                              t={t}
-                              setActiveTab={setActiveTab}
-                              activeTab={activeTab}
-                        />
+                       
                   </Container>
             </div>
       );

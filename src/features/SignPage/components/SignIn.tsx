@@ -226,10 +226,13 @@ function SignIn(props: any) {
           style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
         >
           {
-            loading === true ?
+            loading === true ? (
               <div className="sign-loading">
                 <CircularProgress size="25px" color="inherit" />
-              </div> : ''
+              </div>
+            )
+              :
+              (<></>)
           }
           {t('Home.Sign_in')}
         </button>

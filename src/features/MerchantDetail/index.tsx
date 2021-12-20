@@ -12,7 +12,12 @@ import ProductByMerchant from '../ProductByMerchant/index';
 import ComboByMerchant from '../ComboByMerchant/index';
 import Footer from '../Footer';
 import orgApi from '../../api/organizationApi';
+import branchApi from '../../api/branchApi';
 import {AppContext} from '../../context/AppProvider';
+import DetailTab from './components/DetailTab';
+import DetailTabMb from '../../featuresMobile/DetailTabMb';
+import MerchantMb from '../../featuresMobile/MerchantMb';
+import Bottom from '../../featuresMobile/Bottom'
 
 const id_tab = 1;
 function MerchantDetail(props: any) {
@@ -22,7 +27,8 @@ function MerchantDetail(props: any) {
       const [loading, setLoading] = useState(false);
       //console.log(mer_id)
       const [org, setOrg] = useState({})
-      //console.log(location)
+      const [branches, setBranches] = useState([]);
+      //console.log(location.state.branches)
       //---
       const [activeTab, setActiveTab] = useState(1);
       useEffect(() => {
@@ -31,10 +37,17 @@ function MerchantDetail(props: any) {
                   if (location.state) {
                         setOrg(location.state)
                         setLoading(false);
+                        try{
+                              const resBranches = await branchApi.getBranchByOrg(mer_id);
+                              setBranches(resBranches.data.context)
+                        }catch(err){
+                              console.log(err)
+                        }
                   } else {
                         try {
                               const res = await orgApi.getOrgById(mer_id);
                               setOrg(res.data.context);
+                              setBranches(res.data.context.branches)
                               setLoading(false);
                         } catch (err) {
                               console.log(err)
@@ -45,8 +58,8 @@ function MerchantDetail(props: any) {
       }, [location.state, mer_id])
       // console.log(org);
       return (
-            <div>
-                  <Head/>
+            <div className="mb-cnt">
+                  <Head />
                   <DetailHead
                         t={t}
                         loading={loading}
@@ -54,6 +67,17 @@ function MerchantDetail(props: any) {
                         setActiveTab={setActiveTab}
                         activeTab={activeTab}
                   />
+                  <DetailTab
+                        t={t}
+                        setActiveTab={setActiveTab}
+                        activeTab={activeTab}
+                  />
+                  {/* for mobile */}
+                  <DetailTabMb
+                        setActiveTab={setActiveTab}
+                        activeTab={activeTab}
+                  />
+                  {/* ---------- */}
                   <div style={{ backgroundColor: 'var(--bg-gray)', paddingBottom: '92px' }}>
                         <Container>
                               <div style={id_tab === activeTab ? { display: 'block' } : { display: 'none' }} >
@@ -61,10 +85,13 @@ function MerchantDetail(props: any) {
                                           t={t}
                                           merDetail={org}
                                     />
+                                    {/* for mobile */}
+                                    <MerchantMb
+                                          branches={branches}
+                                    />
+                                    {/* ---------- */}
                                     <DetailBranchList
-                                          t={t}
-                                          mer_id={mer_id}
-                                          org={org}
+                                          branches={branches}
                                     />
                                     <DetailSaleList
                                           t={t}
@@ -89,6 +116,7 @@ function MerchantDetail(props: any) {
                         </Container>
                   </div>
                   <Footer />
+                  <Bottom/>
             </div>
       );
 }

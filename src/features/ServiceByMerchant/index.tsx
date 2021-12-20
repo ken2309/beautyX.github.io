@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../context/AppProvider';
 import ServiceCate from './components/ServiceCate';
+import ServiceCateMb from './components/ServiceCateMb'
 import ServiceList from './components/ServiceList';
 import servicesApi from '../../api/serviceApi';
 import {Service} from '../../interface/service';
@@ -15,6 +16,7 @@ function ServiceByMerchant(props: any) {
       const [page, setPage] = useState(1)
       const [totalPage, setTotalPage] = useState(1)
       const [categories, setCategories] = useState([])
+      const [searchTerm, setSearchTerm] = useState('')
       const [chooseCate, setChooseCate] = useState();
       const [loading, setLoading] = useState(false)
       const [loading_cate, setLoading_cate] = useState(false);
@@ -70,10 +72,19 @@ function ServiceByMerchant(props: any) {
                         <ServiceCate
                               t={t}
                               categories={categories}
+                              chooseCate={chooseCate}
                               setChooseCate={setChooseCate}
                               setPage={setPage}
                               loading_cate={loading_cate}
                         />
+                        {/* for mobile */}
+                        <ServiceCateMb
+                              categories={categories}
+                              chooseCate={chooseCate}
+                              setChooseCate={setChooseCate}
+                              setPage={setPage}
+                        />
+                        {/* ----- */}
                         <ServiceList
                               loading={loading}
                               services={services}
@@ -82,6 +93,8 @@ function ServiceByMerchant(props: any) {
                               org={org}
                               totalPage={totalPage}
                               setPage={setPage}
+                              searchTerm={searchTerm}
+                              setSearchTerm={setSearchTerm}
                         />
                   </div>
             </div>

@@ -11,7 +11,6 @@ function DetailMer(props:any) {
                         merDetail={merDetail}
                   />
                   <DetailComment
-                        t={t}
                   />
             </div>
       );
