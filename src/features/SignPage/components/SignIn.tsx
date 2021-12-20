@@ -5,49 +5,48 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 // import Dialog from "@mui/material/Dialog";
 // import ButtonCus from "../../../components/ButtonCus";
-import { AppContext } from '../../../context/AppProvider';
-import {useHistory} from 'react-router-dom';
-import {CircularProgress} from '@mui/material';
-import axios from 'axios';
-import PopupNoti from './PopupNoti';
-import {baseURL} from '../../../api/axios'
+import { AppContext } from "../../../context/AppProvider";
+import { useHistory } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
+import axios from "axios";
+import PopupNoti from "./PopupNoti";
+import { baseURL } from "../../../api/axios";
 
 function SignIn(props: any) {
-  const { t, setSign } = useContext(AppContext)
+  const { t, setSign } = useContext(AppContext);
   const { activeTabSign, setActiveTabSign } = props;
-  const history = useHistory()
+  const history = useHistory();
   const [typePass, setTypePass] = useState("password");
   // const [openForgotPass, setOpenForgotPass] = React.useState(false);
   // const [openVerification, setOpenVerification] = React.useState(false);
   // const [openNewPass, setOpenNewPass] = React.useState(false);
   const [loading, setLoading] = useState(false);
-  const [errPass, setErrPass] = useState('')
-  const [display_email, setDisplay_email] = useState('')
-  const [popup, setPopup] = useState(false)
-  
+  const [errPass, setErrPass] = useState("");
+  const [display_email, setDisplay_email] = useState("");
+  const [popup, setPopup] = useState(false);
 
   //handle submit login form
   const handleLogin = (values: any) => {
-    setLoading(true);
     setDisplay_email(values.email);
-    axios.post(`${baseURL}/auth/login`, values)
+    setLoading(true);
+    axios
+      .post(`${baseURL}/auth/login`, values)
       .then(function (response: any) {
-        localStorage.setItem('_WEB_US', JSON.stringify(response.context))
-        localStorage.setItem('_WEB_TK', response.context.token)
+        localStorage.setItem("_WEB_US", JSON.stringify(response.context));
+        localStorage.setItem("_WEB_TK", response.context.token);
         setSign(true);
-        history.push('/')
+        history.push("/");
         setLoading(false);
       })
       .catch(function (err) {
         setLoading(false);
         if (err.response.status === 401) {
-          setErrPass('Mật khẩu chưa chính xác. Vui lòng thử lại !')
+          setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
         } else if (err.response.status === 404) {
-          setPopup(true)
+          setPopup(true);
         }
-      })
-  }
-
+      });
+  };
 
   // mở popup forgot
   // const handleClickOpenForgotPass = () => {
@@ -84,15 +83,15 @@ function SignIn(props: any) {
       email: Yup.string().required("Vui lòng nhập email/số điện thoại"),
       password: Yup.string()
         .min(6, "Mật khẩu lớn hơn 8 ký tự")
-        .required("Vui lòng nhập mật khẩu")
-        // .matches(
-        //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-        //   "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
-        // ),
+        .required("Vui lòng nhập mật khẩu"),
+      // .matches(
+      //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      //   "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
+      // ),
     }),
     //SUBMIT LOGIN FORM
     onSubmit: (values) => {
-      handleLogin(values)
+      handleLogin(values);
     },
   });
   //form forgot pass
@@ -170,7 +169,7 @@ function SignIn(props: any) {
               value={formik.values.email}
               onChange={formik.handleChange}
               type="text"
-              placeholder={t('Home.Sign_in_pl_user_name')}
+              placeholder={t("Home.Sign_in_pl_user_name")}
             />
           </div>
           {formik.errors.email && formik.touched.email && (
@@ -185,7 +184,7 @@ function SignIn(props: any) {
               value={formik.values.password}
               onChange={formik.handleChange}
               type={typePass}
-              placeholder={t('Home.Sign_in_pl_password')}
+              placeholder={t("Home.Sign_in_pl_password")}
             />
             <img
               onMouseEnter={() => setTypePass("text")}
@@ -211,37 +210,40 @@ function SignIn(props: any) {
                 },
               }}
             />
-            <span>{t('Home.Sign_remember')}</span>
+            <span>{t("Home.Sign_remember")}</span>
           </div>
           <span
-            // onClick={handleClickOpenForgotPass}
+          // onClick={handleClickOpenForgotPass}
           >
-            {t('Home.Sign_forgot')} ?
+            {t("Home.Sign_forgot")} ?
           </span>
         </div>
         <button
           disabled={loading === true ? true : false}
           type="submit"
           className="sign-btn"
-          style={loading === true ? { position: 'relative', opacity: '0.6' } : {}}
-        >
-          {
-            loading === true ?
-              <div className="sign-loading">
-                <CircularProgress size="25px" color="inherit" />
-              </div> : ''
+          style={
+            loading === true ? { position: "relative", opacity: "0.6" } : {}
           }
-          {t('Home.Sign_in')}
+        >
+          {loading === true ? (
+            <div className="sign-loading">
+              <CircularProgress size="25px" color="inherit" />
+            </div>
+          ) : (
+            <></>
+          )}
+          {t("Home.Sign_in")}
         </button>
       </form>
-      <p className="sign-or">{t('Home.Sign_or')}</p>
+      <p className="sign-or">{t("Home.Sign_or")}</p>
       <div className="flex-row sign-other-social">
         <img src={icon.google} alt="" />
         <img src={icon.facebook} alt="" />
       </div>
       <p className="sign-other-setup">
-        {t('Home.Sign_no_acc')}?
-        <span onClick={() => setActiveTabSign(2)}>{t('Home.Sign_up_now')}</span>
+        {t("Home.Sign_no_acc")}?
+        <span onClick={() => setActiveTabSign(2)}>{t("Home.Sign_up_now")}</span>
       </p>
       {/* dialog quên mật khẩu */}
       {/* <Dialog
@@ -438,7 +440,7 @@ function SignIn(props: any) {
         popup={popup}
         setPopup={setPopup}
         isSignIn={true}
-        title={`Emai "${display_email}" ${t('form.is_not_registered')}`}
+        title={`Emai "${display_email}" ${t("form.is_not_registered")}`}
       />
     </div>
   );
