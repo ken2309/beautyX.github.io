@@ -96,8 +96,8 @@ function MenuSideBar(props: info) {
           </span>
         </div>
 
-        <ul style={{ paddingTop: "18px" }}>
-          <li style={{ marginBottom: "8px" }}>
+        <ul>
+          <li style={{ margin: "8px 0" }}>
             <div
               className="cursor-pointer"
               onClick={() => history.push("/tai-khoan/goi-dich-vu")}
@@ -105,7 +105,7 @@ function MenuSideBar(props: info) {
               <span className="quicksand-md">Gói dịch vụ</span>
             </div>
           </li>
-          <li className="cursor-pointer" style={{ marginBottom: "8px" }}>
+          <li style={{ marginBottom: "8px" }}>
             <div
               className="cursor-pointer"
               onClick={() => history.push("/tai-khoan/san-pham")}
@@ -113,7 +113,7 @@ function MenuSideBar(props: info) {
               <span className="quicksand-md">Sản phẩm</span>
             </div>
           </li>
-          <li className="cursor-pointer">
+          <li>
             <div
               className="cursor-pointer"
               onClick={() => history.push("/tai-khoan/combo")}

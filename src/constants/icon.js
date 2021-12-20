@@ -81,8 +81,12 @@ import searchPurple from "../assets/icon/searchPurple.svg";
 import pinMap_2 from "../assets/icon/pinMap_2.svg";
 import chevronRight from "../assets/icon/chevron-right.svg";
 import edit from "../assets/icon/Edit.svg";
+import DeskAlt from "../assets/icon/Desk_alt.svg";
+import Tumer from "../assets/icon/Tumer.svg";
 
 const icon = {
+  Tumer,
+  DeskAlt,
   edit,
   SignOutPurple,
   TrashOrange,
