@@ -245,6 +245,9 @@
   color: var(--purple);
   padding: 0px 4px;
 }
+.result-content .filter-form__li {
+  padding: 0;
+}
 
 /* Tablet */
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
@@ -342,8 +345,20 @@
   .org__service li {
     margin: 0;
   }
-  .result-map {
+
+  .result-detail .result-map {
     display: none;
+  }
+  .result-content .filter-form__li {
+    padding: 0;
+  }
+  .result-content .org__service .org__service-item {
+    padding: 8px 16px;
+  }
+  .result-content .org__service .org__service-item span {
+    display: flex;
+    gap: 4px 0;
+    flex-direction: column;
   }
 }
 /* Mobile */

@@ -133,6 +133,9 @@
   display: flex;
   gap: 0 8px;
 }
+.delete-address img {
+  cursor: pointer;
+}
 .delete-address span {
   padding: 4px 8px;
   background-color: var(--bg-color);
@@ -148,4 +151,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .form-account__wraper {
+    flex-direction: column;
+    gap: 6px 0;
+  }
+
+  .form-account__wraper:nth-child(2) {
+    padding: 0;
+  }
+  .title_section:not(:first-child) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 8px;
+    gap: 8px 0;
+  }
+  .info_section {
+    padding-bottom: 0;
+  }
+  .btn-success {
+    margin-top: 8px;
+  }
+  .info_section {
+    padding-right: 20px;
+  }
 }

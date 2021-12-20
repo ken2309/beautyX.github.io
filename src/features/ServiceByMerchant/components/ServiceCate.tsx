@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SectionTitle from '../../SectionTitle/index';
 import icon from '../../../constants/icon';
 import Skeleton from 'react-loading-skeleton'
 
 function ServiceCate(props: any) {
-      const { t, categories, setChooseCate, setPage, loading_cate } = props;
-      const [activeCate, setActiveCate] = useState();
+      const { t, chooseCate, categories, setChooseCate, setPage, loading_cate } = props;
+      const allCate = () => {
+            setChooseCate();
+            setPage(1);
+      }
       const handleActiveCateClick = (cate: any) => {
-            setActiveCate(cate)
             setChooseCate(cate.id);
             setPage(1);
       }
@@ -32,25 +34,42 @@ function ServiceCate(props: any) {
                                                 }}
                                           />
                                           :
-                                          categories.map((item: any) => (
-                                                <li
-                                                      onClick={() => handleActiveCateClick(item)}
-                                                      key={item.id}
-                                                      className="ser-category-box__item"
-                                                >
+                                          <>
+                                                <li onClick={allCate} className="ser-category-box__item">
                                                       <div
-                                                            style={activeCate === item ?
+                                                            style={!chooseCate ?
                                                                   { color: 'var(--purple)' }
                                                                   :
                                                                   { color: 'var(--text-hover)' }
                                                             }
                                                             className="flex-row-sp"
                                                       >
-                                                            {item.name}
+                                                            Tất cả
                                                             <img src={icon.next} alt="" />
                                                       </div>
                                                 </li>
-                                          ))
+                                                {
+                                                      categories.map((item: any) => (
+                                                            <li
+                                                                  onClick={() => handleActiveCateClick(item)}
+                                                                  key={item.id}
+                                                                  className="ser-category-box__item"
+                                                            >
+                                                                  <div
+                                                                        style={chooseCate === item.id ?
+                                                                              { color: 'var(--purple)' }
+                                                                              :
+                                                                              { color: 'var(--text-hover)' }
+                                                                        }
+                                                                        className="flex-row-sp"
+                                                                  >
+                                                                        {item.name}
+                                                                        <img src={icon.next} alt="" />
+                                                                  </div>
+                                                            </li>
+                                                      ))
+                                                }
+                                          </>
                               }
                         </ul>
                   </div>

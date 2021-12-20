@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import ButtonCus from '../../../components/ButtonCus';
 import icon from '../../../constants/icon';
-import {AppContext} from '../../../context/AppProvider'
+import { AppContext } from '../../../context/AppProvider';
+import SectionTitle from '../../SectionTitle';
 
 function DetailPersonnel(props: any) {
       const { list } = props;
       const { t } = useContext(AppContext)
       return (
-            <>
+            <div className="mer__content-info__personnel-box">
+                  <SectionTitle
+                        title={t('Mer_de.staff')}
+                  />
                   <ul className="flex-row-sp mer__content-info__personnel-list">
                         {
                               list.map((item: any, index: any) => (
@@ -47,7 +51,7 @@ function DetailPersonnel(props: any) {
                         border="solid 1px var(--purple)"
                         borderRadius="18px"
                   />
-            </>
+            </div>
       );
 }
 

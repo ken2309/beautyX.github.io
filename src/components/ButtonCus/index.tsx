@@ -1,5 +1,6 @@
 import React from "react";
 import { commonStyle } from "../../constants/style";
+import './ButtonCus.css'
 
 function ButtonCus(props: any) {
   const btnStyle = commonStyle();

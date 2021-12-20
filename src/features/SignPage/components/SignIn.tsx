@@ -27,8 +27,8 @@ function SignIn(props: any) {
 
   //handle submit login form
   const handleLogin = (values: any) => {
-    setDisplay_email(values.email);
     setLoading(true);
+    setDisplay_email(values.email);
     axios
       .post(`${baseURL}/auth/login`, values)
       .then(function (response: any) {

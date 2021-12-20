@@ -6,7 +6,8 @@ import {addCart} from '../../../redux/cartSlice';
 import {useDispatch} from 'react-redux';
 import PopupSuccess from '../../PopupSuccess/index'
 import { AppContext } from '../../../context/AppProvider';
-import PrCardLoading from '../../Loading/PrCardLoading'
+import PrCardLoading from '../../Loading/PrCardLoading';
+import DetailCardHead from './DetailCardHead'
 
 
 function DetailCard(props:any) {
@@ -69,35 +70,14 @@ function DetailCard(props:any) {
                               <PrCardLoading />
                               :
                               <>
-                                    <div className="product-cnt__right-head">
-                                          <h2>
-                                                {product?.product_name ? product?.product_name : product?.service_name}
-                                          </h2>
-                                          <span>{org?.name} | {t('Search_result.opening')}</span>
-                                          <div className="flex-row product-cnt__right-head__rate">
-                                                <span>90</span>
-                                                {t('pr.purchases')}
-                                                <span>4.5</span>
-                                                <img src={icon.star} alt="" />
-                                                <span>250</span>
-                                                <img src={icon.chatAll} alt="" />
-                                          </div>
-                                    </div>
-                                    <div className="product-cnt__right-price">
-                                          <span
-                                                style={old_price === 0 ? { display: 'none' } : {}}
-                                                className="price-old"
-                                          >
-                                                {formatPrice(old_price)} đ
-                                          </span>
-                                          <div className="price__discount-sale">
-                                                <span style={old_price === 0 ? { display: 'none' } : {}} >Giảm {100 - discount} %</span>
-                                                <span
-                                                      style={old_price === 0 ? { color: 'var(--purple)' } : {}}
-                                                >
-                                                      {formatPrice(sale_price)} đ
-                                                </span>
-                                          </div>
+                                    <div className="product-cnt__card-wrapper__head">
+                                          <DetailCardHead
+                                                org={org}
+                                                product={product}
+                                                old_price={old_price}
+                                                discount={discount}
+                                                sale_price={sale_price}
+                                          />
                                     </div>
                                     <div className="product-cnt__right-body">
                                           <div className="product-cnt__right-body-item">
@@ -126,7 +106,7 @@ function DetailCard(props:any) {
                                                 <input className="product-code__discount" type="text" placeholder={t('pr.enter_sale_code')} />
                                           </div>
                                           {
-                                                is_type === '2' ?
+                                                is_type === 2 ?
                                                       <SuggestionPush
                                                             org={org}
                                                             product={product}
@@ -146,7 +126,7 @@ function DetailCard(props:any) {
                                                       onClick={handleAddCart}
                                                       className="flex-row product-cnt__right-bot__add"
                                                 >
-                                                      <img src={icon.ShoppingCartSimple} alt="" />
+                                                      <img src={icon.ShoppingCartSimpleWhite} alt="" />
                                                       {t('pr.add_to_cart')}
                                                 </button>
                                           </div>

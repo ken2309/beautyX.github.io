@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../SectionTitle/index';
 import icon from '../../../constants/icon';
 import categoryApi from '../../../api/categoryApi';
-import {Category} from '../../../interface/category';
 import Skeleton from 'react-loading-skeleton'
 
 function ProductCate(props:any) {
-      const { mer_id, t, setCate_id, setPage } = props;
+      const { mer_id, t, setCate_id, setPage, categories, setCategories } = props;
       const [activeCate, setActiveCate] = useState();
-      const [categories, setCategories] = useState<Category[]>([]);
       const [loading, setLoading] = useState(false);
       const handleActiveCateClick = (cate: any) => {
             setActiveCate(cate)
@@ -25,6 +23,7 @@ function ProductCate(props:any) {
                   } catch (err) { console.log(err) }
             }
             getCateByOrgId()
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [mer_id])
       return (
             <div className="ser-category">
@@ -56,7 +55,7 @@ function ProductCate(props:any) {
                                                 }}
                                           />
                                           :
-                                          categories.map(item => (
+                                          categories.map((item:any) => (
                                                 <li
                                                       onClick={() => handleActiveCateClick(item)}
                                                       key={item.id}

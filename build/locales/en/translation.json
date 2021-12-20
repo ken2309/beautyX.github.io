@@ -12,7 +12,14 @@
             "my_codes":"List of promo codes",
             "settings":"Settings",
             "support":"Support",
-            "sign_out":"Sign out"
+            "sign_out":"Sign out",
+            "back": "Back"
+      },
+      "Bottom": {
+            "appointment": "Appo",
+            "home": "Home",
+            "account": "Account",
+            "search": "Search"
       },
       "Banner": {
             "1": "Explore and experience \n Beauty paradise right near you \n Booking Flatform Myspa"
@@ -65,7 +72,15 @@
             "th": "Th","Thursday":"Thursday",
             "fr": "Fr","Friday":"Friday",
             "sa": "Sa","Saturday":"Saturday",
-            "su": "Su","Sunday":"Sunday"
+            "su": "Su","Sunday":"Sunday",
+            "appointment_status":"Appointment status",
+            "confirmed":"Confirmed",
+            "unconfimred":"Unconfimred",
+            "complete":"Complete",
+            "cancel":"Cancel",
+            "favorite_list":"Favorite beauty spots",
+            "pr_ser_purchased":"Products/Services purchased",
+            "sale_for_me":"Special offer just for me"
       },
       "Search_result": {
             "text_result": "search results",
@@ -75,7 +90,9 @@
             "parking": "Parking",
             "bed": "Bed",
             "room": "Room",
-            "capacity": "Capacity"
+            "capacity": "Capacity",
+            "no_result_title":"No matching results were found",
+            "sorry":"We're sorry, we couldn't find a beauty salon that matched your preferences. \nTry looking for another option!"
       },
       "Mer_de": {
             "address": "Address",

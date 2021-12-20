@@ -1,31 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import SectionTitle from "../../SectionTitle";
 import MapWrapper from "../../SearchResult/components/MapWrapper";
 import "../../SearchResult/SearchResult.css";
 import icon from "../../../constants/icon";
 import img from "../../../constants/img";
-import branchApi from "../../../api/branchApi";
+import { AppContext } from "../../../context/AppProvider";
 
 function DetailBranchList(props: any) {
-  const { mer_id, t } = props;
-  const [branches, setBranches] = useState([]);
-  useEffect(() => {
-    async function handleGetBranches() {
-      try {
-        const res = await branchApi.getBranchByOrg(mer_id);
-        setBranches(res.data.context);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    handleGetBranches();
-  }, [mer_id]);
-  const [chooseBranch, setChooseBranch] = useState(branches[0]);
+  const { t } = useContext(AppContext);
+  const { branches } = props;
+  const [chooseBranch, setChooseBranch] = useState();
   const handleChooseBranch = (item: any) => {
     setChooseBranch(item);
   };
   return (
-    <div className="list-branch">
+    <div className="mer-branch-list">
       <SectionTitle title={t("Mer_de.list_branch")} />
       <div className="mer-branch-box">
         <div className="mer-branch-box__map">

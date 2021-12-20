@@ -1,15 +1,20 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../../../context/AppProvider';
-import icon from '../../../constants/icon'
+import icon from '../../../constants/icon';
+import {useHistory} from 'react-router-dom'
 
 function MenuBox(props: any) {
+      const history = useHistory();
       const { t, profile } = useContext(AppContext)
       return (
             <ul>
                   {
                         profile ?
                               <>
-                                    <li className="{menu.menuBoxItem}">
+                                    <li 
+                                          onClick={()=>history.push('/tai-khoan/thong-tin-ca-nhan')}
+                                          className="{menu.menuBoxItem}"
+                                    >
                                           <div className="flex-row hd-menu__item">
                                                 <img src={icon.User_purple} alt="" />
                                                 <span className="hd-menu__item-text">{t('Header.my_acc')}</span>

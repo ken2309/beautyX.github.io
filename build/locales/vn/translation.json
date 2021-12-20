@@ -12,7 +12,14 @@
         "my_codes":"Danh sách mã ưu đãi",
         "settings":"Cài đặt",
         "support":"Hỗ trợ",
-        "sign_out":"Đăng xuất"
+        "sign_out":"Đăng xuất",
+        "back":"Trở lại"
+    },
+    "Bottom":{
+        "appointment":"Lịch hẹn",
+        "home":"Trang chủ",
+        "account":"Tài khoản",
+        "search":"Tìm kiếm"
     },
     "Banner": {
         "1": "Khám phá và trải nghiệm \n thiên đường làm đẹp ngay gần bạn với \n Booking Flatform Myspa"
@@ -65,7 +72,15 @@
         "th":"T5","Thursday":"Thứ Năm",
         "fr":"T6","Friday":"Thứ Sáu",
         "sa":"T7","Saturday":"Thứ Bảy",
-        "su":"CN","Sunday":"Chủ Nhật"
+        "su":"CN","Sunday":"Chủ Nhật",
+        "appointment_status":"Trạng thái đặt hẹn",
+        "confirmed":"Đã xác nhận",
+        "unconfimred":"Chưa xác nhận",
+        "complete":"Hoàn thành",
+        "cancel":"Hủy",
+        "favorite_list":"Favorite beauty spots",
+        "pr_ser_purchased":"Sản phẩm/Dịch vụ đã sử dụng",
+        "sale_for_me":"Ưu đãi nổi bật dành riêng cho bạn"
     },
     "Search_result": {
         "text_result": "kết quả tìm kiếm",
@@ -75,7 +90,9 @@
         "parking": "Bãi đỗ xe",
         "bed": "Giường",
         "room": "Phòng",
-        "capacity": "Sức chứa"
+        "capacity": "Sức chứa",
+        "no_result_title":"Không tìm thấy kết quả phù hợp",
+        "sorry":" Thành thật xin lỗi, chúng tôi không tìm thấy cơ sở làm đẹp phù hợp với tùy chọn của bạn. \nHãy thử tìm kiếm tùy chọn khác nhé!"
     },
     "Mer_de": {
         "address": "Địa chỉ",

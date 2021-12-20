@@ -9,7 +9,10 @@ import { AppContext } from '../../../context/AppProvider';
 const cmtList = [
       { id: 1, name: 'Quế Trâm', rateStar: 4, date: '18-10-2021', text: 'Không gian sang trọng, tư vấn cũng ok, dịch vụ cũng khá ổn nhưng hơi đắt.Đánh giá 3 sao vì nhân viên mượn đt nói là check in gì đấy nhưng thật ra là tự đánh giá 5 sao' },
       { id: 2, name: 'Tam Nguyen', rateStar: 5, date: '20-11-2021', text: 'Chất lượng phục vụ tốt . Nhân viên rất thân thiện và nhiệt tình tư vấn theo nhu cầu khác hàng' },
-      { id: 3, name: 'Vuong Xuan Duy', rateStar: 4, date: '21-11-2021', text: 'Nhân viên tư vấn nhiệt tình , chế độ chăm sóc hậu mãi lâu dài. Sẽ quay lại sử dụng dịch vụ lần sau. ' }
+      { id: 3, name: 'Vuong Xuan Duy', rateStar: 4, date: '21-11-2021', text: 'Nhân viên tư vấn nhiệt tình , chế độ chăm sóc hậu mãi lâu dài. Sẽ quay lại sử dụng dịch vụ lần sau. ' },
+      { id: 4, name: 'Quế Trâm', rateStar: 4, date: '18-10-2021', text: 'Không gian sang trọng, tư vấn cũng ok, dịch vụ cũng khá ổn nhưng hơi đắt.Đánh giá 3 sao vì nhân viên mượn đt nói là check in gì đấy nhưng thật ra là tự đánh giá 5 sao' },
+      { id: 5, name: 'Tam Nguyen', rateStar: 5, date: '20-11-2021', text: 'Chất lượng phục vụ tốt . Nhân viên rất thân thiện và nhiệt tình tư vấn theo nhu cầu khác hàng' },
+      { id: 6, name: 'Vuong Xuan Duy', rateStar: 4, date: '21-11-2021', text: 'Nhân viên tư vấn nhiệt tình , chế độ chăm sóc hậu mãi lâu dài. Sẽ quay lại sử dụng dịch vụ lần sau. ' },
 ]
 function DetailComment(props: any) {
       const { styleCmt } = props;

@@ -44,22 +44,16 @@ img {
 .home-banner__slogan p {
   text-align: center;
 }
+/* home filter */
 .home-banner__filter {
-  /* width: 600px; */
   height: max-content;
   background-color: var(--bg-gray);
-  /* position: absolute; */
   bottom: -70px;
   display: flex;
   flex-direction: column;
   border-radius: 24px;
-  /* box-shadow: 0px 6px 37px rgba(113, 97, 186, 0.1); */
 }
-/* home filter */
-.home-banner__filter {
-  display: flex;
-  flex-direction: column;
-}
+
 .home__filter-search-box {
   width: 100%;
   height: fit-content;
@@ -92,12 +86,12 @@ img {
   flex-direction: row;
   justify-content: space-between;
   margin: 24px 0px;
+  gap: 0 16px;
 }
 .filter-form__li {
   position: relative;
   list-style: none;
   width: calc(100% / 3);
-  padding: 0px 8px;
   cursor: pointer;
 }
 .filter-form__item {
@@ -1086,6 +1080,12 @@ img {
 
 /* responsive */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .home-banner .home-banner__filter {
+    width: 80% !important;
+  }
+  .result-content .home-banner__filter {
+    width: 100%;
+  }
   .homelogged-calendar {
     margin-top: 134px;
   }

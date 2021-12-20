@@ -94,7 +94,7 @@ function ServiceList(props: any) {
                               }
                         </div>
                         <div className="flex-row list-filter__right">
-                              <input 
+                              <input
                                     value={searchTerm}
                                     onChange={handleSearchOnChange}
                                     type="text" 

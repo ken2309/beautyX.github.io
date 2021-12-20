@@ -8,6 +8,7 @@ export default function AppProvider({ children }) {
       const { t } = useTranslation();
       const lg = localStorage.getItem('i18nextLng')
       const [language, setLanguage] = useState();
+      const [openModal, setOpenModal] = useState(false);
 
       const [tk, setTk] = useState();
       const [userInfo, setUserInfo] = useState()
@@ -51,6 +52,8 @@ export default function AppProvider({ children }) {
       const value = {
             t,
             language,
+            openModal, 
+            setOpenModal,
             setLanguage,
             tk, userInfo,
             setTk, setUserInfo,

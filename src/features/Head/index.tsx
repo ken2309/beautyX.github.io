@@ -138,14 +138,14 @@ function Head(props: any) {
                                                       onClick={() => history.push('/Cart')}
                                                       className="hd-cnt__right-cart"
                                                 >
-                                                      <img src={icon.ShoppingCartSimple} alt="" />
+                                                      <img src={icon.ShoppingCartSimpleWhite} alt="" />
                                                       <div className="hd-cnt__right-cart-total">
                                                             {carts.cartQuantity}
                                                       </div>
                                                 </div>
                                                 <img
                                                       onClick={() => setOpenMbMenu(true)}
-                                                      src={icon.Menu} alt=""
+                                                      src={icon.menuWhite} alt=""
                                                 />
                                           </div>
                                     </div>
