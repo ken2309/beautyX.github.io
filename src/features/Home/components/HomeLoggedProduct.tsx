@@ -38,11 +38,10 @@ const dataProduct = [
   },
 ];
 export default function HomeLoggedProduct() {
-  const [openEnterprise, setOpenEnterprise] = React.useState(false);
-  const {t} = useContext(AppContext)
+  const { t } = useContext(AppContext);
   return (
     <div className="homelogged-product">
-      <SectionTitle title={t('Home.pr_ser_purchased')} textAlign="left" />
+      <SectionTitle title={t("Home.pr_ser_purchased")} textAlign="left" />
       <div className="homelogged-product__sort">
         <div className="homelogged-product__sort-left">
           <span>Sắp xếp theo:</span>
