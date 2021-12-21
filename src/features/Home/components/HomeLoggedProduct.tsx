@@ -1,44 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context/AppProvider";
 import SectionTitle from "../../SectionTitle/index";
 import HomeLoggedProductItem from "./HomeLoggedProductItem";
 import HomeLoggedProductSelector from "./HomeLoggedProductSelector";
-const dataProduct = [
-  {
-    id: 1,
-    name: "Spa 1",
-  },
-  {
-    id: 2,
-    name: "Spa 2",
-  },
-  {
-    id: 3,
-    name: "Spa 3",
-  },
-  {
-    id: 4,
-    name: "Spa 4",
-  },
-  {
-    id: 5,
-    name: "Spa 5",
-  },
-  {
-    id: 6,
-    name: "Spa 6",
-  },
-  {
-    id: 7,
-    name: "Spa 7",
-  },
-  {
-    id: 8,
-    name: "Spa 8",
-  },
-];
+import orgProApi from "../../../api/productApi";
+
 export default function HomeLoggedProduct() {
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+
   const { t } = useContext(AppContext);
+  useEffect(() => {
+    async function handleGetOrgs() {
+      setLoading(true);
+      try {
+        const res = await orgProApi.getByOrgId({
+          org_id: 51,
+        });
+        setProducts(res.data.context.data);
+        setLoading(false);
+        console.log("res :>> ", res);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    handleGetOrgs();
+  }, []);
   return (
     <div className="homelogged-product">
       <SectionTitle title={t("Home.pr_ser_purchased")} textAlign="left" />
@@ -53,8 +40,8 @@ export default function HomeLoggedProduct() {
         </div>
       </div>
       <div className="homelogged-product__list">
-        {dataProduct.map((item, i) => (
-          <HomeLoggedProductItem key={i} />
+        {products.map((item: any) => (
+          <HomeLoggedProductItem key={item.id} product={item} />
         ))}
       </div>
     </div>

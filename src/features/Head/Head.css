@@ -29,8 +29,9 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 700;
-  color: var(--purple);
+  color: var(--bgWhite);
 }
+
 .hd-cnt__right-avatar {
   position: relative;
   margin: 0px 18px 0px 36px;
@@ -226,9 +227,6 @@
   .mb-hd-cnt__right {
     display: block;
   }
-  .hd-cnt__right-user {
-    flex-direction: row-reverse;
-  }
   .hd-cnt__right-cart {
     display: none;
   }
@@ -271,10 +269,9 @@
   }
   .hd-cnt__right-user {
     flex-direction: row-reverse;
+    gap: 0 8px;
   }
-  .hd-cnt__right-user-name {
-    color: var(--bgWhite);
-  }
+
   .hd-cnt__right-cart {
     display: none;
   }

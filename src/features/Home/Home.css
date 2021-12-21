@@ -749,6 +749,7 @@ img {
   box-shadow: 0px 6px 15px #dcd8ee;
   border-radius: 24px;
   margin-top: 8px;
+  margin-bottom: 20px;
   position: relative;
 }
 .close-ring {

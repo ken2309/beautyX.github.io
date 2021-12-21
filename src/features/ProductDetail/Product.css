@@ -135,6 +135,9 @@
   color: var(--purple);
   margin: 4px 0px;
 }
+.product-cnt__right-head__rate {
+  gap: 0 4px;
+}
 .product-cnt__right-head__rate,
 .product-cnt__right-head__rate span {
   font-weight: 500;
@@ -144,7 +147,6 @@
 }
 .product-cnt__right-head__rate span {
   font-weight: 700;
-  margin: 0px 4px;
 }
 .product-cnt__right-price {
   height: max-content;
