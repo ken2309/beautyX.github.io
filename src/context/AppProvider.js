@@ -31,28 +31,28 @@ export default function AppProvider({ children }) {
             }
             handleGetToken()
             return () => {
+                  
             }
       }, [sign])
 
       useEffect(() => {
-           async function handleGetProfile() {
+            async function handleGetProfile() {
                   try {
                         const res = await auth.getUserProfile();
                         setProfile(res.data);
                   } catch (err) {
                         setProfile(undefined)
-                  } 
+                  }
             }
             handleGetProfile();
-            return ()=>{
-
+            return () => {
             }
       }, [sign])
       //get all tags
       const value = {
             t,
             language,
-            openModal, 
+            openModal,
             setOpenModal,
             setLanguage,
             tk, userInfo,

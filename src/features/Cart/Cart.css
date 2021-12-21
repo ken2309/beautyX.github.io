@@ -130,11 +130,15 @@
 .cart-item__name-text:hover {
   color: var(--purple);
 }
+.cart-item__info{
+  width: 50%;
+  justify-content: space-between;
+}
 .cart-item__quantity,
 .cart-item__price,
 .cart-item__total,
 .cart-item__control {
-  width: 12.5%;
+  width: 25%;
   justify-content: flex-end;
 }
 .cart-item__quantity {
@@ -169,7 +173,7 @@
   position: -webkit-sticky;
   position: sticky;
   z-index: 1;
-  width: 100;
+  width: 100%;
   padding: 24px 0px 24px 0px;
   background-color: var(--bg-gray);
   box-shadow: 0px 4px 20px rgba(113, 97, 186, 0.2);
@@ -224,10 +228,90 @@
   color: var(--text-black);
   margin: 16px 0px;
 }
-
+/* cart null */
+.cart-null{
+  padding: 64px 0px;
+}
+.cart-null__cnt span{
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+  margin: 16px 0px;
+}
+/* responsive */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .cart-section-item,
   .cart-list {
     padding: 0 16px;
+  }
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  .cart-notification{
+    width: 100%;
+    margin: 0px;
+    box-shadow: none;
+    padding: 24px 36px;
+  }
+  .cart-list{
+    padding: 0px 24px;
+  }
+  .cart-list-item__title{
+    display: none;
+  }
+  .cart-item{
+    align-items: flex-start;
+    border-bottom: solid 1px var(--bg-color);
+  }
+  .cart-item__name{
+    width: 66.4%;
+  }
+  .cart-item__info{
+    width: calc(100% - 66.4%);
+    flex-direction: column-reverse;
+    padding-left: 8px;
+    position: relative;
+  }
+  .cart-item__quantity,
+  .cart-item__price,
+  .cart-item__total,
+  .cart-item__control {
+    width: 100%;
+    justify-content: flex-start;  
+  }
+  .cart-item__price{
+    display: none;
+  }
+  .cart-item__control{
+    position: absolute;
+    right: 0;
+    width: fit-content;
+  }
+  .cart-item__quantity{
+    margin-top: 8px;
+  }
+  .cart-bottom{
+    padding: 8px 24px 24px 24px;
+    position: fixed;
+  }
+  .cart-bottom__box{
+    flex-direction: column;
+    width: 100%;
+  }
+  .cart-bottom__content span:nth-child(2){
+    margin: 0px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .cart-bottom__box div:nth-child(1){
+    margin-bottom: 4px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .cart-list-item__head{
+    margin: 0px;
+    padding: 16px 0px;
+    border-bottom: solid 1px var(--purple);
   }
 }

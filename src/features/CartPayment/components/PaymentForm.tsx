@@ -41,7 +41,7 @@ function PaymentForm(props: any) {
                         autoComplete="off"
                         className="flex-column payment-form"
                   >
-                        <div style={{ width: '100%' }} className="flex-row-sp">
+                        <div style={{ width: '100%' }} className="flex-row-sp payment-form__box">
                               <div className="payment-form__left">
                                     <span>{t('pm.payment_info')}</span>
                                     <div className="flex-row-sp pm-form__top">
