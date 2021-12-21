@@ -205,3 +205,24 @@
       line-height: 20px;
       color: var(--text-black);
 }
+/* responsive */
+/* Mobile */
+@media only screen and (max-width: 767px) {
+      .payment-cnt{
+            padding: 24px;
+      }
+      .payment-form__box{
+            flex-direction: column;
+      }
+      .payment-form__left{
+            width: 100%;
+            padding: 24;
+      }
+      .payment-form__right{
+            width: 100%;
+            padding: 24px 0px 0px 0px;
+      }
+      .cart-list__payment{
+            padding-top: 32px;
+      }
+}

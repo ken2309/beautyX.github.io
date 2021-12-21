@@ -22,9 +22,9 @@ function PaymentCart(props: any) {
                   </span>
                   <div className="flex-row cart-list-item__title">
                         <span>{t('Mer_de.services_name')}</span>
-                        <span style={{ width: '16.67%' }} >{t('pr.quantity')}</span>
-                        <span style={{ width: '16.67%' }} >{t('cart.unit_price')}</span>
-                        <span style={{ width: '16.67%' }} >{t('pr.total')}</span>
+                        <span style={{ width: '25%' }} >{t('pr.quantity')}</span>
+                        <span style={{ width: '25%' }} >{t('cart.unit_price')}</span>
+                        <span style={{ width: '25%' }} >{t('pr.total')}</span>
                   </div>
                   <ul className="flex-column">
                         {

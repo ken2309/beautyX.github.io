@@ -44,21 +44,27 @@ function CartBottom(props: any) {
             <div className="cart-bottom">
                   <Container>
                         <div className="flex-row cart-bottom__content">
-                              <span>
-                                    {t('cart.total_payment')} ({carts.cartQuantity} {t('Mer_de.services')}/{t('Mer_de.products')})
-                              </span>
-                              <span>
-                                    {formatPrice(carts.cartAmount)} đ
-                              </span>
-                              <ButtonCus
-                                    text={t('cart.payment_now')}
-                                    fontSize="14px"
-                                    lineHeight="20px"
-                                    color="var(--purple)"
-                                    border="solid 1px var(--purple)"
-                                    borderRadius="18px"
-                                    onClick={gotoPayment}
-                              />
+                              <div className="flex-row-sp cart-bottom__box">
+                                    <div className="flex-row">
+                                          <span>
+                                                {t('cart.total_payment')} ({carts.cartQuantity} {t('Mer_de.services')}/{t('Mer_de.products')})
+                                          </span>
+                                          <span>
+                                                {formatPrice(carts.cartAmount)} đ
+                                          </span>
+                                    </div>
+                                    <ButtonCus
+                                          text={t('cart.payment_now')}
+                                          fontSize="14px"
+                                          lineHeight="20px"
+                                          color="var(--bgWhite)"
+                                          border="solid 1px var(--purple)"
+                                          borderRadius="18px"
+                                          onClick={gotoPayment}
+                                          backColor="var(--purple)"
+                                          padding="8px 24px"
+                                    />
+                              </div>
                         </div>
                   </Container>
                   <CartPopupNoti
