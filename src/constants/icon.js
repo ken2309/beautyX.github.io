@@ -81,16 +81,20 @@ import searchPurple from "../assets/icon/searchPurple.svg";
 import pinMap_2 from "../assets/icon/pinMap_2.svg";
 import chevronRight from "../assets/icon/chevron-right.svg";
 import edit from "../assets/icon/Edit.svg";
+import DeskAlt from "../assets/icon/Desk_alt.svg";
+import Tumer from "../assets/icon/Tumer.svg";
 import x from "../assets/icon/x.svg";
-import staff from '../assets/icon/staff.svg';
-import branches from '../assets/icon/branches.svg';
-import chevronRight_2 from '../assets/icon/chevronRight_2.svg';
-import filter from '../assets/icon/filter.svg';
-import menuWhite from '../assets/icon/MenuWhite.svg';
-import ShoppingCartSimpleWhite from '../assets/icon/ShoppingCartSimpleWhite.svg';
-import closeCircle from '../assets/icon/closeCircle.svg'
+import staff from "../assets/icon/staff.svg";
+import branches from "../assets/icon/branches.svg";
+import chevronRight_2 from "../assets/icon/chevronRight_2.svg";
+import filter from "../assets/icon/filter.svg";
+import menuWhite from "../assets/icon/MenuWhite.svg";
+import ShoppingCartSimpleWhite from "../assets/icon/ShoppingCartSimpleWhite.svg";
+import closeCircle from "../assets/icon/closeCircle.svg";
 
 const icon = {
+  Tumer,
+  DeskAlt,
   edit,
   SignOutPurple,
   TrashOrange,
@@ -180,6 +184,6 @@ const icon = {
   filter,
   menuWhite,
   ShoppingCartSimpleWhite,
-  closeCircle
+  closeCircle,
 };
 export default icon;

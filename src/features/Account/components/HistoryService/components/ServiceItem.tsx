@@ -15,14 +15,14 @@ export default function ServiceItem() {
           <span className="name">Kanessa Beauty & Spa</span>
           <div className="infor">
             <div className="infor-item">
-              <img src={icon.edit} alt="" />
+              <img src={icon.Tumer} alt="" />
               <div className="infor-item__wrap">
                 <span>Thời gian</span>
                 <span>02 giờ</span>
               </div>
             </div>
             <div className="infor-item">
-              <img src={icon.edit} alt="" />
+              <img src={icon.DeskAlt} alt="" />
               <div className="infor-item__wrap">
                 <span>Số lượng chưa dùng</span>
                 <span>2/3 gói</span>

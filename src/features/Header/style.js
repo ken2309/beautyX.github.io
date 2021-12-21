@@ -17,6 +17,9 @@ export const headerStyle = makeStyles({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "0 16px",
+    "@media (max-width: 768px), (max-width: 1024px)": {
+      padding: "0 16px ",
+    },
   },
   headerBtn: {
     outline: "none",

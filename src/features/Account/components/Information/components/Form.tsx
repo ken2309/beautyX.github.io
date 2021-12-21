@@ -119,7 +119,7 @@ function Form(props: any) {
         </div>
 
         <div className="form-account__wraper">
-          <div style={{ width: "234px", padding: "0 0 8px 0" }}>
+          <div style={{ minWidth: "234px", padding: "0 0 8px 0" }}>
             <div className="form-account__label">
               <span>Email</span>
             </div>
@@ -135,7 +135,7 @@ function Form(props: any) {
               />
             </div>
           </div>
-          <div style={{ width: "234px", padding: "0 0 8px 0" }}>
+          <div style={{ minWidth: "234px", padding: "0 0 8px 0" }}>
             <div className="form-account__label">
               <span>Số điện thoại</span>
             </div>

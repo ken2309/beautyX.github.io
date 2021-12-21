@@ -1,13 +1,13 @@
-import React from 'react';
-import HomeFilter from '../../Home/components/HomeFilter';
-import icon from '../../../constants/icon';
-import '../../Home/Home.css';
-import {Pagination} from '@mui/material';
+import React from "react";
+import HomeFilter from "../../Home/components/HomeFilter";
+import icon from "../../../constants/icon";
+import "../../Home/Home.css";
+import { Pagination } from "@mui/material";
 //import Loading from '../loading/Loading';
-import SearchLoading from '../../Loading/SearchLoading';
-import ResultItem from './ResultItem';
-import SearchResultMb from '../../../featuresMobile/SearchResult/SearchResultMb';
-import scrollTop from '../../../utils/scrollTop'
+import SearchLoading from "../../Loading/SearchLoading";
+import ResultItem from "./ResultItem";
+import SearchResultMb from "../../../featuresMobile/SearchResult/SearchResultMb";
+import scrollTop from "../../../utils/scrollTop";
 
 function Result(props:any) {
       const {

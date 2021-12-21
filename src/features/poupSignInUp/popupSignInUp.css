@@ -45,7 +45,7 @@
   gap: 0 36px;
   width: 1020px;
 }
-.sign-content__left-logo-mb{
+.sign-content__left-logo-mb {
   display: none;
 }
 .sign-content__left {
@@ -271,7 +271,7 @@
   color: var(--purple);
 }
 /* Tablet */
-@media only screen and (min-width: 740px) and (max-width: 1023px) {
+@media (max-width: 768px), (max-width: 1024px) {
   .sign-content {
     padding: 0px;
     width: 100%;
@@ -281,44 +281,45 @@
   }
   .sign-content__right {
     width: 500px;
+    margin: 0 auto;
   }
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 767px) {
   .MuiPaper-root {
     max-width: unset !important;
     border-radius: 0px !important;
   }
-  .page-sign{
+  .page-sign {
     background-color: var(--bgWhite);
     padding-top: 48px;
   }
-  .page-sign__cnt{
+  .page-sign__cnt {
     flex-direction: column;
     justify-content: start;
     height: 100%;
     background-color: var(--bgWhite);
   }
-  .sign-content__left-logo-mb{
+  .sign-content__left-logo-mb {
     display: block;
     width: 90px;
     height: 80px;
     margin-bottom: 8;
   }
-  .sign-content__left{
+  .sign-content__left {
     display: none;
   }
-  .sign-content__right{
+  .sign-content__right {
     width: 100%;
     padding: 24px;
     border-radius: 0px;
     box-shadow: none;
   }
-  .sign-content{
+  .sign-content {
     padding: 0px;
   }
-  .sign-input-name{
+  .sign-input-name {
     flex-direction: column;
   }
 }
