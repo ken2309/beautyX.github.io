@@ -37,7 +37,10 @@ function ServiceCateMb(props: any) {
                                           <li key={item.id} >
                                                 <button
                                                       style={chooseCate === item.id ?
-                                                            { backgroundColor: 'var(--purple)', color: 'var(--bgWhite)' }
+                                                            { 
+                                                                  backgroundColor: 'var(--purple)', 
+                                                                  color: 'var(--bgWhite)'
+                                                            }
                                                             :
                                                             {}}
                                                       onClick={() => handleActiveCateClick(item)}

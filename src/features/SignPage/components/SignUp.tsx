@@ -7,11 +7,11 @@ import FormControl from "@mui/material/FormControl";
 import Checkbox from "@mui/material/Checkbox";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+import { AxiosError } from "axios";
 import { CircularProgress } from "@mui/material";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "./PopupNoti";
-import { baseURL } from "../../../api/axios";
+import auth from '../../../api/authApi'
 
 function SignUp(props: any) {
   const { activeTabSign } = props;
@@ -26,7 +26,22 @@ function SignUp(props: any) {
   // const handleAgreeClick=(e:any)=>{
   //   setAgree(e.target.checked)
   // }
-  //submit register from
+  //handle submit register from
+  async function submitRegisterForm(user: any) {
+    try {
+      const response = await auth.register(user)
+      console.log(response)
+      setLoading(false);
+      setPopup(true);
+    } catch (error) {
+      setLoading(false);
+      const err = error as AxiosError;
+      if (err.response?.status === 400) {
+        setError(err.response.data.context.telephone);
+        setErrMail(err.response.data.context.email);
+      }
+    }
+  }
   const handleOnSubmitSignUp = (values: any) => {
     setLoading(true);
     const params = {
@@ -35,22 +50,23 @@ function SignUp(props: any) {
       telephone: values.Phone,
       password: values.password,
     };
-    axios
-      .post(`${baseURL}/auth/register`, params)
-      .then(function (response) {
-        setLoading(false);
-        setPopup(true);
-      })
-      .catch(function (err) {
-        if (
-          err.response.data.context.telephone ||
-          err.response.data.context.email
-        ) {
-          setError(err.response.data.context.telephone);
-          setErrMail(err.response.data.context.email);
-        }
-        setLoading(false);
-      });
+    submitRegisterForm(params);
+    // axios
+    //   .post(`${baseURL}/auth/register`, params)
+    //   .then(function (response) {
+    //     setLoading(false);
+    //     setPopup(true);
+    //   })
+    //   .catch(function (err) {
+    //     if (
+    //       err.response.data.context.telephone ||
+    //       err.response.data.context.email
+    //     ) {
+    //       setError(err.response.data.context.telephone);
+    //       setErrMail(err.response.data.context.email);
+    //     }
+    //     setLoading(false);
+    //   });
   };
   // console.log(error, errMail)
 
@@ -119,7 +135,7 @@ function SignUp(props: any) {
         onSubmit={formik.handleSubmit}
         autoComplete="off"
         className="flex-column sign-form"
-        // style={{alignItems:'start'}}
+      // style={{alignItems:'start'}}
       >
         <div className="flex-column" style={{ width: "100%" }}>
           <div

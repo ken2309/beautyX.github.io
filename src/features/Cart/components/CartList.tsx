@@ -17,6 +17,7 @@ function CartList(props:any) {
             }
             cartJoin.push(arrJoin);
       }
+      console.log(cartJoin);
       return (
             <div className="cart-list">
                   {
