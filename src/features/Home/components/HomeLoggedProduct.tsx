@@ -6,19 +6,19 @@ import HomeLoggedProductSelector from "./HomeLoggedProductSelector";
 import orgProApi from "../../../api/productApi";
 
 export default function HomeLoggedProduct() {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
   const { t } = useContext(AppContext);
   useEffect(() => {
     async function handleGetOrgs() {
-      setLoading(true);
+      // setLoading(true);
       try {
         const res = await orgProApi.getByOrgId({
           org_id: 51,
         });
         setProducts(res.data.context.data);
-        setLoading(false);
+        // setLoading(false);
         console.log("res :>> ", res);
       } catch (err) {
         console.log(err);

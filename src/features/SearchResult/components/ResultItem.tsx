@@ -5,6 +5,7 @@ import slugify from "../../../utils/formatUrlString";
 import icon from "../../../constants/icon";
 import { AppContext } from "../../../context/AppProvider";
 import Map from "../../../featuresMobile/Map";
+import { useLocation } from "react-router";
 
 const d = new Date();
 const dayWeek = d.getDay() + 1;
@@ -14,6 +15,7 @@ function ResultItem(props: any) {
   const [openMap, setOpenMap] = useState(false);
   const opening_time = item?.opening_time;
   const history = useHistory();
+  console.log(`history`, history);
   const handleChooseItem = () => {
     if (setChooseItem) {
       setChooseItem(item);

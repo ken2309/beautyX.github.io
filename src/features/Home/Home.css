@@ -2,6 +2,9 @@
 img {
   user-select: none;
 }
+.text-capitalize {
+  text-transform: capitalize;
+}
 .title-home {
   font-size: 32px;
   line-height: 36px;
@@ -463,15 +466,13 @@ img {
 }
 .calendar-mounth__prev {
   position: absolute;
-  left: 40px;
-  position: absolute;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
 }
 .calendar-mounth__next {
   position: absolute;
-  right: 40px;
-  position: absolute;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -1156,7 +1157,7 @@ img {
     background-color: var(--grey);
   }
   .home-banner {
-    max-height: 154px;
+    max-height: 188px;
     margin-top: 140px;
     border-radius: 0;
   }
@@ -1429,5 +1430,11 @@ img {
   .home .drop-category {
     margin: 8px 0 0 0;
     box-shadow: rgb(155 152 167 / 59%) 0px 6px 37px;
+  }
+  .calendar-mounth__prev {
+    left: 60px;
+  }
+  .calendar-mounth__next {
+    right: 60px;
   }
 }

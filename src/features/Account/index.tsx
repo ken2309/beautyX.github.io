@@ -9,6 +9,7 @@ import SideBar from "./components/MenuSideBar";
 import Product from "./components/HistoryProduct";
 import Service from "./components/HistoryService";
 import ComboList from "./components/HistoryCombo/components/Combolist";
+import Footer from "../Footer";
 const routes = [
   {
     path: `/tai-khoan/phuong-thuc-thanh-toan`,
@@ -52,6 +53,7 @@ function Account() {
           </Switch>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
