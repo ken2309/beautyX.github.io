@@ -50,8 +50,8 @@ function Service(props: any) {
         </div>
       </div>
       <div className="service-list">
-        {dataService.map((item, i) => (
-          <ServiceItem key={i} />
+        {dataService.map((item) => (
+          <ServiceItem key={item.id} />
         ))}
       </div>
     </div>

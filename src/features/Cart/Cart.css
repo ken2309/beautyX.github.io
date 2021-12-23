@@ -141,7 +141,7 @@
 .cart-item__total,
 .cart-item__control {
   width: 25%;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .cart-item__quantity {
   font-size: 14px;
@@ -243,9 +243,11 @@
 }
 /* responsive */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .cart-section-item,
   .cart-list {
     padding: 0 16px;
+  }
+  .cart-bottom {
+    padding: 24px 16px;
   }
 }
 /* Mobile */

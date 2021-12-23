@@ -91,8 +91,10 @@ import filter from "../assets/icon/filter.svg";
 import menuWhite from "../assets/icon/MenuWhite.svg";
 import ShoppingCartSimpleWhite from "../assets/icon/ShoppingCartSimpleWhite.svg";
 import closeCircle from "../assets/icon/closeCircle.svg";
+import Favorite from "../assets/icon/Favorite_fill.svg";
 
 const icon = {
+  Favorite,
   Tumer,
   DeskAlt,
   edit,

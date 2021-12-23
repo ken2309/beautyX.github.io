@@ -7,11 +7,44 @@ import FormControl from "@mui/material/FormControl";
 import Checkbox from "@mui/material/Checkbox";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { t } from "i18next";
+import axios from "axios";
+import { baseURL } from "../../../api/axios";
+import { CircularProgress } from "@mui/material";
 
 function SignUp(props: any) {
-  const { activeTabSign } = props;
+  const { activeTabSign, setOpenSignIn } = props;
   const [typePass, setTypePass] = useState("password");
+  const [loading, setLoading] = useState(false);
+  const [errTelephone, setErrTelephone] = useState();
+  const [errGmail, setErrGmail] = useState();
+  const handleSignUp = (values: any) => {
+    setLoading(true);
+    const params = {
+      fullname: values.Name,
+      email: values.EmailPhone,
+      telephone: values.Phone,
+      password: values.password,
+    };
+    // console.log("params :>> ", params);
+    axios
+      .post(`${baseURL}/auth/register`, params)
+      .then(function (response) {
+        setLoading(false);
+        setOpenSignIn(false);
+        // console.log("response :>> ", response);
+      })
+      .catch(function (err) {
+        if (
+          err.response.data.context.telephone ||
+          err.response.data.context.email
+        ) {
+          setErrTelephone(err.response.data.context.telephone);
+          setErrGmail(err.response.data.context.email);
+        }
+        setLoading(false);
+      });
+  };
   const formik = useFormik({
     initialValues: {
       Name: "",
@@ -20,6 +53,8 @@ function SignUp(props: any) {
       EmailPhone: "",
       password: "",
       confirmPassword: "",
+      Phone: "",
+      agree: false,
     },
     validationSchema: Yup.object({
       Name: Yup.string()
@@ -44,20 +79,28 @@ function SignUp(props: any) {
           /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
           "Vui lòng nhập đúng định dạng Example@gmail.com"
         ),
+      Phone: Yup.string().required(
+        `${t("pm.please_enter")} ${t("pm.phone_number")}`
+      ),
+
       password: Yup.string()
         .min(8, "Mật khẩu lớn hơn 8 ký tự")
         .max(32, "Mật khẩu tối đa 32 kí tự")
-        .required("Vui lòng nhập mật khẩu")
-        .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
-        ),
+        .required("Vui lòng nhập mật khẩu"),
+      // .matches(
+      //   /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      //   "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
+      // ),
       confirmPassword: Yup.string()
         .required("Vui lòng xác nhận lại mật khẩu")
         .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp"),
+      agree: Yup.boolean().oneOf(
+        [true],
+        "Vui lòng đọc và chấp nhận điều khoản"
+      ),
     }),
-    onSubmit: (values:any) => {
-      
+    onSubmit: (values: any) => {
+      handleSignUp(values);
     },
   });
   return (
@@ -186,6 +229,28 @@ function SignUp(props: any) {
           {formik.errors.EmailPhone && formik.touched.EmailPhone && (
             <p className="err-text">{formik.errors.EmailPhone}</p>
           )}
+          <p className="err-text">{errGmail}</p>
+        </div>
+
+        <div
+          className="flex-column w-100"
+          style={{ width: "100%", padding: "8px 0" }}
+        >
+          <div className="sign-form__box  mb-16 ">
+            <img className="sign-form__box-icon" src={icon.Message} alt="" />
+            <input
+              value={formik.values.Phone}
+              onChange={formik.handleChange}
+              name="Phone"
+              id="Phone"
+              type="text"
+              placeholder={t("pm.phone_number")}
+            />
+          </div>
+          {formik.errors.Phone && formik.touched.Phone && (
+            <p className="err-text">{formik.errors.Phone}</p>
+          )}
+          <p className="err-text">{errTelephone}</p>
         </div>
 
         <div
@@ -243,7 +308,11 @@ function SignUp(props: any) {
         </div>
         <div className="flex-row w-100">
           <Checkbox
-            defaultChecked
+            value={formik.values.agree}
+            onChange={formik.handleChange}
+            name="agree"
+            id="agree"
+            // defaultChecked
             sx={{
               color: "#7161BA",
               "&.Mui-checked": {
@@ -256,13 +325,27 @@ function SignUp(props: any) {
             <span>Điều khoản & Điều kiện của Myspa</span>
           </p>
         </div>
-
+        {formik.errors.agree && formik.touched.agree && (
+          <p style={{ margin: "0px 0px 0px 10px" }} className="err-text">
+            {formik.errors.agree}
+          </p>
+        )}
         <button
+          // disabled={agree === true ? false : true}
           type="submit"
-          // onClick={(e: any) => handleRegis(e)}
           className="sign-btn mt-38"
+          style={
+            loading === true ? { position: "relative", opacity: "0.6" } : {}
+          }
         >
-          Đăng ký
+          {loading === true ? (
+            <div className="sign-loading">
+              <CircularProgress size="25px" color="inherit" />
+            </div>
+          ) : (
+            ""
+          )}
+          {t("Home.Sign_up")}
         </button>
 
         <p className="sign-or">Hoặc đăng kí với</p>

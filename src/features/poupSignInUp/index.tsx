@@ -22,12 +22,13 @@ function SignInUp(props: any) {
     setOpenSignIn,
     activeTabSign,
     setActiveTabSign,
-    useForSignRes
+    useForSignRes,
   } = props;
-  const { t } = useContext(AppContext)
+  console.log(`useForSignRes`, useForSignRes);
+  const { t } = useContext(AppContext);
   const buttons = [
-    { id: 1, title: t('Home.Sign_in') },
-    { id: 2, title: t('Home.Sign_up') },
+    { id: 1, title: t("Home.Sign_in") },
+    { id: 2, title: t("Home.Sign_up") },
   ];
   const handleClose = () => {
     setOpenSignIn(false);
@@ -81,7 +82,7 @@ function SignInUp(props: any) {
             setActiveTabSign={setActiveTabSign}
             t={t}
           />
-          <SignUp activeTabSign={activeTabSign} />
+          <SignUp activeTabSign={activeTabSign} setOpenSignIn={setOpenSignIn} />
         </div>
       </div>
     </Dialog>

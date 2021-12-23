@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import icon from "../../../constants/icon";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -21,7 +21,7 @@ function SignUp(props: any) {
   const [error, setError] = useState();
   const [errMail, setErrMail] = useState();
   const [popup, setPopup] = useState(false);
-  const [agree, setAgree] = useState(false);
+  // const [agree, setAgree] = useState(false);
 
   // const handleAgreeClick=(e:any)=>{
   //   setAgree(e.target.checked)
@@ -52,7 +52,8 @@ function SignUp(props: any) {
         setLoading(false);
       });
   };
-  // console.log(error, errMail)
+
+  // console.log(error, errMail);
 
   const formik = useFormik({
     initialValues: {
