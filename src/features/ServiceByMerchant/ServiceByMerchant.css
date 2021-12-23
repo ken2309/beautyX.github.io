@@ -148,8 +148,8 @@
             font-size: 14px;
             line-height: 20px;
             color: var(--purple);
-            background-color: transparent;
-            border: solid 1px var(--purple);
+            border: none;
+            background-color: var(--grey);
             outline: none;
             border-radius: 8px;
             transition: all 0.3s;
