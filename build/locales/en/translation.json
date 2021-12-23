@@ -159,6 +159,8 @@
             "unit_price": "Unit price",
             "option": "Option",
             "noti": "Notification",
+            "cart_null_text":"There are not products/services in the cart",
+            "shopping_now":"Shopping now",
             "do_you_want_to_remove": "Do you want to remove",
             "from_you_shopping_cart": "from you shopping cart",
             "total_payment":"Total payment",
