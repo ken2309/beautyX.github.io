@@ -14,7 +14,7 @@ const useInPayment: boolean = true;
 function PaymentTotal(props: any) {
       const history = useHistory();
       const { t } = useContext(AppContext)
-      const { methodList, value, list, carts, userInfo, profile, chooseE_wall } = props;
+      const { methodList, value, list, carts, chooseE_wall } = props;
       const pmMethod = methodList.find((item: any) => item.method === value);
       const [popup, setPopup] = useState(false);
       const org_id = list[0].org_id
@@ -37,6 +37,7 @@ function PaymentTotal(props: any) {
             const combo = { id: itemCombo.id, quantity: itemCombo.quantity }
             combosPost.push(combo);
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const params = {
             org_id: org_id,
             products: productsPost,

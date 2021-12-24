@@ -27,7 +27,6 @@ function CardItem(props:any) {
             //       id: detail.id
             // }
             // const search = JSON.stringify(param);
-            //console.log(org_id)
             if (detail.is_product === true) {
                   const is_type = 1;
                   history.push({

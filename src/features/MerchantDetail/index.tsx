@@ -23,13 +23,10 @@ const id_tab = 1;
 function MerchantDetail(props: any) {
   const { t } = useContext(AppContext);
   const location = useLocation();
-  console.log(`location`, location);
   const mer_id = location.search.slice(1, location.search.length);
   const [loading, setLoading] = useState(false);
-  //console.log(mer_id)
   const [org, setOrg] = useState({});
   const [branches, setBranches] = useState([]);
-  // console.log(location.state.branches)
   const [activeTab, setActiveTab] = useState(1);
   useEffect(() => {
     async function handleGetOrgById() {
@@ -56,7 +53,6 @@ function MerchantDetail(props: any) {
     }
     handleGetOrgById();
   }, [location.state, mer_id]);
-  // console.log(org);
   return (
     <div className="mb-cnt">
       <Head />

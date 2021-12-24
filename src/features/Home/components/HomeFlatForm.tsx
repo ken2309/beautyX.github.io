@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import img from "../../../constants/img";
 import { AppContext } from "../../../context/AppProvider";
 import SectionTitle from "../../SectionTitle";
 

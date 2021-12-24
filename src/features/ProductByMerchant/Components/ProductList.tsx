@@ -55,9 +55,9 @@ function ProductList(props: any) {
       const handleActiveFilter = (item: any) => {
             setActiveFilter(item);
             if (item.id === 1){
-                  console.log('Phổ biến')
+                  // console.log('Phổ biến')
             }else if(item.id === 2){
-                  console.log('Bán chạy')
+                  // console.log('Bán chạy')
             }else if(item.id === 3){
                   ascPrice();
             }else if(item.id === 4){

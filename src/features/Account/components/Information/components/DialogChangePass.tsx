@@ -31,7 +31,6 @@ export default function DialogChangePass(props: any) {
       passwork: Yup.string().required("Vui lòng nhập mật khẩu"),
     }),
     onSubmit: (values) => {
-      console.log(values);
       handleOpenNewPass();
       handleCloseChange();
     },

@@ -29,7 +29,6 @@ function SignIn(props: any) {
   async function submitLogin(values: any) {
     try {
       const response = await auth.login(values);
-      console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);

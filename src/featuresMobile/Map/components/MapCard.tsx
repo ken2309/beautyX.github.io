@@ -4,9 +4,9 @@ import formatPrice from '../../../utils/formatPrice';
 
 function MapCard(props: any) {
       const { list } = props;
-      const parent = document.querySelector('.mb-card-list__list li');
+      // const parent = document.querySelector('.mb-card-list__list li');
       const handleScroll=(item:any)=>{
-            console.log(item);
+            // console.log(item);
       }
       return (
             <div

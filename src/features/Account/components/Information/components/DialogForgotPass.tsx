@@ -21,8 +21,7 @@ export default function ForgotPass(props: any) {
     validationSchema: Yup.object({
       email: Yup.string().required("Vui lòng nhập email hoặc số điện thoại"),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: () => {
       // handle;
     },
   });

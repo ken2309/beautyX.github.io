@@ -24,7 +24,7 @@ img {
 .home-banner {
   margin-top: 64px;
   padding-top: 63px;
-  background-image: url("https://source.unsplash.com/random");
+  background-image: url("../../assets/image/banner.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

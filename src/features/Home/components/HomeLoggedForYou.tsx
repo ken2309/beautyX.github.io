@@ -5,28 +5,28 @@ import HomeLoggedForYouItem from "./HomeLoggedForYouItem";
 import HomeLoggedForYouSelector from "./HomeLoggedForYouSelector";
 import orgProApi from "../../../api/productApi";
 
-const dataProduct = [
-  {
-    id: 1,
-    name: "Massage Thái Lan, giảm đau xương khớp",
-    desc: "Bay Spa & Massage",
-  },
-  {
-    id: 2,
-    name: "Liệu pháp lưng vai",
-    desc: "Temple Tree Spa",
-  },
-  {
-    id: 3,
-    name: "Chăm sóc da mặt bằng đất sét tự nhiên",
-    desc: "YKC Wellness Spa",
-  },
-  {
-    id: 4,
-    name: "Massage trị liệu đá nóng",
-    desc: "Payya Thái Spa & Massage",
-  },
-];
+// const dataProduct = [
+//   {
+//     id: 1,
+//     name: "Massage Thái Lan, giảm đau xương khớp",
+//     desc: "Bay Spa & Massage",
+//   },
+//   {
+//     id: 2,
+//     name: "Liệu pháp lưng vai",
+//     desc: "Temple Tree Spa",
+//   },
+//   {
+//     id: 3,
+//     name: "Chăm sóc da mặt bằng đất sét tự nhiên",
+//     desc: "YKC Wellness Spa",
+//   },
+//   {
+//     id: 4,
+//     name: "Massage trị liệu đá nóng",
+//     desc: "Payya Thái Spa & Massage",
+//   },
+// ];
 export default function HomeLoggedForYou() {
   const { t } = useContext(AppContext);
   const [products, setProducts] = useState([]);

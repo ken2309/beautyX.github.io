@@ -2,12 +2,10 @@ import axiosClient from "./axios";
 
 class ProductApi {
   getByOrgId = (params: any) => {
-    console.log(params);
     const url = `/organizations/${params.org_id}/products?page=${params.page}&limit=8`;
     return axiosClient.get(url);
   };
   getByOrgId_cateId = (params: any) => {
-    console.log(params);
     const url =
       `/organizations/${params.org_id}` +
       `/products?page=${params.page}` +

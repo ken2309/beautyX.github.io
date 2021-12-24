@@ -19,10 +19,10 @@ const orgSlice = createSlice({
       },
       extraReducers: {
             [fetchAsyncOrg.pending]: () => {
-                  console.log('Loading...')
+                  // console.log('Loading...')
             },
             [fetchAsyncOrg.fulfilled]: (state, { payload }) => {
-                  console.log('Success')
+                  // console.log('Success')
                   return { ...state, org: payload }
             }
       }

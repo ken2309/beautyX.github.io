@@ -12,7 +12,6 @@ function Menu(props:any) {
       const menu = headerStyle();
       const [openSetting, setOpenSetting] = useState(false);
       const handleSignOut = () => {
-            console.log('logout');
             setSign(false);
             const token = '';
             localStorage.setItem('_WEB_TK', token)

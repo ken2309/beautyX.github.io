@@ -1,5 +1,5 @@
 import Avatar from '../assets/image/Avatar.png';
-import banner from '../assets/image/Banner.png';
+import banner from '../assets/image/banner.png';
 import mapCustomer from '../assets/image/map.png';
 import miniMap from '../assets/image/Group 265.png';
 import homeSt1 from '../assets/image/homeSt1.png';

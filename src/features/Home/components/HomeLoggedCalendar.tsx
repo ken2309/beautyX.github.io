@@ -172,9 +172,9 @@ export default function HomeLoggedCalendar() {
       newdate = date + 1;
     }
     let newmonth = thisMonth + 1;
-    const firstDateOfWeek = selectedDay.startOf("week").date();
-    const lastDateOfWeek = selectedDay.endOf("week").date();
-    console.log(firstDateOfWeek, lastDateOfWeek);
+    // const firstDateOfWeek = selectedDay.startOf("week").date();
+    // const lastDateOfWeek = selectedDay.endOf("week").date();
+    // console.log(firstDateOfWeek, lastDateOfWeek);
 
     // const datesInSameWeek = (parts: any) => {
     //   if (firstDateOfWeek < lastDateOfWeek) {
@@ -199,7 +199,7 @@ export default function HomeLoggedCalendar() {
     const dateList: any = dataCalendar.filter((data) => {
       var parts = data.date.split("/");
       return (
-        newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
+        newdate === parts[0] && newmonth === parts[1] && thisYear === parts[2]
       );
     });
 
@@ -226,7 +226,6 @@ export default function HomeLoggedCalendar() {
       } else
         appointList.push({ date: date.date, count: 1, status: date.status });
     });
-    // console.log("appointList", appointList);
     setdotAppoint(appointList);
   }
   const selectedDay = dayjs(
