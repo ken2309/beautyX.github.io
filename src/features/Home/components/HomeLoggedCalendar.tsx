@@ -11,121 +11,6 @@ import apointmentApi from "../../../api/apointmentApi";
 import { Appointment } from "../../../interface/appointment";
 
 const todayObj = dayjs();
-
-// const dataCalendar = [
-//   {
-//     id: 1,
-//     time: "09:00 - 10:00",
-//     name: "Lịch hẹn 1",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "1/12/2021",
-//     status: 1,
-//   },
-//   {
-//     id: 2,
-//     time: "11:00 - 12:00",
-//     name: "Lịch hẹn 2",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "1/12/2021",
-//     status: 2,
-//   },
-//   {
-//     id: 3,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "2/12/2021",
-//     status: 3,
-//   },
-//   {
-//     id: 4,
-//     time: "11:00 - 12:00",
-//     name: "Lịch hẹn 2",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "2/12/2021",
-//     status: 1,
-//   },
-//   {
-//     id: 5,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "3/12/2021",
-//     status: 3,
-//   },
-//   {
-//     id: 6,
-//     time: "11:00 - 12:00",
-//     name: "Lịch hẹn 2",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "3/12/2021",
-//     status: 2,
-//   },
-//   {
-//     id: 7,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "3/12/2021",
-//     status: 3,
-//   },
-//   {
-//     id: 8,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "3/12/2021",
-//     status: 1,
-//   },
-//   {
-//     id: 9,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "4/12/2021",
-//     status: 2,
-//   },
-//   {
-//     id: 10,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "4/12/2021",
-//     status: 3,
-//   },
-//   {
-//     id: 11,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "6/12/2021",
-//     status: 2,
-//   },
-//   {
-//     id: 12,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "31/12/2021",
-//     status: 3,
-//   },
-//   {
-//     id: 13,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "30/12/2021",
-//     status: 3,
-//   },
-//   {
-//     id: 14,
-//     time: "12:00 - 13:00",
-//     name: "Lịch hẹn 3",
-//     addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-//     date: "7/12/2021",
-//     status: 3,
-//   },
-// ];
 export default function HomeLoggedCalendar() {
   const [datingList, setdatingList] = useState([]);
   const [dotAppoint, setdotAppoint] = useState([]);
@@ -199,7 +84,7 @@ export default function HomeLoggedCalendar() {
   const handleNext = () => {
     setDayObj(dayObj.add(1, "month"));
   };
-  // hander pick active 2 calendar
+  // hander pick active calendar
   const [datepick, setdatepick] = useState({
     date: todayObj.date(),
     month: todayObj.month(),

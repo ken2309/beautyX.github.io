@@ -98,10 +98,11 @@
   list-style: none;
   cursor: pointer;
   border-radius: 24px;
+  border: 1px solid transparent;
   transition: 0.4s;
 }
 .result-detail__org li:hover {
-  box-shadow: 0px 4px 20px rgba(113, 97, 186, 0.2);
+  background-color: var(--bg-gray-dark);
 }
 .wrapper-search {
   width: 100%;
