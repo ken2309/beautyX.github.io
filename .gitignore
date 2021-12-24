@@ -50,3 +50,8 @@ Thumbs.db
 
 .env
 build/
+.firebase/
+.firebaserc
+.vscode/
+firebase.json
+package-lock.json
