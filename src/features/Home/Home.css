@@ -577,21 +577,27 @@ img {
   display: flex;
   flex-direction: column;
 }
-.calendar-appointment__item p:nth-child(1) {
+.calendar-appointment__item-time {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 2px;
+}
+.calendar-appointment__item-time p {
   font-weight: bold;
   font-size: 11px;
   line-height: 12px;
   color: var(--purple);
-  margin-bottom: 4px;
 }
-.calendar-appointment__item p:nth-child(2) {
+.calendar-appointment__item-name {
   font-weight: bold;
   font-size: 14px;
   line-height: 20px;
   color: var(--text-black);
   margin-bottom: 24px;
 }
-.calendar-appointment__item p:nth-child(3) {
+.calendar-appointment__item-address {
+  font-style: normal;
   font-weight: bold;
   font-size: 11px;
   line-height: 12px;

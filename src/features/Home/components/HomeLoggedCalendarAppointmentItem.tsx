@@ -1,23 +1,22 @@
 import React from "react";
-interface IAppointmentItem {
-  time: any;
-  name: any;
-  addSpa: any;
-  status: any;
-}
-export default function HomeLoggedCalendarAppointmentItem(
-  props: IAppointmentItem
-) {
-  const { time, name, addSpa, status } = props;
+
+export default function HomeLoggedCalendarAppointmentItem(props: any) {
+  const { datingList } = props;
   const checkdotstt = (stt: any) => {
     switch (stt) {
-      case 1:
+      case "CONFIRMED":
         return <span className="appointment-status status-dot-green" />;
-      case 2:
+      case "ARRIVED":
+        return <span className="appointment-status status-dot-green" />;
+      case "NEW":
         return <span className="appointment-status status-dot-blue" />;
-      case 3:
+      case "ONLINE_BOOKING":
+        return <span className="appointment-status status-dot-blue" />;
+      case "DONE":
         return <span className="appointment-status status-dot-pink" />;
-      case 4:
+      case "CANCEL":
+        return <span className="appointment-status status-dot-red" />;
+      case "NOT COME":
         return <span className="appointment-status status-dot-red" />;
       default:
         break;
@@ -26,10 +25,15 @@ export default function HomeLoggedCalendarAppointmentItem(
   return (
     <div className="calendar-appointment__item">
       <div className="calendar-appointment__item-row">
-        {checkdotstt(status)}
+        {checkdotstt(datingList.status)}
         <div className="calendar-appointment__item-column">
-          <p>{time}</p> <p>{name}</p>
-          <p>{addSpa}</p>
+          <div className="calendar-appointment__item-time">
+            <p>{datingList.time_start}</p>
+            <p>{"-"}</p>
+            <p>{datingList.time_end}</p>
+          </div>
+          <p className="calendar-appointment__item-name">Name Spa</p>
+          <p className="calendar-appointment__item-address">Address Spa</p>
         </div>
       </div>
     </div>

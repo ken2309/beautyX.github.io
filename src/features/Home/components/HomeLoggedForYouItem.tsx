@@ -4,7 +4,6 @@ import formatPrice from "../../../utils/formatPrice";
 
 export default function HomeLoggedForYouItem(props: any) {
   const { products } = props;
-  console.log(products);
   return (
     <div className="homelogged-product__item">
       <div className="item-img">
