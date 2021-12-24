@@ -4,6 +4,7 @@ import formatPrice from '../../../utils/formatPrice';
 import ButtonCus from '../../../components/ButtonCus';
 import PopupSuccess from '../../PopupSuccess/index';
 import { AppContext } from '../../../context/AppProvider';
+import {useHistory} from 'react-router-dom'
 
 interface ItemOrder {
       id: number, quantity: number
@@ -11,6 +12,7 @@ interface ItemOrder {
 
 const useInPayment: boolean = true;
 function PaymentTotal(props: any) {
+      const history = useHistory();
       const { t } = useContext(AppContext)
       const { methodList, value, list, carts, userInfo, profile, chooseE_wall } = props;
       const pmMethod = methodList.find((item: any) => item.method === value);
@@ -44,13 +46,14 @@ function PaymentTotal(props: any) {
             payment_method_id: chooseE_wall?.id
       }
       const handleSubmitPayment = () => {
-            if (profile) {
-                  if (value && userInfo && chooseE_wall) {
-                        console.log(params)
-                  } else {
-                        console.log('Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo')
-                  }
-            }
+            // if (profile) {
+            //       if (value && userInfo && chooseE_wall) {
+            //             console.log(params)
+            //       } else {
+            //             console.log('Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo')
+            //       }
+            // }
+            history.push('/popup');
       }
       return (
             <div className="payment-total">
