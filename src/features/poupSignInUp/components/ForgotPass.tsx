@@ -35,7 +35,6 @@ export default function ForgotPass(props: IForgotPass) {
         ),
     }),
     onSubmit: (values) => {
-      console.log(values);
       handleClickOpenVerification();
       handleCloseForgotPass();
     },

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import icon from "../../../constants/icon";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -29,8 +29,7 @@ function SignUp(props: any) {
   //handle submit register from
   async function submitRegisterForm(user: any) {
     try {
-      const response = await auth.register(user);
-      console.log(response);
+      auth.register(user);
       setLoading(false);
       setPopup(true);
     } catch (error) {

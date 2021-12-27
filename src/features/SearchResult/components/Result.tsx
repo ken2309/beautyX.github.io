@@ -20,7 +20,6 @@ function Result(props: any) {
     setCurPage,
     total,
   } = props;
-  console.log("resutl", resultList);
   const serviceOfCardOrg = [
     { title: t("Search_result.parking"), text: "100m2", icon: icon.car },
     { title: t("Search_result.bed"), text: "80", icon: icon.bed },
@@ -40,7 +39,6 @@ function Result(props: any) {
   //       scrollTop();
   // }
   const pageChange = (event: any, value: any) => {
-    console.log(value);
     scrollTop();
     setCurPage(value);
   };

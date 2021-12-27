@@ -27,13 +27,12 @@ export default function PopupAppointInfor() {
   //   e.preventDefault();
   // }
   const handleSubmitBooking = () => {
-    const params = {
-      service: service,
-      date: dateValue?.toLocaleDateString(),
-      time: timeValue?.toLocaleTimeString()
-    }
+    // const params = {
+    //   service: service,
+    //   date: dateValue?.toLocaleDateString(),
+    //   time: timeValue?.toLocaleTimeString()
+    // }
     if (service && dateValue && timeValue) {
-      console.log(params)
       setPopup(true);
     } else {
       console.log('err')

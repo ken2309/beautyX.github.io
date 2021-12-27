@@ -18,11 +18,13 @@ export default function HomeLoggedCalendarAppointment(props: IAppointment) {
   const getDatingListAsDate = () => {
     const list: any = [];
 
-    daysInWeek.map((day: number, i: number) => {
+        // eslint-disable-next-line array-callback-return
+      daysInWeek.map((day: number, i: number) => {
       if (datingList.some((dating: any) => getDateOfDating(dating) === day)) {
         list[i] = [];
+        // eslint-disable-next-line array-callback-return
         datingList.map((dating: any) => {
-          if (getDateOfDating(dating) == day) list[i].push(dating);
+          if (getDateOfDating(dating) === day) list[i].push(dating);
         });
       } else {
         list[i] = undefined;

@@ -141,7 +141,7 @@ export default function HomeLoggedCalendar() {
     const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
       return (
-        newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
+        newdate === parts[0] && newmonth === parts[1] && thisYear === parts[2]
       );
     });
 
@@ -169,7 +169,6 @@ export default function HomeLoggedCalendar() {
       } else
         appointList.push({ date: date.date, count: 1, status: date.status });
     });
-    // console.log("appointList", appointList);
     setdotAppoint(appointList);
   }
   // lấy ngày tháng năm hiện tại
