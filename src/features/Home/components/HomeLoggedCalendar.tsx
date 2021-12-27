@@ -79,7 +79,7 @@ export default function HomeLoggedCalendar() {
     dataAppoint.push(app);
   }
 
-  // console.log("dataAppoint", dataAppoint);
+  console.log("dataAppoint", dataAppoint);
 
   const handlePrev = () => {
     setDayObj(dayObj.subtract(1, "month"));
@@ -102,6 +102,7 @@ export default function HomeLoggedCalendar() {
     });
     handleAppoint(date, thisMonth, thisYear, false);
   }
+
   // hander Appoint
   function handleAppoint(
     date: any,
@@ -141,10 +142,10 @@ export default function HomeLoggedCalendar() {
     const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
       return (
-        newdate === parts[0] && newmonth === parts[1] && thisYear === parts[2]
+        newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });
-
+    // console.log(dateList);
     setdatingList(dateList);
   }
 
