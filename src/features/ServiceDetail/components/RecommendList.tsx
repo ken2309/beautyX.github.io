@@ -11,7 +11,7 @@ const buttons = [
   { id: 2, text: "Giảm nhiều" },
 ];
 function RecommendList(props: any) {
-  const { org, list } = props;
+  const { org, list, is_type } = props;
   const title = `Ưu đãi của "${org?.name}"`;
   const [activeBtn, setActiveBtn] = useState();
   return (
@@ -42,6 +42,7 @@ function RecommendList(props: any) {
         <Carousel
           children={list.map((item: any) => (
             <CardItem
+              is_type={is_type}
               key={item.id}
               style={cardStyle}
               detail={item}

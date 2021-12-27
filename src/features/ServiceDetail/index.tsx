@@ -14,6 +14,7 @@ function ServiceDetail(props: any) {
       const location = useLocation();
       const search = location.search.slice(1, location.search.length);
       const params = search.split(',');
+      console.log(params);
       const is_type = parseInt(params[2])
       // console.log(is_type)
       const [org, setOrg] = useState({})
@@ -75,6 +76,7 @@ function ServiceDetail(props: any) {
                         <RecommendList
                               org={org}
                               list={services}
+                              is_type={is_type}
                         />
                   </Container>
             </div>

@@ -89,6 +89,7 @@ function ProductDetail(props: any) {
                         <RecommendList
                               org={org}
                               list={productsIs}
+                              is_type={is_type}
                         />
                   </Container>
                   <Footer/>
