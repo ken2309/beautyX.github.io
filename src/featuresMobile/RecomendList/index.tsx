@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Product} from '../../interface/product';
 import CardItem from '../../features/CardItem/index';
 import productsApi from '../../api/productApi';
-import './RecommendList.css'
+import './recommendList.css'
 
 const style={
       width:'172px'

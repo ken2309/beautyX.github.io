@@ -1,5 +1,5 @@
 import React from 'react';
-import './SectionTitle.css'
+import './sectionTitle.css'
 
 function SectionTitle(props:any) {
       const {title, textAlign} = props;

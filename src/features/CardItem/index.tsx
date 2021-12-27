@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardItem.css';
+import './cardItem.css';
 import icon from '../../constants/icon';
 import formatPrice from '../../utils/formatPrice';
 import {useHistory} from 'react-router-dom';

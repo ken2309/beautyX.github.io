@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import SectionTitle from "../../SectionTitle";
 import MapWrapper from "../../SearchResult/components/MapWrapper";
-import "../../SearchResult/SearchResult.css";
+import "../../SearchResult/searchResult.css";
 import icon from "../../../constants/icon";
 import img from "../../../constants/img";
 import { AppContext } from "../../../context/AppProvider";

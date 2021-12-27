@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css';
+import './loading.css';
 import Skeleton from 'react-loading-skeleton'
 
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9]

@@ -3,7 +3,7 @@ import {useLocation} from 'react-router-dom';
 import productsApi from '../../api/productApi';
 import orgApi from '../../api/organizationApi'
 import { Container } from '@mui/material'
-import './Product.css';
+import './product.css';
 import Head from '../Head';
 import DetailCard from './components/DetailCard';
 import DetailHead from './components/DetailHead';

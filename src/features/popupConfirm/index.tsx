@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Dialog } from "@mui/material";
-import "./PopupConfirm.css";
+import "./popupConfirm.css";
 import ButtonCus from "../../components/ButtonCus";
 import { AppContext } from "../../context/AppProvider";
 

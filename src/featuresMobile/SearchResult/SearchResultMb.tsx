@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import icon from '../../constants/icon';
 import SearchFilter from './SearchFilter';
-import './SearchResultMb.css'
+import './searchResultMb.css'
 
 function SearchResultMb(props:any) {
       const {setCurPage} = props;

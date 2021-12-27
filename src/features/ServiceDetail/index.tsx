@@ -7,7 +7,7 @@ import orgApi from '../../api/organizationApi';
 import serviceApi from '../../api/serviceApi';
 import DetailHead from '../ProductDetail/components/DetailHead';
 import RecommendList from './components/RecommendList';
-import './ServiceDetail.css';
+import './serviceDetail.css';
 import {Service} from '../../interface/service'
 
 function ServiceDetail(props: any) {

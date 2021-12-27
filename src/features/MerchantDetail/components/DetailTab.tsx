@@ -1,5 +1,5 @@
 import React from 'react';
-import '../MerchantDetail.css';
+import '../merchantDetail.css';
 import { Container } from '@mui/material'
 
 function DetailTab(props: any) {
