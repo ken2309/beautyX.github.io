@@ -46,14 +46,20 @@ export default function HomeLoggedCalendarComponent(
 
   const checkdotstt = (stt: any) => {
     switch (stt) {
-      case 1:
-        return <div className="status-dot status-dot-green"></div>;
-      case 2:
-        return <div className="status-dot status-dot-blue"></div>;
-      case 3:
-        return <div className="status-dot status-dot-pink"></div>;
-      case 4:
-        return <div className="status-dot status-dot-red"></div>;
+      case "CONFIRMED":
+        return <span className="status-dot status-dot-green" />;
+      case "ARRIVED":
+        return <span className="status-dot status-dot-green" />;
+      case "NEW":
+        return <span className="status-dot status-dot-blue" />;
+      case "ONLINE_BOOKING":
+        return <span className="status-dot status-dot-blue" />;
+      case "DONE":
+        return <span className="status-dot status-dot-pink" />;
+      case "CANCEL":
+        return <span className="status-dot status-dot-red" />;
+      case "NOT COME":
+        return <span className="status-dot status-dot-red" />;
       default:
         break;
     }
@@ -96,12 +102,11 @@ export default function HomeLoggedCalendarComponent(
               key={i}
             >
               <div className="status-dots ">
-                {checkdate(i, thisMonth, thisYear, dotAppoint).map((dot: any, index:number) => (
-                  <span key={index} >
-                    {checkdotstt(dot.status)}
-                  </span>
-                ))
-                }
+                {checkdate(i, thisMonth, thisYear, dotAppoint).map(
+                  (dot: any, index: number) => (
+                    <span key={index}>{checkdotstt(dot.status)}</span>
+                  )
+                )}
               </div>
               {i + 1}
             </div>

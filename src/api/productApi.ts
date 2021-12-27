@@ -2,7 +2,7 @@ import axiosClient from "./axios";
 
 class ProductApi {
   getByOrgId = (params: any) => {
-    console.log(params);
+    //console.log(params);
     const url = `/organizations/${params.org_id}/products?page=${params.page}&limit=8`;
     return axiosClient.get(url);
   };

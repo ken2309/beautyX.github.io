@@ -18,12 +18,13 @@ import DetailTab from "./components/DetailTab";
 import DetailTabMb from "../../featuresMobile/DetailTabMb";
 import MerchantMb from "../../featuresMobile/MerchantMb";
 import Bottom from "../../featuresMobile/Bottom";
+// view for mobile
+import RecommendList from "../../featuresMobile/RecomendList";
 
 const id_tab = 1;
 function MerchantDetail(props: any) {
   const { t } = useContext(AppContext);
   const location = useLocation();
-  console.log(`location`, location);
   const mer_id = location.search.slice(1, location.search.length);
   const [loading, setLoading] = useState(false);
   //console.log(mer_id)
@@ -84,6 +85,11 @@ function MerchantDetail(props: any) {
             {/* ---------- */}
             <DetailBranchList branches={branches} />
             <DetailSaleList t={t} merDetail={org} />
+            {/* for mobile */}
+            <RecommendList
+              org={org}
+            />
+            {/* ----- */}
           </div>
           <ServiceByMerchant activeTab={activeTab} mer_id={mer_id} org={org} />
           <ProductByMerchant mer_id={mer_id} activeTab={activeTab} org={org} />

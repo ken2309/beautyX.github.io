@@ -19,7 +19,6 @@ export default function HomeLoggedProduct() {
         });
         setProducts(res.data.context.data);
         // setLoading(false);
-        console.log("res :>> ", res);
       } catch (err) {
         console.log(err);
       }

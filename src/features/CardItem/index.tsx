@@ -16,7 +16,8 @@ function CardItem(props:any) {
             special_price,
             org_id,
             org_name,
-            org
+            org,
+            is_type
       } = props;
       const history = useHistory();
       const discount = 100 - (special_price / retail_price * 100)
@@ -28,15 +29,14 @@ function CardItem(props:any) {
             // }
             // const search = JSON.stringify(param);
             //console.log(org_id)
-            if (detail.is_product === true) {
-                  const is_type = 1;
+            //products: is_type = 1, services: is_type = 2
+            if (is_type === 1) {
                   history.push({
                         pathname: `/Product-detail/${slugify(name)}`,
                         search: `${org_id},${detail.id},${is_type}`,
                         state: org
                   })
-            } else {
-                  const is_type = 2;
+            } else if (is_type === 2) {
                   history.push({
                         pathname: `/Service-detail/${slugify(name)}`,
                         search: `${org_id},${detail.id},${is_type}`,

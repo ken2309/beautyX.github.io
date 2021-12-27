@@ -5,140 +5,78 @@ import HomeLoggedCalendarComponent from "./HomeLoggedCalendarComponent";
 import HomeLoggedCalendarChooseMonth from "./HomeLoggedCalendarChooseMonth";
 import HomeLoggedCalendarStatus from "./HomeLoggedCalendarStatus";
 import HomeLoggedCalendarList from "./HomeLoggedCalendarList";
-import { Container } from '@mui/material';
-import {AppContext} from '../../../context/AppProvider'
+import { Container } from "@mui/material";
+import { AppContext } from "../../../context/AppProvider";
+import apointmentApi from "../../../api/apointmentApi";
+import { Appointment } from "../../../interface/appointment";
 
 const todayObj = dayjs();
-
-const dataCalendar = [
-  {
-    id: 1,
-    time: "09:00 - 10:00",
-    name: "Lịch hẹn 1",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "1/12/2021",
-    status: 1,
-  },
-  {
-    id: 2,
-    time: "11:00 - 12:00",
-    name: "Lịch hẹn 2",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "1/12/2021",
-    status: 2,
-  },
-  {
-    id: 3,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "2/12/2021",
-    status: 3,
-  },
-  {
-    id: 4,
-    time: "11:00 - 12:00",
-    name: "Lịch hẹn 2",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "2/12/2021",
-    status: 1,
-  },
-  {
-    id: 5,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "3/12/2021",
-    status: 3,
-  },
-  {
-    id: 6,
-    time: "11:00 - 12:00",
-    name: "Lịch hẹn 2",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "3/12/2021",
-    status: 2,
-  },
-  {
-    id: 7,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "3/12/2021",
-    status: 3,
-  },
-  {
-    id: 8,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "3/12/2021",
-    status: 1,
-  },
-  {
-    id: 9,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "4/12/2021",
-    status: 2,
-  },
-  {
-    id: 10,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "4/12/2021",
-    status: 3,
-  },
-  {
-    id: 11,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "6/12/2021",
-    status: 2,
-  },
-  {
-    id: 12,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "31/12/2021",
-    status: 3,
-  },
-  {
-    id: 13,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "30/12/2021",
-    status: 3,
-  },
-  {
-    id: 14,
-    time: "12:00 - 13:00",
-    name: "Lịch hẹn 3",
-    addSpa: "163 Trần Quang Khải, P. Tân Định, Q.1",
-    date: "7/12/2021",
-    status: 3,
-  },
-];
 export default function HomeLoggedCalendar() {
   const [datingList, setdatingList] = useState([]);
   const [dotAppoint, setdotAppoint] = useState([]);
-  const { t } = useContext(AppContext)
-  const weekDays = [t('Home.mo'), t('Home.tu'), t('Home.we'), t('Home.th'), t('Home.fr'), t('Home.sa'), t('Home.su')];
+  const [appoiment, setAppoiment] = useState<Appointment[]>([]);
+
+  const { t } = useContext(AppContext);
+  const weekDays = [
+    t("Home.mo"),
+    t("Home.tu"),
+    t("Home.we"),
+    t("Home.th"),
+    t("Home.fr"),
+    t("Home.sa"),
+    t("Home.su"),
+  ];
 
   // dayjs(year-mouth-day) -> tạo ra 1 ngày (format of dayjs)
-  const [dayObj, setDayObj] = useState(dayjs()); // lấy time hiện tại (year-mouth-day,...)
+  // lấy time hiện tại (year-mouth-day,...)
+  const [dayObj, setDayObj] = useState(dayjs());
   let thisYear = dayObj.year();
-  let thisMonth = dayObj.month(); // (tháng 1 -> 0, tháng 12 -> 11)
-  let daysInMonth = dayObj.daysInMonth(); // lấy số ngày trong tháng hiện tại (VD: T1: 31days T2: 28days)
-  let dayObjOfFirstMonth = dayjs(`${thisYear}-${thisMonth + 1}-1`); // lấy ngày đầu tiên của tháng curr (format of dayjs)
-  let weekDayOfFirst = dayObjOfFirstMonth.day(); // lấy thứ của ngày đầu tiên của tháng (Sunday -> 0, Saturday -> 6)
-  let dayObjOfLastMonth = dayjs(`${thisYear}-${thisMonth + 1}-${daysInMonth}`); // ngày cuối cùng của tháng curr
-  let weekDayOfLast = dayObjOfLastMonth.day(); // thứ của ngày cuối cùng của tháng
+  // (tháng 1 -> [0], tháng 12 -> [11])
+  let thisMonth = dayObj.month();
+  // lấy số ngày trong tháng hiện tại (VD: T1: 31days T2: 28days)
+  let daysInMonth = dayObj.daysInMonth();
+  // lấy ngày đầu tiên của tháng hiện tại (format of dayjs)
+  let dayObjOfFirstMonth = dayjs(`${thisYear}-${thisMonth + 1}-1`);
+  // lấy thứ của ngày đầu tiên của tháng (Sunday -> 0, Saturday -> 6)
+  let weekDayOfFirst = dayObjOfFirstMonth.day();
+  // lấy ngày cuối cùng của tháng hiện tại
+  let dayObjOfLastMonth = dayjs(`${thisYear}-${thisMonth + 1}-${daysInMonth}`);
+  // lấy thứ của ngày cuối cùng của tháng
+  let weekDayOfLast = dayObjOfLastMonth.day();
+
+  useEffect(() => {
+    async function handleGetAppoint() {
+      try {
+        const res = await apointmentApi.getAppoitment();
+        // console.log("res", res?.data.context.data);
+        setAppoiment(res?.data.context.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    handleGetAppoint();
+  }, []);
+
+  const dataAppoint: any = [];
+  for (var item of appoiment) {
+    const dateTimeStartString = item.time_start.split(" ");
+    const dateTimeEndString = item.time_end.split(" ");
+    const date = dateTimeStartString[0].split("-").reverse().join("/");
+    const timeStart = dateTimeStartString[1].slice(0, 5);
+    const timeEnd = dateTimeEndString[1].slice(0, 5);
+    const app = {
+      id: item.id,
+      date: date,
+      org_id: item.organization_id,
+      branch_id: item.branch_id,
+      status: item.status,
+      note: item.note,
+      time_start: timeStart,
+      time_end: timeEnd,
+    };
+    dataAppoint.push(app);
+  }
+  // console.log("dataAppoint", dataAppoint);
 
   const handlePrev = () => {
     setDayObj(dayObj.subtract(1, "month"));
@@ -146,12 +84,13 @@ export default function HomeLoggedCalendar() {
   const handleNext = () => {
     setDayObj(dayObj.add(1, "month"));
   };
-  // hander pick active 2 calendar
+  // hander pick active calendar
   const [datepick, setdatepick] = useState({
     date: todayObj.date(),
     month: todayObj.month(),
     year: todayObj.year(),
   });
+
   function handleGetDate(date: any, thisMonth: any, thisYear: any) {
     setdatepick({
       date: date + 1,
@@ -172,9 +111,9 @@ export default function HomeLoggedCalendar() {
       newdate = date + 1;
     }
     let newmonth = thisMonth + 1;
-    const firstDateOfWeek = selectedDay.startOf("week").date();
-    const lastDateOfWeek = selectedDay.endOf("week").date();
-    console.log(firstDateOfWeek, lastDateOfWeek);
+    // const firstDateOfWeek = selectedDay.startOf("week").date();
+    // const lastDateOfWeek = selectedDay.endOf("week").date();
+    // console.log(firstDateOfWeek, lastDateOfWeek);
 
     // const datesInSameWeek = (parts: any) => {
     //   if (firstDateOfWeek < lastDateOfWeek) {
@@ -196,7 +135,7 @@ export default function HomeLoggedCalendar() {
     //   }
     // };
 
-    const dateList: any = dataCalendar.filter((data) => {
+    const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
       return (
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
@@ -206,10 +145,11 @@ export default function HomeLoggedCalendar() {
     setdatingList(dateList);
   }
 
-  function handleAppointDot() {
+  // hiển thị status ở calendar
+  async function handleAppointDot() {
     let appointList: any = [];
     // eslint-disable-next-line array-callback-return
-    dataCalendar.map((date) => {
+    await dataAppoint.map((date: any) => {
       let objIndex = appointList.findIndex((obj: any) => {
         // eslint-disable-next-line eqeqeq
         if (obj.date == date.date && obj.status == date.status) {
@@ -229,33 +169,42 @@ export default function HomeLoggedCalendar() {
     // console.log("appointList", appointList);
     setdotAppoint(appointList);
   }
+  // lấy ngày tháng năm hiện tại
   const selectedDay = dayjs(
     `${datepick.year}-${datepick.month + 1}-${datepick.date}`
   );
 
-  // lấy ngày đầu tuần trong tuần
+  // lấy ngày đầu tiên trong tuần
   const getFirstDayOfW = (selectedDay: any) => {
-    // t2 là 0 , chủ nhật là 6
+    // T2 -> [0] , CN -> [6]
     // console.log(`(T2 -> 0, CN -> 6) `, selectedDay);
-
     if (selectedDay.startOf("week").month() !== selectedDay.month()) {
+      console.log(
+        "đầu tuần của tuần đầu trong tháng",
+        selectedDay.startOf("month").startOf("week").date()
+      );
       return selectedDay.startOf("month");
     }
-    // console.log(`đầu tuần`, selectedDay.startOf("week").date());
+    console.log(`đầu tuần`, selectedDay.startOf("week").date());
     return selectedDay.startOf("week");
   };
 
-  // lấy ngày cuối tuần trong tuần
+  // lấy ngày cuối cùng trong tuần
   const getLastDayOfW = (selectedDay: any) => {
     if (selectedDay.day() === 6) {
+      console.log("click ngày cuối tuần", selectedDay.endOf("week").date());
       return selectedDay;
     }
     if (
       selectedDay.endOf("week").add(1, "day").month() !== selectedDay.month()
     ) {
+      console.log(
+        "cuối tuần của tuần cuối trong tháng",
+        selectedDay.endOf("month").date()
+      );
       return selectedDay.endOf("month");
     }
-    // console.log(`cuối tuần`, selectedDay.endOf("week").date());
+    console.log(`cuối tuần`, selectedDay.endOf("week").date());
     return selectedDay.endOf("week");
   };
 
@@ -268,18 +217,18 @@ export default function HomeLoggedCalendar() {
   };
 
   useEffect(() => {
-    if (dataCalendar[0].id) {
+    if (dataAppoint[0]?.id) {
       let today = todayObj.date();
       handleAppoint(today, thisMonth, thisYear, true);
       handleAppointDot();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appoiment]);
   return (
     <div className="homelogged-calendar">
       <Container>
         <div className="homelogged-calendar__content">
-          <SectionTitle title={t('Home.my_appointment')} textAlign="left" />
+          <SectionTitle title={t("Home.my_appointment")} textAlign="left" />
           <div className="homelogged-calendar__wrap">
             <div className="homelogged-calendar__left">
               <div className="calendar-choosedate">

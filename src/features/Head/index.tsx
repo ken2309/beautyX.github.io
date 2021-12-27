@@ -12,7 +12,7 @@ import Menu from './components/Menu';
 import SectionTitle from '../SectionTitle';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotal } from '../../redux/cartSlice';
-import MbMenu from '../../featuresMobile/Menu'
+import MbMenu from '../../featuresMobile/Menu';
 
 function Head(props: any) {
       const { t, profile, userInfo } = useContext(AppContext)
@@ -75,7 +75,7 @@ function Head(props: any) {
                                                 :
                                                 <img
                                                       onClick={() => history.push('/')}
-                                                      src={icon.Logo}
+                                                      src={img.beautyX}
                                                       alt=""
                                                 />
                                     }

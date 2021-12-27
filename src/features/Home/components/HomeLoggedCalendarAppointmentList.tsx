@@ -12,14 +12,8 @@ export default function HomeLoggedCalendarAppointmentList(
     return (
       <div key={index} className="calendar-appointment__list">
         {item &&
-          item.map((date: any, i: number) => (
-            <HomeLoggedCalendarAppointmentItem
-              key={i}
-              time={date.time}
-              name={date.name}
-              addSpa={date.addSpa}
-              status={date.status}
-            />
+          item.map((item: any, i: number) => (
+            <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
           ))}
       </div>
     );
