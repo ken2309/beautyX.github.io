@@ -1,0 +1,34 @@
+import React from 'react';
+import './BackButton.css';
+import icon from '../../constants/icon';
+import { Container } from '@mui/material';
+import { useHistory } from 'react-router-dom'
+
+function BackButton(props: any) {
+      const history = useHistory();
+      const { setOpenFilter } = props;
+      const backClick = () => {
+            if (setOpenFilter) {
+                  setOpenFilter(false)
+            } else {
+                  history.goBack()
+            }
+      }
+      return (
+            <div className='cus-back'>
+                  <Container>
+                        <button onClick={backClick} className="cus-back__btn">
+                              <img src={icon.chevronLeft} alt="" />
+                              {
+                                    document.body.offsetWidth < 767 ?
+                                          ''
+                                          :
+                                          'Trở lại'
+                              }
+                        </button>
+                  </Container>
+            </div>
+      );
+}
+
+export default BackButton;

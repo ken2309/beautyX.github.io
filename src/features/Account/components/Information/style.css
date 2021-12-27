@@ -1,0 +1,179 @@
+.info_section {
+  padding: 0 36px;
+  padding-bottom: 24px;
+}
+.dialog-forgot__password .forgot-pass {
+  margin-top: 16px;
+  text-align: right;
+  width: 100%;
+}
+.dialog-forgot__password .forgot-pass span {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 12px;
+  color: #7161ba;
+  cursor: pointer;
+}
+.info p {
+  text-align: center;
+}
+.title_section:not(:first-child) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title_section .title {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 28px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.title_section .subtitle {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+.display_section {
+  width: calc(100% - 380px);
+}
+.title_section {
+  padding-bottom: 16px;
+}
+/* form */
+.form-account {
+  padding-top: 24px;
+}
+.form-account__wraper {
+  display: flex;
+  gap: 0 36px;
+}
+.form-account__wraper:nth-child(2) {
+  padding: 16px 0 30px 0;
+}
+.form-account__wrapinput {
+  box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+  padding: 8px 16px;
+}
+.form-account__label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--purple);
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-account__input {
+  border: 0;
+  width: 100%;
+  background-color: transparent;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+}
+.form-account__input::placeholder {
+  color: "#A2A1AB";
+}
+.dateofbirth-list {
+  display: flex;
+  gap: 0 8px;
+}
+.dateofbirth-item {
+  padding: 8px 16px 8px 16px;
+  background-color: var(--bg-color);
+  border-radius: 22px;
+  cursor: pointer;
+  width: 100%;
+}
+.dateofbirth__item__wrap {
+  display: flex;
+  justify-content: center;
+  gap: 0 8px;
+}
+.dateofbirth__item__wrap span {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--purple);
+}
+.form-account__sex .MuiFormControlLabel-label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+  font-family: Quicksand;
+}
+.form-account__sex .MuiFormControl-root {
+  margin-top: -4px;
+}
+.form-account__sex .MuiFormControlLabel-root {
+  margin-left: -11px !important;
+}
+.form-account__sex .MuiFormControlLabel-root:not(:last-child) {
+  margin-right: 16px !important;
+}
+.delete-address {
+  display: flex;
+  gap: 0 8px;
+}
+.delete-address img {
+  cursor: pointer;
+}
+.delete-address span {
+  padding: 4px 8px;
+  background-color: var(--bg-color);
+  color: #d2d0d9;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.btn-success {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .form-account__wraper {
+    flex-direction: column;
+    gap: 6px 0;
+  }
+
+  .form-account__wraper:nth-child(2) {
+    padding: 0;
+  }
+  .title_section:not(:first-child) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 8px;
+    gap: 8px 0;
+  }
+  .info_section {
+    padding-bottom: 0;
+  }
+  .btn-success {
+    margin-top: 8px;
+  }
+  .info_section {
+    padding-right: 20px;
+  }
+}
