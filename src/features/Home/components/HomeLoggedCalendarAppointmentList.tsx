@@ -8,7 +8,6 @@ export default function HomeLoggedCalendarAppointmentList(
   props: IAppointmentList
 ) {
   const { datingList } = props;
-
   const getStartTimeAndId = () => {
     const result: any = [];
     datingList.forEach((dating: any) => {
@@ -54,14 +53,27 @@ export default function HomeLoggedCalendarAppointmentList(
   console.log("datingList", datingList);
   console.log("sortedDatingList", sortedDatingList);
 
-  return datingList.map((item: any, index: number) => {
-    return (
-      <div key={index} className="calendar-appointment__list">
-        {item &&
-          item.map((item: any, i: number) => (
-            <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
-          ))}
-      </div>
-    );
-  });
+  return (
+    <>
+      {sortedDatingList.map((item: any, index: any) => (
+        <div key={index} className="calendar-appointment__list">
+          {item &&
+            item.map((item: any, i: number) => (
+              <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
+            ))}
+        </div>
+      ))}
+    </>
+  );
+
+  // return datingList.map((item: any, index: number) => {
+  //   return (
+  //     <div key={index} className="calendar-appointment__list">
+  //       {item &&
+  //         item.map((item: any, i: number) => (
+  //           <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
+  //         ))}
+  //     </div>
+  //   );
+  // });
 }
