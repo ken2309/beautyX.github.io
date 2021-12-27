@@ -15,7 +15,7 @@ export default function HomeLoggedCalendar() {
   const [datingList, setdatingList] = useState([]);
   const [dotAppoint, setdotAppoint] = useState([]);
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
-
+  console.log(`appoiment`, appoiment);
   const { t } = useContext(AppContext);
   const weekDays = [
     t("Home.mo"),
@@ -63,7 +63,9 @@ export default function HomeLoggedCalendar() {
     const dateTimeEndString = item.time_end.split(" ");
     const date = dateTimeStartString[0].split("-").reverse().join("/");
     const timeStart = dateTimeStartString[1].slice(0, 5);
+    // console.log(`timeStart`, timeStart);
     const timeEnd = dateTimeEndString[1].slice(0, 5);
+
     const app = {
       id: item.id,
       date: date,
@@ -76,7 +78,8 @@ export default function HomeLoggedCalendar() {
     };
     dataAppoint.push(app);
   }
-  // console.log("dataAppoint", dataAppoint);
+
+  console.log("dataAppoint", dataAppoint);
 
   const handlePrev = () => {
     setDayObj(dayObj.subtract(1, "month"));
@@ -99,6 +102,7 @@ export default function HomeLoggedCalendar() {
     });
     handleAppoint(date, thisMonth, thisYear, false);
   }
+
   // hander Appoint
   function handleAppoint(
     date: any,
@@ -141,7 +145,7 @@ export default function HomeLoggedCalendar() {
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });
-
+    // console.log(dateList);
     setdatingList(dateList);
   }
 
@@ -166,7 +170,6 @@ export default function HomeLoggedCalendar() {
       } else
         appointList.push({ date: date.date, count: 1, status: date.status });
     });
-    // console.log("appointList", appointList);
     setdotAppoint(appointList);
   }
   // lấy ngày tháng năm hiện tại
@@ -179,32 +182,32 @@ export default function HomeLoggedCalendar() {
     // T2 -> [0] , CN -> [6]
     // console.log(`(T2 -> 0, CN -> 6) `, selectedDay);
     if (selectedDay.startOf("week").month() !== selectedDay.month()) {
-      console.log(
-        "đầu tuần của tuần đầu trong tháng",
-        selectedDay.startOf("month").startOf("week").date()
-      );
+      // console.log(
+      //   "đầu tuần của tuần đầu trong tháng",
+      //   selectedDay.startOf("month").startOf("week").date()
+      // );
       return selectedDay.startOf("month");
     }
-    console.log(`đầu tuần`, selectedDay.startOf("week").date());
+    // console.log(`đầu tuần`, selectedDay.startOf("week").date());
     return selectedDay.startOf("week");
   };
 
   // lấy ngày cuối cùng trong tuần
   const getLastDayOfW = (selectedDay: any) => {
     if (selectedDay.day() === 6) {
-      console.log("click ngày cuối tuần", selectedDay.endOf("week").date());
+      // console.log("click ngày cuối tuần", selectedDay.endOf("week").date());
       return selectedDay;
     }
     if (
       selectedDay.endOf("week").add(1, "day").month() !== selectedDay.month()
     ) {
-      console.log(
-        "cuối tuần của tuần cuối trong tháng",
-        selectedDay.endOf("month").date()
-      );
+      // console.log(
+      //   "cuối tuần của tuần cuối trong tháng",
+      //   selectedDay.endOf("month").date()
+      // );
       return selectedDay.endOf("month");
     }
-    console.log(`cuối tuần`, selectedDay.endOf("week").date());
+    // console.log(`cuối tuần`, selectedDay.endOf("week").date());
     return selectedDay.endOf("week");
   };
 

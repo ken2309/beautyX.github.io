@@ -7,7 +7,6 @@ class ProductApi {
     return axiosClient.get(url);
   };
   getByOrgId_cateId = (params: any) => {
-    console.log(params);
     const url =
       `/organizations/${params.org_id}` +
       `/products?page=${params.page}` +

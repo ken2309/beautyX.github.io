@@ -22,7 +22,6 @@ function ServiceDetail(props: any) {
       const [loading, setLoading] = useState(false);
       // const url = location.search.slice(1, location.search.length);
       // const param = JSON.parse(decodeURI(url))
-      // console.log(param);
       useEffect(() => {
             async function handleGetOrgById() {
                   setLoading(true)

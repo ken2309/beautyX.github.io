@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { Container } from '@mui/material';
-import formatPrice from '../../../utils/formatPrice';
-import ButtonCus from '../../../components/ButtonCus';
-import PopupSuccess from '../../PopupSuccess/index';
-import { AppContext } from '../../../context/AppProvider';
-//import {useHistory} from 'react-router-dom'
+import React, { useContext, useState } from "react";
+import { Container } from "@mui/material";
+import formatPrice from "../../../utils/formatPrice";
+import ButtonCus from "../../../components/ButtonCus";
+import PopupSuccess from "../../PopupSuccess/index";
+import { AppContext } from "../../../context/AppProvider";
 
 interface ItemOrder {
   id: number;

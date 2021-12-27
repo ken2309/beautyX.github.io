@@ -24,7 +24,6 @@ function SignInUp(props: any) {
     setActiveTabSign,
     useForSignRes,
   } = props;
-  console.log(`useForSignRes`, useForSignRes);
   const { t } = useContext(AppContext);
   const buttons = [
     { id: 1, title: t("Home.Sign_in") },

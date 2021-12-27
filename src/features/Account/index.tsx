@@ -1,6 +1,6 @@
 import { RouteComponentProps } from "@reach/router";
-import { BrowserRouter, Switch, Redirect } from "react-router-dom";
-import CheckNoti from "./components/CheckNotification";
+import {  Switch } from "react-router-dom";
+// import CheckNoti from "./components/CheckNotification";
 import PaymentMethod from "./components/PaymentMethod/index";
 import Information from "./components/Information/index";
 import Head from "../Head/index";

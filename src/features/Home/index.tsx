@@ -29,7 +29,6 @@ function Home(props: any) {
   // }, [dispatch])
 
   // const org = useSelector(getAllOrg);
-  // console.log(org);
 
   return (
     <div className="home">
