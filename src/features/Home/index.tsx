@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./Home.css";
+import "./home.css";
 import "../poupSignInUp/popupSignInUp.css";
 import { Container } from "@mui/material";
 import HomeBanner from "./components/HomeBanner";

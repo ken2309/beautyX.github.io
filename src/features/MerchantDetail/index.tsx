@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Head from "../Head/index";
-import "./MerchantDetail.css";
+import "./merchantDetail.css";
 import { Container } from "@mui/material";
 import DetailHead from "./components/DetailHead";
 import DetailMer from "./components/DetailMer";
@@ -18,6 +18,8 @@ import DetailTab from "./components/DetailTab";
 import DetailTabMb from "../../featuresMobile/DetailTabMb";
 import MerchantMb from "../../featuresMobile/MerchantMb";
 import Bottom from "../../featuresMobile/Bottom";
+// view for mobile
+import RecommendList from "../../featuresMobile/RecomendList";
 
 const id_tab = 1;
 function MerchantDetail(props: any) {
@@ -80,6 +82,11 @@ function MerchantDetail(props: any) {
             {/* ---------- */}
             <DetailBranchList branches={branches} />
             <DetailSaleList t={t} merDetail={org} />
+            {/* for mobile */}
+            <RecommendList
+              org={org}
+            />
+            {/* ----- */}
           </div>
           <ServiceByMerchant activeTab={activeTab} mer_id={mer_id} org={org} />
           <ProductByMerchant mer_id={mer_id} activeTab={activeTab} org={org} />

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import './Bottom.css';
+import './bottom.css';
 import icon from '../../constants/icon';
 import {useHistory} from 'react-router-dom';
 import SearchFilter from '../SearchResult/SearchFilter';

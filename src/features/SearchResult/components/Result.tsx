@@ -1,7 +1,7 @@
 import React from "react";
 import HomeFilter from "../../Home/components/HomeFilter";
 import icon from "../../../constants/icon";
-import "../../Home/Home.css";
+import "../../Home/home.css";
 import { Pagination } from "@mui/material";
 //import Loading from '../loading/Loading';
 import SearchLoading from "../../Loading/SearchLoading";

@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
 import PopupNoti from "./PopupNoti";
-import auth from '../../../api/authApi'
+import auth from "../../../api/authApi";
 
 function SignIn(props: any) {
   const { t, setSign } = useContext(AppContext);
@@ -35,15 +35,16 @@ function SignIn(props: any) {
       history.push("/");
       setLoading(false);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       const err = error as AxiosError;
+      // console.log(err.response);
       switch (err.response?.status) {
         case 401:
           return setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
         case 404:
-          return setPopup(true)
+          return setPopup(true);
         default:
-          break
+          break;
       }
     }
   }
@@ -52,32 +53,6 @@ function SignIn(props: any) {
     setDisplay_email(values.email);
     submitLogin(values);
   };
-
-  // mở popup forgot
-  // const handleClickOpenForgotPass = () => {
-  //   setOpenForgotPass(true);
-  // };
-  // mở popup veri code
-  // const handleClickOpenVerification = () => {
-  //   setOpenVerification(true);
-  // };
-  // mở popup New Pass
-  // const handleClickOpenNewPass = () => {
-  //   setOpenNewPass(true);
-  // };
-
-  // đóng popup forgot
-  // const handleCloseForgotPass = () => {
-  //   setOpenForgotPass(false);
-  // };
-  // đóng popup veri code
-  // const handleCloseVerification = () => {
-  //   setOpenVerification(false);
-  // };
-  // đóng popup New Pass
-  // const handleCloseNewPass = () => {
-  //   setOpenNewPass(false);
-  // };
 
   const formik = useFormik({
     initialValues: {

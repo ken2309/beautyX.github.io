@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import NotificationNav from './components/NotificationNav';
 import NotificationContent from './components/NotificationContent';
 import { Container } from '@mui/material';
-import './Notification.css';
+import './notification.css';
 import notifications from '../../data/listNotifications'
 
 interface Noti {

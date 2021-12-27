@@ -33,13 +33,13 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
     daysInWeek,
   } = props;
   const weekDays = [
-    t('Home.Monday'),
-    t('Home.Tuesday'),
-    t('Home.Wednesday'),
-    t('Home.Thursday'),
-    t('Home.Friday'),
-    t('Home.Saturday'),
-    t('Home.Sunday')
+    t("Home.Monday"),
+    t("Home.Tuesday"),
+    t("Home.Wednesday"),
+    t("Home.Thursday"),
+    t("Home.Friday"),
+    t("Home.Saturday"),
+    t("Home.Sunday"),
   ];
 
   return (

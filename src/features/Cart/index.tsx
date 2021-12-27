@@ -9,7 +9,7 @@ import CartNull from './components/CartNull';
 import { useSelector, useDispatch } from 'react-redux';
 import { unCheck } from '../../redux/cartSlice';
 import scrollTop from '../../utils/scrollTop'
-import './Cart.css'
+import './cart.css'
 import { AppContext } from '../../context/AppProvider';
 
 interface Org {

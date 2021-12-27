@@ -1,5 +1,5 @@
 import React from 'react';
-import './Loading.css';
+import './loading.css';
 import {CircularProgress} from '@mui/material';
 import {makeStyles} from '@mui/styles'
 

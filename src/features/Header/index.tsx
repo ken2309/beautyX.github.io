@@ -63,12 +63,6 @@ function Header(props: any) {
                   history.push('/Partner');
             }
       }
-<<<<<<< HEAD
-      const gotoCart = () => {
-            history.push('/Cart');
-      }
-=======
->>>>>>> 05d5eb03fab0b3c40adb4bead0f5e89ec9ef4b81
       const openLangClick = () => {
             if (openLang === true) {
                   setOpentLang(false)
@@ -80,14 +74,10 @@ function Header(props: any) {
                   setOpentLang(true)
             }
       }
-<<<<<<< HEAD
-
-=======
       const gotoCart = () =>{
             history.push('/Cart');
       }
       
->>>>>>> 05d5eb03fab0b3c40adb4bead0f5e89ec9ef4b81
       useEffect(() => {
             const checkIfClickedOutside = (e: any) => {
                   if (

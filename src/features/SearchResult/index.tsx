@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./SearchResult.css";
+import "./searchResult.css";
 import { useLocation } from "react-router-dom";
 import Result from "./components/Result";
 import MapWrapper from "./components/MapWrapper";
