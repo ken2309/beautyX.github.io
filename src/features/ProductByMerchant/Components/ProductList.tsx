@@ -125,6 +125,7 @@ function ProductList(props: any) {
                   retail_price={item.retail_price}
                   special_price={item.special_price}
                   style={cardStyle}
+                  is_type={1}
                 />
               </li>
             ))

@@ -129,6 +129,7 @@ function ServiceList(props: any) {
                   special_price={item.special_price}
                   detail={item}
                   style={cardStyle}
+                  is_type={2}
                 />
               </li>
             ))
