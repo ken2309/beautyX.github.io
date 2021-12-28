@@ -30,6 +30,7 @@
   line-height: 20px;
   font-weight: 700;
   color: var(--purple);
+  text-transform: capitalize;
 }
 
 .hd-cnt__right-avatar {
@@ -265,8 +266,14 @@
     flex-direction: row-reverse;
     gap: 0 8px;
   }
+<<<<<<< Updated upstream
   .hd-cnt__right-user-name{
     color: var(--bgWhite);
+=======
+  .hd-cnt__right-user-name {
+    /* background-color: var(--bgWhite); */
+    color: white;
+>>>>>>> Stashed changes
   }
   .hd-cnt__right-cart {
     display: none;

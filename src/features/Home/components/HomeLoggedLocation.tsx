@@ -26,10 +26,10 @@ const dataLocation = [
   },
 ];
 export default function HomeLoggedLocation() {
-  const { t } = useContext(AppContext)
+  const { t } = useContext(AppContext);
   return (
     <div className="homelogged-location">
-      <SectionTitle title={t('Home.favorite_list')} textAlign="left" />
+      <SectionTitle title={t("Home.favorite_list")} textAlign="left" />
       <div className="homelogged-location__list">
         {dataLocation.map((item, i) => (
           <HomeLoggedLocationItem key={i} />
