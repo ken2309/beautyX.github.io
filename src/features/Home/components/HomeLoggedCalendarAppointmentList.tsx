@@ -8,11 +8,6 @@ export default function HomeLoggedCalendarAppointmentList(
   props: IAppointmentList
 ) {
   const { datingList } = props;
-<<<<<<< HEAD
-  console.log(datingList);
-
-=======
->>>>>>> Dev_Long
   const getStartTimeAndId = () => {
     const result: any = [];
     datingList.forEach((dating: any) => {
