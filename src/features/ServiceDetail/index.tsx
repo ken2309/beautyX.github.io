@@ -17,7 +17,7 @@ function ServiceDetail(props: any) {
       console.log(params);
       const is_type = parseInt(params[2])
       // console.log(is_type)
-      const [org, setOrg] = useState({})
+      const [org, setOrg] = useState<any>({})
       const [service, setService] = useState({});
       const [services, setServices] = useState<Service[]>([])
       const [loading, setLoading] = useState(false);

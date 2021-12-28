@@ -27,7 +27,7 @@ function MerchantDetail(props: any) {
   const location = useLocation();
   const mer_id = location.search.slice(1, location.search.length);
   const [loading, setLoading] = useState(false);
-  const [org, setOrg] = useState({});
+  const [org, setOrg] = useState<any>({});
   const [branches, setBranches] = useState([]);
   const [activeTab, setActiveTab] = useState(1);
   useEffect(() => {
