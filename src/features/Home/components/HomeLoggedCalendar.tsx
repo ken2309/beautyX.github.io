@@ -18,13 +18,13 @@ export default function HomeLoggedCalendar() {
   console.log(`appoiment`, appoiment);
   const { t } = useContext(AppContext);
   const weekDays = [
+    t("Home.su"),
     t("Home.mo"),
     t("Home.tu"),
     t("Home.we"),
     t("Home.th"),
     t("Home.fr"),
     t("Home.sa"),
-    t("Home.su"),
   ];
 
   // dayjs(year-mouth-day) -> tạo ra 1 ngày (format of dayjs)
@@ -115,9 +115,9 @@ export default function HomeLoggedCalendar() {
       newdate = date + 1;
     }
     let newmonth = thisMonth + 1;
-    // const firstDateOfWeek = selectedDay.startOf("week").date();
-    // const lastDateOfWeek = selectedDay.endOf("week").date();
-    // console.log(firstDateOfWeek, lastDateOfWeek);
+    const firstDateOfWeek = selectedDay.startOf("week").date();
+    const lastDateOfWeek = selectedDay.endOf("week").date();
+    console.log(firstDateOfWeek, lastDateOfWeek);
 
     // const datesInSameWeek = (parts: any) => {
     //   if (firstDateOfWeek < lastDateOfWeek) {

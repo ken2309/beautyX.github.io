@@ -33,13 +33,13 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
     daysInWeek,
   } = props;
   const weekDays = [
+    t("Home.Sunday"),
     t("Home.Monday"),
     t("Home.Tuesday"),
     t("Home.Wednesday"),
     t("Home.Thursday"),
     t("Home.Friday"),
     t("Home.Saturday"),
-    t("Home.Sunday"),
   ];
 
   return (
@@ -63,29 +63,30 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
               ))}
 
           {
-          // eslint-disable-next-line array-callback-return
-          range(daysInMonth).map((i) => {
-            if (
-              i >= dayObjOfFirstMonth.date() - 1 &&
-              i <= dayObjOfLastMonth.date() - 1
-            ) {
-              return (
-                <div
-                  onClick={() => handleGetDate(i, thisMonth, thisYear)}
-                  className={`week-day__right day-cell day-cell--in-month dot-active${
-                    i + 1 === datepick.date &&
-                    thisMonth === datepick.month &&
-                    thisYear === datepick.year
-                      ? " day-cell--today border-none week-day__right "
-                      : ""
-                  }`}
-                  key={i}
-                >
-                  {i + 1}
-                </div>
-              );
-            }
-          })}
+            // eslint-disable-next-line array-callback-return
+            range(daysInMonth).map((i) => {
+              if (
+                i >= dayObjOfFirstMonth.date() - 1 &&
+                i <= dayObjOfLastMonth.date() - 1
+              ) {
+                return (
+                  <div
+                    onClick={() => handleGetDate(i, thisMonth, thisYear)}
+                    className={`week-day__right day-cell day-cell--in-month dot-active${
+                      i + 1 === datepick.date &&
+                      thisMonth === datepick.month &&
+                      thisYear === datepick.year
+                        ? " day-cell--today border-none week-day__right "
+                        : ""
+                    }`}
+                    key={i}
+                  >
+                    {i + 1}
+                  </div>
+                );
+              }
+            })
+          }
 
           {dayObjOfFirstMonth.date() >= 26
             ? range(6 - weekDayOfLast).map((i) => (

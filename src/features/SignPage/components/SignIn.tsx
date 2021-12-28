@@ -29,6 +29,7 @@ function SignIn(props: any) {
   async function submitLogin(values: any) {
     try {
       const response = await auth.login(values);
+      console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);
@@ -37,7 +38,6 @@ function SignIn(props: any) {
     } catch (error) {
       setLoading(false);
       const err = error as AxiosError;
-      // console.log(err.response);
       switch (err.response?.status) {
         case 401:
           return setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
@@ -53,6 +53,32 @@ function SignIn(props: any) {
     setDisplay_email(values.email);
     submitLogin(values);
   };
+
+  // mở popup forgot
+  // const handleClickOpenForgotPass = () => {
+  //   setOpenForgotPass(true);
+  // };
+  // mở popup veri code
+  // const handleClickOpenVerification = () => {
+  //   setOpenVerification(true);
+  // };
+  // mở popup New Pass
+  // const handleClickOpenNewPass = () => {
+  //   setOpenNewPass(true);
+  // };
+
+  // đóng popup forgot
+  // const handleCloseForgotPass = () => {
+  //   setOpenForgotPass(false);
+  // };
+  // đóng popup veri code
+  // const handleCloseVerification = () => {
+  //   setOpenVerification(false);
+  // };
+  // đóng popup New Pass
+  // const handleCloseNewPass = () => {
+  //   setOpenNewPass(false);
+  // };
 
   const formik = useFormik({
     initialValues: {
