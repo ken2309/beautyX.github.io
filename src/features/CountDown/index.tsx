@@ -56,34 +56,38 @@ export default function CountDown() {
       clearInterval(interval.current);
     };
   });
-
+  const params = new URLSearchParams();
   const handleContact = (values: any) => {
-    const params = {
-      reg_name: `${values.name}`,
-      reg_email: `${values.gmail}`,
-      reg_phone: `${values.phone}`,
-      reg_business_name: "qwe",
-      reg_business_add: "asd",
+    // add data
+    params.append("reg_phone", `${values.phone}`);
+    params.append("reg_email", `${values.gmail}`);
+    params.append("reg_name", `${values.name}`);
+    params.append(
+      "reg_business_name",
+      "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý"
+    );
+    params.append(
+      "reg_business_add",
+      "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng"
+    );
+    // ---------
+
+    // config axios
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     };
-    // console.log("params :>> ", params);
-    // const data: any = {
-    //   reg_phone: "0583580050",
-    //   reg_email: "nguyenquangkhai2319@gmail.com",
-    //   reg_name: "Nguyễn Văn Toang",
-    //   reg_business_name: "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
-    //   reg_business_add: "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng",
-    // };
-    console.log("params :>> ", params);
-    const paramsString = JSON.stringify(params);
-    console.log(`paramsString`, paramsString);
+    // ---------
     axios
       .post(
         `https://stagingkdemo.000webhostapp.com/Frontend/register_beautyx`,
-        paramsString
+        params,
+        config
       )
       .then(function (response) {
-        console.log("response :>> ", response);
-        // handleCloseContact();
+        console.log("response :>> ", JSON.stringify(response));
+        handleCloseContact();
       })
       .catch(function (err) {
         console.log(`err`, err);

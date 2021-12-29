@@ -11,7 +11,7 @@ function App() {
     <div>
       <AppProvider>
         <RouterConfig />
-        {/* <CountDown /> */}
+        <CountDown />
         {/* <BlurModal /> */}
       </AppProvider>
     </div>
