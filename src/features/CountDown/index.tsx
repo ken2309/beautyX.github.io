@@ -58,37 +58,32 @@ export default function CountDown() {
   });
 
   const handleContact = (values: any) => {
-    // const params = {
-    //   "reg_name": `${values.name}`,
-    //   "reg_email": `${values.gmail}`,
-    //   "reg_phone": `${values.phone}`,
-    //   "reg_business_name": "qwe",
-    //   "reg_business_add": "asd"
-    // };
-    // console.log("params :>> ", params);
-    const data = {
-      "reg_phone": "0583580050",
-      "reg_email": "nguyenquangkhai2319@gmail.com",
-      "reg_name": "Nguyễn Văn Toang",
-      "reg_business_name": "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
-      "reg_business_add": "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng"
+    const params = {
+      reg_name: `${values.name}`,
+      reg_email: `${values.gmail}`,
+      reg_phone: `${values.phone}`,
+      reg_business_name: "qwe",
+      reg_business_add: "asd",
     };
-    console.log("params :>> ", typeof (data));
-    // const dataString = JSON.stringify(params);
+    // console.log("params :>> ", params);
+    // const data: any = {
+    //   reg_phone: "0583580050",
+    //   reg_email: "nguyenquangkhai2319@gmail.com",
+    //   reg_name: "Nguyễn Văn Toang",
+    //   reg_business_name: "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
+    //   reg_business_add: "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng",
+    // };
+    console.log("params :>> ", params);
+    const paramsString = JSON.stringify(params);
+    console.log(`paramsString`, paramsString);
     axios
       .post(
         `https://stagingkdemo.000webhostapp.com/Frontend/register_beautyx`,
-        {
-          "reg_phone": "0583580050",
-          "reg_email": "nguyenquangkhai2319@gmail.com",
-          "reg_name": "Nguyễn Văn Toang",
-          "reg_business_name": "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
-          "reg_business_add": "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng"
-        }
+        paramsString
       )
       .then(function (response) {
         console.log("response :>> ", response);
-        handleCloseContact();
+        // handleCloseContact();
       })
       .catch(function (err) {
         console.log(`err`, err);
