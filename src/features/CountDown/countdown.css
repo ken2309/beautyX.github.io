@@ -1,11 +1,26 @@
 .countdown {
   background: #4568dc;
-  background: -webkit-linear-gradient(to right, #b06ab3, #4568dc);
-  background: linear-gradient(to right, #b06ab3, #4568dc);
-  height: 100vh;
-  width: 100%;
   position: relative;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient gradient 10s ease infinite;
+  -moz-animation: gradient gradient 10s ease infinite;
+  height: 100vh;
 }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .countdown-title {
   font-style: normal;
   font-weight: bold;

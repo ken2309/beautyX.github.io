@@ -57,10 +57,19 @@ export default function CountDown() {
   });
   const formikContact = useFormik({
     initialValues: {
+      name: "",
       gmail: "",
       phone: "",
     },
     validationSchema: Yup.object({
+      name: Yup.string()
+        .min(2, "Tên lớn hơn 2 ký tự")
+        .max(32, "Tên nhỏ hơn 32 ký tự")
+        .required("Vui lòng nhập họ và tên")
+        .matches(
+          /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/,
+          "Tên không đúng định dạng"
+        ),
       gmail: Yup.string()
         .required("Vui lòng nhập Email")
         .matches(
@@ -135,7 +144,22 @@ export default function CountDown() {
 
           <div className="wrap-btn">
             <div className="sign-form__box">
-              <img className="sign-form__box-icon " src={icon.Lock} alt="" />
+              <img className="sign-form__box-icon " src={icon.User} alt="" />
+              <input
+                autoComplete="off"
+                value={formikContact.values.name}
+                onChange={formikContact.handleChange}
+                name="name"
+                id="name"
+                placeholder="Họ và tên"
+              />
+            </div>
+            {formikContact.errors.name && formikContact.touched.name && (
+              <p className="err-text">{formikContact.errors.name}</p>
+            )}
+
+            <div className="sign-form__box">
+              <img className="sign-form__box-icon " src={icon.Message} alt="" />
               <input
                 autoComplete="off"
                 value={formikContact.values.gmail}
@@ -150,7 +174,7 @@ export default function CountDown() {
             )}
 
             <div className="sign-form__box">
-              <img className="sign-form__box-icon " src={icon.Lock} alt="" />
+              <img className="sign-form__box-icon " src={icon.Phone} alt="" />
               <input
                 autoComplete="off"
                 value={formikContact.values.phone}
