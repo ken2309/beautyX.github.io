@@ -20,7 +20,7 @@ function ProductDetail(props: any) {
       const is_type = parseInt(params[2]);
       const [product, setProduct] = useState({});
       const [products, setProducts] = useState<Product[]>([])
-      const [org, setOrg] = useState({})
+      const [org, setOrg] = useState<any>({})
       const [loading, setLoading] = useState(false);
       const values = useMemo(() => ({
             org_id: params[0],
