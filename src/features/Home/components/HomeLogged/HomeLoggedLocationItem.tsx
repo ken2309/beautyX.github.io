@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "../../../constants/icon";
+import icon from "../../../../constants/icon";
 
 export default function HomeLoggedLocationItem() {
   const [openInfoLocation, setOpenInfoLocation] = React.useState(true);
