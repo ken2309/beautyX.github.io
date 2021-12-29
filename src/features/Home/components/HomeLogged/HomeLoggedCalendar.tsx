@@ -15,7 +15,9 @@ export default function HomeLoggedCalendar() {
   const [datingList, setdatingList] = useState([]);
   const [dotAppoint, setdotAppoint] = useState([]);
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
-  console.log(`appoiment`, appoiment);
+  const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
+  console.log("chooseMonth :>> ", chooseMonth);
+  // console.log(`appoiment`, appoiment);
   const { t } = useContext(AppContext);
   const weekDays = [
     t("Home.su"),
@@ -47,7 +49,7 @@ export default function HomeLoggedCalendar() {
   useEffect(() => {
     async function handleGetAppoint() {
       try {
-        const res = await apointmentApi.getAppoitment();
+        const res = await apointmentApi.getAppoitment(chooseMonth);
         // console.log("res", res?.data.context.data);
         setAppoiment(res?.data.context.data);
       } catch (error) {
@@ -55,7 +57,7 @@ export default function HomeLoggedCalendar() {
       }
     }
     handleGetAppoint();
-  }, []);
+  }, [chooseMonth]);
 
   const dataAppoint: any = [];
   for (var item of appoiment) {
@@ -63,7 +65,6 @@ export default function HomeLoggedCalendar() {
     const dateTimeEndString = item.time_end.split(" ");
     const date = dateTimeStartString[0].split("-").reverse().join("/");
     const timeStart = dateTimeStartString[1].slice(0, 5);
-    // console.log(`timeStart`, timeStart);
     const timeEnd = dateTimeEndString[1].slice(0, 5);
 
     const app = {
@@ -79,13 +80,15 @@ export default function HomeLoggedCalendar() {
     dataAppoint.push(app);
   }
 
-  console.log("dataAppoint", dataAppoint);
+  // console.log("dataAppoint", dataAppoint);
 
   const handlePrev = () => {
     setDayObj(dayObj.subtract(1, "month"));
+    setChooseMonth(dayObj.subtract(1, "month").format("YYYY-MM"));
   };
   const handleNext = () => {
     setDayObj(dayObj.add(1, "month"));
+    setChooseMonth(dayObj.add(1, "month").format("YYYY-MM"));
   };
   // hander pick active calendar
   const [datepick, setdatepick] = useState({
@@ -115,9 +118,10 @@ export default function HomeLoggedCalendar() {
       newdate = date + 1;
     }
     let newmonth = thisMonth + 1;
-    const firstDateOfWeek = selectedDay.startOf("week").date();
-    const lastDateOfWeek = selectedDay.endOf("week").date();
-    console.log(firstDateOfWeek, lastDateOfWeek);
+
+    // const firstDateOfWeek = selectedDay.startOf("week").date();
+    // const lastDateOfWeek = selectedDay.endOf("week").date();
+    // console.log(firstDateOfWeek, lastDateOfWeek);
 
     // const datesInSameWeek = (parts: any) => {
     //   if (firstDateOfWeek < lastDateOfWeek) {
@@ -149,7 +153,7 @@ export default function HomeLoggedCalendar() {
     setdatingList(dateList);
   }
 
-  // hiển thị status ở calendar
+  // hiển thị status ở calendar dựa api
   async function handleAppointDot() {
     let appointList: any = [];
     // eslint-disable-next-line array-callback-return

@@ -58,26 +58,33 @@ export default function CountDown() {
   });
 
   const handleContact = (values: any) => {
-    const params = {
-      reg_name: values.name,
-      reg_email: values.gmail,
-      reg_phone: values.phone,
-      reg_business_name: "qwe",
-      reg_business_add: "asd",
-    };
-    console.log("params :>> ", params);
-    // const data = {
-    //   reg_phone: "0583580050",
-    //   reg_email: "nguyenquangkhai2319@gmail.com",
-    //   reg_name: "Nguyễn Văn Toang",
-    //   reg_business_name: "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
-    //   reg_business_add: "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng",
+    // const params = {
+    //   "reg_name": `${values.name}`,
+    //   "reg_email": `${values.gmail}`,
+    //   "reg_phone": `${values.phone}`,
+    //   "reg_business_name": "qwe",
+    //   "reg_business_add": "asd"
     // };
-    const dataString = JSON.stringify(params);
+    // console.log("params :>> ", params);
+    const data = {
+      "reg_phone": "0583580050",
+      "reg_email": "nguyenquangkhai2319@gmail.com",
+      "reg_name": "Nguyễn Văn Toang",
+      "reg_business_name": "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
+      "reg_business_add": "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng"
+    };
+    console.log("params :>> ", typeof (data));
+    // const dataString = JSON.stringify(params);
     axios
       .post(
         `https://stagingkdemo.000webhostapp.com/Frontend/register_beautyx`,
-        dataString
+        {
+          "reg_phone": "0583580050",
+          "reg_email": "nguyenquangkhai2319@gmail.com",
+          "reg_name": "Nguyễn Văn Toang",
+          "reg_business_name": "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
+          "reg_business_add": "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng"
+        }
       )
       .then(function (response) {
         console.log("response :>> ", response);

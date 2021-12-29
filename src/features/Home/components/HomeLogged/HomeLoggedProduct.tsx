@@ -15,7 +15,7 @@ export default function HomeLoggedProduct() {
       // setLoading(true);
       try {
         const res = await orgProApi.getByOrgId({
-          org_id: 51,
+          org_id: 1,
         });
         setProducts(res.data.context.data);
         // setLoading(false);
