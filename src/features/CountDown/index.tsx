@@ -5,6 +5,7 @@ import icon from "../../constants/icon";
 import "./countdown.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 export default function CountDown() {
   const [popupContact, setPopupContact] = useState(false);
   const [countDown, setcountDown] = useState(true);
@@ -55,6 +56,37 @@ export default function CountDown() {
       clearInterval(interval.current);
     };
   });
+
+  const handleContact = (values: any) => {
+    const params = {
+      reg_name: values.name,
+      reg_email: values.gmail,
+      reg_phone: values.phone,
+      reg_business_name: "qwe",
+      reg_business_add: "asd",
+    };
+    console.log("params :>> ", params);
+    // const data = {
+    //   reg_phone: "0583580050",
+    //   reg_email: "nguyenquangkhai2319@gmail.com",
+    //   reg_name: "Nguyễn Văn Toang",
+    //   reg_business_name: "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý",
+    //   reg_business_add: "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng",
+    // };
+    const dataString = JSON.stringify(params);
+    axios
+      .post(
+        `https://stagingkdemo.000webhostapp.com/Frontend/register_beautyx`,
+        dataString
+      )
+      .then(function (response) {
+        console.log("response :>> ", response);
+        handleCloseContact();
+      })
+      .catch(function (err) {
+        console.log(`err`, err);
+      });
+  };
   const formikContact = useFormik({
     initialValues: {
       name: "",
@@ -86,13 +118,14 @@ export default function CountDown() {
           "Số điện thoại không đúng định dạng"
         ),
     }),
-    onSubmit: (values) => {
-      console.log("values :>> ", values);
-      handleCloseContact();
+    onSubmit: (values: any) => {
+      handleContact(values);
+      // handleCloseContact();
     },
   });
+
   return (
-    <>
+    <div>
       <Dialog fullScreen open={countDown}>
         <div className="countdown">
           <div className="wraper">
@@ -211,6 +244,6 @@ export default function CountDown() {
           </div>
         </div>
       </Dialog>
-    </>
+    </div>
   );
 }
