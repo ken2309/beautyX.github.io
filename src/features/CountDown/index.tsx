@@ -62,14 +62,8 @@ export default function CountDown() {
     params.append("reg_phone", `${values.phone}`);
     params.append("reg_email", `${values.gmail}`);
     params.append("reg_name", `${values.name}`);
-    params.append(
-      "reg_business_name",
-      "Tiệm Trà sữa Thực dưỡng và Kem Gelato Ý"
-    );
-    params.append(
-      "reg_business_add",
-      "01 Nguyễn Văn Linh, Nam Dương, Hải Châu, Đà Nẵng"
-    );
+    params.append("reg_business_name", `${values.business}`);
+    params.append("reg_business_add", `${values.address}`);
     // ---------
 
     // config axios
@@ -98,8 +92,12 @@ export default function CountDown() {
       name: "",
       gmail: "",
       phone: "",
+      address: "",
+      business: "",
     },
     validationSchema: Yup.object({
+      address: Yup.string().required("Vui lòng nhập địa chỉ"),
+      business: Yup.string().required("Vui lòng nhập loại kinh doanh"),
       name: Yup.string()
         .min(2, "Tên lớn hơn 2 ký tự")
         .max(32, "Tên nhỏ hơn 32 ký tự")
@@ -225,6 +223,41 @@ export default function CountDown() {
             </div>
             {formikContact.errors.phone && formikContact.touched.phone && (
               <p className="err-text">{formikContact.errors.phone}</p>
+            )}
+
+            <div className="sign-form__box">
+              <img className="sign-form__box-icon " src={icon.DeskAlt} alt="" />
+              <input
+                autoComplete="off"
+                value={formikContact.values.business}
+                onChange={formikContact.handleChange}
+                name="business"
+                id="business"
+                placeholder="Loại kinh doanh"
+              />
+            </div>
+            {formikContact.errors.business &&
+              formikContact.touched.business && (
+                <p className="err-text">{formikContact.errors.business}</p>
+              )}
+
+            <div className="sign-form__box">
+              <img
+                className="sign-form__box-icon "
+                src={icon.Location}
+                alt=""
+              />
+              <input
+                autoComplete="off"
+                value={formikContact.values.address}
+                onChange={formikContact.handleChange}
+                name="address"
+                id="address"
+                placeholder="Địa chỉ"
+              />
+            </div>
+            {formikContact.errors.address && formikContact.touched.address && (
+              <p className="err-text">{formikContact.errors.address}</p>
             )}
           </div>
 
