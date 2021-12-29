@@ -1,0 +1,104 @@
+.countdown {
+  background: #4568dc;
+  background: -webkit-linear-gradient(to right, #b06ab3, #4568dc);
+  background: linear-gradient(to right, #b06ab3, #4568dc);
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.countdown-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
+  text-align: center;
+  color: white;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.wraper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.countdown-desc {
+  color: white;
+  font-size: 16px;
+  line-height: 24px;
+}
+.countdown-list {
+  display: flex;
+  gap: 0 20px;
+  justify-content: center;
+}
+.countdown-item {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 36px 0;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.countdown-item span:nth-child(2) {
+  font-size: 8px;
+}
+.countdown-item span:nth-child(1) {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+  color: var(--text-black);
+}
+.countdown-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 20px;
+  padding: 4px 8px;
+  width: 200px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.form-contact {
+  padding: 36px;
+  background-color: var(--bg-gray);
+  text-align: center;
+}
+.form-contact .form-contact__title {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+.form-contact .form-contact__desc {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+.form-contact .wrap-btn:not(:nth-child(2)) {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.form-contact .err-text {
+  text-align: left;
+  margin: 0px 0 0 10px;
+}
+.sign-form__box {
+  margin: 8px 0;
+}
+@media screen and (max-width: 768px) {
+  .form-contact {
+    border-radius: 24px;
+  }
+}

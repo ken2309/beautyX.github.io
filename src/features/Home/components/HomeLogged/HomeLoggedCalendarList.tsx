@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
-import { AppContext } from "../../../context/AppProvider";
+import { AppContext } from "../../../../context/AppProvider";
 
 interface IHomeLoggedCalendarList {
   weekDays: any;

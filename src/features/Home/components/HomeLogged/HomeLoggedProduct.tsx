@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../../context/AppProvider";
-import SectionTitle from "../../SectionTitle/index";
+import { AppContext } from "../../../../context/AppProvider";
+import SectionTitle from "../../../SectionTitle/index";
 import HomeLoggedProductItem from "./HomeLoggedProductItem";
 import HomeLoggedProductSelector from "./HomeLoggedProductSelector";
-import orgProApi from "../../../api/productApi";
+import orgProApi from "../../../../api/productApi";
 
 export default function HomeLoggedProduct() {
   // const [loading, setLoading] = useState(false);

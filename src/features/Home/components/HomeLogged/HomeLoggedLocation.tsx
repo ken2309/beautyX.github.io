@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../../context/AppProvider";
-import SectionTitle from "../../SectionTitle/index";
+import { AppContext } from "../../../../context/AppProvider";
+import SectionTitle from "../../../SectionTitle/index";
 import HomeLoggedLocationItem from "./HomeLoggedLocationItem";
 
 const dataLocation = [

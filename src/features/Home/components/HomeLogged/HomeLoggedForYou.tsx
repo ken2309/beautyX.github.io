@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../../context/AppProvider";
-import SectionTitle from "../../SectionTitle";
+import { AppContext } from "../../../../context/AppProvider";
+import SectionTitle from "../../../SectionTitle";
 import HomeLoggedForYouItem from "./HomeLoggedForYouItem";
 import HomeLoggedForYouSelector from "./HomeLoggedForYouSelector";
-import orgProApi from "../../../api/productApi";
+import orgProApi from "../../../../api/productApi";
 
 // const dataProduct = [
 //   {

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import SectionTitle from "../../SectionTitle/index";
+import SectionTitle from "../../../SectionTitle/index";
 import dayjs from "dayjs";
 import HomeLoggedCalendarComponent from "./HomeLoggedCalendarComponent";
 import HomeLoggedCalendarChooseMonth from "./HomeLoggedCalendarChooseMonth";
 import HomeLoggedCalendarStatus from "./HomeLoggedCalendarStatus";
 import HomeLoggedCalendarList from "./HomeLoggedCalendarList";
 import { Container } from "@mui/material";
-import { AppContext } from "../../../context/AppProvider";
-import apointmentApi from "../../../api/apointmentApi";
-import { Appointment } from "../../../interface/appointment";
+import { AppContext } from "../../../../context/AppProvider";
+import apointmentApi from "../../../../api/apointmentApi";
+import { Appointment } from "../../../../interface/appointment";
 
 const todayObj = dayjs();
 export default function HomeLoggedCalendar() {
