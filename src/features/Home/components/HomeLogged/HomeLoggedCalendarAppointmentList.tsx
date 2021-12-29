@@ -8,8 +8,6 @@ export default function HomeLoggedCalendarAppointmentList(
   props: IAppointmentList
 ) {
   const { datingList } = props;
-  console.log(datingList);
-
   const getStartTimeAndId = () => {
     const result: any = [];
     datingList.forEach((dating: any) => {
@@ -56,50 +54,16 @@ export default function HomeLoggedCalendarAppointmentList(
   console.log("sortedDatingList", sortedDatingList);
   //console.log(sortedDatingList.flat());
 
-  // const array = sortedDatingList.flat();
-  // console.log(array);
-  // const arrPush: any[] = [];
-  // for(var item of array){
-  //   if(item){
-  //     arrPush.push(item)
-  //   }
-  // }
-  // console.log(arrPush)
-
-
-    // return (
-    //   <div className="calendar-appointment__list">
-    //     {arrPush &&
-    //       arrPush.map((item: any, i: number) => (
-    //         <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
-    //       ))}
-    //   </div>
-    // );
   return (
     <>
-      {
-        sortedDatingList.map((date: any, index: number) => (
-          <div key={index} className="calendar-appointment__list">
-            {
-              date &&
-              date.map((item: any, index: number) => (
-                <HomeLoggedCalendarAppointmentItem key={index} datingList={item} />
-              ))
-            }
-          </div>
-        ))
-      }
+      {sortedDatingList.map((item: any, index: any) => (
+        <div key={index} className="calendar-appointment__list">
+          {item &&
+            item.map((item: any, i: number) => (
+              <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
+            ))}
+        </div>
+      ))}
     </>
-  )
-
-  // return sortedDatingList.map((item: any, index: number) => {
-  //   return (
-  //     <div key={index} className="calendar-appointment__list">
-  //       {item &&
-  //         item.map((item: any, i: number) => (
-  //           <HomeLoggedCalendarAppointmentItem key={i} datingList={item} />
-  //         ))}
-  //     </div>
-  //   );
-  // });
+  );
 }

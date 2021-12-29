@@ -1,9 +1,9 @@
 import React from "react";
 import { partnerStyle } from "./style";
-import Head from "../Head";
 import Footer from "../Footer/index";
 import Information from "./components/Information";
 import FormPartner from "./components/FormPartner";
+import Head from "../Head";
 
 export default function Partner() {
   const parner = partnerStyle();

@@ -153,7 +153,7 @@
 }
 .result-item__detail-address {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .result-item__detail-address {
   margin: 8px 0;
@@ -164,9 +164,16 @@
   line-height: 20px;
   color: var(--text-black);
   cursor: pointer;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
 }
 .result-item__detail-address .time {
   color: var(--purple);
+  display: flex;
 }
 .result-item__detail-address .time .time__status {
   margin: 0px 4px;
@@ -294,7 +301,7 @@
   .result-item__thumbnail {
     width: 100%;
     border-radius: 24px 24px 0 0;
-    height: 168px;
+    height: 180px;
   }
   .result-item {
     height: unset;
@@ -305,7 +312,7 @@
     display: grid;
     height: unset;
     column-gap: 0px;
-    grid-auto-columns: 46%;
+    grid-auto-columns: 44%;
     grid-auto-flow: column;
     overflow-x: auto;
     margin: 0 0 0 -20px;
@@ -376,7 +383,10 @@
     padding: 0;
   }
   .result-content .org__service .org__service-item {
-    padding: 8px 16px;
+    padding: 4px 8px;
+  }
+  .result-content .org__service .org__service-item:hover {
+    background-color: var(--bg-color);
   }
   .result-content .org__service .org__service-item span {
     display: flex;
@@ -482,6 +492,7 @@
   .result-item__detail-address {
     align-items: flex-start;
   }
+
   .org__service {
     display: none;
   }

@@ -39,7 +39,11 @@ export default function HomeLoggedCalendarComponent(
     thisYear: any,
     dotAppoint: any
   ) => {
-    let newdate = [i + 1, thisMonth + 1, thisYear].join("/");
+    let newdate = [
+      i < 10 ? `0${i + 1}` : `${i + 1}`,
+      thisMonth + 1 < 10 ? `0${thisMonth + 1}` : `${thisMonth + 1}`,
+      `${thisYear}`,
+    ].join("/");
     const datesttArray = dotAppoint.filter((dot: any) => dot.date === newdate);
     return datesttArray;
   };
