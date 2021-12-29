@@ -100,7 +100,7 @@ function RouterConfig(props: any) {
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="beta" />
+        <Redirect exact from="/" to="Home" />
         {routes.map((item, index) => (
           <RouterPage
             key={index}
