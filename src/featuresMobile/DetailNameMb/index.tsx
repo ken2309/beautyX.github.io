@@ -10,26 +10,26 @@ function DetailNameMb(props: any) {
       const [open, setOpen] = useState(false)
       useEffect(() => {
             if (is_type === 1) {
-                  if (detail.special_price > 0) {
-                        setSale_price(detail.special_price)
-                        setOld_price(detail.retail_price)
+                  if (detail?.special_price > 0) {
+                        setSale_price(detail?.special_price)
+                        setOld_price(detail?.retail_price)
                   } else {
-                        setSale_price(detail.retail_price)
+                        setSale_price(detail?.retail_price)
                   }
             } else if (is_type === 2) {
-                  if (detail.special_price > 0) {
-                        setSale_price(detail.special_price)
-                        setOld_price(detail.price)
+                  if (detail?.special_price > 0) {
+                        setSale_price(detail?.special_price)
+                        setOld_price(detail?.price)
                   } else {
-                        setSale_price(detail.price)
+                        setSale_price(detail?.price)
                   }
             }
-      }, [is_type, detail.price, detail.retail_price, detail.special_price])
+      }, [is_type, detail?.price, detail?.retail_price, detail?.special_price])
       return (
             <>
                   <div className="detail-name-mb">
                         <div className="detail-name-mb__name">
-                              {detail.product_name ? detail.product_name : detail.service_name}
+                              {detail?.product_name ? detail?.product_name : detail?.service_name}
                         </div>
                         <div className="detail-name-mb__price">
                               <span

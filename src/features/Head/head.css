@@ -225,6 +225,7 @@
     padding: 20px 24px;
     background-color: var(--purple);
   }
+  
   .hd-logo {
     display: none;
   }
@@ -264,6 +265,9 @@
   }
   .mb-hd-cnt__right {
     display: block;
+  }
+  .hd-noti{
+    display: none;
   }
   .hd-cnt__right-user {
     flex-direction: row-reverse;

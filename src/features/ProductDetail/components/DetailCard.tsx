@@ -14,7 +14,7 @@ function DetailCard(props:any) {
       const { product, org, is_type, loading } = props;
       const { t } = useContext(AppContext);
       const popupTitle = `${t('pr.added')} 
-            "${product.product_name ? product.product_name : product.service_name}" 
+            "${product?.product_name ? product?.product_name : product?.service_name}" 
             ${t('pr.to_cart')}`
       const [old_price, setOld_price] = useState(0);
       const [sale_price, setSale_price] = useState(0);
@@ -23,22 +23,22 @@ function DetailCard(props:any) {
       const [popup, setPopup] = useState(false);
       useEffect(() => {
             if (is_type === 1) {
-                  if (product.special_price > 0) {
-                        setSale_price(product.special_price)
-                        setOld_price(product.retail_price)
+                  if (product?.special_price > 0) {
+                        setSale_price(product?.special_price)
+                        setOld_price(product?.retail_price)
                   } else {
-                        setSale_price(product.retail_price)
+                        setSale_price(product?.retail_price)
                   }
             } else if (is_type === 2) {
-                  if (product.special_price > 0) {
-                        setSale_price(product.special_price)
-                        setOld_price(product.price)
+                  if (product?.special_price > 0) {
+                        setSale_price(product?.special_price)
+                        setOld_price(product?.price)
                   } else {
-                        setSale_price(product.price)
+                        setSale_price(product?.price)
                   }
             }
             
-      }, [is_type, product.price, product.retail_price, product.special_price])
+      }, [is_type, product?.price, product?.retail_price, product?.special_price])
       const discount = Math.round(sale_price / old_price * 100);
       const [quantity, setQuantity] = useState(1)
       const handleDesc = () => {
@@ -48,11 +48,11 @@ function DetailCard(props:any) {
       }
       //add cart
       const values = {
-            id: product.id,
+            id: product?.id,
             org_id: org.id,
             org_name: org.name,
-            cart_id: parseInt(`${is_type}${org.id}${product.id}`), //is_type + org_id + id
-            name: product.product_name ? product.product_name : product.service_name,
+            cart_id: parseInt(`${is_type}${org.id}${product?.id}`), //is_type + org_id + id
+            name: product?.product_name ? product?.product_name : product?.service_name,
             quantity: quantity,
             is_type: is_type,
             isConfirm: false,

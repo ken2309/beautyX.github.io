@@ -9,16 +9,16 @@ import DetailHead from '../ProductDetail/components/DetailHead';
 import RecommendList from './components/RecommendList';
 import './serviceDetail.css';
 import {Service} from '../../interface/service'
+import HeadTitle from '../HeadTitle';
 
 function ServiceDetail(props: any) {
       const location = useLocation();
       const search = location.search.slice(1, location.search.length);
       const params = search.split(',');
-      console.log(params);
       const is_type = parseInt(params[2])
       // console.log(is_type)
-      const [org, setOrg] = useState({})
-      const [service, setService] = useState({});
+      const [org, setOrg] = useState<any>({})
+      const [service, setService] = useState<Service>();
       const [services, setServices] = useState<Service[]>([])
       const [loading, setLoading] = useState(false);
       // const url = location.search.slice(1, location.search.length);
@@ -57,7 +57,10 @@ function ServiceDetail(props: any) {
       }, [params[0]])
       return (
             <div className="product">
-                  <Head/>
+                  <HeadTitle
+                        title={service?.service_name ? service.service_name :'Loading...'}
+                  />
+                  <Head />
                   <Container>
                         <div className="product-cnt">
                               <DetailHead

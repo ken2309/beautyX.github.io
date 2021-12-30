@@ -9,17 +9,20 @@ import DetailBranchList from "./components/DetailBranchList";
 import DetailSaleList from "./components/DetailSaleList";
 import ServiceByMerchant from "../ServiceByMerchant/index";
 import ProductByMerchant from "../ProductByMerchant/index";
-import ComboByMerchant from "../ComboByMerchant/index";
+import ComboByMerchant from '../ComboByMerchant/index';
 import Footer from "../Footer";
 import orgApi from "../../api/organizationApi";
 import branchApi from "../../api/branchApi";
-import { AppContext } from "../../context/AppProvider";
+import { AppContext } from '../../context/AppProvider';
 import DetailTab from "./components/DetailTab";
 import DetailTabMb from "../../featuresMobile/DetailTabMb";
-import MerchantMb from "../../featuresMobile/MerchantMb";
+import MerchantMb from '../../featuresMobile/MerchantMb';
 import Bottom from "../../featuresMobile/Bottom";
+import HeadTitle from '../HeadTitle/index';
+import {Product} from '../../interface/product';
+import productApi from '../../api/productApi'
 // view for mobile
-import RecommendList from "../../featuresMobile/RecomendList";
+import RecommendList from '../../featuresMobile/RecomendList';
 
 const id_tab = 1;
 function MerchantDetail(props: any) {
@@ -27,8 +30,9 @@ function MerchantDetail(props: any) {
   const location = useLocation();
   const mer_id = location.search.slice(1, location.search.length);
   const [loading, setLoading] = useState(false);
-  const [org, setOrg] = useState({});
+  const [org, setOrg] = useState<any>({});
   const [branches, setBranches] = useState([]);
+  const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState(1);
   useEffect(() => {
     async function handleGetOrgById() {
@@ -53,10 +57,20 @@ function MerchantDetail(props: any) {
         }
       }
     }
+    async function handleGetProductSale(){
+      const res = await productApi.getByOrgId({
+        org_id: mer_id, page: 1
+      })
+      setProductsSale(res.data.context.data)
+    }
+    handleGetProductSale()
     handleGetOrgById();
   }, [location.state, mer_id]);
   return (
     <div className="mb-cnt">
+      <HeadTitle
+        title={org.name ? org.name : 'Loading...'}
+      />
       <Head />
       <DetailHead
         t={t}
@@ -81,9 +95,10 @@ function MerchantDetail(props: any) {
             <MerchantMb branches={branches} />
             {/* ---------- */}
             <DetailBranchList branches={branches} />
-            <DetailSaleList t={t} merDetail={org} />
+            <DetailSaleList productsSale={productsSale} t={t} merDetail={org} />
             {/* for mobile */}
             <RecommendList
+              productsSale={productsSale}
               org={org}
             />
             {/* ----- */}

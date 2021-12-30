@@ -11,6 +11,7 @@ import Footer from '../Footer';
 import RecommendList from '../RecommendList/index';
 import { Product } from '../../interface/product'
 import { AppContext } from '../../context/AppProvider';
+import HeadTitle from '../HeadTitle';
 
 function ProductDetail(props: any) {
       const { t } = useContext(AppContext);
@@ -18,9 +19,9 @@ function ProductDetail(props: any) {
       const search = location.search.slice(1, location.search.length)
       const params = search.split(',');
       const is_type = parseInt(params[2]);
-      const [product, setProduct] = useState({});
+      const [product, setProduct] = useState<Product>();
       const [products, setProducts] = useState<Product[]>([])
-      const [org, setOrg] = useState({})
+      const [org, setOrg] = useState<any>({})
       const [loading, setLoading] = useState(false);
       const values = useMemo(() => ({
             org_id: params[0],
@@ -41,7 +42,6 @@ function ProductDetail(props: any) {
             handleGetDetailProduct();
             // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [params[1]])
-
       useEffect(() => {
             async function handleGetOrg_Products() {
                   setLoading(true);
@@ -69,6 +69,9 @@ function ProductDetail(props: any) {
       }
       return (
             <div className="product">
+                  <HeadTitle
+                        title={product?.product_name ? product.product_name :'Loading...'}
+                  />
                   <Head/>
                   <Container>
                         <div className="product-cnt">

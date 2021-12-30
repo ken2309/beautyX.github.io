@@ -572,6 +572,9 @@
   .mer-detail {
     padding: 12px 24px;
   }
+  .mer-sale-head{
+    display: none;
+  }
   .mer-detail__content {
     flex-direction: column-reverse;
   }

@@ -44,6 +44,8 @@ function PaymentTotal(props: any) {
     services: servicesPost,
     treatment_combo: combosPost,
     payment_method_id: chooseE_wall?.id,
+    prepay_cards:[],
+    branch_id:0,
     coupon_code: "string",
     description: "string"
   };
@@ -62,6 +64,7 @@ function PaymentTotal(props: any) {
     }
   }
   const handleSubmitPayment = () => {
+    //console.log(org_id);
     if (profile) {
       if (value && userInfo && chooseE_wall?.id === 1) {
         handlePostOrder(org_id, params)
