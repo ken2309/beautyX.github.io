@@ -25,6 +25,7 @@
     "1": "Khám phá và trải nghiệm \n thiên đường làm đẹp ngay gần bạn với \n Booking Flatform Myspa"
   },
   "Home": {
+    "home":"Trang chủ",
     "Filter_form_input": "Tên doanh nghiệp/Sản phẩm/Dịch vụ",
     "Filter_category": "Danh mục",
     "Filter_location": "Khu vực",
@@ -225,10 +226,14 @@
     "i_agree": "Tôi đã đọc và đồng ý với",
     "myspa_s_terms": "Điều khoản & Dịch vụ của Myspa",
     "please_enter_full_name": "Vui lòng nhập họ và tên",
+    "please_enter_your_phone":"Vui lòng nhập số điện thoại",
     "please_choose_sex": "Vui chọn giới tính",
     "please_enter_dob": "Vui lòng nhập ngày thánh năm sinh",
     "dob_format": "Vui lòng nhập đúng định dạng ngày/tháng/năm",
     "please_enter_email": "Vui lòng nhập email",
+    "please_enter_your_address":"Vui lòng nhập địa chỉ",
+    "please_enter_quantity":"Vui lòng nhập số lượng chi nhánh",
+    "name_min":"Tên lớn hơn 2 ký tự",
     "email_format": "Vui lòng nhập đúng định dạng Example@gmail.com",
     "password_min": "Mật khẩu lớn hơn 8 ký tự",
     "password_max": "Mật khẩu tối đa 32 kí tự",
@@ -238,5 +243,21 @@
     "now": "ngay",
     "is_not_registered": "chưa được đăng ký",
     "register_success": "Đăng ký tài khoản thành công"
+  },
+  "partner":{
+    "online_business":"Nền tảng kinh doanh online ngành làm đẹp",
+    "intro":"Booking Online hiện đang là xu hướng kinh doanh trong thời đại số, khi người dùng dành phần lớn thời gian hàng ngày để truy cập, tìm hiểu và sử dụng các dịch vụ trên internet. Ngành dịch vụ làm đẹp như spa, salon, clinic, thẩm mỹ viện cũng không ngoại lệ,. \n Học cách thích nghi với thời đại chuyển đổi số 4.0 sẽ giúp doanh nghiệp tiếp cận được lượng lớn khách hàng tiềm năng, tăng doanh thu, giảm chi phí. Ngay từ bây giờ, hãy trở thành đối tác của Myspa để sở hữu những lợi ích sau:",
+    "sell_products":"Bán sản phẩm, dịch vụ ngay trên nền tảng, chủ động tiếp cận khách hàng.",
+    "customers":"Khách hàng tự đặt lịch liệu trình, hạn chế việc sai sót thông tin đặt hẹn",
+    "regional":"Tính năng tìm kiếm theo khu vực giúp doanh nghiệp trở thành lựa chọn ưu tiên khi khách hàng tìm kiếm địa điểm gần nhà.",
+    "support":"Hỗ trợ doanh nghiệp kết nối trực tiếp với khách hàng, tư vấn, chốt lịch hẹn",
+    "simplify":"Đơn giản hóa việc cập nhât trạng thái lịch hẹn trước, trong và sau khi khách hàng sử dụng dịch vụ thông qua giao diện cho khách hàng",
+    "a_place":"Là nơi để doanh nghiệp đăng tải các hình ảnh, thông tin, đánh giá, tăng khả năng quảng bá cho thương hiệu",
+    "create":"Tạo nên một cộng đồng làm đẹp, để doanh nghiệp và khách hàng đều có thể chia sẻ và trao đổi những kinh nghiệm cho nhau",
+    "create_a_beauty":"Tạo nên một cộng đồng làm đẹp, để doanh nghiệp và khách hàng đều có thể chia sẻ và trao đổi những kinh nghiệm cho nhau",
+    "become_a_myspa":"Trở thành đối tác Myspa để kinh doanh hiệu quả hơn trong giai đoạn chuyển đối số",
+    "company_name":"Tên doanh nghiệp",
+    "branch_quantity":"Số lượng chi nhánh",
+    "read":"Tôi đã đọc và đồng ý với"
   }
 }

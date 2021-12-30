@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "../../../constants/icon";
+import icon from "../../../../constants/icon";
 
 const enterprise = [
   { id: 0, name: "Tất cả doanh nghiệp" },

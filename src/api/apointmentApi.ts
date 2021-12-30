@@ -16,13 +16,14 @@ class ApointmentApi {
       }
     );
   };
-  getAppoitment = () => {
-    const url = "appointments?sort=-id&page=1&limit=15";
+  getAppoitment = (params: any) => {
+    // const url = "appointments?sort=-id&page=1&limit=15";
+    const url = `appointments?sort=-id&page=1&limit=15&filter%5Btime_start%5D=${params}`;
     if (localStorage.getItem("_WEB_TK")) {
       return axiosClient.get(url, {
         headers: {
           // Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
-          Authorization: `Bearer 387|jqrTLp0KW9oljfRQ412Gqs8hVC2bdC2rWVglmqDs`,
+          Authorization: `Bearer 10|H7AET4CwOAyNJUz0mt0qp8TiM8eKgXf0Y6zPMOP4`,
         },
       });
     }
