@@ -58,7 +58,6 @@ function CheckNotification(props: any) {
       const handleChange = (e: any) => {
             setValueSwitch(e.target.checked);
       }
-      // console.log(valueSwitch);
       return (
             <div>
                   {/* <FormControlLabel

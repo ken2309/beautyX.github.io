@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import icon from "../../../constants/icon";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
@@ -11,7 +11,7 @@ import { AxiosError } from "axios";
 import { CircularProgress } from "@mui/material";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "./PopupNoti";
-import auth from '../../../api/authApi'
+import auth from "../../../api/authApi";
 
 function SignUp(props: any) {
   const { activeTabSign } = props;
@@ -29,8 +29,7 @@ function SignUp(props: any) {
   //handle submit register from
   async function submitRegisterForm(user: any) {
     try {
-      const response = await auth.register(user)
-      console.log(response)
+      auth.register(user);
       setLoading(false);
       setPopup(true);
     } catch (error) {
@@ -136,7 +135,7 @@ function SignUp(props: any) {
         onSubmit={formik.handleSubmit}
         autoComplete="off"
         className="flex-column sign-form"
-      // style={{alignItems:'start'}}
+        // style={{alignItems:'start'}}
       >
         <div className="flex-column" style={{ width: "100%" }}>
           <div

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import formatPrice from '../../utils/formatPrice';
 import DetailControl from './DetailControl';
-import './DetailNameMb.css';
+import './detailNameMb.css';
 
 function DetailNameMb(props: any) {
       const { detail, is_type, org } = props;

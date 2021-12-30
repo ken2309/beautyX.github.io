@@ -48,4 +48,10 @@ Thumbs.db
 *.mov
 *.wmv
 
+.DS_Store
 .env
+.firebase
+firebase.json
+packahe-lock.json
+yarn.lock
+.vscode

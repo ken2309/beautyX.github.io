@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import './PopupSuccess.css';
+import './popupSuccess.css';
 import icon from '../../constants/icon';
 import { Dialog } from '@mui/material';
 import ButtonCus from '../../components/ButtonCus';

@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import { Container } from '@mui/material';
 import {AppContext} from '../../context/AppProvider'
-import './DetailTabMb.css'
+import './detailTabMb.css'
 
 function DetailTabMb(props:any) {
       const {t} = useContext(AppContext)

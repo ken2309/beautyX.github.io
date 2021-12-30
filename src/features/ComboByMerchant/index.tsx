@@ -5,7 +5,7 @@ import ComboItem from './components/ComboItem';
 import {Pagination} from '@mui/material';
 import GridLoading2 from '../Loading/GridLoading2';
 import scrollTop_2 from '../../utils/scrollTop_2';
-import'./ComboByMerchant.css'
+import'./comboByMerchant.css'
 
 const tab_id = 4
 function ComboByMerchant(props: any) {

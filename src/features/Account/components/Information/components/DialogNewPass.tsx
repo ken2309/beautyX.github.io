@@ -32,7 +32,6 @@ export default function DialogNewPass(props: any) {
         .oneOf([Yup.ref("password"), null], "Mật khẩu mới không khớp"),
     }),
     onSubmit: (values) => {
-      console.log(values);
       handleCloseNewPass();
     },
   });

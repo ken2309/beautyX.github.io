@@ -25,7 +25,6 @@ function CartItem(props: any) {
       const handleAscCart = () => {
             const action = ascItem(cartItem);
             dispatch(action)
-            console.log(action)
       }
       const handleDesc = () => {
             if (cartItem.quantity === 1) {

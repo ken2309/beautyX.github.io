@@ -7,13 +7,14 @@ import orgApi from '../../api/organizationApi';
 import serviceApi from '../../api/serviceApi';
 import DetailHead from '../ProductDetail/components/DetailHead';
 import RecommendList from './components/RecommendList';
-import './ServiceDetail.css';
+import './serviceDetail.css';
 import {Service} from '../../interface/service'
 
 function ServiceDetail(props: any) {
       const location = useLocation();
       const search = location.search.slice(1, location.search.length);
       const params = search.split(',');
+      console.log(params);
       const is_type = parseInt(params[2])
       // console.log(is_type)
       const [org, setOrg] = useState({})
@@ -22,7 +23,6 @@ function ServiceDetail(props: any) {
       const [loading, setLoading] = useState(false);
       // const url = location.search.slice(1, location.search.length);
       // const param = JSON.parse(decodeURI(url))
-      // console.log(param);
       useEffect(() => {
             async function handleGetOrgById() {
                   setLoading(true)
@@ -76,6 +76,7 @@ function ServiceDetail(props: any) {
                         <RecommendList
                               org={org}
                               list={services}
+                              is_type={is_type}
                         />
                   </Container>
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import BackButton from '../../components/BackButton';
 import img from '../../constants/img';
 import HomeSignIn from '../Home/components/HomeSignIn';
-import './SignPageRequest.css'
+import './signPageRequest.css'
 
 function SignPageRequest(props) {
       const useForSignRes = true;

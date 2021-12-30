@@ -10,7 +10,6 @@ class ServiceApi {
             return axiosClient.get(url)
       }
       getDetailById=(params:any)=>{
-            // console.log(params);
             const url = `/organizations/${params.org_id}/services/${params.ser_id}`
             return axiosClient.get(url)
       }

@@ -28,7 +28,7 @@ function Notification(props:any) {
       const {openNo} = props;
       const NoStyle=headerStyle();
       const viewMoreNotification=()=>{
-            console.log('Xem tất cả thông báo')
+            // console.log('Xem tất cả thông báo')
       }
       return (
             <div

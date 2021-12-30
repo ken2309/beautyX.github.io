@@ -17,9 +17,7 @@ import { AppContext } from '../../context/AppProvider';
 function Header(props: any) {
       const { isCart, title } = props;
       const { t, userInfo, profile, setSign } = useContext(AppContext);
-      //console.log(profile);
       const history = useHistory();
-      // console.log(userInfo)
       const dispatch = useDispatch();
       const useStyle = headerStyle();
       const ref: any = useRef()
@@ -91,7 +89,7 @@ function Header(props: any) {
                         setOpentLang(false);
                         setOpenMenu(false);
                         setOpenNo(false);
-                        console.log('ref', ref.current.contains(e.target));
+                        // console.log('ref', ref.current.contains(e.target));
                   }
             }
 

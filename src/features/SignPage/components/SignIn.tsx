@@ -3,23 +3,26 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import Dialog from "@mui/material/Dialog";
-// import ButtonCus from "../../../components/ButtonCus";
+import Dialog from "@mui/material/Dialog";
+import ButtonCus from "../../../components/ButtonCus";
 import { AppContext } from "../../../context/AppProvider";
 import { useHistory } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import { AxiosError } from "axios";
 import PopupNoti from "./PopupNoti";
-import auth from '../../../api/authApi'
+import auth from "../../../api/authApi";
+import PopupForgot from "./PopupForgot";
+import PopupVerification from "./PopupVerification";
+import PopupNewPass from "./PopupNewPass";
 
 function SignIn(props: any) {
   const { t, setSign } = useContext(AppContext);
   const { activeTabSign, setActiveTabSign } = props;
   const history = useHistory();
   const [typePass, setTypePass] = useState("password");
-  // const [openForgotPass, setOpenForgotPass] = React.useState(false);
-  // const [openVerification, setOpenVerification] = React.useState(false);
-  // const [openNewPass, setOpenNewPass] = React.useState(false);
+  const [openForgotPass, setOpenForgotPass] = React.useState(false);
+  const [openVerification, setOpenVerification] = React.useState(false);
+  const [openNewPass, setOpenNewPass] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const [errPass, setErrPass] = useState("");
   const [display_email, setDisplay_email] = useState("");
@@ -36,15 +39,15 @@ function SignIn(props: any) {
       history.push("/");
       setLoading(false);
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       const err = error as AxiosError;
       switch (err.response?.status) {
         case 401:
           return setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
         case 404:
-          return setPopup(true)
+          return setPopup(true);
         default:
-          break
+          break;
       }
     }
   }
@@ -53,33 +56,14 @@ function SignIn(props: any) {
     setDisplay_email(values.email);
     submitLogin(values);
   };
-
   // mở popup forgot
-  // const handleClickOpenForgotPass = () => {
-  //   setOpenForgotPass(true);
-  // };
-  // mở popup veri code
-  // const handleClickOpenVerification = () => {
-  //   setOpenVerification(true);
-  // };
+  const handleClickOpenForgotPass = () => {
+    setOpenForgotPass(true);
+  };
   // mở popup New Pass
-  // const handleClickOpenNewPass = () => {
-  //   setOpenNewPass(true);
-  // };
-
-  // đóng popup forgot
-  // const handleCloseForgotPass = () => {
-  //   setOpenForgotPass(false);
-  // };
-  // đóng popup veri code
-  // const handleCloseVerification = () => {
-  //   setOpenVerification(false);
-  // };
-  // đóng popup New Pass
-  // const handleCloseNewPass = () => {
-  //   setOpenNewPass(false);
-  // };
-
+  const handleClickOpenNewPass = () => {
+    setOpenNewPass(true);
+  };
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -100,64 +84,6 @@ function SignIn(props: any) {
       handleLogin(values);
     },
   });
-  //form forgot pass
-  // const formikForgotPass = useFormik({
-  //   initialValues: {
-  //     email: "",
-  //   },
-  //   validationSchema: Yup.object({
-  //     email: Yup.string()
-  //       .required("Vui lòng nhập Email/số điện thoại")
-  //       .matches(
-  //         // eslint-disable-next-line no-useless-escape
-  //         /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/i,
-  //         "Vui lòng nhập đúng định dạng Example@gmail.com"
-  //       ),
-  //   }),
-  //   onSubmit: (values) => {
-  //     console.log(values);
-  //     handleClickOpenVerification();
-  //     handleCloseForgotPass();
-  //   },
-  // });
-  // const formikVerification = useFormik({
-  //   initialValues: {
-  //     verification: "",
-  //   },
-  //   validationSchema: Yup.object({
-  //     verification: Yup.string()
-  //       .required("Vui lòng nhập mã xác nhận")
-  //       .min(6, "Mã xác nhận lớn hơn 6 ký tự")
-  //       .max(6, "Mã xác nhận nhỏ hơn 6 ký tự"),
-  //   }),
-  //   onSubmit: (values) => {
-  //     console.log(values);
-  //     handleCloseVerification();
-  //     handleClickOpenNewPass();
-  //   },
-  // });
-  // const formikNewpass = useFormik({
-  //   initialValues: {
-  //     password: "",
-  //     confirmPassword: "",
-  //   },
-  //   validationSchema: Yup.object({
-  //     password: Yup.string()
-  //       .min(8, "Mật khẩu lớn hơn 8 ký tự")
-  //       .max(32, "Mật khẩu tối đa 32 kí tự")
-  //       .required("Vui lòng nhập mật khẩu mới")
-  //       .matches(
-  //         /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-  //         "Mật khẩu phải có ít nhất 8 ký tự, 1 chữ hoa, 1 số và 1 ký tự chữ 1 đặc biệt"
-  //       ),
-  //     confirmPassword: Yup.string()
-  //       .required("Vui lòng xác nhận lại mật khẩu mới")
-  //       .oneOf([Yup.ref("password"), null], "Mật khẩu mới không khớp"),
-  //   }),
-  //   onSubmit: (values) => {
-  //     //handleCloseNewPass();
-  //   },
-  // });
   return (
     <div
       style={activeTabSign === 1 ? { display: "block" } : { display: "none" }}
@@ -218,9 +144,7 @@ function SignIn(props: any) {
             />
             <span>{t("Home.Sign_remember")}</span>
           </div>
-          <span
-          // onClick={handleClickOpenForgotPass}
-          >
+          <span onClick={handleClickOpenForgotPass}>
             {t("Home.Sign_forgot")} ?
           </span>
         </div>
@@ -251,197 +175,17 @@ function SignIn(props: any) {
         {t("Home.Sign_no_acc")}?
         <span onClick={() => setActiveTabSign(2)}>{t("Home.Sign_up_now")}</span>
       </p>
-      {/* dialog quên mật khẩu */}
-      {/* <Dialog
-        open={openForgotPass}
-        keepMounted
-        onClose={handleCloseForgotPass}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <div className="dialog-forgot__password">
-          <h2>Quên mật khẩu?</h2>
-          <p className="dialog-forgot__password-desc">
-            Vui lòng cho chúng tôi biết thông tin đăng ký của bạn
-          </p>
-          <div className="sign-form__box">
-            <img className="sign-form__box-icon" src={icon.Lock} alt="" />
-            <input
-              value={formikForgotPass.values.email}
-              onChange={formikForgotPass.handleChange}
-              name="email"
-              id="email"
-              type="text"
-              placeholder="Email/ Số điện thoại"
-            />
-          </div>
-          {formikForgotPass.errors.email && formikForgotPass.touched.email && (
-            <p className="err-text">{formikForgotPass.errors.email}</p>
-          )}
-
-          <div className="dialog-forgot__password-btn">
-            <ButtonCus
-              onClick={handleCloseForgotPass}
-              text="Trở lại"
-              backColor="var(--bg-color)"
-              color="var(--purple)"
-              fontSize="20px"
-              lineHeight="24px"
-              borderRadius="20px"
-            />
-            <ButtonCus
-              onClick={formikForgotPass.handleSubmit}
-              text="Tiếp tục"
-              backColor="var(--purple)"
-              color="var(--bg-color)"
-              fontSize="20px"
-              lineHeight="24px"
-              borderRadius="20px"
-            />
-          </div>
-        </div>
-      </Dialog> */}
-      {/* dialog nhập mã xác nhận */}
-      {/* <Dialog
-        open={openVerification}
-        keepMounted
-        onClose={handleCloseVerification}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <div className="dialog-forgot__password">
-          <h2>Nhập mã xác nhận</h2>
-          <p className="dialog-forgot__password-desc">
-            Mã xác nhận đã được gửi về email/số điện thoại
-          </p>
-          <div className="sign-form__box">
-            <input
-              value={formikVerification.values.verification}
-              onChange={formikVerification.handleChange}
-              className="input-Verification"
-              name="verification"
-              id="verification"
-              type={typePass}
-            />
-          </div>
-          {formikVerification.errors.verification &&
-            formikVerification.touched.verification && (
-              <p className="err-text">
-                {formikVerification.errors.verification}
-              </p>
-            )}
-          <div className="dialog-forgot__password-btn">
-            <ButtonCus
-              onClick={handleCloseVerification}
-              text="Trở lại"
-              backColor="var(--bg-color)"
-              color="var(--purple)"
-              fontSize="20px"
-              lineHeight="24px"
-              borderRadius="20px"
-            />
-            <ButtonCus
-              onClick={formikVerification.handleSubmit}
-              text="Tiếp tục"
-              backColor="var(--purple)"
-              color="var(--bg-color)"
-              fontSize="20px"
-              lineHeight="24px"
-              borderRadius="20px"
-            />
-          </div>
-        </div>
-      </Dialog> */}
-      {/* dialog đặt lại mật khẫu mới */}
-      {/* <Dialog
-        open={openNewPass}
-        keepMounted
-        onClose={handleCloseNewPass}
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <div className="dialog-forgot__password">
-          <h2>Đặt lại mật khẩu mới</h2>
-          <p className="dialog-forgot__password-desc">
-            Lưu ý mật khẩu mới không được trùng với các mật khẩu được <br />{" "}
-            dùng trước đó
-          </p>
-          <div className="sign-form__box">
-            <div
-              className="flex-column w-100"
-              style={{ width: "100%", padding: "8px 0" }}
-            >
-              <img className="sign-form__box-icon " src={icon.Lock} alt="" />
-              <input
-                autoComplete="off"
-                value={formikNewpass.values.password}
-                onChange={formikNewpass.handleChange}
-                name="password"
-                id="password"
-                type={typePass}
-                placeholder="Mật khẩu mới"
-              />
-              <img
-                onMouseEnter={() => setTypePass("text")}
-                onMouseLeave={() => setTypePass("password")}
-                className="sign-form__box-icon-show"
-                src={icon.eye}
-                alt=""
-              />
-            </div>
-          </div>
-          {formikNewpass.errors.password && formikNewpass.touched.password && (
-            <p className="err-text">{formikNewpass.errors.password}</p>
-          )}
-          <div className="sign-form__box">
-            <div
-              className="flex-column w-100"
-              style={{ width: "100%", padding: "8px 0" }}
-            >
-              <img className="sign-form__box-icon" src={icon.Lock} alt="" />
-              <input
-                autoComplete="off"
-                value={formikNewpass.values.confirmPassword}
-                onChange={formikNewpass.handleChange}
-                name="confirmPassword"
-                id="confirmPassword"
-                type={typePass}
-                placeholder="Nhận lại mật khẩu mới"
-              />
-              <img
-                onMouseEnter={() => setTypePass("text")}
-                onMouseLeave={() => setTypePass("password")}
-                className="sign-form__box-icon-show"
-                src={icon.eye}
-                alt=""
-              />
-            </div>
-          </div>
-          {formikNewpass.errors.confirmPassword &&
-            formikNewpass.touched.confirmPassword && (
-              <p className="err-text">{formikNewpass.errors.confirmPassword}</p>
-            )}
-
-          <div className="dialog-forgot__password-btn">
-            <ButtonCus
-              onClick={handleCloseNewPass}
-              text="Hủy"
-              backColor="var(--bg-color)"
-              color="var(--purple)"
-              fontSize="20px"
-              lineHeight="24px"
-              borderRadius="20px"
-            />
-            <ButtonCus
-              onClick={formikNewpass.handleSubmit}
-              text="Xác nhận"
-              backColor="var(--purple)"
-              color="var(--bg-color)"
-              fontSize="20px"
-              lineHeight="24px"
-              borderRadius="20px"
-            />
-          </div>
-        </div>
-      </Dialog>
-      */}
+      <PopupForgot
+        openForgotPass={openForgotPass}
+        setOpenVerification={setOpenVerification}
+        setOpenForgotPass={setOpenForgotPass}
+      />
+      <PopupVerification
+        setOpenVerification={setOpenVerification}
+        openVerification={openVerification}
+        handleClickOpenNewPass={handleClickOpenNewPass}
+      />
+      <PopupNewPass openNewPass={openNewPass} setOpenNewPass={setOpenNewPass} />
       <PopupNoti
         popup={popup}
         setPopup={setPopup}

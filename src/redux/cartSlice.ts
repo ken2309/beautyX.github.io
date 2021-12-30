@@ -79,7 +79,6 @@ const cart = createSlice({
                               cartFalse.push(arr);
                         }
                   }
-                  console.log(cartTrue, cartFalse)
                   //state.cartList = cartTrue
                   localStorage.setItem(storageName, JSON.stringify(state.cartList))
             },

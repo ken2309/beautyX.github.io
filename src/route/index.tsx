@@ -69,16 +69,20 @@ function RouterConfig(props: any) {
       path: "/tai-khoan",
       component: <Account />,
     },
+    {
+      path: "/Partner",
+      component: <Partner/>,
+    },
   ];
   const routesPrivate = [
     // {
     //   path: "/tai-khoan",
     //   component: Account,
     // },
-    {
-      path: "/Partner",
-      component: Partner,
-    },
+    // {
+    //   path: "/Partner",
+    //   component: Partner,
+    // },
     {
       path: "/Payment",
       component: CartPayment,

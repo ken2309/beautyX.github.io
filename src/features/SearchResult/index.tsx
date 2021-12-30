@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import "./SearchResult.css";
+import "./searchResult.css";
 import { useLocation } from "react-router-dom";
 import Result from "./components/Result";
 import MapWrapper from "./components/MapWrapper";
@@ -10,6 +10,7 @@ import orgApi from "../../api/organizationApi";
 import { AppContext } from "../../context/AppProvider";
 import Head from "../Head";
 import Bottom from "../../featuresMobile/Bottom";
+import HeadTitle from '../HeadTitle'
 // import img from '../../constants/img';
 
 function SearchResult(props: any) {
@@ -48,6 +49,9 @@ function SearchResult(props: any) {
         backgroundColor: "var(--bg-gray)",
       }}
     >
+      <HeadTitle
+        title={`${t('Search_result.text_result')} : ${keySearch}`}
+      />
       <Head />
       <Container>
         {

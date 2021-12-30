@@ -4,7 +4,7 @@ import { Dialog, Slide } from '@mui/material';
 import BackButton from '../../components/BackButton';
 import MapWrapper from './components/MapWrapper';
 import MapCard from './components/MapCard'
-import './Map.css'
+import './map.css'
 
 const Transition = React.forwardRef(function Transition(
       props: TransitionProps & {
