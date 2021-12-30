@@ -15,6 +15,7 @@ import SignPage from "../features/SignPage/index";
 import SignPageRequest from "../features/SignPageRequest/index";
 import Notification from "../features/Notification/index";
 import PrivateRoute from "./PrivateRoute";
+import CountDown from "../features/CountDown";
 //import { AppContext } from "../context/AppProvider";
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
@@ -27,6 +28,10 @@ function RouterConfig(props: any) {
   const routes = [
     {
       path: `/Home`,
+      component: <CountDown />
+    },
+    {
+      path: `/beta`,
       component: <Home />,
     },
     {

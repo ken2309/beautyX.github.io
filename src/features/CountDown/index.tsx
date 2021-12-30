@@ -130,7 +130,7 @@ export default function CountDown() {
 
   return (
     <div>
-      <Dialog fullScreen open={countDown}>
+      <Dialog className="countDownSection" fullScreen open={countDown}>
         <div className="countdown">
           <div className="wraper">
             <h1 className="countdown-title">Coming Soon</h1>
