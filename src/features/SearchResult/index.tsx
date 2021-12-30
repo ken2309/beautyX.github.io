@@ -10,6 +10,7 @@ import orgApi from "../../api/organizationApi";
 import { AppContext } from "../../context/AppProvider";
 import Head from "../Head";
 import Bottom from "../../featuresMobile/Bottom";
+import HeadTitle from '../HeadTitle'
 // import img from '../../constants/img';
 
 function SearchResult(props: any) {
@@ -48,6 +49,9 @@ function SearchResult(props: any) {
         backgroundColor: "var(--bg-gray)",
       }}
     >
+      <HeadTitle
+        title={`${t('Search_result.text_result')} : ${keySearch}`}
+      />
       <Head />
       <Container>
         {

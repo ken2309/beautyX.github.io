@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { partnerStyle } from "../style";
 import ButtonCus from "../../../components/ButtonCus";
 import Checkbox from "@mui/material/Checkbox";
 import icon from "../../../constants/icon";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { AppContext } from "../../../context/AppProvider";
 export default function FormPartner() {
+  const {t} = useContext(AppContext);
   const parner = partnerStyle();
   const formikPartner = useFormik({
     initialValues: {
@@ -20,7 +22,7 @@ export default function FormPartner() {
       Name: Yup.string()
         .min(2, "Tên lớn hơn 2 ký tự")
         .max(32, "Tên nhỏ hơn 32 ký tự")
-        .required("Vui lòng nhập họ và tên")
+        .required(t('form.please_enter_full_name'))
         .matches(
           /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/,
           "Tên không đúng định dạng"
@@ -28,7 +30,7 @@ export default function FormPartner() {
       Phone: Yup.string()
         .min(10, "Số điện thoại phải lớn hơn 10 chữ số")
         .max(11, "Số điện thoại phải nhỏ hơn 11 chữ số")
-        .required("Vui lòng nhập số điện thoại")
+        .required(t('form.please_enter_your_phone'))
         .matches(
           /(84|0[3|5|7|8|9])+([0-9]{8})\b/g,
           "Số điện thoại không đúng định dạng"
@@ -41,20 +43,19 @@ export default function FormPartner() {
           "Email không đúng định dạng Example@gmail.com"
         ),
       Enterprise: Yup.string()
-        .required("Vui lòng nhập tên doanh nghiệp")
+        .required(t('form.please_enter_email'))
         .matches(
           /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ0-9\s\W|_]+$/,
           ""
         ),
       Address: Yup.string()
-        .required("Vui lòng nhập địa chỉ")
+        .required(t('form.please_enter_your_address'))
         .matches(
           /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ0-9\s\W|_]+$/,
           ""
         ),
       Quantity: Yup.string()
-        .max(2, "Vui lòng nhập tối đa 2 chữ số")
-        .required("Vui lòng nhập số lượng")
+        .required(t('form.please_enter_quantity'))
         .matches(/^[0-9]+$/, "Vui lòng nhập số"),
     }),
     onSubmit: (values) => {
@@ -65,8 +66,7 @@ export default function FormPartner() {
   return (
     <div className={parner.partnerRegis}>
       <h2 className={parner.partnerRegisTitle}>
-        Trở thành đối tác Myspa để kinh doanh hiệu quả hơn trong giai đoạn
-        chuyển đối số
+        {t('partner.become_a_myspa')}
       </h2>
       <form onSubmit={formikPartner.handleSubmit} className={parner.form}>
         <div style={{ width: "100%", padding: "0 0 8px 0" }}>
@@ -76,7 +76,7 @@ export default function FormPartner() {
               className={parner.inputName}
               value={formikPartner.values.Name}
               onChange={formikPartner.handleChange}
-              placeholder="Họ và tên"
+              placeholder={t('pm.full_name')}
               type="text"
               name="Name"
               id="Name"
@@ -93,7 +93,7 @@ export default function FormPartner() {
               className={parner.inputName}
               value={formikPartner.values.Phone}
               onChange={formikPartner.handleChange}
-              placeholder="Số điện thoại"
+              placeholder={t('pm.phone_number')}
               type="text"
               name="Phone"
               id="Phone"
@@ -127,7 +127,7 @@ export default function FormPartner() {
               className={parner.inputName}
               value={formikPartner.values.Enterprise}
               onChange={formikPartner.handleChange}
-              placeholder="Tên doanh nghiệp"
+              placeholder={t('partner.company_name')}
               type="text"
               name="Enterprise"
               id="Enterprise"
@@ -145,7 +145,7 @@ export default function FormPartner() {
               className={parner.inputName}
               value={formikPartner.values.Address}
               onChange={formikPartner.handleChange}
-              placeholder="Địa chỉ"
+              placeholder={t('Mer_de.address')}
               type="text"
               name="Address"
               id="Address"
@@ -162,7 +162,7 @@ export default function FormPartner() {
               className={parner.inputName}
               value={formikPartner.values.Quantity}
               onChange={formikPartner.handleChange}
-              placeholder="Số lượng chi nhánh"
+              placeholder={t('partner.branch_quantity')}
               type="text"
               name="Quantity"
               id="Quantity"
@@ -184,14 +184,14 @@ export default function FormPartner() {
           />
           <div className={parner.checkboxText}>
             <p>
-              Tôi đã đọc và đồng ý với
-              <a href={" "}> Điều khoản & Điều kiện của Myspa</a>
+              {t('partner.read')}
+              <a href={" "}> {t('form.myspa_s_terms')}</a>
             </p>
           </div>
         </div>
         <div className={parner.btnWrap}>
           <ButtonCus
-            text="Đăng kí ngay"
+            text={t('Home.Sign_up_now')}
             fontSize="14px"
             lineHeight="20px"
             color="#ffffff"
