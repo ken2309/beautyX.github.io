@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Head from "../Head/index";
-import "./MerchantDetail.css";
+import "./merchantDetail.css";
 import { Container } from "@mui/material";
 import DetailHead from "./components/DetailHead";
 import DetailMer from "./components/DetailMer";

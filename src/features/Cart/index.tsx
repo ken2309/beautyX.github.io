@@ -8,8 +8,9 @@ import CartBottom from './components/CartBottom';
 import CartNull from './components/CartNull';
 import { useSelector, useDispatch } from 'react-redux';
 import { unCheck } from '../../redux/cartSlice';
-import scrollTop from '../../utils/scrollTop'
-import './Cart.css'
+import scrollTop from '../../utils/scrollTop';
+import HeadTitle from '../HeadTitle';
+import './cart.css'
 import { AppContext } from '../../context/AppProvider';
 
 interface Org {
@@ -60,6 +61,9 @@ function Cart(props: any) {
       const orgs = unique(orgCart)
       return (
             <div className="cart" >
+                  <HeadTitle
+                        title={headerTitle}
+                  />
                   <Head
                         isCart={isCart}
                         title={headerTitle}

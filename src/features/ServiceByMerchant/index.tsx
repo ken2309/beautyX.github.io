@@ -6,7 +6,7 @@ import ServiceList from "./components/ServiceList";
 import servicesApi from "../../api/serviceApi";
 import { Service } from "../../interface/service";
 import categoryApi from "../../api/categoryApi";
-import "./ServiceByMerchant.css";
+import "./serviceByMerchant.css";
 
 const tab_id = 2;
 function ServiceByMerchant(props: any) {

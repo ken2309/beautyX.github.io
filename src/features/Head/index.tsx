@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import './Head.css';
+import './head.css';
 import { Container } from '@mui/material';
 import ButtonCus from '../../components/ButtonCus'
 import { AppContext } from '../../context/AppProvider';

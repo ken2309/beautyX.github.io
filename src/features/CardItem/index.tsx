@@ -1,5 +1,5 @@
 import React from 'react';
-import './CardItem.css';
+import './cardItem.css';
 import icon from '../../constants/icon';
 import formatPrice from '../../utils/formatPrice';
 import {useHistory} from 'react-router-dom';
@@ -30,6 +30,7 @@ function CardItem(props:any) {
             // const search = JSON.stringify(param);
             //console.log(org_id)
             //products: is_type = 1, services: is_type = 2
+            //console.log(is_type);   
             if (is_type === 1) {
                   history.push({
                         pathname: `/Product-detail/${slugify(name)}`,

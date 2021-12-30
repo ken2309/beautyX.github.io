@@ -3,7 +3,7 @@ import { Slide, Dialog } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import MenuBox from '../../features/Head/components/MenuBox';
 import LanguageBox from '../../features/Head/components/LanguageBox';
-import './MbMenu.css';
+import './mbMenu.css';
 import icon from '../../constants/icon';
 import { AppContext } from '../../context/AppProvider';
 import {useHistory} from 'react-router-dom'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MerchantWrap from './components/MerchantWrap'
-import './MerchantMb.css'
+import './merchantMb.css'
 import icon from '../../constants/icon';
 
 function MerchantMb(props: any) {

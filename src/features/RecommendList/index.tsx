@@ -23,7 +23,7 @@ const cardStyle = {
 const buttons = [{ id: 1, text: 'Sắp hết hạn' }, { id: 2, text: 'Giảm nhiều' }]
 
 function RecommendList(props: any) {
-      const { org, list } = props;
+      const { org, list, is_type } = props;
       const title = `Ưu đãi của "${org?.name}"`;
       const [activeBtn, setActiveBtn] = useState();
       const [productSort, setProductSort] = useState<SaleList[]>([]);
@@ -78,6 +78,7 @@ function RecommendList(props: any) {
                               children={list.map((item:any) =>
                                     <
                                           CardItem key={item.id}
+                                          is_type={is_type}
                                           style={cardStyle}
                                           detail={item}
                                           name={item.product_name}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Head from "../Head/index";
-import "./CartPayment.css";
+import "./cartPayment.css";
 import { Container } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import PaymentForm from "./components/PaymentForm";

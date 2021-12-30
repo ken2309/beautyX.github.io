@@ -4,7 +4,7 @@ import {  Switch } from "react-router-dom";
 import PaymentMethod from "./components/PaymentMethod/index";
 import Information from "./components/Information/index";
 import Head from "../Head/index";
-import "./Account.css";
+import "./account.css";
 import SideBar from "./components/MenuSideBar";
 import Product from "./components/HistoryProduct";
 import Service from "./components/HistoryService";

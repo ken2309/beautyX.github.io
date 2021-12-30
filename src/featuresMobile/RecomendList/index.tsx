@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Product} from '../../interface/product';
 import CardItem from '../../features/CardItem/index';
 import productsApi from '../../api/productApi';
-import './RecommendList.css'
+import './recommendList.css'
 
 const style={
       width:'172px'
@@ -20,7 +20,7 @@ function RecommendList(props:any) {
             }
             getProducts();
       },[])
-      console.log(products)
+      //console.log(products)
       return (
             <div className="mb-rcm-wrapper">
                   <div className="mb-rcm-wrapper__title">
@@ -32,12 +32,14 @@ function RecommendList(props:any) {
                                     products.map(item => (
                                           <li key={item.id}>
                                                 <CardItem
+                                                      is_type={1}
                                                       name={item.product_name}
                                                       detail={item}
                                                       style={style}
                                                       retail_price={item.retail_price}
                                                       special_price={item.special_price}
                                                       org={org}
+                                                      org_id={51}
                                                       org_name={org.name}
                                                 />
                                           </li>

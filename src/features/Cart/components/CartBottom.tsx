@@ -46,7 +46,7 @@ function CartBottom(props: any) {
   return (
     <div className="cart-bottom">
       <Container>
-        <div className="flex-row cart-bottom__content">
+        <div className="flex-row-sp cart-bottom__content">
           <div className="cart-bottom__deleteAll">
             <ButtonCus
               text={t("cart.delete_all")}

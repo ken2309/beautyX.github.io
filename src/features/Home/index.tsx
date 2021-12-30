@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./Home.css";
+import "./home.css";
 import "../poupSignInUp/popupSignInUp.css";
 import { Container } from "@mui/material";
 import HomeBanner from "./components/HomeBanner";
@@ -15,14 +15,15 @@ import HomeLoggedLocation from "../Home/components/HomeLogged/HomeLoggedLocation
 import HomeLoggedProduct from "../Home/components/HomeLogged/HomeLoggedProduct";
 import HomeLoggedForYou from "../Home/components/HomeLogged/HomeLoggedForYou";
 import { AppContext } from "../../context/AppProvider";
-import Head from "../Head/index";
-import Bottom from "../../featuresMobile/Bottom";
+import Head from '../Head/index';
+import HeadTitle from '../HeadTitle';
+import Bottom from '../../featuresMobile/Bottom'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
 // const logged: boolean = true;
 function Home(props: any) {
-  const { profile } = useContext(AppContext);
+  const { profile, t } = useContext(AppContext)
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(fetchAsyncOrg())
@@ -32,7 +33,10 @@ function Home(props: any) {
 
   return (
     <div className="home">
-      <Head />
+      <HeadTitle
+        title={t('Home.home')}
+      />
+      <Head/>
       <Container>
         <HomeBanner />
       </Container>

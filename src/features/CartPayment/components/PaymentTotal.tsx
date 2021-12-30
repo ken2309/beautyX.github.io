@@ -4,6 +4,7 @@ import formatPrice from "../../../utils/formatPrice";
 import ButtonCus from "../../../components/ButtonCus";
 import PopupSuccess from "../../PopupSuccess/index";
 import { AppContext } from "../../../context/AppProvider";
+import order from '../../../api/orderApi'
 
 interface ItemOrder {
   id: number;
@@ -39,17 +40,31 @@ function PaymentTotal(props: any) {
     combosPost.push(combo);
   }
   const params = {
-    org_id: org_id,
     products: productsPost,
     services: servicesPost,
-    prepay_cards: [],
     treatment_combo: combosPost,
     payment_method_id: chooseE_wall?.id,
+    coupon_code: "string",
+    description: "string"
   };
+  // const params =[
+  //   {org_id: org_id},
+  // ]
+  async function handlePostOrder(org_id:number, params:object){
+    try{
+      const response = await order.postOrder(org_id, params);
+      console.log(response)
+      // const payUrl = await response.data.context.payment_gateway.extra_data.payUrl;
+      // const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
+      // window.location.assign(deepUrl);
+    }catch(err){
+      console.log(err)
+    }
+  }
   const handleSubmitPayment = () => {
     if (profile) {
-      if (value && userInfo && chooseE_wall) {
-        console.log(params);
+      if (value && userInfo && chooseE_wall?.id === 1) {
+        handlePostOrder(org_id, params)
       } else {
         console.log("Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo");
       }
