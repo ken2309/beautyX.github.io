@@ -16,7 +16,7 @@ export default function HomeLoggedCalendar() {
   const [dotAppoint, setdotAppoint] = useState([]);
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
   const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
-  console.log("chooseMonth :>> ", chooseMonth);
+  // console.log("chooseMonth :>> ", chooseMonth);
   // console.log(`appoiment`, appoiment);
   const { t } = useContext(AppContext);
   const weekDays = [
@@ -119,29 +119,29 @@ export default function HomeLoggedCalendar() {
     }
     let newmonth = thisMonth + 1;
 
-    const firstDateOfWeek = selectedDay.startOf("week").date();
-    const lastDateOfWeek = selectedDay.endOf("week").date();
-    console.log(firstDateOfWeek, lastDateOfWeek);
+    // const firstDateOfWeek = selectedDay.startOf("week").date();
+    // const lastDateOfWeek = selectedDay.endOf("week").date();
+    // console.log(firstDateOfWeek, lastDateOfWeek);
 
-    const datesInSameWeek = (parts: any) => {
-      if (firstDateOfWeek < lastDateOfWeek) {
-        // giua thang
-        return (
-          newdate > firstDateOfWeek &&
-          newdate < lastDateOfWeek &&
-          newmonth == parts[1] &&
-          thisYear == parts[2]
-        );
-      } else {
-        // dau thang
-        return (
-          ((newdate < firstDateOfWeek && newdate < lastDateOfWeek) ||
-            (newdate > firstDateOfWeek && newdate > lastDateOfWeek)) &&
-          newmonth == parts[1] + 1 &&
-          thisYear == parts[2]
-        );
-      }
-    };
+    // const datesInSameWeek = (parts: any) => {
+    //   if (firstDateOfWeek < lastDateOfWeek) {
+    //     // giua thang
+    //     return (
+    //       newdate > firstDateOfWeek &&
+    //       newdate < lastDateOfWeek &&
+    //       newmonth == parts[1] &&
+    //       thisYear == parts[2]
+    //     );
+    //   } else {
+    //     // dau thang
+    //     return (
+    //       ((newdate < firstDateOfWeek && newdate < lastDateOfWeek) ||
+    //         (newdate > firstDateOfWeek && newdate > lastDateOfWeek)) &&
+    //       newmonth == parts[1] + 1 &&
+    //       thisYear == parts[2]
+    //     );
+    //   }
+    // };
     const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
       return (

@@ -50,8 +50,8 @@ export default function HomeLoggedCalendarAppointmentList(
     });
   };
   const sortedDatingList = sortDatingList();
-  console.log("datingList", datingList);
-  console.log("sortedDatingList", sortedDatingList);
+  // console.log("datingList", datingList);
+  // console.log("sortedDatingList", sortedDatingList);
   //console.log(sortedDatingList.flat());
 
   return (
