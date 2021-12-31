@@ -570,6 +570,16 @@ img {
   margin-right: 4px;
   flex-shrink: 0;
 }
+.calendar-appointment__item{
+  position: relative;
+}
+/* .ca-app-detail{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: crimson;
+  left: -100%;
+} */
 .calendar-appointment__item-row {
   display: flex;
 }

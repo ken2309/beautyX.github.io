@@ -15,6 +15,8 @@ export default function AppProvider({ children }) {
       const [sign, setSign] = useState();
       const [profile, setProfile] = useState();
 
+      const [acBtn, setAcBtn] = useState(1);
+
       useEffect(() => {
             if (lg === 'en-US' || lg === 'en') {
                   setLanguage('en')
@@ -51,6 +53,7 @@ export default function AppProvider({ children }) {
       //get all tags
       const value = {
             t,
+            acBtn, setAcBtn,
             language,
             openModal,
             setOpenModal,

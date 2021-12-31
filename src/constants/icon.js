@@ -55,12 +55,14 @@ import Camera_purple from "../assets/icon/camera_purple.svg";
 import Credit_card from "../assets/icon/credit_card.svg";
 import Clock_purple from "../assets/icon/clockCounterClockwise.svg";
 import Bell from "../assets/icon/bell.svg";
+import Bell_1 from "../assets/icon/bell_1.svg";
 import Union from "../assets/icon/union.svg";
 import Headphones_purple from "../assets/icon/headphones_fill.svg";
 import plus from "../assets/icon/plus.svg";
 import success from "../assets/icon/success.png";
 import checkWhite from "../assets/icon/checkWhite.svg";
 import Calendar from "../assets/icon/calendar.svg";
+import Calendar_1 from "../assets/icon/calendar_1.svg";
 import onedot from "../assets/icon/onedot.svg";
 import TicketHome from "../assets/icon/ticketHome.svg";
 import CloseRing from "../assets/icon/close_ring.svg";
@@ -76,6 +78,7 @@ import SignOutPurple from "../assets/icon/sign_out_squre.svg";
 import userCircle from "../assets/icon/userCircle.svg";
 import signOut from "../assets/icon/sign_out.svg";
 import home from "../assets/icon/home.svg";
+import home_1 from "../assets/icon/home_1.svg";
 import chevronLeft from "../assets/icon/chevron-left.svg";
 import searchPurple from "../assets/icon/searchPurple.svg";
 import pinMap_2 from "../assets/icon/pinMap_2.svg";
@@ -162,6 +165,7 @@ const icon = {
   Credit_card,
   Clock_purple,
   Bell,
+  Bell_1,
   Union,
   Headphones_purple,
   plus,
@@ -169,6 +173,7 @@ const icon = {
   SearchWhite,
   checkWhite,
   Calendar,
+  Calendar_1,
   onedot,
   Setting,
   arrowPurple,
@@ -187,5 +192,6 @@ const icon = {
   menuWhite,
   ShoppingCartSimpleWhite,
   closeCircle,
+  home_1
 };
 export default icon;

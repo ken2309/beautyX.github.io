@@ -48,6 +48,9 @@ export default function HomeLoggedCalendarAppointmentItem(props: any) {
   };
   return (
     <div className="calendar-appointment__item">
+      <div className="ca-app-detail">
+        
+      </div>
       <div className="calendar-appointment__item-row">
         {checkdotstt(datingList.status)}
         <div className="calendar-appointment__item-column">

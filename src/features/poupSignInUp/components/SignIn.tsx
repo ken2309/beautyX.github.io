@@ -5,7 +5,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 // import Dialog from "@mui/material/Dialog";
 // import ButtonCus from "../../../components/ButtonCus";
-import axios from "axios";
+import {AxiosError} from 'axios'
+import auth from "../../../api/authApi";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "../../SignPage/components/PopupNoti";
 import { CircularProgress } from "@mui/material";
@@ -39,29 +40,37 @@ function SignIn(props: any) {
 
   //submit form login
   //handle submit login form
+   //handle submit login form
+   async function submitLogin(values: any) {
+    try {
+      const response = await auth.login(values);
+      console.log(response);
+      localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
+      localStorage.setItem("_WEB_TK", response.data.context.token);
+      setSign(true);
+      if (useForSignRes === true) {
+        history.goBack();
+      }else{
+        history.push("/beta");
+      }
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      const err = error as AxiosError;
+      switch (err.response?.status) {
+        case 401:
+          return setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
+        case 404:
+          return setPopup(true);
+        default:
+          break;
+      }
+    }
+  }
   const handleLogin = (values: any) => {
     setLoading(true);
     setDisplay_email(values.email);
-    axios
-      .post(`${baseURL}/auth/login`, values)
-      .then(function (response: any) {
-        localStorage.setItem("_WEB_US", JSON.stringify(response.context));
-        localStorage.setItem("_WEB_TK", response.context.token);
-        setSign(true);
-        setLoading(false);
-        setOpenSignIn(false);
-        if (useForSignRes === true) {
-          history.goBack();
-        }
-      })
-      .catch(function (err) {
-        setLoading(false);
-        if (err.response?.status === 401) {
-          setErrPass("Mật khẩu chưa chính xác. Vui lòng thử lại !");
-        } else if (err.response?.status === 404) {
-          setPopup(true);
-        }
-      });
+    submitLogin(values)
   };
 
   // Open Popup Forgot

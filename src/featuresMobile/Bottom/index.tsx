@@ -8,19 +8,21 @@ import scrollTop from '../../utils/scrollTop';
 import notifications from '../../data/listNotifications';
 
 function Bottom(props: any) {
-      const {t} = useContext(AppContext)
+      const { t, acBtn, setAcBtn } = useContext(AppContext)
       const Btns = [
             {
                   id: 2,
                   title: t('Bottom.appointment'),
-                  icon: icon.Calendar,
+                  icon_active: icon.Calendar,
+                  icon: icon.Calendar_1,
                   path: '/Calendar',
                   is_badge: false,
             },
             {
                   id: 3,
                   title: t('cart.noti'),
-                  icon: icon.Bell,
+                  icon_active: icon.Bell,
+                  icon: icon.Bell_1,
                   path: '/Notifications',
                   is_badge: true,
                   count: notifications.filter((item: any) => item.isRead === false).length
@@ -28,19 +30,20 @@ function Bottom(props: any) {
             {
                   id: 1,
                   title: t('Bottom.home'),
-                  icon: icon.home,
-                  path: '/',
+                  icon_active: icon.home,
+                  icon: icon.home_1,
+                  path: '/beta',
                   is_badge: false,
             },
             {
                   id: 4,
                   title: t('Bottom.account'),
-                  icon: icon.User,
+                  icon_active: icon.User,
+                  icon: icon.Calendar_1,
                   path: '/tai-khoan/thong-tin-ca-nhan',
                   is_badge: false,
             },
       ]
-      const [acBtn, setAcBtn] = useState(1);
       const [openFilter, setOpenFilter] = useState(false);
       const history = useHistory();
       const chooseBtn = (item: any) => {
@@ -58,7 +61,7 @@ function Bottom(props: any) {
                                           onClick={() => chooseBtn(item)}
                                           className="flex-column bt-cnt__item"
                                     >
-                                          <img src={item.icon} alt="" />
+                                          <img src={item.id === acBtn ? item.icon_active : item.icon} alt="" />
                                           {
                                                 item.is_badge === true ?
                                                       <span className="bt-cnt__item-badge">

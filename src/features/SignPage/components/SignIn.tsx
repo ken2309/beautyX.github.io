@@ -3,8 +3,8 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Dialog from "@mui/material/Dialog";
-import ButtonCus from "../../../components/ButtonCus";
+// import Dialog from "@mui/material/Dialog";
+// import ButtonCus from "../../../components/ButtonCus";
 import { AppContext } from "../../../context/AppProvider";
 import { useHistory } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
@@ -36,7 +36,7 @@ function SignIn(props: any) {
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);
-      history.push("/");
+      history.push("/beta");
       setLoading(false);
     } catch (error) {
       setLoading(false);
