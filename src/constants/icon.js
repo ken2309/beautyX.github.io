@@ -95,6 +95,7 @@ import menuWhite from "../assets/icon/menuWhite.svg";
 import ShoppingCartSimpleWhite from "../assets/icon/shoppingCartSimpleWhite.svg";
 import closeCircle from "../assets/icon/closeCircle.svg";
 import Favorite from "../assets/icon/favorite_fill.svg";
+import pPrev_purple from "../assets/icon/pPrev_purple.svg";
 
 const icon = {
   Favorite,
@@ -192,6 +193,7 @@ const icon = {
   menuWhite,
   ShoppingCartSimpleWhite,
   closeCircle,
-  home_1
+  home_1,
+  pPrev_purple
 };
 export default icon;

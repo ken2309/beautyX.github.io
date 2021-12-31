@@ -612,6 +612,26 @@ img {
   font-size: 11px;
   line-height: 12px;
   color: #84828c;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+.calendar-appointment__item-detail {
+  width: fit-content;
+  padding: 4px 8px;
+  background: #eeedf2;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  margin-top: 8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--purple);
 }
 /* status dot in calendar */
 .status-dots {
