@@ -76,8 +76,12 @@ function RouterConfig(props: any) {
     },
     {
       path: "/Partner",
-      component: <Partner/>,
+      component: <Partner />,
     },
+    // {
+    //   path: "/Calendar",
+    //   component: <Calendar />,
+    // },
   ];
   const routesPrivate = [
     // {

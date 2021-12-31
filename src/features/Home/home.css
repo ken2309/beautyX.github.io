@@ -1251,6 +1251,14 @@ img {
     line-height: 20px;
     font-weight: 700;
   }
+  .calendar-appointment__item{
+    padding: 2px;
+    border-radius: 0px 6px 6px 0px;
+    box-shadow: 0px 0px 11px 2px rgb(0 0 0 / 12%);
+  }
+  .calendar-appointment__item-row{
+    width: 100%;
+  }
   .home-flatform {
     margin-top: 36px;
   }

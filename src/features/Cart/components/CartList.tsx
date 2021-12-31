@@ -114,6 +114,9 @@ function CartList(props: any) {
                 />
               ))}
           </ul>
+          {
+            cartByOrgId
+          }
           <span className="flex-row cart-list-item__head">
             <img src={icon.bag} alt="" />
             Sản phẩm
