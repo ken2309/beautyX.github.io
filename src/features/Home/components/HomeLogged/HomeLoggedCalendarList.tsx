@@ -3,6 +3,16 @@ import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
 import { AppContext } from "../../../../context/AppProvider";
 
+const fixed = document.querySelector(".week-container__right");
+document.addEventListener("scroll", () => {
+  let scrollY = window.scrollY;
+  console.log(scrollY);
+  if (scrollY >= 300) {
+    fixed?.classList.add("week-container__right-ac");
+  } else {
+    fixed?.classList.remove("week-container__right-ac");
+  }
+});
 interface IHomeLoggedCalendarList {
   weekDays: any;
   weekDayOfFirst: any;
@@ -41,15 +51,29 @@ export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
     t("Home.Friday"),
     t("Home.Saturday"),
   ];
+  const weekDaysMb = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
 
   return (
     <div className="homelogged-calendar__right">
       <div className="week-container week-container__right">
-        {weekDays.map((d: any) => (
-          <div className="week-cell" key={d}>
-            {d}
+        <div className="week-pc">
+          <div className="flex-row-sp">
+            {weekDays.map((d: any) => (
+              <div className="week-cell" key={d}>
+                {d}
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        <div className="week-mb">
+          <div className="flex-row-sp">
+            {weekDaysMb.map((d: any) => (
+              <div className="week-cell" key={d}>
+                {d}
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="day-container w-100">
           {dayObjOfLastMonth.date() > 6
