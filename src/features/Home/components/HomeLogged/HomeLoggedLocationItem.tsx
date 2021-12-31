@@ -1,7 +1,18 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
+import slugify from "../../../../utils/formatUrlString";
 
-export default function HomeLoggedLocationItem() {
+export default function HomeLoggedLocationItem(props: any) {
+  const { org } = props;
+  // console.log("org :>> ", org);
+  const history = useHistory();
+  const goDetail = () => {
+    history.push({
+      pathname: `/Product-detail/${slugify(org.product_name)}`,
+      search: `${1},${org.id},${1}`,
+    });
+  };
   const [openInfoLocation, setOpenInfoLocation] = React.useState(true);
   function handleOpenLocation() {
     setOpenInfoLocation(true);
@@ -10,14 +21,14 @@ export default function HomeLoggedLocationItem() {
     setOpenInfoLocation(false);
   }
   return (
-    <div className="homelogged-location__item">
+    <div className="homelogged-location__item" onClick={goDetail}>
       <div className="item-top">
         <div className="item-top__img">
           <img src="https://source.unsplash.com/random" alt="" />
         </div>
         <div className="item-top__content">
           <div className="item-top__content-header">
-            <span>SaiGon Heritage Spa</span>
+            <span>{org?.product_name}</span>
             <div className="item-top__content-rate">
               <div className="rate-left">
                 <span>4.5</span>

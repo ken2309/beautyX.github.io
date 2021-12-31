@@ -1,38 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../../context/AppProvider";
 import SectionTitle from "../../../SectionTitle/index";
 import HomeLoggedLocationItem from "./HomeLoggedLocationItem";
-
-const dataLocation = [
-  {
-    id: 1,
-    name: "spa 1",
-  },
-  {
-    id: 2,
-    name: "spa 2",
-  },
-  {
-    id: 3,
-    name: "spa 3",
-  },
-  {
-    id: 4,
-    name: "spa 4",
-  },
-  {
-    id: 5,
-    name: "spa 5",
-  },
-];
+import orgProApi from "../../../../api/productApi";
 export default function HomeLoggedLocation() {
   const { t } = useContext(AppContext);
+  const [org, setSetOrg] = useState([]);
+  useEffect(() => {
+    async function handleGetOrgs() {
+      try {
+        const res = await orgProApi.getByOrgId({ org_id: 1 });
+        setSetOrg(res.data.context.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    handleGetOrgs();
+  }, []);
+
   return (
     <div className="homelogged-location">
       <SectionTitle title={t("Home.favorite_list")} textAlign="left" />
       <div className="homelogged-location__list">
-        {dataLocation.map((item, i) => (
-          <HomeLoggedLocationItem key={i} />
+        {org.map((item, i) => (
+          <HomeLoggedLocationItem key={i} org={item} />
         ))}
       </div>
     </div>

@@ -570,7 +570,7 @@ img {
   margin-right: 4px;
   flex-shrink: 0;
 }
-.calendar-appointment__item{
+.calendar-appointment__item {
   position: relative;
 }
 /* .ca-app-detail{
@@ -1272,6 +1272,9 @@ img {
     margin-top: 36px;
   }
   /* calendar */
+  .homelogged-calendar__left {
+    gap: 0;
+  }
   .h-par-calendar {
     display: none;
   }

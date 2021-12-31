@@ -10,7 +10,7 @@ export default function HomeLoggedProductItem(props: any) {
   const goDetail = () => {
     history.push({
       pathname: `/Product-detail/${slugify(product.product_name)}`,
-      search: `${51},${product.id},${1}`,
+      search: `${1},${product.id},${1}`,
     });
   };
   return (
