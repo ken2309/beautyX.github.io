@@ -17,7 +17,22 @@ export default function HomeLoggedCalendar() {
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
   const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
   // console.log(`appoiment`, appoiment);
+  const [active, setActive] = useState(false);
   const { t } = useContext(AppContext);
+
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      console.log(`scrollY`, scrollY);
+      if (scrollY >= 120) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+    });
+  }, []);
+  console.log(active);
+
   const weekDays = [
     t("Home.su"),
     t("Home.mo"),
@@ -45,6 +60,9 @@ export default function HomeLoggedCalendar() {
   // lấy thứ của ngày cuối cùng của tháng
   let weekDayOfLast = dayObjOfLastMonth.day();
 
+  // useEffect(() => {
+
+  // });
   useEffect(() => {
     async function handleGetAppoint() {
       try {
