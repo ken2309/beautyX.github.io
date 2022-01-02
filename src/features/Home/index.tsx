@@ -9,6 +9,7 @@ import HomeOrder from "./components/HomeOrder";
 import HomeCalendar from "./components/HomeCalendar";
 import HomeFlatForm from "./components/HomeFlatForm";
 import HomeSignIn from "./components/HomeSignIn";
+// import HomeSlider from "./components/HomeSlider";
 import Footer from "../Footer/index";
 import HomeLoggedCalendar from "./components/HomeLogged/HomeLoggedCalendar";
 import HomeLoggedLocation from "../Home/components/HomeLogged/HomeLoggedLocation";
@@ -59,6 +60,7 @@ function Home(props: any) {
           <HomeCalendar />
           <HomeFlatForm />
           <HomeSignIn />
+          {/* <HomeSlider/> */}
         </Container>
       )}
       <Footer />

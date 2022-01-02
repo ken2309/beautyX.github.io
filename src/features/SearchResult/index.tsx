@@ -51,7 +51,7 @@ function SearchResult(props: any) {
     >
       <HeadTitle title={`${t("Search_result.text_result")} : ${keySearch}`} />
       <Head />
-      <Container>
+      <Container className="result-section_map">
         {
           // orgs.length === 0 ?
           //       <div className="flex-column result-null">

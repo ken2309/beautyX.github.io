@@ -1,7 +1,8 @@
 .cus-back {
   position: fixed;
   top: 0;
-  left: 0;
+  width: fit-content;
+  left: calc((100% - 1200px)/2);
   right: 0;
   padding: 20px 0px;
   z-index: 5;
