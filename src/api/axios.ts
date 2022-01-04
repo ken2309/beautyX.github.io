@@ -6,12 +6,11 @@ const axiosClient = axios.create({
       headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
       },
       paramsSerializer: params => queryString.stringify(params)
 });
 axiosClient.interceptors.request.use(async (config) => {
-      return await config;
+      return config;
 })
 axios.interceptors.response.use((response) => {
       if (response && response.data) {

@@ -1,9 +1,9 @@
 .result-section_map{
   max-width: unset !important;
 }
- .result-section_map .result-map{
+ /* .result-section_map .result-map{
   height: calc(100vh - 95px);
- }
+ } */
 .result-content {
   padding: 0px 0px 64px 0px;
   display: flex;

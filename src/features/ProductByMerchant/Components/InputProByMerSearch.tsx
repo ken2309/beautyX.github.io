@@ -1,19 +1,18 @@
 import React, { useContext } from "react";
-import { AppContext } from "../../../context/AppProvider";
+import productsApi from "../../../api/productApi";
 import icon from "../../../constants/icon";
-import serviceApi from "../../../api/serviceApi";
-
-function InputSearch(props: any) {
+import { AppContext } from "../../../context/AppProvider";
+export default function InputProByMerSearch(props: any) {
+  const { mer_id, setProducts } = props;
   const { t } = useContext(AppContext);
-  const { mer_id, setServices } = props;
   function handerOnchange(e: any) {
     const { value } = e.target;
     async function handleFilterByKey() {
-      const res = await serviceApi.getBySearch({
+      const res = await productsApi.getBySearch({
         org_id: mer_id,
         searchKey: value,
       });
-      setServices(res.data.context.data);
+      setProducts(res.data.context.data);
     }
     handleFilterByKey();
   }
@@ -30,5 +29,3 @@ function InputSearch(props: any) {
     </div>
   );
 }
-
-export default InputSearch;

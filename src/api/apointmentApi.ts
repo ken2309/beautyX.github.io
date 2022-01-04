@@ -31,7 +31,11 @@ class ApointmentApi {
     // const url = "appointments?sort=-id&page=1&limit=15";
     const url = `appointments?sort=-id&page=1&limit=15&filter%5Btime_start%5D=${params}`;
     if (localStorage.getItem("_WEB_TK")) {
-      return axiosClient.get(url);
+      return axiosClient.get(url, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+        },
+      });
     }
   };
 }

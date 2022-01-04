@@ -6,6 +6,7 @@ import Information from "./components/Information/index";
 import Head from "../Head/index";
 import "./account.css";
 import SideBar from "./components/MenuSideBar";
+import Orders from '../Orders/index';
 import Product from "./components/HistoryProduct";
 import Service from "./components/HistoryService";
 import ComboList from "./components/HistoryCombo/components/Combolist";
@@ -32,6 +33,10 @@ const routes = [
     path: `/tai-khoan/combo`,
     component: <ComboList />,
   },
+  {
+    path:'/tai-khoan/lich-su-mua',
+    component: <Orders/>
+  }
 ];
 function Account() {
   const RouterPage = (

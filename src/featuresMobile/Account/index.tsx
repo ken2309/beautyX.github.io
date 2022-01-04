@@ -2,31 +2,23 @@ import React from 'react';
 import './account.css';
 import icon from '../../constants/icon'
 
-function change() {
-      const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
-      avtWrap?.classList.add('mb-ac__cnt-avt-wrap-change')
-      const avtImg = document.querySelector('.mb-ac__cnt-avt-box-img')
-      avtImg?.classList.add('mb-ac__cnt-avt-box-img-change')
-      document.querySelector('.mb-ac__cnt-avt-name')?.classList.add('mb-ac__cnt-avt-name-change')
-      document.querySelector('.mb-ac__cnt-avt')?.classList.add('mb-ac__cnt-avt-ch')
-}
-function changeBack() {
-      const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
-      avtWrap?.classList.remove('mb-ac__cnt-avt-wrap-change')
-      const avtImg = document.querySelector('.mb-ac__cnt-avt-box-img')
-      avtImg?.classList.remove('mb-ac__cnt-avt-box-img-change')
-      document.querySelector('.mb-ac__cnt-avt-name')?.classList.remove('mb-ac__cnt-avt-name-change')
-      document.querySelector('.mb-ac__cnt-avt')?.classList.remove('mb-ac__cnt-avt-ch')
-}
+// function change() {
+//       const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
+//       avtWrap?.classList.add('mb-ac__cnt-avt-wrap-change')
+//       const avtImg = document.querySelector('.mb-ac__cnt-avt-box-img')
+//       avtImg?.classList.add('mb-ac__cnt-avt-box-img-change')
+//       document.querySelector('.mb-ac__cnt-avt-name')?.classList.add('mb-ac__cnt-avt-name-change')
+//       document.querySelector('.mb-ac__cnt-avt')?.classList.add('mb-ac__cnt-avt-ch')
+// }
+// function changeBack() {
+//       const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
+//       avtWrap?.classList.remove('mb-ac__cnt-avt-wrap-change')
+//       const avtImg = document.querySelector('.mb-ac__cnt-avt-box-img')
+//       avtImg?.classList.remove('mb-ac__cnt-avt-box-img-change')
+//       document.querySelector('.mb-ac__cnt-avt-name')?.classList.remove('mb-ac__cnt-avt-name-change')
+//       document.querySelector('.mb-ac__cnt-avt')?.classList.remove('mb-ac__cnt-avt-ch')
+// }
 function AccountMb() {
-      document.addEventListener("scroll", () => {
-            let scrollY = window.scrollY;
-            if (scrollY >= 80) {
-                  change()
-            } else {
-                  changeBack()
-            }
-      });
       return (
             <div className="mb-ac">
                   <div className="mb-ac__cnt">
@@ -94,8 +86,8 @@ function AccountMb() {
                                     </li>
                                     <li>
                                           <div className="flex-column mb-ac__cnt-private-item">
-                                                <img src={icon.Ticket} alt="" />
-                                                <span>Danh sách mã ưu đãi</span>
+                                                <img src={icon.Clock_purple} alt="" />
+                                                <span>Lịch sử đơn hàng</span>
                                           </div>
                                     </li>
                                     <li>
@@ -108,17 +100,23 @@ function AccountMb() {
                         </div>
                         <div className="mb-ac__cnt-private">
                               <ul>
-                                    <li className="flex-row mb-ac__cnt-private-item">
-                                          <img src={icon.User_purple} alt="" />
-                                          <span>Tài khoản của tôi</span>
+                                    <li>
+                                          <div className="flex-column mb-ac__cnt-private-item">
+                                                <img src={icon.Bell} alt="" />
+                                                <span>Thông báo</span>
+                                          </div>
                                     </li>
-                                    <li className="flex-row mb-ac__cnt-private-item">
-                                          <img src={icon.User_purple} alt="" />
-                                          <span>Tài khoản của tôi</span>
+                                    <li>
+                                          <div className="flex-column mb-ac__cnt-private-item">
+                                                <img src={icon.Setting} alt="" />
+                                                <span>Cài đặt</span>
+                                          </div>
                                     </li>
-                                    <li className="flex-row mb-ac__cnt-private-item">
-                                          <img src={icon.User_purple} alt="" />
-                                          <span>Tài khoản của tôi</span>
+                                    <li>
+                                          <div className="flex-column mb-ac__cnt-private-item">
+                                                <img src={icon.Headphones_purple} alt="" />
+                                                <span>Hỗ trợ</span>
+                                          </div>
                                     </li>
                               </ul>
                         </div>
