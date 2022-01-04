@@ -19,6 +19,7 @@ import CountDown from "../features/CountDown";
 //import { AppContext } from "../context/AppProvider";
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
+import MerchantComment from "../features/MerchantComment";
 
 const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
@@ -28,7 +29,7 @@ function RouterConfig(props: any) {
   const routes = [
     {
       path: `/Home`,
-      component: <CountDown />
+      component: <CountDown />,
     },
     {
       path: `/beta`,
@@ -76,7 +77,11 @@ function RouterConfig(props: any) {
     },
     {
       path: "/Partner",
-      component: <Partner/>,
+      component: <Partner />,
+    },
+    {
+      path: "/MerchantComment",
+      component: <MerchantComment />,
     },
   ];
   const routesPrivate = [

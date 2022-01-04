@@ -5,6 +5,7 @@ import { useElementSize } from "usehooks-ts";
 import SimpleImageSlider from "react-simple-image-slider";
 import img from "../../../constants/img";
 import OrgCardLoading from "../../Loading/OrgCardLoading";
+import PopupDetailContact from "./PopupDetailContact";
 
 const images = [{ url: img.slider }, { url: img.slider4 }];
 function DetailHead(props: any) {
@@ -13,6 +14,12 @@ function DetailHead(props: any) {
   const infoBox = useRef(null);
   const { width, height } = useElementSize(slider);
   const [follow, setFollow] = useState(false);
+  const [openPopupContact, setOpenPopupContact] = useState(false);
+
+  function handleOpenPopupContact() {
+    setOpenPopupContact(true);
+  }
+
   return (
     <div className="mer-detail">
       <Container>
@@ -64,7 +71,9 @@ function DetailHead(props: any) {
                   </div>
                 </div>
                 <div className="content-left__follow">
-                  <button>{t("Mer_de.contact")}</button>
+                  <button onClick={handleOpenPopupContact}>
+                    {t("Mer_de.contact")}
+                  </button>
                   <button
                     style={
                       follow === true
@@ -95,6 +104,10 @@ function DetailHead(props: any) {
           </div>
         </div>
       </Container>
+      <PopupDetailContact
+        setOpenPopupContact={setOpenPopupContact}
+        openPopupContact={openPopupContact}
+      />
     </div>
   );
 }
