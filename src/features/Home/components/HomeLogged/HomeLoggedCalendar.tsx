@@ -17,8 +17,7 @@ export default function HomeLoggedCalendar() {
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
   const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
   // console.log(`appoiment`, appoiment);
-  const { t } = useContext(AppContext);
-
+  const { t, tk } = useContext(AppContext);
   const weekDays = [
     t("Home.su"),
     t("Home.mo"),

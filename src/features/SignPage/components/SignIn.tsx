@@ -16,7 +16,7 @@ import PopupVerification from "./PopupVerification";
 import PopupNewPass from "./PopupNewPass";
 
 function SignIn(props: any) {
-  const { t, setSign } = useContext(AppContext);
+  const { t, setSign, setTk } = useContext(AppContext);
   const { activeTabSign, setActiveTabSign } = props;
   const history = useHistory();
   const [typePass, setTypePass] = useState("password");
@@ -34,6 +34,7 @@ function SignIn(props: any) {
       const response = await auth.login(values);
       console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
+      setTk("_WEB_TK", response.data.context.token)
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);
       history.push("/beta");
@@ -187,6 +188,7 @@ function SignIn(props: any) {
       />
       <PopupNewPass openNewPass={openNewPass} setOpenNewPass={setOpenNewPass} />
       <PopupNoti
+        setActiveTabSign={setActiveTabSign}
         popup={popup}
         setPopup={setPopup}
         isSignIn={true}

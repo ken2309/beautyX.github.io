@@ -27,10 +27,6 @@ function AccountMb() {
                   changeBack()
             }
       });
-      const handleDropdown = () => {
-            const itemPa = document.querySelector('.mb-ac-item-order')
-            itemPa?.classList.toggle('mb-ac-item-order-active')
-      }
       return (
             <div className="mb-ac">
                   <div className="mb-ac__cnt">

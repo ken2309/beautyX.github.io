@@ -14,11 +14,11 @@ export default function HomeLoggedProductItem(props: any) {
     });
   };
   return (
-    <div className="homelogged-product__item" onClick={goDetail}>
-      <div className="item-img">
+    <div className="homelogged-product__item">
+      <div className="item-img" onClick={goDetail}>
         <img src="https://source.unsplash.com/random" alt="" />
       </div>
-      <div className="item-content">
+      <div className="item-content" onClick={goDetail}>
         <span className="item-content__title">{product.product_name}</span>
         <div className="item-content__info">
           <span className="item-content__info-name">Bay Spa & Massage</span>

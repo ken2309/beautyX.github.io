@@ -44,22 +44,23 @@ function PaymentTotal(props: any) {
     services: servicesPost,
     treatment_combo: combosPost,
     payment_method_id: chooseE_wall?.id,
-    prepay_cards:[],
-    branch_id:0,
+    prepay_cards: [],
+    branch_id: 0,
     coupon_code: "string",
     description: "string"
   };
   // const params =[
   //   {org_id: org_id},
   // ]
-  async function handlePostOrder(org_id:number, params:object){
-    try{
+  async function handlePostOrder(org_id: number, params: object) {
+    try {
       const response = await order.postOrder(org_id, params);
       console.log(response)
-      // const payUrl = await response.data.context.payment_gateway.extra_data.payUrl;
-      // const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
-      // window.location.assign(deepUrl);
-    }catch(err){
+      const payUrl = await response.data.context.payment_gateway.extra_data.payUrl;
+      //const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
+      const newWindow = window.open(`${payUrl}`, '_blank', 'noopener,noreferrer')
+      if (newWindow) newWindow.opener = null
+    } catch (err) {
       console.log(err)
     }
   }

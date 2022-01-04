@@ -14,7 +14,7 @@ import PopupNoti from "./PopupNoti";
 import auth from "../../../api/authApi";
 
 function SignUp(props: any) {
-  const { activeTabSign } = props;
+  const { activeTabSign, setActiveTabSign } = props;
   const { t } = useContext(AppContext);
   const [typePass, setTypePass] = useState("password");
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ function SignUp(props: any) {
   //handle submit register from
   async function submitRegisterForm(user: any) {
     try {
-      auth.register(user);
+      await auth.register(user);
       setLoading(false);
       setPopup(true);
     } catch (error) {
@@ -50,6 +50,7 @@ function SignUp(props: any) {
       password: values.password,
     };
     submitRegisterForm(params);
+    //setPopup(true)
     // axios
     //   .post(`${baseURL}/auth/register`, params)
     //   .then(function (response) {
@@ -382,7 +383,7 @@ function SignUp(props: any) {
           <img src={icon.facebook} alt="" />
         </div>
       </form>
-      <PopupNoti popup={popup} setPopup={setPopup} isSignIn={false} />
+      <PopupNoti popup={popup} setPopup={setPopup} isSignIn={false} setActiveTabSign={setActiveTabSign} />
     </div>
   );
 }

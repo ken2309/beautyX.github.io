@@ -119,11 +119,12 @@
       .mb-ac__cnt-private ul li{
             width: 50%;
             padding: 6px;
-            background-color: burlywood;
             padding: 8px;
       }
       .mb-ac__cnt-private-item{
             background-color: brown;
             height: 100%;
+            padding: 12px;
+            border-radius: 12px;
       }
 }

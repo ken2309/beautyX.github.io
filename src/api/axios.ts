@@ -5,13 +5,13 @@ const axiosClient = axios.create({
       baseURL: process.env.REACT_APP_API_URL,
       headers: {
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
       },
       paramsSerializer: params => queryString.stringify(params)
 });
 axiosClient.interceptors.request.use(async (config) => {
-
-      return config;
+      return await config;
 })
 axios.interceptors.response.use((response) => {
       if (response && response.data) {
