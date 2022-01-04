@@ -81,7 +81,7 @@ function AppointmentDetail(props: any) {
                                                                   className="app-de__ser-item"
                                                             >
                                                                   <div className="item">
-                                                                        <img src={item.image_url} alt="" className="item-img" />
+                                                                        <img src={item.image_url}  alt="" className="item-img" />
                                                                         <div className="item-content">
                                                                               <div className="item-content__name">
                                                                                     {item.service_name}

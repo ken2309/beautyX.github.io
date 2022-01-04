@@ -269,7 +269,7 @@
   }
 }
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
   .payment-cnt {
     padding: 24px;
   }

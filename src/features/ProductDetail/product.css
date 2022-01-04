@@ -289,7 +289,7 @@
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
   .product-cnt__left-tabs {
     width: 100%;
     overflow-x: scroll;

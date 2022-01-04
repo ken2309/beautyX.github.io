@@ -106,7 +106,7 @@
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
       .app-de-header{
             display: block;
             padding: 12px 24px;
@@ -152,6 +152,8 @@
       }
       .app-de__ser-item .item{
             padding: 4px;
+            margin-top: 8px;
+            padding-right: 8px;
             display: flex;
             border-radius: 8px;
       }
