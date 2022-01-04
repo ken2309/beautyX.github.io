@@ -16,7 +16,6 @@ export default function HomeLoggedCalendar() {
   const [dotAppoint, setdotAppoint] = useState([]);
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
   const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
-  // console.log("chooseMonth :>> ", chooseMonth);
   // console.log(`appoiment`, appoiment);
   const [, setActive] = useState(false);
   const { t } = useContext(AppContext);
@@ -139,7 +138,6 @@ export default function HomeLoggedCalendar() {
 
     // const firstDateOfWeek = selectedDay.startOf("week").date();
     // const lastDateOfWeek = selectedDay.endOf("week").date();
-    // console.log(firstDateOfWeek, lastDateOfWeek);
 
     // const datesInSameWeek = (parts: any) => {
     //   if (firstDateOfWeek < lastDateOfWeek) {
@@ -163,6 +161,7 @@ export default function HomeLoggedCalendar() {
     const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
       return (
+        // eslint-disable-next-line eqeqeq
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });

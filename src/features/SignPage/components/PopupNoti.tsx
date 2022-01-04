@@ -7,17 +7,15 @@ import { AppContext } from '../../../context/AppProvider';
 
 function PopupNoti(props: any) {
       const { t } = useContext(AppContext);
-      const { popup, setPopup, isSignIn, title } = props;
+      const { popup, setPopup, isSignIn, title, setActiveTabSign } = props;
       const history = useHistory();
-      const later = () => {
-            setPopup(false)
-      }
       const gotoPageSignIn = () => {
             if (isSignIn === true) {
                    setPopup(false)
                   history.push({ pathname: '/sign-up', search: '2' })
             } else {
                    setPopup(false)
+                   setActiveTabSign(1)
                   history.push({ pathname: '/sign-in', search: '1' })
             }
       }
@@ -52,7 +50,7 @@ function PopupNoti(props: any) {
                                     text={t('pm.later')}
                                     backColor="var(--bgWhite)"
                                     color="var(--purple)"
-                                    onClick={later}
+                                    onClick={()=>setPopup(false)}
                               />
                         </div>
                   </div>

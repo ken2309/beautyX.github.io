@@ -12,10 +12,10 @@ function SignPage(props: any) {
   const { t } = useContext(AppContext);
   const location = useLocation();
   const [activeTabSign, setActiveTabSign] = useState(
-    location.search
-      ? parseInt(location.search.slice(1, location.search.length))
-      : 1
-  );
+    location.search ?
+      parseInt(location.search.slice(1, location.search.length))
+      :
+      1);
   const buttons = [
     { id: 1, title: t("Home.Sign_in") },
     { id: 2, title: t("Home.Sign_up") },
@@ -70,7 +70,10 @@ function SignPage(props: any) {
                 setActiveTabSign={setActiveTabSign}
                 t={t}
               />
-              <SignUp activeTabSign={activeTabSign} />
+              <SignUp 
+              activeTabSign={activeTabSign} 
+              setActiveTabSign={setActiveTabSign}
+              />
             </div>
           </div>
         </Container>

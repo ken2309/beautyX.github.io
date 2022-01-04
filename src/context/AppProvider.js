@@ -9,7 +9,6 @@ export default function AppProvider({ children }) {
       const lg = localStorage.getItem('i18nextLng')
       const [language, setLanguage] = useState();
       const [openModal, setOpenModal] = useState(false);
-
       const [tk, setTk] = useState();
       const [userInfo, setUserInfo] = useState()
       const [sign, setSign] = useState();

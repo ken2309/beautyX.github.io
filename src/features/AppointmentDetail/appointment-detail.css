@@ -93,7 +93,6 @@
       line-height: 18px;
       font-weight: 700;
       color: var(--purple);
-      border-bottom: solid 1px var(--purple);
 }
 .app-de__address-txt{
       margin-top: 6px;

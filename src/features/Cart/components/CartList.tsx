@@ -27,16 +27,21 @@ function CartList(props: any) {
             style={
               item.cart.length === 0
                 ? {
-                    display: "none",
-                  }
+                  display: "none",
+                }
                 : { display: "block" }
             }
           >
             <SectionTitle title={item.name} />
-            <span className="flex-row cart-list-item__head">
-              <img src={icon.box} alt="" />
-              {t("Mer_de.services")}
-            </span>
+            {
+              item.cart.filter((item: any) => item.is_type === 2).length === 0 ?
+                <></>
+                :
+                <span className="flex-row cart-list-item__head">
+                  <img src={icon.box} alt="" />
+                  {t("Mer_de.services")}
+                </span>
+            }
             <div className="flex-row cart-list-item__title">
               <span>{t("Mer_de.services_name")}</span>
               <div className="wrap-services_name">
@@ -57,45 +62,64 @@ function CartList(props: any) {
                   />
                 ))}
             </ul>
-            <span className="flex-row cart-list-item__head">
-              <img src={icon.bag} alt="" />
-              {t("Mer_de.products")}
-            </span>
-            <ul className="flex-column">
-              {item.cart
-                .filter((item: any) => item.is_type === 1)
-                .map((child: any) => (
-                  <CartItem
-                    key={child.cart_id}
-                    cartItem={child}
-                    chooseOrg={chooseOrg}
-                  />
-                ))}
-            </ul>
-            <span className="flex-row cart-list-item__head">
-              <img src={icon.bag} alt="" />
-              Combos
-            </span>
-            <ul className="flex-column">
-              {item.cart
-                .filter((item: any) => item.is_type === 3)
-                .map((child: any) => (
-                  <CartItem
-                    key={child.cart_id}
-                    cartItem={child}
-                    chooseOrg={chooseOrg}
-                  />
-                ))}
-            </ul>
+            {
+              item.cart.filter((item: any) => item.is_type === 1).length === 0 ?
+                <></>
+                :
+                <>
+                  <span className="flex-row cart-list-item__head">
+                    <img src={icon.bag} alt="" />
+                    {t("Mer_de.products")}
+                  </span>
+                  <ul className="flex-column">
+                    {item.cart
+                      .filter((item: any) => item.is_type === 1)
+                      .map((child: any) => (
+                        <CartItem
+                          key={child.cart_id}
+                          cartItem={child}
+                          chooseOrg={chooseOrg}
+                        />
+                      ))}
+                  </ul>
+                </>
+            }
+            {
+              item.cart.filter((item: any) => item.is_type === 3).length === 0 ?
+                <></>
+                :
+                <>
+                  <span className="flex-row cart-list-item__head">
+                    <img src={icon.bag} alt="" />
+                    Combos
+                  </span>
+                  <ul className="flex-column">
+                    {item.cart
+                      .filter((item: any) => item.is_type === 3)
+                      .map((child: any) => (
+                        <CartItem
+                          key={child.cart_id}
+                          cartItem={child}
+                          chooseOrg={chooseOrg}
+                        />
+                      ))}
+                  </ul>
+                </>
+            }
           </div>
         ))
       ) : (
         <>
           <SectionTitle title={chooseOrg} />
-          <span className="flex-row cart-list-item__head">
-            <img src={icon.box} alt="" />
-            Dịch vụ
-          </span>
+          {
+            cartByOrgId.filter((item: any) => item.is_type === 2).length === 0 ?
+              <></>
+              :
+              <span className="flex-row cart-list-item__head">
+                <img src={icon.box} alt="" />
+                Dịch vụ
+              </span>
+          }
           <div className="flex-row cart-list-item__title">
             <span>Tên dịch vụ</span>
             <span>Số lượng</span>
@@ -114,21 +138,50 @@ function CartList(props: any) {
                 />
               ))}
           </ul>
-          <span className="flex-row cart-list-item__head">
-            <img src={icon.bag} alt="" />
-            Sản phẩm
-          </span>
-          <ul className="flex-column">
-            {cartByOrgId
-              .filter((item: any) => item.is_type === 1)
-              .map((child: any) => (
-                <CartItem
-                  key={child.cart_id}
-                  cartItem={child}
-                  chooseOrg={chooseOrg}
-                />
-              ))}
-          </ul>
+          {
+            cartByOrgId.filter((item: any) => item.is_type === 1) === 0 ?
+              <></>
+              :
+              <>
+                <span className="flex-row cart-list-item__head">
+                  <img src={icon.bag} alt="" />
+                  Sản phẩm
+                </span>
+                <ul className="flex-column">
+                  {cartByOrgId
+                    .filter((item: any) => item.is_type === 1)
+                    .map((child: any) => (
+                      <CartItem
+                        key={child.cart_id}
+                        cartItem={child}
+                        chooseOrg={chooseOrg}
+                      />
+                    ))}
+                </ul>
+              </>
+          }
+          {
+            cartByOrgId.filter((item: any) => item.is_type === 3).length === 0 ?
+              <></>
+              :
+              <>
+                <span className="flex-row cart-list-item__head">
+                  <img src={icon.bag} alt="" />
+                  Combos
+                </span>
+                <ul className="flex-column">
+                  {cartByOrgId
+                    .filter((item: any) => item.is_type === 3)
+                    .map((child: any) => (
+                      <CartItem
+                        key={child.cart_id}
+                        cartItem={child}
+                        chooseOrg={chooseOrg}
+                      />
+                    ))}
+                </ul>
+              </>
+          }
         </>
       )}
     </div>

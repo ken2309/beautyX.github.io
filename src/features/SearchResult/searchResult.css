@@ -1,8 +1,14 @@
+.result-section_map{
+  max-width: unset !important;
+}
+ /* .result-section_map .result-map{
+  height: calc(100vh - 95px);
+ } */
 .result-content {
   padding: 0px 0px 64px 0px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   background-color: var(--bg-gray);
   height: 1018px;
 }
@@ -50,6 +56,7 @@
   display: none;
 }
 .result-detail {
+  max-width: calc(1200px / 2);
   width: 50%;
   padding: 64px 36px 0px 0px;
 }
