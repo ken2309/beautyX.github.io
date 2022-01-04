@@ -1383,12 +1383,13 @@ img {
     z-index: 5;
     background-color: var(--bg-color);
     margin-top: -100%;
-    transition: all 0.4s;
+    transition: all 0.7s;
+    border-radius: 0px;
+    width: 100%;
   }
   .week-container__right-ac {
     margin-top: 0px;
-    transition: all 0.4s;
-    width: 100%;
+    transition: all 0.7s;
   }
   .calendar-appointment {
     display: unset;

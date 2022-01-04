@@ -201,3 +201,10 @@
     margin-bottom: 8px;
   }
 }
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px) {
+  .account_section{
+    display: none;
+  }
+}

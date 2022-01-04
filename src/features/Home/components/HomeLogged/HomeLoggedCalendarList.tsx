@@ -3,16 +3,6 @@ import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
 import { AppContext } from "../../../../context/AppProvider";
 
-const fixed = document.querySelector(".week-container__right");
-document.addEventListener("scroll", () => {
-  let scrollY = window.scrollY;
-  console.log(scrollY);
-  if (scrollY >= 300) {
-    fixed?.classList.add("week-container__right-ac");
-  } else {
-    fixed?.classList.remove("week-container__right-ac");
-  }
-});
 interface IHomeLoggedCalendarList {
   weekDays: any;
   weekDayOfFirst: any;
@@ -28,6 +18,15 @@ interface IHomeLoggedCalendarList {
   daysInWeek: any;
 }
 export default function HomeLoggedCalendarList(props: IHomeLoggedCalendarList) {
+  const fixed = document.querySelector(".week-container__right");
+  document.addEventListener("scroll", () => {
+    let scrollY = window.scrollY;
+    if (scrollY >= 300) {
+      fixed?.classList.add("week-container__right-ac");
+    } else {
+      fixed?.classList.remove("week-container__right-ac");
+    }
+  });
   const { t } = useContext(AppContext);
   const {
     weekDayOfFirst,

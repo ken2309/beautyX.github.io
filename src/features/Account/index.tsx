@@ -9,6 +9,7 @@ import SideBar from "./components/MenuSideBar";
 import Product from "./components/HistoryProduct";
 import Service from "./components/HistoryService";
 import ComboList from "./components/HistoryCombo/components/Combolist";
+import AccountMb from "../../featuresMobile/Account"
 import Footer from "../Footer";
 const routes = [
   {
@@ -53,6 +54,8 @@ function Account() {
           </Switch>
         </div>
       </div>
+      {/* for mobile */}
+      <AccountMb/>
       <Footer />
     </>
   );
