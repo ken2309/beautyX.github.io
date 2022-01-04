@@ -34,8 +34,8 @@ class ApointmentApi {
     if (localStorage.getItem("_WEB_TK")) {
       return axiosClient.get(url, {
         headers: {
-          // Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
-          Authorization: `Bearer 10|H7AET4CwOAyNJUz0mt0qp8TiM8eKgXf0Y6zPMOP4`,
+          Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+          // Authorization: `Bearer 10|H7AET4CwOAyNJUz0mt0qp8TiM8eKgXf0Y6zPMOP4`,
         },
       });
     }

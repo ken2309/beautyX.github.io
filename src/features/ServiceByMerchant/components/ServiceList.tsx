@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import icon from "../../../constants/icon";
+// import icon from "../../../constants/icon";
 import CardItem from "../../CardItem";
 import { Pagination } from "@mui/material";
-import useSearchTerm from "../../../utils/useSearchTerm";
-import { Service } from "../../../interface/service";
+// import useSearchTerm from "../../../utils/useSearchTerm";
+// import { Service } from "../../../interface/service";
 import GridLoading from "../../Loading/GridLoading";
 import scrollTop_2 from "../../../utils/scrollTop_2";
+import InputSearch from "./InputSearch";
 
 const cardStyle = {
   width: "100%",
@@ -15,7 +16,8 @@ interface ActiveFilter {
   title: string;
 }
 function ServiceList(props: any) {
-  const { t, mer_id, org, services, totalPage, setPage, loading } = props;
+  const { t, mer_id, org, services, setServices, totalPage, setPage, loading } =
+    props;
   const buttons = [
     { id: 1, title: t("Mer_de.popular") },
     { id: 2, title: t("Mer_de.selling") },
@@ -26,36 +28,37 @@ function ServiceList(props: any) {
     id: 0,
     title: "",
   });
-  const [serviceSort, setServiceSort] = useState<Service[]>([]);
-  const [sort, setSort] = useState({
-    _sortPrice: services,
-  });
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleSearchOnChange = (e: any) => {
-    setSearchTerm(e.target.value);
-    setActiveFilter({ id: 0, title: "" });
-  };
-  const serviceByFilter = useSearchTerm(searchTerm, services);
-  useEffect(() => {
-    function handleSort() {
-      setServiceSort(serviceByFilter);
-    }
-    handleSort();
-  }, [sort, serviceByFilter, serviceSort]);
-  const ascPrice = () => {
-    const asc = serviceByFilter.sort((a, b) => a.price - b.price);
-    setSort({
-      ...sort,
-      _sortPrice: asc,
-    });
-  };
-  const descPrice = () => {
-    const desc = serviceByFilter.sort((a, b) => b.price - a.price);
-    setSort({
-      ...sort,
-      _sortPrice: desc,
-    });
-  };
+  // const [serviceSort, setServiceSort] = useState<Service[]>([]);
+  // // const [state, setstate] = useState(initialState)
+  // const [sort, setSort] = useState({
+  //   _sortPrice: services,
+  // });
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const handleSearchOnChange = (e: any) => {
+  //   setSearchTerm(e.target.value);
+  //   setActiveFilter({ id: 0, title: "" });
+  // };
+  // const serviceByFilter = useSearchTerm(searchTerm, services);
+  // useEffect(() => {
+  //   function handleSort() {
+  //     setServiceSort(serviceByFilter);
+  //   }
+  //   handleSort();
+  // }, [sort, serviceByFilter, serviceSort]);
+  // const ascPrice = () => {
+  //   const asc = serviceByFilter.sort((a, b) => a.price - b.price);
+  //   setSort({
+  //     ...sort,
+  //     _sortPrice: asc,
+  //   });
+  // };
+  // const descPrice = () => {
+  //   const desc = serviceByFilter.sort((a, b) => b.price - a.price);
+  //   setSort({
+  //     ...sort,
+  //     _sortPrice: desc,
+  //   });
+  // };
   const handleActiveFilter = (item: any) => {
     setActiveFilter(item);
     if (item.id === 1) {
@@ -63,17 +66,19 @@ function ServiceList(props: any) {
     } else if (item.id === 2) {
       console.log("Bán chạy");
     } else if (item.id === 3) {
-      ascPrice();
+      console.log("Giá thấp");
+      // ascPrice();
     } else if (item.id === 4) {
-      descPrice();
+      console.log("Giá cao");
+      // descPrice();
     }
   };
   //Add values is product: false
-  const servicesIs = [];
-  for (var item of serviceByFilter) {
-    const service = { ...item, is_product: false };
-    servicesIs.push(service);
-  }
+  // const servicesIs = [];
+  // for (var item of serviceByFilter) {
+  //   const service = { ...item, is_product: false };
+  //   servicesIs.push(service);
+  // }
   const pageChange = (event: any, value: any) => {
     setPage(value);
     scrollTop_2(500);
@@ -103,15 +108,7 @@ function ServiceList(props: any) {
           </div>
         </div>
         <div className="flex-row list-filter__right">
-          <input
-            value={searchTerm}
-            onChange={handleSearchOnChange}
-            type="text"
-            placeholder={t("Mer_de.search_by_service")}
-          />
-          <button>
-            <img src={icon.search} alt="" />
-          </button>
+          <InputSearch mer_id={mer_id} setServices={setServices} />
         </div>
       </div>
       <div className="flex-column ser-list__content">
@@ -119,7 +116,7 @@ function ServiceList(props: any) {
           {loading === true ? (
             <GridLoading />
           ) : (
-            servicesIs.map((item: any) => (
+            services.map((item: any) => (
               <li key={item.id} className="ser-list__content-list-item">
                 <CardItem
                   org_id={mer_id}

@@ -18,13 +18,13 @@ export default function HomeLoggedCalendar() {
   const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
   // console.log("chooseMonth :>> ", chooseMonth);
   // console.log(`appoiment`, appoiment);
-  const [active, setActive] = useState(false);
+  const [, setActive] = useState(false);
   const { t } = useContext(AppContext);
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
-      console.log(`scrollY`, scrollY);
+      // console.log(`scrollY`, scrollY);
       if (scrollY >= 120) {
         setActive(true);
       } else {
@@ -32,7 +32,7 @@ export default function HomeLoggedCalendar() {
       }
     });
   }, []);
-  console.log(active);
+  // console.log(active);
 
   const weekDays = [
     t("Home.su"),

@@ -17,6 +17,10 @@ class ProductApi {
     const url = `/organizations/${params.org_id}/products/${params.id}`;
     return axiosClient.get(url);
   };
+  getBySearch = (params: any) => {
+    const url = `/organizations/${params.org_id}/products?page=1&limit=15&filter%5Bkeyword%5D=${params.searchKey}`;
+    return axiosClient.get(url);
+  };
 }
 const productsApi = new ProductApi();
 export default productsApi;
