@@ -2,6 +2,9 @@
   display: flex;
   padding: 64px 0px 64px 0px;
 }
+.merchantComment .sign-form__box {
+  margin: 0;
+}
 .merchantComment-left {
   width: 33.33%;
   height: 100%;
