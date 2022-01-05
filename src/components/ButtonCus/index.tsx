@@ -1,6 +1,6 @@
 import React from "react";
 import { commonStyle } from "../../constants/style";
-import './ButtonCus.css'
+import "./ButtonCus.css";
 
 function ButtonCus(props: any) {
   const btnStyle = commonStyle();
@@ -18,6 +18,7 @@ function ButtonCus(props: any) {
     border,
     margin,
     disabled,
+    type,
   } = props;
   const handleOnClick = () => {
     if (onClick) {
@@ -36,10 +37,11 @@ function ButtonCus(props: any) {
         borderRadius: borderRadius,
         border: border,
         margin: margin,
-        width: width
+        width: width,
       }}
       className={btnStyle.button}
       onClick={handleOnClick}
+      type={type}
     >
       {text}
       <img src={imgIcon} alt="" />

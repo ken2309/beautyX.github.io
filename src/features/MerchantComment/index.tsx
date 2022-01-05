@@ -69,18 +69,14 @@ export default function MerchantComment() {
           </div>
           <div className="merchantComment-right">
             <div className="sign-form__box">
-              <img
-                className="sign-form__box-icon "
-                src={icon.searchPurple}
-                alt=""
-              />
+              <img className="sign-form__box-icon " src={icon.chatAll} alt="" />
               <input
                 autoComplete="off"
                 // value={formikContact.values.business}
                 // onChange={formikContact.handleChange}
                 name="business"
                 id="business"
-                placeholder="Tìm kiếm đánh giá..."
+                placeholder="Bình luận"
               />
             </div>
             <div className="merchantComment-right__btn">

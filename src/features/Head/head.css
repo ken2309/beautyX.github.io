@@ -35,7 +35,7 @@
 
 .hd-cnt__right-avatar {
   position: relative;
-  margin: 0px 18px 0px 36px;
+  margin: 0px 16px 0px 16px;
 }
 .hd-cnt__right-avatar img {
   cursor: pointer;
@@ -214,7 +214,7 @@
     margin: 0px 18px 0px 18px;
   }
   .hd-logo {
-    left: -70px;
+    left: -100px;
   }
 }
 /* responsive */
@@ -225,7 +225,7 @@
     padding: 20px 24px;
     background-color: var(--purple);
   }
-  
+
   .hd-logo {
     display: none;
   }
@@ -266,7 +266,7 @@
   .mb-hd-cnt__right {
     display: block;
   }
-  .hd-noti{
+  .hd-noti {
     display: none;
   }
   .hd-cnt__right-user {
