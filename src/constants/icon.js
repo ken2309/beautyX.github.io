@@ -30,6 +30,7 @@ import Message from "../assets/icon/message.svg";
 import Phone from "../assets/icon/phone.svg";
 import Storefront from "../assets/icon/storefront.svg";
 import User from "../assets/icon/user.svg";
+import User_1 from "../assets/icon/user_1.svg"
 import User_purple from "../assets/icon/user_box.svg";
 import Location from "../assets/icon/location.svg";
 import ArrowDownWhite from "../assets/icon/arrow-down-white.svg";
@@ -96,6 +97,11 @@ import ShoppingCartSimpleWhite from "../assets/icon/shoppingCartSimpleWhite.svg"
 import closeCircle from "../assets/icon/closeCircle.svg";
 import Favorite from "../assets/icon/favorite_fill.svg";
 import pPrev_purple from "../assets/icon/pPrev_purple.svg";
+import orderCancel from "../assets/icon/order_cancel.svg";
+import orderFinish from "../assets/icon/order_finish.svg";
+import orderPending from "../assets/icon/order_pending.svg";
+import backWhite from "../assets/icon/back_white.svg";
+
 
 const icon = {
   Favorite,
@@ -194,6 +200,11 @@ const icon = {
   ShoppingCartSimpleWhite,
   closeCircle,
   home_1,
-  pPrev_purple
+  pPrev_purple,
+  User_1,
+  orderCancel,
+  orderFinish,
+  orderPending,
+  backWhite
 };
 export default icon;

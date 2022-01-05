@@ -142,4 +142,12 @@
             color: var(--purple);
             text-align: center;
       }
+      /* orders */
+      .mb-order{
+            width: 100%;
+            min-height: max-content;
+            height: 100%;
+            background-color: var(--bgWhite);
+            overflow-y: scroll;
+      }
 }

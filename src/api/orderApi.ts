@@ -1,8 +1,8 @@
 import axiosClient from './axios';
 
 class Order {
-      getOrder = () => {
-            const url = `orders?sort=-id&page=1&limit=15`;
+      getOrder = (page:number) => {
+            const url = `orders?sort=-id&page=${page}&limit=4`;
             return axiosClient.get(url, {
                   headers: {
                         Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
