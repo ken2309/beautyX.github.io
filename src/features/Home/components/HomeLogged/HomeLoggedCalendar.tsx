@@ -291,6 +291,7 @@ export default function HomeLoggedCalendar() {
               handleGetDate={handleGetDate}
               datingList={datingList}
               daysInWeek={getDaysInWeek(selectedDay)}
+              dotAppoint={dotAppoint}
             />
           </div>
         </div>

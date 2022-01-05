@@ -21,6 +21,11 @@ img {
 .color-purple {
   color: var(--purple);
 }
+.status-dots {
+  gap: 0 2px;
+  justify-content: center;
+  display: flex;
+}
 .home-banner {
   margin-top: 64px;
   padding-top: 63px;
@@ -666,6 +671,7 @@ img {
 .status-dot-red {
   background-color: #ee6955;
 }
+
 /* status */
 .calendar-status {
   width: 100%;
@@ -791,14 +797,14 @@ img {
   line-height: 20px;
   color: var(--purple);
 }
-.item-bottom__active{
+.item-bottom__active {
   padding: 8px 16px;
   background-color: var(--bg-color);
   border-radius: 8px;
   margin-top: 8px;
   position: relative;
 }
-.item-bottom__active.active{
+.item-bottom__active.active {
   padding: 24px;
   border-radius: 24px;
   box-shadow: 0px 6px 15px #dcd8ee;
@@ -807,13 +813,13 @@ img {
 }
 .close-ring {
   position: absolute;
-  top: calc(100%/2 - 10px);
+  top: calc(100% / 2 - 10px);
   right: 16px;
   cursor: pointer;
   user-select: none;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.close-ring.active{
+.close-ring.active {
   top: 8px;
   /* height: unset; */
   /* bottom: unset; */
@@ -846,14 +852,14 @@ img {
   justify-content: space-between;
   height: 100%;
   max-height: 0;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-.item-bottom__active-list.active{
+.item-bottom__active-list.active {
   max-height: 56px;
   gap: 0 24px;
   padding-top: 16px;
 }
-.item-bottom__active-item{
+.item-bottom__active-item {
   display: flex;
   justify-content: space-between;
   gap: 0 6.5px;
@@ -884,8 +890,8 @@ img {
   color: var(--text-black);
   display: flex;
 }
-.item-bottom>div{
-  transition: all .3s ease-in-out;
+.item-bottom > div {
+  transition: all 0.3s ease-in-out;
 }
 .item-bottom__hidden {
   padding: 8px 16px;
@@ -1151,10 +1157,10 @@ img {
   padding: 36px;
 }
 /* home slider section  */
-.home-slider-section .rec.rec-pagination{
+.home-slider-section .rec.rec-pagination {
   align-items: center;
 }
-.home-slider-section .rec.rec-dot{
+.home-slider-section .rec.rec-dot {
   border: 1px solid var(--purple);
   background-color: transparent;
   color: var(--purple);
@@ -1162,13 +1168,12 @@ img {
   width: 8px;
   height: 8px;
 }
-.home-slider-section .rec.rec-dot.rec-dot_active{
+.home-slider-section .rec.rec-dot.rec-dot_active {
   width: 32px;
   height: 12px;
   border-radius: 6px;
   background-color: var(--purple);
 }
-
 
 /* responsive */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -1326,12 +1331,12 @@ img {
     line-height: 20px;
     font-weight: 700;
   }
-  .calendar-appointment__item{
+  .calendar-appointment__item {
     padding: 2px;
     border-radius: 0px 6px 6px 0px;
     box-shadow: 0px 0px 11px 2px rgb(0 0 0 / 12%);
   }
-  .calendar-appointment__item-row{
+  .calendar-appointment__item-row {
     width: 100%;
   }
   .home-flatform {

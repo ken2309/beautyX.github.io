@@ -1,6 +1,7 @@
 import icon from "../../../../../constants/icon";
 
-export default function FormAddress() {
+export default function FormAddress(props: any) {
+  const { formik } = props;
   return (
     <>
       <div className="title_section text-color-purple">
@@ -21,14 +22,17 @@ export default function FormAddress() {
             <div className="form-account__wrapinput">
               <input
                 className="form-account__input"
-                // value={formikPartner.values.Name}
-                // onChange={formikPartner.handleChange}
+                value={formik.values.address}
+                onChange={formik.handleChange}
                 placeholder="Địa chỉ"
                 type="text"
-                name="Name"
-                id="Name"
+                name="address"
+                id="address"
               />
             </div>
+            {formik.errors.address && formik.touched.address && (
+              <p className="err-text">{formik.errors.address}</p>
+            )}
           </div>
         </div>
         <div style={{ paddingTop: "0px" }} className="form-account__wraper">
