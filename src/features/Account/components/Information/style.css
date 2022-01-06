@@ -101,12 +101,47 @@
   background-color: var(--bg-color);
   border-radius: 22px;
   cursor: pointer;
-  width: 100%;
+  /* width: 100%; */
+  position: relative;
+  list-style: none;
+  width: calc(100% / 3);
+  cursor: pointer;
 }
 .dateofbirth__item__wrap {
   display: flex;
   justify-content: center;
   gap: 0 8px;
+  border-radius: 20px;
+  /* height: 40px; */
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0px 16px; */
+}
+.account_section .drop-category {
+  margin: 10px 0 0 0;
+  padding: 8px;
+  position: absolute;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  z-index: 2;
+  background-color: var(--bg-color);
+  top: 36px;
+  left: 0;
+  text-align: center;
+}
+.account_section .drop-category ul li {
+  margin: 2px 0px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-black);
+  font-family: Quicksand;
 }
 .dateofbirth__item__wrap span {
   font-style: normal;
@@ -155,62 +190,11 @@
   justify-content: space-between;
   align-items: center;
 }
-.info_section .MuiInputBase-input {
-  padding: 8px 16px;
-}
-.info_section .MuiTextField-root {
-  box-shadow: inset 0px 2px 6px rgb(113 97 186 / 20%);
-  border-radius: 18px;
-  overflow: hidden;
-  border: 0;
-  outline: 0;
-}
-.info_section .MuiInputBase-root {
-  font-size: 14px;
-  color: var(--text-hover);
-}
-.info_section .MuiSvgIcon-root {
-  color: var(--purple);
-}
-.info_section .MuiOutlinedInput-notchedOutline {
-  border: 0;
-}
+
 .cus-sex {
   margin: -6px 0 0 16px;
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .MuiButton-root {
-    color: black !important;
-  }
-  .MuiOutlinedInput-input {
-    padding: 8px 16px !important;
-  }
-  .MuiOutlinedInput-notchedOutline {
-    border: 0 !important;
-  }
-  .PrivatePickersToolbar-root {
-    background-color: var(--purple);
-    color: aliceblue;
-  }
-  .MuiDialogContent-root {
-    background-color: var(--bgWhite);
-  }
-  .MuiTextField-root {
-    box-shadow: inset 0px 2px 6px rgb(113 97 186 / 20%);
-    border-radius: 18px;
-    overflow: hidden;
-    border: 0;
-    outline: 0;
-  }
-  .MuiCalendarPicker-root {
-    background-color: var(--bgWhite);
-  }
-  .MuiDialogActions-root {
-    background-color: var(--bgWhite);
-  }
-  .MuiTouchRipple-root {
-    color: var(--text-black);
-  }
   .form-account__wraper {
     flex-direction: column;
     gap: 6px 0;

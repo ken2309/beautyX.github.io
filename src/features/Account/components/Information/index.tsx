@@ -5,7 +5,6 @@ import ButtonCus from "../../../../components/ButtonCus";
 import DialogChangePass from "./components/DialogChangePass";
 import DialogNewPass from "./components/DialogNewPass";
 import Form from "./components/Form";
-import FormAddress from "./components/FormAddress";
 import "./style.css";
 import { t } from "i18next";
 function Information(props: any) {
@@ -17,7 +16,9 @@ function Information(props: any) {
       gmail: "",
       phone: "",
       address: "",
+      address2: "",
       sex: "",
+      ok: "",
     },
     validationSchema: Yup.object({
       address: Yup.string().required("Vui lòng nhập địa chỉ"),
@@ -55,7 +56,6 @@ function Information(props: any) {
   const handleOpenChange = () => {
     setOpenChangePass(true);
   };
-
   // Open New Pass
   const handleOpenNewPass = () => {
     setOpenNewPass(true);
@@ -64,7 +64,7 @@ function Information(props: any) {
   return (
     <div className="info_section">
       <Form formik={formik} />
-      <FormAddress formik={formik} />
+
       <div className="btn-success">
         <ButtonCus
           onClick={handleOpenChange}

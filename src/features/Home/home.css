@@ -131,6 +131,8 @@ img {
   box-shadow: 0px 4px 20px rgb(113 97 186 / 20%);
   z-index: 2;
   background-color: var(--bg-color);
+  max-height: 138px;
+  overflow-y: auto;
 }
 .drop-category ul li {
   margin: 2px 0px;
