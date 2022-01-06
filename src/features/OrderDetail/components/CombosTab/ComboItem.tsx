@@ -3,10 +3,34 @@ import { Combo } from "../../../../interface/combo";
 import formatPrice from "../../../../utils/formatPrice";
 import ButtonCus from "../../../../components/ButtonCus";
 import comboApi from "../../../../api/comboApi";
+import { addCart } from "../../../../redux/cartSlice";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function ComboItem(props: any) {
   const { combotItem, org, open } = props;
   const [combo, setCombo] = useState<Combo>();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const is_type = 3;
+  const values = {
+    id: combo?.id,
+    org_id: org.id,
+    org_name: org.name,
+    cart_id: parseInt(`${is_type}${org.id}${combo?.id}`), //is_type + org_id + id
+    name: combo?.name,
+    quantity: 1,
+    is_type: is_type,
+    isConfirm: true,
+    price: combo?.price,
+  };
+  const handleAddCart = () => {
+    const action = addCart(values);
+    history.push({
+      pathname: `/Cart`,
+    });
+    dispatch(action);
+  };
   useEffect(() => {
     async function handleGetComDet() {
       try {
@@ -51,6 +75,7 @@ function ComboItem(props: any) {
                 margin="0px 16px 0px 0px"
               />
               <ButtonCus
+                onClick={handleAddCart}
                 text="Pre-Order"
                 padding="4px 8px"
                 color="var(--bgWhite)"

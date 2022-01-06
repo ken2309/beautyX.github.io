@@ -24,7 +24,7 @@ function OrderDetail(props: any) {
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
-      fullScreen={view > 768 ? false : true}
+      // fullScreen={view > 768 ? false : true}
       TransitionComponent={Transition}
     >
       <div className="order-de">
@@ -44,9 +44,10 @@ function OrderDetail(props: any) {
         </div>
         <div className="order-de__count">
           <span className="flex-row count">
-            Tổng :{" "}
+            Tổng:
             <h4>
-              {formatPrice(order?.amount)} đ ({countItem} item)
+              {" "}
+              {formatPrice(order?.amount)}đ ({countItem} item)
             </h4>
           </span>
         </div>
