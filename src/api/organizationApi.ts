@@ -4,7 +4,6 @@ class Organization {
   getOrgBrById = (props: any) => {
     //console.log(props)
     let id = props.id || props;
-    console.log(id);
     let withBranches = props.branches || true;
     const url = `/organizations/${id}?withBranches=${withBranches}`;
     return axiosClient.get(url);

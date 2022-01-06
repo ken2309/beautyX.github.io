@@ -5,7 +5,7 @@ import './recommendList.css'
 const style={
       width:'172px'
 }
-function RecommendList(props:any) {
+function RecommendListMb(props:any) {
       const {org, productsSale} = props;
       return (
             <div className="mb-rcm-wrapper">
@@ -37,4 +37,4 @@ function RecommendList(props:any) {
       );
 }
 
-export default RecommendList;
+export default RecommendListMb;
