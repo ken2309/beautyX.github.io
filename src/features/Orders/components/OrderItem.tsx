@@ -3,8 +3,11 @@ import formatPrice from '../../../utils/formatPrice';
 import icon from '../../../constants/icon';
 import { IOrganization } from '../../../interface/organization';
 import orgApi from '../../../api/organizationApi';
+import {useHistory} from 'react-router-dom';
+import slugify from '../../../utils/formatUrlString';
 
 function OrderItem(props: any) {
+      const history = useHistory();
       const { order } = props;
       const status = order.status;
       const countItem = order.items_product.length + order.items_service.length + order.items_treatment_combo.length
@@ -33,6 +36,16 @@ function OrderItem(props: any) {
                   default:
                         break
             }
+      }
+      const gotoOrderDetail = () => {
+            history.push({
+                  pathname: `/tai-khoan/chi-tiet-don-hang/${slugify(order.created_at)}`,
+                  state: {
+                        org: org,
+                        order: order,
+                        countItem: countItem
+                  }
+            })
       }
 
       return (
@@ -64,7 +77,9 @@ function OrderItem(props: any) {
                                     </span>
                                     <div className="flex-row order-item__status">
                                           {checkStatus(status)}
-                                          <button>
+                                          <button
+                                                onClick={gotoOrderDetail}
+                                          >
                                                 Chi tiết
                                           </button>
                                     </div>

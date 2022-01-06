@@ -3,7 +3,8 @@ import order from '../../api/orderApi';
 import './order.css';
 import { Order } from '../../interface/order';
 import { Pagination } from '@mui/material';
-import OrderItem from "./components/OrderItem"
+import OrderItem from "./components/OrderItem";
+import HeadTitle from '../HeadTitle';
 
 function Orders() {
       const [orders, setOrders] = useState<Order[]>([])
@@ -26,8 +27,9 @@ function Orders() {
       }
       return (
             <div className='order'>
+                  <HeadTitle title='Lịch sử đơn hàng' />
                   <div className="order-head">
-                        <span>Lịch sử mua hàng</span>
+                        <span>Lịch sử đơn hàng</span>
                   </div>
                   <div className="order-list">
                         <ul className="order-list__cnt">

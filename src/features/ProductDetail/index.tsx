@@ -9,6 +9,7 @@ import DetailCard from './components/DetailCard';
 import DetailHead from './components/DetailHead';
 import Footer from '../Footer';
 import RecommendList from '../RecommendList/index';
+import RecommendListMb from '../../featuresMobile/RecomendList';
 import { Product } from '../../interface/product'
 import { AppContext } from '../../context/AppProvider';
 import HeadTitle from '../HeadTitle';
@@ -93,6 +94,11 @@ function ProductDetail(props: any) {
                               org={org}
                               list={productsIs}
                               is_type={is_type}
+                        />
+                        {/* for mobile */}
+                        <RecommendListMb
+                              org={org}
+                              productsSale={productsIs}
                         />
                   </Container>
                   <Footer/>

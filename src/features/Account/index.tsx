@@ -10,7 +10,8 @@ import Orders from '../Orders/index';
 import Product from "./components/HistoryProduct";
 import Service from "./components/HistoryService";
 import ComboList from "./components/HistoryCombo/components/Combolist";
-import AccountMb from "../../featuresMobile/Account"
+import AccountMb from "../../featuresMobile/Account";
+import OrderDetail from "../OrderDetail"
 import Footer from "../Footer";
 const routes = [
   {
@@ -36,6 +37,10 @@ const routes = [
   {
     path:'/tai-khoan/lich-su-mua',
     component: <Orders/>
+  },
+  {
+    path:'/tai-khoan/chi-tiet-don-hang',
+    component: <OrderDetail/>
   }
 ];
 function Account() {
