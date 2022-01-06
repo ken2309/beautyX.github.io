@@ -5,7 +5,7 @@ import ButtonCus from "../../../../components/ButtonCus";
 import comboApi from "../../../../api/comboApi";
 
 function ComboItem(props: any) {
-  const { combotItem, org } = props;
+  const { combotItem, org, open } = props;
   const [combo, setCombo] = useState<Combo>();
   useEffect(() => {
     async function handleGetComDet() {
@@ -19,8 +19,10 @@ function ComboItem(props: any) {
         console.log(error);
       }
     }
-    handleGetComDet();
-  }, [combotItem.productable_id, org.id]);
+    if (open === true) {
+      handleGetComDet();
+    }
+  }, [combotItem.productable_id, org.id, open]);
   return (
     <li>
       <div className="order-de-list__item">

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './account.css';
 import icon from '../../constants/icon';
 import Bottom from '../Bottom/index';
-import OrderMb from './Orders'
+import OrderMb from './Orders';
+import AccountForm from './AccountForm/index'
 
 // function change() {
 //       const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
@@ -22,6 +23,7 @@ import OrderMb from './Orders'
 // }
 function AccountMb() {
       const [openOrder, setOpenOrder] = useState(false);
+      const [openAcc, setOpenAcc] = useState(false);
       return (
             <div className="mb-ac">
                   <div className="mb-ac__cnt">
@@ -76,7 +78,10 @@ function AccountMb() {
                         <div className="mb-ac__cnt-private">
                               <ul>
                                     <li>
-                                          <div className="flex-column mb-ac__cnt-private-item">
+                                          <div 
+                                                onClick={()=>setOpenAcc(true)}
+                                                className="flex-column mb-ac__cnt-private-item"
+                                          >
                                                 <img src={icon.User_purple} alt="" />
                                                 <span>Tài khoản của tôi</span>
                                           </div>
@@ -132,6 +137,10 @@ function AccountMb() {
                   <OrderMb
                         openOrder={openOrder}
                         setOpenOrder={setOpenOrder}
+                  />
+                  <AccountForm
+                        open={openAcc}
+                        setOpen={setOpenAcc}
                   />
             </div>
       );

@@ -2,7 +2,7 @@ import React from 'react';
 import ProductItem from './ProductItem';
 
 function ProductsTab(props: any) {
-      const { products, tab_id, org } = props;
+      const { products, tab_id, org, open } = props;
       return (
             <div
                   style={tab_id === 1 ? { display: 'block' } : { display: 'none' }}
@@ -11,6 +11,7 @@ function ProductsTab(props: any) {
                         {
                               products?.map((item: any, index: number) => (
                                     <ProductItem
+                                          open={open}
                                           key={index}
                                           productItem={item}
                                           org={org}

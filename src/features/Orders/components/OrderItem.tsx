@@ -3,8 +3,9 @@ import formatPrice from '../../../utils/formatPrice';
 import icon from '../../../constants/icon';
 import { IOrganization } from '../../../interface/organization';
 import orgApi from '../../../api/organizationApi';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import slugify from '../../../utils/formatUrlString';
+import OrderDetail from '../../OrderDetail';
 
 function OrderItem(props: any) {
       const history = useHistory();
@@ -12,6 +13,7 @@ function OrderItem(props: any) {
       const status = order.status;
       const countItem = order.items_product.length + order.items_service.length + order.items_treatment_combo.length
       const [org, setOrg] = useState<IOrganization>()
+      const [openDetail, setOpenDetail] = useState(false)
       useEffect(() => {
             async function getOrgById() {
                   try {
@@ -49,44 +51,53 @@ function OrderItem(props: any) {
       }
 
       return (
-            <li>
-                  <div className="order-item">
-                        <img
-                              className="order-item__img"
-                              src={"https://picsum.photos/650/976?random=1" + order.id}
-                              alt=""
-                        />
-                        <div className="order-item__cnt">
-                              <div className="order-item__cnt-head">
-                                    <span className="org-name">
-                                          {org?.name}
-                                    </span>
-                                    <span className="org-address">
-                                          {org?.full_address}
-                                    </span>
-                                    <div className="order-at">
-                                          <span className="flex-row">Ngày:<h4>{order.created_at}</h4></span>
+            <>
+                  <li>
+                        <div className="order-item">
+                              <img
+                                    className="order-item__img"
+                                    src={"https://picsum.photos/650/976?random=1" + order.id}
+                                    alt=""
+                              />
+                              <div className="order-item__cnt">
+                                    <div className="order-item__cnt-head">
+                                          <span className="org-name">
+                                                {org?.name}
+                                          </span>
+                                          <span className="org-address">
+                                                {org?.full_address}
+                                          </span>
+                                          <div className="order-at">
+                                                <span className="flex-row">Ngày:<h4>{order.created_at}</h4></span>
+                                          </div>
+                                          <div className="order-item__cnt-count">
+                                                {countItem} (items)
+                                          </div>
                                     </div>
-                                    <div className="order-item__cnt-count">
-                                          {countItem} (items)
-                                    </div>
-                              </div>
-                              <div className="flex-row-sp order-item__cnt-bot">
-                                    <span className="order-item__count">
-                                          {formatPrice(order.amount)} đ
-                                    </span>
-                                    <div className="flex-row order-item__status">
-                                          {checkStatus(status)}
-                                          <button
-                                                onClick={gotoOrderDetail}
-                                          >
-                                                Chi tiết
-                                          </button>
+                                    <div className="flex-row-sp order-item__cnt-bot">
+                                          <span className="order-item__count">
+                                                {formatPrice(order.amount)} đ
+                                          </span>
+                                          <div className="flex-row order-item__status">
+                                                {checkStatus(status)}
+                                                <button
+                                                      onClick={() => setOpenDetail(true)}
+                                                >
+                                                      Chi tiết
+                                                </button>
+                                          </div>
                                     </div>
                               </div>
                         </div>
-                  </div>
-            </li>
+                  </li>
+                  <OrderDetail
+                        open={openDetail}
+                        setOpen={setOpenDetail}
+                        org={org}
+                        order={order}
+                        countItem={countItem}
+                  />
+            </>
       );
 }
 
