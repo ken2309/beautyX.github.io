@@ -18,7 +18,6 @@ function Information(props: any) {
       address: "",
       address2: "",
       sex: "",
-      ok: "",
     },
     validationSchema: Yup.object({
       address: Yup.string().required("Vui lòng nhập địa chỉ"),
