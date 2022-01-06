@@ -5,7 +5,7 @@ import formatPrice from '../../../../utils/formatPrice';
 import ButtonCus from '../../../../components/ButtonCus';
 
 function ProductItem(props: any) {
-      const { productItem, org } = props;
+      const { productItem, org, open } = props;
       const [product, setProduct] = useState<Product>();
       useEffect(() => {
             async function handleGetPrDetail() {
@@ -19,8 +19,10 @@ function ProductItem(props: any) {
                         console.log(error)
                   }
             }
-            handleGetPrDetail()
-      }, [org.id, productItem.productable_id])
+            if (open === true) {
+                  handleGetPrDetail()
+            }
+      }, [org.id, productItem.productable_id, open])
       return (
             <li>
                   <div className="order-de-list__item">

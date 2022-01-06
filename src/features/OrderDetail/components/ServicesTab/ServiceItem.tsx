@@ -5,7 +5,7 @@ import ButtonCus from '../../../../components/ButtonCus';
 import formatPrice from '../../../../utils/formatPrice'
 
 function ServiceItem(props: any) {
-      const { serviceItem, org } = props;
+      const { serviceItem, org, open } = props;
       const [service, setService] = useState<Service>()
       useEffect(() => {
             async function handleGetSerDetail() {
@@ -19,8 +19,10 @@ function ServiceItem(props: any) {
                         console.log(error)
                   }
             }
-            handleGetSerDetail()
-      }, [org.id, serviceItem.productable_id])
+            if(open === true){
+                  handleGetSerDetail()
+            }
+      }, [org.id, serviceItem.productable_id, open])
       return (
             <li>
                   <div className="order-de-list__item">

@@ -16,6 +16,7 @@ import SignPageRequest from "../features/SignPageRequest/index";
 import Notification from "../features/Notification/index";
 import PrivateRoute from "./PrivateRoute";
 import CountDown from "../features/CountDown";
+import DatePicker from "../components/DatePicker"
 //import { AppContext } from "../context/AppProvider";
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
@@ -83,6 +84,10 @@ function RouterConfig(props: any) {
       path: "/MerchantComment",
       component: <MerchantComment />,
     },
+    {
+      path:"/date",
+      component:<DatePicker/>
+    }
     // {
     //   path: "/Calendar",
     //   component: <Calendar />,

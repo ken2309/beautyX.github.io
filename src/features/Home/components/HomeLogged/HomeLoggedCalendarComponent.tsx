@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import range from "lodash-es/range";
 
 interface IHomeLoggedCalendarComponent {
