@@ -19,6 +19,7 @@ function HomeSlider(props: any) {
     infinite: true,
     autoplay: true,
     autoplaySpeed: 3000,
+    arrows: false,
     responsive: [
       {
         breakpoint: 767,
@@ -26,7 +27,7 @@ function HomeSlider(props: any) {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
-          arrows: false,
+          autoplay: false,
         },
       },
     ],
