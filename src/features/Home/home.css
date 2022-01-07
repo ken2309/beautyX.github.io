@@ -1313,13 +1313,14 @@ img {
   .home-calendar-content {
     flex-direction: column-reverse;
     padding: 0px 24px;
+    gap: 24px 0;
   }
   .calendar-img {
     width: 100%;
   }
   .home-calendar-content ul li {
     width: 100%;
-    padding: 0px;
+    padding: 0px 0px 14px 0;
   }
   .calendar-item__header {
     margin-bottom: 4px;
@@ -1561,6 +1562,10 @@ img {
   }
   .homelogged-location .section-title {
     padding: 0 16px;
+  }
+  .home .section-title {
+    padding: 0 24px;
+    white-space: unset;
   }
   /* .item-bottom__active {
     border-radius: 0;

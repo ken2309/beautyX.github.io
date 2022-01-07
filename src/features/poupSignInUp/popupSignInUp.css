@@ -44,7 +44,7 @@
   background-color: var(--bg-color);
   gap: 0 36px;
   width: 1020px;
-  height: 90vh;
+  /* height: 90vh; */
 }
 .sign-content__left-logo-mb {
   display: none;
