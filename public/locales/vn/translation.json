@@ -200,7 +200,8 @@
   },
   "url": {
     "home": "Trang-chu",
-    "search": "/tim-kiem/"
+    "search": "/tim-kiem/",
+    "urlTest":"thu-nghiem"
   },
   "booking": {
     "booking_info": "Thông tin lịch hẹn",
