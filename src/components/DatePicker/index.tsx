@@ -19,17 +19,11 @@ function DatePicker(props: any) {
       ];
       const [dayObj, setDayObj] = useState(dayjs());
       let thisYear = dayObj.year();
-      // (tháng 1 -> [0], tháng 12 -> [11])
       let thisMonth = dayObj.month();
-      // lấy số ngày trong tháng hiện tại (VD: T1: 31days T2: 28days)
       let daysInMonth = dayObj.daysInMonth();
-      // lấy ngày đầu tiên của tháng hiện tại (format of dayjs)
       let dayObjOfFirstMonth = dayjs(`${thisYear}-${thisMonth + 1}-1`);
-      // lấy thứ của ngày đầu tiên của tháng (Sunday -> 0, Saturday -> 6)
       let weekDayOfFirst = dayObjOfFirstMonth.day();
-      // lấy ngày cuối cùng của tháng hiện tại
       let dayObjOfLastMonth = dayjs(`${thisYear}-${thisMonth + 1}-${daysInMonth}`);
-      // lấy thứ của ngày cuối cùng của tháng
       let weekDayOfLast = dayObjOfLastMonth.day();
       const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
       const handlePrev = () => {
@@ -56,7 +50,7 @@ function DatePicker(props: any) {
       )
       console.log(chooseMonth);
       return (
-            <div className="calendar-choosedate">
+            <div style={{ padding: '0px' }} className="calendar-choosedate">
                   <Month
                         handlePrev={handlePrev}
                         handleNext={handleNext}

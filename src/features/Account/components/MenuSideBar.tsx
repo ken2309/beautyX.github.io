@@ -96,6 +96,15 @@ function MenuSideBar(props: info) {
           </div>
           <span className="quicksand-md text-bold">Lịch sử đơn hàng</span>
         </div>
+        <div
+          className="tab"
+          onClick={() => history.push("/goi-dich-vu")}
+        >
+          <div className="icon">
+            <img src={icon.Clock_purple} alt="" />
+          </div>
+          <span className="quicksand-md text-bold">Gói dịch vụ</span>
+        </div>
         <div className="dropdown">
           <div className="tab" onClick={handleDropdown}>
             <div className="icon">
