@@ -94,10 +94,10 @@
 .order-de-list__item {
   display: flex;
   flex-direction: row;
-  padding: 0 0 28px 0;
 }
 .order-item-list li:not(:last-child) {
   border-bottom: 1px solid var(--text-hover);
+  padding: 0 0 28px 0;
 }
 
 .order-de-pr-item__img {
