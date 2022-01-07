@@ -96,12 +96,16 @@ function RouterConfig(props: any) {
     //   path: "/Calendar",
     //   component: <Calendar />,
     // },
+    {
+      path: '/goi-dich-vu',
+      component: <ServicesUser />
+    },
   ];
   const routesPrivate = [
-    {
-      path:'/goi-dich-vu',
-      component:ServicesUser
-    },
+    // {
+    //   path:'/goi-dich-vu',
+    //   component:ServicesUser
+    // },
     {
       path: "/tai-khoan",
       component: Account,

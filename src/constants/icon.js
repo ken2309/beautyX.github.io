@@ -101,6 +101,9 @@ import orderCancel from "../assets/icon/order_cancel.svg";
 import orderFinish from "../assets/icon/order_finish.svg";
 import orderPending from "../assets/icon/order_pending.svg";
 import backWhite from "../assets/icon/back_white.svg";
+import checkGreen from '../assets/icon/check_green.svg'; 
+import chevronUpWhite from '../assets/icon/chevron-up-white.svg';
+import chevronDownWhite from '../assets/icon/chevron-down-white.svg';
 
 
 const icon = {
@@ -205,6 +208,9 @@ const icon = {
   orderCancel,
   orderFinish,
   orderPending,
-  backWhite
+  backWhite,
+  checkGreen,
+  chevronDownWhite,
+  chevronUpWhite
 };
 export default icon;
