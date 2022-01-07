@@ -1,39 +1,61 @@
-import React, { useContext } from 'react';
-import img from '../../../constants/img';
-import { AppContext } from '../../../context/AppProvider';
-import SectionTitle from '../../SectionTitle';
-import Slider from 'react-elastic-carousel';
+import React, { useContext } from "react";
+// import img from "../../../constants/img";
+// import { AppContext } from "../../../context/AppProvider";
+// import SectionTitle from "../../SectionTitle";
+import "./slider.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import img from "../../../constants/img";
 function HomeSlider(props: any) {
-      const { t } = useContext(AppContext)
-      const items = [
-            { image: img.homeSt1, step: 1, title: t('Home.Order_step_1') },
-            { image: img.homeSt2, step: 2, title: t('Home.Order_step_2') },
-            { image: img.homeSt3, step: 3, title: t('Home.Order_step_3') },
-            { image: img.homeSt4, step: 4, title: t('Home.Order_step_4') },
-            { image: img.homeSt4, step: 4, title: t('Home.Order_step_4') },
-            { image: img.homeSt4, step: 4, title: t('Home.Order_step_4') },
-            { image: img.homeSt4, step: 4, title: t('Home.Order_step_4') }
-      ]
-      return (
-            <div className="home-slider-section">
-                <Slider
-                    isRTL={false}
-                    itemsToShow={3}
-                    focusOnSelect={true}
-                    enableSwipe={true}
-                    initialActiveIndex={1}
-                    itemPosition={'CENTER'}
-                    showEmptySlots={true}
-                    showArrows={true}
-                >
-                    {items.map((item,index) => 
-                        <div style={{maxWidth: 'calc(100% / 3)'}}>
-                            <img src={item.image} alt="dd"/>
-                        </div>
-                    )}
-                </Slider>
-            </div>
-      );
+  //   const { t } = useContext(AppContext);
+  const settings = {
+    centerMode: true,
+    centerPadding: "0px",
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: true,
+    focusOnSelect: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          autoplay: false,
+        },
+      },
+    ],
+    appendDots: (dots: any) => (
+      <div>
+        <ul>{dots}</ul>
+      </div>
+    ),
+    customPaging: () => <div className="dots-custom"></div>,
+  };
+  return (
+    <div className="home-slider">
+      <Slider {...settings}>
+        <div className="home-slider__img">
+          <img src="https://source.unsplash.com/random" alt="" />
+        </div>
+        <div className="home-slider__img">
+          <img src="https://source.unsplash.com/random" alt="" />
+        </div>
+        <div className="home-slider__img">
+          <img src="https://source.unsplash.com/random" alt="" />
+        </div>
+        <div className="home-slider__img">
+          <img src="https://source.unsplash.com/random" alt="" />
+        </div>
+      </Slider>
+    </div>
+  );
 }
 
 export default HomeSlider;

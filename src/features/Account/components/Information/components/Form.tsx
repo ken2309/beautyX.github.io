@@ -81,7 +81,7 @@ function Form(props: any) {
       <div className="form-account">
         <div className="form-account__wraper">
           {/* name */}
-          <div style={{ width: "100%", padding: "0 0 8px 0" }}>
+          <div style={{ width: "100%" }}>
             <div className="form-account__label">
               <span>Họ và tên</span>
             </div>
@@ -101,7 +101,7 @@ function Form(props: any) {
             )}
           </div>
           {/* date of birth */}
-          <div style={{ width: "100%", padding: "0 0 8px 0" }}>
+          <div style={{ width: "100%" }}>
             <div className="form-account__label">
               <span>Ngày sinh</span>
             </div>

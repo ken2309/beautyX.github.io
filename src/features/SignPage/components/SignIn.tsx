@@ -34,7 +34,7 @@ function SignIn(props: any) {
       const response = await auth.login(values);
       console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
-      setTk("_WEB_TK", response.data.context.token)
+      setTk("_WEB_TK", response.data.context.token);
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);
       history.push("/beta");
@@ -94,7 +94,7 @@ function SignIn(props: any) {
         autoComplete="off"
         className="flex-column sign-form"
       >
-        <div style={{ width: "100%", padding: "0 0 8px 0" }}>
+        <div style={{ width: "100%" }}>
           <div className="sign-form__box">
             <img className="sign-form__box-icon" src={icon.User} alt="" />
             <input
@@ -106,10 +106,12 @@ function SignIn(props: any) {
             />
           </div>
           {formik.errors.email && formik.touched.email && (
-            <p className="err-text">{formik.errors.email}</p>
+            <p style={{ margin: "0 0 0 16px" }} className="err-text">
+              {formik.errors.email}
+            </p>
           )}
         </div>
-        <div style={{ width: "100%", padding: "8px 0" }}>
+        <div style={{ width: "100%" }}>
           <div className="sign-form__box">
             <img className="sign-form__box-icon" src={icon.Lock} alt="" />
             <input
@@ -128,7 +130,9 @@ function SignIn(props: any) {
             />
           </div>
           {formik.errors.password && formik.touched.password && (
-            <p className="err-text">{formik.errors.password}</p>
+            <p style={{ margin: "0 0 0 16px" }} className="err-text">
+              {formik.errors.password}
+            </p>
           )}
         </div>
         <p className="err-text">{errPass}</p>
