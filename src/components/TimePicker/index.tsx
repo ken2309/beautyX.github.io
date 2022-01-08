@@ -4,6 +4,7 @@ import TimeItem from './components/TimeItem';
 import './timePicker.css';
 
 function TimePicker(props: any) {
+      const {setChooseTime} = props;
       let times = 25;
       var rows = [];
       var hours = dayjs().set("hour", 8).set("minute", 0).set("second", 0);
@@ -13,6 +14,7 @@ function TimePicker(props: any) {
                         <TimeItem
                               key={i}
                               Time={hours}
+                              setChooseTime={setChooseTime}
                               // Now={now}
                               // handleClick={handleTime}
                               // activeTime={activeTime}

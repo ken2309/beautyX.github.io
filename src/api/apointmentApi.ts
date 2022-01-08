@@ -38,6 +38,15 @@ class ApointmentApi {
       });
     }
   };
+  postAppointment = (params: any, org_id: any) => {
+    // console.log(params, org_id);
+    const url = `organizations/${org_id}/appointments`;
+    return axiosClient.post(url, params, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+      },
+    });
+  }
 }
 const apointmentApi = new ApointmentApi();
 export default apointmentApi;

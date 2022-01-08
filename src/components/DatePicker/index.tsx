@@ -7,6 +7,7 @@ import './datePicker.css'
 
 const todayObj = dayjs();
 function DatePicker(props: any) {
+      const { setChooseDate } = props;
       const { t } = useContext(AppContext)
       const weekDays = [
             t("Home.su"),
@@ -40,15 +41,23 @@ function DatePicker(props: any) {
             month: todayObj.month(),
             year: todayObj.year(),
       });
-      console.log(datepick)
-      const handleGetDate = (date: any, thisMonth: any, thisYear: any) => (
+      //console.log(datepick)
+      const handleGetDate = (date: any, thisMonth: any, thisYear: any) => {
             setdatepick({
                   date: date + 1,
                   month: thisMonth,
                   year: thisYear,
             })
-      )
-      console.log(chooseMonth);
+            const timeBook = {
+                  year: `${thisYear}`,
+                  month: thisMonth + 1 < 10 ? `0${thisMonth + 1}` : `${thisMonth + 1}`,
+                  date: date + 1 < 10 ? `0${date + 1}` : `${date + 1}`,
+            }
+            if (setChooseDate) {
+                  setChooseDate(`${timeBook.year}-${timeBook.month}-${timeBook.date}`)
+            }
+      }
+      //console.log(chooseMonth);
       return (
             <div style={{ padding: '0px' }} className="calendar-choosedate">
                   <Month

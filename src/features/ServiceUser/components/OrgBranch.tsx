@@ -1,16 +1,23 @@
 import React from 'react';
 
 function OrgBranch(props:any) {
-      const {branches} = props;
+      const {branches, openBranches, setChooseBranch} = props;
       return (
             <div
+                  style={
+                        openBranches === true ?
+                              { opacity: 1, top: '50px', visibility: 'visible' }
+                              :
+                              { opacity: 0, top: '80px', visibility: 'hidden' }
+                  }
                   className='ser-choose-br'
             >
-                  {/* <ul>
+                  <ul>
                         {
-                              branches?.map((item:any, index:number)=>(
+                              branches?.map((item: any, index: number) => (
                                     <li
                                           key={index}
+                                          onClick={() => setChooseBranch(item)}
                                     >
                                           <span className="name">
                                                 Tên chi nhánh : {item?.name}
@@ -21,7 +28,7 @@ function OrgBranch(props:any) {
                                     </li>
                               ))
                         }
-                  </ul> */}
+                  </ul>
             </div>
       );
 }
