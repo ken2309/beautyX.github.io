@@ -9,11 +9,12 @@ export default function AppProvider({ children }) {
       const lg = localStorage.getItem('i18nextLng')
       const [language, setLanguage] = useState();
       const [openModal, setOpenModal] = useState(false);
-
       const [tk, setTk] = useState();
       const [userInfo, setUserInfo] = useState()
       const [sign, setSign] = useState();
       const [profile, setProfile] = useState();
+
+      const [acBtn, setAcBtn] = useState(1);
 
       useEffect(() => {
             if (lg === 'en-US' || lg === 'en') {
@@ -51,6 +52,7 @@ export default function AppProvider({ children }) {
       //get all tags
       const value = {
             t,
+            acBtn, setAcBtn,
             language,
             openModal,
             setOpenModal,

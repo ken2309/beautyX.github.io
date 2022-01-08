@@ -3,8 +3,8 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Dialog from "@mui/material/Dialog";
-import ButtonCus from "../../../components/ButtonCus";
+// import Dialog from "@mui/material/Dialog";
+// import ButtonCus from "../../../components/ButtonCus";
 import { AppContext } from "../../../context/AppProvider";
 import { useHistory } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
@@ -16,7 +16,7 @@ import PopupVerification from "./PopupVerification";
 import PopupNewPass from "./PopupNewPass";
 
 function SignIn(props: any) {
-  const { t, setSign } = useContext(AppContext);
+  const { t, setSign, setTk } = useContext(AppContext);
   const { activeTabSign, setActiveTabSign } = props;
   const history = useHistory();
   const [typePass, setTypePass] = useState("password");
@@ -34,9 +34,10 @@ function SignIn(props: any) {
       const response = await auth.login(values);
       console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
+      setTk("_WEB_TK", response.data.context.token);
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);
-      history.push("/");
+      history.push("/beta");
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -93,7 +94,7 @@ function SignIn(props: any) {
         autoComplete="off"
         className="flex-column sign-form"
       >
-        <div style={{ width: "100%", padding: "0 0 8px 0" }}>
+        <div style={{ width: "100%" }}>
           <div className="sign-form__box">
             <img className="sign-form__box-icon" src={icon.User} alt="" />
             <input
@@ -105,10 +106,12 @@ function SignIn(props: any) {
             />
           </div>
           {formik.errors.email && formik.touched.email && (
-            <p className="err-text">{formik.errors.email}</p>
+            <p style={{ margin: "0 0 0 16px" }} className="err-text">
+              {formik.errors.email}
+            </p>
           )}
         </div>
-        <div style={{ width: "100%", padding: "8px 0" }}>
+        <div style={{ width: "100%" }}>
           <div className="sign-form__box">
             <img className="sign-form__box-icon" src={icon.Lock} alt="" />
             <input
@@ -127,7 +130,9 @@ function SignIn(props: any) {
             />
           </div>
           {formik.errors.password && formik.touched.password && (
-            <p className="err-text">{formik.errors.password}</p>
+            <p style={{ margin: "0 0 0 16px" }} className="err-text">
+              {formik.errors.password}
+            </p>
           )}
         </div>
         <p className="err-text">{errPass}</p>
@@ -187,6 +192,7 @@ function SignIn(props: any) {
       />
       <PopupNewPass openNewPass={openNewPass} setOpenNewPass={setOpenNewPass} />
       <PopupNoti
+        setActiveTabSign={setActiveTabSign}
         popup={popup}
         setPopup={setPopup}
         isSignIn={true}

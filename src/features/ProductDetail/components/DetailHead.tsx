@@ -24,7 +24,7 @@ function DetailHead(props: any) {
       return (
             <div className="product-cnt__left">
                   <img
-                        src={"https://picsum.photos/650/976?random=" + product.id}
+                        src={"https://picsum.photos/650/976?random=" + product?.id}
                         alt=""
                         className="product-cnt__left-img"
                   />

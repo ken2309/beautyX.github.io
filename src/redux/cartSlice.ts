@@ -99,9 +99,13 @@ const cart = createSlice({
                   );
                   state.cartAmount = total;
                   state.cartQuantity = quantity
+            },
+            clearAllCart:(state)=>{
+                  state.cartList=[];
+                  localStorage.setItem(storageName, JSON.stringify(state.cartList))
             }
       }
 });
 const { reducer, actions } = cart;
-export const { addCart, descItem, ascItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck } = actions;
+export const { addCart, descItem, ascItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck, clearAllCart } = actions;
 export default reducer;

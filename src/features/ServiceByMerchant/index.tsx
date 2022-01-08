@@ -92,6 +92,7 @@ function ServiceByMerchant(props: any) {
         <ServiceList
           loading={loading}
           services={services}
+          setServices={setServices}
           t={t}
           mer_id={mer_id}
           org={org}

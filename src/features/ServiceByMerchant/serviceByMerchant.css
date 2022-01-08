@@ -169,7 +169,7 @@
 
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
   /* temp */
   .list-filter {
     flex-direction: column;

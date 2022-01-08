@@ -37,6 +37,7 @@
   display: flex;
   flex-direction: row;
 }
+
 .infor_section {
   background: #f5f5f7;
   box-shadow: 0px 6px 15px #dcd8ee;
@@ -123,6 +124,13 @@
 }
 .infor_section .tab .icon {
   margin-right: 6px;
+  width: 24px;
+  height: 24px;
+}
+.infor_section .tab .icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .infor_section .tab:hover {
   background-color: #eeedf2;
@@ -199,5 +207,12 @@
   }
   .title:nth-child(1) {
     margin-bottom: 8px;
+  }
+}
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 769px) {
+  .account_section{
+    display: none;
   }
 }

@@ -16,24 +16,28 @@ export const partnerStyle = makeStyles((theme) => ({
   partner: {
     padding: "64px 15px 64px 15px",
     backgroundColor: "var(--bg-gray)",
-    "@media (max-width: 768px)": {
+    "@media (max-width: 767px)": {
       maxWidth: "100%",
+      padding: "32px 15px 64px 15px",
     },
   },
   content: {
     display: "flex",
     justifyContent: "center",
     gap: "0 44px",
-    "@media (max-width: 768px), (max-width: 1024px)": {
+    "@media (max-width: 767px), (max-width: 1024px)": {
       flexDirection: "column",
       padding: "0 16px 0 16px",
       alignItems: "center",
       gap: "24px 0",
     },
+    "@media (max-width: 767px)": {
+      gap: "unset",
+    },
   },
   partnerInfor: {
     maxWidth: "670px",
-    "@media (max-width: 768px), (max-width: 1024px)": {
+    "@media (max-width: 767px), (max-width: 1024px)": {
       flexDirection: "column",
       maxWidth: "100%",
     },
@@ -46,10 +50,11 @@ export const partnerStyle = makeStyles((theme) => ({
     textAlign: "center",
     color: "var( --purple)",
     paddingBottom: "24px",
+    whiteSpace: "normal",
   },
   parnerImg: {
     margin: "0 auto",
-    width: "480px",
+    maxWidth: "480px",
     height: "360px",
     "& img": {
       height: "100%",
@@ -80,14 +85,21 @@ export const partnerStyle = makeStyles((theme) => ({
     display: "grid",
     gap: "0 36px",
     marginBottom: "16px",
+    "@media all and (max-width: 767px)": {
+      gridTemplateColumns: "1fr",
+      gap: "16px 0",
+    },
   },
   partnerRegis: {
     maxWidth: "calc( 100% - 670px )",
     boxShadow: "0px 6px 15px #DCD8EE",
     borderRadius: "24px",
     height: "max-content",
-    "@media (max-width: 768px), (max-width: 1024px)": {
+    "@media (max-width: 767px), (max-width: 1024px)": {
       maxWidth: "100%",
+    },
+    "@media (max-width: 767px)": {
+      boxShadow: "unset",
     },
   },
   partnerRegisTitle: {
@@ -103,6 +115,9 @@ export const partnerStyle = makeStyles((theme) => ({
   },
   form: {
     padding: "0 36px",
+    "@media (max-width: 767px)": {
+      padding: "unset",
+    },
   },
   wrapInput: {
     position: "relative",
@@ -143,6 +158,9 @@ export const partnerStyle = makeStyles((theme) => ({
     margin: "12px 0 0 -12px",
     "& span": {
       display: "flex",
+    },
+    "@media (max-width: 767px)": {
+      margin: "6px 0 0 -12px",
     },
   },
   checkboxText: {

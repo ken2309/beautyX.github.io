@@ -25,6 +25,7 @@
     "1": "Explore and experience \n Beauty paradise right near you \n Booking Flatform Myspa"
   },
   "Home": {
+    "home": "Home",
     "Filter_form_input": "Business name/Product/Service",
     "Filter_category": "Category",
     "Filter_location": "Location",
@@ -183,7 +184,7 @@
     "payment_info": "Payment information",
     "full_name": "Full name",
     "phone_number": "Phone number",
-    "note": "Note",
+    "note": "Notes for business",
     "please_enter": "Please enter ",
     "phone_invalid": "Your phone number invalid !",
     "save_info": "Save information",
@@ -199,7 +200,8 @@
   },
   "url": {
     "home": "home",
-    "search": "/search/"
+    "search": "/search/",
+    "urlTest":"beta"
   },
   "booking": {
     "booking_info": "Booking information",
@@ -225,10 +227,14 @@
     "i_agree": "I have read and agree to",
     "myspa_s_terms": "Myspa's Terms & Conditions",
     "please_enter_full_name": "Please enter full name",
+    "please_enter_your_phone": "Please enter your phone number",
+    "please_enter_your_address": "Please enter your address",
+    "please_enter_quantity": "Please enter number of branches",
     "please_choose_sex": "Please choose sex",
     "please_enter_dob": "Please enter date of birth",
     "dob_format": "Date of birth must be format dd/mm/yyyy",
     "please_enter_email": "Please enter your email",
+    "name_min": "Name greater than 2 characters",
     "email_format": "Your email must be format Example@gmail.com",
     "password_min": "Password more than 8 characters",
     "password_max": "Password up to 32 characters",
@@ -238,5 +244,21 @@
     "now": "now",
     "is_not_registered": "is not registered",
     "register_success": "Successful account registration"
+  },
+  "partner": {
+    "online_business": "Online business platform for the beauty industry",
+    "intro": "Booking Online is currently a business trend in the digital age, when users spend most of their daily time accessing, learning and using services on the internet. Beauty service industry such as spa, salon, clinic, beauty salon is no exception. \n Learning to adapt to the era of digital transformation 4.0 will help businesses reach a large number of potential customers, increase revenue, and reduce costs. From now on, become a partner of Myspa to own the following benefits:",
+    "sell_products": "Sell products and services right on the platform, proactively approach customers.",
+    "customers": "Customers set their own schedule, limiting information errors order",
+    "regional": "The regional search feature makes the business an option prioritize when customers search for places near home.",
+    "support": "Supporting businesses to connect directly with customers, consulting, make an appointment",
+    "simplify": "Simplify appointment status updates before, during and after the customer uses the service through the customer interface row",
+    "a_place": "A place for businesses to post images, information, reviews price, increase the ability to promote the brand",
+    "create": "Create a beauty community, so that both businesses and customers can can share and exchange experiences with each other",
+    "create_a_beauty": "Create a beauty community, so that both businesses and customers can can share and exchange experiences with each other",
+    "become_a_myspa": "Become a Myspa partner to make your business more efficient during this period pass arguments",
+    "company_name": "Company's name",
+    "branch_quantity": "Number of branches",
+    "read": "I have read and agree to"
   }
 }

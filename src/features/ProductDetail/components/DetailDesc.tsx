@@ -11,13 +11,13 @@ function DetailDesc(props:any) {
       return (
             <div className="product-desc">
                   <SectionTitle
-                        title={product.product_name ? product.product_name : product.service_name}
+                        title={product?.product_name ? product?.product_name : product?.service_name}
                   />
                   <div
                         style={viewMore === true ? {height:'fit-content', boxShadow:'unset'}:{}}
                         className="product-desc__text"
                   >
-                        {product.description}
+                        {product?.description}
                   </div>
                   <span
                         onClick={() => setViewMore(!viewMore)}

@@ -113,7 +113,7 @@ function SignUp(props: any) {
         className="flex-column sign-form"
       >
         <div className="flex-column">
-          <div className="flex-row w-100" style={{ width: "100%" }}>
+          <div className="flex-row w-100">
             <div className="sign-form__box ">
               <img className="sign-form__box-icon" src={icon.User} alt="" />
               <input
@@ -178,23 +178,21 @@ function SignUp(props: any) {
               </RadioGroup>
             </FormControl>
           </div>
-          <div
-            style={{ width: "100%", padding: "0 0 8px 0" }}
-            className="flex-row w-100"
-          >
+          <div className="flex-row w-100">
             {formik.errors.Name && formik.touched.Name && (
-              <p className="err-text">{formik.errors.Name}</p>
+              <p style={{ marginLeft: "20px" }} className="err-text">
+                {formik.errors.Name}
+              </p>
             )}
             {formik.errors.Sex && formik.touched.Sex && (
-              <p className="err-text">{formik.errors.Sex}</p>
+              <p style={{ marginLeft: "6px" }} className="err-text">
+                {formik.errors.Sex}
+              </p>
             )}
           </div>
         </div>
 
-        <div
-          className="flex-column w-100"
-          style={{ width: "100%", padding: "8px 0" }}
-        >
+        <div className="flex-column w-100">
           <div className="sign-form__box ">
             <img className="sign-form__box-icon" src={icon.Calendar} alt="" />
             <input
@@ -211,10 +209,7 @@ function SignUp(props: any) {
           )}
         </div>
 
-        <div
-          className="flex-column w-100"
-          style={{ width: "100%", padding: "8px 0" }}
-        >
+        <div className="flex-column w-100">
           <div className="sign-form__box  mb-16 ">
             <img className="sign-form__box-icon" src={icon.Message} alt="" />
             <input
@@ -232,10 +227,7 @@ function SignUp(props: any) {
           <p className="err-text">{errGmail}</p>
         </div>
 
-        <div
-          className="flex-column w-100"
-          style={{ width: "100%", padding: "8px 0" }}
-        >
+        <div className="flex-column w-100">
           <div className="sign-form__box  mb-16 ">
             <img className="sign-form__box-icon" src={icon.Message} alt="" />
             <input
@@ -253,10 +245,7 @@ function SignUp(props: any) {
           <p className="err-text">{errTelephone}</p>
         </div>
 
-        <div
-          className="flex-column w-100"
-          style={{ width: "100%", padding: "8px 0" }}
-        >
+        <div className="flex-column w-100">
           <div className="sign-form__box mb-16">
             <img className="sign-form__box-icon" src={icon.Lock} alt="" />
             <input
@@ -280,10 +269,7 @@ function SignUp(props: any) {
           )}
         </div>
 
-        <div
-          className="flex-column w-100"
-          style={{ width: "100%", padding: "8px 0" }}
-        >
+        <div className="flex-column w-100">
           <div className="sign-form__box mb-16">
             <img className="sign-form__box-icon" src={icon.Lock} alt="" />
             <input
@@ -326,7 +312,7 @@ function SignUp(props: any) {
           </p>
         </div>
         {formik.errors.agree && formik.touched.agree && (
-          <p style={{ margin: "0px 0px 0px 10px" }} className="err-text">
+          <p style={{ margin: "0px 0px 0px 38px" }} className="err-text">
             {formik.errors.agree}
           </p>
         )}

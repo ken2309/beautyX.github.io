@@ -4,7 +4,6 @@ import { AppContext } from "../context/AppProvider";
 
 const PrivateRoute = (props: any) => {
       const { profile } = useContext(AppContext)
-      console.log(profile);
       const { ...rest } = props;
       if (profile) {
             return <Route {...rest} />

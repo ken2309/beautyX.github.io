@@ -13,10 +13,11 @@ import SectionTitle from '../SectionTitle';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTotal } from '../../redux/cartSlice';
 import MbMenu from '../../featuresMobile/Menu';
+import scrollTop from '../../utils/scrollTop';
 
 function Head(props: any) {
       const { t, profile, userInfo } = useContext(AppContext)
-      const { isCart, title } = props;
+      const { isCart, title, setCloseDialog } = props;
       const dispatch = useDispatch();
       const [openNo, setOpenNo] = useState(false)
       const [openLang, setOpenLang] = useState(false);
@@ -62,6 +63,14 @@ function Head(props: any) {
             setOpenLang(false)
             setOpenNo(false)
       }
+      const handleBack=()=>{
+            if(setCloseDialog){
+                  setCloseDialog(false)
+            }else{
+                  history.goBack()
+            }
+            scrollTop()
+      }
       return (
             <div className="hd">
                   <Container>
@@ -90,6 +99,7 @@ function Head(props: any) {
                                           onClick={gotoPartner}
                                     />
                               </div>
+                              <img onClick={handleBack} src={icon.backWhite} alt="" className="mb-back__btn" />
                               <div
                                     style={profile ? { justifyContent: 'space-between' } : { justifyContent: 'flex-end' }}
                                     className="flex-row hd-cnt__right"
@@ -119,7 +129,10 @@ function Head(props: any) {
                                                 </>
                                                 :
                                                 <div className="flex-row hd-cnt__right-user">
-                                                      <span className="hd-cnt__right-user-name">
+                                                      <span 
+                                                            className="hd-cnt__right-user-name"
+                                                            onClick={() => history.push('/tai-khoan')}
+                                                      >
                                                             {userInfo?.fullname}
                                                       </span>
                                                       <div className="hd-cnt__right-avatar">

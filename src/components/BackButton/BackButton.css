@@ -1,7 +1,8 @@
 .cus-back {
   position: fixed;
   top: 0;
-  left: 0;
+  width: fit-content;
+  left: 15px;
   right: 0;
   padding: 20px 0px;
   z-index: 5;
@@ -32,9 +33,10 @@
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
   .cus-back {
     padding-top: 18px;
+    left: 0;
   }
   .cus-back__btn {
     border: none;

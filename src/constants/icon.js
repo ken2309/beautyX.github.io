@@ -30,6 +30,7 @@ import Message from "../assets/icon/message.svg";
 import Phone from "../assets/icon/phone.svg";
 import Storefront from "../assets/icon/storefront.svg";
 import User from "../assets/icon/user.svg";
+import User_1 from "../assets/icon/user_1.svg"
 import User_purple from "../assets/icon/user_box.svg";
 import Location from "../assets/icon/location.svg";
 import ArrowDownWhite from "../assets/icon/arrow-down-white.svg";
@@ -55,12 +56,14 @@ import Camera_purple from "../assets/icon/camera_purple.svg";
 import Credit_card from "../assets/icon/credit_card.svg";
 import Clock_purple from "../assets/icon/clockCounterClockwise.svg";
 import Bell from "../assets/icon/bell.svg";
+import Bell_1 from "../assets/icon/bell_1.svg";
 import Union from "../assets/icon/union.svg";
 import Headphones_purple from "../assets/icon/headphones_fill.svg";
 import plus from "../assets/icon/plus.svg";
 import success from "../assets/icon/success.png";
 import checkWhite from "../assets/icon/checkWhite.svg";
 import Calendar from "../assets/icon/calendar.svg";
+import Calendar_1 from "../assets/icon/calendar_1.svg";
 import onedot from "../assets/icon/onedot.svg";
 import TicketHome from "../assets/icon/ticketHome.svg";
 import CloseRing from "../assets/icon/close_ring.svg";
@@ -76,6 +79,7 @@ import SignOutPurple from "../assets/icon/sign_out_squre.svg";
 import userCircle from "../assets/icon/userCircle.svg";
 import signOut from "../assets/icon/sign_out.svg";
 import home from "../assets/icon/home.svg";
+import home_1 from "../assets/icon/home_1.svg";
 import chevronLeft from "../assets/icon/chevron-left.svg";
 import searchPurple from "../assets/icon/searchPurple.svg";
 import pinMap_2 from "../assets/icon/pinMap_2.svg";
@@ -92,6 +96,15 @@ import menuWhite from "../assets/icon/menuWhite.svg";
 import ShoppingCartSimpleWhite from "../assets/icon/shoppingCartSimpleWhite.svg";
 import closeCircle from "../assets/icon/closeCircle.svg";
 import Favorite from "../assets/icon/favorite_fill.svg";
+import pPrev_purple from "../assets/icon/pPrev_purple.svg";
+import orderCancel from "../assets/icon/order_cancel.svg";
+import orderFinish from "../assets/icon/order_finish.svg";
+import orderPending from "../assets/icon/order_pending.svg";
+import backWhite from "../assets/icon/back_white.svg";
+import checkGreen from '../assets/icon/check_green.svg'; 
+import chevronUpWhite from '../assets/icon/chevron-up-white.svg';
+import chevronDownWhite from '../assets/icon/chevron-down-white.svg';
+
 
 const icon = {
   Favorite,
@@ -162,6 +175,7 @@ const icon = {
   Credit_card,
   Clock_purple,
   Bell,
+  Bell_1,
   Union,
   Headphones_purple,
   plus,
@@ -169,6 +183,7 @@ const icon = {
   SearchWhite,
   checkWhite,
   Calendar,
+  Calendar_1,
   onedot,
   Setting,
   arrowPurple,
@@ -187,5 +202,15 @@ const icon = {
   menuWhite,
   ShoppingCartSimpleWhite,
   closeCircle,
+  home_1,
+  pPrev_purple,
+  User_1,
+  orderCancel,
+  orderFinish,
+  orderPending,
+  backWhite,
+  checkGreen,
+  chevronDownWhite,
+  chevronUpWhite
 };
 export default icon;

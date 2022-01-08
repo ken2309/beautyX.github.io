@@ -1,12 +1,12 @@
 import { Dialog } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import ButtonCus from "../../../components/ButtonCus";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 export default function PopupVerification(props: any) {
   const { openVerification, setOpenVerification, handleClickOpenNewPass } =
     props;
-  const [typePass, setTypePass] = useState("password");
+  //const [typePass, setTypePass] = useState("password");
   // đóng popup veri code
   const handleCloseVerification = () => {
     setOpenVerification(false);
@@ -48,7 +48,7 @@ export default function PopupVerification(props: any) {
               className="input-Verification"
               name="verification"
               id="verification"
-              type={typePass}
+              type='password'
             />
           </div>
           {formikVerification.errors.verification &&

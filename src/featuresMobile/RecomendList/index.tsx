@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import {Product} from '../../interface/product';
+import React from 'react';
 import CardItem from '../../features/CardItem/index';
-import productsApi from '../../api/productApi';
 import './recommendList.css'
 
 const style={
       width:'172px'
 }
-function RecommendList(props:any) {
-      const {org} = props;
-      const [products, setProducts] = useState<Product[]>([])
-      useEffect(()=>{
-            async function getProducts() {
-                  const response = await productsApi.getByOrgId({
-                        org_id: 51,
-                        page: 1
-                  })
-                  setProducts(response.data.context.data);
-            }
-            getProducts();
-      },[])
-      //console.log(products)
+function RecommendListMb(props:any) {
+      const {org, productsSale} = props;
       return (
             <div className="mb-rcm-wrapper">
                   <div className="mb-rcm-wrapper__title">
-                        Ưu đãi khác của Dev.spa
+                        Ưu đãi khác của "{org?.name}"
                   </div>
                   <div className="mb-rcm-wrapper__cnt">
                         <ul className="mb-rcm-wrapper__cnt-list">
                               {
-                                    products.map(item => (
+                                    productsSale.map((item:any) => (
                                           <li key={item.id}>
                                                 <CardItem
                                                       is_type={1}
@@ -39,7 +25,7 @@ function RecommendList(props:any) {
                                                       retail_price={item.retail_price}
                                                       special_price={item.special_price}
                                                       org={org}
-                                                      org_id={51}
+                                                      org_id={org.id}
                                                       org_name={org.name}
                                                 />
                                           </li>
@@ -51,4 +37,4 @@ function RecommendList(props:any) {
       );
 }
 
-export default RecommendList;
+export default RecommendListMb;

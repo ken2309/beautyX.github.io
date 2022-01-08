@@ -1,23 +1,34 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
+import slugify from "../../../../utils/formatUrlString";
 
-export default function HomeLoggedLocationItem() {
-  const [openInfoLocation, setOpenInfoLocation] = React.useState(true);
-  function handleOpenLocation() {
-    setOpenInfoLocation(true);
-  }
-  function handleCloseLocation() {
-    setOpenInfoLocation(false);
-  }
+export default function HomeLoggedLocationItem(props: any) {
+  const { org } = props;
+  // console.log("org :>> ", org);
+  const history = useHistory();
+  const goDetail = () => {
+    history.push({
+      pathname: `/Product-detail/${slugify(org.product_name)}`,
+      search: `${1},${org.id},${1}`,
+    });
+  };
+  const [openInfoLocation, setOpenInfoLocation] = React.useState(false);
+  // function handleOpenLocation() {
+  //   setOpenInfoLocation(true);
+  // }
+  // function handleCloseLocation() {
+  //   setOpenInfoLocation(false);
+  // }
   return (
     <div className="homelogged-location__item">
-      <div className="item-top">
+      <div className="item-top" onClick={goDetail}>
         <div className="item-top__img">
           <img src="https://source.unsplash.com/random" alt="" />
         </div>
         <div className="item-top__content">
           <div className="item-top__content-header">
-            <span>SaiGon Heritage Spa</span>
+            <span>{org?.product_name}</span>
             <div className="item-top__content-rate">
               <div className="rate-left">
                 <span>4.5</span>
@@ -37,11 +48,11 @@ export default function HomeLoggedLocationItem() {
         </div>
       </div>
       <div className="item-bottom">
-        {openInfoLocation === true ? (
+        {/* {openInfoLocation === true ? (
           <div className="item-bottom__hidden">
             <div className="item-bottom__hidden-wrap">
               <div className="item-bottom__active-img">
-                <img src="https://source.unsplash.com/random" alt="" />
+                <img src={icon.Logo} alt="" />
               </div>
               <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
             </div>
@@ -49,18 +60,20 @@ export default function HomeLoggedLocationItem() {
               <img src={icon.Info} alt="" />
             </div>
           </div>
-        ) : (
-          <div className="item-bottom__active">
-            <div onClick={handleOpenLocation} className="close-ring">
-              <img src={icon.CloseRing} alt="" />
+        ) : ( */}
+          <>
+          
+          <div className={(openInfoLocation)?"item-bottom__active active":"item-bottom__active"}>
+            <div onClick={()=>setOpenInfoLocation(!openInfoLocation)} className={(openInfoLocation)?"close-ring active":"close-ring"}>
+              <img src={(openInfoLocation)?icon.CloseRing:icon.Info} alt="" />
             </div>
-            <div className="flex-column">
+            <div className="flex-row">
               <div className="item-bottom__active-img">
-                <img src="https://source.unsplash.com/random" alt="" />
+                <img src={icon.Logo} alt="" />
               </div>
               <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
             </div>
-            <div className="item-bottom__active-list">
+            <div className={(openInfoLocation)?"item-bottom__active-list active":"item-bottom__active-list"}>
               <div className="item-bottom__active-item">
                 <img src={icon.TicketHome} alt="" />
                 <div className="item-content">
@@ -86,7 +99,8 @@ export default function HomeLoggedLocationItem() {
               </div>
             </div>
           </div>
-        )}
+          </>
+        {/* )} */}
       </div>
     </div>
   );

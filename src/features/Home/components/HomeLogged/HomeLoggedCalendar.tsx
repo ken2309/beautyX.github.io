@@ -16,9 +16,23 @@ export default function HomeLoggedCalendar() {
   const [dotAppoint, setdotAppoint] = useState([]);
   const [appoiment, setAppoiment] = useState<Appointment[]>([]);
   const [chooseMonth, setChooseMonth] = useState(dayjs().format("YYYY-MM"));
-  console.log("chooseMonth :>> ", chooseMonth);
   // console.log(`appoiment`, appoiment);
+  const [, setActive] = useState(false);
   const { t } = useContext(AppContext);
+
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      // console.log(`scrollY`, scrollY);
+      if (scrollY >= 120) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+    });
+  }, []);
+  // console.log(active);
+
   const weekDays = [
     t("Home.su"),
     t("Home.mo"),
@@ -46,6 +60,9 @@ export default function HomeLoggedCalendar() {
   // lấy thứ của ngày cuối cùng của tháng
   let weekDayOfLast = dayObjOfLastMonth.day();
 
+  // useEffect(() => {
+
+  // });
   useEffect(() => {
     async function handleGetAppoint() {
       try {
@@ -119,32 +136,32 @@ export default function HomeLoggedCalendar() {
     }
     let newmonth = thisMonth + 1;
 
-    const firstDateOfWeek = selectedDay.startOf("week").date();
-    const lastDateOfWeek = selectedDay.endOf("week").date();
-    console.log(firstDateOfWeek, lastDateOfWeek);
+    // const firstDateOfWeek = selectedDay.startOf("week").date();
+    // const lastDateOfWeek = selectedDay.endOf("week").date();
 
-    const datesInSameWeek = (parts: any) => {
-      if (firstDateOfWeek < lastDateOfWeek) {
-        // giua thang
-        return (
-          newdate > firstDateOfWeek &&
-          newdate < lastDateOfWeek &&
-          newmonth == parts[1] &&
-          thisYear == parts[2]
-        );
-      } else {
-        // dau thang
-        return (
-          ((newdate < firstDateOfWeek && newdate < lastDateOfWeek) ||
-            (newdate > firstDateOfWeek && newdate > lastDateOfWeek)) &&
-          newmonth == parts[1] + 1 &&
-          thisYear == parts[2]
-        );
-      }
-    };
+    // const datesInSameWeek = (parts: any) => {
+    //   if (firstDateOfWeek < lastDateOfWeek) {
+    //     // giua thang
+    //     return (
+    //       newdate > firstDateOfWeek &&
+    //       newdate < lastDateOfWeek &&
+    //       newmonth == parts[1] &&
+    //       thisYear == parts[2]
+    //     );
+    //   } else {
+    //     // dau thang
+    //     return (
+    //       ((newdate < firstDateOfWeek && newdate < lastDateOfWeek) ||
+    //         (newdate > firstDateOfWeek && newdate > lastDateOfWeek)) &&
+    //       newmonth == parts[1] + 1 &&
+    //       thisYear == parts[2]
+    //     );
+    //   }
+    // };
     const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
       return (
+        // eslint-disable-next-line eqeqeq
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });
@@ -274,6 +291,7 @@ export default function HomeLoggedCalendar() {
               handleGetDate={handleGetDate}
               datingList={datingList}
               daysInWeek={getDaysInWeek(selectedDay)}
+              dotAppoint={dotAppoint}
             />
           </div>
         </div>

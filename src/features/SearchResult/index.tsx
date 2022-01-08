@@ -5,11 +5,12 @@ import Result from "./components/Result";
 import MapWrapper from "./components/MapWrapper";
 import { Container } from "@mui/material";
 import Footer from "../Footer/index";
-import { Organization } from "../../interface/organization";
+import { IOrganization } from "../../interface/organization";
 import orgApi from "../../api/organizationApi";
 import { AppContext } from "../../context/AppProvider";
 import Head from "../Head";
 import Bottom from "../../featuresMobile/Bottom";
+import HeadTitle from "../HeadTitle";
 // import img from '../../constants/img';
 
 function SearchResult(props: any) {
@@ -19,7 +20,7 @@ function SearchResult(props: any) {
   const params = location.search.slice(8, location.search.length);
   const keySearch = decodeURI(params);
   const [loading, setLoading] = useState(false);
-  const [orgs, setOrgs] = useState<Organization[]>([]);
+  const [orgs, setOrgs] = useState<IOrganization[]>([]);
   // const [orgsLength, setOrgsLength] = useState();
   const [totalItem, setTotalItem] = useState();
   const [total, setTotal] = useState();
@@ -48,8 +49,9 @@ function SearchResult(props: any) {
         backgroundColor: "var(--bg-gray)",
       }}
     >
+      <HeadTitle title={`${t("Search_result.text_result")} : ${keySearch}`} />
       <Head />
-      <Container>
+      <Container className="result-section_map">
         {
           // orgs.length === 0 ?
           //       <div className="flex-column result-null">

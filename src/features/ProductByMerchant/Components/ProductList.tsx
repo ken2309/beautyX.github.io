@@ -7,6 +7,7 @@ import { Pagination } from "@mui/material";
 import scrollTop_2 from "../../../utils/scrollTop_2";
 import { useLocation } from "react-router-dom";
 import GridLoading from "../../Loading/GridLoading";
+import InputProByMerSearch from "./InputProByMerSearch";
 
 const cardStyle = {
   width: "100%",
@@ -17,7 +18,16 @@ interface ActiveFilter {
 }
 function ProductList(props: any) {
   const location = useLocation();
-  const { t, products, setPage, loading, pageLength, org } = props;
+  const {
+    t,
+    products,
+    setPage,
+    loading,
+    pageLength,
+    org,
+    mer_id,
+    setProducts,
+  } = props;
   const buttons = [
     { id: 1, title: t("Mer_de.popular") },
     { id: 2, title: t("Mer_de.selling") },
@@ -28,36 +38,36 @@ function ProductList(props: any) {
     id: 0,
     title: "",
   });
-  const [serviceSort, setServiceSort] = useState<Product[]>([]);
-  const [sort, setSort] = useState({
-    _sortPrice: products,
-  });
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleSearchOnChange = (e: any) => {
-    setSearchTerm(e.target.value);
-    setActiveFilter({ id: 0, title: "" });
-  };
-  const productFilter = useFilterPro(searchTerm, products);
-  useEffect(() => {
-    function handleSort() {
-      setServiceSort(productFilter);
-    }
-    handleSort();
-  }, [sort, productFilter, serviceSort]);
-  const ascPrice = () => {
-    const asc = productFilter.sort((a, b) => a.retail_price - b.retail_price);
-    setSort({
-      ...sort,
-      _sortPrice: asc,
-    });
-  };
-  const descPrice = () => {
-    const desc = productFilter.sort((a, b) => b.retail_price - a.retail_price);
-    setSort({
-      ...sort,
-      _sortPrice: desc,
-    });
-  };
+  // const [serviceSort, setServiceSort] = useState<Product[]>([]);
+  // const [sort, setSort] = useState({
+  //   _sortPrice: products,
+  // });
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const handleSearchOnChange = (e: any) => {
+  //   setSearchTerm(e.target.value);
+  //   setActiveFilter({ id: 0, title: "" });
+  // };
+  // const productFilter = useFilterPro(searchTerm, products);
+  // useEffect(() => {
+  //   function handleSort() {
+  //     setServiceSort(productFilter);
+  //   }
+  //   handleSort();
+  // }, [sort, productFilter, serviceSort]);
+  // const ascPrice = () => {
+  //   const asc = productFilter.sort((a, b) => a.retail_price - b.retail_price);
+  //   setSort({
+  //     ...sort,
+  //     _sortPrice: asc,
+  //   });
+  // };
+  // const descPrice = () => {
+  //   const desc = productFilter.sort((a, b) => b.retail_price - a.retail_price);
+  //   setSort({
+  //     ...sort,
+  //     _sortPrice: desc,
+  //   });
+  // };
   const handleActiveFilter = (item: any) => {
     setActiveFilter(item);
     if (item.id === 1) {
@@ -65,9 +75,12 @@ function ProductList(props: any) {
     } else if (item.id === 2) {
       console.log("Bán chạy");
     } else if (item.id === 3) {
-      ascPrice();
+      console.log("Giá thấp");
+      // ascPrice();
     } else if (item.id === 4) {
-      descPrice();
+      console.log("Giá cao");
+
+      // descPrice();
     }
   };
   const pageChange = (event: any, value: any) => {
@@ -99,15 +112,7 @@ function ProductList(props: any) {
           </div>
         </div>
         <div className="flex-row list-filter__right">
-          <input
-            value={searchTerm}
-            onChange={handleSearchOnChange}
-            type="text"
-            placeholder={t("Mer_de.search_by_product")}
-          />
-          <button>
-            <img src={icon.search} alt="" />
-          </button>
+          <InputProByMerSearch mer_id={mer_id} setProducts={setProducts} />
         </div>
       </div>
       <div className="flex-column ser-list__content">
@@ -115,7 +120,7 @@ function ProductList(props: any) {
           {loading === true ? (
             <GridLoading />
           ) : (
-            productFilter?.map((item: any, index) => (
+            products?.map((item: any, index: any) => (
               <li key={index} className="ser-list__content-list-item">
                 <CardItem
                   org={org}

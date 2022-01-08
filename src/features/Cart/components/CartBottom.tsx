@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container } from "@mui/material";
-import { getTotal } from "../../../redux/cartSlice";
+import { getTotal, clearAllCart } from "../../../redux/cartSlice";
 import ButtonCus from "../../../components/ButtonCus/index";
 import { useSelector, useDispatch } from "react-redux";
 import formatPrice from "../../../utils/formatPrice";
@@ -43,10 +43,13 @@ function CartBottom(props: any) {
       setPopupSign(true);
     }
   };
+  const handleDeleteAllCart=()=>{
+    dispatch(clearAllCart());
+  }
   return (
     <div className="cart-bottom">
       <Container>
-        <div className="flex-row cart-bottom__content">
+        <div className="flex-row-sp cart-bottom__content">
           <div className="cart-bottom__deleteAll">
             <ButtonCus
               text={t("cart.delete_all")}
@@ -55,7 +58,7 @@ function CartBottom(props: any) {
               color="var(--bgWhite)"
               border="solid 1px var(--purple)"
               borderRadius="18px"
-              //   onClick={gotoPayment}
+              onClick={handleDeleteAllCart}
               backColor="var(--purple)"
               padding="8px 24px"
             />
