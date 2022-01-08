@@ -19,6 +19,7 @@ function ButtonCus(props: any) {
     margin,
     disabled,
     type,
+    opacity,
   } = props;
   const handleOnClick = () => {
     if (onClick) {
@@ -38,6 +39,7 @@ function ButtonCus(props: any) {
         border: border,
         margin: margin,
         width: width,
+        opacity: opacity ? opacity : '1'
       }}
       className={btnStyle.button}
       onClick={handleOnClick}
