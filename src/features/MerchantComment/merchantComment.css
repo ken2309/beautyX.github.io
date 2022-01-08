@@ -5,6 +5,9 @@
 .merchantComment .sign-form__box {
   margin: 0;
 }
+.merchantComment .sign-form__box input {
+  padding: 8px 24px 8px 24px;
+}
 .merchantComment-left {
   width: 33.33%;
   height: 100%;

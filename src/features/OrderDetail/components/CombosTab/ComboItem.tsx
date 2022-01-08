@@ -11,7 +11,6 @@ import { useDispatch } from "react-redux";
 function ComboItem(props: any) {
   const { combotItem, org, open } = props;
   const [combo, setCombo] = useState<Combo>();
-  console.log(`combo`, combo);
   const history = useHistory();
   const dispatch = useDispatch();
   const is_type = 3;
@@ -35,9 +34,9 @@ function ComboItem(props: any) {
   };
   // const handleDetailCombo = () => {
   //   history.push({
-  //      pathname: `/Product-detail/${slugify(combo?.combo_name)}`,
-  //      search: `${org.id},${comboItem?.productable_id},${is_type}`,
-  //      state: org,
+  //     pathname: `/Product-detail/${slugify(combo?.name)}`,
+  //     search: `${org.id},${combotItem?.productable_id},${is_type}`,
+  //     state: org,
   //   });
   // };
   useEffect(() => {
@@ -68,7 +67,7 @@ function ComboItem(props: any) {
           <div className="item-detail">
             <span className="flex-row-sp item-name">
               {combo?.name}
-              <span>x {combotItem.quantity}</span>
+              <span>x{combotItem.quantity}</span>
             </span>
             <span className="item-org__name">{org.name}</span>
           </div>

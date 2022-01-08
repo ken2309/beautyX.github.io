@@ -1,8 +1,9 @@
 import { Container } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import ButtonCus from "../../components/ButtonCus";
 import icon from "../../constants/icon";
 import Bottom from "../../featuresMobile/Bottom";
+import scrollTop from "../../utils/scrollTop";
 import Footer from "../Footer";
 import Head from "../Head";
 import HeadTitle from "../HeadTitle";
@@ -21,6 +22,9 @@ export default function MerchantComment() {
       id: 3,
     },
   ];
+  useEffect(() => {
+    scrollTop();
+  }, []);
   return (
     <div>
       <HeadTitle title={"Tất cả đánh giá"} />
@@ -69,21 +73,18 @@ export default function MerchantComment() {
           </div>
           <div className="merchantComment-right">
             <div className="sign-form__box">
-              <img className="sign-form__box-icon " src={icon.chatAll} alt="" />
               <input
                 autoComplete="off"
                 // value={formikContact.values.business}
                 // onChange={formikContact.handleChange}
                 name="business"
                 id="business"
-                placeholder="Bình luận"
+                placeholder="Nhập bình luận ..."
               />
             </div>
             <div className="merchantComment-right__btn">
               <ButtonCus
-                // onClick={popupSignInClick}
                 text="Bộ lọc"
-                backColor="var(--bg-color)"
                 border="1px solid var(--purple)"
                 color="var(--purple)"
                 fontSize="14px"
@@ -92,9 +93,7 @@ export default function MerchantComment() {
                 padding="6px 22px"
               />
               <ButtonCus
-                // onClick={popupSignInClick}
                 text="Tất cả"
-                backColor="var(--bg-color)"
                 border="1px solid var(--purple)"
                 color="var(--purple)"
                 fontSize="14px"
@@ -105,7 +104,6 @@ export default function MerchantComment() {
               <ButtonCus
                 // onClick={popupSignInClick}
                 text="Gần nhất"
-                backColor="var(--bg-color)"
                 border="1px solid var(--purple)"
                 color="var(--purple)"
                 fontSize="14px"

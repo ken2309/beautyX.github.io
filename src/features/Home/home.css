@@ -636,7 +636,7 @@ img {
   word-break: break-word;
 }
 .calendar-appointment__item-detail {
-  width: fit-content;
+  width: 66px;
   padding: 4px 8px;
   background: #eeedf2;
   border-radius: 8px;
