@@ -6,6 +6,7 @@ import formatPrice from "../../../../utils/formatPrice";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../../../redux/cartSlice";
+import slugify from "../../../../utils/formatUrlString";
 
 function ServiceItem(props: any) {
   const { serviceItem, org, open } = props;
@@ -30,6 +31,13 @@ function ServiceItem(props: any) {
       pathname: `/Cart`,
     });
     dispatch(action);
+  };
+  const handleDetailService = () => {
+    history.push({
+      pathname: `/Service-detail/${slugify(service?.service_name)}`,
+      search: `${org.id},${serviceItem?.productable_id},${is_type}`,
+      state: org,
+    });
   };
   useEffect(() => {
     async function handleGetSerDetail() {
@@ -67,6 +75,7 @@ function ServiceItem(props: any) {
             <span className="price">{formatPrice(service?.price)} đ</span>
             <div className="flex-row item-button">
               <ButtonCus
+                onClick={handleDetailService}
                 text="Xem thông tin"
                 padding="4px 8px"
                 color="var(--purple)"

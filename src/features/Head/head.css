@@ -3,7 +3,7 @@
   padding: 28px 0px;
   border-bottom: 1px solid #eeedf2;
 }
-.mb-back__btn{
+.mb-back__btn {
   display: none;
 }
 .hd-cnt {
@@ -93,6 +93,11 @@
 }
 .hd-menu__item {
   padding: 9px 0px;
+}
+.hd-menu__item img {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
 }
 .hd-menu__item-text {
   color: var(--text-black);
@@ -219,7 +224,7 @@
   .hd-logo {
     left: -100px;
   }
-  .mb-back__btn{
+  .mb-back__btn {
     display: none;
   }
 }
@@ -231,7 +236,7 @@
     padding: 20px 24px;
     background-color: var(--purple);
   }
-  .mb-back__btn{
+  .mb-back__btn {
     display: block;
     margin-left: -8px;
   }
