@@ -6,6 +6,8 @@ import TabOrder from "./components/TabOrder";
 import { Dialog, Slide } from "@mui/material";
 import icon from "../../constants/icon";
 import { TransitionProps } from "@mui/material/transitions";
+import slugify from "../../utils/formatUrlString";
+import { useHistory } from "react-router-dom";
 
 const view = window.screen.width;
 const Transition = React.forwardRef(function Transition(
@@ -18,8 +20,16 @@ const Transition = React.forwardRef(function Transition(
 });
 
 function OrderDetail(props: any) {
+  const history = useHistory();
   const { open, setOpen, org, order, countItem } = props;
   const [acTab, setAcTab] = useState();
+  const handleDetailMerchant = () => {
+    history.push({
+      pathname: `/Merchant-detail/${slugify(org.name)}`,
+      search: `${org.id}`,
+      state: org,
+    });
+  };
   return (
     <Dialog
       open={open}
@@ -61,6 +71,7 @@ function OrderDetail(props: any) {
             <span className="name">{org?.name}</span>
             <span className="address">{org?.full_address}</span>
             <ButtonCus
+              onClick={handleDetailMerchant}
               text="Xem doanh nghiệp"
               backColor="var(--purple)"
               padding="6px 8px"

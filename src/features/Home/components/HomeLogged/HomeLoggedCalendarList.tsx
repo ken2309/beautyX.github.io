@@ -35,8 +35,8 @@ export default function HomeLoggedCalendarList(props: any) {
     dotAppoint: any
   ) => {
     let newdate = [
-      i < 10 ? `0${i + 1}` : `${i + 1}`,
-      thisMonth + 1 < 10 ? `0${thisMonth + 1}` : `${thisMonth + 1}`,
+      i <= 8 ? `0${i + 1}` : `${i + 1}`,
+      thisMonth + 1 <= 10 ? `0${thisMonth + 1}` : `${thisMonth + 1}`,
       `${thisYear}`,
     ].join("/");
     const datesttArray = dotAppoint.filter((dot: any) => dot.date === newdate);

@@ -6,6 +6,7 @@ import comboApi from "../../../../api/comboApi";
 import { addCart } from "../../../../redux/cartSlice";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+// import slugify from "../../../../utils/formatUrlString";
 
 function ComboItem(props: any) {
   const { combotItem, org, open } = props;
@@ -31,6 +32,13 @@ function ComboItem(props: any) {
     });
     dispatch(action);
   };
+  // const handleDetailCombo = () => {
+  //   history.push({
+  //     pathname: `/Product-detail/${slugify(combo?.name)}`,
+  //     search: `${org.id},${combotItem?.productable_id},${is_type}`,
+  //     state: org,
+  //   });
+  // };
   useEffect(() => {
     async function handleGetComDet() {
       try {
@@ -59,7 +67,7 @@ function ComboItem(props: any) {
           <div className="item-detail">
             <span className="flex-row-sp item-name">
               {combo?.name}
-              <span>x {combotItem.quantity}</span>
+              <span>x{combotItem.quantity}</span>
             </span>
             <span className="item-org__name">{org.name}</span>
           </div>
@@ -67,6 +75,7 @@ function ComboItem(props: any) {
             <span className="price">{formatPrice(combo?.price)} đ</span>
             <div className="flex-row item-button">
               <ButtonCus
+                // onClick={handleDetailCombo}
                 text="Xem thông tin"
                 padding="4px 8px"
                 color="var(--purple)"

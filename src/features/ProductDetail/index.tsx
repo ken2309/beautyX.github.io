@@ -17,13 +17,9 @@ import HeadTitle from "../HeadTitle";
 function ProductDetail(props: any) {
   const { t } = useContext(AppContext);
   const location = useLocation();
-  console.log(`location`, location);
   const search = location.search.slice(1, location.search.length);
-  console.log(`search`, search);
   const params = search.split(",");
-  console.log(`params`, params);
   const is_type = parseInt(params[2]);
-  console.log(`is_type`, is_type);
   const [product, setProduct] = useState<Product>();
   const [products, setProducts] = useState<Product[]>([]);
   const [org, setOrg] = useState<any>({});

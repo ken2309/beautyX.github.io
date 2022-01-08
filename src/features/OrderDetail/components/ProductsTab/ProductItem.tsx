@@ -6,12 +6,20 @@ import ButtonCus from "../../../../components/ButtonCus";
 import { addCart } from "../../../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import slugify from "../../../../utils/formatUrlString";
 
 function ProductItem(props: any) {
   const { productItem, org, open } = props;
   const [product, setProduct] = useState<Product>();
   const history = useHistory();
   const dispatch = useDispatch();
+  const handleDetailProduct = () => {
+    history.push({
+      pathname: `/Product-detail/${slugify(product?.product_name)}`,
+      search: `${org.id},${productItem?.productable_id},${is_type}`,
+      state: org,
+    });
+  };
   useEffect(() => {
     async function handleGetPrDetail() {
       try {
@@ -68,6 +76,7 @@ function ProductItem(props: any) {
             <span className="price">{formatPrice(product?.retail_price)}đ</span>
             <div className="flex-row item-button">
               <ButtonCus
+                onClick={handleDetailProduct}
                 text="Xem thông tin"
                 padding="4px 8px"
                 color="var(--purple)"
