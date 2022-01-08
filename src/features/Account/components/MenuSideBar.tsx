@@ -96,7 +96,13 @@ function MenuSideBar(props: info) {
           </div>
           <span className="quicksand-md text-bold">Lịch sử đơn hàng</span>
         </div>
-        <div className="dropdown">
+        <div className="tab" onClick={() => history.push("/goi-dich-vu")}>
+          <div className="icon">
+            <img src={icon.bag} alt="" />
+          </div>
+          <span className="quicksand-md text-bold">Gói dịch vụ</span>
+        </div>
+        {/* <div className="dropdown">
           <div className="tab" onClick={handleDropdown}>
             <div className="icon">
               <img src={icon.Clock_purple} alt="" />
@@ -131,7 +137,7 @@ function MenuSideBar(props: info) {
               </div>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div className="tab">
           <div className="icon">
             <img src={icon.Ticket} alt="" />

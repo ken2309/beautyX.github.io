@@ -49,56 +49,46 @@ export default function DialogNewPass(props: any) {
             Lưu ý mật khẩu mới không được trùng với các mật khẩu được <br />{" "}
             dùng trước đó
           </p>
-          <div className="sign-form__box">
-            <div
-              className="flex-column w-100"
-              style={{ width: "100%", padding: "8px 0" }}
-            >
-              <img className="sign-form__box-icon " src={icon.Lock} alt="" />
-              <input
-                autoComplete="off"
-                value={formikNewpass.values.password}
-                onChange={formikNewpass.handleChange}
-                name="password"
-                id="password"
-                type={typePass}
-                placeholder="Mật khẩu mới"
-              />
-              <img
-                onMouseEnter={() => setTypePass("text")}
-                onMouseLeave={() => setTypePass("password")}
-                className="sign-form__box-icon-show"
-                src={icon.eye}
-                alt=""
-              />
-            </div>
+          <div className="sign-form__box" style={{ margin: "8px 0" }}>
+            <img className="sign-form__box-icon " src={icon.Lock} alt="" />
+            <input
+              autoComplete="off"
+              value={formikNewpass.values.password}
+              onChange={formikNewpass.handleChange}
+              name="password"
+              id="password"
+              type={typePass}
+              placeholder="Mật khẩu mới"
+            />
+            <img
+              onMouseEnter={() => setTypePass("text")}
+              onMouseLeave={() => setTypePass("password")}
+              className="sign-form__box-icon-show"
+              src={icon.eye}
+              alt=""
+            />
           </div>
           {formikNewpass.errors.password && formikNewpass.touched.password && (
             <p className="err-text">{formikNewpass.errors.password}</p>
           )}
-          <div className="sign-form__box">
-            <div
-              className="flex-column w-100"
-              style={{ width: "100%", padding: "8px 0" }}
-            >
-              <img className="sign-form__box-icon" src={icon.Lock} alt="" />
-              <input
-                autoComplete="off"
-                value={formikNewpass.values.confirmPassword}
-                onChange={formikNewpass.handleChange}
-                name="confirmPassword"
-                id="confirmPassword"
-                type={typePass}
-                placeholder="Nhận lại mật khẩu mới"
-              />
-              <img
-                onMouseEnter={() => setTypePass("text")}
-                onMouseLeave={() => setTypePass("password")}
-                className="sign-form__box-icon-show"
-                src={icon.eye}
-                alt=""
-              />
-            </div>
+          <div className="sign-form__box" style={{ margin: "16px 0 8px 0" }}>
+            <img className="sign-form__box-icon" src={icon.Lock} alt="" />
+            <input
+              autoComplete="off"
+              value={formikNewpass.values.confirmPassword}
+              onChange={formikNewpass.handleChange}
+              name="confirmPassword"
+              id="confirmPassword"
+              type={typePass}
+              placeholder="Nhận lại mật khẩu mới"
+            />
+            <img
+              onMouseEnter={() => setTypePass("text")}
+              onMouseLeave={() => setTypePass("password")}
+              className="sign-form__box-icon-show"
+              src={icon.eye}
+              alt=""
+            />
           </div>
           {formikNewpass.errors.confirmPassword &&
             formikNewpass.touched.confirmPassword && (

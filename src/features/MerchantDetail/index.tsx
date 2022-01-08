@@ -22,7 +22,7 @@ import HeadTitle from '../HeadTitle/index';
 import {Product} from '../../interface/product';
 import productApi from '../../api/productApi'
 // view for mobile
-import RecommendList from '../../featuresMobile/RecomendList';
+import RecommendListMb from '../../featuresMobile/RecomendList';
 
 const id_tab = 1;
 function MerchantDetail(props: any) {
@@ -97,7 +97,7 @@ function MerchantDetail(props: any) {
             <DetailBranchList branches={branches} />
             <DetailSaleList productsSale={productsSale} t={t} merDetail={org} />
             {/* for mobile */}
-            <RecommendList
+            <RecommendListMb
               productsSale={productsSale}
               org={org}
             />

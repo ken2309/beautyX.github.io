@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './account.css';
-import icon from '../../constants/icon'
+import icon from '../../constants/icon';
+import Bottom from '../Bottom/index';
+import OrderMb from './Orders';
+import AccountForm from './AccountForm/index'
 
 // function change() {
 //       const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
@@ -19,6 +22,8 @@ import icon from '../../constants/icon'
 //       document.querySelector('.mb-ac__cnt-avt')?.classList.remove('mb-ac__cnt-avt-ch')
 // }
 function AccountMb() {
+      const [openOrder, setOpenOrder] = useState(false);
+      const [openAcc, setOpenAcc] = useState(false);
       return (
             <div className="mb-ac">
                   <div className="mb-ac__cnt">
@@ -73,7 +78,10 @@ function AccountMb() {
                         <div className="mb-ac__cnt-private">
                               <ul>
                                     <li>
-                                          <div className="flex-column mb-ac__cnt-private-item">
+                                          <div 
+                                                onClick={()=>setOpenAcc(true)}
+                                                className="flex-column mb-ac__cnt-private-item"
+                                          >
                                                 <img src={icon.User_purple} alt="" />
                                                 <span>Tài khoản của tôi</span>
                                           </div>
@@ -85,7 +93,10 @@ function AccountMb() {
                                           </div>
                                     </li>
                                     <li>
-                                          <div className="flex-column mb-ac__cnt-private-item">
+                                          <div 
+                                                onClick={()=>setOpenOrder(true)}
+                                                className="flex-column mb-ac__cnt-private-item"
+                                          >
                                                 <img src={icon.Clock_purple} alt="" />
                                                 <span>Lịch sử đơn hàng</span>
                                           </div>
@@ -121,6 +132,16 @@ function AccountMb() {
                               </ul>
                         </div>
                   </div>
+                  <Bottom/>
+                  {/* open dialog */}
+                  <OrderMb
+                        openOrder={openOrder}
+                        setOpenOrder={setOpenOrder}
+                  />
+                  <AccountForm
+                        open={openAcc}
+                        setOpen={setOpenAcc}
+                  />
             </div>
       );
 }

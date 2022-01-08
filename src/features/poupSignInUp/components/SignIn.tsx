@@ -5,7 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 // import Dialog from "@mui/material/Dialog";
 // import ButtonCus from "../../../components/ButtonCus";
-import {AxiosError} from 'axios'
+import { AxiosError } from "axios";
 import auth from "../../../api/authApi";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "../../SignPage/components/PopupNoti";
@@ -40,8 +40,8 @@ function SignIn(props: any) {
 
   //submit form login
   //handle submit login form
-   //handle submit login form
-   async function submitLogin(values: any) {
+  //handle submit login form
+  async function submitLogin(values: any) {
     try {
       const response = await auth.login(values);
       console.log(response);
@@ -50,7 +50,7 @@ function SignIn(props: any) {
       setSign(true);
       if (useForSignRes === true) {
         history.goBack();
-      }else{
+      } else {
         history.push("/beta");
       }
       setLoading(false);
@@ -70,7 +70,7 @@ function SignIn(props: any) {
   const handleLogin = (values: any) => {
     setLoading(true);
     setDisplay_email(values.email);
-    submitLogin(values)
+    submitLogin(values);
   };
 
   // Open Popup Forgot
@@ -108,44 +108,40 @@ function SignIn(props: any) {
         autoComplete="off"
         className="flex-column sign-form"
       >
-        <div style={{ width: "100%", padding: "0 0 8px 0" }}>
-          <div className="sign-form__box">
-            <img className="sign-form__box-icon" src={icon.User} alt="" />
-            <input
-              name="email"
-              value={formikLogin.values.email}
-              onChange={formikLogin.handleChange}
-              type="text"
-              placeholder={t("Home.Sign_in_pl_user_name")}
-            />
-          </div>
-          {formikLogin.errors.email && formikLogin.touched.email && (
-            <p className="err-text">{formikLogin.errors.email}</p>
-          )}
+        <div className="sign-form__box">
+          <img className="sign-form__box-icon" src={icon.User} alt="" />
+          <input
+            name="email"
+            value={formikLogin.values.email}
+            onChange={formikLogin.handleChange}
+            type="text"
+            placeholder={t("Home.Sign_in_pl_user_name")}
+          />
         </div>
-        <div style={{ width: "100%", padding: "8px 0" }}>
-          <div className="sign-form__box">
-            <img className="sign-form__box-icon" src={icon.Lock} alt="" />
-            <input
-              name="password"
-              value={formikLogin.values.password}
-              onChange={formikLogin.handleChange}
-              type={typePass}
-              placeholder={t("Home.Sign_in_pl_password")}
-            />
-            <img
-              onMouseEnter={() => setTypePass("text")}
-              onMouseLeave={() => setTypePass("password")}
-              className="sign-form__box-icon-show"
-              src={icon.eye}
-              alt=""
-            />
-          </div>
-          {formikLogin.errors.password && formikLogin.touched.password && (
-            <p className="err-text">{formikLogin.errors.password}</p>
-          )}
-          <p className="err-text">{errPass}</p>
+        {formikLogin.errors.email && formikLogin.touched.email && (
+          <p className="err-text">{formikLogin.errors.email}</p>
+        )}
+        <div className="sign-form__box">
+          <img className="sign-form__box-icon" src={icon.Lock} alt="" />
+          <input
+            name="password"
+            value={formikLogin.values.password}
+            onChange={formikLogin.handleChange}
+            type={typePass}
+            placeholder={t("Home.Sign_in_pl_password")}
+          />
+          <img
+            onMouseEnter={() => setTypePass("text")}
+            onMouseLeave={() => setTypePass("password")}
+            className="sign-form__box-icon-show"
+            src={icon.eye}
+            alt=""
+          />
         </div>
+        {formikLogin.errors.password && formikLogin.touched.password && (
+          <p className="err-text">{formikLogin.errors.password}</p>
+        )}
+        <p className="err-text">{errPass}</p>
         <div className="signIn-checkbox sign-check">
           <div className="signIn-checkbox__wrap">
             <Checkbox

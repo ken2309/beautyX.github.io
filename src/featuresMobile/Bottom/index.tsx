@@ -39,7 +39,7 @@ function Bottom(props: any) {
                   id: 4,
                   title: t('Bottom.account'),
                   icon_active: icon.User,
-                  icon: icon.Calendar_1,
+                  icon: icon.User_1,
                   path: '/tai-khoan/thong-tin-ca-nhan',
                   is_badge: false,
             },

@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "../features/Home/index";
 import SearchResult from "../features/SearchResult/index";
-import { BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Redirect} from "react-router-dom";
 import { RouteComponentProps } from "@reach/router";
 import MerchantDetail from "../features/MerchantDetail/index";
 import Partner from "../features/Partner";
@@ -16,6 +16,8 @@ import SignPageRequest from "../features/SignPageRequest/index";
 import Notification from "../features/Notification/index";
 import PrivateRoute from "./PrivateRoute";
 import CountDown from "../features/CountDown";
+import ServicesUser from "../features/ServiceUser";
+import DatePicker from "../components/DatePicker"
 //import { AppContext } from "../context/AppProvider";
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
@@ -71,32 +73,47 @@ function RouterConfig(props: any) {
       path: "/sign-request",
       component: <SignPageRequest />,
     },
-    {
-      path: "/tai-khoan",
-      component: <Account />,
-    },
-    {
-      path: "/Partner",
-      component: <Partner />,
-    },
+    // {
+    //   path: "/tai-khoan",
+    //   component: <Account />,
+    // },
+    // {
+    //   path: "/Partner",
+    //   component: <Partner />,
+    // },
     {
       path: "/MerchantComment",
       component: <MerchantComment />,
     },
+    {
+      path:"/date",
+      component:<DatePicker/>
+    },
+    // {
+    //   path:''
+    // }
     // {
     //   path: "/Calendar",
     //   component: <Calendar />,
     // },
+    {
+      path: '/goi-dich-vu',
+      component: <ServicesUser />
+    },
   ];
   const routesPrivate = [
     // {
-    //   path: "/tai-khoan",
-    //   component: Account,
+    //   path:'/goi-dich-vu',
+    //   component:ServicesUser
     // },
-    // {
-    //   path: "/Partner",
-    //   component: Partner,
-    // },
+    {
+      path: "/tai-khoan",
+      component: Account,
+    },
+    {
+      path: "/Partner",
+      component: Partner,
+    },
     {
       path: "/Payment",
       component: CartPayment,

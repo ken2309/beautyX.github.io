@@ -200,7 +200,8 @@
   },
   "url": {
     "home": "home",
-    "search": "/search/"
+    "search": "/search/",
+    "urlTest":"beta"
   },
   "booking": {
     "booking_info": "Booking information",
