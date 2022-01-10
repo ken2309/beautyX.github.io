@@ -27,7 +27,7 @@ function HomeSlider(props: any) {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
-          autoplay: false,
+          autoplay: true,
         },
       },
     ],
@@ -36,7 +36,6 @@ function HomeSlider(props: any) {
         <ul>{dots}</ul>
       </div>
     ),
-    customPaging: () => <div className="dots-custom"></div>,
   };
   return (
     <div className="home-slider">
