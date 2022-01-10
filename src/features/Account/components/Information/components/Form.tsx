@@ -3,9 +3,11 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { dataDate } from "../../../../../data/listDays";
+import { AppContext } from "../../../../../context/AppProvider";
 function Form(props: any) {
+  const {t} = useContext(AppContext)
   const { formik } = props;
   interface IDay {
     id: number;
@@ -71,9 +73,9 @@ function Form(props: any) {
   return (
     <>
       <div className="title_section text-color-purple">
-        <h1 className="title">Thông tin cá nhân</h1>
+        <h1 className="title">{t('acc.my_profiles')}</h1>
         <span className="subtitle">
-          Cập nhật đầy đủ thông tin cá nhân giúp tài khoản được bảo mật tốt hơn
+          {t('acc.update_acc')}
         </span>
       </div>
       <hr className="purple_line" />
@@ -83,14 +85,14 @@ function Form(props: any) {
           {/* name */}
           <div style={{ width: "100%" }}>
             <div className="form-account__label">
-              <span>Họ và tên</span>
+              <span>{t('pm.full_name')}</span>
             </div>
             <div className="form-account__wrapinput">
               <input
                 className="form-account__input"
                 value={formik.values.name}
                 onChange={formik.handleChange}
-                placeholder="Họ và tên"
+                placeholder={t('pm.full_name')}
                 type="text"
                 name="name"
                 id="name"
@@ -103,7 +105,7 @@ function Form(props: any) {
           {/* date of birth */}
           <div style={{ width: "100%" }}>
             <div className="form-account__label">
-              <span>Ngày sinh</span>
+              <span>{t('acc.dob')}</span>
             </div>
             <div className="dateofbirth-list">
               <div className="dateofbirth-item " onClick={openDayClick}>
@@ -217,7 +219,7 @@ function Form(props: any) {
           <div className="flex-column w-100">
             <div className="form-account__sex" style={{ padding: "0 0 8px 0" }}>
               <div className="form-account__label">
-                <span>Giới tính</span>
+                <span>{t('acc.sex')}</span>
               </div>
               <FormControl component="fieldset">
                 <RadioGroup
@@ -239,7 +241,7 @@ function Form(props: any) {
                         }}
                       />
                     }
-                    label="Nam"
+                    label={t('form.male')}
                   />
                   <FormControlLabel
                     value="female"
@@ -253,7 +255,7 @@ function Form(props: any) {
                         }}
                       />
                     }
-                    label="Nữ"
+                    label={t('form.female')}
                   />
                   <FormControlLabel
                     value="other"
@@ -267,7 +269,7 @@ function Form(props: any) {
                         }}
                       />
                     }
-                    label="Khác"
+                    label={t('form.other')}
                   />
                 </RadioGroup>
               </FormControl>
@@ -302,14 +304,14 @@ function Form(props: any) {
           {/* phone */}
           <div style={{ minWidth: "225px", padding: "0 0 8px 0" }}>
             <div className="form-account__label">
-              <span>Số điện thoại</span>
+              <span>{t('pm.phone_number')}</span>
             </div>
             <div className="form-account__wrapinput">
               <input
                 className="form-account__input"
                 value={formik.values.phone}
                 onChange={formik.handleChange}
-                placeholder="Số điện thoại"
+                placeholder={t('pm.phone_number')}
                 type="text"
                 name="phone"
                 id="phone"
@@ -324,17 +326,17 @@ function Form(props: any) {
 
       {/*address */}
       <div className="title_section text-color-purple">
-        <h1 className="title">Địa chỉ giao hàng</h1>
-        <span className="subtitle cursor-pointer">Thêm địa điểm khác</span>
+        <h1 className="title">{t('acc.order_address')}</h1>
+        <span className="subtitle cursor-pointer">{t('acc.add_other_address')}</span>
       </div>
       <hr className="purple_line" />
       <div className="form-address">
         <div className="form-account__wraper">
           <div style={{ width: "100%", padding: "24px 0 8px 0" }}>
             <div className="form-account__label">
-              <span>Địa chỉ 1</span>
+              <span>{t('Mer_de.address')} 1</span>
               <div className="delete-address">
-                <span>Mặc định</span>
+                <span>{t('acc.default')}</span>
                 <img src={icon.TrashOrange} alt="" />
               </div>
             </div>
@@ -343,7 +345,7 @@ function Form(props: any) {
                 className="form-account__input"
                 value={formik.values.address}
                 onChange={formik.handleChange}
-                placeholder="Địa chỉ 1"
+                placeholder={t('Mer_de.address') + "1"}
                 type="text"
                 name="address"
                 id="address"
@@ -357,9 +359,9 @@ function Form(props: any) {
         <div style={{ paddingTop: "0px" }} className="form-account__wraper">
           <div style={{ width: "100%", padding: "8px 0 8px 0" }}>
             <div className="form-account__label">
-              <span>Địa chỉ 2</span>
+              <span>{t('Mer_de.address')} 2</span>
               <div className="delete-address">
-                <span>Mặc định</span>
+                <span>{t('acc.default')}</span>
                 <img src={icon.TrashOrange} alt="" />
               </div>
             </div>
@@ -368,7 +370,7 @@ function Form(props: any) {
                 className="form-account__input"
                 // value={formikPartner.values.Name}
                 // onChange={formikPartner.handleChange}
-                placeholder="Địa chỉ 2"
+                placeholder={t('Mer_de.address') + "2"}
                 type="text"
                 name="address2"
                 id="address2"

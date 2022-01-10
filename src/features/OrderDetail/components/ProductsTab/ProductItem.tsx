@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import productsApi from "../../../../api/productApi";
 import { Product } from "../../../../interface/product";
 import formatPrice from "../../../../utils/formatPrice";
@@ -7,9 +7,11 @@ import { addCart } from "../../../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import slugify from "../../../../utils/formatUrlString";
+import {AppContext} from '../../../../context/AppProvider'
 
 function ProductItem(props: any) {
   const { productItem, org, open } = props;
+  const {t} = useContext(AppContext)
   const [product, setProduct] = useState<Product>();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -77,7 +79,7 @@ function ProductItem(props: any) {
             <div className="flex-row item-button">
               <ButtonCus
                 onClick={handleDetailProduct}
-                text="Xem thông tin"
+                text={t('order.watch_info')}
                 padding="4px 8px"
                 color="var(--purple)"
                 backColor="var(--bgGray)"

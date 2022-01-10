@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ProductsTab from './ProductsTab/index';
 import ServicesTab from './ServicesTab/index';
 import ComboTab from './CombosTab/index';
+import {AppContext} from '../../../context/AppProvider'
 
 function TabOrder(props: any) {
       const { order, org, open } = props;
+      const {t} = useContext(AppContext)
       const tabList = [
-            { id: 1, title: 'Sản phẩm', count: order?.items_product?.length },
-            { id: 2, title: 'Dịch vụ', count: order?.items_service?.length },
+            { id: 1, title: t('Mer_de.products'), count: order?.items_product?.length },
+            { id: 2, title: t('Mer_de.services'), count: order?.items_service?.length },
             { id: 3, title: 'Combo', count: order?.items_treatment_combo?.length }
       ]
       const tabArr = [];

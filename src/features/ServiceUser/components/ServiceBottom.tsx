@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container } from '@mui/material';
 import ButtonCus from '../../../components/ButtonCus';
 import icon from '../../../constants/icon';
@@ -9,8 +9,10 @@ import {IBranch} from '../../../interface/branch';
 import apointmentApi from '../../../api/apointmentApi';
 import PopupNotiApp from './PopupNotiApp';
 import {AxiosError} from 'axios'
+import { AppContext } from '../../../context/AppProvider';
 
 function ServiceBottom(props: any) {
+      const {t} = useContext(AppContext)
       const {servicesBook, setOpenNoti, orgAll} = props;
       const [openNext, setOpenNext] = useState(false)
       const itemFirst = servicesBook[0];
@@ -89,11 +91,11 @@ function ServiceBottom(props: any) {
                   <Container>
                         <div className="my-ser-bot__cnt">
                               <span className="my-ser-bot__cnt-count">
-                                    Đã chọn {servicesBook.length} dịch vụ
+                                    {t('my_ser.selected')} {servicesBook.length} {t('my_ser.service')}
                               </span>
                               <ButtonCus
                                     imgIcon={openNext === true ? icon.chevronDownWhite : icon.chevronUpWhite}
-                                    text={openNext === true ? 'Đóng' : 'Tiếp tục'}
+                                    text={openNext === true ? t('my_ser.close') : t('my_ser.continue')}
                                     color='var(--bgWhite)'
                                     backColor='var(--purple)'
                                     padding='8px 16px'
@@ -106,7 +108,7 @@ function ServiceBottom(props: any) {
                         <div className="flex-row-sp my-ser-bot__check">
                               <div className="my-ser-bot__check-left">
                                     <div className='title'>
-                                          Dahh sách dịch vụ đã chọn
+                                          {t('my_ser.services_selected')}
                                     </div>
                                     <div className="my-ser-choose">
                                           <ul>
@@ -146,7 +148,7 @@ function ServiceBottom(props: any) {
                                                       chooseBranch ?
                                                             chooseBranch.full_address
                                                             :
-                                                            'Chọn chi nhánh bạn muốn đặt hẹn'
+                                                            t('my_ser.branch_select')
                                                 }
                                           </span>
                                           <img src={icon.dashboard} alt="" />
@@ -165,7 +167,7 @@ function ServiceBottom(props: any) {
                                                       {
                                                             chooseDate ?
                                                                   chooseDate :
-                                                                  'Chọn thời gian'
+                                                                  t('my_ser.date_select')
                                                       }
                                                 </span>
                                                 <img src={icon.Calendar} alt="" />
@@ -182,7 +184,7 @@ function ServiceBottom(props: any) {
                                                       {
                                                             chooseTime ?
                                                                   chooseTime :
-                                                                  'Chọn thời gian'
+                                                                  t('my_ser.time_select')
                                                       }
                                                 </span>
                                                 <img src={icon.time} alt="" />
@@ -197,16 +199,16 @@ function ServiceBottom(props: any) {
                                                 style={{ width: '100%' }}
                                           >
                                                 <div className="my-ser-submit__title">
-                                                      Thông tin đặt hẹn
+                                                      {t('my_ser.app_info')}
                                                 </div>
                                                 <div className="time">
                                                       <span className="section__title">
-                                                            Thời gian
+                                                            {t('order.time')}
                                                       </span>
                                                       <span className="info">
                                                             {
                                                                   !chooseTime || !chooseDate ?
-                                                                        'Vui lòng chọn thời gian'
+                                                                        t('my_ser.pl_select_date')
                                                                         :
                                                                         `Ngày : ${chooseTime}, ${chooseDate}`
                                                             }
@@ -214,26 +216,26 @@ function ServiceBottom(props: any) {
                                                 </div>
                                                 <div className="time">
                                                       <span className="section__title">
-                                                            Chi nhánh
+                                                            {t('booking.branch')}
                                                       </span>
                                                       <div className="branch-info">
                                                             {
                                                                   !chooseBranch ?
                                                                         <span className="info">
-                                                                              Vui lòng chọn chi nhánh
+                                                                              {t('my_ser.pl_select_br')}
                                                                         </span>
                                                                         :
                                                                         <>
                                                                               <span className="flex-row">
-                                                                                    <h4>Tên chi nhánh :</h4>
+                                                                                    <h4>{t('my_ser.name_br')} :</h4>
                                                                                     <h3>{chooseBranch?.name}</h3>
                                                                               </span>
                                                                               <span className="flex-row">
-                                                                                    <h4>Số điện thoại :</h4>
+                                                                                    <h4>{t('pm.phone_number')} :</h4>
                                                                                     <h3>{chooseBranch?.telephone}</h3>
                                                                               </span>
                                                                               <span className="flex-row">
-                                                                                    <h4>Địa chỉ :</h4>
+                                                                                    <h4>{t('Mer_de.address')} :</h4>
                                                                                     <h3>{chooseBranch?.full_address}</h3>
                                                                               </span>
                                                                         </>
@@ -243,12 +245,12 @@ function ServiceBottom(props: any) {
                                                 <textarea
                                                       onChange={handleOnChange}
                                                       className="my-ser-submit__note"
-                                                      placeholder='Ghi chú'
+                                                      placeholder={t('pm.note')}
                                                 ></textarea>
                                           </div>
                                           <div className="my-ser-submit__btn">
                                                 <ButtonCus
-                                                      text='Xác nhận đặt hẹn'
+                                                      text={t('my_ser.bk_now')}
                                                       color='var(--bgWhite)'
                                                       backColor='var(--purple)'
                                                       padding='10px 16px'
