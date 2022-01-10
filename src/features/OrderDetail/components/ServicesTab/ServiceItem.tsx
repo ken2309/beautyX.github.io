@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Service } from "../../../../interface/service";
 import serviceApi from "../../../../api/serviceApi";
 import ButtonCus from "../../../../components/ButtonCus";
@@ -7,8 +7,10 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../../../redux/cartSlice";
 import slugify from "../../../../utils/formatUrlString";
+import {AppContext} from '../../../../context/AppProvider'
 
 function ServiceItem(props: any) {
+  const {t} = useContext(AppContext)
   const { serviceItem, org, open } = props;
   const [service, setService] = useState<Service>();
   const history = useHistory();
@@ -76,7 +78,7 @@ function ServiceItem(props: any) {
             <div className="flex-row item-button">
               <ButtonCus
                 onClick={handleDetailService}
-                text="Xem thông tin"
+                text={t('order.watch_info')}
                 padding="4px 8px"
                 color="var(--purple)"
                 backColor="var(--bgGray)"

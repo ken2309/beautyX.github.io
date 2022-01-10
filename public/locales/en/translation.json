@@ -13,7 +13,8 @@
     "settings": "Settings",
     "support": "Support",
     "sign_out": "Sign out",
-    "back": "Back"
+    "back": "Back",
+    "noti":"Notifications"
   },
   "Bottom": {
     "appointment": "Appo",
@@ -260,5 +261,60 @@
     "company_name": "Company's name",
     "branch_quantity": "Number of branches",
     "read": "I have read and agree to"
+  },
+  "app":{
+    "details":"Details",
+    "my_services":"My services"
+  },
+  "acc":{
+    "scores":"Scores",
+    "surplus":"Surplus",
+    "rank":"Rank",
+    "my_profiles":"My profiles",
+    "update_acc":"Fully update personal information to make the account better security",
+    "dob":"Date of birth",
+    "sex":"Sex",
+    "order_address":"Orders address",
+    "add_other_address":"Add other address",
+    "default":"Default",
+    "change_pass":"Change the password",
+    "save":"Save"
+  },
+  "order":{
+    "order_his":"Orders history",
+    "pending":"Pending",
+    "complete":"Complete",
+    "order_de":"Order details",
+    "time":"Time",
+    "view_org":"View business",
+    "watch_info":"Watch information"
+  },
+  "my_ser":{
+    "business":"Business",
+    "all_business":"All business",
+    "choose_business":"Choose business",
+    "choose_ser":"Choose services",
+    "services_book":"Service with an appointment",
+    "status":"Status",
+    "count_unused":"Number of unused packs",
+    "choose":"Choose",
+    "selected":"Selected",
+    "service":"service",
+    "continue":"Continue",
+    "close":"Close",
+    "services_selected":"Selected service list",
+    "branch_select":"Select the branch you want to make an appointment with",
+    "time_select":"Select time",
+    "date_select":"Select date",
+    "name_br":"Name of branch",
+    "app_info":"Appointment information",
+    "pl_select_date":"Please select date & time",
+    "pl_select_br":"Please select branch",
+    "bk_now":"Booking now",
+    "bk_success":"Booking success",
+    "bk_fail":"Booking failed !",
+    "rv_booked":"You can review your booked services",
+    "bk_fail_title":"An error occurred during the booking process",
+    "code_err":"Code error"
   }
 }

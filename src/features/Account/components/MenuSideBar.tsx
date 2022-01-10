@@ -1,7 +1,8 @@
 import icon from "../../../constants/icon";
 import { useHistory } from "react-router-dom";
-
+import {useContext} from 'react'
 import CheckNotification from "./CheckNotification";
+import {AppContext} from '../../../context/AppProvider'
 
 interface info {
   name?: string;
@@ -19,6 +20,7 @@ const data: info = {
   rank: "Vàng",
 };
 function MenuSideBar(props: info) {
+  const {t} = useContext(AppContext)
   const history = useHistory();
   const handleDropdown = (e: any) => {
     if (e.target.classList.value.indexOf("active") !== -1) {
@@ -46,14 +48,14 @@ function MenuSideBar(props: info) {
             <div className="point">
               <img src={icon.Ticket} alt="" />
               <div className="content">
-                <span className="quicksand-sm text-color-grey">Điểm</span>
+                <span className="quicksand-sm text-color-grey">{t('acc.scores')}</span>
                 <span>{data.point}</span>
               </div>
             </div>
             <div className="amount">
               <img src={icon.Wallet} alt="" />
               <div className="content">
-                <span className="quicksand-sm text-color-grey">Số dư</span>
+                <span className="quicksand-sm text-color-grey">{t('acc.surplus')}</span>
                 <span>
                   {data.amount}.000{" "}
                   <span style={{ textDecoration: "underline" }}>đ</span>
@@ -63,7 +65,7 @@ function MenuSideBar(props: info) {
             <div className="rank">
               <img src={icon.Crown} alt="" />
               <div className="content">
-                <span className="quicksand-sm text-color-grey">Hạng</span>
+                <span className="quicksand-sm text-color-grey">{t('acc.rank')}</span>
                 <span>{data.rank}</span>
               </div>
             </div>
@@ -76,7 +78,7 @@ function MenuSideBar(props: info) {
           <div className="icon">
             <img src={icon.User_purple} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Tài khoản của tôi</span>
+          <span className="quicksand-md text-bold">{t('Header.my_acc')}</span>
         </div>
         <div
           className="tab"
@@ -85,7 +87,7 @@ function MenuSideBar(props: info) {
           <div className="icon">
             <img src={icon.Credit_card} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Phương thức thanh toán</span>
+          <span className="quicksand-md text-bold">{t('pm.payment_method')}</span>
         </div>
         <div
           className="tab"
@@ -94,13 +96,13 @@ function MenuSideBar(props: info) {
           <div className="icon">
             <img src={icon.Clock_purple} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Lịch sử đơn hàng</span>
+          <span className="quicksand-md text-bold">{t('Header.my_order')}</span>
         </div>
         <div className="tab" onClick={() => history.push("/goi-dich-vu")}>
           <div className="icon">
             <img src={icon.bag} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Gói dịch vụ</span>
+          <span className="quicksand-md text-bold">{t('app.my_services')}</span>
         </div>
         {/* <div className="dropdown">
           <div className="tab" onClick={handleDropdown}>
@@ -142,13 +144,13 @@ function MenuSideBar(props: info) {
           <div className="icon">
             <img src={icon.Ticket} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Danh sách mã ưu đãi</span>
+          <span className="quicksand-md text-bold">{t('Header.my_codes')}</span>
         </div>
         <div className="tab">
           <div className="icon">
             <img src={icon.Bell} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Thông báo</span>
+          <span className="quicksand-md text-bold">{t('Header.noti')}</span>
         </div>
         <div className="dropdown">
           <div className="tab" onClick={handleDropdown}>
@@ -156,7 +158,7 @@ function MenuSideBar(props: info) {
               <img src={icon.Union} alt="" />
             </div>
             <span className="quicksand-md text-bold pointer-events-none">
-              Cài đặt
+              {t('Header.settings')}
             </span>
           </div>
 
@@ -178,12 +180,12 @@ function MenuSideBar(props: info) {
           <div className="icon">
             <img src={icon.Headphones_purple} alt="" />
           </div>
-          <span className="quicksand-md text-bold">Hỗ trợ</span>
+          <span className="quicksand-md text-bold">{t('Header.support')}</span>
         </div>
         <div className="logout">
           <img src={icon.SignOutPurple} alt="" />
           <span className="quicksand-md text-bold text-color-purple">
-            Đăng xuất
+            {t('Header.sign_out')}
           </span>
         </div>
       </div>

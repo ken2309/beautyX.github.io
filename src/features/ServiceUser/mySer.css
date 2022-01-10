@@ -11,6 +11,8 @@
       background-color: var(--bgWhite);
       border-radius: 24px;
       box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.12);
+      position: sticky;
+      top:0
 }
 .my-ser__right{
       width: 75%;
@@ -341,7 +343,7 @@
 .my-ser-submit{
       width: 100%;
       height: calc(100% - 160px);
-      margin-top: 32px;
+      margin-top: 26px;
       border-radius: 8px;
       box-shadow: 0px 0px 7px 1px rgb(0 0 0 / 12%);
 }
@@ -358,6 +360,7 @@
 }
 .my-ser-submit .time{
       width: 100%;
+      margin-top: 12px;
       display: flex;
       flex-direction: column;
       padding-bottom: 12px;
@@ -378,7 +381,7 @@
 }
 .my-ser-submit__note{
       margin-top: 24px;
-      padding: 24px;
+      padding: 12px;
       width: 100%;
       height: 150px;
       box-shadow: 0px 6px 15px #dcd8ee;
@@ -404,6 +407,10 @@
       font-weight: 700;
       color: var(--purple);
 }
+.my-ser-submit h3{
+      font-size: 15px;
+      margin-left: 4px;
+}
 .ser-book-noti__text{
       text-align: center;
       font-size: 20px;
@@ -411,4 +418,69 @@
       font-weight: 700;
       color: var(--text-black);
       margin-top: 8px;
+}
+/* res-mobile */
+/* Mobile */
+@media only screen and (max-width: 767px) {
+      .my-ser{
+            flex-direction: column;
+            padding: 24px;
+      }
+      .my-ser__left{
+            padding: 12px;
+            width: 100%;
+            z-index: 3;
+            border-radius: 12px;
+            height: 50px;
+            overflow: hidden;
+            transition: all .3s !important;
+      }
+      .my-ser__left-title{
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+      }
+      .my-ser__left-title img:nth-child(1){
+            display: none;
+      }
+      .my-ser__org{
+            padding-left: 0px;
+      }
+      .my-ser__right{
+            padding-left: 0px;
+            width: 100%;
+      }
+      .my-ser-book__cnt{
+            padding: 0px;
+      }
+      .my-ser-book__cnt-head-btn span{
+            display: none;
+      }
+      .my-ser-book__cnt-head-btn{
+            justify-content: center;
+      }
+      .my-ser-book__list-item{
+            position: relative;
+            border-radius: 8px;
+            height: 144px;
+      }
+      .my-ser-book__list-item .bottom{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            padding: 0px 4px 4px 4px;
+            bottom: 0;
+      }
+      .__list-item__cnt{
+            width: calc(100% - 62px);
+            padding-left: 8px;
+      }
+      .__list-item__cnt .name{
+            font-size: 16px;
+            line-height: 16px;
+      }
+      .__list-item__cnt .quantity{
+            margin-top: 6px;
+      }
 }

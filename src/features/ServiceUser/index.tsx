@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Head from '../Head';
 import { Container } from '@mui/material';
 import icon from '../../constants/icon'
@@ -12,24 +12,35 @@ import {IOrganization} from '../../interface/organization';
 import PopupNoti from './components/PopupNoti';
 import ServiceBottom from './components/ServiceBottom';
 import Footer from '../Footer'
+import { AppContext } from '../../context/AppProvider';
 
 function ServicesUser(props: any) {
+      const {setOpen} = props;
+      const {t} = useContext(AppContext)
       const [chooseOrg, setChooseOrg] = useState(0);
       const [orgAll, setOrgAll] = useState<IOrganization[]>([])
       const [openNoti, setOpenNoti] = useState(true)
       const [servicesBook, setServicesBook] = useState([])
+      //mb
+      const [drop, setDrop] = useState(false)
+      const dropClick=()=>{
+            setDrop(!drop);
+      }
       return (
             <>
-                  <Head />
+                  <Head
+                        setCloseDialog={setOpen}
+                  />
                   <Container>
                         <div className="flex-row-sp my-ser">
-                              <div 
-                                    style={{position:'sticky', top:0}}
+                              <div
+                                    style={drop === true ? { height: 'max-content', transition: 'all .3s' } : { transition: 'all .3s' }}
                                     className="my-ser__left"
                               >
                                     <span className="flex-row my-ser__left-title">
                                           <img src={icon.dashboard} alt="" />
-                                          Doanh nghiệp
+                                          {t('my_ser.business')}
+                                          <img onClick={dropClick} src={icon.chevronRight} alt="" className="my-ser__left_drop" />
                                     </span>
                                     <OrgSelect
                                           chooseOrg={chooseOrg}

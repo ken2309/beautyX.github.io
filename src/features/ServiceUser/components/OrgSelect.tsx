@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AppContext } from '../../../context/AppProvider';
 import OrgSelectItem from './OrgSelectItem';
 
 function OrgSelect(props: any) {
+      const { t } = useContext(AppContext)
       const { myServices, setOrgAll, chooseOrg, setChooseOrg, servicesBook, setServicesBook } = props;
       const orgListId: any[] = [];
       for (var service of myServices) {
@@ -28,12 +30,12 @@ function OrgSelect(props: any) {
                         }
                         className="my-ser__org-item"
                   >
-                        Tất cả doanh nghiệp
+                        {t('my_ser.all_business')}
                   </li>
                   <div
                         className="my-ser__org-head"
                   >
-                        Chọn doanh nghiệp
+                        {t('my_ser.choose_business')}
                   </div>
                   {
                         listOrgId.map(item => (

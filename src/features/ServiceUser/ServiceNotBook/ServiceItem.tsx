@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import icon from '../../../constants/icon';
+import {AppContext} from '../../../context/AppProvider'
 
 function ServiceItem(props: any) {
+      const {t} = useContext(AppContext)
       const { service, orgAll, servicesBook, setServicesBook } = props;
       const org = orgAll.find((item:any)=> item.id === service.organization_id)
       const handleServiceBook=()=>{
@@ -31,7 +33,7 @@ function ServiceItem(props: any) {
                                     <div className="flex-row quantity">
                                           <img src={icon.DeskAlt} alt="" />
                                           <div className="quantity-text">
-                                                <span>Số lượng gói chưa dùng</span>
+                                                <span>{t('my_ser.count_unused')}</span>
                                                 <span>2/3</span>
                                           </div>
                                     </div>
@@ -46,20 +48,20 @@ function ServiceItem(props: any) {
                                                       <>
                                                             <span className="flex-row">
                                                                   <img src={icon.checkGreen} alt="" />
-                                                                  Đã chọn
+                                                                  {t('my_ser.selected')}
                                                             </span>
                                                             <button
                                                                   onClick={handleCancelServices}
                                                                   style={{ backgroundColor: 'var(--red-cl)' }}
                                                             >
-                                                                  Bỏ chọn
+                                                                  {t('cart.cancel')}
                                                             </button>
                                                       </>
                                                       :
                                                       <button
                                                             onClick={handleServiceBook}
                                                       >
-                                                            Chọn dịch vụ
+                                                            {t('my_ser.choose')}
                                                       </button>
                                           }
                                     </div>

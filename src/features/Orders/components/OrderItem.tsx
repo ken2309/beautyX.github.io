@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import formatPrice from '../../../utils/formatPrice';
 import icon from '../../../constants/icon';
 import { IOrganization } from '../../../interface/organization';
@@ -6,9 +6,11 @@ import orgApi from '../../../api/organizationApi';
 import { useHistory } from 'react-router-dom';
 import slugify from '../../../utils/formatUrlString';
 import OrderDetail from '../../OrderDetail';
+import { AppContext } from '../../../context/AppProvider';
 
 function OrderItem(props: any) {
       const history = useHistory();
+      const {t} = useContext(AppContext)
       const { order } = props;
       const status = order.status;
       const countItem = order.items_product.length + order.items_service.length + order.items_treatment_combo.length
@@ -28,13 +30,13 @@ function OrderItem(props: any) {
       const checkStatus = (status: string) => {
             switch (status) {
                   case 'CANCELED':
-                        return <span style={{ color: '#EE6955' }} className="status"><img src={icon.orderCancel} alt="" /> Đã hủy</span>;
+                        return <span style={{ color: '#EE6955' }} className="status"><img src={icon.orderCancel} alt="" /> {t('Home.cancel')}</span>;
                   case 'CANCELED_BY_USER':
-                        return <span style={{ color: '#EE6955' }} className="status"><img src={icon.orderCancel} alt="" /> Đã hủy</span>;
+                        return <span style={{ color: '#EE6955' }} className="status"><img src={icon.orderCancel} alt="" /> {t('Home.cancel')}</span>;
                   case 'PENDING':
-                        return <span style={{ color: '#F9D646' }} className="status"><img src={icon.orderPending} alt="" /> Đang xử lý</span>;
+                        return <span style={{ color: '#F9D646' }} className="status"><img src={icon.orderPending} alt="" /> {t('order.pending')}</span>;
                   case 'PAID':
-                        return <span style={{ color: '#7FC128' }} className="status"><img src={icon.orderFinish} alt="" /> Hoàn thành</span>;
+                        return <span style={{ color: '#7FC128' }} className="status"><img src={icon.orderFinish} alt="" /> {t('order.complete')}</span>;
                   default:
                         break
             }
@@ -68,7 +70,7 @@ function OrderItem(props: any) {
                                                 {org?.full_address}
                                           </span>
                                           <div className="order-at">
-                                                <span className="flex-row">Ngày:<h4>{order.created_at}</h4></span>
+                                                <span className="flex-row">{t('booking.date')}:<h4>{order.created_at}</h4></span>
                                           </div>
                                           <div className="order-item__cnt-count">
                                                 {countItem} (items)
@@ -83,7 +85,7 @@ function OrderItem(props: any) {
                                                 <button
                                                       onClick={() => setOpenDetail(true)}
                                                 >
-                                                      Chi tiết
+                                                      {t('app.details')}
                                                 </button>
                                           </div>
                                     </div>

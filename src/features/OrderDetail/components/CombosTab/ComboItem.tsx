@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Combo } from "../../../../interface/combo";
 import formatPrice from "../../../../utils/formatPrice";
 import ButtonCus from "../../../../components/ButtonCus";
@@ -6,9 +6,11 @@ import comboApi from "../../../../api/comboApi";
 import { addCart } from "../../../../redux/cartSlice";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import {AppContext} from '../../../../context/AppProvider'
 // import slugify from "../../../../utils/formatUrlString";
 
 function ComboItem(props: any) {
+  const {t} = useContext(AppContext)
   const { combotItem, org, open } = props;
   const [combo, setCombo] = useState<Combo>();
   const history = useHistory();
@@ -76,7 +78,7 @@ function ComboItem(props: any) {
             <div className="flex-row item-button">
               <ButtonCus
                 // onClick={handleDetailCombo}
-                text="Xem thông tin"
+                text={t('order.watch_info')}
                 padding="4px 8px"
                 color="var(--purple)"
                 backColor="var(--bgGray)"

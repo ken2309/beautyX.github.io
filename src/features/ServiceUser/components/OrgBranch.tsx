@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../../context/AppProvider';
 
 function OrgBranch(props:any) {
+      const {t} = useContext(AppContext)
       const {branches, openBranches, setChooseBranch} = props;
       return (
             <div
@@ -20,10 +22,10 @@ function OrgBranch(props:any) {
                                           onClick={() => setChooseBranch(item)}
                                     >
                                           <span className="name">
-                                                Tên chi nhánh : {item?.name}
+                                                {t('my_ser.name_br')} : {item?.name}
                                           </span>
                                           <span className="address">
-                                                Địa chỉ : {item?.full_address}
+                                                {t('Mer_de.address')} : {item?.full_address}
                                           </span>
                                     </li>
                               ))
