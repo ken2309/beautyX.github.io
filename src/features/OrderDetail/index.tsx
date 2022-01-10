@@ -36,7 +36,7 @@ function OrderDetail(props: any) {
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
-      // fullScreen={view > 768 ? false : true}
+      fullScreen={view > 768 ? false : true}
       TransitionComponent={Transition}
     >
       <div className="order-de">
