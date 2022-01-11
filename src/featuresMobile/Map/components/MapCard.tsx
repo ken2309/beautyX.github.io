@@ -13,6 +13,18 @@ function MapCard(props: any) {
   const settings = {
     responsive: [
       {
+        breakpoint: 1024,
+        settings: {
+          className: "center",
+          centerMode: true,
+          infinite: true,
+          centerPadding: "240px",
+          slidesToShow: 1,
+          speed: 500,
+          arrows: false,
+        },
+      },
+      {
         breakpoint: 767,
         settings: {
           className: "center",

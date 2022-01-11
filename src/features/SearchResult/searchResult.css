@@ -12,6 +12,9 @@
   background-color: var(--bg-gray);
   height: 1018px;
 }
+.result-content .MuiPaper-root {
+  border-radius: 0 !important;
+}
 .result-content .result-detail .org-name {
   display: -webkit-box;
   -webkit-line-clamp: 1;

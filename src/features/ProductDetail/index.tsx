@@ -13,6 +13,7 @@ import RecommendListMb from "../../featuresMobile/RecomendList";
 import { Product } from "../../interface/product";
 import { AppContext } from "../../context/AppProvider";
 import HeadTitle from "../HeadTitle";
+import scrollTop from "../../utils/scrollTop";
 
 function ProductDetail(props: any) {
   const { t } = useContext(AppContext);
@@ -35,6 +36,7 @@ function ProductDetail(props: any) {
   useEffect(() => {
     async function handleGetDetailProduct() {
       setLoading(true);
+      scrollTop();
       try {
         const res = await productsApi.getDetailById(values);
         setProduct(res.data.context);

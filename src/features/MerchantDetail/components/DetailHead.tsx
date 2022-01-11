@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Container } from "@mui/material";
 import icon from "../../../constants/icon";
-import { useElementSize } from "usehooks-ts";
+// import { useElementSize } from "usehooks-ts";
 import img from "../../../constants/img";
 import OrgCardLoading from "../../Loading/OrgCardLoading";
 import PopupDetailContact from "./PopupDetailContact";
@@ -27,9 +27,9 @@ const settings = {
 };
 function DetailHead(props: any) {
   const { t, merDetail, loading } = props;
-  const slider = useRef(null);
+  // const slider = useRef(null);
   const infoBox = useRef(null);
-  const { width, height } = useElementSize(slider);
+  // const { width, height } = useElementSize(slider);
   const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
 
