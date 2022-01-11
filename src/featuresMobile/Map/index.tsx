@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TransitionProps } from '@mui/material/transitions';
 import { Dialog, Slide } from '@mui/material';
 import BackButton from '../../components/BackButton';
@@ -17,6 +17,7 @@ const Transition = React.forwardRef(function Transition(
 
 function Map(props: any) {
       const { openMap, setOpenMap, list } = props;
+      const [itemCenter, setItemCenter] = useState(list[0])
       return (
             <Dialog
                   fullScreen
@@ -27,8 +28,11 @@ function Map(props: any) {
                         setOpenFilter={setOpenMap}
                   />
                   <div className="mb-map">
-                        <MapWrapper />
+                        <MapWrapper
+                              itemCenter={itemCenter}
+                        />
                         <MapCard
+                              setItemCenter={setItemCenter}
                               list={list}
                         />
                   </div>

@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import icon from "../../../constants/icon";
 import formatPrice from "../../../utils/formatPrice";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 function MapCard(props: any) {
-  const { list } = props;
-  const [itemCenter, setItemCenter] = useState(list[0])
-  console.log(itemCenter);
-  // const parent = document.querySelector('.mb-card-list__list li');
+  const { list, setItemCenter } = props;
+  
+
+
   const settings = {
     responsive: [
       {
@@ -35,6 +35,11 @@ function MapCard(props: any) {
     customPaging: () => <div className="dots-custom"></div>,
   };
 
+  const openMap = (item: any) => {
+    const url = `https://maps.google.com/?q=${item.latitude},${item.longitude}`
+    const newWindow = window.open(`${url}`, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
 
   return (
     // <div className="mb-card-list">
@@ -42,7 +47,7 @@ function MapCard(props: any) {
       {/* <ul className="mb-card-list__list"> */}
       <ul className="">
         <Slider {...settings}
-          
+
         >
         {list.map((item: any) => (
           <li key={item.id}>
@@ -65,11 +70,16 @@ function MapCard(props: any) {
                   <div className="item-cnt__price">
                     <img src={icon.Ticket} alt="" />
                     <span>
-                      {formatPrice(item.min_price)}-
-                      {formatPrice(item.max_price)}đ
-                    </span>
-                  </div>
+                    {formatPrice(item.min_price)}-
+                    {formatPrice(item.max_price)}đ
+                  </span>
+                  <button
+                    onClick={()=>openMap(item)}
+                  >
+                    Chi duong
+                  </button>
                 </div>
+              </div>
               </div>
             </li>
           ))}
