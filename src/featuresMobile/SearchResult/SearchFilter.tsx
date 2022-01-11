@@ -26,6 +26,7 @@ function SearchFilter(props: any) {
                               setOpenFilter={setOpenFilter}
                         />
                         <HomeFilter
+                              forcusMb={true}
                               setCurPage={setCurPage}
                               setOpenFilter={setOpenFilter}
                         />

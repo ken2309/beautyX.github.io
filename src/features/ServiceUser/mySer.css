@@ -244,7 +244,6 @@
 .my-ser-bot__check-left {
   padding-right: 18px;
   width: 50%;
-  height: 100%;
 }
 .my-ser-bot__check-left .title {
   font-size: 20px;
@@ -257,7 +256,7 @@
 .my-ser-choose {
   padding: 24px;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 130px);
   overflow-y: scroll;
 }
 .my-ser-choose li {
@@ -637,13 +636,18 @@
     margin: 24px 0;
   }
   .my-ser-bot__check {
-    padding: 0 24px;
+    padding: 0 20px;
     flex-direction: column;
+    height: calc(100vh - 55px);
+    overflow-y: scroll;
   }
   .my-ser-bot__check-left,
   .my-ser-bot__check-right {
     width: 100%;
     padding: 0;
+  }
+  .my-ser-bot__check-left{
+    height: max-content;
   }
   .my-ser-bot .choose-time .date {
     width: 100%;
@@ -658,7 +662,7 @@
   }
   .my-ser-bot__up {
     z-index: 4;
-    height: 100%;
+    /* height: 100%; */
   }
   .my-ser-submit__btn {
     margin-top: 16px;
@@ -668,14 +672,15 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 4px 0;
-    height: 100%;
+    height: max-content;
   }
   .my-ser-choose__item img {
     width: 92px;
     height: 64px;
   }
   .my-ser-choose {
-    padding: 16px 10px 16px 10px;
+    padding: 16px 0px;
+    height: fit-content;
   }
   .my-ser-choose ul {
     display: flex;
@@ -684,5 +689,17 @@
   }
   .my-ser-choose li {
     margin: 0;
+  }
+  .my-ser-submit__title {
+    font-size: 20px;
+  }
+  .my-ser-submit .section__title {
+    font-size: 14px;
+  }
+  .time .info {
+    font-size: 14px;
+  }
+  .my-ser-book__cnt-head-title {
+    font-size: 18px;
   }
 }

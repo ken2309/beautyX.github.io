@@ -215,4 +215,7 @@
   .account_section {
     display: none;
   }
+  .MuiPaper-root {
+    margin: 0 !important;
+  }
 }

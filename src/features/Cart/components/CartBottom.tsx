@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container } from "@mui/material";
-import { getTotal, clearAllCart } from "../../../redux/cartSlice";
+import { getTotal, clearByCheck } from "../../../redux/cartSlice";
 import ButtonCus from "../../../components/ButtonCus/index";
 import { useSelector, useDispatch } from "react-redux";
 import formatPrice from "../../../utils/formatPrice";
@@ -27,6 +27,9 @@ function CartBottom(props: any) {
   const cartConfirm = carts.cartList.filter(
     (item: any) => item.isConfirm === true
   );
+
+  const intersection = carts.cartList.filter((x:any) => !cartConfirm.includes(x));
+
   const firstItem = cartConfirm[0];
   const cartFirstList = cartConfirm.filter(
     (item: any) => item.org_id === firstItem.org_id
@@ -43,8 +46,11 @@ function CartBottom(props: any) {
       setPopupSign(true);
     }
   };
-  const handleDeleteAllCart=()=>{
-    dispatch(clearAllCart());
+  const handleClearByCheck = () => {
+    if (cartConfirm.length > 0) {
+      const action = intersection
+      dispatch(clearByCheck(action))
+    }
   }
   return (
     <div className="cart-bottom">
@@ -52,13 +58,13 @@ function CartBottom(props: any) {
         <div className="flex-row-sp cart-bottom__content">
           <div className="cart-bottom__deleteAll">
             <ButtonCus
-              text={t("cart.delete_all")}
+              text={`Xóa ${cartConfirm.length} items`}
               fontSize="14px"
               lineHeight="20px"
               color="var(--bgWhite)"
               border="solid 1px var(--purple)"
               borderRadius="18px"
-              onClick={handleDeleteAllCart}
+              onClick={handleClearByCheck}
               backColor="var(--purple)"
               padding="8px 24px"
             />

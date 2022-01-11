@@ -9,13 +9,13 @@ import DetailBranchList from "./components/DetailBranchList";
 import DetailSaleList from "./components/DetailSaleList";
 import ServiceByMerchant from "../ServiceByMerchant/index";
 import ProductByMerchant from "../ProductByMerchant/index";
-import ComboByMerchant from '../ComboByMerchant/index';
+import ComboByMerchant from "../ComboByMerchant/index";
 import Footer from "../Footer";
 import orgApi from "../../api/organizationApi";
 import branchApi from "../../api/branchApi";
 import DetailTab from "./components/DetailTab";
 import DetailTabMb from "../../featuresMobile/DetailTabMb";
-import MerchantMb from '../../featuresMobile/MerchantMb';
+import MerchantMb from "../../featuresMobile/MerchantMb";
 import Bottom from "../../featuresMobile/Bottom";
 import HeadTitle from '../HeadTitle/index';
 import {Product} from '../../interface/product';
@@ -23,7 +23,7 @@ import productApi from '../../api/productApi';
 import {IOrganization} from '../../interface/organization'
 import {IBranch} from '../../interface/branch'
 // view for mobile
-import RecommendListMb from '../../featuresMobile/RecomendList';
+import RecommendListMb from "../../featuresMobile/RecomendList";
 
 const id_tab = 1;
 function MerchantDetail() {
@@ -57,13 +57,14 @@ function MerchantDetail() {
         }
       }
     }
-    async function handleGetProductSale(){
+    async function handleGetProductSale() {
       const res = await productApi.getByOrgId({
-        org_id: mer_id, page: 1
-      })
-      setProductsSale(res.data.context.data)
+        org_id: mer_id,
+        page: 1,
+      });
+      setProductsSale(res.data.context.data);
     }
-    handleGetProductSale()
+    handleGetProductSale();
     handleGetOrgById();
   }, [location.state, mer_id]);
   return (
@@ -80,7 +81,7 @@ function MerchantDetail() {
       {/* for mobile */}
       <DetailTabMb setActiveTab={setActiveTab} activeTab={activeTab} />
       {/* ---------- */}
-      <div style={{ backgroundColor: "var(--bg-gray)", paddingBottom: "92px" }}>
+      <div style={{ backgroundColor: "var(--bg-gray)", paddingBottom: "64px" }}>
         <Container>
           <div
             style={
@@ -94,10 +95,7 @@ function MerchantDetail() {
             <DetailBranchList branches={branches} />
             <DetailSaleList productsSale={productsSale} merDetail={org} />
             {/* for mobile */}
-            <RecommendListMb
-              productsSale={productsSale}
-              org={org}
-            />
+            <RecommendListMb productsSale={productsSale} org={org} />
             {/* ----- */}
           </div>
           <ServiceByMerchant activeTab={activeTab} mer_id={mer_id} org={org} />

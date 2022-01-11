@@ -61,12 +61,14 @@ function CartItem(props: any) {
             <div className="flex-row-sp cart-item">
                   <div className="flex-row cart-item__name">
                         <Checkbox
+                              size='small'
                               style={inPayment === true ? { display: 'none' } : {}}
                               sx={{
                                     color: "#7161BA",
                                     "&.Mui-checked": {
                                           color: "#7161BA",
                                     },
+                                    marginLeft:'-10px'
                               }}
                               checked={cartItem.isConfirm}
                               onChange={handleConfirm}

@@ -320,8 +320,9 @@
     margin: -10px 0px 0px 12px;
   }
   .cart-item__info {
-    justify-content: center;
+    justify-content: flex-end;
     display: flex;
+    align-items: flex-end;
   }
   .cart-item__name {
     width: 60%;
