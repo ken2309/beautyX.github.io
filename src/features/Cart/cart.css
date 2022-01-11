@@ -288,8 +288,11 @@
     box-shadow: none;
     padding: 24px 36px;
   }
+  .cart-notification-list{
+    display: none;
+  }
   .cart-list {
-    padding: 0px 24px;
+    padding: 0px 12px;
   }
   .cart-list-item__title {
     display: none;
@@ -363,5 +366,6 @@
   .cart-list-item__head img{
     width: 20px;
     height: 20px;
+    margin-right: 4px;
   }
 }

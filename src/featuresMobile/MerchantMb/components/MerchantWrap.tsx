@@ -6,19 +6,27 @@ import DetailComment from '../../../features/MerchantDetail/components/DetailCom
 import DetailBranchesList from './DetailBranchesList'
 import { utilsList } from '../../../features/MerchantDetail/components/DetailInfo';
 import { staffList } from '../../../features/MerchantDetail/components/DetailInfo';
-import {Slide, Dialog} from '@mui/material'
-import {TransitionProps} from '@mui/material/transitions'
+import { Slide, Dialog } from '@mui/material'
+import { TransitionProps } from '@mui/material/transitions';
+import { IBranch } from '../../../interface/branch'
 
 const Transition = React.forwardRef(function Transition(
       props: TransitionProps & {
-        children: React.ReactElement;
+            children: React.ReactElement;
       },
       ref: React.Ref<unknown>,
-    ) {
+) {
       return <Slide direction="up" ref={ref} {...props} />;
-    });
+});
 
-function MerchantWrap(props: any) {
+interface IProps {
+      open: boolean,
+      display: number,
+      setOpen: (open: boolean) => void,
+      branches: IBranch[]
+}
+
+function MerchantWrap(props: IProps) {
       const { open, setOpen, display, branches } = props;
       const [element, setElement] = useState(<DetailInfoUtil utilsList={utilsList} />);
       useEffect(() => {

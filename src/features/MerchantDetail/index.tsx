@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Head from "../Head/index";
 import "./merchantDetail.css";
@@ -13,27 +13,27 @@ import ComboByMerchant from '../ComboByMerchant/index';
 import Footer from "../Footer";
 import orgApi from "../../api/organizationApi";
 import branchApi from "../../api/branchApi";
-import { AppContext } from '../../context/AppProvider';
 import DetailTab from "./components/DetailTab";
 import DetailTabMb from "../../featuresMobile/DetailTabMb";
 import MerchantMb from '../../featuresMobile/MerchantMb';
 import Bottom from "../../featuresMobile/Bottom";
 import HeadTitle from '../HeadTitle/index';
 import {Product} from '../../interface/product';
-import productApi from '../../api/productApi'
+import productApi from '../../api/productApi';
+import {IOrganization} from '../../interface/organization'
+import {IBranch} from '../../interface/branch'
 // view for mobile
 import RecommendListMb from '../../featuresMobile/RecomendList';
 
 const id_tab = 1;
-function MerchantDetail(props: any) {
-  const { t } = useContext(AppContext);
+function MerchantDetail() {
   const location = useLocation();
-  const mer_id = location.search.slice(1, location.search.length);
+  const mer_id = parseInt(`${location.search.slice(1, location.search.length)}`);
   const [loading, setLoading] = useState(false);
-  const [org, setOrg] = useState<any>({});
-  const [branches, setBranches] = useState([]);
+  const [org, setOrg] = useState<IOrganization>();
+  const [branches, setBranches] = useState<IBranch[]>([]);
   const [productsSale, setProductsSale] = useState<Product[]>([]);
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState<number>(1);
   useEffect(() => {
     async function handleGetOrgById() {
       setLoading(true);
@@ -69,17 +69,14 @@ function MerchantDetail(props: any) {
   return (
     <div className="mb-cnt">
       <HeadTitle
-        title={org.name ? org.name : 'Loading...'}
+        title={org?.name ? org.name : 'Loading...'}
       />
       <Head />
       <DetailHead
-        t={t}
         loading={loading}
-        merDetail={org}
-        setActiveTab={setActiveTab}
-        activeTab={activeTab}
+        org={org}
       />
-      <DetailTab t={t} setActiveTab={setActiveTab} activeTab={activeTab} />
+      <DetailTab setActiveTab={setActiveTab} activeTab={activeTab} />
       {/* for mobile */}
       <DetailTabMb setActiveTab={setActiveTab} activeTab={activeTab} />
       {/* ---------- */}
@@ -90,12 +87,12 @@ function MerchantDetail(props: any) {
               id_tab === activeTab ? { display: "block" } : { display: "none" }
             }
           >
-            <DetailMer t={t} merDetail={org} />
+            <DetailMer merDetail={org} />
             {/* for mobile */}
             <MerchantMb branches={branches} />
             {/* ---------- */}
             <DetailBranchList branches={branches} />
-            <DetailSaleList productsSale={productsSale} t={t} merDetail={org} />
+            <DetailSaleList productsSale={productsSale} merDetail={org} />
             {/* for mobile */}
             <RecommendListMb
               productsSale={productsSale}

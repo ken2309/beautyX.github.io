@@ -3,7 +3,12 @@ import { Container } from '@mui/material';
 import {AppContext} from '../../context/AppProvider'
 import './detailTabMb.css'
 
-function DetailTabMb(props:any) {
+interface IProps{
+      activeTab:number,
+      setActiveTab:(activeTab:number) => void
+}
+
+function DetailTabMb(props:IProps) {
       const {t} = useContext(AppContext)
       const { activeTab, setActiveTab } = props;
       const tabList = [

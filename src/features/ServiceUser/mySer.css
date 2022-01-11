@@ -560,7 +560,7 @@
 @media only screen and (max-width: 767px) {
   .my-ser {
     flex-direction: column;
-    padding: 24px;
+    padding: 12px;
   }
   .my-ser-book__cnt-head {
     margin-top: 24px;
