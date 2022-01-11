@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import ButtonCus from "../../../../components/ButtonCus";
@@ -6,8 +6,10 @@ import DialogChangePass from "./components/DialogChangePass";
 import DialogNewPass from "./components/DialogNewPass";
 import Form from "./components/Form";
 import "./style.css";
-import { t } from "i18next";
+import { AppContext } from '../../../../context/AppProvider'
+
 function Information(props: any) {
+  const { t } = useContext(AppContext)
   const [openChangePass, setOpenChangePass] = useState(false);
   const [openNewPass, setOpenNewPass] = React.useState(false);
   const formik = useFormik({
@@ -67,7 +69,7 @@ function Information(props: any) {
       <div className="btn-success">
         <ButtonCus
           onClick={handleOpenChange}
-          text="Thay đổi mật khẩu"
+          text={t('acc.change_pass')}
           fontSize="14px"
           lineHeight="20px"
           color="var(--purple)"
@@ -77,7 +79,7 @@ function Information(props: any) {
         />
         <ButtonCus
           onClick={formik.handleSubmit}
-          text="Lưu thay đổi"
+          text={t('acc.save')}
           fontSize="14px"
           lineHeight="20px"
           color="#ffffff"

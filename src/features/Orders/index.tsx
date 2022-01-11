@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import order from '../../api/orderApi';
 import './order.css';
 import { Order } from '../../interface/order';
 import { Pagination } from '@mui/material';
 import OrderItem from "./components/OrderItem";
 import HeadTitle from '../HeadTitle';
+import {AppContext} from "../../context/AppProvider"
 
 function Orders() {
+      const {t} = useContext(AppContext)
       const [orders, setOrders] = useState<Order[]>([])
       const [page, setPage] = useState(1);
       const [pageCount, setPageCount] = useState(1);
@@ -27,9 +29,9 @@ function Orders() {
       }
       return (
             <div className='order'>
-                  <HeadTitle title='Lịch sử đơn hàng' />
+                  <HeadTitle title={t('order.order_his')} />
                   <div className="order-head">
-                        <span>Lịch sử đơn hàng</span>
+                        <span>{t('order.order_his')}</span>
                   </div>
                   <div className="order-list">
                         <ul className="order-list__cnt">

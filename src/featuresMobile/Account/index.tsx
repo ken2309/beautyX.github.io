@@ -3,7 +3,8 @@ import './account.css';
 import icon from '../../constants/icon';
 import Bottom from '../Bottom/index';
 import OrderMb from './Orders';
-import AccountForm from './AccountForm/index'
+import AccountForm from './AccountForm/index';
+import ServicesUserMb from './ServicesUser'
 
 // function change() {
 //       const avtWrap = document.querySelector('.mb-ac__cnt-avt-wrap')
@@ -24,6 +25,7 @@ import AccountForm from './AccountForm/index'
 function AccountMb() {
       const [openOrder, setOpenOrder] = useState(false);
       const [openAcc, setOpenAcc] = useState(false);
+      const [openSer, setOpenSer] = useState(false)
       return (
             <div className="mb-ac">
                   <div className="mb-ac__cnt">
@@ -102,6 +104,15 @@ function AccountMb() {
                                           </div>
                                     </li>
                                     <li>
+                                          <div 
+                                                onClick={()=>setOpenSer(true)}
+                                                className="flex-column mb-ac__cnt-private-item"
+                                          >
+                                                <img src={icon.bag} alt="" />
+                                                <span>Gói dịch vụ</span>
+                                          </div>
+                                    </li>
+                                    <li>
                                           <div className="flex-column mb-ac__cnt-private-item">
                                                 <img src={icon.Ticket} alt="" />
                                                 <span>Danh sách mã ưu đãi</span>
@@ -137,6 +148,10 @@ function AccountMb() {
                   <OrderMb
                         openOrder={openOrder}
                         setOpenOrder={setOpenOrder}
+                  />
+                  <ServicesUserMb
+                        open={openSer}
+                        setOpen={setOpenSer}
                   />
                   <AccountForm
                         open={openAcc}

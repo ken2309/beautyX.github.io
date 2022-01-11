@@ -42,7 +42,7 @@ function MenuBox(props: any) {
           >
             <div className="flex-row hd-menu__item">
               <img src={icon.bag} alt="" />
-              <span className="hd-menu__item-text">Gói dịch vụ</span>
+              <span className="hd-menu__item-text">{t('app.my_services')}</span>
             </div>
           </li>
           <li className="{menu.menuBoxItem}">

@@ -174,7 +174,7 @@ img {
 }
 /* home minimap */
 .home-mini-map {
-  margin-top: 60px;
+  margin-top: 36px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -226,6 +226,8 @@ img {
   margin-top: 36px;
   display: flex;
   flex-direction: row;
+  gap: 0 36px;
+  width: 100%;
 }
 .home-order__card {
   width: 25%;
@@ -242,7 +244,7 @@ img {
   border-radius: 20px;
 }
 .home-order__card-title {
-  margin-top: 24px;
+  margin: 24px 0;
   font-size: 14px;
   line-height: 20px;
   color: var(--purple);
@@ -328,7 +330,34 @@ img {
   text-align: center;
   color: var(--text-black);
 }
+.home-order__card-img {
+  border: 12px solid #f8f8f9;
+  box-shadow: 0px 6px 37px rgb(113 97 186 / 10%);
+  border-radius: 16px;
+}
+.home-order__card-img img {
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .home-order__card-img {
+    height: 270px;
+  }
+  .calendar-img {
+    height: 270px;
+    width: 450px;
+    object-fit: cover;
+  }
+  .home-order__step {
+    flex-direction: column;
+    gap: 48px 0;
+  }
+  .home-step__line {
+    border: 0;
+  }
   .home-flatform__list {
     grid-template-columns: 1fr;
   }
@@ -341,6 +370,21 @@ img {
   }
 }
 @media screen and (max-width: 767px) {
+  .home-step__line {
+    border: 0;
+  }
+  .home-order {
+    padding: 0 24px;
+  }
+  .home-order__step {
+    display: unset;
+  }
+  .home-order__card-step:first-child {
+    margin-top: 24px;
+  }
+  .home-order__card {
+    margin-bottom: 36px;
+  }
   .home-flatform {
     padding: 0 24px;
   }
@@ -387,9 +431,7 @@ img {
     align-items: center;
     padding: 0px 10px;
   }
-  .home-order__step {
-    flex-direction: column;
-  }
+
   .home-order__card {
     width: 100%;
   }
@@ -1298,10 +1340,6 @@ img {
   .home-map {
     margin-top: 225px;
   }
-  .home-order__step {
-    flex-direction: column;
-    margin-top: 24px;
-  }
   .home-order__card {
     width: 100%;
   }
@@ -1318,6 +1356,7 @@ img {
   }
   .calendar-img {
     width: 100%;
+    margin-bottom: 16px;
   }
   .home-calendar-content ul li {
     width: 100%;
@@ -1563,14 +1602,8 @@ img {
   }
   .homelogged-location .section-title {
     padding: 0 16px;
-  }
-  .home .section-title {
-    padding: 0 24px;
     white-space: unset;
   }
-  /* .item-bottom__active {
-    border-radius: 0;
-  } */
   .item-bottom__active-list {
     display: flex;
     flex-direction: column;

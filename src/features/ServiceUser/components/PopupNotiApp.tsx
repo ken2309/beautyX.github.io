@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Dialog } from '@mui/material';
-import icon from '../../../constants/icon'
+import icon from '../../../constants/icon';
+import { AppContext } from "../../../context/AppProvider"
 
 function PopupNotiApp(props: any) {
+      const { t } = useContext(AppContext)
       const { open, setOpen, errCode } = props;
       return (
             <Dialog
@@ -15,22 +17,22 @@ function PopupNotiApp(props: any) {
                                     <>
                                           <img src={icon.success} alt="" />
                                           <span className="flex-column-sp ser-book-noti__title">
-                                                Đặt hẹn thành công
+                                                {t('my_ser.bk_success')}
                                           </span>
                                           <span className="ser-book-noti__text">
-                                                Bạn có thể xem lại sản phẩm/dịch vụ và đặt hẹn
-                                                <h4 style={{ color: 'var(--purple)', cursor: 'pointer' }} >tại đây</h4>
+                                                {t('my_ser.rv_booked')}
+                                                <h4 style={{ color: 'var(--purple)', cursor: 'pointer' }} >{t('booking.here')}</h4>
                                           </span>
                                     </>
                                     :
                                     <>
                                           <span className="flex-column-sp ser-book-noti__title">
-                                                Đặt hẹn thất bại
+                                                {t('my_ser.bk_fail')}
                                           </span>
                                           <span className="ser-book-noti__text">
-                                                Có lỗi xảy ra trong quá trình đặt hẹn
+                                                {t('my_ser.bk_fail_title')}
                                                 <h4 style={{ color: 'var(--purple)', cursor: 'pointer' }} >
-                                                      (Mã lỗi {errCode})
+                                                      ({t('my_ser.code_err')} {errCode})
                                                 </h4>
                                           </span>
                                     </>

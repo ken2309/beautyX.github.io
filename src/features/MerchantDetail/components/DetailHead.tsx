@@ -2,12 +2,29 @@ import React, { useRef, useState } from "react";
 import { Container } from "@mui/material";
 import icon from "../../../constants/icon";
 import { useElementSize } from "usehooks-ts";
-import SimpleImageSlider from "react-simple-image-slider";
 import img from "../../../constants/img";
 import OrgCardLoading from "../../Loading/OrgCardLoading";
 import PopupDetailContact from "./PopupDetailContact";
-
-const images = [{ url: img.slider }, { url: img.slider4 }];
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  focusOnSelect: true,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  arrows: false,
+  responsive: [],
+  appendDots: (dots: any) => (
+    <div>
+      <ul>{dots}</ul>
+    </div>
+  ),
+};
 function DetailHead(props: any) {
   const { t, merDetail, loading } = props;
   const slider = useRef(null);
@@ -91,16 +108,22 @@ function DetailHead(props: any) {
               </>
             )}
           </div>
-          <div ref={slider} className="mer-detail__content-right">
-            <SimpleImageSlider
-              width={width}
-              height={height}
-              images={images}
-              showBullets={false}
-              showNavs={false}
-              autoPlay={true}
-              autoPlayDelay={3}
-            />
+
+          <div className="merchant-slider mer-detail__content-right">
+            <Slider {...settings}>
+              <div className="merchant-slider__img">
+                <img src={img.slider} alt="" />
+              </div>
+              <div className="merchant-slider__img">
+                <img src={img.slider4} alt="" />
+              </div>
+              <div className="merchant-slider__img">
+                <img src={img.slider} alt="" />
+              </div>
+              <div className="merchant-slider__img">
+                <img src={img.slider4} alt="" />
+              </div>
+            </Slider>
           </div>
         </div>
       </Container>

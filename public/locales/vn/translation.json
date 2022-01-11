@@ -8,12 +8,13 @@
   "Header": {
     "1": "Trở thành đối tác",
     "my_acc": "Tài khoản của tôi",
-    "my_order": "Lịch sư đơn hàng",
+    "my_order": "Lịch sử đơn hàng",
     "my_codes": "Danh sách mã ưu đãi",
     "settings": "Cài đặt",
     "support": "Hỗ trợ",
     "sign_out": "Đăng xuất",
-    "back": "Trở lại"
+    "back": "Trở lại",
+    "noti":"Thông báo"
   },
   "Bottom": {
     "appointment": "Lịch hẹn",
@@ -260,5 +261,60 @@
     "company_name": "Tên doanh nghiệp",
     "branch_quantity": "Số lượng chi nhánh",
     "read": "Tôi đã đọc và đồng ý với"
+  },
+  "app": {
+    "details": "Chi tiết",
+    "my_services": "Gói dịch vụ"
+  },
+  "acc": {
+    "scores": "Điểm",
+    "surplus":"Số dư",
+    "rank":"Hạng",
+    "my_profiles":"Thông tin cá nhân",
+    "update_acc":"Cập nhật đầy đủ thông tin cá nhân giúp tài khoản được bảo mật tốt hơn",
+    "dob":"Ngày sinh",
+    "sex":"Giới tính",
+    "order_address":"Địa chỉ giao hàng",
+    "add_other_address":"Thêm địa điểm khác",
+    "default":"Mặc định",
+    "change_pass":"Thay đổi mật khẩu",
+    "save":"Lưu thay đổi"
+  },
+  "order":{
+    "order_his":"Lịch sử đơn hàng",
+    "pending":"Đang xử lý",
+    "complete":"Hoàn thành",
+    "order_de":"Chi tiết đơn hàng",
+    "time":"Thời gian",
+    "view_org":"Xem doanh nghiệp",
+    "watch_info":"Xem thông tin"
+  },
+  "my_ser":{
+    "business":"Doanh nghiệp",
+    "all_business":"Tất cả doanh nghiệp",
+    "choose_business":"Chọn doanh nghiệp",
+    "choose_ser":"Chọn dich vụ bạn muốn đặt hẹn",
+    "services_book":"Dịch vụ đã đặt hẹn",
+    "status":"Trạng thái",
+    "count_unused":"Số lượng gói chưa dùng",
+    "choose":"Chọn dịch vụ",
+    "selected":"Đã chọn",
+    "service":"dịch vụ",
+    "continue":"Tiếp tục",
+    "close":"Đóng",
+    "services_selected":"Dahh sách dịch vụ đã chọn",
+    "branch_select":"Chọn chi nhánh bạn muốn đặt hẹn",
+    "time_select":"Chọn thời gian",
+    "date_select":"Chọn ngày",
+    "name_br":"Tên chi nhánh",
+    "app_info":"Thông tin đặt hẹn",
+    "pl_select_date":"Vui lòng chọn thời gian",
+    "pl_select_br":"Vui lòng chọn chi nhánh",
+    "bk_now":"Đặt hẹn ngay",
+    "bk_success":"Đặt hẹn thành công",
+    "bk_fail":"Đặt hẹn thất bại",
+    "rv_booked":"Bạn có thể xem lại dịch vụ đã đặt hẹn",
+    "bk_fail_title":"Có lỗi xảy ra trong quá trình đặt hẹn",
+    "code_err":"Mã lỗi"
   }
 }
