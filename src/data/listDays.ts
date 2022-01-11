@@ -178,6 +178,18 @@ export const dataDate = {
   year: [
     {
       id: 0,
+      year: "2018",
+    },
+    {
+      id: 0,
+      year: "2019",
+    },
+    {
+      id: 0,
+      year: "2020",
+    },
+    {
+      id: 0,
       year: "2021",
     },
     {

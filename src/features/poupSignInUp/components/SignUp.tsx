@@ -11,6 +11,7 @@ import { t } from "i18next";
 import axios from "axios";
 import { baseURL } from "../../../api/axios";
 import { CircularProgress } from "@mui/material";
+import { dataDate } from "../../../data/listDays";
 
 function SignUp(props: any) {
   const { activeTabSign, setOpenSignIn } = props;
@@ -45,6 +46,67 @@ function SignUp(props: any) {
         setLoading(false);
       });
   };
+  interface IDay {
+    id: number;
+    day: string;
+  }
+  interface IMonth {
+    id: number;
+    month: string;
+  }
+  interface IYear {
+    id: number;
+    year: string;
+  }
+
+  const [chooseDay, setChooseDay] = useState<IDay>({ id: 0, day: "1" });
+  const [chooseMonth, setChooseMonth] = useState<IMonth>({
+    id: 0,
+    month: "1",
+  });
+  const [chooseYear, setChooseYear] = useState<IYear>({ id: 0, year: "2001" });
+  const [openDay, setOpenDay] = useState(false);
+  const [openMonth, setOpenMonth] = useState(false);
+  const [openYear, setOpenYear] = useState(false);
+  const openDayClick = () => {
+    if (openDay === true) {
+      setOpenDay(false);
+    } else {
+      setOpenDay(true);
+      setOpenMonth(false);
+      setOpenYear(false);
+    }
+  };
+  const openMonthClick = () => {
+    if (openMonth === true) {
+      setOpenMonth(false);
+    } else {
+      setOpenMonth(true);
+      setOpenDay(false);
+      setOpenYear(false);
+    }
+  };
+  const openYearClick = () => {
+    if (openYear === true) {
+      setOpenYear(false);
+    } else {
+      setOpenYear(true);
+      setOpenMonth(false);
+      setOpenDay(false);
+    }
+  };
+  const handleSetChooseDay = (day: any) => {
+    setChooseDay(day);
+    setOpenDay(false);
+  };
+  const handleSetChooseMonth = (month: any) => {
+    setChooseMonth(month);
+    setOpenMonth(false);
+  };
+  const handleSetChooseYear = (day: any) => {
+    setChooseYear(day);
+    setOpenYear(false);
+  };
   const formik = useFormik({
     initialValues: {
       Name: "",
@@ -65,13 +127,12 @@ function SignUp(props: any) {
           "Tên không đúng định dạng"
         ),
       Sex: Yup.string().required("Vui lòng chọn giới tính"),
-      dateOfBirth: Yup.string()
-        .required("Vui lòng nhập ngày tháng năm sinh")
-        .matches(
-          // eslint-disable-next-line no-useless-escape
-          /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-          "Vui lòng nhập đúng định dạng dd/mm/yyyy"
-        ),
+      dateOfBirth: Yup.string().required("Vui lòng nhập ngày tháng năm sinh"),
+      // .matches(
+      //   // eslint-disable-next-line no-useless-escape
+      //   /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
+      //   "Vui lòng nhập đúng định dạng dd/mm/yyyy"
+      // ),
       EmailPhone: Yup.string()
         .required("Vui lòng nhập Email hoặc Số điện thoại")
         .matches(
@@ -192,8 +253,9 @@ function SignUp(props: any) {
           </div>
         </div>
 
-        <div className="flex-column w-100">
-          <div className="sign-form__box ">
+        {/* date of birth */}
+        <div className="date-of-birth">
+          <div className="sign-form__box" style={{ width: "40%" }}>
             <img className="sign-form__box-icon" src={icon.Calendar} alt="" />
             <input
               value={formik.values.dateOfBirth}
@@ -201,12 +263,121 @@ function SignUp(props: any) {
               name="dateOfBirth"
               id="dateOfBirth"
               type="text"
-              placeholder="Ngày/tháng/năm sinh"
+              placeholder="Ngày sinh"
             />
           </div>
           {formik.errors.dateOfBirth && formik.touched.dateOfBirth && (
             <p className="err-text">{formik.errors.dateOfBirth}</p>
           )}
+          <div style={{ width: "60%" }}>
+            <div className="dateofbirth-list">
+              <div className="dateofbirth-item " onClick={openDayClick}>
+                <div className="dateofbirth__item__wrap">
+                  <span>
+                    {chooseDay.day.length === 0 ? "0" : chooseDay.day}
+                  </span>
+                  <img src={icon.arrowPurple} alt="" />
+                  <div
+                    style={
+                      openDay === true
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                    className="drop-category"
+                  >
+                    <ul>
+                      {dataDate.days.map((item: any) => (
+                        <li
+                          style={
+                            item === chooseDay
+                              ? {
+                                  color: "var(--bg-color)",
+                                  backgroundColor: "var(--purple)",
+                                }
+                              : {}
+                          }
+                          onClick={() => handleSetChooseDay(item)}
+                          key={item.id}
+                        >
+                          {item.day}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="dateofbirth-item" onClick={openMonthClick}>
+                <div className="dateofbirth__item__wrap">
+                  <span>
+                    {chooseMonth.month.length === 0 ? "0" : chooseMonth.month}
+                  </span>
+                  <img src={icon.arrowPurple} alt="" />
+                  <div
+                    style={
+                      openMonth === true
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                    className="drop-category"
+                  >
+                    <ul>
+                      {dataDate.month.map((item: any) => (
+                        <li
+                          style={
+                            item === chooseMonth
+                              ? {
+                                  color: "var(--bg-color)",
+                                  backgroundColor: "var(--purple)",
+                                }
+                              : {}
+                          }
+                          onClick={() => handleSetChooseMonth(item)}
+                          key={item.id}
+                        >
+                          {item.month}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="dateofbirth-item" onClick={openYearClick}>
+                <div className="dateofbirth__item__wrap">
+                  <span>
+                    {chooseYear.year.length === 0 ? "0" : chooseYear.year}
+                  </span>
+                  <img src={icon.arrowPurple} alt="" />
+                  <div
+                    style={
+                      openYear === true
+                        ? { display: "block" }
+                        : { display: "none" }
+                    }
+                    className="drop-category"
+                  >
+                    <ul>
+                      {dataDate.year.map((item: any) => (
+                        <li
+                          style={
+                            item === chooseYear
+                              ? {
+                                  color: "var(--bg-color)",
+                                  backgroundColor: "var(--purple)",
+                                }
+                              : {}
+                          }
+                          onClick={() => handleSetChooseYear(item)}
+                          key={item.id}
+                        >
+                          {item.year}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="flex-column w-100">
