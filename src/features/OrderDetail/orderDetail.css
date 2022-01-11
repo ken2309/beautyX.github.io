@@ -8,6 +8,7 @@
 }
 .MuiDialog-paper {
   max-height: unset !important;
+  max-width: unset !important;
 }
 .order-de__head {
   padding-bottom: 12px;

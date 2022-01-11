@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../merchantDetail.css';
 import { Container } from '@mui/material'
+import { AppContext } from '../../../context/AppProvider';
 
-function DetailTab(props: any) {
-      const { t, activeTab, setActiveTab } = props;
+interface IProps {
+      activeTab: number,
+      setActiveTab: (activeTab: number) => void
+}
+
+function DetailTab(props: IProps) {
+      const { activeTab, setActiveTab } = props;
+      const { t } = useContext(AppContext)
       const tabList = [
             { id: 1, name: t('Mer_de.about') },
             { id: 2, name: t('Mer_de.services') },
@@ -11,7 +18,7 @@ function DetailTab(props: any) {
             { id: 4, name: 'Combo' },
             { id: 5, name: t('Mer_de.sale') }
       ]
-      const chooseTabClick = (id: any) => {
+      const chooseTabClick = (id: number) => {
             setActiveTab(id)
       }
       return (

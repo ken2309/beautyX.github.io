@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SectionTitle from "../../SectionTitle";
 import CardItem from "../../CardItem/index";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { IOrganization } from "../../../interface/organization";
+import {Product} from '../../../interface/product'
+import { AppContext } from "../../../context/AppProvider";
 // const saleList = [
 //   {
 //     id: 1,
@@ -55,8 +58,15 @@ interface ActiveBtn {
 const cardStyle = {
   width: "272px",
 };
-function DetailSaleList(props: any) {
-  const { merDetail, t, productsSale } = props;
+
+interface IProps{
+  merDetail:IOrganization | undefined,
+  productsSale: Product[]
+}
+
+function DetailSaleList(props: IProps) {
+  const { t } = useContext(AppContext)
+  const { merDetail, productsSale } = props;
   const buttons = [
     { id: 1, text: t("Mer_de.expiration_soon") },
     { id: 2, text: t("Mer_de.a_dramatic_decrease") },
@@ -148,7 +158,7 @@ function DetailSaleList(props: any) {
               key={item.id}
               style={cardStyle}
               detail={item}
-              org_id={merDetail.id}
+              org_id={merDetail?.id}
               name={item.product_name}
               retail_price={item.retail_price}
               special_price={item.special_price}

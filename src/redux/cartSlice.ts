@@ -103,9 +103,13 @@ const cart = createSlice({
             clearAllCart:(state)=>{
                   state.cartList=[];
                   localStorage.setItem(storageName, JSON.stringify(state.cartList))
+            },
+            clearByCheck: (state, action) => {
+                  state.cartList = action.payload
+                  localStorage.setItem(storageName, JSON.stringify(state.cartList))
             }
       }
 });
 const { reducer, actions } = cart;
-export const { addCart, descItem, ascItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck, clearAllCart } = actions;
+export const { addCart, descItem, ascItem, checkConfirm, removeItem, chooseAll, getTotal, unCheck, clearAllCart, clearByCheck } = actions;
 export default reducer;

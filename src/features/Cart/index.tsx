@@ -75,7 +75,7 @@ function Cart(props: any) {
                               <>
                                     <Container>
                                           <div className="flex-column">
-                                                <div className="flex-column cart-notification">
+                                                <div className="flex-column cart-notification cart-notification-list">
                                                       <div className="flex-row cart-notification__header">
                                                             <img src={icon.warning} alt="" />
                                                             <span>{t('cart.warning')}</span>

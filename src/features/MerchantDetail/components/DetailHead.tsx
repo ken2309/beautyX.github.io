@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Container } from "@mui/material";
 import icon from "../../../constants/icon";
-// import { useElementSize } from "usehooks-ts";
+import { AppContext } from "../../../context/AppProvider";
+//import { useElementSize } from "usehooks-ts";
+import { IOrganization } from "../../../interface/organization";
 import img from "../../../constants/img";
 import OrgCardLoading from "../../Loading/OrgCardLoading";
 import PopupDetailContact from "./PopupDetailContact";
@@ -25,11 +27,18 @@ const settings = {
     </div>
   ),
 };
-function DetailHead(props: any) {
-  const { t, merDetail, loading } = props;
-  // const slider = useRef(null);
+
+interface IProps {
+  org: IOrganization | undefined;
+  loading: boolean;
+}
+
+function DetailHead(props: IProps) {
+  const { org, loading } = props;
+  const { t } = useContext(AppContext);
+  //const slider = useRef(null);
   const infoBox = useRef(null);
-  // const { width, height } = useElementSize(slider);
+  //const { width, height } = useElementSize(slider);
   const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
 
@@ -49,7 +58,7 @@ function DetailHead(props: any) {
                 <div className="content-left__header">
                   <img src={icon.logoBusiness} alt="" />
                   <div className="content-left__header-name">
-                    <span>{merDetail?.name}</span>
+                    <span>{org?.name}</span>
                     <div className="mer-detail__rate">
                       <span>4.5</span>
                       <img src={icon.star} alt="" />
@@ -65,7 +74,7 @@ function DetailHead(props: any) {
                     <img src={icon.location} alt="" />
                     <span>
                       <h5>{t("Mer_de.address")}</h5>
-                      {merDetail?.full_address}
+                      {org?.full_address}
                     </span>
                   </div>
                 </div>

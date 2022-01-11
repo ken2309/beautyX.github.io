@@ -5,11 +5,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 function MapCard(props: any) {
-  const { list } = props;
-  // const parent = document.querySelector('.mb-card-list__list li');
-  const handleScroll = (item: any) => {
-    console.log(item);
-  };
+  const { list, setItemCenter } = props;
+  
+
+
   const settings = {
     responsive: [
       {
@@ -29,11 +28,14 @@ function MapCard(props: any) {
         settings: {
           className: "center",
           centerMode: true,
-          infinite: true,
+          //infinite: true,
           centerPadding: "70px",
           slidesToShow: 1,
           speed: 500,
           arrows: false,
+          afterChange: function (index: number) {
+            setItemCenter(list[index])
+          }
         },
       },
     ],
@@ -44,17 +46,26 @@ function MapCard(props: any) {
     ),
     customPaging: () => <div className="dots-custom"></div>,
   };
+
+  const openMap = (item: any) => {
+    const url = `https://maps.google.com/?q=${item.latitude},${item.longitude}`
+    const newWindow = window.open(`${url}`, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
   return (
     // <div className="mb-card-list">
     <div className="mb-card">
       {/* <ul className="mb-card-list__list"> */}
       <ul className="">
-        <Slider {...settings}>
-          {list.map((item: any) => (
-            <li onScroll={() => handleScroll(item)} key={item.id}>
-              <div className="mb-card-list__item">
-                <img
-                  className="item-thumbnail"
+        <Slider {...settings}
+
+        >
+        {list.map((item: any) => (
+          <li key={item.id}>
+            <div className="mb-card-list__item">
+              <img
+                className="item-thumbnail"
                   src={"https://picsum.photos/650/976?random=" + item.id}
                   alt=""
                 />
@@ -71,11 +82,16 @@ function MapCard(props: any) {
                   <div className="item-cnt__price">
                     <img src={icon.Ticket} alt="" />
                     <span>
-                      {formatPrice(item.min_price)}-
-                      {formatPrice(item.max_price)}đ
-                    </span>
-                  </div>
+                    {formatPrice(item.min_price)}-
+                    {formatPrice(item.max_price)}đ
+                  </span>
+                  <button
+                    onClick={()=>openMap(item)}
+                  >
+                    Chi duong
+                  </button>
                 </div>
+              </div>
               </div>
             </li>
           ))}

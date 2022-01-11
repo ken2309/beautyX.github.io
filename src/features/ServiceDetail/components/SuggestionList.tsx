@@ -13,6 +13,7 @@ function SuggestionList(props:any) {
       const suggestions = listServices.filter((item: any) => item.id !== product.id)
       const handlePushSuggest = (item: any) => {
             const values = {
+                  id: item.id,
                   org_id: org.id,
                   org_name: org.name,
                   cart_id: parseInt(`${org.id}${item.id}`),

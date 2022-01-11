@@ -1,13 +1,17 @@
 import React from 'react';
 import DetailInfo from './DetailInfo';
-import DetailComment from './DetailComment'
+import DetailComment from './DetailComment';
+import { IOrganization } from '../../../interface/organization'
 
-function DetailMer(props:any) {
-      const {merDetail, t} = props;
+interface IProps {
+      merDetail: IOrganization | undefined
+}
+
+function DetailMer(props: IProps) {
+      const { merDetail } = props;
       return (
             <div className="mer-detail__content-desc">
                   <DetailInfo
-                        t={t}
                         merDetail={merDetail}
                   />
                   <DetailComment
