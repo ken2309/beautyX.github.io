@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { dataDate } from "../../../../../data/listDays";
 import { AppContext } from "../../../../../context/AppProvider";
 function Form(props: any) {
-  const {t} = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const { formik } = props;
   interface IDay {
     id: number;
@@ -73,10 +73,8 @@ function Form(props: any) {
   return (
     <>
       <div className="title_section text-color-purple">
-        <h1 className="title">{t('acc.my_profiles')}</h1>
-        <span className="subtitle">
-          {t('acc.update_acc')}
-        </span>
+        <h1 className="title">{t("acc.my_profiles")}</h1>
+        <span className="subtitle">{t("acc.update_acc")}</span>
       </div>
       <hr className="purple_line" />
 
@@ -85,14 +83,14 @@ function Form(props: any) {
           {/* name */}
           <div style={{ width: "100%" }}>
             <div className="form-account__label">
-              <span>{t('pm.full_name')}</span>
+              <span>{t("pm.full_name")}</span>
             </div>
             <div className="form-account__wrapinput">
               <input
                 className="form-account__input"
                 value={formik.values.name}
                 onChange={formik.handleChange}
-                placeholder={t('pm.full_name')}
+                placeholder={t("pm.full_name")}
                 type="text"
                 name="name"
                 id="name"
@@ -105,7 +103,7 @@ function Form(props: any) {
           {/* date of birth */}
           <div style={{ width: "100%" }}>
             <div className="form-account__label">
-              <span>{t('acc.dob')}</span>
+              <span>{t("acc.dob")}</span>
             </div>
             <div className="dateofbirth-list">
               <div className="dateofbirth-item " onClick={openDayClick}>
@@ -219,7 +217,7 @@ function Form(props: any) {
           <div className="flex-column w-100">
             <div className="form-account__sex" style={{ padding: "0 0 8px 0" }}>
               <div className="form-account__label">
-                <span>{t('acc.sex')}</span>
+                <span>{t("acc.sex")}</span>
               </div>
               <FormControl component="fieldset">
                 <RadioGroup
@@ -241,7 +239,7 @@ function Form(props: any) {
                         }}
                       />
                     }
-                    label={t('form.male')}
+                    label={t("form.male")}
                   />
                   <FormControlLabel
                     value="female"
@@ -255,7 +253,7 @@ function Form(props: any) {
                         }}
                       />
                     }
-                    label={t('form.female')}
+                    label={t("form.female")}
                   />
                   <FormControlLabel
                     value="other"
@@ -269,7 +267,7 @@ function Form(props: any) {
                         }}
                       />
                     }
-                    label={t('form.other')}
+                    label={t("form.other")}
                   />
                 </RadioGroup>
               </FormControl>
@@ -282,7 +280,7 @@ function Form(props: any) {
 
         <div className="form-account__wraper">
           {/* email */}
-          <div style={{ minWidth: "225px", padding: "0 0 8px 0" }}>
+          <div className="email-account" style={{ padding: "0 0 8px 0" }}>
             <div className="form-account__label">
               <span>Email</span>
             </div>
@@ -302,16 +300,16 @@ function Form(props: any) {
             )}
           </div>
           {/* phone */}
-          <div style={{ minWidth: "225px", padding: "0 0 8px 0" }}>
+          <div className="phone-account" style={{ padding: "0 0 8px 0" }}>
             <div className="form-account__label">
-              <span>{t('pm.phone_number')}</span>
+              <span>{t("pm.phone_number")}</span>
             </div>
             <div className="form-account__wrapinput">
               <input
                 className="form-account__input"
                 value={formik.values.phone}
                 onChange={formik.handleChange}
-                placeholder={t('pm.phone_number')}
+                placeholder={t("pm.phone_number")}
                 type="text"
                 name="phone"
                 id="phone"
@@ -326,17 +324,19 @@ function Form(props: any) {
 
       {/*address */}
       <div className="title_section text-color-purple">
-        <h1 className="title">{t('acc.order_address')}</h1>
-        <span className="subtitle cursor-pointer">{t('acc.add_other_address')}</span>
+        <h1 className="title">{t("acc.order_address")}</h1>
+        <span className="subtitle cursor-pointer">
+          {t("acc.add_other_address")}
+        </span>
       </div>
       <hr className="purple_line" />
       <div className="form-address">
         <div className="form-account__wraper">
           <div style={{ width: "100%", padding: "24px 0 8px 0" }}>
             <div className="form-account__label">
-              <span>{t('Mer_de.address')} 1</span>
+              <span>{t("Mer_de.address")} 1</span>
               <div className="delete-address">
-                <span>{t('acc.default')}</span>
+                <span>{t("acc.default")}</span>
                 <img src={icon.TrashOrange} alt="" />
               </div>
             </div>
@@ -345,7 +345,7 @@ function Form(props: any) {
                 className="form-account__input"
                 value={formik.values.address}
                 onChange={formik.handleChange}
-                placeholder={t('Mer_de.address') + "1"}
+                placeholder={t("Mer_de.address") + "1"}
                 type="text"
                 name="address"
                 id="address"
@@ -356,12 +356,13 @@ function Form(props: any) {
             )}
           </div>
         </div>
+
         <div style={{ paddingTop: "0px" }} className="form-account__wraper">
           <div style={{ width: "100%", padding: "8px 0 8px 0" }}>
             <div className="form-account__label">
-              <span>{t('Mer_de.address')} 2</span>
+              <span>{t("Mer_de.address")} 2</span>
               <div className="delete-address">
-                <span>{t('acc.default')}</span>
+                <span>{t("acc.default")}</span>
                 <img src={icon.TrashOrange} alt="" />
               </div>
             </div>
@@ -370,7 +371,7 @@ function Form(props: any) {
                 className="form-account__input"
                 // value={formikPartner.values.Name}
                 // onChange={formikPartner.handleChange}
-                placeholder={t('Mer_de.address') + "2"}
+                placeholder={t("Mer_de.address") + "2"}
                 type="text"
                 name="address2"
                 id="address2"

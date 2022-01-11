@@ -152,7 +152,7 @@ export default function CountDown() {
                 <span className="minutes">
                   {timeMinute < 10 ? `0${timeMinute}` : timeMinute}
                 </span>
-                <span>MINITES</span>
+                <span>MINUTES</span>
               </div>
               <div className="countdown-item">
                 <span className="seconds">
