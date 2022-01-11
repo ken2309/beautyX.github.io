@@ -512,32 +512,44 @@
 .sign-form__box {
   margin: 8px 0;
 }
-.mer-detail .slick-dots {
+.mer-detail .slick-dots,
+.detail-sale .slick-dots {
   bottom: 30px;
 }
-.mer-detail .slick-dots ul {
+.mer-detail .slick-dots ul,
+.detail-sale .slick-dots ul {
   align-items: center;
   display: flex;
   justify-content: center;
 }
-.mer-detail .slick-dots ul li {
+.mer-detail .slick-dots ul li,
+.detail-sale .slick-dots ul li {
   width: 6px;
   height: 6px;
   border-radius: 100%;
   border: 1px solid var(--purple);
   flex-shrink: 0;
 }
-.mer-detail .slick-dots ul .slick-active {
+.mer-detail .slick-dots ul .slick-active,
+.detail-sale .slick-dots ul .slick-active {
   background-color: var(--purple);
   width: 32px;
   height: 12px;
   border-radius: 6px;
 }
-.mer-detail .slick-dots li.slick-active button:before {
+.mer-detail .slick-dots li.slick-active button:before,
+.detail-sale .slick-dots li.slick-active button:before {
   display: none;
 }
-.mer-detail .slick-dots li button:before {
+.mer-detail .slick-dots li button:before,
+.detail-sale .slick-dots li button:before {
   display: none;
+}
+.detail-sale .mer-sale-list .slick-slide {
+  padding: 0 16px;
+}
+.detail-sale .slick-dots {
+  bottom: -36px;
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .mer-detail {

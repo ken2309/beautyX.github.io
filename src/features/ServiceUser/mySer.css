@@ -685,4 +685,16 @@
   .my-ser-choose li {
     margin: 0;
   }
+  .my-ser-submit__title {
+    font-size: 20px;
+  }
+  .my-ser-submit .section__title {
+    font-size: 14px;
+  }
+  .time .info {
+    font-size: 14px;
+  }
+  .my-ser-book__cnt-head-title {
+    font-size: 18px;
+  }
 }

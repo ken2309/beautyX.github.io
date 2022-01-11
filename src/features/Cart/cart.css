@@ -1,6 +1,7 @@
 .cart {
   background-color: var(--bg-gray);
 }
+
 .cart-section-item {
   margin-bottom: 64px;
 }
@@ -360,7 +361,7 @@
     line-height: 20px;
     font-weight: 600;
   }
-  .cart-list-item__head img{
+  .cart-list-item__head img {
     width: 20px;
     height: 20px;
   }

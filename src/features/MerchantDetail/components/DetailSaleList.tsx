@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import SectionTitle from "../../SectionTitle";
 import CardItem from "../../CardItem/index";
-import Carousel from "react-elastic-carousel";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 // const saleList = [
 //   {
 //     id: 1,
@@ -60,6 +61,31 @@ function DetailSaleList(props: any) {
     { id: 1, text: t("Mer_de.expiration_soon") },
     { id: 2, text: t("Mer_de.a_dramatic_decrease") },
   ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    swipe: false,
+    appendDots: (dots: any) => (
+      <div>
+        <ul>{dots}</ul>
+      </div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
+  };
   const title = `Ưu đãi của "${merDetail?.name}"`;
   const [activeBtn, setActiveBtn] = useState<ActiveBtn>({ id: 0, text: "" });
   // const [productSort, setProductSort] = useState<SaleList[]>([]);
@@ -114,8 +140,8 @@ function DetailSaleList(props: any) {
         </div>
       </div>
       <div className="mer-sale-list">
-        <Carousel
-          children={productsSale.map((item: any) => (
+        <Slider {...settings}>
+          {productsSale.map((item: any) => (
             <CardItem
               is_type={1}
               org={merDetail}
@@ -128,10 +154,7 @@ function DetailSaleList(props: any) {
               special_price={item.special_price}
             />
           ))}
-          isRTL={false}
-          itemsToShow={4}
-          showArrows={false}
-        />
+        </Slider>
       </div>
     </div>
   );

@@ -36,7 +36,7 @@
   line-height: 20px;
 }
 .MuiPaper-root {
-  max-width: unset !important;
+  /* max-width: unset !important; */
   border-radius: 24px !important;
 }
 .sign-content {
