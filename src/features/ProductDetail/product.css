@@ -2,7 +2,7 @@
   background-color: var(--bg-gray);
 }
 .product .mer-sale-list {
-  padding-bottom: 48px;
+  padding: 46px 15px 64px 15px;
 }
 .product-cnt {
   display: flex;
@@ -69,6 +69,9 @@
   height: 96px;
   object-fit: cover;
   border-radius: 100%;
+}
+.detail-sale .mer-sale-list {
+  padding-top: 46px;
 }
 .detail-mer {
   padding-left: 18px;

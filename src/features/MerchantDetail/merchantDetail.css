@@ -468,7 +468,9 @@
   border-top: solid 1px var(--purple);
   padding-bottom: 20px;
 }
-
+.detail-sale .mer-sale-list {
+  padding-top: 46px;
+}
 .mer-sale-head__sort,
 .mer-sale-head__sort button {
   font-size: 14px;
