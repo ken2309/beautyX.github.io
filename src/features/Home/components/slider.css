@@ -2,6 +2,7 @@
   margin-bottom: 100px;
   margin-top: -64px;
 }
+
 .home-slider .slick-track {
   padding: 60px 0;
 }
@@ -54,15 +55,23 @@
 .slick-dots li button:before {
   display: none;
 }
-.slick-slide {
+.homelogged-foryou .slick-slide {
   padding: 0 16px;
   margin-top: 48px;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 }
 .slick-dots {
   bottom: -26px;
 }
-
+.product .mer-sale-list .slick-slide {
+  padding: 0 16px;
+}
+.product .mer-sale-list {
+  padding-bottom: 64px;
+}
+.homelogged-location .slick-slide {
+  padding: 0 16px;
+}
 @media (max-width: 768px), (max-width: 1024px) {
   .home-slider .slick-slide.slick-current {
     transform: scale(1.5);
@@ -82,7 +91,6 @@
   .home-slider .slick-dots {
     bottom: -32px;
   }
-  .homelogged-foryou .slick-slide,
   .homelogged-location .slick-slide {
     padding: 0 8px;
   }
