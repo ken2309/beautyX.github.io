@@ -1098,11 +1098,12 @@ img {
 }
 .homelogged-product__item .item-content .item-content__title {
   font-weight: bold;
+  height: 50px;
   font-size: 20px;
   line-height: 24px;
   color: var(--text-black);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

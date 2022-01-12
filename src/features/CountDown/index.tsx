@@ -133,7 +133,7 @@ export default function CountDown() {
       <Dialog className="countDownSection" fullScreen open={countDown}>
         <div className="countdown">
           <div className="wraper">
-            <h1 className="countdown-title">Coming Soon</h1>
+            <h1 className="countdown-title">happy lunar new year</h1>
             <span className="countdown-desc">
               Our website is under construction
             </span>

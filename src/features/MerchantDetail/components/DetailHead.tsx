@@ -2,7 +2,6 @@ import React, { useRef, useState, useContext } from "react";
 import { Container } from "@mui/material";
 import icon from "../../../constants/icon";
 import { AppContext } from "../../../context/AppProvider";
-//import { useElementSize } from "usehooks-ts";
 import { IOrganization } from "../../../interface/organization";
 import img from "../../../constants/img";
 import OrgCardLoading from "../../Loading/OrgCardLoading";
@@ -10,6 +9,7 @@ import PopupDetailContact from "./PopupDetailContact";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import DetailHeadOpenTime from "../components/DetailHeadOpenTime";
 const settings = {
   dots: true,
   infinite: true,
@@ -35,12 +35,12 @@ interface IProps {
 
 function DetailHead(props: IProps) {
   const { org, loading } = props;
+  console.log("org :>> ", org);
   const { t } = useContext(AppContext);
-  //const slider = useRef(null);
   const infoBox = useRef(null);
-  //const { width, height } = useElementSize(slider);
   const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
+  const [openTime, setOpenTime] = useState(false);
 
   function handleOpenPopupContact() {
     setOpenPopupContact(true);
@@ -78,24 +78,15 @@ function DetailHead(props: IProps) {
                     </span>
                   </div>
                 </div>
-                <div className="content-left__info">
-                  <div className="content-left__info-detail">
-                    <img src={icon.time} alt="" />
-                    <span>
-                      <h5>{t("Mer_de.time_work")}</h5>
-                    </span>
-                  </div>
-                </div>
-                <div className="content-left__work">
-                  <div className="content-left__work-item">
-                    <span>{t("Mer_de.weeks_day")}</span>
-                    <p>09.00 - 21.00</p>
-                  </div>
-                  <div className="content-left__work-item">
-                    <span>{t("Mer_de.sunday")}</span>
-                    <p>09.00 - 21.00</p>
-                  </div>
-                </div>
+
+                {/* calendar work */}
+                <DetailHeadOpenTime
+                  org={org}
+                  openTime={openTime}
+                  setOpenTime={setOpenTime}
+                />
+                {/* end calendar work */}
+
                 <div className="content-left__follow">
                   <button onClick={handleOpenPopupContact}>
                     {t("Mer_de.contact")}

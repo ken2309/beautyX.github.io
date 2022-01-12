@@ -17,4 +17,5 @@ export interface IOrganization {
   full_address: string;
   image_url: string;
   branches: [] | any;
+  opening_time: any;
 }
