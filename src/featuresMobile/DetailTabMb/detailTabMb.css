@@ -2,7 +2,7 @@
       display: none;
 }
 /* Mobile */
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 769px){
       .mb-mer-detail__cnt{
             margin-top: 16px;
             position: -webkit-sticky;
