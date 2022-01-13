@@ -29,7 +29,7 @@ function MapCard(props: any) {
         settings: {
           className: "center",
           centerMode: true,
-          //infinite: true,
+          infinite: true,
           centerPadding: "70px",
           slidesToShow: 1,
           speed: 500,

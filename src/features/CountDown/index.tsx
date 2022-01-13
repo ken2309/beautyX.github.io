@@ -75,7 +75,7 @@ export default function CountDown() {
     // ---------
     axios
       .post(
-        `https://stagingkdemo.000webhostapp.com/Frontend/register_beautyx`,
+        `https://myspa.vn/Frontend/register_beautyx`,
         params,
         config
       )

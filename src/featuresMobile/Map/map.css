@@ -1,15 +1,17 @@
 .mb-result-map {
-  height: 64vh;
+  height: 50vh;
+  background-color: var(--bgWhite);
+}
+.mb-map {
+  height: 100%;
   background-color: var(--bgWhite);
 }
 .mb-map .mb-card {
-  height: calc(100vh - 64vh);
-  background-color: var(--bgWhite);
+  height: unset;
 }
 .mb-card-list {
   width: 100%;
   height: 100%;
-  background-color: var(--bgWhite);
   z-index: 4;
   padding: 24px;
   overflow-y: scroll;
@@ -100,6 +102,8 @@
 }
 .mb-map .slick-track {
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 .mb-card-list__item {
   width: unset;

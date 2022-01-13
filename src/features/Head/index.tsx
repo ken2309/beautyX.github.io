@@ -129,7 +129,10 @@ function Head(props: any) {
                                                 </>
                                                 :
                                                 <div className="flex-row hd-cnt__right-user">
-                                                      <span className="hd-cnt__right-user-name">
+                                                      <span 
+                                                            className="hd-cnt__right-user-name"
+                                                            onClick={() => history.push('/tai-khoan')}
+                                                      >
                                                             {userInfo?.fullname}
                                                       </span>
                                                       <div className="hd-cnt__right-avatar">

@@ -1,7 +1,7 @@
 import React from "react";
 import ResultMap from "./ResultMap";
 
-const key = "AIzaSyAXpN81K4I86iD3QJjkEZTdoQ6-XuRcADE";
+const key = "AIzaSyDfxBgfHh5HeBw2kVRcpgxgG4lswl50jTg";
 const lat = 10.7994639;
 const long = 106.6855589;
 function MapWrapper(props: any) {

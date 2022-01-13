@@ -11,6 +11,7 @@ import "./serviceDetail.css";
 import { Service } from "../../interface/service";
 import HeadTitle from "../HeadTitle";
 import scrollTop from "../../utils/scrollTop";
+import Footer from "../Footer";
 
 function ServiceDetail(props: any) {
   const location = useLocation();
@@ -86,6 +87,7 @@ function ServiceDetail(props: any) {
         </div>
         <RecommendList org={org} list={services} is_type={is_type} />
       </Container>
+      <Footer />
     </div>
   );
 }

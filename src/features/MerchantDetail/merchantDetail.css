@@ -775,7 +775,7 @@
     justify-content: center;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 769px) {
   .mb-cnt {
     background-color: var(--bg-color);
   }
