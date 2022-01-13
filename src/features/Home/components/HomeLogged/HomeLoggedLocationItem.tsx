@@ -61,11 +61,19 @@ export default function HomeLoggedLocationItem(props: any) {
             </div>
           </div>
         ) : ( */}
-          <>
-          
-          <div className={(openInfoLocation)?"item-bottom__active active":"item-bottom__active"}>
-            <div onClick={()=>setOpenInfoLocation(!openInfoLocation)} className={(openInfoLocation)?"close-ring active":"close-ring"}>
-              <img src={(openInfoLocation)?icon.CloseRing:icon.Info} alt="" />
+        <>
+          <div
+            className={
+              openInfoLocation
+                ? "item-bottom__active active"
+                : "item-bottom__active"
+            }
+          >
+            <div
+              onClick={() => setOpenInfoLocation(!openInfoLocation)}
+              className={openInfoLocation ? "close-ring active" : "close-ring"}
+            >
+              <img src={openInfoLocation ? icon.CloseRing : icon.Info} alt="" />
             </div>
             <div className="flex-row">
               <div className="item-bottom__active-img">
@@ -73,16 +81,26 @@ export default function HomeLoggedLocationItem(props: any) {
               </div>
               <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
             </div>
-            <div className={(openInfoLocation)?"item-bottom__active-list active":"item-bottom__active-list"}>
+            <div
+              className={
+                openInfoLocation
+                  ? "item-bottom__active-list active"
+                  : "item-bottom__active-list"
+              }
+            >
               <div className="item-bottom__active-item">
-                <img src={icon.TicketHome} alt="" />
+                <div className="item-bottom__active-icon">
+                  <img src={icon.TicketHome} alt="" />
+                </div>
                 <div className="item-content">
                   <span>Điểm</span>
                   <span>200</span>
                 </div>
               </div>
               <div className="item-bottom__active-item">
-                <img src={icon.Wallet} alt="" />
+                <div className="item-bottom__active-icon">
+                  <img src={icon.Wallet} alt="" />
+                </div>
                 <div className="item-content">
                   <span>Số dư</span>
                   <span>
@@ -91,7 +109,10 @@ export default function HomeLoggedLocationItem(props: any) {
                 </div>
               </div>
               <div className="item-bottom__active-item">
-                <img src={icon.Crown} alt="" />
+                <div className="item-bottom__active-icon">
+                  <img src={icon.Crown} alt="" />
+                </div>
+
                 <div className="item-content">
                   <span>Hạng</span>
                   <span>Vàng</span>
@@ -99,7 +120,7 @@ export default function HomeLoggedLocationItem(props: any) {
               </div>
             </div>
           </div>
-          </>
+        </>
         {/* )} */}
       </div>
     </div>
