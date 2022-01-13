@@ -52,7 +52,7 @@ function ServiceBottom(props: any) {
     setOpenTime(false);
   };
   const openDateClick = () => {
-    setOpenDate(!openDate);
+    (!openDate)&&setOpenDate(true);
     setOpenBranches(false);
     setOpenTime(false);
   };
@@ -137,6 +137,11 @@ function ServiceBottom(props: any) {
           <div className="my-ser-bot__check-right">
             <div
               onClick={openBranchesClick}
+              style={openBranches?{
+                zIndex:'2'
+              }:{
+                zIndex:'1'
+              }}
               className="flex-row-sp choose-branch"
             >
               <span>
@@ -147,6 +152,7 @@ function ServiceBottom(props: any) {
               <img src={icon.dashboard} alt="" />
               <OrgBranch
                 openBranches={openBranches}
+                setOpenBranches={setOpenBranches}
                 setChooseBranch={setChooseBranch}
                 branches={branches}
               />
@@ -155,7 +161,7 @@ function ServiceBottom(props: any) {
               <div onClick={openDateClick} className="flex-row-sp date">
                 <span>{chooseDate ? chooseDate : t("my_ser.date_select")}</span>
                 <img src={icon.Calendar} alt="" />
-                <OrgDate openDate={openDate} setChooseDate={setChooseDate} />
+                <OrgDate openDate={openDate} setOpenDate={setOpenDate} setChooseDate={setChooseDate} />
               </div>
               <div onClick={openTimeClick} className="flex-row-sp date">
                 <span>{chooseTime ? chooseTime : t("my_ser.time_select")}</span>
