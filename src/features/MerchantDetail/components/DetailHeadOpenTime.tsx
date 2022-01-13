@@ -38,6 +38,8 @@ export default function DetailHeadOpenTime(props: IProps) {
 
       <div
         onClick={() => setOpenTime(!openTime)}
+        // onMouseEnter={() => setOpenTime(true)}
+        // onMouseLeave={() => setOpenTime(false)}
         className="content-left__work"
       >
         <div className="content-left__work-item ">

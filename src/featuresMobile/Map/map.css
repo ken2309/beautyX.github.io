@@ -105,7 +105,7 @@
   width: unset;
 }
 .mb-map .slick-slide li {
-  padding: 0 0 24px 0;
+  padding: 28px 24px;
 }
 .mb-map .slick-slide,
 .mb-map .slick-list {
