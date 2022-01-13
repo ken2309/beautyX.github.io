@@ -27,7 +27,8 @@ function SignIn(props: any) {
   const [errPass, setErrPass] = useState("");
   const [display_email, setDisplay_email] = useState("");
   const [popup, setPopup] = useState(false);
-
+  const [remember, setRemember] = useState(false)
+  //
   //handle submit login form
   async function submitLogin(values: any) {
     try {
@@ -85,6 +86,7 @@ function SignIn(props: any) {
       handleLogin(values);
     },
   });
+  
   return (
     <div
       style={activeTabSign === 1 ? { display: "block" } : { display: "none" }}
@@ -139,7 +141,8 @@ function SignIn(props: any) {
         <div className="signIn-checkbox sign-check">
           <div className="signIn-checkbox__wrap">
             <Checkbox
-              defaultChecked
+              defaultChecked={true}
+              onChange={()=>setRemember(!remember)}
               sx={{
                 color: "#7161BA",
                 "&.Mui-checked": {

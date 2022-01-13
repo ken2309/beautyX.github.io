@@ -35,7 +35,6 @@ interface IProps {
 
 function DetailHead(props: IProps) {
   const { org, loading } = props;
-  console.log("org :>> ", org);
   const { t } = useContext(AppContext);
   const infoBox = useRef(null);
   const [follow, setFollow] = useState(false);
