@@ -3,8 +3,9 @@ import { AppContext } from '../../../context/AppProvider';
 
 function OrgBranch(props:any) {
       const {t} = useContext(AppContext)
-      const {branches, openBranches, setChooseBranch} = props;
+      const {branches, openBranches, setChooseBranch, setOpenBranches} = props;
       return (
+            <>
             <div
                   style={
                         openBranches === true ?
@@ -32,6 +33,11 @@ function OrgBranch(props:any) {
                         }
                   </ul>
             </div>
+            <div 
+                  className={openBranches?"back-drop_layout open":"back-drop_layout"}
+                  onClick={()=>setOpenBranches(!openBranches)}
+            ></div>
+            </>
       );
 }
 
