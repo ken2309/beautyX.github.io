@@ -1,10 +1,11 @@
 export interface Cart {
-      org_id: number,
-      org_name:string,
       cart_id: number,
-      name: string,
-      price: number,
-      quantity: number,
+      id: number,
       isConfirm: boolean,
-      isPr: boolean
+      is_type: number,
+      name: string,
+      org_id: number,
+      org_name: string,
+      price: number,
+      quantity: number
 }
