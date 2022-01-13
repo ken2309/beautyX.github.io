@@ -4,11 +4,47 @@ import SectionTitle from "../../../SectionTitle";
 import HomeLoggedForYouItem from "./HomeLoggedForYouItem";
 import HomeLoggedForYouSelector from "./HomeLoggedForYouSelector";
 import orgProApi from "../../../../api/productApi";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 export default function HomeLoggedForYou() {
   const { t } = useContext(AppContext);
   const [products, setProducts] = useState([]);
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    swipe: false,
+    appendDots: (dots: any) => (
+      <div>
+        <ul>{dots}</ul>
+      </div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          swipe: true,
+        },
+      },
+    ],
+  };
   useEffect(() => {
     async function handleGetOrgs() {
       try {
@@ -24,7 +60,7 @@ export default function HomeLoggedForYou() {
     handleGetOrgs();
   }, []);
   return (
-    <div className="homelogged-product">
+    <div className="homelogged-foryou">
       <SectionTitle title={t("Home.sale_for_me")} textAlign="left" />
       <div className="homelogged-product__sort">
         <div className="homelogged-product__sort-left">
@@ -36,10 +72,13 @@ export default function HomeLoggedForYou() {
           <HomeLoggedForYouSelector />
         </div>
       </div>
-      <div className="homelogged-product__list">
-        {products.map((item: any) => (
-          <HomeLoggedForYouItem key={item.id} products={item} />
-        ))}
+      {/* <div className="homelogged-product__list"> */}
+      <div>
+        <Slider {...settings}>
+          {products.map((item: any) => (
+            <HomeLoggedForYouItem key={item.id} products={item} />
+          ))}
+        </Slider>
       </div>
     </div>
   );

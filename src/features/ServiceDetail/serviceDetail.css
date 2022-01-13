@@ -67,6 +67,9 @@
   /* margin-left: 26px; */
   text-align: end;
 }
+.slider-recoment-list {
+  padding: 0 16px;
+}
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .product .product-cnt {
     flex-direction: column;

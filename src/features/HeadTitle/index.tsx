@@ -1,6 +1,10 @@
 import React from 'react';
 
-function HeadTitle(props:any) {
+interface IProps{
+      title:string
+}
+
+function HeadTitle(props:IProps) {
       const {title} = props;
       document.title = `${title} - BeautyX`
       return (

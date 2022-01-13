@@ -6,10 +6,17 @@ import ServiceList from "./components/ServiceList";
 import servicesApi from "../../api/serviceApi";
 import { Service } from "../../interface/service";
 import categoryApi from "../../api/categoryApi";
+import {IOrganization} from '../../interface/organization'
 import "./serviceByMerchant.css";
 
+interface IProps{
+  activeTab:number,
+  mer_id:number,
+  org:IOrganization | undefined
+}
+
 const tab_id = 2;
-function ServiceByMerchant(props: any) {
+function ServiceByMerchant(props: IProps) {
   const { t } = useContext(AppContext);
   const { activeTab, mer_id, org } = props;
   const [services, setServices] = useState<Service[]>([]);

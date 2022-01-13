@@ -1,11 +1,19 @@
 import React from 'react';
 import CardItem from '../../features/CardItem/index';
-import './recommendList.css'
+import './recommendList.css';
+import { IOrganization } from '../../interface/organization';
+import { Product } from '../../interface/product';
 
-const style={
-      width:'172px'
+const style = {
+      width: '172px'
 }
-function RecommendListMb(props:any) {
+
+interface IProps{
+      org:IOrganization | undefined,
+      productsSale:Product[]
+}
+
+function RecommendListMb(props:IProps) {
       const {org, productsSale} = props;
       return (
             <div className="mb-rcm-wrapper">
@@ -15,7 +23,7 @@ function RecommendListMb(props:any) {
                   <div className="mb-rcm-wrapper__cnt">
                         <ul className="mb-rcm-wrapper__cnt-list">
                               {
-                                    productsSale.map((item:any) => (
+                                    productsSale.map((item:Product) => (
                                           <li key={item.id}>
                                                 <CardItem
                                                       is_type={1}
@@ -25,8 +33,8 @@ function RecommendListMb(props:any) {
                                                       retail_price={item.retail_price}
                                                       special_price={item.special_price}
                                                       org={org}
-                                                      org_id={org.id}
-                                                      org_name={org.name}
+                                                      org_id={org?.id}
+                                                      org_name={org?.name}
                                                 />
                                           </li>
                                     ))

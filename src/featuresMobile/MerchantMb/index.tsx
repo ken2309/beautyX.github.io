@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import MerchantWrap from './components/MerchantWrap'
 import './merchantMb.css'
 import icon from '../../constants/icon';
+import { IBranch } from '../../interface/branch'
 
-function MerchantMb(props: any) {
+interface IProps {
+      branches: IBranch[]
+}
+
+function MerchantMb(props: IProps) {
       const { branches } = props;
       const [open, setOpen] = useState(false);
-      const [display, setDisplay] = useState(1);
+      const [display, setDisplay] = useState<number>(1);
       const cards = [
             { id: 1, title: 'Tiện tích', icon: icon.bed },
             { id: 2, title: 'Chi nhánh', icon: icon.branches },

@@ -1,10 +1,14 @@
 import React from "react";
 import MapBox from "./MapBox";
 
-const key = "AIzaSyAXpN81K4I86iD3QJjkEZTdoQ6-XuRcADE";
-const lat = 10.7994639;
-const long = 106.6855589;
+const key = "AIzaSyDfxBgfHh5HeBw2kVRcpgxgG4lswl50jTg";
+// const lat = 10.7994639;
+// const long = 106.6855589;
 function MapWrapper(props: any) {
+  const { itemCenter } = props;
+  console.log(itemCenter);
+  const lat = itemCenter?.latitude;
+  const long = itemCenter?.longitude;
   return (
     <div className="mb-result-map">
       <MapBox

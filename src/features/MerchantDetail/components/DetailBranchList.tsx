@@ -5,12 +5,17 @@ import "../../SearchResult/searchResult.css";
 import icon from "../../../constants/icon";
 import img from "../../../constants/img";
 import { AppContext } from "../../../context/AppProvider";
+import { IBranch } from '../../../interface/branch'
 
-function DetailBranchList(props: any) {
+interface IProps {
+  branches: IBranch[]
+}
+
+function DetailBranchList(props: IProps) {
   const { t } = useContext(AppContext);
   const { branches } = props;
-  const [chooseBranch, setChooseBranch] = useState();
-  const handleChooseBranch = (item: any) => {
+  const [chooseBranch, setChooseBranch] = useState<IBranch>();
+  const handleChooseBranch = (item: IBranch) => {
     setChooseBranch(item);
   };
   return (
@@ -29,7 +34,7 @@ function DetailBranchList(props: any) {
           </div>
           <div className="mer-branch-box__branch-wrapper">
             <div className="mer-branch-box__branch-list">
-              {branches?.map((item: any) => (
+              {branches?.map((item: IBranch) => (
                 <div
                   onClick={() => handleChooseBranch(item)}
                   key={item.id}

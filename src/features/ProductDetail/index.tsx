@@ -13,6 +13,7 @@ import RecommendListMb from "../../featuresMobile/RecomendList";
 import { Product } from "../../interface/product";
 import { AppContext } from "../../context/AppProvider";
 import HeadTitle from "../HeadTitle";
+import scrollTop from "../../utils/scrollTop";
 
 function ProductDetail(props: any) {
   const { t } = useContext(AppContext);
@@ -30,11 +31,13 @@ function ProductDetail(props: any) {
       id: params[1],
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [params[1]]
   );
   useEffect(() => {
     async function handleGetDetailProduct() {
       setLoading(true);
+      scrollTop();
       try {
         const res = await productsApi.getDetailById(values);
         setProduct(res.data.context);
@@ -98,9 +101,9 @@ function ProductDetail(props: any) {
             loading={loading}
           />
         </div>
-        <RecommendList org={org} list={productsIs} is_type={is_type} />
+        <RecommendList org={org} list={products} is_type={is_type} />
         {/* for mobile */}
-        <RecommendListMb org={org} productsSale={productsIs} />
+        <RecommendListMb org={org} productsSale={products} />
       </Container>
       <Footer />
     </div>

@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import SectionTitle from "../../SectionTitle";
 import CardItem from "../../CardItem/index";
-import Carousel from "react-elastic-carousel";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { IOrganization } from "../../../interface/organization";
+import {Product} from '../../../interface/product'
+import { AppContext } from "../../../context/AppProvider";
 // const saleList = [
 //   {
 //     id: 1,
@@ -54,12 +58,44 @@ interface ActiveBtn {
 const cardStyle = {
   width: "272px",
 };
-function DetailSaleList(props: any) {
-  const { merDetail, t, productsSale } = props;
+
+interface IProps{
+  merDetail:IOrganization | undefined,
+  productsSale: Product[]
+}
+
+function DetailSaleList(props: IProps) {
+  const { t } = useContext(AppContext)
+  const { merDetail, productsSale } = props;
   const buttons = [
     { id: 1, text: t("Mer_de.expiration_soon") },
     { id: 2, text: t("Mer_de.a_dramatic_decrease") },
   ];
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    swipe: false,
+    appendDots: (dots: any) => (
+      <div>
+        <ul>{dots}</ul>
+      </div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
+  };
   const title = `Ưu đãi của "${merDetail?.name}"`;
   const [activeBtn, setActiveBtn] = useState<ActiveBtn>({ id: 0, text: "" });
   // const [productSort, setProductSort] = useState<SaleList[]>([]);
@@ -114,24 +150,21 @@ function DetailSaleList(props: any) {
         </div>
       </div>
       <div className="mer-sale-list">
-        <Carousel
-          children={productsSale.map((item: any) => (
+        <Slider {...settings}>
+          {productsSale.map((item: any) => (
             <CardItem
               is_type={1}
               org={merDetail}
               key={item.id}
               style={cardStyle}
               detail={item}
-              org_id={merDetail.id}
+              org_id={merDetail?.id}
               name={item.product_name}
               retail_price={item.retail_price}
               special_price={item.special_price}
             />
           ))}
-          isRTL={false}
-          itemsToShow={4}
-          showArrows={false}
-        />
+        </Slider>
       </div>
     </div>
   );

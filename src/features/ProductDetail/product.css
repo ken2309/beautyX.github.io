@@ -1,6 +1,9 @@
 .product {
   background-color: var(--bg-gray);
 }
+.product .mer-sale-list {
+  padding: 46px 15px 64px 15px;
+}
 .product-cnt {
   display: flex;
   justify-content: space-between;
@@ -66,6 +69,9 @@
   height: 96px;
   object-fit: cover;
   border-radius: 100%;
+}
+.detail-sale .mer-sale-list {
+  padding-top: 46px;
 }
 .detail-mer {
   padding-left: 18px;
@@ -272,6 +278,7 @@
   padding: 8px 16px;
   border-radius: 20px;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .pr-de-mer .pr-de-mer__content {
     justify-content: unset;

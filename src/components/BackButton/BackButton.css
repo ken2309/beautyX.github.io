@@ -27,6 +27,11 @@
   border-radius: 20px;
   transition: all 0.3s;
   z-index: 5;
+  background-color: var(--bg-color);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.css-m9glnp-MuiPaper-root-MuiDialog-paper {
+  border-radius: 0 !important;
 }
 .cus-back__btn:hover {
   opacity: 0.6;
@@ -39,6 +44,8 @@
     left: 0;
   }
   .cus-back__btn {
-    border: none;
+    /* border: none; */
+    background-color: var(--bg-color);
+    padding: unset;
   }
 }

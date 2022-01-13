@@ -9,7 +9,7 @@ export default function HomeLoggedForYouItem(props: any) {
   const goDetail = () => {
     history.push({
       pathname: `/Product-detail/${slugify(products.product_name)}`,
-      search: `${51},${products.id},${1}`,
+      search: `${1},${products.id},${1}`,
     });
   };
   return (
