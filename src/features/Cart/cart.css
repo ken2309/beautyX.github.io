@@ -283,7 +283,7 @@
   .cart .cart-item__control {
     width: unset;
   }
-  .cart-item__control{
+  .cart-item__control {
     display: none;
   }
   .cart-notification {
@@ -292,11 +292,11 @@
     box-shadow: none;
     padding: 24px 36px;
   }
-  .cart-notification-list{
+  .cart-notification-list {
     display: none;
   }
   .cart-list {
-    padding: 0px 20px;
+    padding: 24px;
   }
   .cart-list-item__title {
     display: none;
