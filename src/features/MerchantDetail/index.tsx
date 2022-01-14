@@ -24,9 +24,11 @@ import { IOrganization } from "../../interface/organization";
 import { IBranch } from "../../interface/branch";
 // view for mobile
 import RecommendListMb from "../../featuresMobile/RecomendList";
+import * as Sentry from '@sentry/react'
 
 const id_tab = 1;
 function MerchantDetail() {
+  const scope = new Sentry.Scope();
   const location: any = useLocation();
   const mer_id = parseInt(
     `${location.search.slice(1, location.search.length)}`
@@ -56,6 +58,9 @@ function MerchantDetail() {
           setLoading(false);
         } catch (err) {
           console.log(err);
+          scope.setTag("section", "articles");
+          Sentry.setUser({ email: "john.doe@example.com" });
+          Sentry.captureException(new Error("something went wrong"), () => scope);
         }
       }
     }
@@ -68,6 +73,7 @@ function MerchantDetail() {
     }
     handleGetProductSale();
     handleGetOrgById();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state, mer_id]);
   return (
     <div className="mb-cnt">

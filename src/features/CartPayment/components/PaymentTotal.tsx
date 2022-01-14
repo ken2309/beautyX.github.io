@@ -4,7 +4,8 @@ import formatPrice from "../../../utils/formatPrice";
 import ButtonCus from "../../../components/ButtonCus";
 import PopupSuccess from "../../PopupSuccess/index";
 import { AppContext } from "../../../context/AppProvider";
-import order from '../../../api/orderApi'
+import order from '../../../api/orderApi';
+import { Cart } from '../../../interface/cart'
 
 interface ItemOrder {
   id: number;
@@ -18,10 +19,11 @@ function PaymentTotal(props: any) {
     props;
   const pmMethod = methodList.find((item: any) => item.method === value);
   const [popup, setPopup] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
   const org_id = list[0].org_id;
-  const products = list.filter((item: any) => item.is_type === 1);
-  const services = list.filter((item: any) => item.is_type === 2);
-  const combos = list.filter((item: any) => item.is_type === 3);
+  const products = list.filter((item: Cart) => item.is_type === 1);
+  const services = list.filter((item: Cart) => item.is_type === 2);
+  const combos = list.filter((item: Cart) => item.is_type === 3);
 
   const productsPost: ItemOrder[] = [];
   const servicesPost: ItemOrder[] = [];
@@ -59,18 +61,21 @@ function PaymentTotal(props: any) {
       const payUrl = await response.data.context.payment_gateway.extra_data.payUrl;
       //const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
       const newWindow = window.open(`${payUrl}`, '_blank', 'noopener,noreferrer')
+      setDisableBtn(true)
       if (newWindow) newWindow.opener = null
     } catch (err) {
       console.log(err)
+      setDisableBtn(false)
     }
   }
   const handleSubmitPayment = () => {
-    //console.log(org_id);
-    if (profile) {
-      if (value && userInfo && chooseE_wall?.id === 1) {
-        handlePostOrder(org_id, params)
-      } else {
-        console.log("Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo");
+    if (disableBtn === false) {
+      if (profile) {
+        if (value && userInfo && chooseE_wall?.id === 1) {
+          handlePostOrder(org_id, params)
+        } else {
+          console.log("Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo");
+        }
       }
     }
   };
@@ -107,6 +112,7 @@ function PaymentTotal(props: any) {
             border="solid 1px var(--purple)"
             borderRadius="16px"
             onClick={handleSubmitPayment}
+            opacity={disableBtn === false ? '1' : '0.4'}
           />
         </div>
       </Container>

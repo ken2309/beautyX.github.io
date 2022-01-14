@@ -9,6 +9,7 @@ import { Container } from "@mui/material";
 import { AppContext } from "../../../../context/AppProvider";
 import apointmentApi from "../../../../api/apointmentApi";
 import { Appointment } from "../../../../interface/appointment";
+import { cleanup } from "@testing-library/react";
 
 const todayObj = dayjs();
 export default function HomeLoggedCalendar() {
@@ -23,15 +24,16 @@ export default function HomeLoggedCalendar() {
   useEffect(() => {
     document.addEventListener("scroll", () => {
       const scrollY = window.scrollY;
-      // console.log(`scrollY`, scrollY);
       if (scrollY >= 120) {
         setActive(true);
       } else {
         setActive(false);
       }
     });
+    return ()=>{
+      cleanup()
+    }
   }, []);
-  // console.log(active);
 
   const weekDays = [
     t("Home.su"),
@@ -60,20 +62,20 @@ export default function HomeLoggedCalendar() {
   // lấy thứ của ngày cuối cùng của tháng
   let weekDayOfLast = dayObjOfLastMonth.day();
 
-  // useEffect(() => {
-
-  // });
+ 
   useEffect(() => {
     async function handleGetAppoint() {
       try {
         const res = await apointmentApi.getAppoitment(chooseMonth);
-        // console.log("res", res?.data.context.data);
         setAppoiment(res?.data.context.data);
       } catch (error) {
         console.log(error);
       }
     }
     handleGetAppoint();
+    return () => {
+      cleanup()
+    }
   }, [chooseMonth]);
 
   const dataAppoint: any = [];

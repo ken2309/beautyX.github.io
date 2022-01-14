@@ -3,6 +3,7 @@ import SectionTitle from "../../SectionTitle";
 import icon from "../../../constants/icon";
 import CartItem from "../../Cart/components/CartItem";
 import { AppContext } from "../../../context/AppProvider";
+import {Cart} from '../../../interface/cart'
 
 function PaymentCart(props: any) {
   const { t } = useContext(AppContext);
@@ -30,7 +31,7 @@ function PaymentCart(props: any) {
         </div>
       </div>
       <ul className="flex-column">
-        {services.map((child: any) => (
+        {services.map((child: Cart) => (
           <CartItem
             inPayment={inPayment}
             key={child.cart_id}
@@ -48,7 +49,7 @@ function PaymentCart(props: any) {
           <></>
       }
       <ul className="flex-column">
-        {products.map((child: any) => (
+        {products.map((child: Cart) => (
           <CartItem
             key={child.cart_id}
             cartItem={child}
@@ -66,7 +67,7 @@ function PaymentCart(props: any) {
           <></>
       }
       <ul className="flex-column">
-        {combos.map((child: any) => (
+        {combos.map((child: Cart) => (
           <CartItem
             key={child.cart_id}
             cartItem={child}
