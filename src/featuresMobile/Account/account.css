@@ -8,6 +8,15 @@
     padding: 24px;
     background-color: var(--bgWhite);
   }
+  .err-text {
+    margin: 6px 0 0 16px;
+  }
+  .cus-sex {
+    margin: -10px 0 10px 28px;
+  }
+  .form-account__wraper {
+    gap: 8px 0;
+  }
   .mb-ac__cnt-avt {
     display: flex;
     flex-direction: column;
