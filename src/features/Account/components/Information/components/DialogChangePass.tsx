@@ -44,7 +44,7 @@ export default function DialogChangePass(props: any) {
         onClose={handleCloseChange}
         aria-describedby="alert-dialog-slide-description"
       >
-        <div className="dialog-forgot__password" style={{ width: "480px" }}>
+        <div className="dialog-forgot__password">
           <h2>Thay đổi mật khẩu</h2>
           <p className="dialog-forgot__password-desc">
             Vui lòng nhập mật khẩu hiện tại để tiếp tục

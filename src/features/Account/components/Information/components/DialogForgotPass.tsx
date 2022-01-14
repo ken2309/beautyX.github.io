@@ -33,7 +33,7 @@ export default function ForgotPass(props: any) {
         onClose={handleCloseForgotPass}
         aria-describedby="alert-dialog-slide-description"
       >
-        <div className="dialog-forgot__password" style={{ width: "480px" }}>
+        <div className="dialog-forgot__password">
           <h2>Quên mật khẩu?</h2>
           <p className="dialog-forgot__password-desc">
             Vui lòng cho chúng tôi biết thông tin đăng ký của bạn

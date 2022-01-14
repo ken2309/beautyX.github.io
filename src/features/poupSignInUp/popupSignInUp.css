@@ -215,6 +215,7 @@
 .dialog-forgot__password {
   padding: 36px;
   background-color: var(--bg-gray);
+  border-radius: 24px;
 }
 .dialog-forgot__password .errText {
   margin: unset;
@@ -305,10 +306,10 @@
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 767px) {
   .MuiPaper-root {
     max-width: unset !important;
-    border-radius: 0px !important;
+    margin: 24px;
   }
   .page-sign {
     background-color: var(--bgWhite);
