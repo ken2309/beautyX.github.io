@@ -10,7 +10,11 @@ class Organization {
   };
   getOrgById = (id: any) => {
     const url = `/organizations/${id}?withBranches=true`;
-    return axiosClient.get(url);
+    return axiosClient.get(url, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+      },
+    });
   };
   getOrgByKeyword = (params: any) => {
     if (document.body.offsetWidth < 767) {

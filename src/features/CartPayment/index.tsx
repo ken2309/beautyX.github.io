@@ -118,6 +118,9 @@ function CartPayment(props: any) {
         list={list}
         profile={profile}
         chooseE_wall={chooseE_wall}
+        products={products}
+        services={services}
+        combos={combos}
       />
       <Footer />
     </div>

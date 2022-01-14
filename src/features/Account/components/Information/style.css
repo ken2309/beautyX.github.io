@@ -227,6 +227,13 @@
 .info_section .MuiSvgIcon-root {
   color: var(--purple);
 }
+
+.MuiYearPicker-root .Mui-selected,
+.MuiMonthPicker-root .Mui-selected,
+.MuiCalendarPicker-root .Mui-selected{
+  background-color: var(--purple) !important;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .form-account__wraper {
     flex-direction: column;

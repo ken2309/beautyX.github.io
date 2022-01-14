@@ -32,6 +32,7 @@ function Home(props: any) {
 
   // const org = useSelector(getAllOrg);
 
+
   return (
     <div className="home">
       <HeadTitle title={t("Home.home")} />

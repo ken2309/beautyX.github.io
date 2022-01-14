@@ -18,4 +18,6 @@ export interface IOrganization {
   image_url: string;
   branches: [] | any;
   opening_time: any;
+  favorites_count: number,
+  is_favorite?: boolean | null,
 }

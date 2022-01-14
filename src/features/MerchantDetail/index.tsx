@@ -24,11 +24,11 @@ import { IOrganization } from "../../interface/organization";
 import { IBranch } from "../../interface/branch";
 // view for mobile
 import RecommendListMb from "../../featuresMobile/RecomendList";
-import * as Sentry from '@sentry/react'
+//import * as Sentry from '@sentry/react'
 
 const id_tab = 1;
 function MerchantDetail() {
-  const scope = new Sentry.Scope();
+  //const scope = new Sentry.Scope();
   const location: any = useLocation();
   const mer_id = parseInt(
     `${location.search.slice(1, location.search.length)}`
@@ -38,6 +38,9 @@ function MerchantDetail() {
   const [branches, setBranches] = useState<IBranch[]>([]);
   const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState<number>(1);
+
+  const [tempCount, setTempleCount] = useState(0);
+
   useEffect(() => {
     async function handleGetOrgById() {
       setLoading(true);
@@ -51,17 +54,22 @@ function MerchantDetail() {
           console.log(err);
         }
       } else {
-        try {
-          const res = await orgApi.getOrgById(mer_id);
-          setOrg(res.data.context);
-          setBranches(res.data.context.branches);
-          setLoading(false);
-        } catch (err) {
-          console.log(err);
-          scope.setTag("section", "articles");
-          Sentry.setUser({ email: "john.doe@example.com" });
-          Sentry.captureException(new Error("something went wrong"), () => scope);
-        }
+      try {
+        const res = await orgApi.getOrgById(mer_id);
+        setOrg(res.data.context);
+        setBranches(res.data.context.branches);
+        // if (res.data.context.is_favorite === true) {
+        //   setTempleCount(1)
+        // }else{
+        //   setTempleCount(0)
+        // }
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        // scope.setTag("section", "articles");
+        // Sentry.setUser({ email: "john.doe@example.com" });
+        // Sentry.captureException(new Error("something went wrong"), () => scope);
+      }
       }
     }
     async function handleGetProductSale() {
@@ -73,13 +81,18 @@ function MerchantDetail() {
     }
     handleGetProductSale();
     handleGetOrgById();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.state, mer_id]);
   return (
     <div className="mb-cnt">
       <HeadTitle title={org?.name ? org.name : "Loading..."} />
       <Head />
-      <DetailHead loading={loading} org={org} />
+      <DetailHead
+        tempCount={tempCount}
+        setTempleCount={setTempleCount}
+        loading={loading}
+        org={org}
+      />
       <DetailTab setActiveTab={setActiveTab} activeTab={activeTab} />
       {/* for mobile */}
       <DetailTabMb setActiveTab={setActiveTab} activeTab={activeTab} />
