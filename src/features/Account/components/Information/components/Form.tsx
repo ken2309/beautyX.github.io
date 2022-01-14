@@ -3,14 +3,15 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import React, { useContext, useState } from "react";
-import { dataDate } from "../../../../../data/listDays";
+import React, { useContext} from "react";
 import { AppContext } from "../../../../../context/AppProvider";
 
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
+
+
 function Form(props: any) {
   const { t } = useContext(AppContext);
   const { formik } = props;
@@ -76,7 +77,6 @@ function Form(props: any) {
   //   setOpenYear(false);
   // };
   const [value, setValue] = React.useState<Date | null>(new Date());
-
   return (
     <>
       <div className="title_section text-color-purple">
@@ -112,8 +112,12 @@ function Form(props: any) {
             <div className="form-account__label">
               <span>{t("acc.dob")}</span>
             </div>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <LocalizationProvider
+              dateAdapter={AdapterDateFns}
+              //locale={viVN}
+            >
               <DatePicker
+                className='cus-date__picker'
                 openTo="year"
                 views={["year", "month", "day"]}
                 value={value}

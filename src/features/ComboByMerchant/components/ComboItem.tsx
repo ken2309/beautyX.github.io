@@ -57,7 +57,7 @@ function ComboItem(props: any) {
                                           {detail.name}
                                     </div>
                                     <div className="cmb-list__item-spa-name">
-                                          {org.name}
+                                          {org?.name}
                                     </div>
                                     <div className="flex-row-sp cmb-list__item-price">
                                           <div className="flex-row left">

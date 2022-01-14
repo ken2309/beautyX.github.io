@@ -1,13 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AppContext } from "../context/AppProvider";
+
 
 const PrivateRoute = (props: any) => {
-      const { profile } = useContext(AppContext)
-      const { ...rest } = props;
-      if (profile) {
-            return <Route {...rest} />
-      }
-      return <Redirect to="/sign-request" />
+      const { component: Component, profile, ...rest } = props;
+      return (
+            <Route
+                  {...rest}
+                  render={(routeProps: any) =>
+                        profile ? (
+                              <Component {...routeProps} />
+                        ) : (
+                              <Redirect
+                                    to={{
+                                          pathname: '/sign-request',
+                                          state: { from: routeProps.location }
+                                    }}
+                              />
+                        )
+                  }
+            />
+      )
 }
 export default PrivateRoute
