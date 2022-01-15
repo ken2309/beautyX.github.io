@@ -46,23 +46,23 @@ function MerchantDetail() {
       setLoading(true);
       if (location.state) {
         setOrg(location.state);
-        setLoading(false);
-        try {
-          const resBranches = await branchApi.getBranchByOrg(mer_id);
-          setBranches(resBranches.data.context);
-        } catch (err) {
-          console.log(err);
+        setBranches(location.state.branches)
+        if(location.state.is_favorite === true){
+          setTempleCount(1)
+        }else{
+          setTempleCount(0)
         }
+        setLoading(false);
       } else {
       try {
         const res = await orgApi.getOrgById(mer_id);
         setOrg(res.data.context);
         setBranches(res.data.context.branches);
-        // if (res.data.context.is_favorite === true) {
-        //   setTempleCount(1)
-        // }else{
-        //   setTempleCount(0)
-        // }
+        if (res.data.context.is_favorite === true) {
+          setTempleCount(1)
+        }else{
+          setTempleCount(0)
+        }
         setLoading(false);
       } catch (err) {
         console.log(err);

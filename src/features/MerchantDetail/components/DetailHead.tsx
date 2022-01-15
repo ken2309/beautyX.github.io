@@ -136,7 +136,10 @@ function DetailHead(props: any) {
           </div>
 
           <div className="merchant-slider mer-detail__content-right">
-            <Slider {...settings}>
+            <Slider 
+              lazyLoad="progressive"
+              {...settings}
+            >
               <div className="merchant-slider__img">
                 <img src={img.slider} alt="" />
               </div>
