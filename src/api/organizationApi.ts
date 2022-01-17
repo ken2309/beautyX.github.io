@@ -28,7 +28,11 @@ class Organization {
   //ex get all
   getAll = () => {
     const url = `/organizations?page=1&limit=15`;
-    return axiosClient.get(url);
+    return axiosClient.get(url, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+      },
+    });
   };
 }
 const orgApi = new Organization();

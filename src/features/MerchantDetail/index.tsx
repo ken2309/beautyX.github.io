@@ -54,22 +54,22 @@ function MerchantDetail() {
           console.log(err);
         }
       } else {
-      try {
-        const res = await orgApi.getOrgById(mer_id);
-        setOrg(res.data.context);
-        setBranches(res.data.context.branches);
-        // if (res.data.context.is_favorite === true) {
-        //   setTempleCount(1)
-        // }else{
-        //   setTempleCount(0)
-        // }
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-        // scope.setTag("section", "articles");
-        // Sentry.setUser({ email: "john.doe@example.com" });
-        // Sentry.captureException(new Error("something went wrong"), () => scope);
-      }
+        try {
+          const res = await orgApi.getOrgById(mer_id);
+          setOrg(res.data.context);
+          setBranches(res.data.context.branches);
+          // if (res.data.context.is_favorite === true) {
+          //   setTempleCount(1)
+          // }else{
+          //   setTempleCount(0)
+          // }
+          setLoading(false);
+        } catch (err) {
+          console.log(err);
+          // scope.setTag("section", "articles");
+          // Sentry.setUser({ email: "john.doe@example.com" });
+          // Sentry.captureException(new Error("something went wrong"), () => scope);
+        }
       }
     }
     async function handleGetProductSale() {
@@ -97,7 +97,10 @@ function MerchantDetail() {
       {/* for mobile */}
       <DetailTabMb setActiveTab={setActiveTab} activeTab={activeTab} />
       {/* ---------- */}
-      <div style={{ backgroundColor: "var(--bg-gray)", paddingBottom: "64px" }}>
+      <div
+        className="tabMer-detail"
+        style={{ backgroundColor: "var(--bg-gray)", paddingBottom: "64px" }}
+      >
         <Container>
           <div
             style={

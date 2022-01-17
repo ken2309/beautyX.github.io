@@ -2,33 +2,29 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
 import slugify from "../../../../utils/formatUrlString";
-
+import scrollTop from "../../../../utils/scrollTop";
 export default function HomeLoggedLocationItem(props: any) {
   const { org } = props;
   // console.log("org :>> ", org);
   const history = useHistory();
-  const goDetail = () => {
+  const gotoDetail = () => {
     history.push({
-      pathname: `/Product-detail/${slugify(org.product_name)}`,
-      search: `${1},${org.id},${1}`,
+      pathname: `/Merchant-detail/${slugify(org.name)}`,
+      search: `${org.id}`,
+      state: org,
     });
+    scrollTop();
   };
   const [openInfoLocation, setOpenInfoLocation] = React.useState(false);
-  // function handleOpenLocation() {
-  //   setOpenInfoLocation(true);
-  // }
-  // function handleCloseLocation() {
-  //   setOpenInfoLocation(false);
-  // }
   return (
     <div className="homelogged-location__item">
-      <div className="item-top" onClick={goDetail}>
+      <div className="item-top" onClick={gotoDetail}>
         <div className="item-top__img">
           <img src="https://source.unsplash.com/random" alt="" />
         </div>
         <div className="item-top__content">
           <div className="item-top__content-header">
-            <span>{org?.product_name}</span>
+            <span>{org?.name}</span>
             <div className="item-top__content-rate">
               <div className="rate-left">
                 <span>4.5</span>
@@ -48,21 +44,9 @@ export default function HomeLoggedLocationItem(props: any) {
         </div>
       </div>
       <div className="item-bottom">
-        {/* {openInfoLocation === true ? (
-          <div className="item-bottom__hidden">
-            <div className="item-bottom__hidden-wrap">
-              <div className="item-bottom__active-img">
-                <img src={icon.Logo} alt="" />
-              </div>
-              <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
-            </div>
-            <div onClick={handleCloseLocation} className="infor-img">
-              <img src={icon.Info} alt="" />
-            </div>
-          </div>
-        ) : ( */}
         <>
           <div
+            onClick={() => setOpenInfoLocation(!openInfoLocation)}
             className={
               openInfoLocation
                 ? "item-bottom__active active"
@@ -70,7 +54,6 @@ export default function HomeLoggedLocationItem(props: any) {
             }
           >
             <div
-              onClick={() => setOpenInfoLocation(!openInfoLocation)}
               className={openInfoLocation ? "close-ring active" : "close-ring"}
             >
               <img src={openInfoLocation ? icon.CloseRing : icon.Info} alt="" />

@@ -31,6 +31,9 @@
   object-fit: cover;
   border-radius: 24px;
 }
+.homelogged-location .slick-slide {
+  max-width: calc(100% / 3);
+}
 /* cus dot slider*/
 .slick-dots ul {
   align-items: center;
@@ -73,6 +76,9 @@
   padding: 0 16px;
 }
 @media (max-width: 768px), (max-width: 1024px) {
+  .homelogged-location .slick-slide {
+    max-width: calc(100% / 3);
+  }
   .home-slider .home-slider__img img {
     border-radius: 16px;
   }
