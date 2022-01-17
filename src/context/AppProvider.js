@@ -15,6 +15,7 @@ export default function AppProvider({ children }) {
   const [userInfo, setUserInfo] = useState();
   const [sign, setSign] = useState();
   const [profile, setProfile] = useState();
+  const [tempCount, setTempleCount] = useState(0);
   const [acBtn, setAcBtn] = useState(1);
   const [tags, setTags] = useState([])
 
@@ -89,6 +90,8 @@ export default function AppProvider({ children }) {
     setUserInfo,
     setSign,
     profile,
+    tempCount,
+    setTempleCount
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

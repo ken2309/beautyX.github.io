@@ -26,31 +26,21 @@ function ServiceDetail(props: any) {
   // const url = location.search.slice(1, location.search.length);
   // const param = JSON.parse(decodeURI(url))
   useEffect(() => {
-    async function handleGetOrgById() {
-      setLoading(true);
-      scrollTop();
-      try {
-        const resSer = await serviceApi.getDetailById({
-          org_id: params[0],
-          ser_id: params[1],
-        });
-        setService(resSer.data.context);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    handleGetOrgById();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params[0], params[1]]);
-  useEffect(() => {
     async function handleGetOrg_Ser() {
       try {
         if (location.state) {
-          setOrg(location.state);
+          setOrg(location.state.org);
+          setService(location.state.detail);
         } else {
+          setLoading(true)
           const resOrg = await orgApi.getOrgById(params[0]);
           setOrg(resOrg.data.context);
+          const resSer = await serviceApi.getDetailById({
+            org_id: params[0],
+            ser_id: params[1],
+          });
+          setService(resSer.data.context);
+          setLoading(false);
         }
         const resListSer = await serviceApi.getByOrg_id({
           org_id: params[0],
@@ -59,11 +49,12 @@ function ServiceDetail(props: any) {
         setServices(resListSer.data.context.data);
       } catch (err) {
         console.log(err);
+        setLoading(false)
       }
     }
     handleGetOrg_Ser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params[0]]);
+  }, [location.state, params[0]]);
   return (
     <div className="product">
       <HeadTitle

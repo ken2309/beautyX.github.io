@@ -14,8 +14,6 @@ function CardItem(props:any) {
             name,
             retail_price,
             special_price,
-            org_id,
-            org_name,
             org,
             is_type
       } = props;
@@ -34,14 +32,14 @@ function CardItem(props:any) {
             if (is_type === 1) {
                   history.push({
                         pathname: `/Product-detail/${slugify(name)}`,
-                        search: `${org_id},${detail.id},${is_type}`,
-                        state: org
+                        search: `${org.id},${detail.id},${is_type}`,
+                        state: { org, detail, name },
                   })
             } else if (is_type === 2) {
                   history.push({
                         pathname: `/Service-detail/${slugify(name)}`,
-                        search: `${org_id},${detail.id},${is_type}`,
-                        state: org
+                        search: `${org.id},${detail.id},${is_type}`,
+                        state: { org, detail, name }
                   })
             }
       }
@@ -62,7 +60,7 @@ function CardItem(props:any) {
                               {detail.id} - {name}
                         </div>
                         <span className="card-spa-name">
-                              {org_name}
+                              {org.name}
                         </span>
                         <div className="flex-row-sp card-price">
                               <span className="flex-row card-price__detail">

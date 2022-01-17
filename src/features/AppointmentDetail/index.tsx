@@ -31,6 +31,7 @@ function AppointmentDetail(props: any) {
             }
             if (openPopupDetail === true) {
                   handleSetDetail();
+                  console.log(datingList);
             }
             // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [datingList.id, openPopupDetail]);
@@ -110,6 +111,12 @@ function AppointmentDetail(props: any) {
                                                             :
                                                             org.full_address
                                                 }
+                                          </div>
+                                    </div>
+                                    <div className="app-de__address">
+                                          <span className="app-de__ser-head">Ghi chú</span>
+                                          <div className="app-de__address-txt">
+                                                {datingList.note}
                                           </div>
                                     </div>
                               </div>

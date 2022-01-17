@@ -37,7 +37,7 @@ const settings = {
 
 function DetailHead(props: any) {
   const { org, loading, tempCount, setTempleCount } = props;
-  const { t } = useContext(AppContext);
+  const { t, profile } = useContext(AppContext);
   const infoBox = useRef(null);
   //const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
@@ -64,12 +64,14 @@ function DetailHead(props: any) {
   }
 
   const handleFollowClick = () => {
-    if (tempCount === 1) {
-      setTempleCount(tempCount - 1)
-      handleDeleteFavorite(org.id)
-    } else {
-      setTempleCount(tempCount + 1)
-      handlePostFavorites(org.id)
+    if (profile) {
+      if (tempCount === 1) {
+        setTempleCount(tempCount - 1)
+        handleDeleteFavorite(org.id)
+      } else {
+        setTempleCount(tempCount + 1)
+        handlePostFavorites(org.id)
+      }
     }
   }
   return (
@@ -116,21 +118,22 @@ function DetailHead(props: any) {
                 <div className="content-left__follow">
                   <button onClick={handleOpenPopupContact}>
                     {t("Mer_de.contact")}
-                  </button>
-                  <button
-                    style={
-                      tempCount === 1
-                        ? {
-                          backgroundColor: "var(--purple)",
-                          color: "var(--bg-gray)",
-                        }
-                        : {}
-                    }
-                    onClick={handleFollowClick}
-                  >
-                    {tempCount === 1 ? t("Mer_de.flowing") : t("Mer_de.flow")}
-                  </button>
-                </div>
+                    </button>
+                    <button
+                      disabled={profile ? false : true}
+                      style={
+                        tempCount === 1
+                          ? {
+                            backgroundColor: "var(--purple)",
+                            color: "var(--bg-gray)",
+                          }
+                          : {}
+                      }
+                      onClick={handleFollowClick}
+                    >
+                      {tempCount === 1 ? t("Mer_de.flowing") : t("Mer_de.flow")}
+                    </button>
+                  </div>
               </>
             )}
           </div>
