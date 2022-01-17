@@ -47,8 +47,7 @@ function RecommendList(props: any) {
               style={cardStyle}
               detail={item}
               name={item.service_name}
-              org_name={org.name}
-              org_id={org.id}
+              org={org}
               retail_price={item.price}
               special_price={item.special_price}
             />

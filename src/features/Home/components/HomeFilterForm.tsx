@@ -20,9 +20,7 @@ interface ChooseLocal {
 }
 function HomeFilterForm(props: any) {
       const history = useHistory();
-      const { t } = useContext(AppContext);
-      const { tags } = props;
-      //const tags: any[] = [];
+      const { t, tags } = useContext(AppContext);
       const [chooseCate, setChooseCate] = useState<ChooseCate>({ id: 0, name: '' });
       const [chooseLocal, setChooseLocal] = useState<ChooseLocal>({ id: 0, province_code: 0, name: '' })
       const [openCate, setOpenCate] = useState(false)
@@ -84,7 +82,7 @@ function HomeFilterForm(props: any) {
                               >
                                     <ul>
                                           {
-                                                tags.map((item:any) =>(
+                                                tags && tags.map((item: any) => (
                                                       <li
                                                             style={
                                                                   item === chooseCate ?

@@ -23,7 +23,7 @@ import Bottom from "../../featuresMobile/Bottom";
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
 // const logged: boolean = true;
-function Home(props: any) {
+function Home(){
   const { profile, t } = useContext(AppContext);
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -31,6 +31,7 @@ function Home(props: any) {
   // }, [dispatch])
 
   // const org = useSelector(getAllOrg);
+  // console.log(org);
 
 
   return (

@@ -4,28 +4,26 @@ import { AppContext } from "../../../../context/AppProvider";
 
 export default function HomeLoggedCalendarStatus() {
   const { t } = useContext(AppContext);
+  const statusList = [
+    { title: t("Home.confirmed"), icon: icon.Exclude },
+    { title: t("Home.unconfimred"), icon: icon.Exclude2 },
+    { title: t("Home.complete"), icon: icon.Exclude3 },
+    { title: t("Home.cancel"), icon: icon.Exclude4 },
+  ]
   return (
     <div className="calendar-status">
       <span className="calendar-status__title">
         {t("Home.appointment_status")}
       </span>
       <ul className="calendar-status__list">
-        <li className="calendar-status__item">
-          <img src={icon.Exclude} alt="" />
-          <span>{t("Home.confirmed")}</span>
-        </li>
-        <li className="calendar-status__item">
-          <img src={icon.Exclude2} alt="" />
-          <span>{t("Home.unconfimred")}</span>
-        </li>
-        <li className="calendar-status__item">
-          <img src={icon.Exclude3} alt="" />
-          <span>{t("Home.complete")}</span>
-        </li>
-        <li className="calendar-status__item">
-          <img src={icon.Exclude4} alt="" />
-          <span>{t("Home.cancel")}</span>
-        </li>
+        {
+          statusList.map((item, index) => (
+            <li key={index} className="calendar-status__item">
+              <img src={item.icon} alt="" />
+              <span>{item.title}</span>
+            </li>
+          ))
+        }
       </ul>
     </div>
   );

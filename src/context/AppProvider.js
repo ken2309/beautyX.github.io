@@ -1,6 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import auth from "../api/authApi";
+import dateNow from '../utils/dateExp';
+import tagsApi from '../api/tagApi'
 // import axios from 'axios';
 
 export const AppContext = createContext();
@@ -13,45 +15,23 @@ export default function AppProvider({ children }) {
   const [userInfo, setUserInfo] = useState();
   const [sign, setSign] = useState();
   const [profile, setProfile] = useState();
+  const [tempCount, setTempleCount] = useState(0);
   const [acBtn, setAcBtn] = useState(1);
+  const [tags, setTags] = useState([])
 
   // Check if token expires and logout user
-  const today = new Date();
   if (localStorage.getItem("_WEB_US")) {
     const tokenDecoded = JSON.parse(`${localStorage.getItem("_WEB_US")}`);
     let exp = tokenDecoded?.token_expired_at;
-    let date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() > 8
-        ? today.getMonth() + 1
-        : "0" + (today.getMonth() + 1)) +
-      "-" +
-      (today.getDate() > 9 ? today.getDate() : "0" + today.getDate());
-
-    let time =
-      (today.getHours() > 9 ? today.getHours() : "0" + today.getHours()) +
-      ":" +
-      (today.getMinutes() > 9 ? today.getMinutes() : "0" + today.getMinutes()) +
-      ":" +
-      (today.getSeconds() > 9 ? today.getSeconds() : "0" + today.getSeconds());
-
-    let nowDate = date.split("-").join("");
-    let nowTime = time.split(":").join("");
-    let dateNow = parseInt(`${nowDate}${nowTime}`);
-    // console.log(`dateNow`, dateNow);
-
     let expDate = exp.slice(0, 10).split("-").join("");
     let expTime = exp.slice(11, 19).split(":").join("");
     let dateExp = parseInt(`${expDate}${expTime}`);
-    // console.log("dateExp", dateExp);
 
     if (dateExp < dateNow) {
       localStorage.removeItem("_WEB_US");
       localStorage.removeItem("_WEB_TK");
     }
   }
-  //Close Check if token expires and logout user
 
   useEffect(() => {
     if (lg === "en-US" || lg === "en") {
@@ -84,8 +64,20 @@ export default function AppProvider({ children }) {
     return () => {};
   }, [sign]);
   //get all tags
+  useEffect(() => {
+    async function handleGetAllTags() {
+      try {
+        const res = await tagsApi.getAll()
+        setTags(res.data.context.data);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    handleGetAllTags()
+  }, [])
   const value = {
     t,
+    tags,
     acBtn,
     setAcBtn,
     language,
@@ -98,6 +90,8 @@ export default function AppProvider({ children }) {
     setUserInfo,
     setSign,
     profile,
+    tempCount,
+    setTempleCount
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

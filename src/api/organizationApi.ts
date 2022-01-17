@@ -18,11 +18,19 @@ class Organization {
   };
   getOrgByKeyword = (params: any) => {
     if (document.body.offsetWidth < 767) {
-      const url = `/organizations?page=${params.page}&limit=10&filter%5Bkeyword%5D=${params.keySearch}`;
-      return axiosClient.get(url);
+      const url = `/organizations?page=${params.page}&limit=10&filter%5Bkeyword%5D=${params.keySearch}&include=branches`;
+      return axiosClient.get(url, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+        },
+      });
     } else {
-      const url = `/organizations?page=${params.page}&limit=3&filter%5Bkeyword%5D=${params.keySearch}`;
-      return axiosClient.get(url);
+      const url = `/organizations?page=${params.page}&limit=3&filter%5Bkeyword%5D=${params.keySearch}&include=branches`;
+      return axiosClient.get(url, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+        },
+      });
     }
   };
   //ex get all

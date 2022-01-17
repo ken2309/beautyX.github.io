@@ -166,7 +166,7 @@ export default function HomeLoggedCalendar() {
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });
-    console.log(dateList);
+    // console.log(dateList);
     setdatingList(dateList);
   }
 

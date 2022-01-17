@@ -17,7 +17,7 @@ import scrollTop from "../../utils/scrollTop";
 
 function ProductDetail(props: any) {
   const { t } = useContext(AppContext);
-  const location = useLocation();
+  const location: any = useLocation();
   const search = location.search.slice(1, location.search.length);
   const params = search.split(",");
   const is_type = parseInt(params[2]);
@@ -25,6 +25,9 @@ function ProductDetail(props: any) {
   const [products, setProducts] = useState<Product[]>([]);
   const [org, setOrg] = useState<any>({});
   const [loading, setLoading] = useState(false);
+
+  console.log(location.state);
+
   const values = useMemo(
     () => ({
       org_id: params[0],
@@ -34,30 +37,32 @@ function ProductDetail(props: any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params[1]]
   );
-  useEffect(() => {
-    async function handleGetDetailProduct() {
-      setLoading(true);
-      scrollTop();
-      try {
-        const res = await productsApi.getDetailById(values);
-        setProduct(res.data.context);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    handleGetDetailProduct();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params[1]]);
+  // useEffect(() => {
+  //   async function handleGetDetailProduct() {
+  //     setLoading(true);
+  //     scrollTop();
+  //     try {
+  //       const res = await productsApi.getDetailById(values);
+  //       setProduct(res.data.context);
+  //       setLoading(false);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   handleGetDetailProduct();
+  // }, [params[1]]);
   useEffect(() => {
     async function handleGetOrg_Products() {
       setLoading(true);
       try {
         if (location.state) {
-          setOrg(location.state);
+          setOrg(location.state.org);
+          setProduct(location.state.detail);
         } else {
           const resOrg = await orgApi.getOrgById(params[0]);
           setOrg(resOrg.data.context);
+          const res = await productsApi.getDetailById(values);
+          setProduct(res.data.context);
         }
         const resProducts = await productsApi.getByOrgId({
           org_id: params[0],
@@ -71,7 +76,7 @@ function ProductDetail(props: any) {
     }
     handleGetOrg_Products();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params[0]]);
+  }, [location.state, params[0]]);
 
   //ad values is product:true
   const productsIs = [];

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Head from "../Head/index";
 import "./merchantDetail.css";
@@ -12,7 +12,7 @@ import ProductByMerchant from "../ProductByMerchant/index";
 import ComboByMerchant from "../ComboByMerchant/index";
 import Footer from "../Footer";
 import orgApi from "../../api/organizationApi";
-import branchApi from "../../api/branchApi";
+//import branchApi from "../../api/branchApi";
 import DetailTab from "./components/DetailTab";
 import DetailTabMb from "../../featuresMobile/DetailTabMb";
 import MerchantMb from "../../featuresMobile/MerchantMb";
@@ -24,11 +24,13 @@ import { IOrganization } from "../../interface/organization";
 import { IBranch } from "../../interface/branch";
 // view for mobile
 import RecommendListMb from "../../featuresMobile/RecomendList";
+import { AppContext } from "../../context/AppProvider";
 //import * as Sentry from '@sentry/react'
 
 const id_tab = 1;
 function MerchantDetail() {
   //const scope = new Sentry.Scope();
+  const { tempCount, setTempleCount } = useContext(AppContext);
   const location: any = useLocation();
   const mer_id = parseInt(
     `${location.search.slice(1, location.search.length)}`
@@ -39,30 +41,28 @@ function MerchantDetail() {
   const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState<number>(1);
 
-  const [tempCount, setTempleCount] = useState(0);
-
   useEffect(() => {
     async function handleGetOrgById() {
       setLoading(true);
       if (location.state) {
         setOrg(location.state);
-        setLoading(false);
-        try {
-          const resBranches = await branchApi.getBranchByOrg(mer_id);
-          setBranches(resBranches.data.context);
-        } catch (err) {
-          console.log(err);
+        setBranches(location.state.branches);
+        if (location.state.is_favorite === true) {
+          setTempleCount(1);
+        } else {
+          setTempleCount(0);
         }
+        setLoading(false);
       } else {
         try {
           const res = await orgApi.getOrgById(mer_id);
           setOrg(res.data.context);
           setBranches(res.data.context.branches);
-          // if (res.data.context.is_favorite === true) {
-          //   setTempleCount(1)
-          // }else{
-          //   setTempleCount(0)
-          // }
+          if (res.data.context.is_favorite === true) {
+            setTempleCount(1);
+          } else {
+            setTempleCount(0);
+          }
           setLoading(false);
         } catch (err) {
           console.log(err);

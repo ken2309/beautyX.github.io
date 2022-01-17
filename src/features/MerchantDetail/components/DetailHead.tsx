@@ -37,7 +37,7 @@ const settings = {
 
 function DetailHead(props: any) {
   const { org, loading, tempCount, setTempleCount } = props;
-  const { t } = useContext(AppContext);
+  const { t, profile } = useContext(AppContext);
   const infoBox = useRef(null);
   //const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
@@ -63,12 +63,14 @@ function DetailHead(props: any) {
   }
 
   const handleFollowClick = () => {
-    if (tempCount === 1) {
-      setTempleCount(tempCount - 1);
-      handleDeleteFavorite(org.id);
-    } else {
-      setTempleCount(tempCount + 1);
-      handlePostFavorites(org.id);
+    if (profile) {
+      if (tempCount === 1) {
+        setTempleCount(tempCount - 1);
+        handleDeleteFavorite(org.id);
+      } else {
+        setTempleCount(tempCount + 1);
+        handlePostFavorites(org.id);
+      }
     }
   };
   return (
@@ -117,6 +119,7 @@ function DetailHead(props: any) {
                     {t("Mer_de.contact")}
                   </button>
                   <button
+                    disabled={profile ? false : true}
                     style={
                       tempCount === 1
                         ? {
@@ -135,7 +138,7 @@ function DetailHead(props: any) {
           </div>
 
           <div className="merchant-slider mer-detail__content-right">
-            <Slider {...settings}>
+            <Slider lazyLoad="progressive" {...settings}>
               <div className="merchant-slider__img">
                 <img src={img.slider} alt="" />
               </div>

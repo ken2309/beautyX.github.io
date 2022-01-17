@@ -84,6 +84,7 @@ const buttons = [
 
 function RecommendList(props: any) {
   const { org, list, is_type } = props;
+  console.log(org);
   const title = `Ưu đãi của "${org?.name}"`;
   const [activeBtn, setActiveBtn] = useState();
   const [productSort, setProductSort] = useState<SaleList[]>([]);
@@ -147,6 +148,7 @@ function RecommendList(props: any) {
               detail={item}
               name={item.product_name}
               org_name={org.name}
+              org={org}
               org_id={org.id}
               retail_price={item.retail_price}
               special_price={item.special_price}
