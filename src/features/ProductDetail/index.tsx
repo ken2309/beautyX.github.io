@@ -26,8 +26,7 @@ function ProductDetail(props: any) {
   const [org, setOrg] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
-  console.log(location.state);
-
+  console.log(`params[0]`, params[0]);
   const values = useMemo(
     () => ({
       org_id: params[0],
