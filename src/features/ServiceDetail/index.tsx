@@ -10,11 +10,10 @@ import RecommendList from "./components/RecommendList";
 import "./serviceDetail.css";
 import { Service } from "../../interface/service";
 import HeadTitle from "../HeadTitle";
-import scrollTop from "../../utils/scrollTop";
 import Footer from "../Footer";
 
 function ServiceDetail(props: any) {
-  const location = useLocation();
+  const location: any = useLocation();
   const search = location.search.slice(1, location.search.length);
   const params = search.split(",");
   const is_type = parseInt(params[2]);
@@ -32,7 +31,7 @@ function ServiceDetail(props: any) {
           setOrg(location.state.org);
           setService(location.state.detail);
         } else {
-          setLoading(true)
+          setLoading(true);
           const resOrg = await orgApi.getOrgById(params[0]);
           setOrg(resOrg.data.context);
           const resSer = await serviceApi.getDetailById({
@@ -49,7 +48,7 @@ function ServiceDetail(props: any) {
         setServices(resListSer.data.context.data);
       } catch (err) {
         console.log(err);
-        setLoading(false)
+        setLoading(false);
       }
     }
     handleGetOrg_Ser();

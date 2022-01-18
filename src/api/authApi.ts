@@ -1,4 +1,4 @@
-import axiosClient from "./axios";
+import axiosClient from "./axios"
 
 class Auth {
   login = (params: any) => {
@@ -11,10 +11,12 @@ class Auth {
   };
   getUserProfile = () => {
     const url = `/users/profile`;
-    if (localStorage.getItem("_WEB_TK")) {
+    const session = window.sessionStorage.getItem("_WEB_TK");
+    const local = localStorage.getItem("_WEB_TK")
+    if (localStorage.getItem("_WEB_TK") || window.sessionStorage.getItem("_WEB_TK")) {
       return axiosClient.get(url, {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+          Authorization: `Bearer ${session ? session : local}`,
         },
       });
     }

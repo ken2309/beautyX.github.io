@@ -27,7 +27,8 @@ export default function HomeLoggedCalendarChooseMonth(props: IChooseMonth) {
           <img className="calendar-mounth__icon" src={icon.pPrev} alt="" />
         </div>
         <span className="calendar-mounth__time text-white-color text-capitalize">
-          {dayObj.locale(lo).format("MMMM - YYYY")}
+          {/* {dayObj.locale(lo).format("MMMM - YYYY")} */}
+          {dayObj.format("MMMM - YYYY")}
         </span>
         <div onClick={handleNext} className="calendar-mounth__next">
           <img className="calendar-mounth__icon" src={icon.pNext} alt="" />

@@ -7,38 +7,25 @@ import { addCart } from "../../../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import slugify from "../../../../utils/formatUrlString";
-import {AppContext} from '../../../../context/AppProvider'
+import { AppContext } from "../../../../context/AppProvider";
 
 function ProductItem(props: any) {
   const { productItem, org, open } = props;
-  const {t} = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const [product, setProduct] = useState<Product>();
   const history = useHistory();
   const dispatch = useDispatch();
+  // go to detail product
+  const is_type = 1;
+  const detail = product;
+  const name = product?.product_name;
   const handleDetailProduct = () => {
     history.push({
       pathname: `/Product-detail/${slugify(product?.product_name)}`,
-      search: `${org.id},${productItem?.productable_id},${is_type}`,
-      state: org,
+      search: `${org?.id},${productItem?.productable_id},${is_type}`,
+      state: { org, detail, name },
     });
   };
-  useEffect(() => {
-    async function handleGetPrDetail() {
-      try {
-        const res = await productsApi.getDetailById({
-          org_id: org.id,
-          id: productItem.productable_id,
-        });
-        setProduct(res.data.context);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    if (open === true) {
-      handleGetPrDetail();
-    }
-  }, [org.id, productItem.productable_id, open]);
-  const is_type = 1;
   // add cart
   const values = {
     id: product?.id,
@@ -58,6 +45,23 @@ function ProductItem(props: any) {
     });
     dispatch(action);
   };
+
+  useEffect(() => {
+    async function handleGetPrDetail() {
+      try {
+        const res = await productsApi.getDetailById({
+          org_id: org.id,
+          id: productItem.productable_id,
+        });
+        setProduct(res.data.context);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (open === true) {
+      handleGetPrDetail();
+    }
+  }, [org.id, productItem.productable_id, open]);
   return (
     <li>
       <div className="order-de-list__item">
@@ -79,7 +83,7 @@ function ProductItem(props: any) {
             <div className="flex-row item-button">
               <ButtonCus
                 onClick={handleDetailProduct}
-                text={t('order.watch_info')}
+                text={t("order.watch_info")}
                 padding="4px 8px"
                 color="var(--purple)"
                 backColor="var(--bgGray)"

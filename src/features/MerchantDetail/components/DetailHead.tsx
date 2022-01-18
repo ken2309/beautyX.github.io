@@ -70,8 +70,8 @@ function DetailHead(props: any) {
         setTempleCount(tempCount - 1)
         handleDeleteFavorite(org.id)
       } else {
-        setTempleCount(tempCount + 1)
-        handlePostFavorites(org.id)
+        setTempleCount(tempCount + 1);
+        handlePostFavorites(org.id);
       }
     } else {
       setOpenSignIn(true)
@@ -123,6 +123,7 @@ function DetailHead(props: any) {
                     {t("Mer_de.contact")}
                   </button>
                   <button
+                    disabled={profile ? false : true}
                     style={
                       follow === true && profile
                         ? {

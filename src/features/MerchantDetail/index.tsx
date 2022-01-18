@@ -30,7 +30,7 @@ import { AppContext } from "../../context/AppProvider";
 const id_tab = 1;
 function MerchantDetail() {
   //const scope = new Sentry.Scope();
-  const {tempCount, setTempleCount} = useContext(AppContext)
+  const { tempCount, setTempleCount } = useContext(AppContext);
   const location: any = useLocation();
   const mer_id = parseInt(
     `${location.search.slice(1, location.search.length)}`
@@ -41,7 +41,6 @@ function MerchantDetail() {
   const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState<number>(1);
   const [follow, setFollow] = useState(false)
-
 
   useEffect(() => {
     async function handleGetOrgById() {

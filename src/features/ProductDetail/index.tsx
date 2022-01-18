@@ -17,7 +17,7 @@ import scrollTop from "../../utils/scrollTop";
 
 function ProductDetail(props: any) {
   const { t } = useContext(AppContext);
-  const location = useLocation();
+  const location: any = useLocation();
   const search = location.search.slice(1, location.search.length);
   const params = search.split(",");
   const is_type = parseInt(params[2]);
@@ -26,8 +26,7 @@ function ProductDetail(props: any) {
   const [org, setOrg] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
-  console.log(location.state);
-
+  console.log(`params[0]`, params[0]);
   const values = useMemo(
     () => ({
       org_id: params[0],
@@ -57,7 +56,7 @@ function ProductDetail(props: any) {
       try {
         if (location.state) {
           setOrg(location.state.org);
-          setProduct(location.state.detail)
+          setProduct(location.state.detail);
         } else {
           const resOrg = await orgApi.getOrgById(params[0]);
           setOrg(resOrg.data.context);
