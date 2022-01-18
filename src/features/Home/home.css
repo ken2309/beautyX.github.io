@@ -421,7 +421,26 @@ img {
 .week-mb {
   display: none;
 }
-/* Tablet */
+.homelogged-location .result-item__detail-address .time .time__status {
+  margin: unset;
+}
+.homelogged-location .result-item__detail-address span {
+  padding-left: 0;
+} /* Tablet */
+.homelogged-location .time {
+  display: flex;
+  align-items: center;
+  gap: 0 6px;
+}
+.homelogged-location .time__imgdot {
+  width: 4px;
+  height: 4px;
+}
+.homelogged-location .time__imgdot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* home mini map */
   .week-mb {

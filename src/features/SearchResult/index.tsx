@@ -25,6 +25,7 @@ function SearchResult(props: any) {
   const [totalItem, setTotalItem] = useState();
   const [total, setTotal] = useState();
   const [curPage, setCurPage] = useState(1);
+
   useEffect(() => {
     async function handleGetOrgs() {
       setLoading(true);

@@ -38,7 +38,7 @@
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 767px) {
   .cus-back {
     padding-top: 18px;
     left: 0;

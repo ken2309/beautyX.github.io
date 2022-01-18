@@ -81,8 +81,8 @@ function ResultItem(props: any) {
                               </span>
                               :
                               <span className="time_op_cl">
-                                {item.to_time_opening} -{" "}
-                                {item.from_time_opening}
+                                {item.from_time_opening} -{" "}
+                                {item.to_time_opening}
                               </span>
                             </>
                           )}

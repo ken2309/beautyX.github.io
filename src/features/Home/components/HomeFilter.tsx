@@ -4,7 +4,7 @@ import icon from "../../../constants/icon";
 import HomeFilterForm from "./HomeFilterForm";
 import { AppContext } from "../../../context/AppProvider";
 import { useHistory } from "react-router-dom";
-import scrollTop from '../../../utils/scrollTop'
+import scrollTop from "../../../utils/scrollTop";
 
 function HomeFilter(props: any) {
   const { styleFilter, setCurPage, setOpenFilter, forcusMb } = props;
@@ -26,19 +26,19 @@ function HomeFilter(props: any) {
         setOpenFilter(false);
       }
     }
-  }
+  };
 
   const handleSearchClick = () => {
     // history.push(`/Search-result/${searchText}`)
-    searchFunc()
+    searchFunc();
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
-      searchFunc()
-      scrollTop()
+      searchFunc();
+      scrollTop();
     }
-  }
+  };
   return (
     <div
       style={{
@@ -67,7 +67,7 @@ function HomeFilter(props: any) {
           borderRadius="0px 20px 20px 0px"
         />
       </div>
-      <HomeFilterForm/>
+      <HomeFilterForm />
     </div>
   );
 }

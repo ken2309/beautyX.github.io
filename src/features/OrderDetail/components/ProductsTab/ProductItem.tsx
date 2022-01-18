@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import slugify from "../../../../utils/formatUrlString";
 import { AppContext } from "../../../../context/AppProvider";
+import scrollTop from "../../../../utils/scrollTop";
 
 function ProductItem(props: any) {
   const { productItem, org, open } = props;
@@ -20,6 +21,7 @@ function ProductItem(props: any) {
   const detail = product;
   const name = product?.product_name;
   const handleDetailProduct = () => {
+    scrollTop();
     history.push({
       pathname: `/Product-detail/${slugify(product?.product_name)}`,
       search: `${org?.id},${productItem?.productable_id},${is_type}`,
@@ -39,6 +41,7 @@ function ProductItem(props: any) {
     price: product?.retail_price,
   };
   const handleAddCart = () => {
+    scrollTop();
     const action = addCart(values);
     history.push({
       pathname: `/Cart`,

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
+import { AppContext } from "../../../../context/AppProvider";
 import slugify from "../../../../utils/formatUrlString";
 import scrollTop from "../../../../utils/scrollTop";
 export default function HomeLoggedLocationItem(props: any) {
   const { org } = props;
-  // console.log("org :>> ", org);
+  const { t } = useContext(AppContext);
+
+  console.log("org :>> ", org);
   const history = useHistory();
+  const d = new Date();
+  const dayWeek = d.getDay() + 1;
   const gotoDetail = () => {
     history.push({
       pathname: `/Merchant-detail/${slugify(org.name)}`,
@@ -20,7 +25,7 @@ export default function HomeLoggedLocationItem(props: any) {
     <div className="homelogged-location__item">
       <div className="item-top" onClick={gotoDetail}>
         <div className="item-top__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={"https://picsum.photos/650/976?random=" + org.id} alt="" />
         </div>
         <div className="item-top__content">
           <div className="item-top__content-header">
@@ -37,9 +42,38 @@ export default function HomeLoggedLocationItem(props: any) {
             </div>
           </div>
           <div className="item-top__content-footer">
-            <span>Đang mở cửa</span>
-            <img src={icon.onedot} alt="" />
-            <span>9:00 - 21:00</span>
+            {org?.opening_time?.map((item: any, index: number) => (
+              <div
+                key={index}
+                style={
+                  dayWeek === index + 2
+                    ? { display: "block" }
+                    : { display: "none" }
+                }
+              >
+                <div className="result-item__detail-address">
+                  {/* <img src={icon.time} alt="" /> */}
+                  <span className="time">
+                    {/* {index + 2 === 8 ? "Chủ nhật" : `Thứ ${index + 2}`}: */}
+                    {item.time_opening === "off" ? (
+                      <span className="time__status">Đóng cửa</span>
+                    ) : (
+                      <>
+                        <span className="time__status">
+                          {t("Search_result.opening")}
+                        </span>
+                        <div className="time__imgdot">
+                          <img src={icon.dotPurple} alt="" />
+                        </div>
+                        <span className="time_op_cl">
+                          {item.from_time_opening} - {item.to_time_opening}
+                        </span>
+                      </>
+                    )}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

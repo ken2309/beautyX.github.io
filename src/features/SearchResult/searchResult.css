@@ -210,6 +210,9 @@
   font-weight: 700;
   color: var(--text-hover);
 }
+.org__service-item {
+  pointer-events: none;
+}
 .org__service-item span {
   padding-left: 4px;
 }
