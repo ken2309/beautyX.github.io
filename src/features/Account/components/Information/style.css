@@ -1,6 +1,9 @@
 .w-100 {
   width: 100%;
 }
+.w-cus {
+  width: 300px;
+}
 .info_section {
   padding: 0 36px;
   padding-bottom: 24px;
@@ -230,7 +233,7 @@
 
 .MuiYearPicker-root .Mui-selected,
 .MuiMonthPicker-root .Mui-selected,
-.MuiCalendarPicker-root .Mui-selected{
+.MuiCalendarPicker-root .Mui-selected {
   background-color: var(--purple) !important;
 }
 
@@ -257,10 +260,7 @@
   }
   .info_section {
     padding-bottom: 0;
-    background-color: var(--bgWhite);
     padding-right: 20px;
-    /* height: 100%;
-    padding-top: 63px; */
   }
   .btn-success {
     margin-top: 8px;

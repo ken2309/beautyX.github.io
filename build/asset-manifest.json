@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.be6137b4.chunk.css",
-    "main.js": "/static/js/main.f2d45a19.chunk.js",
-    "main.js.map": "/static/js/main.f2d45a19.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.d7498109.js",
-    "runtime-main.js.map": "/static/js/runtime-main.d7498109.js.map",
+    "main.css": "/static/css/main.a4adac0e.chunk.css",
+    "main.js": "/static/js/main.25880e4c.chunk.js",
+    "main.js.map": "/static/js/main.25880e4c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.84b66f26.js",
+    "runtime-main.js.map": "/static/js/runtime-main.84b66f26.js.map",
     "static/css/2.985eeedf.chunk.css": "/static/css/2.985eeedf.chunk.css",
-    "static/js/2.3f1b8c83.chunk.js": "/static/js/2.3f1b8c83.chunk.js",
-    "static/js/2.3f1b8c83.chunk.js.map": "/static/js/2.3f1b8c83.chunk.js.map",
-    "static/js/3.619744a1.chunk.js": "/static/js/3.619744a1.chunk.js",
-    "static/js/3.619744a1.chunk.js.map": "/static/js/3.619744a1.chunk.js.map",
+    "static/js/2.e23322ba.chunk.js": "/static/js/2.e23322ba.chunk.js",
+    "static/js/2.e23322ba.chunk.js.map": "/static/js/2.e23322ba.chunk.js.map",
+    "static/js/3.464a9f3f.chunk.js": "/static/js/3.464a9f3f.chunk.js",
+    "static/js/3.464a9f3f.chunk.js.map": "/static/js/3.464a9f3f.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.985eeedf.chunk.css.map": "/static/css/2.985eeedf.chunk.css.map",
-    "static/css/main.be6137b4.chunk.css.map": "/static/css/main.be6137b4.chunk.css.map",
-    "static/js/2.3f1b8c83.chunk.js.LICENSE.txt": "/static/js/2.3f1b8c83.chunk.js.LICENSE.txt",
+    "static/css/main.a4adac0e.chunk.css.map": "/static/css/main.a4adac0e.chunk.css.map",
+    "static/js/2.e23322ba.chunk.js.LICENSE.txt": "/static/js/2.e23322ba.chunk.js.LICENSE.txt",
     "static/media/style.css": "/static/media/Quicksand-SemiBold.66199d9b.woff",
     "static/media/arrow-down-white.0eabb3a7.svg": "/static/media/arrow-down-white.0eabb3a7.svg",
     "static/media/arrowPurple.7aa85b20.svg": "/static/media/arrowPurple.7aa85b20.svg",
@@ -138,10 +138,10 @@
     "static/media/x.414890ad.svg": "/static/media/x.414890ad.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d7498109.js",
+    "static/js/runtime-main.84b66f26.js",
     "static/css/2.985eeedf.chunk.css",
-    "static/js/2.3f1b8c83.chunk.js",
-    "static/css/main.be6137b4.chunk.css",
-    "static/js/main.f2d45a19.chunk.js"
+    "static/js/2.e23322ba.chunk.js",
+    "static/css/main.a4adac0e.chunk.css",
+    "static/js/main.25880e4c.chunk.js"
   ]
 }

@@ -216,6 +216,7 @@
   padding: 36px;
   background-color: var(--bg-gray);
   border-radius: 24px;
+  width: 400px;
 }
 .dialog-forgot__password .errText {
   margin: unset;
@@ -291,6 +292,9 @@
 }
 /* Tablet */
 @media (max-width: 768px), (max-width: 1024px) {
+  .dialog-forgot__password .err-text {
+    margin: 0;
+  }
   .sign-content {
     padding: 0px;
     width: 100%;
@@ -311,6 +315,7 @@
     max-width: unset !important;
     margin: 24px;
   }
+
   .page-sign {
     background-color: var(--bgWhite);
     padding-top: 48px;
@@ -341,5 +346,11 @@
   }
   .sign-input-name {
     flex-direction: column;
+  }
+  .dialog-forgot__password {
+    width: unset;
+  }
+  .err-text {
+    margin: 0;
   }
 }

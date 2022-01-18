@@ -47,8 +47,8 @@ export default function PopupNewPass(props: any) {
         <div className="dialog-forgot__password">
           <h2>Đặt lại mật khẩu mới</h2>
           <p className="dialog-forgot__password-desc">
-            Lưu ý mật khẩu mới không được trùng với các mật khẩu được <br />{" "}
-            dùng trước đó
+            Lưu ý mật khẩu mới không được trùng với các mật khẩu được dùng trước
+            đó
           </p>
           <div className="sign-form__box">
             <div
@@ -75,7 +75,7 @@ export default function PopupNewPass(props: any) {
             </div>
           </div>
           {formikNewpass.errors.password && formikNewpass.touched.password && (
-            <p className="err-text">{formikNewpass.errors.password}</p>
+            <p className="err-text w-cus">{formikNewpass.errors.password}</p>
           )}
           <div className="sign-form__box">
             <div

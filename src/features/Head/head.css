@@ -34,6 +34,7 @@
   font-weight: 700;
   color: var(--purple);
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .hd-cnt__right-avatar {

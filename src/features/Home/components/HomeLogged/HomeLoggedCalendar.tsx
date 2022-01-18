@@ -30,9 +30,9 @@ export default function HomeLoggedCalendar() {
         setActive(false);
       }
     });
-    return ()=>{
-      cleanup()
-    }
+    return () => {
+      cleanup();
+    };
   }, []);
 
   const weekDays = [
@@ -62,7 +62,6 @@ export default function HomeLoggedCalendar() {
   // lấy thứ của ngày cuối cùng của tháng
   let weekDayOfLast = dayObjOfLastMonth.day();
 
- 
   useEffect(() => {
     async function handleGetAppoint() {
       try {
@@ -74,8 +73,8 @@ export default function HomeLoggedCalendar() {
     }
     handleGetAppoint();
     return () => {
-      cleanup()
-    }
+      cleanup();
+    };
   }, [chooseMonth]);
 
   const dataAppoint: any = [];
@@ -140,7 +139,6 @@ export default function HomeLoggedCalendar() {
 
     // const firstDateOfWeek = selectedDay.startOf("week").date();
     // const lastDateOfWeek = selectedDay.endOf("week").date();
-
     // const datesInSameWeek = (parts: any) => {
     //   if (firstDateOfWeek < lastDateOfWeek) {
     //     // giua thang
@@ -162,12 +160,12 @@ export default function HomeLoggedCalendar() {
     // };
     const dateList: any = dataAppoint.filter((data: any) => {
       var parts = data.date.split("/");
+      // return datesInSameWeek(parts);
       return (
         // eslint-disable-next-line eqeqeq
         newdate == parts[0] && newmonth == parts[1] && thisYear == parts[2]
       );
     });
-    // console.log(dateList);
     setdatingList(dateList);
   }
 

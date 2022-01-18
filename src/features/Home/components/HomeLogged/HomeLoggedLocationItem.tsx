@@ -1,35 +1,44 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
 import slugify from "../../../../utils/formatUrlString";
+import scrollTop from "../../../../utils/scrollTop";
+import {AppContext} from '../../../../context/AppProvider'
 
 export default function HomeLoggedLocationItem(props: any) {
   const { org } = props;
-  // console.log("org :>> ", org);
+  const {userInfo} = useContext(AppContext)
   const history = useHistory();
-  const goDetail = () => {
+  const timeWork = org?.opening_time;
+  const workList = timeWork.map((item: any, index: number) => ({
+    day: index + 2, ...item
+  }))
+  const day = new Date();
+  const today = day.getDay() + 1;
+  const todayTimeWork = workList.find((item:any) => item.day === today);
+  const gotoDetail = () => {
     history.push({
-      pathname: `/Product-detail/${slugify(org.product_name)}`,
-      search: `${1},${org.id},${1}`,
+      pathname: `/Merchant-detail/${slugify(org.name)}`,
+      search: `${org.id}`,
+      state: org,
     });
+    scrollTop();
   };
   const [openInfoLocation, setOpenInfoLocation] = React.useState(false);
-  // function handleOpenLocation() {
-  //   setOpenInfoLocation(true);
-  // }
-  // function handleCloseLocation() {
-  //   setOpenInfoLocation(false);
-  // }
   return (
     <div className="homelogged-location__item">
-      <div className="item-top" onClick={goDetail}>
+      <div className="item-top" onClick={gotoDetail}>
         <div className="item-top__img">
           <img src="https://source.unsplash.com/random" alt="" />
         </div>
         <div className="item-top__content">
           <div className="item-top__content-header">
-            <span>{org?.product_name}</span>
+            <span>{org?.name}</span>
             <div className="item-top__content-rate">
+              <div className="rate-left">
+                <span>{org?.favorites_count}</span>
+                <img src={icon.Favorite} alt="" />
+              </div>
               <div className="rate-left">
                 <span>4.5</span>
                 <img src={icon.star} alt="" />
@@ -41,28 +50,16 @@ export default function HomeLoggedLocationItem(props: any) {
             </div>
           </div>
           <div className="item-top__content-footer">
-            <span>Đang mở cửa</span>
+            <span>{todayTimeWork?.time_opening === 'on' ? 'Đang mở cửa' : 'Đóngc cửa'}</span>
             <img src={icon.onedot} alt="" />
-            <span>9:00 - 21:00</span>
+            <span>{todayTimeWork?.from_time_opening}-{todayTimeWork?.to_time_opening}</span>
           </div>
         </div>
       </div>
       <div className="item-bottom">
-        {/* {openInfoLocation === true ? (
-          <div className="item-bottom__hidden">
-            <div className="item-bottom__hidden-wrap">
-              <div className="item-bottom__active-img">
-                <img src={icon.Logo} alt="" />
-              </div>
-              <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
-            </div>
-            <div onClick={handleCloseLocation} className="infor-img">
-              <img src={icon.Info} alt="" />
-            </div>
-          </div>
-        ) : ( */}
         <>
           <div
+            onClick={() => setOpenInfoLocation(!openInfoLocation)}
             className={
               openInfoLocation
                 ? "item-bottom__active active"
@@ -70,7 +67,6 @@ export default function HomeLoggedLocationItem(props: any) {
             }
           >
             <div
-              onClick={() => setOpenInfoLocation(!openInfoLocation)}
               className={openInfoLocation ? "close-ring active" : "close-ring"}
             >
               <img src={openInfoLocation ? icon.CloseRing : icon.Info} alt="" />
@@ -79,7 +75,7 @@ export default function HomeLoggedLocationItem(props: any) {
               <div className="item-bottom__active-img">
                 <img src={icon.Logo} alt="" />
               </div>
-              <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
+              <span className="item-bottom__active-name">{userInfo?.fullname}</span>
             </div>
             <div
               className={

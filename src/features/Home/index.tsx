@@ -19,11 +19,13 @@ import { AppContext } from "../../context/AppProvider";
 import Head from "../Head/index";
 import HeadTitle from "../HeadTitle";
 import Bottom from "../../featuresMobile/Bottom";
+
+//import HomeBanner from '../HomeBanner';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
 // const logged: boolean = true;
-function Home(){
+function Home() {
   const { profile, t } = useContext(AppContext);
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -37,6 +39,7 @@ function Home(){
   return (
     <div className="home">
       <HeadTitle title={t("Home.home")} />
+      {/* <HomeBanner /> */}
       <Head />
       <Container>
         <HomeBanner />

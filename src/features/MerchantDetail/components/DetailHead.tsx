@@ -10,7 +10,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import DetailHeadOpenTime from "../components/DetailHeadOpenTime";
-import favorites from '../../../api/favorite'
+import favorites from "../../../api/favorite";
+import SignInUp from '../../poupSignInUp/index';
 
 const settings = {
   dots: true,
@@ -36,44 +37,46 @@ const settings = {
 // }
 
 function DetailHead(props: any) {
-  const { org, loading, tempCount, setTempleCount } = props;
+  const { org, loading, tempCount, setTempleCount, follow, setFollow } = props;
+  const [openSignIn, setOpenSignIn] = useState(false)
   const { t, profile } = useContext(AppContext);
   const infoBox = useRef(null);
-  //const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
   const [openTime, setOpenTime] = useState(false);
 
-
   const handleOpenPopupContact = () => {
     setOpenPopupContact(true);
-  }
+  };
 
   async function handlePostFavorites(org_id: number) {
     try {
-      await favorites.postFavorite(org_id)
+      await favorites.postFavorite(org_id);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
   async function handleDeleteFavorite(org_id: number) {
     try {
-      await favorites.deleteFavorite(org_id)
+      await favorites.deleteFavorite(org_id);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
   const handleFollowClick = () => {
     if (profile) {
-      if (tempCount === 1) {
+      setFollow(!follow)
+      if (follow === true) {
         setTempleCount(tempCount - 1)
         handleDeleteFavorite(org.id)
       } else {
         setTempleCount(tempCount + 1)
         handlePostFavorites(org.id)
       }
+    } else {
+      setOpenSignIn(true)
     }
-  }
+  };
   return (
     <div className="mer-detail">
       <Container>
@@ -118,28 +121,27 @@ function DetailHead(props: any) {
                 <div className="content-left__follow">
                   <button onClick={handleOpenPopupContact}>
                     {t("Mer_de.contact")}
-                    </button>
-                    <button
-                      disabled={profile ? false : true}
-                      style={
-                        tempCount === 1
-                          ? {
-                            backgroundColor: "var(--purple)",
-                            color: "var(--bg-gray)",
-                          }
-                          : {}
-                      }
-                      onClick={handleFollowClick}
-                    >
-                      {tempCount === 1 ? t("Mer_de.flowing") : t("Mer_de.flow")}
-                    </button>
-                  </div>
+                  </button>
+                  <button
+                    style={
+                      follow === true && profile
+                        ? {
+                          backgroundColor: "var(--purple)",
+                          color: "var(--bg-gray)",
+                        }
+                        : {}
+                    }
+                    onClick={handleFollowClick}
+                  >
+                    {follow === true && profile ? t("Mer_de.flowing") : t("Mer_de.flow")}
+                  </button>
+                </div>
               </>
             )}
           </div>
 
           <div className="merchant-slider mer-detail__content-right">
-            <Slider 
+            <Slider
               lazyLoad="progressive"
               {...settings}
             >
@@ -162,6 +164,11 @@ function DetailHead(props: any) {
       <PopupDetailContact
         setOpenPopupContact={setOpenPopupContact}
         openPopupContact={openPopupContact}
+      />
+      <SignInUp
+        openSignIn={openSignIn}
+        setOpenSignIn={setOpenSignIn}
+        activeTabSign={1}
       />
     </div>
   );

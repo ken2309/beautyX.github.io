@@ -40,6 +40,7 @@ function MerchantDetail() {
   const [branches, setBranches] = useState<IBranch[]>([]);
   const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState<number>(1);
+  const [follow, setFollow] = useState(false)
 
 
   useEffect(() => {
@@ -48,25 +49,25 @@ function MerchantDetail() {
       if (location.state) {
         setOrg(location.state);
         setBranches(location.state.branches)
-        if(location.state.is_favorite === true){
-          setTempleCount(1)
-        }else{
-          setTempleCount(0)
+        if (location.state.is_favorite === true) {
+          setFollow(true)
+        } else {
+          setFollow(false)
         }
         setLoading(false);
       } else {
-      try {
-        const res = await orgApi.getOrgById(mer_id);
-        setOrg(res.data.context);
-        setBranches(res.data.context.branches);
-        if (res.data.context.is_favorite === true) {
-          setTempleCount(1)
-        }else{
-          setTempleCount(0)
-        }
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
+        try {
+          const res = await orgApi.getOrgById(mer_id);
+          setOrg(res.data.context);
+          setBranches(res.data.context.branches);
+          if (res.data.context.is_favorite === true) {
+            setFollow(true)
+          } else {
+            setFollow(false)
+          }
+          setLoading(false);
+        } catch (err) {
+          console.log(err);
         // scope.setTag("section", "articles");
         // Sentry.setUser({ email: "john.doe@example.com" });
         // Sentry.captureException(new Error("something went wrong"), () => scope);
@@ -89,6 +90,8 @@ function MerchantDetail() {
       <HeadTitle title={org?.name ? org.name : "Loading..."} />
       <Head />
       <DetailHead
+        follow={follow}
+        setFollow={setFollow}
         tempCount={tempCount}
         setTempleCount={setTempleCount}
         loading={loading}
@@ -98,7 +101,10 @@ function MerchantDetail() {
       {/* for mobile */}
       <DetailTabMb setActiveTab={setActiveTab} activeTab={activeTab} />
       {/* ---------- */}
-      <div style={{ backgroundColor: "var(--bg-gray)", paddingBottom: "64px" }}>
+      <div
+        className="tabMer-detail"
+        style={{ backgroundColor: "var(--bg-gray)", paddingBottom: "64px" }}
+      >
         <Container>
           <div
             style={

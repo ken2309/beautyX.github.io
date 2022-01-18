@@ -1,45 +1,45 @@
-.bt{
-      display: none;
+.bt {
+  display: none;
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 769px){
-      .bt{
-            display: block;
-            padding: 13px 8px 28px 8px;
-            background-color: var(--bgWhite);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 2;
-            box-shadow: 0px -3px 20px rgba(113, 97, 186, 0.15);
-            border-radius: 12px 12px 0px 0px;
-      }
-      .bt-cnt__item{
-            width: 25%;
-            position: relative;
-      }
-      .bt-cnt__item-badge{
-            margin: -4px 0px 0px 16px;
-            position: absolute;
-            font-size: 10px;
-            text-align: center;
-            font-weight: 100;
-            line-height: 14px;
-            border-radius: 100%;
-            background-color: var(--red-cl);
-            color: var(--bg-gray);
-            width: 14px;
-      }
-      .bt-cnt__item img{
-            width: 20px;
-            height: 20px;
-      }
-      .bt-cnt__item-title{
-            font-size: 12px;
-            line-height: 20px;
-            font-weight: 500;
-            color: var(--text-hover);
-      }
+@media only screen and (max-width: 767px) {
+  .bt {
+    display: block;
+    padding: 13px 8px 28px 8px;
+    background-color: var(--bgWhite);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    box-shadow: 0px -3px 20px rgba(113, 97, 186, 0.15);
+    border-radius: 12px 12px 0px 0px;
+  }
+  .bt-cnt__item {
+    width: 25%;
+    position: relative;
+  }
+  .bt-cnt__item-badge {
+    margin: -4px 0px 0px 16px;
+    position: absolute;
+    font-size: 10px;
+    text-align: center;
+    font-weight: 100;
+    line-height: 14px;
+    border-radius: 100%;
+    background-color: var(--red-cl);
+    color: var(--bg-gray);
+    width: 14px;
+  }
+  .bt-cnt__item img {
+    width: 20px;
+    height: 20px;
+  }
+  .bt-cnt__item-title {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--text-hover);
+  }
 }
