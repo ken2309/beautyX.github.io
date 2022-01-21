@@ -2,7 +2,7 @@ import React, { useRef, useState, useContext } from "react";
 import { Container } from "@mui/material";
 import icon from "../../../constants/icon";
 import { AppContext } from "../../../context/AppProvider";
-import { IOrganization } from "../../../interface/organization";
+//import { IOrganization } from "../../../interface/organization";
 import img from "../../../constants/img";
 import OrgCardLoading from "../../Loading/OrgCardLoading";
 import PopupDetailContact from "./PopupDetailContact";
@@ -10,6 +10,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import DetailHeadOpenTime from "../components/DetailHeadOpenTime";
+import favorites from "../../../api/favorite";
+import SignInUp from '../../poupSignInUp/index';
+
 const settings = {
   dots: true,
   infinite: true,
@@ -28,24 +31,52 @@ const settings = {
   ),
 };
 
-interface IProps {
-  org: IOrganization | undefined;
-  loading: boolean;
-}
+// interface IProps {
+//   org: IOrganization;
+//   loading: boolean;
+// }
 
-function DetailHead(props: IProps) {
-  const { org, loading } = props;
-  console.log("org :>> ", org);
-  const { t } = useContext(AppContext);
+function DetailHead(props: any) {
+  const { org, loading, tempCount, setTempleCount, follow, setFollow } = props;
+  const [openSignIn, setOpenSignIn] = useState(false)
+  const { t, profile } = useContext(AppContext);
   const infoBox = useRef(null);
-  const [follow, setFollow] = useState(false);
   const [openPopupContact, setOpenPopupContact] = useState(false);
   const [openTime, setOpenTime] = useState(false);
 
-  function handleOpenPopupContact() {
+  const handleOpenPopupContact = () => {
     setOpenPopupContact(true);
+  };
+
+  async function handlePostFavorites(org_id: number) {
+    try {
+      await favorites.postFavorite(org_id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function handleDeleteFavorite(org_id: number) {
+    try {
+      await favorites.deleteFavorite(org_id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
+  const handleFollowClick = () => {
+    if (profile) {
+      setFollow(!follow)
+      if (follow === true) {
+        setTempleCount(tempCount - 1)
+        handleDeleteFavorite(org.id)
+      } else {
+        setTempleCount(tempCount + 1);
+        handlePostFavorites(org.id);
+      }
+    } else {
+      setOpenSignIn(true)
+    }
+  };
   return (
     <div className="mer-detail">
       <Container>
@@ -64,7 +95,7 @@ function DetailHead(props: IProps) {
                       <img src={icon.star} alt="" />
                       <span>250</span>
                       <img src={icon.chatAll} alt="" />
-                      <span>121</span>
+                      <span>{`${org?.favorites_count + tempCount}`}</span>
                       <img src={icon.Favorite} alt="" />
                     </div>
                   </div>
@@ -92,17 +123,18 @@ function DetailHead(props: IProps) {
                     {t("Mer_de.contact")}
                   </button>
                   <button
+                    disabled={profile ? false : true}
                     style={
-                      follow === true
+                      follow === true && profile
                         ? {
-                            backgroundColor: "var(--purple)",
-                            color: "var(--bg-gray)",
-                          }
+                          backgroundColor: "var(--purple)",
+                          color: "var(--bg-gray)",
+                        }
                         : {}
                     }
-                    onClick={() => setFollow(!follow)}
+                    onClick={handleFollowClick}
                   >
-                    {follow === true ? t("Mer_de.flowing") : t("Mer_de.flow")}
+                    {follow === true && profile ? t("Mer_de.flowing") : t("Mer_de.flow")}
                   </button>
                 </div>
               </>
@@ -110,7 +142,10 @@ function DetailHead(props: IProps) {
           </div>
 
           <div className="merchant-slider mer-detail__content-right">
-            <Slider {...settings}>
+            <Slider
+              lazyLoad="progressive"
+              {...settings}
+            >
               <div className="merchant-slider__img">
                 <img src={img.slider} alt="" />
               </div>
@@ -130,6 +165,11 @@ function DetailHead(props: IProps) {
       <PopupDetailContact
         setOpenPopupContact={setOpenPopupContact}
         openPopupContact={openPopupContact}
+      />
+      <SignInUp
+        openSignIn={openSignIn}
+        setOpenSignIn={setOpenSignIn}
+        activeTabSign={1}
       />
     </div>
   );

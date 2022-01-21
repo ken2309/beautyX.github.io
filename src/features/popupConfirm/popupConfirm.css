@@ -19,3 +19,8 @@
   color: var(--text-black);
   margin: 16px 0px;
 }
+@media screen and (max-width: 767.98px) {
+  .pop-confirm {
+    width: calc(100% - 48px);
+  }
+}

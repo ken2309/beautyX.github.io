@@ -39,6 +39,9 @@ function CartPayment(props: any) {
   const dispatch = useDispatch();
   const carts = useSelector((state: any) => state.carts);
   const list = carts.cartList.filter((item: any) => item.isConfirm === true);
+  const products = list.filter((item: any) => item.is_type === 1);
+  const services = list.filter((item: any) => item.is_type === 2);
+  const combos = list.filter((item: any) => item.is_type === 3);
   useEffect(() => {
     dispatch(getTotal());
   }, [dispatch, carts]);
@@ -92,7 +95,12 @@ function CartPayment(props: any) {
       <Container>
         <div className="payment-cnt">
           <PaymentForm setUserInfo={setUserInfo} />
-          <PaymentCart list={list} />
+          <PaymentCart
+            list={list}
+            products={products}
+            services={services}
+            combos={combos}
+          />
           <PaymentMethod
             methodList={PAYMENT_METHOD}
             value={value}
@@ -110,6 +118,9 @@ function CartPayment(props: any) {
         list={list}
         profile={profile}
         chooseE_wall={chooseE_wall}
+        products={products}
+        services={services}
+        combos={combos}
       />
       <Footer />
     </div>

@@ -12,6 +12,7 @@ function Menu(props:any) {
             const token = '';
             setOpenMenu(!openMenu)
             localStorage.setItem('_WEB_TK', token)
+            window.sessionStorage.setItem('_WEB_TK', token)
       }
       return (
             <div

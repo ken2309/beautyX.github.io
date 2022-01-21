@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import range from "lodash-es/range";
 import HomeLoggedCalendarAppointment from "./HomeLoggedCalendarAppointment";
 import { AppContext } from "../../../../context/AppProvider";
+import HomeLoggedCalendarDayWeek from './HomeLoggedCalendarDayWeek';
 
 export default function HomeLoggedCalendarList(props: any) {
   const {
@@ -63,13 +64,13 @@ export default function HomeLoggedCalendarList(props: any) {
     }
   };
   const weekDays = [
-    t("Home.Sunday"),
-    t("Home.Monday"),
-    t("Home.Tuesday"),
-    t("Home.Wednesday"),
-    t("Home.Thursday"),
-    t("Home.Friday"),
-    t("Home.Saturday"),
+    { d: t("Home.Sunday"), date: daysInWeek[0] },
+    { d: t("Home.Monday"), date: daysInWeek[1] },
+    { d: t("Home.Tuesday"), date: daysInWeek[2] },
+    { d: t("Home.Wednesday"), date: daysInWeek[3] },
+    { d: t("Home.Thursday"), date: daysInWeek[4] },
+    { d: t("Home.Friday"), date: daysInWeek[5] },
+    { d: t("Home.Saturday"), date: daysInWeek[6] },
   ];
   const weekDaysMb = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
   return (
@@ -77,18 +78,20 @@ export default function HomeLoggedCalendarList(props: any) {
       <div className="week-container week-container__right">
         <div className="week-pc">
           <div className="flex-row-sp">
-            {weekDays.map((d: any) => (
-              <div className="week-cell" key={d}>
-                {d}
-              </div>
+            {weekDays.map((d: any, index: number) => (
+              <HomeLoggedCalendarDayWeek
+                key={index}
+                date={d}
+                dotAppoint={dotAppoint}
+              />
             ))}
           </div>
         </div>
         <div className="week-mb">
           <div className="flex-row-sp">
-            {weekDaysMb.map((d: any) => (
-              <div className="week-cell" key={d}>
-                {d}
+            {weekDaysMb.map((d: any, index: number) => (
+              <div className="week-cell" key={index}>
+                {d.d}
               </div>
             ))}
           </div>
@@ -98,12 +101,12 @@ export default function HomeLoggedCalendarList(props: any) {
           {dayObjOfLastMonth.date() > 6
             ? ""
             : range(weekDayOfFirst).map((i) => (
-                <div className="day-cell day-cell--faded" key={i}>
-                  {dayObjOfFirstMonth
-                    .subtract(weekDayOfFirst - i, "day")
-                    .date()}
-                </div>
-              ))}
+              <div className="day-cell day-cell--faded" key={i}>
+                {dayObjOfFirstMonth
+                  .subtract(weekDayOfFirst - i, "day")
+                  .date()}
+              </div>
+            ))}
           {
             // eslint-disable-next-line array-callback-return
             range(daysInMonth).map((i) => {
@@ -114,13 +117,12 @@ export default function HomeLoggedCalendarList(props: any) {
                 return (
                   <div
                     onClick={() => handleGetDate(i, thisMonth, thisYear)}
-                    className={`week-day__right day-cell day-cell--in-month dot-active${
-                      i + 1 === datepick.date &&
+                    className={`week-day__right day-cell day-cell--in-month dot-active${i + 1 === datepick.date &&
                       thisMonth === datepick.month &&
                       thisYear === datepick.year
-                        ? " day-cell--today border-none week-day__right "
-                        : ""
-                    }`}
+                      ? " day-cell--today border-none week-day__right "
+                      : ""
+                      }`}
                     key={i}
                   >
                     <div className="status-dots ">
@@ -139,10 +141,10 @@ export default function HomeLoggedCalendarList(props: any) {
 
           {dayObjOfFirstMonth.date() >= 26
             ? range(6 - weekDayOfLast).map((i) => (
-                <div className="day-cell day-cell--faded " key={i}>
-                  {dayObjOfLastMonth.add(i + 1, "day").date()}
-                </div>
-              ))
+              <div className="day-cell day-cell--faded " key={i}>
+                {dayObjOfLastMonth.add(i + 1, "day").date()}
+              </div>
+            ))
             : ""}
         </div>
       </div>

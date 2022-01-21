@@ -27,17 +27,21 @@ function SignIn(props: any) {
   const [errPass, setErrPass] = useState("");
   const [display_email, setDisplay_email] = useState("");
   const [popup, setPopup] = useState(false);
-
+  const [remember, setRemember] = useState(true)
+  //
   //handle submit login form
   async function submitLogin(values: any) {
     try {
       const response = await auth.login(values);
-      console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
       setTk("_WEB_TK", response.data.context.token);
-      localStorage.setItem("_WEB_TK", response.data.context.token);
+      if (remember === true) {
+        localStorage.setItem("_WEB_TK", response.data.context.token);
+      } else {
+        window.sessionStorage.setItem("_WEB_TK", response.data.context.token)
+      }
       setSign(true);
-      history.push("/beta");
+      history.goBack();
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -52,6 +56,7 @@ function SignIn(props: any) {
       }
     }
   }
+
   const handleLogin = (values: any) => {
     setLoading(true);
     setDisplay_email(values.email);
@@ -85,6 +90,7 @@ function SignIn(props: any) {
       handleLogin(values);
     },
   });
+
   return (
     <div
       style={activeTabSign === 1 ? { display: "block" } : { display: "none" }}
@@ -139,7 +145,8 @@ function SignIn(props: any) {
         <div className="signIn-checkbox sign-check">
           <div className="signIn-checkbox__wrap">
             <Checkbox
-              defaultChecked
+              defaultChecked={true}
+              onChange={() => setRemember(!remember)}
               sx={{
                 color: "#7161BA",
                 "&.Mui-checked": {

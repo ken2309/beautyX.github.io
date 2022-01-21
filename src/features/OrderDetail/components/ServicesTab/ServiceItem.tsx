@@ -7,10 +7,10 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../../../redux/cartSlice";
 import slugify from "../../../../utils/formatUrlString";
-import {AppContext} from '../../../../context/AppProvider'
+import { AppContext } from "../../../../context/AppProvider";
 
 function ServiceItem(props: any) {
-  const {t} = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const { serviceItem, org, open } = props;
   const [service, setService] = useState<Service>();
   const history = useHistory();
@@ -27,6 +27,7 @@ function ServiceItem(props: any) {
     isConfirm: true,
     price: service?.price,
   };
+  // add cart
   const handleAddCart = () => {
     const action = addCart(values);
     history.push({
@@ -34,11 +35,14 @@ function ServiceItem(props: any) {
     });
     dispatch(action);
   };
+  // go to service detail
+  const detail = service;
+  const name = service?.service_name;
   const handleDetailService = () => {
     history.push({
       pathname: `/Service-detail/${slugify(service?.service_name)}`,
       search: `${org.id},${serviceItem?.productable_id},${is_type}`,
-      state: org,
+      state: { org, detail, name },
     });
   };
   useEffect(() => {
@@ -78,7 +82,7 @@ function ServiceItem(props: any) {
             <div className="flex-row item-button">
               <ButtonCus
                 onClick={handleDetailService}
-                text={t('order.watch_info')}
+                text={t("order.watch_info")}
                 padding="4px 8px"
                 color="var(--purple)"
                 backColor="var(--bgGray)"

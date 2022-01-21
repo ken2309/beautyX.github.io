@@ -14,7 +14,6 @@ const getDateOfDating = (dating: any) => {
 
 export default function HomeLoggedCalendarAppointment(props: IAppointment) {
   const { datingList, daysInWeek } = props;
-
   const getDatingListAsDate = () => {
     const list: any = [];
 
@@ -30,7 +29,6 @@ export default function HomeLoggedCalendarAppointment(props: IAppointment) {
         list[i] = undefined;
       }
     });
-
     return list;
   };
 

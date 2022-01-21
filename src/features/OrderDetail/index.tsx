@@ -22,7 +22,7 @@ const Transition = React.forwardRef(function Transition(
 
 function OrderDetail(props: any) {
   const history = useHistory();
-  const {t} = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const { open, setOpen, org, order, countItem } = props;
   const [acTab, setAcTab] = useState();
   const handleDetailMerchant = () => {
@@ -43,20 +43,20 @@ function OrderDetail(props: any) {
         <div className="flex-row-sp order-de__head">
           <span className="flex-row order-de__head-title">
             <img onClick={() => setOpen(false)} src={icon.chevronLeft} alt="" />
-            {t('order.order_de')}
+            {t("order.order_de")}
           </span>
           <div className="flex-row order-de__head-date">
             <span className="flex-row date">
-              {t('booking.date')} Order: <h4>01-01-2000</h4>
+              {t("booking.date")} Order: <h4>01-01-2000</h4>
             </span>
             <span className="flex-row time">
-              {t('order.time')}: <h4>20-00-00</h4>
+              {t("order.time")}: <h4>20-00-00</h4>
             </span>
           </div>
         </div>
         <div className="order-de__count">
           <span className="flex-row count">
-            {t('pr.total')}:
+            {t("pr.total")}:
             <h4>
               {" "}
               {formatPrice(order?.amount)}đ ({countItem} item)
@@ -74,7 +74,7 @@ function OrderDetail(props: any) {
             <span className="address">{org?.full_address}</span>
             <ButtonCus
               onClick={handleDetailMerchant}
-              text={t('order.view_org')}
+              text={t("order.view_org")}
               backColor="var(--purple)"
               padding="6px 8px"
               color="var(--bgWhite)"

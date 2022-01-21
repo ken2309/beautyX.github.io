@@ -617,6 +617,7 @@
   }
   .mer-detail {
     padding: 64px 16px 36px 16px;
+    background-color: var(--bg-color);
   }
   .mer-detail__content {
     flex-direction: column-reverse;
@@ -775,7 +776,10 @@
     justify-content: center;
   }
 }
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 767px) {
+  .mb-cnt .tabMer-detail {
+    padding-bottom: 0 !important;
+  }
   .mb-cnt {
     background-color: var(--bg-color);
   }
@@ -900,5 +904,11 @@
   /* sale list */
   .mer-sale-list {
     display: none;
+  }
+  .ser-list__content {
+    padding-bottom: 48px;
+  }
+  .cmb-cnt {
+    padding: 24px 8px 48px 8px;
   }
 }
