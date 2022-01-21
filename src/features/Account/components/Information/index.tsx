@@ -9,14 +9,15 @@ import "./style.css";
 import { AppContext } from '../../../../context/AppProvider'
 
 function Information(props: any) {
-  const { t } = useContext(AppContext)
+  const { t, userInfo } = useContext(AppContext)
   const [openChangePass, setOpenChangePass] = useState(false);
   const [openNewPass, setOpenNewPass] = React.useState(false);
+  
   const formik = useFormik({
     initialValues: {
-      name: "",
-      gmail: "",
-      phone: "",
+      name: userInfo?.fullname,
+      gmail: userInfo?.email,
+      phone: userInfo?.telephone,
       address: "",
       address2: "",
       sex: "",

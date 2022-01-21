@@ -26,7 +26,7 @@ function ProductDetail(props: any) {
   const [org, setOrg] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
-  console.log(`params[0]`, params[0]);
+  // console.log(`params[0]`, params[0]);
   const values = useMemo(
     () => ({
       org_id: params[0],
@@ -53,6 +53,7 @@ function ProductDetail(props: any) {
   useEffect(() => {
     async function handleGetOrg_Products() {
       setLoading(true);
+      scrollTop();
       try {
         if (location.state) {
           setOrg(location.state.org);

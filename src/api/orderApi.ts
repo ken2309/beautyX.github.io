@@ -1,21 +1,24 @@
 import axiosClient from './axios';
 
 class Order {
-      getOrder = (page:number) => {
+      getOrder = (page: number) => {
+            const session = window.sessionStorage.getItem("_WEB_TK");
+            const local = localStorage.getItem("_WEB_TK")
             const url = `orders?sort=-id&page=${page}&limit=4`;
             return axiosClient.get(url, {
                   headers: {
-                        Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+                        Authorization: `Bearer ${session ? session : local}`,
                   },
             })
       }
       postOrder = (org_id: number, params: object) => {
-            console.log(org_id, params);
+            const session = window.sessionStorage.getItem("_WEB_TK");
+            const local = localStorage.getItem("_WEB_TK")
             const data = JSON.stringify(params);
             const url = `/organizations/${org_id}/orders`;
             return axiosClient.post(url, data, {
                   headers: {
-                        Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+                        Authorization: `Bearer ${session ? session : local}`,
                   },
             })
       }

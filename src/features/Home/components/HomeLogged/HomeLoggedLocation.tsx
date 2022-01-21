@@ -11,7 +11,6 @@ import { IOrganization } from "../../../../interface/organization";
 export default function HomeLoggedLocation(props: any) {
   const { t } = useContext(AppContext);
   const [org, setSetOrg] = useState<IOrganization[]>([]);
-  console.log(`org`, org);
   const settings = {
     dots: true,
     infinite: true,

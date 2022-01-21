@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import SectionTitle from "../../SectionTitle";
 import { AppContext } from "../../../context/AppProvider";
-import icon from "../../../constants/icon";
-
 function PaymentMethod(props: any) {
   const { t } = useContext(AppContext);
   const { methodList, value, setValue, chooseE_wall, setChooseE_wall } = props;

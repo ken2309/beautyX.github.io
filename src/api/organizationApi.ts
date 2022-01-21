@@ -35,10 +35,12 @@ class Organization {
   };
   //ex get all
   getAll = () => {
+    const session = window.sessionStorage.getItem("_WEB_TK");
+    const local = localStorage.getItem("_WEB_TK")
     const url = `/organizations?page=1&limit=15`;
     return axiosClient.get(url, {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("_WEB_TK"),
+        Authorization: `Bearer ${session ? session : local}`,
       },
     });
   };

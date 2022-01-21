@@ -4,14 +4,19 @@ import icon from "../../../../constants/icon";
 import { AppContext } from "../../../../context/AppProvider";
 import slugify from "../../../../utils/formatUrlString";
 import scrollTop from "../../../../utils/scrollTop";
+
 export default function HomeLoggedLocationItem(props: any) {
   const { org } = props;
-  const { t } = useContext(AppContext);
-
-  console.log("org :>> ", org);
+  const { userInfo } = useContext(AppContext);
   const history = useHistory();
-  const d = new Date();
-  const dayWeek = d.getDay() + 1;
+  const timeWork = org?.opening_time;
+  const workList = timeWork.map((item: any, index: number) => ({
+    day: index + 2,
+    ...item,
+  }));
+  const day = new Date();
+  const today = day.getDay() + 1;
+  const todayTimeWork = workList.find((item: any) => item.day === today);
   const gotoDetail = () => {
     history.push({
       pathname: `/Merchant-detail/${slugify(org.name)}`,
@@ -32,6 +37,10 @@ export default function HomeLoggedLocationItem(props: any) {
             <span>{org?.name}</span>
             <div className="item-top__content-rate">
               <div className="rate-left">
+                <span>{org?.favorites_count}</span>
+                <img src={icon.Favorite} alt="" />
+              </div>
+              <div className="rate-left">
                 <span>4.5</span>
                 <img src={icon.star} alt="" />
               </div>
@@ -42,38 +51,16 @@ export default function HomeLoggedLocationItem(props: any) {
             </div>
           </div>
           <div className="item-top__content-footer">
-            {org?.opening_time?.map((item: any, index: number) => (
-              <div
-                key={index}
-                style={
-                  dayWeek === index + 2
-                    ? { display: "block" }
-                    : { display: "none" }
-                }
-              >
-                <div className="result-item__detail-address">
-                  {/* <img src={icon.time} alt="" /> */}
-                  <span className="time">
-                    {/* {index + 2 === 8 ? "Chủ nhật" : `Thứ ${index + 2}`}: */}
-                    {item.time_opening === "off" ? (
-                      <span className="time__status">Đóng cửa</span>
-                    ) : (
-                      <>
-                        <span className="time__status">
-                          {t("Search_result.opening")}
-                        </span>
-                        <div className="time__imgdot">
-                          <img src={icon.dotPurple} alt="" />
-                        </div>
-                        <span className="time_op_cl">
-                          {item.from_time_opening} - {item.to_time_opening}
-                        </span>
-                      </>
-                    )}
-                  </span>
-                </div>
-              </div>
-            ))}
+            <span>
+              {todayTimeWork?.time_opening === "on"
+                ? "Đang mở cửa"
+                : "Đóng cửa"}
+            </span>
+            <img src={icon.onedot} alt="" />
+            <span>
+              {todayTimeWork?.from_time_opening}-
+              {todayTimeWork?.to_time_opening}
+            </span>
           </div>
         </div>
       </div>
@@ -96,7 +83,9 @@ export default function HomeLoggedLocationItem(props: any) {
               <div className="item-bottom__active-img">
                 <img src={icon.Logo} alt="" />
               </div>
-              <span className="item-bottom__active-name">Nguyen Thuy Binh</span>
+              <span className="item-bottom__active-name">
+                {userInfo?.fullname}
+              </span>
             </div>
             <div
               className={

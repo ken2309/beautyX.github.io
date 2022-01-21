@@ -30,7 +30,6 @@ function AppointmentDetail(props: any) {
     }
     if (openPopupDetail === true) {
       handleSetDetail();
-      console.log(datingList);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [datingList.id, openPopupDetail]);
@@ -93,7 +92,7 @@ function AppointmentDetail(props: any) {
                       </div>
                       <div className="flex-row-sp item-count__price">
                         <span>
-                          {formatPrice(item.price)}
+                          {formatPrice(item.special_price < 0 ? item.price : item.special_price)}
                           <u>đ</u>
                         </span>
                         <span>x1</span>
@@ -109,7 +108,7 @@ function AppointmentDetail(props: any) {
             <div className="app-de__address-txt">
               {datingList.branch_id
                 ? org.branches.find((i: any) => i.id === datingList.branch_id)
-                    .full_address
+                  .full_address
                 : org.full_address}
             </div>
           </div>

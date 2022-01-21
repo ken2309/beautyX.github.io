@@ -22,7 +22,7 @@ function SignUp(props: any) {
   const [typePass, setTypePass] = useState("password");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [errMail, setErrMail] = useState();
+  const [, setErrMail] = useState();
   const [popup, setPopup] = useState(false);
   const [value, setValue] = React.useState<Date | null>(new Date());
   async function submitRegisterForm(user: any) {

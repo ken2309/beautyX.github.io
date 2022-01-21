@@ -40,17 +40,18 @@ function MerchantDetail() {
   const [branches, setBranches] = useState<IBranch[]>([]);
   const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState<number>(1);
+  const [follow, setFollow] = useState(false)
 
   useEffect(() => {
     async function handleGetOrgById() {
       setLoading(true);
       if (location.state) {
         setOrg(location.state);
-        setBranches(location.state.branches);
+        setBranches(location.state.branches)
         if (location.state.is_favorite === true) {
-          setTempleCount(1);
+          setFollow(true)
         } else {
-          setTempleCount(0);
+          setFollow(false)
         }
         setLoading(false);
       } else {
@@ -59,17 +60,17 @@ function MerchantDetail() {
           setOrg(res.data.context);
           setBranches(res.data.context.branches);
           if (res.data.context.is_favorite === true) {
-            setTempleCount(1);
+            setFollow(true)
           } else {
-            setTempleCount(0);
+            setFollow(false)
           }
           setLoading(false);
         } catch (err) {
           console.log(err);
-          // scope.setTag("section", "articles");
-          // Sentry.setUser({ email: "john.doe@example.com" });
-          // Sentry.captureException(new Error("something went wrong"), () => scope);
-        }
+        // scope.setTag("section", "articles");
+        // Sentry.setUser({ email: "john.doe@example.com" });
+        // Sentry.captureException(new Error("something went wrong"), () => scope);
+      }
       }
     }
     async function handleGetProductSale() {
@@ -88,6 +89,8 @@ function MerchantDetail() {
       <HeadTitle title={org?.name ? org.name : "Loading..."} />
       <Head />
       <DetailHead
+        follow={follow}
+        setFollow={setFollow}
         tempCount={tempCount}
         setTempleCount={setTempleCount}
         loading={loading}

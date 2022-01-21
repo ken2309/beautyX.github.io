@@ -17,7 +17,7 @@ import scrollTop from "../../utils/scrollTop";
 
 function Head(props: any) {
   const { t, profile, userInfo } = useContext(AppContext);
-  const { isCart, title, setCloseDialog } = props;
+  const { isCart, title, setCloseDialog, headerStyle } = props;
   const dispatch = useDispatch();
   const [openNo, setOpenNo] = useState(false);
   const [openLang, setOpenLang] = useState(false);
@@ -74,7 +74,10 @@ function Head(props: any) {
     scrollTop();
   };
   return (
-    <div className="hd">
+    <div
+      style={headerStyle}
+      className="hd"
+    >
       <Container>
         <div className="flex-row-sp hd-cnt">
           <div className="hd-logo">
