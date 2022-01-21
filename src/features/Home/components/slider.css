@@ -20,7 +20,7 @@
   transition: transform 0.3s ease-in-out;
 }
 .home-slider .home-slider__img {
-  height: 348px;
+  height: 280px;
   border-radius: 24px;
   overflow: hidden;
   padding: 16px;

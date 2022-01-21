@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 // import img from "../../../constants/img";
 // import { AppContext } from "../../../context/AppProvider";
 // import SectionTitle from "../../SectionTitle";
@@ -41,16 +41,16 @@ function HomeSlider(props: any) {
     <div className="home-slider">
       <Slider {...settings}>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb} alt="" />
         </div>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb_1} alt="" />
         </div>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb_2} alt="" />
         </div>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb} alt="" />
         </div>
       </Slider>
     </div>
