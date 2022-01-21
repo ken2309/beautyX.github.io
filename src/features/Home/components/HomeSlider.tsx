@@ -1,4 +1,7 @@
 import React from "react";
+import img from "../../../constants/img";
+// import { AppContext } from "../../../context/AppProvider";
+// import SectionTitle from "../../SectionTitle";
 import "./slider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -36,16 +39,16 @@ function HomeSlider(props: any) {
     <div className="home-slider">
       <Slider {...settings}>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb} alt="" />
         </div>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb_1} alt="" />
         </div>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb_2} alt="" />
         </div>
         <div className="home-slider__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={img.thumb} alt="" />
         </div>
       </Slider>
     </div>

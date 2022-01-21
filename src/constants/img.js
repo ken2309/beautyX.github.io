@@ -24,6 +24,9 @@ import resultNull from "../assets/image/resultNull.png";
 import beautyX from "../assets/image/beautyX.svg";
 import slider1 from "../assets/image/slider1.png";
 import banner from "../assets/image/banner.png";
+import thumb from "../assets/image/thumb.png";
+import thumb_1 from "../assets/image/thumb_1.png";
+import thumb_2 from "../assets/image/thumb_2.png";
 
 const img = {
   slider1,
@@ -52,5 +55,8 @@ const img = {
   imagePay,
   resultNull,
   beautyX,
+  thumb,
+  thumb_1,
+  thumb_2,
 };
 export default img;
