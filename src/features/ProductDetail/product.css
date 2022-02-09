@@ -284,6 +284,9 @@
     justify-content: unset;
     gap: 0 36px;
   }
+  .detail-mer {
+    padding-left: 0;
+  }
   .pr-de-mer .detail-mer {
     padding-left: 0;
     width: 100%;

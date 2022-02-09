@@ -3,11 +3,13 @@ import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
 import formatPrice from "../../../../utils/formatPrice";
 import slugify from "../../../../utils/formatUrlString";
+import scrollTop from "../../../../utils/scrollTop";
 
 export default function HomeLoggedProductItem(props: any) {
   const { product } = props;
   const history = useHistory();
   const goDetail = () => {
+    scrollTop();
     history.push({
       pathname: `/Product-detail/${slugify(product.product_name)}`,
       search: `${1},${product.id},${1}`,
@@ -16,7 +18,10 @@ export default function HomeLoggedProductItem(props: any) {
   return (
     <div className="homelogged-product__item">
       <div className="item-img" onClick={goDetail}>
-        <img src="https://source.unsplash.com/random" alt="" />
+        <img
+          src={"https://picsum.photos/650/976?random=" + product.id}
+          alt=""
+        />
       </div>
       <div className="item-content" onClick={goDetail}>
         <span className="item-content__title">{product.product_name}</span>

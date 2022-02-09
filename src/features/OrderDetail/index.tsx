@@ -9,6 +9,7 @@ import { TransitionProps } from "@mui/material/transitions";
 //import slugify from "../../utils/formatUrlString";
 import { useHistory } from "react-router-dom";
 import { AppContext } from "../../context/AppProvider";
+import scrollTop from "../../utils/scrollTop";
 
 const view = window.screen.width;
 const Transition = React.forwardRef(function Transition(
@@ -26,6 +27,7 @@ function OrderDetail(props: any) {
   const { open, setOpen, org, order, countItem } = props;
   const [acTab, setAcTab] = useState();
   const handleDetailMerchant = () => {
+    scrollTop();
     history.push({
       pathname: `/org/${org.subdomain}`,
       search: `${org.id}`,

@@ -3,14 +3,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../../../../context/AppProvider";
 
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-
 
 function Form(props: any) {
   const { t } = useContext(AppContext);
@@ -117,7 +116,7 @@ function Form(props: any) {
               //locale={viVN}
             >
               <DatePicker
-                className='cus-date__picker'
+                className="cus-date__picker"
                 openTo="year"
                 views={["year", "month", "day"]}
                 value={value}

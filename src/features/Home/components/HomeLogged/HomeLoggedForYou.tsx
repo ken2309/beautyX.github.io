@@ -32,6 +32,7 @@ export default function HomeLoggedForYou() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          swipe: true,
         },
       },
       {

@@ -1,21 +1,22 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
-//import slugify from "../../../../utils/formatUrlString";
+import { AppContext } from "../../../../context/AppProvider";
+import slugify from "../../../../utils/formatUrlString";
 import scrollTop from "../../../../utils/scrollTop";
-import {AppContext} from '../../../../context/AppProvider'
 
 export default function HomeLoggedLocationItem(props: any) {
   const { org } = props;
-  const {userInfo} = useContext(AppContext)
+  const { userInfo } = useContext(AppContext);
   const history = useHistory();
   const timeWork = org?.opening_time;
   const workList = timeWork.map((item: any, index: number) => ({
-    day: index + 2, ...item
-  }))
+    day: index + 2,
+    ...item,
+  }));
   const day = new Date();
   const today = day.getDay() + 1;
-  const todayTimeWork = workList.find((item:any) => item.day === today);
+  const todayTimeWork = workList.find((item: any) => item.day === today);
   const gotoDetail = () => {
     history.push({
       //pathname: `/Merchant-detail/${slugify(org.name)}`,
@@ -30,7 +31,7 @@ export default function HomeLoggedLocationItem(props: any) {
     <div className="homelogged-location__item">
       <div className="item-top" onClick={gotoDetail}>
         <div className="item-top__img">
-          <img src="https://source.unsplash.com/random" alt="" />
+          <img src={"https://picsum.photos/650/976?random=" + org.id} alt="" />
         </div>
         <div className="item-top__content">
           <div className="item-top__content-header">
@@ -51,9 +52,16 @@ export default function HomeLoggedLocationItem(props: any) {
             </div>
           </div>
           <div className="item-top__content-footer">
-            <span>{todayTimeWork?.time_opening === 'on' ? 'Đang mở cửa' : 'Đóngc cửa'}</span>
+            <span>
+              {todayTimeWork?.time_opening === "on"
+                ? "Đang mở cửa"
+                : "Đóng cửa"}
+            </span>
             <img src={icon.onedot} alt="" />
-            <span>{todayTimeWork?.from_time_opening}-{todayTimeWork?.to_time_opening}</span>
+            <span>
+              {todayTimeWork?.from_time_opening}-
+              {todayTimeWork?.to_time_opening}
+            </span>
           </div>
         </div>
       </div>
@@ -76,7 +84,9 @@ export default function HomeLoggedLocationItem(props: any) {
               <div className="item-bottom__active-img">
                 <img src={icon.Logo} alt="" />
               </div>
-              <span className="item-bottom__active-name">{userInfo?.fullname}</span>
+              <span className="item-bottom__active-name">
+                {userInfo?.fullname}
+              </span>
             </div>
             <div
               className={

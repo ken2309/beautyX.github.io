@@ -337,7 +337,7 @@
 .my-ser-bot__check-right .choose-time .date {
   position: relative;
 }
-.my-ser-bot__check-right .choose-time{
+.my-ser-bot__check-right .choose-time {
   z-index: 0;
 }
 .ser-choose-br {
@@ -409,7 +409,7 @@
   margin-bottom: 8px;
 }
 .my-ser-submit .info {
-  font-size: 20px;
+  font-size: 14px;
   line-height: 24px;
   font-weight: 700;
   color: var(--text-black);
@@ -663,7 +663,7 @@
     width: 100%;
     padding: 0;
   }
-  .my-ser-bot__check-left{
+  .my-ser-bot__check-left {
     height: max-content;
   }
   .my-ser-bot .choose-time .date {
@@ -721,17 +721,17 @@
   }
 }
 /* custom back drop  */
-.back-drop_layout{
-  content: '';
+.back-drop_layout {
+  content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   opacity: 0;
-  top: '80px';
+  top: "80px";
   display: none;
 }
-.back-drop_layout.open{
-  opacity: 1; 
-  top: 50px; 
+.back-drop_layout.open {
+  opacity: 1;
+  top: 50px;
   display: block;
 }

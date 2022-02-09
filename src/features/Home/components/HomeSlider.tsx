@@ -1,14 +1,12 @@
 import React from "react";
-// import img from "../../../constants/img";
+import img from "../../../constants/img";
 // import { AppContext } from "../../../context/AppProvider";
 // import SectionTitle from "../../SectionTitle";
 import "./slider.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import img from "../../../constants/img";
 function HomeSlider(props: any) {
-  //   const { t } = useContext(AppContext);
   const settings = {
     centerMode: true,
     centerPadding: "0px",

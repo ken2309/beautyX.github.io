@@ -11,7 +11,7 @@ interface IChooseMonth {
 }
 export default function HomeLoggedCalendarChooseMonth(props: IChooseMonth) {
   const { language } = useContext(AppContext);
-  const [lo, setLo] = useState(language);
+  const [, setLo] = useState(language);
   const { handlePrev, handleNext, dayObj } = props;
   useEffect(() => {
     if (language === "vn") {

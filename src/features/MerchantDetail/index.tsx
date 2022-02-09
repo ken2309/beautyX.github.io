@@ -40,18 +40,17 @@ function MerchantDetail() {
   const [branches, setBranches] = useState<IBranch[]>([]);
   const [productsSale, setProductsSale] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState<number>(1);
-  const [follow, setFollow] = useState(false)
-
+  const [follow, setFollow] = useState(false);
   useEffect(() => {
     async function handleGetOrgById() {
       setLoading(true);
       if (location.state) {
         setOrg(location.state);
-        setBranches(location.state.branches)
+        setBranches(location.state.branches);
         if (location.state.is_favorite === true) {
-          setFollow(true)
+          setFollow(true);
         } else {
-          setFollow(false)
+          setFollow(false);
         }
         setLoading(false);
       } else {
@@ -60,17 +59,17 @@ function MerchantDetail() {
           setOrg(res.data.context);
           setBranches(res.data.context.branches);
           if (res.data.context.is_favorite === true) {
-            setFollow(true)
+            setFollow(true);
           } else {
-            setFollow(false)
+            setFollow(false);
           }
           setLoading(false);
         } catch (err) {
           console.log(err);
-        // scope.setTag("section", "articles");
-        // Sentry.setUser({ email: "john.doe@example.com" });
-        // Sentry.captureException(new Error("something went wrong"), () => scope);
-      }
+          // scope.setTag("section", "articles");
+          // Sentry.setUser({ email: "john.doe@example.com" });
+          // Sentry.captureException(new Error("something went wrong"), () => scope);
+        }
       }
     }
     async function handleGetProductSale() {
