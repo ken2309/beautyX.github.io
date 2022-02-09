@@ -4,21 +4,6 @@ import HomeFilter from "./HomeFilter";
 import Slider from "react-slick";
 import bannerApi from "../../../api/bannerApi";
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  arrows: false,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  fade: true,
-  // afterChange: function (index) {
-  //   setChooseBanner(banners[index - 1]);
-  // },
-};
-
 const styleFilter = {
   position: "absolute",
   width: "66.66%",
@@ -26,6 +11,8 @@ const styleFilter = {
   padding: "36px",
 };
 function HomeBanner(props: any) {
+  const [chooseBanner, setChooseBanner] = useState();
+  console.log("choose", chooseBanner);
   const [banners, setBanners] = useState([]);
   console.log("banners", banners);
   const { t } = useContext(AppContext);
@@ -40,6 +27,20 @@ function HomeBanner(props: any) {
     }
     getBanners();
   }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    fade: true,
+    afterChange: function (index: number) {
+      setChooseBanner(banners[index]);
+    },
+  };
   return (
     <div className="home-banner">
       <Slider {...settings}>
