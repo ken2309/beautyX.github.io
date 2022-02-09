@@ -22,7 +22,7 @@ function HomeBanner(props: any) {
   const [open, setOpen] = useState(false);
   const [openVideo, setOpenVideo] = useState(false);
   function openWeb() {
-    const payUrl = "https://myspa.vn/";
+    const payUrl = chooseBanner?.url;
     window.open(`${payUrl}`, "_blank", "noopener,noreferrer");
   }
   function closePopupVideo() {
