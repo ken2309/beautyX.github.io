@@ -13,12 +13,9 @@ function Result(props: any) {
   const {
     t,
     keySearch,
-    resultList,
     setChooseItem,
-    loading,
-    totalItem,
-    setCurPage,
-    total,
+    data,
+    setData
   } = props;
   const serviceOfCardOrg = [
     { title: t("Search_result.parking"), text: "100m2", icon: icon.car },
@@ -40,19 +37,23 @@ function Result(props: any) {
   // }
   const pageChange = (event: any, value: any) => {
     scrollTop();
-    setCurPage(value);
+    //setCurPage(value);
+    setData({
+      ...data,
+      curPage: value
+    })
   };
   return (
     <div className="result-detail">
       <div className="result-detail__filter">
-        <HomeFilter setCurPage={setCurPage} />
+        <HomeFilter setData={setData} />
       </div>
-      <SearchResultMb setCurPage={setCurPage} />
+      <SearchResultMb setData={setData} />
       <div className="result-detail__title">
         <div className="result-detail__result">
           <h3>{keySearch.length > 0 ? keySearch : ""}</h3>
           <span className="result-detail__result-total">
-            <span>{total}</span> {t("Search_result.text_result")}
+            <span>{data.total}</span> {t("Search_result.text_result")}
           </span>
         </div>
         <div className="result-detail__path">
@@ -66,18 +67,18 @@ function Result(props: any) {
         </div>
       </div>
       <ul className="result-detail__org">
-        {loading === true ? (
+        {data.loading === true ? (
           <>
             <SearchLoading />
           </>
         ) : (
-          resultList.map((item: any) => (
+          data.orgs.map((item: any) => (
             <ResultItem
               key={item.id}
               item={item}
               setChooseItem={setChooseItem}
               serviceOfCardOrg={serviceOfCardOrg}
-              resultList={resultList}
+              resultList={data.orgs}
             />
           ))
         )}
@@ -85,7 +86,7 @@ function Result(props: any) {
       <Pagination
         color="secondary"
         shape="rounded"
-        count={totalItem}
+        count={data.totalItem}
         onChange={pageChange}
       />
     </div>

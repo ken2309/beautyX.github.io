@@ -54,7 +54,7 @@ function HomeFilterForm(props: any) {
                   province_code: chooseLocal.province_code
             }
             history.push({
-                  pathname:'/Search-result/',
+                  pathname:'/search-result/',
                   state:filterValues
             })
       }

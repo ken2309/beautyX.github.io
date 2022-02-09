@@ -36,7 +36,37 @@
   text-transform: capitalize;
   cursor: pointer;
 }
-
+.header-search{
+  position: relative;
+}
+.header-search-icon{
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}
+.header-filter{
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin-top: 100px;
+  /* display: none; */
+  /* top:8rem; */
+  opacity: 0;
+  visibility: hidden
+}
+.header-file__ac{
+  /* display: block; */
+  /* top: 5rem; */
+  margin-top: 48px;
+  opacity: 1;
+  visibility: visible;
+  transition: all .5s;
+}
+.header-filter__wrap{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 .hd-cnt__right-avatar {
   position: relative;
   margin: 0px 16px 0px 16px;

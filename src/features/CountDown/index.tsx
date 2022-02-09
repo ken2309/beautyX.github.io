@@ -27,7 +27,7 @@ export default function CountDown() {
     setPopupContact(false);
   };
   const startTime = () => {
-    const countDownDate = new Date("Feb 01, 2022 00:00:00").getTime();
+    const countDownDate = new Date("Jan 21, 2023 00:00:00").getTime();
     interval = setInterval(() => {
       const now: any = new Date().getTime();
       const dis: any = countDownDate - now;

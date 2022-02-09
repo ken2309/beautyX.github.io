@@ -38,15 +38,11 @@ function RouterConfig(props: any) {
       component: <Home />,
     },
     {
-      path: "/Search-result/",
+      path: "/search-result/",
       component: <SearchResult />,
     },
     {
-      path: "/Merchant-detail/:name",
-      component: <MerchantDetail />,
-    },
-    {
-      path: "/Cart",
+      path: "/cart",
       component: <Cart />,
     },
     {
@@ -100,6 +96,10 @@ function RouterConfig(props: any) {
     //   path: '/goi-dich-vu',
     //   component: <ServicesUser />
     // },
+    {
+      path: "/org/:subdomain",
+      component: <MerchantDetail />,
+    },
   ];
   const routesPrivate = [
     {

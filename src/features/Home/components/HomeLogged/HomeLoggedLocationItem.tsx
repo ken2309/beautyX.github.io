@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
-import slugify from "../../../../utils/formatUrlString";
+//import slugify from "../../../../utils/formatUrlString";
 import scrollTop from "../../../../utils/scrollTop";
 import {AppContext} from '../../../../context/AppProvider'
 
@@ -18,7 +18,8 @@ export default function HomeLoggedLocationItem(props: any) {
   const todayTimeWork = workList.find((item:any) => item.day === today);
   const gotoDetail = () => {
     history.push({
-      pathname: `/Merchant-detail/${slugify(org.name)}`,
+      //pathname: `/Merchant-detail/${slugify(org.name)}`,
+      pathname: `/org/${org.subdomain}`,
       search: `${org.id}`,
       state: org,
     });

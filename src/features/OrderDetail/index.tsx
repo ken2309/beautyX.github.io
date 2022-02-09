@@ -6,7 +6,7 @@ import TabOrder from "./components/TabOrder";
 import { Dialog, Slide } from "@mui/material";
 import icon from "../../constants/icon";
 import { TransitionProps } from "@mui/material/transitions";
-import slugify from "../../utils/formatUrlString";
+//import slugify from "../../utils/formatUrlString";
 import { useHistory } from "react-router-dom";
 import { AppContext } from "../../context/AppProvider";
 
@@ -27,7 +27,7 @@ function OrderDetail(props: any) {
   const [acTab, setAcTab] = useState();
   const handleDetailMerchant = () => {
     history.push({
-      pathname: `/Merchant-detail/${slugify(org.name)}`,
+      pathname: `/org/${org.subdomain}`,
       search: `${org.id}`,
       state: org,
     });

@@ -60,7 +60,7 @@ function CardItem(props:any) {
                               {detail.id} - {name}
                         </div>
                         <span className="card-spa-name">
-                              {org.name}
+                              {org?.name}
                         </span>
                         <div className="flex-row-sp card-price">
                               <span className="flex-row card-price__detail">
