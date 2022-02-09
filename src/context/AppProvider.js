@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import auth from "../api/authApi";
-import dateNow from '../utils/dateExp';
-import tagsApi from '../api/tagApi'
+import dateNow from "../utils/dateExp";
+import tagsApi from "../api/tagApi";
 // import axios from 'axios';
 
 export const AppContext = createContext();
@@ -17,7 +17,7 @@ export default function AppProvider({ children }) {
   const [profile, setProfile] = useState();
   const [tempCount, setTempleCount] = useState(0);
   const [acBtn, setAcBtn] = useState(1);
-  const [tags, setTags] = useState([])
+  const [tags, setTags] = useState([]);
 
   // Check if token expires and logout user
   if (localStorage.getItem("_WEB_US")) {
@@ -67,14 +67,14 @@ export default function AppProvider({ children }) {
   useEffect(() => {
     async function handleGetAllTags() {
       try {
-        const res = await tagsApi.getAll()
+        const res = await tagsApi.getAll();
         setTags(res.data.context.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
-    handleGetAllTags()
-  }, [])
+    handleGetAllTags();
+  }, []);
   const value = {
     t,
     tags,
@@ -91,7 +91,7 @@ export default function AppProvider({ children }) {
     setSign,
     profile,
     tempCount,
-    setTempleCount
+    setTempleCount,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

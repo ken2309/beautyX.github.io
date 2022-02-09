@@ -25,31 +25,14 @@ function ProductDetail(props: any) {
   const [products, setProducts] = useState<Product[]>([]);
   const [org, setOrg] = useState<any>({});
   const [loading, setLoading] = useState(false);
-
-  // console.log(`params[0]`, params[0]);
   const values = useMemo(
     () => ({
       org_id: params[0],
       id: params[1],
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params[1]]
   );
-  // useEffect(() => {
-  //   async function handleGetDetailProduct() {
-  //     setLoading(true);
-  //     scrollTop();
-  //     try {
-  //       const res = await productsApi.getDetailById(values);
-  //       setProduct(res.data.context);
-  //       setLoading(false);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   }
-  //   handleGetDetailProduct();
-  // }, [params[1]]);
   useEffect(() => {
     async function handleGetOrg_Products() {
       setLoading(true);

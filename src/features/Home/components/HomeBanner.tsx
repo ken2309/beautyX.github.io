@@ -1,6 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../../context/AppProvider";
 import HomeFilter from "./HomeFilter";
+import Slider from "react-slick";
+import bannerApi from "../../../api/bannerApi";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  arrows: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  fade: true,
+  // afterChange: function (index) {
+  //   setChooseBanner(banners[index - 1]);
+  // },
+};
 
 const styleFilter = {
   position: "absolute",
@@ -9,9 +26,29 @@ const styleFilter = {
   padding: "36px",
 };
 function HomeBanner(props: any) {
+  const [banners, setBanners] = useState([]);
+  console.log("banners", banners);
   const { t } = useContext(AppContext);
+  useEffect(() => {
+    async function getBanners() {
+      try {
+        const res = await bannerApi.getAll();
+        setBanners(res.data.context.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getBanners();
+  }, []);
   return (
     <div className="home-banner">
+      <Slider {...settings}>
+        {banners.map((item: any, index: number) => (
+          <div key={index + item.url} className="home-banner__img">
+            <img src={item.imageURL} alt="" />
+          </div>
+        ))}
+      </Slider>
       <span className="home-banner__slogan">{t("Banner.1")}</span>
       <HomeFilter styleFilter={styleFilter} />
     </div>

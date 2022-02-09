@@ -28,18 +28,18 @@ img {
 }
 .home-banner {
   margin-top: 64px;
-  padding-top: 63px;
-  background-image: url("../../assets/image/banner.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 480px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
+}
+.home-banner__img {
+  height: 480px;
+  width: 100%;
+}
+.home-banner__img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 24px;
+  overflow: hidden;
 }
 .home-banner__slogan {
   text-align: center;
@@ -48,6 +48,11 @@ img {
   line-height: 36px;
   color: var(--purple);
   white-space: pre-line;
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
 }
 .home-banner__slogan p {
   text-align: center;
@@ -60,6 +65,8 @@ img {
   display: flex;
   flex-direction: column;
   border-radius: 24px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .home__filter-search-box {

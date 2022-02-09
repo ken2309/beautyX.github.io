@@ -1,6 +1,6 @@
 /* head */
 .mer-detail {
-  padding: 64px 0px 24px 0px;
+  padding: 64px 0px 40px 0px;
   width: 100%;
   background-color: var(--purple);
 }
@@ -72,7 +72,6 @@
   color: var(--purple);
   margin-right: 4px;
 }
-
 .content-left__work {
   display: flex;
   justify-content: space-between;
@@ -95,12 +94,6 @@
   gap: 0 4px;
   margin: 6px 0 2px 0;
 }
-/* .content-left__work-item span {
-  color: #a2a1ab;
-  font-size: 14px;
-  line-height: 12px;
-  font-weight: 700;
-} */
 .content-left__work-item .week-days {
   color: #a2a1ab;
   font-size: 12px;
@@ -157,7 +150,7 @@
   top: 0;
   z-index: 2;
   background-color: var(--purple);
-  padding: 40px 0px 24px 0px;
+  padding: 24px 0px 24px 0px;
 }
 .mer-detail__tab {
   display: flex;
@@ -708,7 +701,6 @@
     gap: 0 2px;
   }
 }
-
 /* res-mobile */
 /* Mobile */
 @media only screen and (max-width: 767px) {
