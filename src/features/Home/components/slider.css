@@ -2,7 +2,9 @@
   margin-bottom: 100px;
   margin-top: -64px;
 }
-
+.home-banner .slick-dots {
+  bottom: -44px;
+}
 .home-slider .slick-track {
   padding: 60px 0;
 }

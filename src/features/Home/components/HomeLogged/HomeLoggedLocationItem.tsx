@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import icon from "../../../../constants/icon";
 import { AppContext } from "../../../../context/AppProvider";
-import slugify from "../../../../utils/formatUrlString";
+// import slugify from "../../../../utils/formatUrlString";
 import scrollTop from "../../../../utils/scrollTop";
 
 export default function HomeLoggedLocationItem(props: any) {
