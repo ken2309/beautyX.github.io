@@ -41,6 +41,11 @@ img {
   border-radius: 24px;
   overflow: hidden;
 }
+/* .home-banner__demo{
+  margin-top: 0px;
+  padding-top: 98px;
+  height: 100vh;
+} */
 .home-banner__slogan {
   text-align: center;
   font-weight: bold;
@@ -65,8 +70,8 @@ img {
   display: flex;
   flex-direction: column;
   border-radius: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  /* left: 50%;
+  transform: translateX(-50%); */
 }
 
 .home__filter-search-box {

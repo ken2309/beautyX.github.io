@@ -14,6 +14,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTotal } from "../../redux/cartSlice";
 import MbMenu from "../../featuresMobile/Menu";
 import scrollTop from "../../utils/scrollTop";
+import HomeFilter from '../Home/components/HomeFilter';
+
+const styleFilter = {
+  width: '66.66%',
+  boxShadow: "rgb(0 0 0 / 14%) -2px 1px 16px 0px",
+  padding: "36px",
+}
+
+function openFilter() {
+  document.querySelector('.header-filter')?.classList.toggle('header-file__ac')
+}
+function hiddenFilter() {
+  document.querySelector('.header-filter')?.classList.remove('header-file__ac')
+}
+// onload event 
+window.addEventListener("scroll", function () {
+  if (hiddenFilter) {
+    hiddenFilter()
+  }
+});
+//////
 
 function Head(props: any) {
   const { t, profile, userInfo } = useContext(AppContext);
@@ -111,6 +132,20 @@ function Head(props: any) {
             }
             className="flex-row hd-cnt__right"
           >
+            <div className="header-search">
+              <img
+                className="header-search-icon"
+                src={icon.searchPurple} alt=""
+                onClick={() => openFilter()}
+              />
+              <div className="header-filter">
+                <div className="header-filter__wrap">
+                  <HomeFilter
+                    styleFilter={styleFilter}
+                  />
+                </div>
+              </div>
+            </div>
             {!profile ? (
               <>
                 <div className="flex-row hd-cnt__sign-btn">
@@ -156,7 +191,7 @@ function Head(props: any) {
             <div className="mb-hd-cnt__right">
               <div className="flex-row">
                 <div
-                  onClick={() => history.push("/Cart")}
+                  onClick={() => history.push("/cart")}
                   className="hd-cnt__right-cart"
                 >
                   <img src={icon.ShoppingCartSimpleWhite} alt="" />
@@ -174,7 +209,7 @@ function Head(props: any) {
             <MbMenu openMbMenu={openMbMenu} setOpenMbMenu={setOpenMbMenu} />
             {/* --- */}
             <div
-              onClick={() => history.push("/Cart")}
+              onClick={() => history.push("/cart")}
               className="hd-cnt__right-cart"
             >
               <img src={icon.ShoppingCartSimple} alt="" />

@@ -13,37 +13,51 @@ import Bottom from "../../featuresMobile/Bottom";
 import HeadTitle from "../HeadTitle";
 // import img from '../../constants/img';
 
+interface IData{
+  orgs: IOrganization[],
+  loading: boolean,
+  totalItem: number,
+  total:number,
+  curPage: number
+}
+
 function SearchResult(props: any) {
   const { t } = useContext(AppContext);
   const location = useLocation();
   const [chooseItem, setChooseItem] = useState();
   const params = location.search.slice(8, location.search.length);
   const keySearch = decodeURI(params);
-  const [loading, setLoading] = useState(false);
-  const [orgs, setOrgs] = useState<IOrganization[]>([]);
-  // const [orgsLength, setOrgsLength] = useState();
-  const [totalItem, setTotalItem] = useState();
-  const [total, setTotal] = useState();
-  const [curPage, setCurPage] = useState(1);
+  const [data, setData] = useState<IData>({
+    orgs: [],
+    loading: false,
+    totalItem: 1,
+    total: 1,
+    curPage: 1
+  })
+
 
   useEffect(() => {
     async function handleGetOrgs() {
-      setLoading(true);
+      setData({ ...data, loading: true })
       try {
         const res = await orgApi.getOrgByKeyword({
-          page: curPage,
+          page: data.curPage,
           keySearch: keySearch,
         });
-        setTotalItem(res.data.context.last_page);
-        setOrgs(res.data.context.data);
-        setTotal(res.data.context.total);
-        setLoading(false);
+        setData({
+          ...data,
+          orgs: res.data.context.data,
+          totalItem: res.data.context.last_page,
+          total: res.data.context.total,
+          loading: false
+        })
       } catch (err) {
         console.log(err);
       }
     }
     handleGetOrgs();
-  }, [keySearch, curPage]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keySearch, data.curPage]);
   return (
     <div
       style={{
@@ -69,12 +83,14 @@ function SearchResult(props: any) {
             <Result
               t={t}
               keySearch={keySearch}
-              totalItem={totalItem}
-              setCurPage={setCurPage}
-              resultList={orgs}
+              data={data}
+              setData={setData}
+              //totalItem={totalItem}
+              //setCurPage={setCurPage}
+              //resultList={orgs}
               setChooseItem={setChooseItem}
-              loading={loading}
-              total={total}
+            //loading={loading}
+            //total={total}
             />
             <MapWrapper chooseItem={chooseItem} width="50%" />
           </div>

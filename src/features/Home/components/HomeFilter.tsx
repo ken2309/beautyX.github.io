@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import scrollTop from "../../../utils/scrollTop";
 
 function HomeFilter(props: any) {
-  const { styleFilter, setCurPage, setOpenFilter, forcusMb } = props;
+  const { styleFilter, setData, setOpenFilter, forcusMb } = props;
   const { t } = useContext(AppContext);
   const history = useHistory();
   const [searchText, setSearchText] = useState("");
@@ -17,11 +17,17 @@ function HomeFilter(props: any) {
 
   const searchFunc = () => {
     history.push({
-      pathname: "/Search-result/",
+      pathname: "/search-result/",
       search: `?search=${searchText}`,
     });
-    if (setCurPage) {
-      setCurPage(1);
+    if (setData) {
+      setData({
+        orgs: [],
+        loading: false,
+        totalItem: 1,
+        total: 1,
+        curPage: 1
+      })
       if (setOpenFilter) {
         setOpenFilter(false);
       }

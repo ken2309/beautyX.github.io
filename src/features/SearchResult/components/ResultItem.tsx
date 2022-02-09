@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import scrollTop from "../../../utils/scrollTop";
-import slugify from "../../../utils/formatUrlString";
+//import slugify from "../../../utils/formatUrlString";
 import icon from "../../../constants/icon";
 import { AppContext } from "../../../context/AppProvider";
 import Map from "../../../featuresMobile/Map";
@@ -20,8 +20,10 @@ function ResultItem(props: any) {
     }
   };
   const gotoDetail = () => {
+    //console.log(item.domain)
     history.push({
-      pathname: `/Merchant-detail/${slugify(item.name)}`,
+      //pathname: `/merchant-detail/${slugify(item.name)}`,
+      pathname: `/org/${item.subdomain}`,
       search: `${item.id}`,
       state: item,
     });
