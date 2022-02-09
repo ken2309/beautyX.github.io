@@ -52,6 +52,7 @@ function HomeFilter(props: any) {
         width: styleFilter?.width,
         boxShadow: styleFilter?.boxShadow,
         padding: styleFilter?.padding,
+        transform: styleFilter?.transform
       }}
       className="home-banner__filter"
     >
