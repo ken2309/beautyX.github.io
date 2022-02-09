@@ -52,7 +52,8 @@
   /* display: none; */
   /* top:8rem; */
   opacity: 0;
-  visibility: hidden
+  visibility: hidden;
+  transition: all .3s;
 }
 .header-file__ac{
   /* display: block; */
@@ -60,7 +61,7 @@
   margin-top: 48px;
   opacity: 1;
   visibility: visible;
-  transition: all .5s;
+  transition: all .3s;
 }
 .header-filter__wrap{
   width: 100%;
