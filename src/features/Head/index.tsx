@@ -20,6 +20,7 @@ const styleFilter = {
   width: '66.66%',
   boxShadow: "rgb(0 0 0 / 14%) -2px 1px 16px 0px",
   padding: "36px",
+  transform:'translateX(0%)'
 }
 
 function openFilter() {
