@@ -109,7 +109,7 @@
 /* Mobile */
 @media only screen and (max-width: 767px) {
   .card {
-    height: 260px;
+    /* height: 260px; */
     border-radius: 12px;
   }
   .card-img {

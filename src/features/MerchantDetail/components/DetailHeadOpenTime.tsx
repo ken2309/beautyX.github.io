@@ -12,13 +12,13 @@ export default function DetailHeadOpenTime(props: IProps) {
   const { org, setOpenTime, openTime } = props;
   const { t } = useContext(AppContext);
   const weekDays = [
-    { day: 2, text: t('Home.mo') },
-    { day: 3, text: t('Home.tu') },
-    { day: 4, text: t('Home.we') },
-    { day: 5, text: t('Home.th') },
-    { day: 6, text: t('Home.fr') },
-    { day: 7, text: t('Home.sa') },
-  ]
+    { day: 2, text: t("Home.mo") },
+    { day: 3, text: t("Home.tu") },
+    { day: 4, text: t("Home.we") },
+    { day: 5, text: t("Home.th") },
+    { day: 6, text: t("Home.fr") },
+    { day: 7, text: t("Home.sa") },
+  ];
   const date = new Date();
   const today = date.getDay() + 1;
   const sunday = org?.opening_time?.slice(6, 7);
@@ -28,11 +28,14 @@ export default function DetailHeadOpenTime(props: IProps) {
   return (
     <>
       <div className="content-left__info">
-        <div className="content-left__info-detail">
+        <div className="content-left__info-detail-add">
           <img src={icon.time} alt="" />
-          <span>
-            <h5>{t("Mer_de.time_work")}</h5>
-          </span>
+          <p>
+            <span>
+              {t("Mer_de.time_work")}
+              {": "}
+            </span>
+          </p>
         </div>
       </div>
 
@@ -68,9 +71,7 @@ export default function DetailHeadOpenTime(props: IProps) {
               {days?.map((item: any, index: any) => (
                 <li key={index} className={today === index + 2 ? "active" : ""}>
                   <span>
-                    {
-                      weekDays.find((item: any) => item.day === (index + 2))?.text
-                    }
+                    {weekDays.find((item: any) => item.day === index + 2)?.text}
                   </span>
                   {item.time_opening === "off" ? (
                     <span>Đóng cửa</span>
@@ -91,8 +92,7 @@ export default function DetailHeadOpenTime(props: IProps) {
               <span key={index}>
                 {item.time_opening === "off"
                   ? "Đóng cửa"
-                  : `${item.from_time_opening} - ${item.to_time_opening}`
-                }
+                  : `${item.from_time_opening} - ${item.to_time_opening}`}
               </span>
             ))}
           </p>

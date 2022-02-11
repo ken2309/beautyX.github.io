@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import scrollTop from "../../../utils/scrollTop";
 
 function HomeFilter(props: any) {
-  const { styleFilter, setData, setOpenFilter, forcusMb } = props;
+  const { styleFilter, setData, setOpenFilter, forcusMb, hiddenFilter } = props;
   const { t } = useContext(AppContext);
   const history = useHistory();
   const [searchText, setSearchText] = useState("");
@@ -74,7 +74,9 @@ function HomeFilter(props: any) {
           borderRadius="0px 20px 20px 0px"
         />
       </div>
-      <HomeFilterForm />
+      <HomeFilterForm
+        hiddenFilter={hiddenFilter}
+      />
     </div>
   );
 }

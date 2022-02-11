@@ -143,6 +143,7 @@ function Head(props: any) {
                 <div className="header-filter__wrap">
                   <HomeFilter
                     styleFilter={styleFilter}
+                    hiddenFilter={hiddenFilter}
                   />
                 </div>
               </div>

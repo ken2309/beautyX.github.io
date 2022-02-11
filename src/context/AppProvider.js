@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import auth from "../api/authApi";
 import dateNow from "../utils/dateExp";
 import tagsApi from "../api/tagApi";
+import provincesApi from "../api/provinceApi";
 // import axios from 'axios';
 
 export const AppContext = createContext();
@@ -18,6 +19,7 @@ export default function AppProvider({ children }) {
   const [tempCount, setTempleCount] = useState(0);
   const [acBtn, setAcBtn] = useState(1);
   const [tags, setTags] = useState([]);
+  const [provinces, setProvinces] = useState([])
 
   // Check if token expires and logout user
   if (localStorage.getItem("_WEB_US")) {
@@ -48,7 +50,7 @@ export default function AppProvider({ children }) {
       setUserInfo(res);
     }
     handleGetToken();
-    return () => {};
+    return () => { };
   }, [sign]);
 
   useEffect(() => {
@@ -61,23 +63,34 @@ export default function AppProvider({ children }) {
       }
     }
     handleGetProfile();
-    return () => {};
+    return () => { };
   }, [sign]);
   //get all tags
-  useEffect(() => {
-    async function handleGetAllTags() {
-      try {
-        const res = await tagsApi.getAll();
-        setTags(res.data.context.data);
-      } catch (error) {
-        console.log(error);
-      }
+  async function handleGetAllTags() {
+    try {
+      const res = await tagsApi.getAll();
+      setTags(res.data.context.data);
+    } catch (error) {
+      console.log(error);
     }
+  }
+  async function handleGetProvinces() {
+    try {
+      const res = await provincesApi.getAll();
+      const temp = await res.data.context.data;
+      setProvinces(temp.filter(item => item.organizations_count > 0))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+  useEffect(() => {
     handleGetAllTags();
+    handleGetProvinces();
   }, []);
   const value = {
     t,
     tags,
+    provinces,
     acBtn,
     setAcBtn,
     language,

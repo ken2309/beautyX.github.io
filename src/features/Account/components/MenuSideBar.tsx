@@ -12,15 +12,15 @@ interface info {
   amount?: any;
   rank?: string;
 }
-const data: info = {
-  name: "Nguyen Thuy Binh",
-  avatar: "https://picsum.photos/650/976?random=1",
-  point: 200,
-  amount: 200,
-  rank: "Vàng",
-};
 function MenuSideBar(props: info) {
-  const { t, setSign } = useContext(AppContext);
+  const { t, setSign, userInfo } = useContext(AppContext);
+  const data: info = {
+    name: userInfo?.fullname,
+    avatar: "https://picsum.photos/650/976?random=1",
+    point: 200,
+    amount: 200,
+    rank: "Vàng",
+  };
   const history = useHistory();
 
   const handleDropdown = (e: any) => {
