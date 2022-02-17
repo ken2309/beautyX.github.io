@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Home from "../features/Home/index";
 import SearchResult from "../features/SearchResult/index";
-import { BrowserRouter, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { RouteComponentProps } from "@reach/router";
 import MerchantDetail from "../features/MerchantDetail/index";
 import Partner from "../features/Partner";
@@ -18,7 +18,7 @@ import PrivateRoute from "./PrivateRoute";
 import CountDown from "../features/CountDown";
 import ServicesUser from "../features/ServiceUser";
 import DatePicker from "../components/DatePicker"
-//import { AppContext } from "../context/AppProvider";
+import { AppContext } from "../context/AppProvider";
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
 import MerchantComment from "../features/MerchantComment";
@@ -27,7 +27,7 @@ const RouterPage = (
   props: { pageComponent: JSX.Element } & RouteComponentProps
 ) => props.pageComponent;
 function RouterConfig(props: any) {
-  //const { t } = useContext(AppContext)
+  const { profile } = useContext(AppContext)
   const routes = [
     {
       path: `/Home`,
@@ -38,15 +38,11 @@ function RouterConfig(props: any) {
       component: <Home />,
     },
     {
-      path: "/Search-result/",
+      path: "/search-result/",
       component: <SearchResult />,
     },
     {
-      path: "/Merchant-detail/:name",
-      component: <MerchantDetail />,
-    },
-    {
-      path: "/Cart",
+      path: "/cart",
       component: <Cart />,
     },
     {
@@ -86,8 +82,8 @@ function RouterConfig(props: any) {
       component: <MerchantComment />,
     },
     {
-      path:"/date",
-      component:<DatePicker/>
+      path: "/date",
+      component: <DatePicker />
     },
     // {
     //   path:''
@@ -96,16 +92,20 @@ function RouterConfig(props: any) {
     //   path: "/Calendar",
     //   component: <Calendar />,
     // },
+    // {
+    //   path: '/goi-dich-vu',
+    //   component: <ServicesUser />
+    // },
     {
-      path: '/goi-dich-vu',
-      component: <ServicesUser />
+      path: "/org/:subdomain",
+      component: <MerchantDetail />,
     },
   ];
   const routesPrivate = [
-    // {
-    //   path:'/goi-dich-vu',
-    //   component:ServicesUser
-    // },
+    {
+      path:'/goi-dich-vu',
+      component:ServicesUser
+    },
     {
       path: "/tai-khoan",
       component: Account,
@@ -140,6 +140,7 @@ function RouterConfig(props: any) {
         ))}
         {routesPrivate.map((item, index) => (
           <PrivateRoute
+            profile={profile}
             key={index}
             path={`${item.path}`}
             component={item.component}

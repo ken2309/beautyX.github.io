@@ -16,6 +16,9 @@
 .w-100 {
   width: 100%;
 }
+.relative {
+  position: relative;
+}
 .MuiFormControl-root {
   width: 100%;
 }
@@ -151,11 +154,37 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: var(--purple);
+  /* color: var(--purple); */
+  color: var(--text-hover);
   padding: 8px 24px 8px 44px;
   border-radius: 18px;
   background-color: var(--bg-gray) !important;
   box-shadow: inset 0px 2px 6px rgba(113, 97, 186, 0.2);
+}
+
+/* cus calendar date of birth */
+.sign-content .MuiInputBase-input {
+  padding: 8px 16px 8px 44px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: grey;
+}
+.sign-content .MuiIconButton-root {
+  margin-right: -8px;
+}
+.sign-content .MuiOutlinedInput-root {
+  box-shadow: inset 0px 2px 6px rgb(113 97 186 / 20%);
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+}
+.sign-content .MuiOutlinedInput-notchedOutline {
+  border: 0;
+}
+.sign-content .MuiSvgIcon-root {
+  color: var(--purple);
 }
 .sign-form__box-icon-show {
   position: absolute;
@@ -215,6 +244,8 @@
 .dialog-forgot__password {
   padding: 36px;
   background-color: var(--bg-gray);
+  border-radius: 24px;
+  width: 400px;
 }
 .dialog-forgot__password .errText {
   margin: unset;
@@ -288,8 +319,17 @@
   line-height: 28px;
   color: var(--purple);
 }
+.sign-content .MuiOutlinedInput-notchedOutline {
+  border: 0;
+}
+.sign-content .MuiSvgIcon-root {
+  color: var(--purple);
+}
 /* Tablet */
 @media (max-width: 768px), (max-width: 1024px) {
+  .dialog-forgot__password .err-text {
+    margin: 0;
+  }
   .sign-content {
     padding: 0px;
     width: 100%;
@@ -305,11 +345,12 @@
 }
 /* res-mobile */
 /* Mobile */
-@media only screen and (max-width: 769px) {
+@media only screen and (max-width: 767px) {
   .MuiPaper-root {
     max-width: unset !important;
-    border-radius: 0px !important;
+    margin: 24px;
   }
+
   .page-sign {
     background-color: var(--bgWhite);
     padding-top: 48px;
@@ -340,5 +381,11 @@
   }
   .sign-input-name {
     flex-direction: column;
+  }
+  .dialog-forgot__password {
+    width: unset;
+  }
+  .err-text {
+    margin: 0;
   }
 }

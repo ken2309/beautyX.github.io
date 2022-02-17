@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // import icon from "../../../constants/icon";
 import CardItem from "../../CardItem";
 import { Pagination } from "@mui/material";

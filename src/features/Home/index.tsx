@@ -19,11 +19,21 @@ import { AppContext } from "../../context/AppProvider";
 import Head from "../Head/index";
 import HeadTitle from "../HeadTitle";
 import Bottom from "../../featuresMobile/Bottom";
+
+//import HomeBanner from '../HomeBanner';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
 // const logged: boolean = true;
-function Home(props: any) {
+// const headerStyle = {
+//   position: 'fixed',
+//   top: 0,
+//   left: 0,
+//   right: 0,
+//   backgroundColor: 'transparent',
+//   zIndex:10
+// }
+function Home() {
   const { profile, t } = useContext(AppContext);
   // const dispatch = useDispatch();
   // useEffect(() => {
@@ -31,11 +41,16 @@ function Home(props: any) {
   // }, [dispatch])
 
   // const org = useSelector(getAllOrg);
+  // console.log(org);
+
 
   return (
     <div className="home">
       <HeadTitle title={t("Home.home")} />
-      <Head />
+      <Head
+        // headerStyle={headerStyle}
+      />
+      {/* <HomeBanner /> */}
       <Container>
         <HomeBanner />
       </Container>

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import icon from "../../../constants/icon";
+import React, { useState } from "react";
 import CardItem from "../../CardItem";
-import useFilterPro from "../../../utils/useFilterPro";
-import { Product } from "../../../interface/product";
+// import useFilterPro from "../../../utils/useFilterPro";
 import { Pagination } from "@mui/material";
 import scrollTop_2 from "../../../utils/scrollTop_2";
 import { useLocation } from "react-router-dom";

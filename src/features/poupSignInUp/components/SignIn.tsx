@@ -3,8 +3,6 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import Dialog from "@mui/material/Dialog";
-// import ButtonCus from "../../../components/ButtonCus";
 import { AxiosError } from "axios";
 import auth from "../../../api/authApi";
 import { AppContext } from "../../../context/AppProvider";
@@ -13,7 +11,6 @@ import { CircularProgress } from "@mui/material";
 import ForgotPass from "./ForgotPass";
 import Verification from "./Verification";
 import NewPass from "./NewPass";
-import { baseURL } from "../../../api/axios";
 import { useHistory } from "react-router-dom";
 
 function SignIn(props: any) {
@@ -44,14 +41,13 @@ function SignIn(props: any) {
   async function submitLogin(values: any) {
     try {
       const response = await auth.login(values);
-      console.log(response);
       localStorage.setItem("_WEB_US", JSON.stringify(response.data.context));
       localStorage.setItem("_WEB_TK", response.data.context.token);
       setSign(true);
       if (useForSignRes === true) {
         history.goBack();
       } else {
-        history.push("/beta");
+        setOpenSignIn(false);
       }
       setLoading(false);
     } catch (error) {
@@ -77,7 +73,6 @@ function SignIn(props: any) {
   const handleClickOpenForgotPass = () => {
     setOpenForgotPass(true);
   };
-
   const formikLogin = useFormik({
     initialValues: {
       email: "",

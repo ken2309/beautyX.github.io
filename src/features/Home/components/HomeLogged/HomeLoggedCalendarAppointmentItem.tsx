@@ -2,12 +2,12 @@ import React, { useEffect, useState, useContext } from "react";
 import Organization from "../../../../api/organizationApi";
 import { IBranch } from "../../../../interface/branch";
 import { IOrganization } from "../../../../interface/organization";
-import {AppContext} from '../../../../context/AppProvider'
+import { AppContext } from "../../../../context/AppProvider";
 //import CalendarPopupDetail from "./CalendarPopupDetail";
-import AppointmentDetail from '../../../AppointmentDetail/index';
+import AppointmentDetail from "../../../AppointmentDetail/index";
 
 export default function HomeLoggedCalendarAppointmentItem(props: any) {
-  const {t} = useContext(AppContext)
+  const { t } = useContext(AppContext);
   const { datingList } = props;
   const [org, setOrg] = useState<IOrganization>();
   const [branch, setBranch] = useState<IBranch>();
@@ -75,7 +75,7 @@ export default function HomeLoggedCalendarAppointmentItem(props: any) {
               onClick={handleOpenPopupDetail}
               className="calendar-appointment__item-detail"
             >
-              {t('app.details')} {">"}
+              {t("app.details")} {">"}
             </button>
           </div>
         </div>

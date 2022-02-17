@@ -1,63 +1,50 @@
-import React, { useContext, useState, useEffect, KeyboardEvent } from "react";
+import React, { useContext, useState, KeyboardEvent } from "react";
 import ButtonCus from "../../../components/ButtonCus/index";
 import icon from "../../../constants/icon";
 import HomeFilterForm from "./HomeFilterForm";
 import { AppContext } from "../../../context/AppProvider";
 import { useHistory } from "react-router-dom";
-import tagsApi from "../../../api/tagApi";
-import axios from "axios";
-import scrollTop from '../../../utils/scrollTop'
+import scrollTop from "../../../utils/scrollTop";
 
 function HomeFilter(props: any) {
-  const { styleFilter, setCurPage, setOpenFilter, forcusMb } = props;
+  const { styleFilter, setData, setOpenFilter, forcusMb, hiddenFilter } = props;
   const { t } = useContext(AppContext);
   const history = useHistory();
   const [searchText, setSearchText] = useState("");
-  const [tags, setTags] = useState([]);
   const handleOnSearchChange = (e: any) => {
     setSearchText(e.target.value);
   };
 
   const searchFunc = () => {
     history.push({
-      pathname: "/Search-result/",
+      pathname: "/search-result/",
       search: `?search=${searchText}`,
     });
-    if (setCurPage) {
-      setCurPage(1);
+    if (setData) {
+      setData({
+        orgs: [],
+        loading: false,
+        totalItem: 1,
+        total: 1,
+        curPage: 1
+      })
       if (setOpenFilter) {
         setOpenFilter(false);
       }
     }
-  }
+  };
 
   const handleSearchClick = () => {
     // history.push(`/Search-result/${searchText}`)
-    searchFunc()
+    searchFunc();
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
-      searchFunc()
-      scrollTop()
+      searchFunc();
+      scrollTop();
     }
-  }
-
-  useEffect(() => {
-    const source = axios.CancelToken.source();
-    async function handleGetAllTags() {
-      try {
-        const res = await tagsApi.getAll();
-        setTags(res.data.context.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    handleGetAllTags();
-    return () => {
-      source.cancel();
-    };
-  }, []);
+  };
   return (
     <div
       style={{
@@ -65,6 +52,7 @@ function HomeFilter(props: any) {
         width: styleFilter?.width,
         boxShadow: styleFilter?.boxShadow,
         padding: styleFilter?.padding,
+        transform: styleFilter?.transform
       }}
       className="home-banner__filter"
     >
@@ -86,7 +74,9 @@ function HomeFilter(props: any) {
           borderRadius="0px 20px 20px 0px"
         />
       </div>
-      <HomeFilterForm tags={tags} />
+      <HomeFilterForm
+        hiddenFilter={hiddenFilter}
+      />
     </div>
   );
 }
