@@ -3,8 +3,6 @@ import icon from "../../../constants/icon";
 import { Checkbox } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-// import Dialog from "@mui/material/Dialog";
-// import ButtonCus from "../../../components/ButtonCus";
 import { AxiosError } from "axios";
 import auth from "../../../api/authApi";
 import { AppContext } from "../../../context/AppProvider";
@@ -13,7 +11,6 @@ import { CircularProgress } from "@mui/material";
 import ForgotPass from "./ForgotPass";
 import Verification from "./Verification";
 import NewPass from "./NewPass";
-//import { baseURL } from "../../../api/axios";
 import { useHistory } from "react-router-dom";
 
 function SignIn(props: any) {
@@ -50,7 +47,7 @@ function SignIn(props: any) {
       if (useForSignRes === true) {
         history.goBack();
       } else {
-        setOpenSignIn(false)
+        setOpenSignIn(false);
       }
       setLoading(false);
     } catch (error) {

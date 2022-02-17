@@ -7,25 +7,40 @@ import OrderItem from "./components/OrderItem";
 import HeadTitle from "../HeadTitle";
 import { AppContext } from "../../context/AppProvider";
 
+interface IData {
+  orders: Order[],
+  page: number,
+  pageCount: number
+}
+
 function Orders() {
   const { t } = useContext(AppContext);
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(1);
+  const [data, setData] = useState<IData>({
+    orders: [],
+    page: 1,
+    pageCount: 1
+  })
   useEffect(() => {
     async function handleGetOrders() {
       try {
-        const response = await order.getOrder(page);
-        setOrders(response.data.context.data);
-        setPageCount(response.data.context.last_page);
+        const response = await order.getOrder(data.page);
+        setData({
+          ...data,
+          orders: response.data.context.data,
+          pageCount: response.data.context.last_page
+        })
       } catch (err) {
         console.log(err);
       }
     }
     handleGetOrders();
-  }, [page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.page]);
   const handlePageChange = (event: any, value: any) => {
-    setPage(value);
+    setData({
+      ...data,
+      page: value
+    })
   };
   return (
     <div className="order">
@@ -35,7 +50,7 @@ function Orders() {
       </div>
       <div className="order-list">
         <ul className="order-list__cnt">
-          {orders.map((item: Order, index: number) => (
+          {data.orders.map((item: Order, index: number) => (
             <OrderItem key={index} order={item} />
           ))}
         </ul>
@@ -44,7 +59,7 @@ function Orders() {
         <Pagination
           color="secondary"
           shape="rounded"
-          count={pageCount}
+          count={data.pageCount}
           onChange={handlePageChange}
         />
       </div>

@@ -11,7 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import DetailHeadOpenTime from "../components/DetailHeadOpenTime";
 import favorites from "../../../api/favorite";
-import SignInUp from '../../poupSignInUp/index';
+import SignInUp from "../../poupSignInUp/index";
 
 const settings = {
   dots: true,
@@ -38,7 +38,7 @@ const settings = {
 
 function DetailHead(props: any) {
   const { org, loading, tempCount, setTempleCount, follow, setFollow } = props;
-  const [openSignIn, setOpenSignIn] = useState(false)
+  const [openSignIn, setOpenSignIn] = useState(false);
   const { t, profile } = useContext(AppContext);
   const infoBox = useRef(null);
   const [openPopupContact, setOpenPopupContact] = useState(false);
@@ -65,16 +65,16 @@ function DetailHead(props: any) {
 
   const handleFollowClick = () => {
     if (profile) {
-      setFollow(!follow)
+      setFollow(!follow);
       if (follow === true) {
-        setTempleCount(tempCount - 1)
-        handleDeleteFavorite(org.id)
+        setTempleCount(tempCount - 1);
+        handleDeleteFavorite(org.id);
       } else {
         setTempleCount(tempCount + 1);
         handlePostFavorites(org.id);
       }
     } else {
-      setOpenSignIn(true)
+      setOpenSignIn(true);
     }
   };
   return (
@@ -103,10 +103,15 @@ function DetailHead(props: any) {
                 <div className="content-left__info">
                   <div className="content-left__info-detail">
                     <img src={icon.location} alt="" />
-                    <span>
-                      <h5>{t("Mer_de.address")}</h5>
-                      {org?.full_address}
-                    </span>
+                    <p>
+                      <span>
+                        {t("Mer_de.address")}
+                        {": "}
+                      </span>
+                      <span className="content-left__info-detail-add">
+                        {org?.full_address}
+                      </span>
+                    </p>
                   </div>
                 </div>
 
@@ -127,14 +132,16 @@ function DetailHead(props: any) {
                     style={
                       follow === true && profile
                         ? {
-                          backgroundColor: "var(--purple)",
-                          color: "var(--bg-gray)",
-                        }
+                            backgroundColor: "var(--purple)",
+                            color: "var(--bg-gray)",
+                          }
                         : {}
                     }
                     onClick={handleFollowClick}
                   >
-                    {follow === true && profile ? t("Mer_de.flowing") : t("Mer_de.flow")}
+                    {follow === true && profile
+                      ? t("Mer_de.flowing")
+                      : t("Mer_de.flow")}
                   </button>
                 </div>
               </>
@@ -142,10 +149,7 @@ function DetailHead(props: any) {
           </div>
 
           <div className="merchant-slider mer-detail__content-right">
-            <Slider
-              lazyLoad="progressive"
-              {...settings}
-            >
+            <Slider lazyLoad="progressive" {...settings}>
               <div className="merchant-slider__img">
                 <img src={img.slider} alt="" />
               </div>

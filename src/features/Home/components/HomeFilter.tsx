@@ -4,10 +4,10 @@ import icon from "../../../constants/icon";
 import HomeFilterForm from "./HomeFilterForm";
 import { AppContext } from "../../../context/AppProvider";
 import { useHistory } from "react-router-dom";
-import scrollTop from '../../../utils/scrollTop'
+import scrollTop from "../../../utils/scrollTop";
 
 function HomeFilter(props: any) {
-  const { styleFilter, setCurPage, setOpenFilter, forcusMb } = props;
+  const { styleFilter, setData, setOpenFilter, forcusMb, hiddenFilter } = props;
   const { t } = useContext(AppContext);
   const history = useHistory();
   const [searchText, setSearchText] = useState("");
@@ -17,28 +17,34 @@ function HomeFilter(props: any) {
 
   const searchFunc = () => {
     history.push({
-      pathname: "/Search-result/",
+      pathname: "/search-result/",
       search: `?search=${searchText}`,
     });
-    if (setCurPage) {
-      setCurPage(1);
+    if (setData) {
+      setData({
+        orgs: [],
+        loading: false,
+        totalItem: 1,
+        total: 1,
+        curPage: 1
+      })
       if (setOpenFilter) {
         setOpenFilter(false);
       }
     }
-  }
+  };
 
   const handleSearchClick = () => {
     // history.push(`/Search-result/${searchText}`)
-    searchFunc()
+    searchFunc();
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
-      searchFunc()
-      scrollTop()
+      searchFunc();
+      scrollTop();
     }
-  }
+  };
   return (
     <div
       style={{
@@ -46,6 +52,7 @@ function HomeFilter(props: any) {
         width: styleFilter?.width,
         boxShadow: styleFilter?.boxShadow,
         padding: styleFilter?.padding,
+        transform: styleFilter?.transform
       }}
       className="home-banner__filter"
     >
@@ -67,7 +74,9 @@ function HomeFilter(props: any) {
           borderRadius="0px 20px 20px 0px"
         />
       </div>
-      <HomeFilterForm/>
+      <HomeFilterForm
+        hiddenFilter={hiddenFilter}
+      />
     </div>
   );
 }

@@ -12,22 +12,19 @@ import { CircularProgress } from "@mui/material";
 import { AppContext } from "../../../context/AppProvider";
 import PopupNoti from "./PopupNoti";
 import auth from "../../../api/authApi";
-import { dataDate } from "../../../data/listDays";
-
+import TextField from "@mui/material/TextField";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
 function SignUp(props: any) {
   const { activeTabSign, setActiveTabSign } = props;
   const { t } = useContext(AppContext);
   const [typePass, setTypePass] = useState("password");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-  const [errMail, setErrMail] = useState();
+  const [, setErrMail] = useState();
   const [popup, setPopup] = useState(false);
-  // const [agree, setAgree] = useState(false);
-
-  // const handleAgreeClick=(e:any)=>{
-  //   setAgree(e.target.checked)
-  // }
-  //handle submit register from
+  const [value, setValue] = React.useState<Date | null>(new Date());
   async function submitRegisterForm(user: any) {
     try {
       await auth.register(user);
@@ -69,70 +66,8 @@ function SignUp(props: any) {
     //     setLoading(false);
     //   });
   };
-
   // console.log(error, errMail);
 
-  interface IDay {
-    id: number;
-    day: string;
-  }
-  interface IMonth {
-    id: number;
-    month: string;
-  }
-  interface IYear {
-    id: number;
-    year: string;
-  }
-
-  const [chooseDay, setChooseDay] = useState<IDay>({ id: 0, day: "1" });
-  const [chooseMonth, setChooseMonth] = useState<IMonth>({
-    id: 0,
-    month: "1",
-  });
-  const [chooseYear, setChooseYear] = useState<IYear>({ id: 0, year: "2001" });
-  const [openDay, setOpenDay] = useState(false);
-  const [openMonth, setOpenMonth] = useState(false);
-  const [openYear, setOpenYear] = useState(false);
-  const openDayClick = () => {
-    if (openDay === true) {
-      setOpenDay(false);
-    } else {
-      setOpenDay(true);
-      setOpenMonth(false);
-      setOpenYear(false);
-    }
-  };
-  const openMonthClick = () => {
-    if (openMonth === true) {
-      setOpenMonth(false);
-    } else {
-      setOpenMonth(true);
-      setOpenDay(false);
-      setOpenYear(false);
-    }
-  };
-  const openYearClick = () => {
-    if (openYear === true) {
-      setOpenYear(false);
-    } else {
-      setOpenYear(true);
-      setOpenMonth(false);
-      setOpenDay(false);
-    }
-  };
-  const handleSetChooseDay = (day: any) => {
-    setChooseDay(day);
-    setOpenDay(false);
-  };
-  const handleSetChooseMonth = (month: any) => {
-    setChooseMonth(month);
-    setOpenMonth(false);
-  };
-  const handleSetChooseYear = (day: any) => {
-    setChooseYear(day);
-    setOpenYear(false);
-  };
   const formik = useFormik({
     initialValues: {
       Name: "",
@@ -198,8 +133,8 @@ function SignUp(props: any) {
         onSubmit={formik.handleSubmit}
         autoComplete="off"
         className="flex-column sign-form"
-        // style={{alignItems:'start'}}
       >
+        {/* name & sex */}
         <div className="flex-column" style={{ width: "100%" }}>
           <div
             className="flex-row w-100 sign-input-name"
@@ -216,6 +151,7 @@ function SignUp(props: any) {
               />
             </div>
 
+            {/* check box sex */}
             <FormControl component="fieldset">
               <RadioGroup
                 row
@@ -269,6 +205,7 @@ function SignUp(props: any) {
               </RadioGroup>
             </FormControl>
           </div>
+
           <div style={{ width: "100%" }} className="flex-row w-100">
             {formik.errors.Name && formik.touched.Name && (
               <p style={{ margin: " 0 0 0 20px" }} className="err-text">
@@ -285,149 +222,34 @@ function SignUp(props: any) {
 
         {/* date of birth */}
         <div className="date-of-birth">
-          <div className="sign-form__box" style={{ width: "40%" }}>
-            <img className="sign-form__box-icon" src={icon.Calendar} alt="" />
-            <input
-              value={formik.values.dateOfBirth}
-              onChange={formik.handleChange}
-              name="dateOfBirth"
-              id="dateOfBirth"
-              type="text"
-              placeholder="Ngày sinh"
+          <div className="relative" style={{ width: "100%", margin: "8px 0" }}>
+            <img
+              style={{ zIndex: "10" }}
+              className="sign-form__box-icon"
+              src={icon.Calendar}
+              alt=""
             />
-          </div>
-          {formik.errors.dateOfBirth && formik.touched.dateOfBirth && (
-            <p className="err-text">{formik.errors.dateOfBirth}</p>
-          )}
-          <div style={{ width: "60%" }}>
-            <div className="dateofbirth-list">
-              <div className="dateofbirth-item " onClick={openDayClick}>
-                <div className="dateofbirth__item__wrap">
-                  <span>
-                    {chooseDay.day.length === 0 ? "0" : chooseDay.day}
-                  </span>
-                  <img src={icon.arrowPurple} alt="" />
-                  <div
-                    style={
-                      openDay === true
-                        ? { display: "block" }
-                        : { display: "none" }
-                    }
-                    className="drop-category"
-                  >
-                    <ul>
-                      {dataDate.days.map((item: any) => (
-                        <li
-                          style={
-                            item === chooseDay
-                              ? {
-                                  color: "var(--bg-color)",
-                                  backgroundColor: "var(--purple)",
-                                }
-                              : {}
-                          }
-                          onClick={() => handleSetChooseDay(item)}
-                          key={item.id}
-                        >
-                          {item.day}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="dateofbirth-item" onClick={openMonthClick}>
-                <div className="dateofbirth__item__wrap">
-                  <span>
-                    {chooseMonth.month.length === 0 ? "0" : chooseMonth.month}
-                  </span>
-                  <img src={icon.arrowPurple} alt="" />
-                  <div
-                    style={
-                      openMonth === true
-                        ? { display: "block" }
-                        : { display: "none" }
-                    }
-                    className="drop-category"
-                  >
-                    <ul>
-                      {dataDate.month.map((item: any) => (
-                        <li
-                          style={
-                            item === chooseMonth
-                              ? {
-                                  color: "var(--bg-color)",
-                                  backgroundColor: "var(--purple)",
-                                }
-                              : {}
-                          }
-                          onClick={() => handleSetChooseMonth(item)}
-                          key={item.id}
-                        >
-                          {item.month}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="dateofbirth-item" onClick={openYearClick}>
-                <div className="dateofbirth__item__wrap">
-                  <span>
-                    {chooseYear.year.length === 0 ? "0" : chooseYear.year}
-                  </span>
-                  <img src={icon.arrowPurple} alt="" />
-                  <div
-                    style={
-                      openYear === true
-                        ? { display: "block" }
-                        : { display: "none" }
-                    }
-                    className="drop-category"
-                  >
-                    <ul>
-                      {dataDate.year.map((item: any) => (
-                        <li
-                          style={
-                            item === chooseYear
-                              ? {
-                                  color: "var(--bg-color)",
-                                  backgroundColor: "var(--purple)",
-                                }
-                              : {}
-                          }
-                          onClick={() => handleSetChooseYear(item)}
-                          key={item.id}
-                        >
-                          {item.year}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <LocalizationProvider
+              dateAdapter={AdapterDateFns}
+              //locale={viVN}
+            >
+              <DatePicker
+                // className="cus-date__picker"
+                openTo="year"
+                views={["year", "month", "day"]}
+                value={value}
+                onChange={(newValue) => {
+                  setValue(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField {...params} helperText={null} />
+                )}
+              />
+            </LocalizationProvider>
           </div>
         </div>
 
-        <div className="flex-column w-100" style={{ width: "100%" }}>
-          <div className="sign-form__box  mb-16 ">
-            <img className="sign-form__box-icon" src={icon.Message} alt="" />
-            <input
-              value={formik.values.EmailPhone}
-              onChange={formik.handleChange}
-              name="EmailPhone"
-              id="EmailPhone"
-              type="text"
-              placeholder="Email"
-            />
-          </div>
-          {formik.errors.EmailPhone && formik.touched.EmailPhone && (
-            <p className="err-text">{formik.errors.EmailPhone}</p>
-          )}
-          <p className="err-text">{errMail}</p>
-        </div>
-
+        {/* phone */}
         <div className="flex-column w-100" style={{ width: "100%" }}>
           <div className="sign-form__box  mb-16 ">
             <img className="sign-form__box-icon" src={icon.Message} alt="" />
@@ -446,6 +268,7 @@ function SignUp(props: any) {
           <p className="err-text">{error}</p>
         </div>
 
+        {/* password */}
         <div className="flex-column w-100" style={{ width: "100%" }}>
           <div className="sign-form__box mb-16">
             <img className="sign-form__box-icon" src={icon.Lock} alt="" />
@@ -470,6 +293,7 @@ function SignUp(props: any) {
           )}
         </div>
 
+        {/* confirm password */}
         <div className="flex-column w-100" style={{ width: "100%" }}>
           <div className="sign-form__box mb-16">
             <img className="sign-form__box-icon" src={icon.Lock} alt="" />
@@ -493,6 +317,8 @@ function SignUp(props: any) {
             <p className="err-text">{formik.errors.confirmPassword}</p>
           )}
         </div>
+
+        {/* checkbox */}
         <div className="flex-row w-100">
           <Checkbox
             onChange={formik.handleChange}
@@ -518,6 +344,7 @@ function SignUp(props: any) {
           </p>
         )}
 
+        {/* button submit */}
         <button
           // disabled={agree === true ? false : true}
           type="submit"
@@ -535,12 +362,14 @@ function SignUp(props: any) {
           )}
           {t("Home.Sign_up")}
         </button>
+
         <p className="sign-or">{t("Home.Sign_or")}</p>
         <div className="flex-row sign-other-social">
           <img src={icon.google} alt="" />
           <img src={icon.facebook} alt="" />
         </div>
       </form>
+
       <PopupNoti
         popup={popup}
         setPopup={setPopup}

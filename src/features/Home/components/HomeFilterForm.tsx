@@ -2,90 +2,141 @@ import React, { useContext, useState } from 'react';
 import icon from '../../../constants/icon';
 import ButtonCus from '../../../components/ButtonCus/index';
 import { AppContext } from '../../../context/AppProvider'
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import { IProvince } from '../../../interface/provinces';
+import { ITag } from '../../../interface/tags'
 
-const locals = [
-      { id: 1, province_code: 11, name: 'Vị trí 1' },
-      { id: 2, province_code: 9, name: 'Vị trí 5' },
-      { id: 3, province_code: 8, name: 'Vị trí 4' },
-]
-interface ChooseCate {
-      id:number,
-      name: string
-}
-interface ChooseLocal {
+interface IRangePrice {
       id: number,
-      province_code: number,
-      name:string
+      min: number,
+      max: number,
+      title: string,
 }
 function HomeFilterForm(props: any) {
+      const { hiddenFilter } = props;
+      const rangePrices = [
+            { id: 1, min: 0, max: 1000000, title: 'Dưới 1 triệu' },
+            { id: 2, min: 1000000, max: 4000000, title: 'Từ 1 - 4 triệu' },
+            { id: 3, min: 4000000, max: 8000000, title: 'Từ 4 - 8 triệu' },
+            { id: 4, min: 8000000, max: 12000000, title: 'Từ 8 - 12 triệu' },
+            { id: 5, min: 12000000, max: 20000000, title: 'Từ 12 - 20 triệu' },
+            { id: 6, min: 20000000, max: 500000000, title: 'Trên 20 triệu' },
+      ]
       const history = useHistory();
-      const { t, tags } = useContext(AppContext);
-      const [chooseCate, setChooseCate] = useState<ChooseCate>({ id: 0, name: '' });
-      const [chooseLocal, setChooseLocal] = useState<ChooseLocal>({ id: 0, province_code: 0, name: '' })
-      const [openCate, setOpenCate] = useState(false)
-      const [openLocal, setOpenLocal] = useState(false)
+      const { t, tags, provinces } = useContext(AppContext);
+      const [chooseCate, setChooseCate] = useState<ITag[]>([]);
+      const [chooseLocal, setChooseLocal] = useState<IProvince>()
+      const [choosePrice, setChoosePrice] = useState<IRangePrice>()
+      const [openItem, setOpenItem] = useState({
+            cate: false,
+            province: false,
+            prices: false
+      })
+
       const openCateClick = () => {
-            if (openCate === true) {
-                  setOpenCate(false);
+            if (openItem.cate === true) {
+                  setOpenItem({ ...openItem, cate: false })
             } else {
-                  setOpenCate(true)
-                  setOpenLocal(false)
+                  setOpenItem({
+                        cate: true,
+                        province: false,
+                        prices: false
+                  })
             }
       }
-      const openLocalClick=()=>{
-            if(openLocal === true){
-                  setOpenLocal(false)
-            }else{
-                  setOpenLocal(true)
-                  setOpenCate(false)
+      const openLocalClick = () => {
+            if (openItem.province === true) {
+                  setOpenItem({ ...openItem, province: false })
+            } else {
+                  setOpenItem({
+                        cate: false,
+                        province: true,
+                        prices: false
+                  })
             }
       }
-      const handleSetChooseCate=(cate:any)=>{
-            setChooseCate(cate)
-            setOpenCate(false);
+      const openRangePriceClick = () => {
+            if (openItem.prices === true) {
+                  setOpenItem({ ...openItem, prices: false })
+            } else {
+                  setOpenItem({
+                        cate: false,
+                        province: false,
+                        prices: true
+                  })
+            }
       }
-      const handleChooseLocal=(local: any)=>{
+      const handleSetChooseCate = (cate: ITag) => {
+            const isChoose = chooseCate.includes(cate);
+            if (isChoose) {
+                  setChooseCate(chooseCate.filter((item: ITag) => item !== cate))
+            } else {
+                  setChooseCate([...chooseCate, cate])
+            }
+      }
+      const handleChooseLocal = (local: IProvince) => {
             setChooseLocal(local)
       }
-      const handleSubmitFilter=()=>{
-            const filterValues={
-                  category: chooseCate.name,
-                  province_code: chooseLocal.province_code
+      const handleChoosePrice = (price: IRangePrice) => {
+            setChoosePrice(price)
+      }
+      const handleSubmitFilter = () => {
+            if (hiddenFilter) {
+                  hiddenFilter()
             }
+            const tagsName = chooseCate.map((item: ITag) => item.name)
+            const filterValues = {
+                  tags: tagsName.length === 0 ? '' : tagsName.join('|'),
+                  province_code: chooseLocal ? chooseLocal.province_code : '',
+                  minPrice: choosePrice ? choosePrice.min : '',
+                  maxPrice: choosePrice ? choosePrice.max : ''
+            }
+            // console.log(filterValues)
             history.push({
-                  pathname:'/Search-result/',
-                  state:filterValues
+                  pathname: '/search-result/',
+                  state: filterValues
             })
       }
       return (
             <div className='filter-form'>
                   <ul className="filter-form__box">
-                        <li 
-                              onClick={openCateClick}
+                        <li
                               className="filter-form__li"
                         >
                               <div
                                     className="filter-form__item"
+                                    onClick={openCateClick}
                               >
                                     <div className="filter-form__item-left">
                                           <img src={icon.dashboard} alt="" />
-                                          <span>
-                                                {chooseCate.name.length === 0 ? t('Home.Filter_category') : chooseCate.name}
-                                          </span>
+                                          <div
+                                                className="list__tag"
+                                          >
+                                                {chooseCate.length === 0 ? t('Home.Filter_category')
+                                                      :
+                                                      chooseCate.map((item: ITag, index: number) => (
+                                                            <span key={index}>{item.name},</span>
+                                                      ))
+                                                }
+                                          </div>
                                     </div>
                                     <img src={icon.down_2} alt="" />
                               </div>
-                              <div 
-                                    style={openCate === true ? { display: 'block' } : { display: 'none' }}
+                              <div
+                                    style={
+                                          openItem.cate === true ?
+                                                { visibility: 'visible', opacity: 1, marginTop: '10px' }
+                                                :
+                                                { visibility: 'hidden', opacity: 0, marginTop: '30px' }
+                                    }
                                     className="drop-category"
                               >
                                     <ul>
                                           {
-                                                tags && tags.map((item: any) => (
+                                                tags && tags.map((item: ITag) => (
                                                       <li
                                                             style={
-                                                                  item === chooseCate ?
+                                                                  chooseCate.includes(item) ?
                                                                         { color: 'var(--bg-color)', backgroundColor: 'var(--purple)' }
                                                                         :
                                                                         {}
@@ -100,7 +151,7 @@ function HomeFilterForm(props: any) {
                                     </ul>
                               </div>
                         </li>
-                        <li 
+                        <li
                               onClick={openLocalClick}
                               className="filter-form__li"
                         >
@@ -108,18 +159,23 @@ function HomeFilterForm(props: any) {
                                     <div className="filter-form__item-left">
                                           <img src={icon.location} alt="" />
                                           <span>
-                                                {chooseLocal.name.length === 0 ? t('Home.Filter_location') : chooseLocal.name}
+                                                {chooseLocal ? chooseLocal?.name : t('Home.Filter_location')}
                                           </span>
                                     </div>
                                     <img src={icon.down_2} alt="" />
                               </div>
-                              <div 
-                                    style={openLocal === true ? { display: 'block' } : { display: 'none' }}
+                              <div
+                                    style={
+                                          openItem.province === true ?
+                                                { visibility: 'visible', opacity: 1, marginTop: '10px' }
+                                                :
+                                                { visibility: 'hidden', opacity: 0, marginTop: '30px' }
+                                    }
                                     className="drop-category"
                               >
                                     <ul>
                                           {
-                                                locals.map(item =>(
+                                                provinces.map((item: IProvince, index: number) => (
                                                       <li
                                                             style={
                                                                   item === chooseLocal ?
@@ -128,7 +184,7 @@ function HomeFilterForm(props: any) {
                                                                         {}
                                                             }
                                                             onClick={() => handleChooseLocal(item)}
-                                                            key={item.id}
+                                                            key={index}
                                                       >
                                                             {item.name}
                                                       </li>
@@ -137,13 +193,46 @@ function HomeFilterForm(props: any) {
                                     </ul>
                               </div>
                         </li>
-                        <li className="filter-form__li">
+                        <li
+                              onClick={openRangePriceClick}
+                              className="filter-form__li"
+                        >
                               <div className="filter-form__item">
                                     <div className="filter-form__item-left">
-                                          <img src={icon.Ticket} alt="" />
-                                          <span>{t('Home.Filter_price')}</span>
+                                          <img src={icon.location} alt="" />
+                                          <span>
+                                                {choosePrice ? choosePrice.title : t('Home.Filter_price')}
+                                          </span>
                                     </div>
                                     <img src={icon.down_2} alt="" />
+                              </div>
+                              <div
+                                    style={
+                                          openItem.prices === true ?
+                                                { visibility: 'visible', opacity: 1, marginTop: '10px' }
+                                                :
+                                                { visibility: 'hidden', opacity: 0, marginTop: '30px' }
+                                    }
+                                    className="drop-category"
+                              >
+                                    <ul>
+                                          {
+                                                rangePrices.map((item: IRangePrice, index: number) => (
+                                                      <li
+                                                            style={
+                                                                  item === choosePrice ?
+                                                                        { color: 'var(--bg-color)', backgroundColor: 'var(--purple)' }
+                                                                        :
+                                                                        {}
+                                                            }
+                                                            onClick={() => handleChoosePrice(item)}
+                                                            key={index}
+                                                      >
+                                                            {item.title}
+                                                      </li>
+                                                ))
+                                          }
+                                    </ul>
                               </div>
                         </li>
                   </ul>

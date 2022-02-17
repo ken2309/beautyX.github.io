@@ -33,6 +33,7 @@ export default function HomeLoggedLocation(props: any) {
         settings: {
           slidesToShow: org.length > 3 ? 3 : org.length,
           slidesToScroll: 3,
+          swipe: true,
         },
       },
       {

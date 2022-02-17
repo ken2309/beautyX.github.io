@@ -25,6 +25,14 @@ import Bottom from "../../featuresMobile/Bottom";
 // import { getAllOrg, fetchAsyncOrg } from '../../redux/orgSlice'
 
 // const logged: boolean = true;
+// const headerStyle = {
+//   position: 'fixed',
+//   top: 0,
+//   left: 0,
+//   right: 0,
+//   backgroundColor: 'transparent',
+//   zIndex:10
+// }
 function Home() {
   const { profile, t } = useContext(AppContext);
   // const dispatch = useDispatch();
@@ -39,8 +47,10 @@ function Home() {
   return (
     <div className="home">
       <HeadTitle title={t("Home.home")} />
+      <Head
+        // headerStyle={headerStyle}
+      />
       {/* <HomeBanner /> */}
-      <Head />
       <Container>
         <HomeBanner />
       </Container>
