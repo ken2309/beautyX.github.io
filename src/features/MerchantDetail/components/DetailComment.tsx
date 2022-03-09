@@ -55,7 +55,7 @@ function DetailComment(props: any) {
   const history = useHistory();
   function handleSeeAllFeedback() {
     history.push({
-      pathname: `/MerchantComment`,
+      pathname: `/merchant-comment`,
     });
   }
   const { styleCmt } = props;

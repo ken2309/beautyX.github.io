@@ -36,9 +36,9 @@ function PaymentTotal(props: any) {
     services: servicesPost,
     treatment_combo: combosPost,
     payment_method_id: chooseE_wall?.id,
-    prepay_cards: [],
+    //prepay_cards: [],
     branch_id: 0,
-    coupon_code: "string",
+    coupon_code: [],
     description: "string"
   };
  

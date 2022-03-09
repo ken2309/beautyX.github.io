@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import order from "../../api/orderApi";
 import "./order.css";
-import { Order } from "../../interface/order";
 import { Pagination } from "@mui/material";
 import OrderItem from "./components/OrderItem";
 import HeadTitle from "../HeadTitle";
 import { AppContext } from "../../context/AppProvider";
+import {IOrderV2} from '../../interface/orderv2'
+
 
 interface IData {
-  orders: Order[],
+  orders: IOrderV2[],
   page: number,
-  pageCount: number
+  pageCount: number,
+  lastPage:number
 }
 
 function Orders() {
@@ -18,16 +20,18 @@ function Orders() {
   const [data, setData] = useState<IData>({
     orders: [],
     page: 1,
-    pageCount: 1
+    pageCount: 1,
+    lastPage:1
   })
   useEffect(() => {
     async function handleGetOrders() {
       try {
-        const response = await order.getOrder(data.page);
+        const res = await order.getOrders(data.page);
         setData({
           ...data,
-          orders: response.data.context.data,
-          pageCount: response.data.context.last_page
+          orders: res.data.context.data,
+          pageCount: res.data.context.total,
+          lastPage: res.data.context.last_page
         })
       } catch (err) {
         console.log(err);
@@ -42,6 +46,7 @@ function Orders() {
       page: value
     })
   };
+  
   return (
     <div className="order">
       <HeadTitle title={t("order.order_his")} />
@@ -50,16 +55,21 @@ function Orders() {
       </div>
       <div className="order-list">
         <ul className="order-list__cnt">
-          {data.orders.map((item: Order, index: number) => (
-            <OrderItem key={index} order={item} />
-          ))}
+          {
+            data.orders.map((order:IOrderV2, index:number)=>(
+              <OrderItem
+                key={index}
+                order={order}
+              />
+            ))
+          }
         </ul>
       </div>
       <div className="order-pagination">
         <Pagination
           color="secondary"
           shape="rounded"
-          count={data.pageCount}
+          count={data.lastPage}
           onChange={handlePageChange}
         />
       </div>

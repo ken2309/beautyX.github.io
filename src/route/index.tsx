@@ -19,6 +19,7 @@ import CountDown from "../features/CountDown";
 import ServicesUser from "../features/ServiceUser";
 import DatePicker from "../components/DatePicker"
 import { AppContext } from "../context/AppProvider";
+import SearchResults from '../features/SearchResults/index';
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
 import MerchantComment from "../features/MerchantComment";
@@ -30,7 +31,7 @@ function RouterConfig(props: any) {
   const { profile } = useContext(AppContext)
   const routes = [
     {
-      path: `/Home`,
+      path: `/home`,
       component: <CountDown />,
     },
     {
@@ -42,15 +43,19 @@ function RouterConfig(props: any) {
       component: <SearchResult />,
     },
     {
+      path:'/ket-qua-tim-kiem/',
+      component:<SearchResults/>
+    },
+    {
       path: "/cart",
       component: <Cart />,
     },
     {
-      path: "/Product-detail/:name",
+      path: "/product-detail/:name",
       component: <ProductDetail />,
     },
     {
-      path: "/Service-detail/",
+      path: "/service-detail/",
       component: <ServiceDetail />,
     },
     {
@@ -78,7 +83,7 @@ function RouterConfig(props: any) {
     //   component: <Partner />,
     // },
     {
-      path: "/MerchantComment",
+      path: "/merchant-comment",
       component: <MerchantComment />,
     },
     {
@@ -111,11 +116,11 @@ function RouterConfig(props: any) {
       component: Account,
     },
     {
-      path: "/Partner",
+      path: "/partner",
       component: Partner,
     },
     {
-      path: "/Payment",
+      path: "/payment",
       component: CartPayment,
     },
     {
@@ -123,14 +128,14 @@ function RouterConfig(props: any) {
       component: Calendar,
     },
     {
-      path: "/Notifications",
+      path: "/notifications",
       component: Notification,
     },
   ];
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="Home" />
+        <Redirect exact from="/" to="home" />
         {routes.map((item, index) => (
           <RouterPage
             key={index}

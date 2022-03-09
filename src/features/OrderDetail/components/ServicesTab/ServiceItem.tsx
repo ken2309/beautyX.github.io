@@ -31,7 +31,7 @@ function ServiceItem(props: any) {
   const handleAddCart = () => {
     const action = addCart(values);
     history.push({
-      pathname: `/Cart`,
+      pathname: `/cart`,
     });
     dispatch(action);
   };
@@ -40,7 +40,7 @@ function ServiceItem(props: any) {
   const name = service?.service_name;
   const handleDetailService = () => {
     history.push({
-      pathname: `/Service-detail/${slugify(service?.service_name)}`,
+      pathname: `/service-detail/${slugify(service?.service_name)}`,
       search: `${org.id},${serviceItem?.productable_id},${is_type}`,
       state: { org, detail, name },
     });

@@ -31,13 +31,13 @@ function CardItem(props:any) {
             //console.log(is_type);   
             if (is_type === 1) {
                   history.push({
-                        pathname: `/Product-detail/${slugify(name)}`,
+                        pathname: `/product-detail/${slugify(name)}`,
                         search: `${org.id},${detail.id},${is_type}`,
                         state: { org, detail, name },
                   })
             } else if (is_type === 2) {
                   history.push({
-                        pathname: `/Service-detail/${slugify(name)}`,
+                        pathname: `/service-detail/${slugify(name)}`,
                         search: `${org.id},${detail.id},${is_type}`,
                         state: { org, detail, name }
                   })

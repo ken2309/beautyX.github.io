@@ -57,7 +57,7 @@ function Head(props: any) {
     if (isCart) {
       history.goBack();
     } else {
-      history.push("/Partner");
+      history.push("/partner");
     }
   };
   const gotoPageSignUp = () => {

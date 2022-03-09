@@ -40,7 +40,7 @@ function CartBottom(props: any) {
     if (profile) {
       if (carts.cartAmount > 0 && cartFirstList.length === cartConfirm.length) {
         scrollTop();
-        history.push("/Payment");
+        history.push("/payment");
       } else {
         setPopUp(true);
       }

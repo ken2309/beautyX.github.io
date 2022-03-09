@@ -11,6 +11,24 @@ class Order {
                   },
             })
       }
+      getOrders = (page:number) => {
+            //filter[platform]='BEAUTYX'
+            const session = window.sessionStorage.getItem("_WEB_TK");
+            const local = localStorage.getItem("_WEB_TK");
+            const url = '/orders'
+            const params = {
+                  page: page,
+                  limit: 4,
+                  include: 'items|items_count',
+                  sort: '-created_at'
+            }
+            return axiosClient.get(url, {
+                  params,
+                  headers: {
+                        Authorization: `Bearer ${session ? session : local}`,
+                  },
+            })
+      }
       postOrder = (org_id: number, params: object) => {
             const session = window.sessionStorage.getItem("_WEB_TK");
             const local = localStorage.getItem("_WEB_TK")

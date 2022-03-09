@@ -11,7 +11,8 @@ import Product from "./components/HistoryProduct";
 import Service from "./components/HistoryService";
 import ComboList from "./components/HistoryCombo/components/Combolist";
 import AccountMb from "../../featuresMobile/Account";
-import OrderDetail from "../OrderDetail"
+import OrderDetail from "../OrderDetail";
+import UserAddress from "./components/UserAddress/components/UserAddress";
 import Footer from "../Footer";
 const routes = [
   {
@@ -41,6 +42,10 @@ const routes = [
   {
     path:'/tai-khoan/chi-tiet-don-hang',
     component: <OrderDetail/>
+  },
+  {
+    path:'/tai-khoan/dia-chi',
+    component: <UserAddress/>
   }
 ];
 function Account() {

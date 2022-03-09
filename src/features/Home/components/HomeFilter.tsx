@@ -17,8 +17,8 @@ function HomeFilter(props: any) {
 
   const searchFunc = () => {
     history.push({
-      pathname: "/search-result/",
-      search: `?search=${searchText}`,
+      pathname: "/ket-qua-tim-kiem/",
+      search: `${searchText}`,
     });
     if (setData) {
       setData({
@@ -37,12 +37,14 @@ function HomeFilter(props: any) {
   const handleSearchClick = () => {
     // history.push(`/Search-result/${searchText}`)
     searchFunc();
+    hiddenFilter()
   };
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
       searchFunc();
       scrollTop();
+      hiddenFilter()
     }
   };
   return (

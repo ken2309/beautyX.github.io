@@ -104,6 +104,8 @@ import backWhite from "../assets/icon/back_white.svg";
 import checkGreen from '../assets/icon/check_green.svg'; 
 import chevronUpWhite from '../assets/icon/chevron-up-white.svg';
 import chevronDownWhite from '../assets/icon/chevron-down-white.svg';
+import mapPinRed from '../assets/icon/mapPinRed.svg';
+import heart from '../assets/icon/heart.svg'
 
 
 const icon = {
@@ -211,6 +213,8 @@ const icon = {
   backWhite,
   checkGreen,
   chevronDownWhite,
-  chevronUpWhite
+  chevronUpWhite,
+  mapPinRed,
+  heart
 };
 export default icon;

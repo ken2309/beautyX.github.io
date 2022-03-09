@@ -27,6 +27,7 @@ import banner from "../assets/image/banner.png";
 import thumb from "../assets/image/thumb.png";
 import thumb_1 from "../assets/image/thumb_1.png";
 import thumb_2 from "../assets/image/thumb_2.png";
+import imgDefault from '../assets/image/imgDefault.svg'
 const img = {
   slider1,
   Avatar,
@@ -57,6 +58,7 @@ const img = {
   thumb,
   thumb_1,
   thumb_2,
+  imgDefault
 };
 export default img;
 export const banner_default = banner;

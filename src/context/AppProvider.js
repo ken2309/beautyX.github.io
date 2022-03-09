@@ -83,7 +83,17 @@ export default function AppProvider({ children }) {
       console.log(err)
     }
   }
+  const getUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const user_location = {
+        lat: position.coords.latitude,
+        long: position.coords.longitude
+      }
+      sessionStorage.setItem('USER_LOCATION', JSON.stringify(user_location))
+    });
+  }
   useEffect(() => {
+    getUserLocation()
     handleGetAllTags();
     handleGetProvinces();
   }, []);

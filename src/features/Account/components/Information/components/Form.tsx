@@ -1,4 +1,3 @@
-import icon from "../../../../../constants/icon";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -234,65 +233,6 @@ function Form(props: any) {
             {formik.errors.phone && formik.touched.phone && (
               <p className="err-text">{formik.errors.phone}</p>
             )}
-          </div>
-        </div>
-      </div>
-
-      {/*address */}
-      <div className="title_section text-color-purple">
-        <h1 className="title">{t("acc.order_address")}</h1>
-        <span className="subtitle cursor-pointer">
-          {t("acc.add_other_address")}
-        </span>
-      </div>
-      <hr className="purple_line" />
-      <div className="form-address">
-        <div className="form-account__wraper">
-          <div style={{ width: "100%", padding: "24px 0 8px 0" }}>
-            <div className="form-account__label">
-              <span>{t("Mer_de.address")} 1</span>
-              <div className="delete-address">
-                <span>{t("acc.default")}</span>
-                <img src={icon.TrashOrange} alt="" />
-              </div>
-            </div>
-            <div className="form-account__wrapinput">
-              <input
-                className="form-account__input"
-                value={formik.values.address}
-                onChange={formik.handleChange}
-                placeholder={t("Mer_de.address") + "1"}
-                type="text"
-                name="address"
-                id="address"
-              />
-            </div>
-            {formik.errors.address && formik.touched.address && (
-              <p className="err-text">{formik.errors.address}</p>
-            )}
-          </div>
-        </div>
-
-        <div style={{ paddingTop: "0px" }} className="form-account__wraper">
-          <div style={{ width: "100%", padding: "8px 0 8px 0" }}>
-            <div className="form-account__label">
-              <span>{t("Mer_de.address")} 2</span>
-              <div className="delete-address">
-                <span>{t("acc.default")}</span>
-                <img src={icon.TrashOrange} alt="" />
-              </div>
-            </div>
-            <div className="form-account__wrapinput">
-              <input
-                className="form-account__input"
-                // value={formikPartner.values.Name}
-                // onChange={formikPartner.handleChange}
-                placeholder={t("Mer_de.address") + "2"}
-                type="text"
-                name="address2"
-                id="address2"
-              />
-            </div>
           </div>
         </div>
       </div>
