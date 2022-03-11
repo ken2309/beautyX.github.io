@@ -29,6 +29,7 @@ function SignUp(props: any) {
       email: values.EmailPhone,
       telephone: values.Phone,
       password: values.password,
+      platform: 'BEAUTYX'
     };
     // console.log("params :>> ", params);
     axios
@@ -69,12 +70,6 @@ function SignUp(props: any) {
           "Tên không đúng định dạng"
         ),
       Sex: Yup.string().required("Vui lòng chọn giới tính"),
-      dateOfBirth: Yup.string().required("Vui lòng nhập ngày tháng năm sinh"),
-      // .matches(
-      //   // eslint-disable-next-line no-useless-escape
-      //   /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-      //   "Vui lòng nhập đúng định dạng dd/mm/yyyy"
-      // ),
       EmailPhone: Yup.string()
         .required("Vui lòng nhập Email hoặc Số điện thoại")
         .matches(
@@ -196,34 +191,6 @@ function SignUp(props: any) {
         </div>
 
         {/* date of birth */}
-        <div className="date-of-birth">
-          <div className="relative" style={{ width: "100%", margin: "8px 0" }}>
-            <img
-              style={{ zIndex: "10" }}
-              className="sign-form__box-icon"
-              src={icon.Calendar}
-              alt=""
-            />
-            <LocalizationProvider
-              dateAdapter={AdapterDateFns}
-              //locale={viVN}
-            >
-              <DatePicker
-                // className="cus-date__picker"
-                openTo="year"
-                views={["year", "month", "day"]}
-                value={value}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
-                renderInput={(params) => (
-                  <TextField {...params} helperText={null} />
-                )}
-              />
-            </LocalizationProvider>
-          </div>
-        </div>
-
         <div className="flex-column w-100">
           <div className="sign-form__box  mb-16 ">
             <img className="sign-form__box-icon" src={icon.Message} alt="" />
@@ -267,7 +234,7 @@ function SignUp(props: any) {
               value={formik.values.password}
               onChange={formik.handleChange}
               name="password"
-              id="password"
+              //id="password"
               type={typePass}
               placeholder="Mật khẩu"
             />
@@ -291,7 +258,7 @@ function SignUp(props: any) {
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
               name="confirmPassword"
-              id="confirmPassword"
+              //id="confirmPassword"
               type={typePass}
               placeholder="Nhập lại mật khẩu"
             />
@@ -312,7 +279,7 @@ function SignUp(props: any) {
             value={formik.values.agree}
             onChange={formik.handleChange}
             name="agree"
-            id="agree"
+            //id="agree"
             // defaultChecked
             sx={{
               color: "#7161BA",

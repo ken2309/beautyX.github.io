@@ -52,6 +52,8 @@ export default function HomeLoggedCalendarComponent(
     switch (stt) {
       case "CONFIRMED":
         return <span className="status-dot status-dot-green" />;
+      case "Xác nhận":
+        return <span className="status-dot status-dot-green" />;
       case "ARRIVED":
         return <span className="status-dot status-dot-green" />;
       case "NEW":
@@ -65,7 +67,7 @@ export default function HomeLoggedCalendarComponent(
       case "NOT COME":
         return <span className="status-dot status-dot-red" />;
       default:
-        break;
+        return <span className="status-dot status-dot-red" />;
     }
   };
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from '../Head';
 import HeadTitle from '../HeadTitle';
 import { useLocation } from 'react-router-dom'
@@ -11,20 +11,25 @@ import Footer from '../Footer';
 import TabOrgs from './components/TabOrgs';
 import orgApi from '../../api/organizationApi';
 
+interface ITabs {
+    id: number,
+    title: string,
+    count: number
+}
+
 function SearchResults(props: any) {
     const { t } = useContext(AppContext)
     const location = useLocation();
     const searchKey = decodeURI(location.search.slice(1, location.search.length));
-    const tabs = [
-        { id: 1, title: 'Dịch vụ', count: 1 },
-        { id: 2, title: 'Sản phẩm', count: 1 },
-        { id: 3, title: 'Doanh nghiệp', count: 1 },
-        { id: 4, title: 'Khu vực', count: 1 },
-    ]
-    const [acTab, setAcTab] = useState(tabs[0].id);
+    const [tabs, setTabs] = useState<ITabs[]>([]);
+    const [acTab, setAcTab] = useState(0);
     const onActiveTab = (tab: any) => {
         setAcTab(tab.id)
     }
+    const [itemCount, setItemCount] = useState({
+        servicesCount: 0,
+        orgsCount: 0
+    })
     //filter for org
     const [data, setData] = useState({
         orgs: [],
@@ -54,11 +59,23 @@ function SearchResults(props: any) {
                 orgs: res.data.context.data,
                 lastPage: res.data.context.last_page
             })
+            setItemCount({ ...itemCount, orgsCount: res.data.context.total })
         } catch (error) {
             console.log(error)
         }
     }
     //
+    useEffect(() => {
+        const tags = [
+            { id: 1, title: 'Dịch vụ', count: itemCount.servicesCount },
+            { id: 2, title: 'Sản phẩm', count: itemCount.servicesCount },
+            { id: 3, title: 'Doanh nghiệp', count: itemCount.orgsCount },
+            { id: 4, title: 'Khu vực', count: itemCount.orgsCount },
+        ]
+        const tagsSort = tags.sort((a: any, b: any) => b.count - a.count);
+        setTabs(tagsSort)
+        setAcTab(tagsSort[0].id)
+    }, [itemCount])
     return (
         <>
             <HeadTitle title={`${t("Search_result.text_result")} : ${searchKey}`} />
@@ -102,6 +119,8 @@ function SearchResults(props: any) {
                         <TabService
                             keyword={searchKey}
                             acTab={acTab}
+                            itemCount={itemCount}
+                            setItemCount={setItemCount}
                         />
                         <TabOrgs
                             orgFilter={orgFilter}

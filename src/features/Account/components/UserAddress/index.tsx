@@ -5,6 +5,9 @@ import { IUserAddress } from '../../../../interface/userAddress';
 import userAddressApi from '../../../../api/userAddressApi';
 import AddressItem from './components/AddressItem';
 
+const session = window.sessionStorage.getItem("_WEB_TK");
+const local = localStorage.getItem("_WEB_TK")
+
 function Address(props: any) {
     const history = useHistory();
     const { t } = useContext(AppContext)
@@ -13,7 +16,7 @@ function Address(props: any) {
     const [addressList, setAddressList] = useState<IUserAddress[]>([])
     async function getListUserAddress() {
         try {
-            const res = await userAddressApi.getAddress();
+            const res = await userAddressApi.getAddress(session, local);
             const addressList = res?.data.context
             setChooseAdd(addressList?.find((item: IUserAddress) => item.is_default === true))
             setAddressList(addressList)

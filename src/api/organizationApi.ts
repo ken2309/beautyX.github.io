@@ -33,7 +33,7 @@ class Organization {
       ${location_user ? `,"filter[location]":${location}` : ''}
     }`
     const params = JSON.parse(`${params_string}`);
-    return axiosClient.get(url,{params})
+    return axiosClient.get(url, { params })
   };
   getOrgByFilter = (values: any) => {
     const url = `/organizations`
@@ -64,6 +64,72 @@ class Organization {
       },
     });
   };
+  //
+  getOrgsByTrust = () => {
+    const url = `/organizations`;
+    const params = {
+      page: 1,
+      limit: 15,
+      include: 'favorites_count|tags|branches'
+    }
+    return axiosClient.get(url, { params })
+  }
+  //
+  getOrgsByManyDealHot = () => {
+    const url = `/organizations`;
+    const params = {
+      page: 1,
+      limit: 15,
+      include: 'favorites_count|tags|branches',
+      sort: '-priority'
+    }
+    return axiosClient.get(url, { params })
+  }
+  //
+  getOrgsByDistance = () => {
+    const url = `/organizations`;
+    const params = {
+      page: 1,
+      limit: 15,
+      include: 'favorites_count|tags|branches',
+      "filter[location]": location_user ? `${location_user.lat},${location_user.long}` : ``
+    }
+    return axiosClient.get(url, { params })
+  }
+  //get by single tags
+  getOrgsByTag = (values: any) => {
+    const location = JSON.stringify(`${location_user?.lat},${location_user?.long}`)
+    const url = `organizations`;
+    const params_string = `{
+      "page":${values.page},
+      "limit":15,
+      "filter[tags]":"${values.tag}"
+      ${values.province > 0 ? `,"filter[province_code]":${values.province}` : ''}
+      ${values.price.min >= 0 ? `,"filter[min_price]":${values.price.min}` : ''}
+      ${values.price.max > 0 ? `,"filter[max_price]":${values.price.max}` : ''},
+      ${!location_user || location_user === null ? '"include":"favorites_count|tags|branches"' : '"include":"favorites_count|tags"'}
+      ${location_user ? `,"filter[location]":${location}` : ''}
+    }`
+    const params = JSON.parse(params_string)
+    return axiosClient.get(url, { params })
+  }
+  //get by province code
+  getOrgsByProvinceCode = (values: any) => {
+    const location = JSON.stringify(`${location_user?.lat},${location_user?.long}`)
+    const url = `organizations`;
+    const params_string = `{
+      "page":${values.page},
+      "limit":15
+      ${values.tags.length > 0 ? `,"filter[tags]":${JSON.stringify(values.tags)}` : ''}
+      ${values.province > 0 ? `,"filter[province_code]":${values.province}` : ''}
+      ${values.price.min > 0 ? `,"filter[min_price]":${values.price.min}` : ''}
+      ${values.price.max > 0 ? `,"filter[max_price]":${values.price.max}` : ''},
+      ${!location_user || location_user === null ? '"include":"favorites_count|tags|branches"' : '"include":"favorites_count|tags"'}
+      ${location_user ? `,"filter[location]":${location}` : ''}
+    }`
+    const params = JSON.parse(params_string);
+    return axiosClient.get(url, { params })
+  }
 }
 const orgApi = new Organization();
 export default orgApi;

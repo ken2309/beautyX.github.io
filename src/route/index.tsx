@@ -20,6 +20,11 @@ import ServicesUser from "../features/ServiceUser";
 import DatePicker from "../components/DatePicker"
 import { AppContext } from "../context/AppProvider";
 import SearchResults from '../features/SearchResults/index';
+import HomeTags from "../features/HomeResults/HomeTags";
+import HomePromo from "../features/HomeResults/HomePromo";
+import HomeProvince from "../features/HomeResults/HomeProvince";
+import HomeListProvince from "../features/HomeResults/HomeListProvince";
+
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
 import MerchantComment from "../features/MerchantComment";
@@ -32,12 +37,12 @@ function RouterConfig(props: any) {
   const routes = [
     {
       path: `/home`,
-      component: <CountDown />,
-    },
-    {
-      path: `/beta`,
       component: <Home />,
     },
+    // {
+    //   path: `/beta`,
+    //   component: <Home />,
+    // },
     {
       path: "/search-result/",
       component: <SearchResult />,
@@ -105,6 +110,22 @@ function RouterConfig(props: any) {
       path: "/org/:subdomain",
       component: <MerchantDetail />,
     },
+    {
+      path:'/danh-muc/',
+      component: <HomeTags/>
+    },
+    {
+      path:'/deal-lam-dep-cuc-HOT',
+      component: <HomePromo/>
+    },
+    {
+      path:'/khu-vuc/',
+      component: <HomeProvince/>
+    },
+    {
+      path:'/dia-diem-quan-tam',
+      component: <HomeListProvince/>
+    }
   ];
   const routesPrivate = [
     {
@@ -130,7 +151,7 @@ function RouterConfig(props: any) {
     {
       path: "/notifications",
       component: Notification,
-    },
+    }
   ];
   return (
     <BrowserRouter>

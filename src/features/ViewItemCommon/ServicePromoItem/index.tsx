@@ -4,8 +4,9 @@ import { IServicePromo } from '../../../interface/servicePromo';
 import icon from '../../../constants/icon';
 import formatPrice from '../../../utils/formatPrice';
 import { useHistory } from 'react-router-dom';
-import slugify from '../../../utils/formatUrlString'
-
+import slugify from '../../../utils/formatUrlString';
+import onErrorImg from '../../../utils/errorImg';
+import scrollTop from '../../../utils/scrollTop';
 interface IProps {
     service: IServicePromo
 }
@@ -13,26 +14,30 @@ interface IProps {
 function ServicePromoItem(props: IProps) {
     const { service } = props;
     const history = useHistory()
-    const org = {
-        id: service.org_id,
-        name: service.org_name,
-        latitude: service.org_latitude,
-        longitude: service.org_longitude,
-        address: service.org_full_address,
-        full_address: service.org_full_address
-    }
+    // const org = {
+    //     id: service.org_id,
+    //     name: service.org_name,
+    //     latitude: service.org_latitude,
+    //     longitude: service.org_longitude,
+    //     address: service.org_full_address,
+    //     full_address: service.org_full_address
+    // }
     const gotoDetail = () => {
-        const name = service.service_name
+        scrollTop()
         history.push({
             pathname: `/service-detail/${slugify(service.service_name)}`,
-            search: `${org.id},${service.service_id},2`,
-            state: { org, service, name }
+            search: `${service.org_id},${service.service_id},2`,
         })
     }
     return (
         <div onClick={gotoDetail} className='ser-pro-item'>
             <div className="ser-img-cnt">
-                <img className='ser-img' src={service?.image_url ? `${service.image_url}` : `${service?.org_image}`} alt="" />
+                <img
+                    className='ser-img'
+                    src={service?.image_url ? `${service.image_url}` : `${service?.org_image}`}
+                    alt=""
+                    onError={(e) => onErrorImg(e)}
+                />
                 <div className="ser-promo">
                     {
                         service.discount_percent > 0 ?

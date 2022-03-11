@@ -78,7 +78,7 @@ export default function AppProvider({ children }) {
     try {
       const res = await provincesApi.getAll();
       const temp = await res.data.context.data;
-      setProvinces(temp.filter(item => item.organizations_count > 0))
+      setProvinces(temp.filter(item => item.organizations_count >= 0))
     } catch (err) {
       console.log(err)
     }

@@ -17,9 +17,9 @@ import scrollTop from "../../utils/scrollTop";
 import HomeFilter from '../Home/components/HomeFilter';
 
 const styleFilter = {
-  width: '66.66%',
+  width: '41.5%',
   boxShadow: "rgb(0 0 0 / 14%) -2px 1px 16px 0px",
-  padding: "36px",
+  padding: "12px",
   transform:'translateX(0%)'
 }
 

@@ -5,7 +5,8 @@ class Provinces {
             const url = `/provinces`
             const params = {
                   type: 'PROVINCE',
-                  sort: '-organizations_count'
+                  sort: '-organizations_count',
+                  include:'media'
             }
             return axiosClient.get(url, { params })
       }

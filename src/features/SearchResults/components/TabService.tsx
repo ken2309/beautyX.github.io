@@ -7,7 +7,7 @@ import { Pagination } from '@mui/material';
 import scrollTop from '../../../utils/scrollTop';
 
 function TabService(props: any) {
-    const { keyword, acTab } = props;
+    const { keyword, acTab, itemCount, setItemCount } = props;
     const [dataSort, setDataSort] = useState('default')
     const [data, setData] = useState({
         services: [],
@@ -20,6 +20,7 @@ function TabService(props: any) {
                 keyword: keyword,
                 page: data.page
             });
+            setItemCount({ ...itemCount, servicesCount: res.data.total })
             setData({
                 ...data,
                 services: res?.data.data.hits,

@@ -4,7 +4,9 @@ import './org-item.css';
 import icon from '../../../constants/icon';
 import img from '../../../constants/img';
 import { useHistory } from 'react-router-dom';
-import scrollTop from '../../../utils/scrollTop'
+import scrollTop from '../../../utils/scrollTop';
+import onErrorImg from '../../../utils/errorImg';
+
 interface IProps {
     org: IOrganization
 }
@@ -23,7 +25,12 @@ function OrgItem(props: IProps) {
     return (
         <div onClick={gotoDetail} className='re-org-item'>
             <div className="org-img-cnt">
-                <img src={org.image ? `${org.image_url}` : `${img.imgDefault}`} alt="" className="re-org-item__img" />
+                <img
+                    src={org.image ? `${org.image_url}` : `${img.imgDefault}`}
+                    alt=""
+                    className="re-org-item__img"
+                    onError={(e) => onErrorImg(e)}
+                />
                 <div className="flex-row org-img-cnt__rate">
                     <div style={{ justifyContent: "flex-start", width: '100%' }} className='flex-row'>
                         <div className="flex-row org-img-cnt__rate-item">

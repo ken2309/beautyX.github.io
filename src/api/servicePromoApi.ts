@@ -9,7 +9,8 @@ class ServicePromo {
             page: values.page,
             limit: 20,
             "filter[is_momo_ecommerce_enable]": true,
-            "filter[keyword]": values.keyword
+            "filter[keyword]": values.keyword,
+            "filter[location]": location_user ? `${location_user.lat},${location_user.long}` : ``
         }
         return axiosClient.get(url, { params })
     }
@@ -43,10 +44,43 @@ class ServicePromo {
             limit: 20,
             "filter[keyword]": values.keyword,
             "filter[is_momo_ecommerce_enable]": true,
-            "filter[location]":location_user ? `${location_user.lat},${location_user.long}`:``
+            "filter[location]": location_user ? `${location_user.lat},${location_user.long}` : ``
         }
         console.log(params, values)
-        return axiosClient.get(url,{params})
+        return axiosClient.get(url, { params })
+    }
+    //services promo
+    getServicesPromo = (values: any) => {
+        const url = `/services`;
+        const params = {
+            page: values.page,
+            limit: 24,
+            "filter[special_price]": true,
+            "sort": values.sort
+        }
+        return axiosClient.get(url, { params })
+    }
+    //
+    getServicesPromoLocation = (values: any) => {
+        const url = `/services`;
+        const params = {
+            page: values.page,
+            limit: 30,
+            "filter[special_price]": true,
+            "filter[location]": location_user ? `${location_user.lat},${location_user.long}` : ``
+        }
+        return axiosClient.get(url, { params })
+    }
+    //services recommend user
+    getServicesRe = () => {
+        const url = `/services`;
+        const params = {
+            page: 1,
+            limit: 30,
+            "filter[is_featured]": true,
+            "sort": "-modified_date",
+        }
+        return axiosClient.get(url, { params })
     }
 }
 const servicePromoApi = new ServicePromo();

@@ -105,8 +105,11 @@ import checkGreen from '../assets/icon/check_green.svg';
 import chevronUpWhite from '../assets/icon/chevron-up-white.svg';
 import chevronDownWhite from '../assets/icon/chevron-down-white.svg';
 import mapPinRed from '../assets/icon/mapPinRed.svg';
-import heart from '../assets/icon/heart.svg'
-
+import heart from '../assets/icon/heart.svg';
+import chevronRightBlack from '../assets/icon/chevronRightBlack.svg';
+import distance from '../assets/icon/distance.svg';
+import fire from '../assets/icon/fire.svg';
+import shield from '../assets/icon/sheild.svg';
 
 const icon = {
   Favorite,
@@ -215,6 +218,10 @@ const icon = {
   chevronDownWhite,
   chevronUpWhite,
   mapPinRed,
-  heart
+  heart,
+  chevronRightBlack,
+  distance,
+  fire,
+  shield
 };
 export default icon;
