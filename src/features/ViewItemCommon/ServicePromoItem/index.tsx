@@ -25,7 +25,7 @@ function ServicePromoItem(props: IProps) {
     const gotoDetail = () => {
         scrollTop()
         history.push({
-            pathname: `/service-detail/${slugify(service.service_name)}`,
+            pathname: `/dich-vu/${slugify(service.service_name)}`,
             search: `${service.org_id},${service.service_id},2`,
         })
     }

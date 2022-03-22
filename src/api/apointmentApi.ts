@@ -29,13 +29,24 @@ class ApointmentApi {
       });
     }
   };
-  getAppoitment = (params: any) => {
+  getAppoitment = (time: any) => {
+    console.log(time)
+    const url = 'appointments';
+    const params = {
+      page: 1,
+      limit: 300,
+      "filter[time_start]": time,
+      "filter[platform]": "BEAUTYX",
+      "append": "services",
+      "sort": "-id"
+    }
     // const url = "appointments?sort=-id&page=1&limit=15";
     const session = window.sessionStorage.getItem("_WEB_TK");
     const local = localStorage.getItem("_WEB_TK");
-    const url = `appointments?sort=-id&page=1&limit=15&filter%5Btime_start%5D=${params}`;
+    //const url = `appointments?sort=-id&page=1&limit=15&filter%5Btime_start%5D=${params}`;
     if (localStorage.getItem("_WEB_TK") || session) {
       return axiosClient.get(url, {
+        params,
         headers: {
           Authorization: `Bearer ${session ? session : local}`,
         },

@@ -19,3 +19,29 @@
 .home-result-ser-cnt{
     padding: 24px 0px;
 }
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .home-result-ser-cnt{
+        padding: 12px 0px;
+    }
+    .home-promo-ser__mb{
+        width: 100%;
+    }
+    .ser-list__mb{
+        width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+    .ser-list-item__mb{
+        width: 50% !important;
+    }
+    .home-result-org-cnt {
+        flex-direction: column;
+    }
+    .home-result-org-cnt__left{
+        width: 100%;
+    }
+    .home-result-org-cnt__right{
+        width: 100%;
+        padding: 0px 20px;
+    }
+}

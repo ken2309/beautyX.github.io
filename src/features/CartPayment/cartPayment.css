@@ -238,6 +238,38 @@
 .pm-method_child-item_box {
   font-size: 16px;
 }
+.payment-form__left-cnt .sec-title{
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.payment-form__left-cnt .sec-item__label span{
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--text-black);
+}
+.payment-form__left-cnt .sec-item__label span:nth-child(2){
+  margin-left: 6px;
+  font-weight: bold;
+}
+.payment-form__left-cnt button{
+  border: none;
+  outline: none;
+  background-color: var(--purple);
+  padding: 4px;
+  color: var(--bgWhite);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.payment-form__left-cnt button img{
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+}
+
+
 /* responsive */
 /* Tablet */
 @media screen and (min-width: 768px) and (max-width: 1023px) {

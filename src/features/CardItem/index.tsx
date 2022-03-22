@@ -37,7 +37,7 @@ function CardItem(props:any) {
                   })
             } else if (is_type === 2) {
                   history.push({
-                        pathname: `/service-detail/${slugify(name)}`,
+                        pathname: `/dich-vu/${slugify(name)}`,
                         search: `${org.id},${detail.id},${is_type}`,
                         state: { org, detail, name }
                   })

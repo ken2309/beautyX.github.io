@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { imgTag } from '../../../../constants/img';
 import '../../home-se.css';
 import HomeTitleSection from '../HomeTitleSection/index';
 import { useHistory } from 'react-router-dom'
+import { AppContext } from '../../../../context/AppProvider';
 
 function HomeTags(props: any) {
-    const history = useHistory()
+    const history = useHistory();
+    const { t } = useContext(AppContext)
     const tags = [
-        { id: 1, title: 'Nail', img: imgTag.nails },
-        { id: 2, title: 'Phòng khám', img: imgTag.nhaKhoa },
-        { id: 3, title: 'Salon', img: imgTag.hairSalon },
-        { id: 4, title: 'Spa', img: imgTag.spa },
-        { id: 5, title: 'Thẩm mỹ viện', img: imgTag.skinCare },
-        { id: 6, title: 'Message Center', img: imgTag.message },
+        { id: 1, title: 'Nail', text: "Nail", img: imgTag.nails },
+        { id: 2, title: 'Phòng khám', text: t("home_2.clinic"), img: imgTag.nhaKhoa },
+        { id: 3, title: 'Salon', text: "Salon", img: imgTag.hairSalon },
+        { id: 4, title: 'Spa', text: "Spa", img: imgTag.spa },
+        { id: 5, title: 'Thẩm mỹ viện', text: t("home_2.beauty_salon"), img: imgTag.skinCare },
+        { id: 6, title: 'Message Center', text: "Message Center", img: imgTag.message },
         //{ id: 7, title: 'Yoga', img: imgTag.yoga },
     ]
     const gotoDetail = (tag: string) => {
@@ -24,7 +26,7 @@ function HomeTags(props: any) {
     return (
         <>
             <HomeTitleSection
-                title='Danh mục'
+                title={`${t("home_2.categories")}`}
             />
             <div className='home-tags'>
                 <ul className="home-tags-list">
@@ -36,7 +38,7 @@ function HomeTags(props: any) {
                             >
                                 <div className="flex-column tag-item-cnt">
                                     <img src={item.img} alt="" />
-                                    <span>{item.title}</span>
+                                    <span>{item.text}</span>
                                 </div>
                             </li>
                         ))

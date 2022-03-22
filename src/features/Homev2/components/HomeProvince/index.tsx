@@ -10,6 +10,7 @@ import scrollTop from '../../../../utils/scrollTop';
 
 function HomeProvince(props: any) {
     const { provinces } = useContext(AppContext);
+    const {t} = useContext(AppContext)
     const history = useHistory()
     const gotoResult=(province:IProvince)=>{
         history.push({
@@ -28,7 +29,7 @@ function HomeProvince(props: any) {
             <Container>
                 <div className="flex-row-sp home-se-promo__header">
                     <HomeTitleSection
-                        title='Địa điểm bạn quan tâm'
+                        title={`${t("home_2.places_you_are_interested_in")}`}
                     />
                     <button
                         onClick={gotoListProvince}
@@ -47,7 +48,7 @@ function HomeProvince(props: any) {
                                 <img src={`${item.media[1].original_url}`} alt="" />
                                 <div className="province-item-cnt">
                                     <span>{item.name}</span>
-                                    <span>{item.organizations_count} Địa điểm làm đẹp </span>
+                                    <span>{item.organizations_count} {t("home_2.beauty_places")} </span>
                                 </div>
                             </div>
                         ))

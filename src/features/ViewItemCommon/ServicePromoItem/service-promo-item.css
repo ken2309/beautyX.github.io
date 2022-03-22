@@ -109,3 +109,37 @@
     height: 14px;
     margin-top: 2px;
 }
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .ser-pro-item .ser-img{
+        height: auto;
+    }
+    .ser-pro-item .ser-name{
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 16px;
+        color: #3b3a40;
+        color: var(--black);
+        font-weight: 600;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        margin-bottom: 4px;
+    }
+    .ser-pro-item .ser-org-address {
+        font-size: 10px;
+        line-height: 14px;
+        margin-top: 4px;
+    }
+    .ser-pro-item .ser-promo__bot-start,
+    .ser-pro-item .ser-promo__bot-bought{
+        padding: 4px;
+    }
+    .ser-pro-item .ser-promo__bot-start img{
+        width: 14px;
+        height: 14px;
+    }
+}

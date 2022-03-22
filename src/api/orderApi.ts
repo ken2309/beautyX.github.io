@@ -12,7 +12,6 @@ class Order {
             })
       }
       getOrders = (page:number) => {
-            //filter[platform]='BEAUTYX'
             const session = window.sessionStorage.getItem("_WEB_TK");
             const local = localStorage.getItem("_WEB_TK");
             const url = '/orders'
@@ -20,7 +19,8 @@ class Order {
                   page: page,
                   limit: 4,
                   include: 'items|items_count',
-                  sort: '-created_at'
+                  sort: '-created_at',
+                  'filter[platform]':'BEAUTYX'
             }
             return axiosClient.get(url, {
                   params,

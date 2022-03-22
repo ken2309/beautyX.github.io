@@ -1,8 +1,12 @@
 import axiosClient from "./axios"
 
 class Auth {
-  login = (params: any) => {
+  login = (values: any) => {
     const url = `/auth/login`;
+    const params = {
+      ...values,
+      "platform": "BEAUTYX"
+    }
     return axiosClient.post(url, params);
   };
   register = (params: any) => {

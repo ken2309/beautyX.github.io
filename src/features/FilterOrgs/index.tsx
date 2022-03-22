@@ -3,10 +3,19 @@ import './filter-orgs.css';
 import { Checkbox } from '@mui/material'
 import { AppContext } from '../../context/AppProvider';
 import scrollTop from '../../utils/scrollTop';
+import icon from '../../constants/icon';
 
 const tags = ['Nail', 'Phòng khám', 'Salon', 'Spa', 'Thẩm mỹ viện']
 
+const toggleFilter =()=>{
+    document.querySelector('.re-sort-org')?.classList.toggle('re-sort-org__ac')
+}
+const removeFilter =()=>{
+    document.querySelector('.re-sort-org')?.classList.remove('re-sort-org__ac')
+}
+
 function FilterOrgs(props: any) {
+    const {t} = useContext(AppContext)
     const {
         orgFilter,
         setOrgFilter,
@@ -49,6 +58,7 @@ function FilterOrgs(props: any) {
                 province_code: provinceCode
             })
             scrollTop()
+            removeFilter()
         }
     }
     const onChangeMinPrice = (e: any) => {
@@ -71,6 +81,7 @@ function FilterOrgs(props: any) {
                     page: 1,
                     lastPage: 1
                 })
+                removeFilter()
                 handleOrgsByKeyword()
             }
         }
@@ -78,8 +89,14 @@ function FilterOrgs(props: any) {
     // console.log(orgFilter)
     return (
         <div className="se-re-cnt__left-sort">
-            <span className="se-re-cnt__left-sort__title">
-                Bộ lọc tìm kiếm
+            <span 
+                onClick={toggleFilter}
+                className="se-re-cnt__left-sort__title"
+            >
+                {t("se.filters")}
+                <button>
+                    <img src={icon.arrowPurple} alt="" />
+                </button>
             </span>
             <div className="re-sort-org">
                 {
@@ -88,7 +105,7 @@ function FilterOrgs(props: any) {
                         :
                         <div className="re-sort-org__item">
                             <span className="title">
-                                Danh mục
+                                {t("home_2.categories")}
                             </span>
                             <div className="list">
                                 <ul className="list-tags">
@@ -123,7 +140,7 @@ function FilterOrgs(props: any) {
                         :
                         <div className="re-sort-org__item">
                             <span className="title">
-                                Khu vực
+                                {t("Home.Filter_location")}
                             </span>
                             <div className="list list-provinces">
                                 <ul className="list-tags">
@@ -151,23 +168,23 @@ function FilterOrgs(props: any) {
                 }
                 <div className="re-sort-org__item">
                     <span className="title">
-                        Khoảng giá
+                        {t("se.price_range")}
                     </span>
                     <div className="flex-row-sp list range-price">
                         <input
                             onChange={onChangeMinPrice}
                             type="number"
-                            placeholder='đ Từ...'
+                            placeholder={`đ ${t("se.from")}...`}
                         />
                         <input
                             onChange={onChangeMaxPrice}
                             type="number"
-                            placeholder='đ Đến...'
+                            placeholder={`đ ${t("se.to")}...`}
                         />
                     </div>
                     {
                         orgFilter.min_price <= -1 || orgFilter.max_price < 0 || orgFilter.min_price > orgFilter.max_price ?
-                            <span className='price-err'>Khoảng giá không hợp lệ</span>
+                            <span className='price-err'>{t("se.price_range")} {t("se.invalid")}</span>
                             :
                             <></>
                     }
@@ -176,7 +193,7 @@ function FilterOrgs(props: any) {
                     onClick={onApplyFilter}
                     className="apply-btn"
                 >
-                    Áp dụng khoảng giá
+                    {t("se.apply")}
                 </button>
             </div>
         </div>

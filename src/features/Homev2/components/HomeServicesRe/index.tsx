@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../../home-se.css'
 import HomeTitleSection from '../HomeTitleSection/index';
 import servicePromoApi from '../../../../api/servicePromoApi';
 import ServicePromoItem from '../../../ViewItemCommon/ServicePromoItem';
 import { IServicePromo } from '../../../../interface/servicePromo';
+import { AppContext } from '../../../../context/AppProvider';
 
 function HomeServicesRe(props: any) {
+    const {t} = useContext(AppContext)
     const [data, setData] = useState({
         services: [],
         page: 1,
@@ -31,12 +33,12 @@ function HomeServicesRe(props: any) {
     return (
         <div className='home-se-re'>
             <HomeTitleSection
-                title='Dịch vụ dành riêng cho bạn'
+                title={t('Home.sale_for_me')}
             />
             <div className="home-promo-ser">
                 <ul className="ser-list">
                     {
-                        data.services.slice(0, 12).map((item: IServicePromo, index: number) => (
+                        data.services.slice(0, 18).map((item: IServicePromo, index: number) => (
                             <li
                                 key={index}
                             >

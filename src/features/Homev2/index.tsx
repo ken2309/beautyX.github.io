@@ -22,12 +22,14 @@ function HomeSecond(props: any) {
                 <HomeCard />
             </Container>
             <HomeProvince />
-            {
-                profile ?
-                    <HomeLoggedCalendar />
-                    :
-                    <></>
-            }
+            <div className="home-ca-cnt">
+                {
+                    profile ?
+                        <HomeLoggedCalendar />
+                        :
+                        <></>
+                }
+            </div>
             <Container>
                 <HomeServicesRe />
             </Container>

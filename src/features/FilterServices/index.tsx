@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../../context/AppProvider';
 import './filter-services.css'
 
 function FilterServices(props: any) {
     const { dataSort, setDataSort, setData } = props;
+    const { t } = useContext(AppContext)
     const sortList = [
-        { id: 2, title: 'Khuyến mãi HOT', query: '-discount_percent' },
-        { id: 1, title: 'Gần bạn', query: 'none' },
+        { id: 2, title: t("home_2.hot_promotion"), query: '-discount_percent' },
+        { id: 1, title: t("home_2.places_near_you"), query: 'none' },
         //{ id: 8, title: 'Dịch vụ HOT', query: '-modified_date' },
-        { id: 3, title: 'Giá thấp', query: 'price' },
-        { id: 4, title: 'Giá cao', query: '-price' },
-        { id: 5, title: 'Bán chạy', query: '-bought_count' },
-        { id: 6, title: 'Tên A-Z', query: 'service_name' },
-        { id: 7, title: 'Tên Z-A', query: '-service_name' },
+        { id: 3, title: t("Mer_de.ascending_price"), query: 'price' },
+        { id: 4, title: t("Mer_de.decrease_price"), query: '-price' },
+        { id: 5, title: t("home_2.selling"), query: '-bought_count' },
+        { id: 6, title: t("home_2.name") + 'A-Z', query: 'service_name' },
+        { id: 7, title: t("home_2.name") + 'Z-A', query: '-service_name' },
     ]
     const onChooseSortType = (sort: any) => {
         if (dataSort !== sort.query) {

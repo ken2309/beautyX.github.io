@@ -15,7 +15,8 @@ import SignPage from "../features/SignPage/index";
 import SignPageRequest from "../features/SignPageRequest/index";
 import Notification from "../features/Notification/index";
 import PrivateRoute from "./PrivateRoute";
-import CountDown from "../features/CountDown";
+import CartPaymentStatus from "../features/CartPaymentStatus";
+//import CountDown from "../features/CountDown";
 import ServicesUser from "../features/ServiceUser";
 import DatePicker from "../components/DatePicker"
 import { AppContext } from "../context/AppProvider";
@@ -60,7 +61,7 @@ function RouterConfig(props: any) {
       component: <ProductDetail />,
     },
     {
-      path: "/service-detail/",
+      path: "/dich-vu/",
       component: <ServiceDetail />,
     },
     {
@@ -151,6 +152,10 @@ function RouterConfig(props: any) {
     {
       path: "/notifications",
       component: Notification,
+    },
+    {
+      path:'/trang-thai-don-hang/:desc',
+      component: CartPaymentStatus
     }
   ];
   return (

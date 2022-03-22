@@ -4,7 +4,7 @@ const _session = window.sessionStorage.getItem("_WEB_TK");
 const _local = localStorage.getItem("_WEB_TK")
 
 class UserAddress {
-    getAddress = (session:any, local:any) => {
+    getAll = (session: any, local: any) => {
         const url = `/useraddresses`;
         const params = {
             limit: 15,
@@ -19,21 +19,37 @@ class UserAddress {
             });
         }
     }
-    postAddress = (values: any) => {
+    getAddress = (session: any, local: any) => {
+        const url = `/useraddresses`;
+        const params = {
+            limit: 15,
+            page: 1
+        }
+        if (localStorage.getItem("_WEB_TK") || window.sessionStorage.getItem("_WEB_TK")) {
+            return axiosClient.get(url, {
+                params,
+                headers: {
+                    Authorization: `Bearer ${session ? session : local}`,
+                },
+            });
+        }
+    }
+    postAddress = (values: any, session: any, local: any) => {
         const url = `/useraddresses`;
         const params = {
             "address": values.address,
-            "is_default": true,
-            "is_bookmark":true
+            "is_default": values.is_default,
+            "is_bookmark": true
         }
-        if (localStorage.getItem("_WEB_TK") || window.sessionStorage.getItem("_WEB_TK")) {
+        if (session || local) {
             return axiosClient.post(url, params, {
                 headers: {
-                    Authorization: `Bearer ${_session ? _session : _local}`,
+                    Authorization: `Bearer ${session ? session : local}`,
                 }
             });
         }
     }
+
     deleteAddress = (id: number) => {
         const url = `/useraddresses/${id}`;
         if (localStorage.getItem("_WEB_TK") || window.sessionStorage.getItem("_WEB_TK")) {
@@ -47,8 +63,22 @@ class UserAddress {
     updateAddress = (values: any) => {
         const url = `/useraddresses/${values.id}`;
         const params = {
-            "address":values.address,
+            "address": values.address,
             "is_default": true,
+        }
+        if (localStorage.getItem("_WEB_TK") || window.sessionStorage.getItem("_WEB_TK")) {
+            return axiosClient.put(url, params, {
+                headers: {
+                    Authorization: `Bearer ${_session ? _session : _local}`,
+                }
+            });
+        }
+    }
+    updateAddressCancelDefault = (values: any) => {
+        const url = `/useraddresses/${values.id}`;
+        const params = {
+            "address": values.address,
+            "is_default": false
         }
         if (localStorage.getItem("_WEB_TK") || window.sessionStorage.getItem("_WEB_TK")) {
             return axiosClient.put(url, params, {

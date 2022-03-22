@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Head from '../../Head';
 import HeadTitle from '../../HeadTitle';
 import { Container } from '@mui/material';
@@ -10,8 +10,10 @@ import ServicePromoItem from '../../ViewItemCommon/ServicePromoItem';
 import { IServicePromo } from '../../../interface/servicePromo';
 import {Pagination} from '@mui/material';
 import scrollTop from '../../../utils/scrollTop';
+import { AppContext } from '../../../context/AppProvider';
 
 function HomePromo(props: any) {
+    const {t} = useContext(AppContext)
     const [dataSort, setDataSort] = useState('-discount_percent')
     const [data, setData] = useState({
         services: [],
@@ -67,12 +69,12 @@ function HomePromo(props: any) {
         <>
             <Head />
             <HeadTitle
-                title='Deal làm đẹp cực HOT'
+                title={`${t("home_2.hot_beauty_deal")}`}
             />
             <Container>
                 <div className="home-result-ser-cnt">
                     <HomeTitleSection
-                        title='Deal làm đẹp cực HOT'
+                        title={`${t("home_2.hot_beauty_deal")}`}
                     />
                     <FilterServices
                         dataSort={dataSort}
@@ -80,12 +82,13 @@ function HomePromo(props: any) {
                         setData={setData}
                     />
                 </div>
-                <div className="home-promo-ser">
-                    <ul className="ser-list">
+                <div className="home-promo-ser home-promo-ser__mb">
+                    <ul className="ser-list ser-list__mb">
                         {
                             data.services.map((item: IServicePromo, index: number) => (
                                 <li
                                     key={index}
+                                    className="ser-list-item__mb"
                                 >
                                     <ServicePromoItem
                                         service={item}

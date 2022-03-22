@@ -89,7 +89,7 @@
     "cancel": "Cancel",
     "favorite_list": "Favorite beauty spots",
     "pr_ser_purchased": "Products/Services purchased",
-    "sale_for_me": "Special offer just for me"
+    "sale_for_me": "Special offer just for you"
   },
   "Search_result": {
     "text_result": "search results",
@@ -316,5 +316,29 @@
     "rv_booked":"You can review your booked services",
     "bk_fail_title":"An error occurred during the booking process",
     "code_err":"Code error"
+  },
+  "home_2":{
+    "categories":"Categories",
+    "clinic":"Clinic",
+    "beauty_salon":"Beauty Salon",
+    "hot_beauty_deal":"HOT beauty Deal",
+    "hot_promotion":"HOT Promotion",
+    "places_near_you":"Places near you",
+    "selling":"Selling",
+    "name":"Name",
+    "hot_deal_locations":"HOT Deal locations",
+    "trusted_place":"Trusted place",
+    "places_near_you_2":"Places near you",
+    "places_you_are_interested_in":"Places you are interested in",
+    "beauty_places":"Beauty places"
+  },
+  "se":{
+    "search_results_for_keyword":"Search results for keyword",
+    "filters":"Filters",
+    "price_range":"Price range",
+    "from":"from",
+    "to":"to",
+    "invalid":"invalid",
+    "apply":"Apply"
   }
 }

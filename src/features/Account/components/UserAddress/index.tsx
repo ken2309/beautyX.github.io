@@ -5,16 +5,16 @@ import { IUserAddress } from '../../../../interface/userAddress';
 import userAddressApi from '../../../../api/userAddressApi';
 import AddressItem from './components/AddressItem';
 
-const session = window.sessionStorage.getItem("_WEB_TK");
-const local = localStorage.getItem("_WEB_TK")
-
 function Address(props: any) {
+    //console.log(session, local)
     const history = useHistory();
     const { t } = useContext(AppContext)
     //const [isDefault, setIsDefault] = useState(false)
     const [chooseAdd, setChooseAdd] = useState()
     const [addressList, setAddressList] = useState<IUserAddress[]>([])
     async function getListUserAddress() {
+        const session = await window.sessionStorage.getItem("_WEB_TK");
+        const local = await localStorage.getItem("_WEB_TK")
         try {
             const res = await userAddressApi.getAddress(session, local);
             const addressList = res?.data.context
@@ -38,6 +38,13 @@ function Address(props: any) {
             console.log(error)
         }
     }
+    async function handleUpdateCancelDefault(values: any) {
+        try {
+            await userAddressApi.updateAddressCancelDefault(values)
+        } catch (error) {
+            console.log(error)
+        }
+    }
     useEffect(() => {
         getListUserAddress()
     }, [])
@@ -48,6 +55,16 @@ function Address(props: any) {
     const handleUpdateAddress = (address: any) => {
         onUpdateAddress(address)
         setChooseAdd(address)
+        if (chooseAdd) {
+            handleUpdateCancelDefault(chooseAdd)
+        }
+    }
+
+    const gotoAddNewAddress = () => {
+        history.push({
+            pathname: '/tai-khoan/dia-chi',
+            state: chooseAdd
+        })
     }
 
     return (
@@ -55,7 +72,7 @@ function Address(props: any) {
             <div className="title_section text-color-purple">
                 <h1 className="title">{t("acc.order_address")}</h1>
                 <span
-                    onClick={() => history.push('/tai-khoan/dia-chi')}
+                    onClick={gotoAddNewAddress}
                     className="subtitle cursor-pointer"
                 >
                     {t("acc.add_other_address")}

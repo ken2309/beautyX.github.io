@@ -5,23 +5,26 @@ import ButtonCus from "../../../components/ButtonCus";
 import PopupSuccess from "../../PopupSuccess/index";
 import { AppContext } from "../../../context/AppProvider";
 import order from '../../../api/orderApi';
-import { Cart } from '../../../interface/cart'
+import { Cart } from '../../../interface/cart';
+import { useHistory } from 'react-router-dom';
+import slugify from "../../../utils/formatUrlString";
 
 const useInPayment: boolean = true;
 function PaymentTotal(props: any) {
   const { t } = useContext(AppContext);
-  const { 
-      methodList, 
-      value, 
-      list, 
-      carts, 
-      userInfo, 
-      profile, 
-      chooseE_wall,
-      products,
-      services,
-      combos 
-    } =props;
+  const {
+    methodList,
+    value,
+    list,
+    carts,
+    profile,
+    chooseE_wall,
+    products,
+    services,
+    combos,
+    address
+  } = props;
+  const history = useHistory();
   const pmMethod = methodList.find((item: any) => item.method === value);
   const [popup, setPopup] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
@@ -29,7 +32,7 @@ function PaymentTotal(props: any) {
 
   const productsPost = products.map((item: Cart) => ({ id: item.id, quantity: item.quantity }))
   const servicesPost = services.map((item: Cart) => ({ id: item.id, quantity: item.quantity }))
-  const combosPost = combos.map((item:Cart) => ({id:item.id, quantity: item.quantity}))
+  const combosPost = combos.map((item: Cart) => ({ id: item.id, quantity: item.quantity }))
 
   const params = {
     products: productsPost,
@@ -39,18 +42,27 @@ function PaymentTotal(props: any) {
     //prepay_cards: [],
     branch_id: 0,
     coupon_code: [],
-    description: "string"
+    //description: "string",
+    user_address_id: address?.id
   };
- 
+
   async function handlePostOrder(org_id: number, params: object) {
     try {
       const response = await order.postOrder(org_id, params);
-      console.log(response)
-      const payUrl = await response.data.context.payment_gateway.extra_data.payUrl;
-      //const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
+      const state_payment = await response.data.context
+      const payUrl = await state_payment.payment_gateway.extra_data.payUrl;
+      const desc = await state_payment.payment_gateway.description;
+      const transaction_uuid = state_payment.payment_gateway.transaction_uuid;
+      const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
       const newWindow = window.open(`${payUrl}`, '_blank', 'noopener,noreferrer')
       setDisableBtn(true)
       if (newWindow) newWindow.opener = null
+      console.log(desc, transaction_uuid)
+      history.push({
+        pathname: `/trang-thai-don-hang/${desc}`,
+        search: transaction_uuid,
+        state: state_payment
+      })
     } catch (err) {
       console.log(err)
       setDisableBtn(false)
@@ -59,7 +71,7 @@ function PaymentTotal(props: any) {
   const handleSubmitPayment = () => {
     if (disableBtn === false) {
       if (profile) {
-        if (value && userInfo && chooseE_wall?.id === 1) {
+        if (address && value && chooseE_wall?.id === 1) {
           //console.log(params)
           handlePostOrder(org_id, params)
         } else {

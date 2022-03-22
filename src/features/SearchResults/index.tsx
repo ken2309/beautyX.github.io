@@ -67,14 +67,15 @@ function SearchResults(props: any) {
     //
     useEffect(() => {
         const tags = [
-            { id: 1, title: 'Dịch vụ', count: itemCount.servicesCount },
-            { id: 2, title: 'Sản phẩm', count: itemCount.servicesCount },
-            { id: 3, title: 'Doanh nghiệp', count: itemCount.orgsCount },
-            { id: 4, title: 'Khu vực', count: itemCount.orgsCount },
+            { id: 1, title: t("Mer_de.services"), count: itemCount.servicesCount },
+            { id: 2, title: t("Mer_de.products"), count: itemCount.servicesCount },
+            { id: 3, title: t("my_ser.business"), count: itemCount.orgsCount },
+            { id: 4, title: t("Home.Filter_location"), count: itemCount.orgsCount },
         ]
         const tagsSort = tags.sort((a: any, b: any) => b.count - a.count);
         setTabs(tagsSort)
         setAcTab(tagsSort[0].id)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemCount])
     return (
         <>
@@ -114,7 +115,7 @@ function SearchResults(props: any) {
                     </div>
                     <div className="se-re-cnt__right">
                         <span className="se-re-cnt-title">
-                            Kết quả tìm kiếm cho từ khóa : "{searchKey}"
+                            {t("se.search_results_for_keyword")} : "{searchKey}"
                         </span>
                         <TabService
                             keyword={searchKey}

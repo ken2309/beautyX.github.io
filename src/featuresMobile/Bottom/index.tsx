@@ -32,7 +32,7 @@ function Bottom(props: any) {
                   title: t('Bottom.home'),
                   icon_active: icon.home,
                   icon: icon.home_1,
-                  path: '/beta',
+                  path: '/',
                   is_badge: false,
             },
             {
@@ -79,7 +79,7 @@ function Bottom(props: any) {
                                     </div>
                               ))
                         }
-                        <div
+                        {/* <div
                               onClick={() => setOpenFilter(true)}
                               className="flex-column bt-cnt__item"
                         >
@@ -89,7 +89,7 @@ function Bottom(props: any) {
                               >
                                     {t('Bottom.search')}
                               </span>
-                        </div>
+                        </div> */}
                   </div>
                   <SearchFilter
                         openFilter={openFilter}

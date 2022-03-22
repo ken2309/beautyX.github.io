@@ -91,7 +91,8 @@ function Information(props: any) {
         />
       </div>
       <hr className="purple_line" />
-      <Address/>
+      <Address
+      />
       <DialogChangePass
         openChangePass={openChangePass}
         setOpenChangePass={setOpenChangePass}

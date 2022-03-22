@@ -8,6 +8,9 @@
     font-weight: 600;
     color: var(--purple);
 }
+.se-re-cnt__left-sort__title button{
+    display: none;
+}
 .re-sort-org__item{
     margin: 8px 0px;
     padding: 6px 0px;
@@ -94,4 +97,32 @@
     line-height: 18px;
     font-weight: 700;
     color: var(--red-cl);
+}
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .se-re-cnt__left-sort__title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .se-re-cnt__left-sort__title button{
+        display: block;
+        padding: 8px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+    }
+    .se-re-cnt__left-sort{
+        margin: 0px;
+        padding: 4px 20px;
+    }
+    .re-sort-org{
+        height: 0px;
+        overflow: hidden;
+        transition: all .3s;
+        padding: 0px 12px;
+    }
+    .re-sort-org__ac{
+        height: max-content;
+    }
 }

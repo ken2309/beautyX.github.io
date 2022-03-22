@@ -238,3 +238,107 @@
 .home-se-re{
     margin: 42px 0px;
 }
+/* Mobile */
+@media only screen and (max-width: 767px) {
+    .home-ca-cnt{
+        display: none;
+    }
+    .home-se-cnt{
+        margin-top: 124px;
+    }
+    .home-se-sec-title{
+        margin-left: 8px;
+        margin-bottom: 12px;
+    }
+    .home-tags{
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .home-tags-list{
+        width: max-content;
+    }
+    .home-tags-list li{
+        padding: 6px;
+    }
+    .home-tags .tag-item-cnt{
+        box-shadow: none;
+        background-color: var(--bg-color);
+    }
+    .home-tags .tag-item-cnt span{
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .home-se-promo__header{
+        padding-right: 20px;
+    }
+    .home-se-promo__header button img{
+        width: 16px;
+        height: 16px;
+    }
+    .home-promo-ser .ser-list li {
+        width: 164px;
+    }
+    .home-deal-cnt{
+        flex-direction: column;
+        padding: 20px;
+    }
+    .deal-first{
+        width: 100%;
+    }
+    .deal-second{
+        width: 100%;
+    }
+    .home-card-cnt{
+        flex-direction: column;
+    }
+    .home-card-cnt__left{
+        width: 100%;
+        padding: 0px 20px;
+    }
+    .home-card-cnt__right {
+        width: 100%;
+    }
+    .home-card-list-org{
+        width: 100%;
+        overflow-x: scroll;
+    }
+    .home-card-list-org .org-list{
+        flex-wrap: nowrap;
+        width: max-content;
+    }
+    .home-card-list-org .org-list li {
+        width: 164px;
+    }
+    .home-province_list {
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        grid-template-columns: none;
+        grid-template-rows: none;
+        grid-gap:0px;
+        gap: 0px;
+    }
+    .home-province .home-province_item{
+        width: 49%;
+        height: 224px;
+        margin: 8px 0px;
+    }
+    .home-province .province-item-cnt{
+        width: 100%;
+        margin: 0px;
+        padding: 4px;
+        background-color: transparent;
+    }
+    .home-province .province-item-cnt span:nth-child(1){
+        color: var(--bgWhite);
+        font-weight: 700;
+    }
+    .home-province .province-item-cnt span:nth-child(2){
+        font-size: 14px;
+        color: var(--bgWhite);
+    }
+}

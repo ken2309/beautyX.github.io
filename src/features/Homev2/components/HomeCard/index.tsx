@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import icon from '../../../../constants/icon';
 import TabTrust from './TabTrust';
 import TabDealHot from './TabDealHot';
 import TabDistance from './TabDistance';
+import { AppContext } from '../../../../context/AppProvider';
 
 function HomeCard(props: any) {
+    const { t } = useContext(AppContext)
     const cards = [
-        { id: 1, title: 'Địa điểm nhiều Deal HOT', icon: icon.fire },
-        { id: 2, title: 'Địa điểm đáng tin cậy', icon: icon.shield },
-        { id: 3, title: 'Địa điểm gần bạn', icon: icon.distance },
+        { id: 1, title: t("home_2.hot_deal_locations"), icon: icon.fire },
+        { id: 2, title: t("home_2.trusted_place"), icon: icon.shield },
+        { id: 3, title: t("home_2.places_near_you_2"), icon: icon.distance },
     ]
     const [acTab, setAcTab] = useState(cards[0].id)
     const switchTab = () => {

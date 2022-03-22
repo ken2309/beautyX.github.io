@@ -15,12 +15,13 @@ import { getTotal } from "../../redux/cartSlice";
 import MbMenu from "../../featuresMobile/Menu";
 import scrollTop from "../../utils/scrollTop";
 import HomeFilter from '../Home/components/HomeFilter';
+import SearchFilter from "../../featuresMobile/SearchResult/SearchFilter";
 
 const styleFilter = {
   width: '41.5%',
   boxShadow: "rgb(0 0 0 / 14%) -2px 1px 16px 0px",
   padding: "12px",
-  transform:'translateX(0%)'
+  transform: 'translateX(0%)'
 }
 
 function openFilter() {
@@ -45,6 +46,7 @@ function Head(props: any) {
   const [openLang, setOpenLang] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMbMenu, setOpenMbMenu] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
   const [unit, setUnit] = useState("VND");
   const history = useHistory();
 
@@ -191,21 +193,28 @@ function Head(props: any) {
             )}
             {/* menu for mobile */}
             <div className="mb-hd-cnt__right">
-              <div className="flex-row">
-                <div
-                  onClick={() => history.push("/cart")}
-                  className="hd-cnt__right-cart"
+              <div className="flex-row-sp">
+                <button
+                  onClick={()=>setOpenSearch(true)}
                 >
-                  <img src={icon.ShoppingCartSimpleWhite} alt="" />
-                  <div className="hd-cnt__right-cart-total">
-                    {carts.cartQuantity}
+                  <img src={icon.search} alt="" />
+                </button>
+                <div className="flex-row">
+                  <div
+                    onClick={() => history.push("/cart")}
+                    className="hd-cnt__right-cart"
+                  >
+                    <img src={icon.ShoppingCartSimpleWhite} alt="" />
+                    <div className="hd-cnt__right-cart-total">
+                      {carts.cartQuantity}
+                    </div>
                   </div>
+                  <img
+                    onClick={() => setOpenMbMenu(true)}
+                    src={icon.menuWhite}
+                    alt=""
+                  />
                 </div>
-                <img
-                  onClick={() => setOpenMbMenu(true)}
-                  src={icon.menuWhite}
-                  alt=""
-                />
               </div>
             </div>
             <MbMenu openMbMenu={openMbMenu} setOpenMbMenu={setOpenMbMenu} />
@@ -242,6 +251,10 @@ function Head(props: any) {
           </div>
         </div>
       </Container>
+      <SearchFilter
+        openSearch={openSearch}
+        setOpenSearch={setOpenSearch}
+      />
     </div>
   );
 }
