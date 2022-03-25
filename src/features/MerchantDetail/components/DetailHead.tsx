@@ -12,6 +12,7 @@ import Slider from "react-slick";
 import DetailHeadOpenTime from "../components/DetailHeadOpenTime";
 import favorites from "../../../api/favorite";
 import SignInUp from "../../poupSignInUp/index";
+import onErrorImg from "../../../utils/errorImg";
 
 const settings = {
   dots: true,
@@ -87,7 +88,7 @@ function DetailHead(props: any) {
             ) : (
               <>
                 <div className="content-left__header">
-                  <img src={icon.logoBusiness} alt="" />
+                  <img className="content-left__header-avt" src={org?.image && org?.image_url} alt="" onError={(e) => onErrorImg(e)} />
                   <div className="content-left__header-name">
                     <span>{org?.name}</span>
                     <div className="mer-detail__rate">
@@ -132,9 +133,9 @@ function DetailHead(props: any) {
                     style={
                       follow === true && profile
                         ? {
-                            backgroundColor: "var(--purple)",
-                            color: "var(--bg-gray)",
-                          }
+                          backgroundColor: "var(--purple)",
+                          color: "var(--bg-gray)",
+                        }
                         : {}
                     }
                     onClick={handleFollowClick}

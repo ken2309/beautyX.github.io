@@ -25,6 +25,8 @@ import HomeTags from "../features/HomeResults/HomeTags";
 import HomePromo from "../features/HomeResults/HomePromo";
 import HomeProvince from "../features/HomeResults/HomeProvince";
 import HomeListProvince from "../features/HomeResults/HomeListProvince";
+import Policy from "../features/Policy";
+import SellerCenter from "../features/SellerCenter";
 
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
@@ -126,6 +128,18 @@ function RouterConfig(props: any) {
     {
       path:'/dia-diem-quan-tam',
       component: <HomeListProvince/>
+    },
+    {
+      path:'/chinh-sach/',
+      component: <Policy/>
+    },
+    {
+      path: "/partner",
+      component: <Partner/>,
+    },
+    {
+      path:"/kenh-nguoi-ban",
+      component:<SellerCenter/>
     }
   ];
   const routesPrivate = [
@@ -136,10 +150,6 @@ function RouterConfig(props: any) {
     {
       path: "/tai-khoan",
       component: Account,
-    },
-    {
-      path: "/partner",
-      component: Partner,
     },
     {
       path: "/payment",

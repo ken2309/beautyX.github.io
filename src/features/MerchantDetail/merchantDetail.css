@@ -26,6 +26,12 @@
   padding-bottom: 24px;
   border-bottom: solid 1px var(--bg-color);
 }
+.content-left__header-avt{
+  width: 96px;
+  height: 96px;
+  border-radius: 100%;
+  object-fit: cover;
+}
 .content-left__header-name {
   width: calc(100% - 96px);
   padding-left: 16px;

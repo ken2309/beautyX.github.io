@@ -38,7 +38,8 @@ import spa from '../assets/image/tags/spa.svg';
 import yoga from '../assets/image/tags/yoga.svg';
 import dealhot from '../assets/image/homeBannerDeal/dealhot.png';
 import dealhot1 from '../assets/image/homeBannerDeal/dealhot1.png';
-import dealhot2 from '../assets/image/homeBannerDeal/dealhot2.png'
+import dealhot2 from '../assets/image/homeBannerDeal/dealhot2.png';
+import sellerCenterImg from '../assets/image/sellerCenterImg.jpeg';
 
 const img = {
   slider1,
@@ -70,7 +71,8 @@ const img = {
   thumb,
   thumb_1,
   thumb_2,
-  imgDefault
+  imgDefault,
+  sellerCenterImg
 };
 
 export const imgTag={

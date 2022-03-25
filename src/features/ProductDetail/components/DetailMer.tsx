@@ -19,7 +19,7 @@ function DetailMer(props: any) {
   const history = useHistory();
   const gotoMerDetail = (item: any) => {
     history.push({
-      pathname: `/Merchant-detail/${slugify(org.name)}`,
+      pathname: `/org/${slugify(org.name)}`,
       search: `${org.id}`,
       state: org,
     });

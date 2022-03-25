@@ -59,7 +59,7 @@ function Head(props: any) {
     if (isCart) {
       history.goBack();
     } else {
-      history.push("/partner");
+      history.push("/kenh-nguoi-ban");
     }
   };
   const gotoPageSignUp = () => {
@@ -113,7 +113,7 @@ function Head(props: any) {
           </div>
           <div className="hd-cnt__left">
             <ButtonCus
-              text={isCart ? t("Header.back") : t("Header.1")}
+              text={isCart ? t("Header.back") : t("Header.seller_center")}
               borderRadius="18px"
               lineHeight="20px"
               color="var(--purple)"
