@@ -7,6 +7,7 @@ import { AppContext } from "../../context/AppProvider";
 import { Container } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import BackButton from "../../components/BackButton";
+import SignUps from "./components/SignUps";
 
 function SignPage(props: any) {
   const { t } = useContext(AppContext);
@@ -53,9 +54,9 @@ function SignPage(props: any) {
                     style={
                       item.id === activeTabSign
                         ? {
-                            color: "var(--purple)",
-                            borderBottom: "solid 1px var(--purple)",
-                          }
+                          color: "var(--purple)",
+                          borderBottom: "solid 1px var(--purple)",
+                        }
                         : {}
                     }
                     key={item.id}
@@ -70,7 +71,11 @@ function SignPage(props: any) {
                 setActiveTabSign={setActiveTabSign}
                 t={t}
               />
-              <SignUp
+              {/* <SignUp
+                activeTabSign={activeTabSign}
+                setActiveTabSign={setActiveTabSign}
+              /> */}
+              <SignUps
                 activeTabSign={activeTabSign}
                 setActiveTabSign={setActiveTabSign}
               />

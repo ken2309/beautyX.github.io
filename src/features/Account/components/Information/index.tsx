@@ -6,7 +6,8 @@ import DialogChangePass from "./components/DialogChangePass";
 import DialogNewPass from "./components/DialogNewPass";
 import Form from "./components/Form";
 import "./style.css";
-import { AppContext } from '../../../../context/AppProvider'
+import { AppContext } from '../../../../context/AppProvider';
+import Address from "../UserAddress";
 
 function Information(props: any) {
   const { t, userInfo } = useContext(AppContext)
@@ -66,7 +67,6 @@ function Information(props: any) {
   return (
     <div className="info_section">
       <Form formik={formik} />
-
       <div className="btn-success">
         <ButtonCus
           onClick={handleOpenChange}
@@ -90,6 +90,9 @@ function Information(props: any) {
           type="button"
         />
       </div>
+      <hr className="purple_line" />
+      <Address
+      />
       <DialogChangePass
         openChangePass={openChangePass}
         setOpenChangePass={setOpenChangePass}

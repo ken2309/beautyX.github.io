@@ -58,7 +58,8 @@ function CartList(props: any) {
                   <CartItem
                     key={child.cart_id}
                     cartItem={child}
-                    chooseOrg={chooseOrg}
+                    inPayment={false}
+                    //chooseOrg={chooseOrg}
                   />
                 ))}
             </ul>
@@ -78,7 +79,8 @@ function CartList(props: any) {
                         <CartItem
                           key={child.cart_id}
                           cartItem={child}
-                          chooseOrg={chooseOrg}
+                          inPayment={false}
+                          //chooseOrg={chooseOrg}
                         />
                       ))}
                   </ul>
@@ -100,7 +102,8 @@ function CartList(props: any) {
                         <CartItem
                           key={child.cart_id}
                           cartItem={child}
-                          chooseOrg={chooseOrg}
+                          inPayment={false}
+                          //chooseOrg={chooseOrg}
                         />
                       ))}
                   </ul>
@@ -134,7 +137,8 @@ function CartList(props: any) {
                 <CartItem
                   key={child.cart_id}
                   cartItem={child}
-                  chooseOrg={chooseOrg}
+                  inPayment={false}
+                  //chooseOrg={chooseOrg}
                 />
               ))}
           </ul>
@@ -154,7 +158,8 @@ function CartList(props: any) {
                       <CartItem
                         key={child.cart_id}
                         cartItem={child}
-                        chooseOrg={chooseOrg}
+                        inPayment={false}
+                        //chooseOrg={chooseOrg}
                       />
                     ))}
                 </ul>
@@ -176,7 +181,8 @@ function CartList(props: any) {
                       <CartItem
                         key={child.cart_id}
                         cartItem={child}
-                        chooseOrg={chooseOrg}
+                        inPayment={false}
+                        //chooseOrg={chooseOrg}
                       />
                     ))}
                 </ul>

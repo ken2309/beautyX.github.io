@@ -10,6 +10,7 @@ import DetailMer from '../components/DetailMer';
 import SuggestionList from '../../ServiceDetail/components/SuggestionList';
 import DetailNameMb from '../../../featuresMobile/DetailNameMb';
 import { AppContext } from '../../../context/AppProvider';
+import onErrorImg from '../../../utils/errorImg';
 
 const styleCmt = {
       width: '100%'
@@ -24,7 +25,8 @@ function DetailHead(props: any) {
       return (
             <div className="product-cnt__left">
                   <img
-                        src={"https://picsum.photos/650/976?random=" + product?.id}
+                        src={product?.image ? product?.image_url : org?.image_url}
+                        onError={(e) => onErrorImg(e)}
                         alt=""
                         className="product-cnt__left-img"
                   />

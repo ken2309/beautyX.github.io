@@ -1,3 +1,25 @@
+interface IMedia {
+      collection_name: string
+      conversions_disk: string
+      created_at: string
+      custom_properties: []
+      disk: string
+      file_name: string
+      generated_conversions: []
+      id: number
+      manipulations: []
+      mime_type: string
+      model_id: number
+      model_type: string
+      name: string
+      order_column: number
+      original_url: string
+      preview_url: string
+      responsive_images: []
+      size: number
+      updated_at: string
+      uuid: string
+}
 export interface IProvince {
       name: string,
       type: string,
@@ -7,5 +29,6 @@ export interface IProvince {
       ward_code: number | null,
       province_id: number | null,
       district_id: number | null,
-      organizations_count: number
+      organizations_count: number,
+      media: IMedia[]
 }

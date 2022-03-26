@@ -15,10 +15,19 @@ import SignPage from "../features/SignPage/index";
 import SignPageRequest from "../features/SignPageRequest/index";
 import Notification from "../features/Notification/index";
 import PrivateRoute from "./PrivateRoute";
-import CountDown from "../features/CountDown";
+import CartPaymentStatus from "../features/CartPaymentStatus";
+//import CountDown from "../features/CountDown";
 import ServicesUser from "../features/ServiceUser";
 import DatePicker from "../components/DatePicker"
 import { AppContext } from "../context/AppProvider";
+import SearchResults from '../features/SearchResults/index';
+import HomeTags from "../features/HomeResults/HomeTags";
+import HomePromo from "../features/HomeResults/HomePromo";
+import HomeProvince from "../features/HomeResults/HomeProvince";
+import HomeListProvince from "../features/HomeResults/HomeListProvince";
+import Policy from "../features/Policy";
+import SellerCenter from "../features/SellerCenter";
+
 // feature mobile
 import Calendar from "../featuresMobile/Calendar";
 import MerchantComment from "../features/MerchantComment";
@@ -30,27 +39,31 @@ function RouterConfig(props: any) {
   const { profile } = useContext(AppContext)
   const routes = [
     {
-      path: `/Home`,
-      component: <CountDown />,
-    },
-    {
-      path: `/beta`,
+      path: `/home`,
       component: <Home />,
     },
+    // {
+    //   path: `/beta`,
+    //   component: <Home />,
+    // },
     {
       path: "/search-result/",
       component: <SearchResult />,
+    },
+    {
+      path:'/ket-qua-tim-kiem/',
+      component:<SearchResults/>
     },
     {
       path: "/cart",
       component: <Cart />,
     },
     {
-      path: "/Product-detail/:name",
+      path: "/product-detail/:name",
       component: <ProductDetail />,
     },
     {
-      path: "/Service-detail/",
+      path: "/dich-vu/",
       component: <ServiceDetail />,
     },
     {
@@ -78,7 +91,7 @@ function RouterConfig(props: any) {
     //   component: <Partner />,
     // },
     {
-      path: "/MerchantComment",
+      path: "/merchant-comment",
       component: <MerchantComment />,
     },
     {
@@ -100,6 +113,34 @@ function RouterConfig(props: any) {
       path: "/org/:subdomain",
       component: <MerchantDetail />,
     },
+    {
+      path:'/danh-muc/',
+      component: <HomeTags/>
+    },
+    {
+      path:'/deal-lam-dep-cuc-HOT',
+      component: <HomePromo/>
+    },
+    {
+      path:'/khu-vuc/',
+      component: <HomeProvince/>
+    },
+    {
+      path:'/dia-diem-quan-tam',
+      component: <HomeListProvince/>
+    },
+    {
+      path:'/chinh-sach/',
+      component: <Policy/>
+    },
+    {
+      path: "/partner",
+      component: <Partner/>,
+    },
+    {
+      path:"/kenh-nguoi-ban",
+      component:<SellerCenter/>
+    }
   ];
   const routesPrivate = [
     {
@@ -111,11 +152,7 @@ function RouterConfig(props: any) {
       component: Account,
     },
     {
-      path: "/Partner",
-      component: Partner,
-    },
-    {
-      path: "/Payment",
+      path: "/payment",
       component: CartPayment,
     },
     {
@@ -123,14 +160,18 @@ function RouterConfig(props: any) {
       component: Calendar,
     },
     {
-      path: "/Notifications",
+      path: "/notifications",
       component: Notification,
     },
+    {
+      path:'/trang-thai-don-hang/:desc',
+      component: CartPaymentStatus
+    }
   ];
   return (
     <BrowserRouter>
       <Switch>
-        <Redirect exact from="/" to="Home" />
+        <Redirect exact from="/" to="home" />
         {routes.map((item, index) => (
           <RouterPage
             key={index}

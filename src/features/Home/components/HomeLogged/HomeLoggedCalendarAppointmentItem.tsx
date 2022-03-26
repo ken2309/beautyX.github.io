@@ -16,13 +16,12 @@ export default function HomeLoggedCalendarAppointmentItem(props: any) {
   function handleOpenPopupDetail() {
     setOpenPopupDetail(true);
   }
+  //console.log(datingList)
   useEffect(() => {
     async function handleGetOrg_Br() {
       try {
         const res = await Organization.getOrgBrById({ id: datingList.org_id });
         const data = await res.data.context;
-        // console.log("data :>> ", data);
-        // console.log(`res`, res);
         setOrg(data);
         setBranch(
           data.branches.find((item: any) => item.id === datingList.branch_id)
@@ -40,6 +39,8 @@ export default function HomeLoggedCalendarAppointmentItem(props: any) {
     switch (stt) {
       case "CONFIRMED":
         return <span className="appointment-status status-dot-green" />;
+      case "Xác nhận":
+        return <span className="appointment-status status-dot-green" />;
       case "ARRIVED":
         return <span className="appointment-status status-dot-green" />;
       case "NEW":
@@ -53,7 +54,7 @@ export default function HomeLoggedCalendarAppointmentItem(props: any) {
       case "NOT COME":
         return <span className="appointment-status status-dot-red" />;
       default:
-        break;
+        return <span className="appointment-status status-dot-red" />;
     }
   };
   return (

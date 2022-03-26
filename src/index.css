@@ -7,6 +7,8 @@
   --text-hover: #a2a1ab;
   --text-op: #cac4e5;
   --bg-color: #eeedf2;
+  --pink:#FFF3F1;
+  --pink-2:#FBF3F7;
 }
 a {
   color: unset;

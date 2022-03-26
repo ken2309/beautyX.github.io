@@ -69,7 +69,7 @@ function Cart(props: any) {
                         title={headerTitle}
                   />
                   {
-                        carts?.cartList.length === 0 ?
+                        carts?.cartList.length === 0 || !carts.cartList ?
                               <CartNull />
                               :
                               <>

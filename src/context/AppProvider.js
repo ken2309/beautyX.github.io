@@ -78,12 +78,22 @@ export default function AppProvider({ children }) {
     try {
       const res = await provincesApi.getAll();
       const temp = await res.data.context.data;
-      setProvinces(temp.filter(item => item.organizations_count > 0))
+      setProvinces(temp.filter(item => item.organizations_count >= 0))
     } catch (err) {
       console.log(err)
     }
   }
+  const getUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const user_location = {
+        lat: position.coords.latitude,
+        long: position.coords.longitude
+      }
+      sessionStorage.setItem('USER_LOCATION', JSON.stringify(user_location))
+    });
+  }
   useEffect(() => {
+    getUserLocation()
     handleGetAllTags();
     handleGetProvinces();
   }, []);

@@ -23,7 +23,7 @@ function AppointmentDetail(props: any) {
     async function handleSetDetail() {
       try {
         const res = await apointmentApi.getAppointmentById(datingList.id);
-        setServices(res?.data.context.service_ids);
+        setServices(res?.data.context.services);
       } catch (error) {
         console.log(error);
       }
@@ -107,9 +107,8 @@ function AppointmentDetail(props: any) {
             <span className="app-de__ser-head">Địa chỉ</span>
             <div className="app-de__address-txt">
               {datingList.branch_id
-                ? org.branches.find((i: any) => i.id === datingList.branch_id)
-                  .full_address
-                : org.full_address}
+                ? org.branches.find((i: any) => i.id === datingList.branch_id)?.full_address
+                : org?.full_address}
             </div>
           </div>
           <div className="app-de__address">

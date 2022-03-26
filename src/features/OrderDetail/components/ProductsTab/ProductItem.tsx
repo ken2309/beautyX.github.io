@@ -23,7 +23,7 @@ function ProductItem(props: any) {
   const handleDetailProduct = () => {
     scrollTop();
     history.push({
-      pathname: `/Product-detail/${slugify(product?.product_name)}`,
+      pathname: `/product-detail/${slugify(product?.product_name)}`,
       search: `${org?.id},${productItem?.productable_id},${is_type}`,
       state: { org, detail, name },
     });
@@ -44,7 +44,7 @@ function ProductItem(props: any) {
     scrollTop();
     const action = addCart(values);
     history.push({
-      pathname: `/Cart`,
+      pathname: `/cart`,
     });
     dispatch(action);
   };

@@ -65,7 +65,7 @@ img {
   bottom: -70px;
   display: flex;
   flex-direction: column;
-  border-radius: 24px;
+  border-radius: 12px;
   /* left: 50%;
   transform: translateX(-50%); */
 }
@@ -83,7 +83,7 @@ img {
   background-color: var(--bg-color);
   border: none;
   outline: none;
-  border-radius: 20px 0px 0px 20px;
+  border-radius: 12px 0px 0px 12px;
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
@@ -1499,7 +1499,7 @@ img {
   }
   .home-banner {
     max-height: 188px;
-    margin-top: 140px;
+    margin-top:0px;
     border-radius: 0;
   }
   .home-banner .home-banner__filter {
@@ -1511,11 +1511,7 @@ img {
     border-radius: 0px;
   }
   .home-banner__slogan {
-    font-size: 24px;
-    line-height: 28px;
-    margin-top: -140px;
-    white-space: normal;
-    width: 100%;
+    display: none;
   }
   .home-map {
     margin-top: 225px;

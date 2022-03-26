@@ -60,10 +60,7 @@ function SearchResult(props: any) {
       const res = await orgApi.getOrgByFilter({
         page: 1,
         limit: 15,
-        tags: paramsFilter?.tags,
-        provinceCode: paramsFilter?.province_code,
-        minPrice: paramsFilter?.minPrice,
-        maxPrice: paramsFilter?.maxPrice
+        params: paramsFilter
       })
       setData({
         ...data,

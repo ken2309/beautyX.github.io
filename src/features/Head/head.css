@@ -58,7 +58,7 @@
 .header-file__ac {
   /* display: block; */
   /* top: 5rem; */
-  margin-top: 48px;
+  margin-top: 18px;
   opacity: 1;
   visibility: visible;
   transition: all .3s;
@@ -265,7 +265,7 @@
 @media only screen and (max-width: 767px) {
   .hd {
     border-bottom: solid 1px var(--text-op);
-    padding: 20px 24px;
+    padding: 12px 20px;
     background-color: var(--purple);
   }
   .mb-back__btn {
@@ -281,6 +281,9 @@
   .hd-cnt__right {
     width: 100%;
     justify-content: space-between;
+  }
+  .header-search{
+    display: none;
   }
   .mb-hd-cnt__right {
     display: block;
@@ -324,9 +327,15 @@
   .hd-cnt__right-cart {
     display: none;
   }
+  .mb-hd-cnt__right button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-right: 8px;
+  }
   .mb-hd-cnt__right .hd-cnt__right-cart {
     display: block;
-    margin-right: 18px;
+    margin-right: 10px;
   }
   .hd-cnt__right-avatar {
     margin: 0px 4px;

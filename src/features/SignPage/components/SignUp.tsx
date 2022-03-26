@@ -46,7 +46,9 @@ function SignUp(props: any) {
       email: values.EmailPhone,
       telephone: values.Phone,
       password: values.password,
+      platform:"BEAUTYX"
     };
+    console.log(params)
     submitRegisterForm(params);
     //setPopup(true)
     // axios
@@ -88,13 +90,13 @@ function SignUp(props: any) {
           "Tên không đúng định dạng"
         ),
       Sex: Yup.string().required(t("form.please_choose_sex")),
-      dateOfBirth: Yup.string()
-        .required(t("form.please_enter_dob"))
-        .matches(
-          // eslint-disable-next-line no-useless-escape
-          /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-          t("form.dob_format")
-        ),
+      // dateOfBirth: Yup.string()
+      //   .required(t("form.please_enter_dob"))
+      //   .matches(
+      //     // eslint-disable-next-line no-useless-escape
+      //     /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
+      //     t("form.dob_format")
+      //   ),
       EmailPhone: Yup.string()
         .required(t("form.please_enter_email"))
         .matches(
@@ -116,13 +118,14 @@ function SignUp(props: any) {
       confirmPassword: Yup.string()
         .required(t("form.please_confirm_password"))
         .oneOf([Yup.ref("password"), null], t("form.password_confirm_invalid")),
-      agree: Yup.boolean().oneOf(
-        [true],
-        "Vui lòng đọc và chấp nhận điều khoản"
-      ),
+      // agree: Yup.boolean().oneOf(
+      //   [true],
+      //   "Vui lòng đọc và chấp nhận điều khoản"
+      // ),
     }),
     onSubmit: (values: any) => {
       handleOnSubmitSignUp(values);
+      console.log(values)
     },
   });
   return (
@@ -221,7 +224,7 @@ function SignUp(props: any) {
         </div>
 
         {/* date of birth */}
-        <div className="date-of-birth">
+        {/* <div className="date-of-birth">
           <div className="relative" style={{ width: "100%", margin: "8px 0" }}>
             <img
               style={{ zIndex: "10" }}
@@ -247,7 +250,7 @@ function SignUp(props: any) {
               />
             </LocalizationProvider>
           </div>
-        </div>
+        </div> */}
 
         {/* phone */}
         <div className="flex-column w-100" style={{ width: "100%" }}>
@@ -319,7 +322,7 @@ function SignUp(props: any) {
         </div>
 
         {/* checkbox */}
-        <div className="flex-row w-100">
+        {/* <div className="flex-row w-100">
           <Checkbox
             onChange={formik.handleChange}
             value={formik.values.agree}
@@ -342,10 +345,15 @@ function SignUp(props: any) {
           <p className="err-text" style={{ margin: "0 0 0 36px" }}>
             {formik.errors.agree}
           </p>
-        )}
+        )} */}
 
         {/* button submit */}
         <button
+          type="submit"
+        >
+          Đăng ký
+        </button>
+        {/* <button
           // disabled={agree === true ? false : true}
           type="submit"
           className="sign-btn mt-38"
@@ -361,7 +369,7 @@ function SignUp(props: any) {
             ""
           )}
           {t("Home.Sign_up")}
-        </button>
+        </button> */}
 
         <p className="sign-or">{t("Home.Sign_or")}</p>
         <div className="flex-row sign-other-social">

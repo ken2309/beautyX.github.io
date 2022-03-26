@@ -7,16 +7,22 @@ import orgApi from "../../../api/organizationApi";
 // import slugify from '../../../utils/formatUrlString';
 import OrderDetail from "../../OrderDetail";
 import { AppContext } from "../../../context/AppProvider";
+import {IOrderV2} from '../../../interface/orderv2'
 
-function OrderItem(props: any) {
+interface IProp{
+  order : IOrderV2
+}
+
+function OrderItem(props: IProp) {
   // const history = useHistory();
   const { t } = useContext(AppContext);
   const { order } = props;
-  const status = order.status;
-  const countItem =
-    order.items_product.length +
-    order.items_service.length +
-    order.items_treatment_combo.length;
+  const countItem = order.items_count
+  // const status = order.status;
+  // const countItem =
+  //   order.items_product.length +
+  //   order.items_service.length +
+  //   order.items_treatment_combo.length;
   const [org, setOrg] = useState<IOrganization>();
   const [openDetail, setOpenDetail] = useState(false);
   useEffect(() => {
@@ -96,7 +102,7 @@ function OrderItem(props: any) {
                 {formatPrice(order.amount)} đ
               </span>
               <div className="flex-row order-item__status">
-                {checkStatus(status)}
+                {checkStatus(order.status)}
                 <button onClick={() => setOpenDetail(true)}>
                   {t("app.details")}
                 </button>

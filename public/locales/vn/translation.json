@@ -7,6 +7,7 @@
   },
   "Header": {
     "1": "Trở thành đối tác",
+    "seller_center":"Kênh người bán",
     "my_acc": "Tài khoản của tôi",
     "my_order": "Lịch sử đơn hàng",
     "my_codes": "Danh sách mã ưu đãi",
@@ -316,5 +317,29 @@
     "rv_booked":"Bạn có thể xem lại dịch vụ đã đặt hẹn",
     "bk_fail_title":"Có lỗi xảy ra trong quá trình đặt hẹn",
     "code_err":"Mã lỗi"
+  },
+  "home_2":{
+    "categories":"Danh mục",
+    "clinic":"Phòng khám",
+    "beauty_salon":"Thẩm mỹ viện",
+    "hot_beauty_deal":"Deal làm đẹp cực HOT",
+    "hot_promotion":"Khuyến mãi HOT",
+    "places_near_you":"Gần bạn",
+    "selling":"Bán chạy",
+    "name":"Tên",
+    "hot_deal_locations":"Địa điểm nhiều Deal HOT",
+    "trusted_place":"Địa điểm đáng tin cậy",
+    "places_near_you_2":"Địa điểm gần bạn",
+    "places_you_are_interested_in":"Địa điểm bạn quan tâm",
+    "beauty_places":"Địa điểm làm đẹp"
+  },
+  "se":{
+    "search_results_for_keyword":"Kết quả tìm kiếm cho từ khóa",
+    "filters":"Bộ lọc tìm kiếm",
+    "price_range":"Khoảng giá",
+    "form":"từ",
+    "to":"đến",
+    "invalid":"Không hợp lệ",
+    "apply":"Áp dụng khoảng giá"
   }
 }

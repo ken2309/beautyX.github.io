@@ -21,6 +21,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction={view < 767 ? "left" : "up"} ref={ref} {...props} />;
 });
 
+
 function OrderDetail(props: any) {
   const history = useHistory();
   const { t } = useContext(AppContext);
