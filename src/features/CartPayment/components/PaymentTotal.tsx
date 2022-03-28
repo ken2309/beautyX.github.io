@@ -7,7 +7,7 @@ import { AppContext } from "../../../context/AppProvider";
 import order from '../../../api/orderApi';
 import { Cart } from '../../../interface/cart';
 import { useHistory } from 'react-router-dom';
-import slugify from "../../../utils/formatUrlString";
+//import slugify from "../../../utils/formatUrlString";
 
 const useInPayment: boolean = true;
 function PaymentTotal(props: any) {
@@ -22,9 +22,11 @@ function PaymentTotal(props: any) {
     products,
     services,
     combos,
-    address
+    address,
+    note
   } = props;
   const history = useHistory();
+  // console.log(note)
   const pmMethod = methodList.find((item: any) => item.method === value);
   const [popup, setPopup] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
@@ -34,17 +36,26 @@ function PaymentTotal(props: any) {
   const servicesPost = services.map((item: Cart) => ({ id: item.id, quantity: item.quantity }))
   const combosPost = combos.map((item: Cart) => ({ id: item.id, quantity: item.quantity }))
 
-  const params = {
-    products: productsPost,
-    services: servicesPost,
-    treatment_combo: combosPost,
-    payment_method_id: chooseE_wall?.id,
-    //prepay_cards: [],
-    branch_id: 0,
-    coupon_code: [],
-    //description: "string",
-    user_address_id: address?.id
-  };
+  const params_string = `{
+    "products":${JSON.stringify(productsPost)},
+    "services":${JSON.stringify(servicesPost)},
+    "treatment_combo":${JSON.stringify(combosPost)},
+    "payment_method_id":${chooseE_wall?.id},
+    "coupon_code":[],
+    "user_address_id":${address?.id}
+    ${note.length > 0 && `,"description": "${note}"`}
+  }`
+
+  // const params = {
+  //   products: productsPost,
+  //   services: servicesPost,
+  //   treatment_combo: combosPost,
+  //   payment_method_id: chooseE_wall?.id,
+  //   //prepay_cards: [],
+  //   branch_id: 0,
+  //   coupon_code: [],
+  //   user_address_id: address?.id
+  // };
 
   async function handlePostOrder(org_id: number, params: object) {
     try {
@@ -53,7 +64,7 @@ function PaymentTotal(props: any) {
       const payUrl = await state_payment.payment_gateway.extra_data.payUrl;
       const desc = await state_payment.payment_gateway.description;
       const transaction_uuid = state_payment.payment_gateway.transaction_uuid;
-      const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
+      //const deepUrl = await response.data.context.payment_gateway.extra_data.deeplinkMiniApp;
       const newWindow = window.open(`${payUrl}`, '_blank', 'noopener,noreferrer')
       setDisableBtn(true)
       if (newWindow) newWindow.opener = null
@@ -69,11 +80,12 @@ function PaymentTotal(props: any) {
     }
   }
   const handleSubmitPayment = () => {
+    //console.log(JSON.parse(params_string))
     if (disableBtn === false) {
       if (profile) {
         if (address && value && chooseE_wall?.id === 1) {
           //console.log(params)
-          handlePostOrder(org_id, params)
+          handlePostOrder(org_id, JSON.parse(params_string))
         } else {
           console.log("Trang web chỉ chấp nhận thanh toán qua ví điện tử Momo");
         }

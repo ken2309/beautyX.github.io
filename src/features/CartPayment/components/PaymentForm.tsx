@@ -8,6 +8,7 @@ import { AppContext } from '../../../context/AppProvider';
 
 //const phoneFormat = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 function PaymentForm(props: any) {
+      const {setNote} = props;
       const { t } = useContext(AppContext);
       const history = useHistory();
       const { address } = props;
@@ -68,6 +69,7 @@ function PaymentForm(props: any) {
                               <div className="payment-form__right">
                                     <textarea
                                           name="cus_note"
+                                          onChange={(e)=> setNote(e.target.value)}
                                           //value={formik.values.cus_note}
                                           //onChange={formik.handleChange}
                                           placeholder={t('pm.note')}
