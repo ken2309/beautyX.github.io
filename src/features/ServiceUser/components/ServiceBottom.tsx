@@ -77,17 +77,21 @@ function ServiceBottom(props: any) {
   }
   const handleSubmitApp = () => {
     const timeStart = `${chooseDate} ${chooseTime}:00`;
-    const service_ids = servicesBook.map((item: any) => item.id);
+    //const service_ids = servicesBook.map((item: any) => item.id);
+    const service_ids = [1];
+
     const a = `{
-      "order_id":${order_id},
+      "order_id":${748},
       "service_ids":[${service_ids}]
       ${chooseBranch ? `,"branch_id":${chooseBranch?.id}` : ''},
       "time_start":${JSON.stringify(timeStart)}
       }`
+    //const params = JSON.parse(a)
     if (order_id && chooseDate && chooseTime) {
       const params = JSON.parse(a);
       handleSubmitAppApi(params, org?.id)
     }
+    //handleSubmitAppApi(params, org?.id)
   };
   return (
     <div

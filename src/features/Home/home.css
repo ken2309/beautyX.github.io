@@ -562,7 +562,8 @@ img {
 .homelogged-calendar {
   background-color: var(--purple);
   width: 100%;
-  margin-top: 84px;
+  margin-bottom: 32px;
+  /* margin-top: 84px; */
 }
 .homelogged-calendar__content {
   background-color: var(--purple);
@@ -1612,6 +1613,9 @@ img {
     padding: 24px;
     border-top: solid 1px var(--purple);
     border-bottom: solid 1px var(--purple);
+  }
+  .calender-wrap{
+    display: none;
   }
   .calendar-mounth {
     padding: 8px 0px;

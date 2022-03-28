@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
+import React  from 'react';
 import HomeTags from './components/HomeTags';
 import HomePromo from './components/HomePromo';
 import HomeDeal from './components/HomeDeal';
 import HomeCard from './components/HomeCard';
 import HomeProvince from './components/HomeProvince';
 import HomeServicesRe from './components/HomeServicesRe';
-import HomeLoggedCalendar from '../Home/components/HomeLogged/HomeLoggedCalendar';
+//import HomeLoggedCalendar from '../Home/components/HomeLogged/HomeLoggedCalendar';
 
 import { Container } from '@mui/material';
 import './home-se.css'
-import { AppContext } from '../../context/AppProvider';
+//import { AppContext } from '../../context/AppProvider';
 
 function HomeSecond(props: any) {
-    const { profile } = useContext(AppContext)
+    //const { profile } = useContext(AppContext)
     return (
         <div className="home-se-cnt">
             <Container>
@@ -22,14 +22,14 @@ function HomeSecond(props: any) {
                 <HomeCard />
             </Container>
             <HomeProvince />
-            <div className="home-ca-cnt">
+            {/* <div className="home-ca-cnt">
                 {
                     profile ?
                         <HomeLoggedCalendar />
                         :
                         <></>
                 }
-            </div>
+            </div> */}
             <Container>
                 <HomeServicesRe />
             </Container>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Head from "../Head/index";
 import "./cartPayment.css";
 import { Container } from "@mui/material";
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
 import PaymentForm from "./components/PaymentForm";
 import PaymentCart from "./components/PaymentCart";
@@ -20,10 +20,11 @@ import userAddressApi from "../../api/userAddressApi";
 const isCart: boolean = true;
 function CartPayment(props: any) {
   const { t, profile } = useContext(AppContext);
-  const history = useHistory();
+  //const history = useHistory();
   const headerTitle = t("pm.payment");
   const [value, setValue] = React.useState("");
   const [paymentMethodOnl, setPaymentMethodOnl] = useState();
+  const [note, setNote] = useState('')
   const [chooseE_wall, setChooseE_wall] = useState();
   const [address, setAddress] = useState<IUserAddress>()
   const dispatch = useDispatch();
@@ -76,13 +77,13 @@ function CartPayment(props: any) {
       method: "PAYMENT_IN_BRANCH",
       method_list: [],
     },
-    {
-      id: 2,
-      img: img.cardAtm,
-      title: "Thanh toán bằng thẻ ATM và tài khoản ngân hàng",
-      method: "PAYMENT_ATM",
-      method_list: [],
-    },
+    // {
+    //   id: 2,
+    //   img: img.cardAtm,
+    //   title: "Thanh toán bằng thẻ ATM và tài khoản ngân hàng",
+    //   method: "PAYMENT_ATM",
+    //   method_list: [],
+    // },
     {
       id: 3,
       img: img.cardAtm,
@@ -100,6 +101,7 @@ function CartPayment(props: any) {
         <div className="payment-cnt">
           <PaymentForm
             address={address}
+            setNote={setNote}
           />
           <PaymentCart
             list={list}
@@ -127,6 +129,7 @@ function CartPayment(props: any) {
         services={services}
         combos={combos}
         address={address}
+        note={note}
       />
       <Footer />
     </div>
