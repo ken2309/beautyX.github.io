@@ -184,8 +184,11 @@ function Head(props: any) {
                 >
                   {userInfo?.fullname}
                 </span>
-                <div className="hd-cnt__right-avatar">
-                  <img onClick={openNotiClick} src={img.Avatar} alt="" />
+                <div onClick={openNotiClick} className="hd-cnt__right-avatar">
+                  <div className="blank-avatar">
+                      {userInfo?.fullname?.slice(0,1)}
+                  </div>
+                  {/* <img onClick={openNotiClick} src={img.Avatar} alt="" /> */}
                   <div className="hd-cnt__right-avatar-dot"></div>
                   <Notification openNo={openNo} />
                 </div>

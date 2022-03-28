@@ -6,13 +6,15 @@ import { Container } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import Footer from '../Footer';
 
+// window.location.assign(deepLink);
+
 function SellerCenter() {
     const history = useHistory();
     const { t } = useContext(AppContext)
     const [sub, setSub] = useState('')
     const onGotoManager = () => {
         if (sub.length > 0) {
-            const newWindow = window.open(`https:${sub}.myspa.vn/moba_manager/dashboard`, '_blank', 'noopener,noreferrer')
+            const newWindow = window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
             if (newWindow) newWindow.opener = null
         }
     }

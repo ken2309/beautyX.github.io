@@ -37,6 +37,15 @@ function MenuBox(props: any) {
             </div>
           </li>
           <li
+            onClick={() => history.push("/Calendar")}
+            className="{menu.menuBoxItem}"
+          >
+            <div className="flex-row hd-menu__item">
+              <img src={icon.bag} alt="" />
+              <span className="hd-menu__item-text">{t("Home.appointment")}</span>
+            </div>
+          </li>
+          <li
             onClick={() => history.push("/goi-dich-vu")}
             className="{menu.menuBoxItem}"
           >
