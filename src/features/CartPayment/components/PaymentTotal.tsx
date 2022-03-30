@@ -43,7 +43,7 @@ function PaymentTotal(props: any) {
     "payment_method_id":${chooseE_wall?.id},
     "coupon_code":[],
     "user_address_id":${address?.id}
-    ${note.length > 0 && `,"description": "${note}"`}
+    ${note.length > 0 ? `,"description": "${note}"` : ``}
   }`
 
   // const params = {
@@ -80,6 +80,7 @@ function PaymentTotal(props: any) {
     }
   }
   const handleSubmitPayment = () => {
+    //console.log(params_string)
     //console.log(JSON.parse(params_string))
     if (disableBtn === false) {
       if (profile) {
