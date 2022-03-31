@@ -9,8 +9,11 @@ import Head from "../Head";
 import HeadTitle from "../HeadTitle";
 import "./merchantComment.css";
 import MerchantCommentItem from "./MerchantCommentItem";
+import {useLocation} from 'react-router-dom'
 
 export default function MerchantComment() {
+  const location = useLocation();
+  console.log(location)
   const dataComment: any = [
     {
       id: 1,
