@@ -70,13 +70,13 @@ function CartPayment(props: any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const PAYMENT_METHOD = [
-    {
-      id: 1,
-      img: img.money,
-      title: "Thanh toán tại cơ sở",
-      method: "PAYMENT_IN_BRANCH",
-      method_list: [],
-    },
+    // {
+    //   id: 1,
+    //   img: img.money,
+    //   title: "Thanh toán tại cơ sở",
+    //   method: "PAYMENT_IN_BRANCH",
+    //   method_list: [],
+    // },
     // {
     //   id: 2,
     //   img: img.cardAtm,
