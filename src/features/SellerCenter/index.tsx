@@ -14,10 +14,11 @@ function SellerCenter() {
     const { t } = useContext(AppContext)
     const [sub, setSub] = useState('')
     const onGotoManager = () => {
-        if (sub.length > 0) {
-            const newWindow = window.open(`https://${sub}.myspa.vn`, '_blank', 'noopener,noreferrer')
+        // if (sub.length > 0) {
+            // const newWindow = window.open(`https://${sub}.myspa.vn`, '_blank', 'noopener,noreferrer')
+            const newWindow = window.open(`https://dev.myspa.vn`, '_blank', 'noopener,noreferrer')
             if (newWindow) newWindow.opener = null
-        }
+        // }
         // const a = document.createElement('a');
         // a.href = `https://${sub}.myspa.vn/moba_manager/dashboard`;
         // a.target = '_blank';
