@@ -5,6 +5,7 @@ import { AppContext } from '../../context/AppProvider';
 import { Container } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import Footer from '../Footer';
+import { Link } from 'react-router-dom'
 
 // window.location.assign(deepLink);
 
@@ -13,13 +14,15 @@ function SellerCenter() {
     const { t } = useContext(AppContext)
     const [sub, setSub] = useState('')
     const onGotoManager = () => {
-        // if (sub.length > 0) {
-        //     window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
-        // }
-        const a = document.createElement('a');
-        a.href = `https://${sub}.myspa.vn/moba_manager/dashboard`;
-        a.target = '_blank';
-        a.click();
+        if (sub.length > 0) {
+            window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
+            const newWindow = window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank', 'noopener,noreferrer')
+            if (newWindow) newWindow.opener = null
+        }
+        // const a = document.createElement('a');
+        // a.href = `https://${sub}.myspa.vn/moba_manager/dashboard`;
+        // a.target = '_blank';
+        // a.click();
     }
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
@@ -66,6 +69,21 @@ function SellerCenter() {
                                 </div>
                             </div>
                             <div className="form-cnt__btn">
+                                {/* {
+                                    sub.length > 0 &&
+                                    <button
+                                        onClick={onGotoManager}
+                                    >
+                                        <Link
+                                            to={{
+                                                pathname: `https://${sub}.myspa.vn/moba_manager/dashboard`
+                                            }}
+                                            target="_blank"
+                                        >
+                                            Tiếp tục
+                                        </Link>
+                                    </button>
+                                } */}
                                 <button
                                     onClick={onGotoManager}
                                 >
@@ -76,7 +94,7 @@ function SellerCenter() {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }
