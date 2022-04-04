@@ -15,7 +15,7 @@ function SellerCenter() {
     const [sub, setSub] = useState('')
     const onGotoManager = () => {
         if (sub.length > 0) {
-            window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
+            //window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
             const newWindow = window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank', 'noopener,noreferrer')
             if (newWindow) newWindow.opener = null
         }
