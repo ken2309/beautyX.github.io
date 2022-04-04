@@ -5,7 +5,7 @@ import { AppContext } from '../../context/AppProvider';
 import { Container } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import Footer from '../Footer';
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 // window.location.assign(deepLink);
 
@@ -15,8 +15,7 @@ function SellerCenter() {
     const [sub, setSub] = useState('')
     const onGotoManager = () => {
         if (sub.length > 0) {
-            //window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
-            const newWindow = window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank', 'noopener,noreferrer')
+            const newWindow = window.open(`https://${sub}.myspa.vn`, '_blank', 'noopener,noreferrer')
             if (newWindow) newWindow.opener = null
         }
         // const a = document.createElement('a');
@@ -24,11 +23,11 @@ function SellerCenter() {
         // a.target = '_blank';
         // a.click();
     }
-    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
-            onGotoManager();
-        }
-    };
+    // const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    //     if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
+    //         onGotoManager();
+    //     }
+    // };
     return (
         <>
             {/* <Head /> */}
@@ -59,7 +58,7 @@ function SellerCenter() {
                             <span className="title">Xin mời đăng nhập</span>
                             <div className="inp">
                                 <input
-                                    onKeyDown={handleKeyDown}
+                                    //onKeyDown={handleKeyDown}
                                     onChange={(e) => setSub(e.target.value)}
                                     type="text"
                                     placeholder='Nhập địa chỉ subdomain'
