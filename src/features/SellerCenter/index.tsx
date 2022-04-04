@@ -13,10 +13,13 @@ function SellerCenter() {
     const { t } = useContext(AppContext)
     const [sub, setSub] = useState('')
     const onGotoManager = () => {
-        if (sub.length > 0) {
-            const newWindow = window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
-            if (newWindow) newWindow.opener = null
-        }
+        // if (sub.length > 0) {
+        //     window.open(`https://${sub}.myspa.vn/moba_manager/dashboard`, '_blank')
+        // }
+        const a = document.createElement('a');
+        a.href = `https://${sub}.myspa.vn/moba_manager/dashboard`;
+        a.target = '_blank';
+        a.click();
     }
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.code === "Enter" || event?.nativeEvent.keyCode === 13) {
